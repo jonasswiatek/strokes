@@ -1,0 +1,14 @@
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\bin\Debug\TestFile.cs
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\bin\Debug\CSharpAchiever.AchievementDispatcher.dll
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\bin\Debug\CSharpAchiever.Achievements.Basic.dll
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\bin\Debug\CSharpAchiever.Core.dll
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\bin\Debug\CSharpAchiever.AchievementDispatcher.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\bin\Debug\CSharpAchiever.Achievements.Basic.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\bin\Debug\CSharpAchiever.Core.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\bin\Debug\CSharpAchiever.GUI.exe
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\bin\Debug\CSharpAchiever.GUI.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\bin\Debug\CSharpAchiever.Console.exe
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\bin\Debug\CSharpAchiever.Console.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\obj\x86\Debug\CSharpAchiever.Console.exe
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Console\obj\x86\Debug\CSharpAchiever.Console.pdb

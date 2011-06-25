@@ -1,0 +1,9 @@
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.AchievementDispatcher\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.AchievementDispatcher\obj\Debug\CSharpAchiever.AchievementDispatcher.dll
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.AchievementDispatcher\obj\Debug\CSharpAchiever.AchievementDispatcher.pdb
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.AchievementDispatcher\bin\Debug\CSharpAchiever.AchievementDispatcher.dll
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.AchievementDispatcher\bin\Debug\CSharpAchiever.AchievementDispatcher.pdb
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.AchievementDispatcher\bin\Debug\CSharpAchiever.Core.dll
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.AchievementDispatcher\bin\Debug\CSharpAchiever.GUI.exe
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.AchievementDispatcher\bin\Debug\CSharpAchiever.Core.pdb
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.AchievementDispatcher\bin\Debug\CSharpAchiever.GUI.pdb

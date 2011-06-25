@@ -1,0 +1,14 @@
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\bin\Debug\TestFile.cs
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\bin\Debug\CSharpAchiever.Detector.Test.exe
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\bin\Debug\CSharpAchiever.Detector.Test.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\obj\x86\Debug\CSharpAchiever.Detector.Test.exe
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\obj\x86\Debug\CSharpAchiever.Detector.Test.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\bin\Debug\CSharpAchiever.AchieverVSAddin.WPF.exe
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\bin\Debug\CSharpAchiever.AchieverVSAddin.WPF.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\bin\Debug\CSharpAchiever.AchievementDispatcher.dll
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\bin\Debug\CSharpAchiever.Core.dll
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\bin\Debug\CSharpAchiever.AchievementDispatcher.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\bin\Debug\CSharpAchiever.Core.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\bin\Debug\CSharpAchiever.Achievements.Basic.dll
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Detector.Test\bin\Debug\CSharpAchiever.Achievements.Basic.pdb

@@ -1,0 +1,5 @@
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Core\obj\Debug\CSharpAchiever.Core.dll
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Core\bin\Debug\CSharpAchiever.Core.dll
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Core\bin\Debug\CSharpAchiever.Core.pdb
+C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Core\obj\Debug\CSharpAchiever.Core.pdb

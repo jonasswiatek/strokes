@@ -1,0 +1,24 @@
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\CSharpAchiever.VSX.dll
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\CSharpAchiever.AchievementDispatcher.dll
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\CSharpAchiever.Achievements.Basic.dll
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\CSharpAchiever.Core.dll
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\CSharpAchiever.GUI.exe
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\CSharpAchiever.VSX.pkgdef
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\extension.vsixmanifest
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\CSharpAchiever.VSX.pdb
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\CSharpAchiever.AchievementDispatcher.pdb
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\CSharpAchiever.Achievements.Basic.pdb
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\CSharpAchiever.Core.pdb
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\C# Achievements\1.0\\CSharpAchiever.GUI.pdb
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\CSharpAchiever.VSX.dll
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\CSharpAchiever.AchievementDispatcher.dll
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\CSharpAchiever.Achievements.Basic.dll
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\CSharpAchiever.Core.dll
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\CSharpAchiever.GUI.exe
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\CSharpAchiever.VSX.pkgdef
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\extension.vsixmanifest
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\CSharpAchiever.VSX.pdb
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\CSharpAchiever.AchievementDispatcher.pdb
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\CSharpAchiever.Achievements.Basic.pdb
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\CSharpAchiever.Core.pdb
+C:\Users\Jonas Swiatek\AppData\Local\Microsoft\VisualStudio\10.0Exp\Extensions\Jonas Swiatek\Strokes for Visual Studio\1.0\\CSharpAchiever.GUI.pdb

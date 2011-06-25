@@ -1,0 +1,5 @@
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Core\bin\Debug\CSAchiever.Core.dll
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Core\bin\Debug\CSAchiever.Core.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Core\obj\Debug\CSAchiever.Core.dll
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Core\obj\Debug\CSAchiever.Core.pdb

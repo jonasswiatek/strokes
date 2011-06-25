@@ -1,0 +1,9 @@
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchievement.AchievementDispatcher\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchievement.AchievementDispatcher\bin\Debug\CSAchievement.AchievementDispatcher.dll
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchievement.AchievementDispatcher\bin\Debug\CSAchievement.AchievementDispatcher.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchievement.AchievementDispatcher\bin\Debug\CSAchiever.Core.dll
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchievement.AchievementDispatcher\bin\Debug\CSharpAchiever.AchieverVSAddin.WPF.exe
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchievement.AchievementDispatcher\bin\Debug\CSAchiever.Core.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchievement.AchievementDispatcher\bin\Debug\CSharpAchiever.AchieverVSAddin.WPF.pdb
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchievement.AchievementDispatcher\obj\Debug\CSAchievement.AchievementDispatcher.dll
+C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchievement.AchievementDispatcher\obj\Debug\CSAchievement.AchievementDispatcher.pdb
