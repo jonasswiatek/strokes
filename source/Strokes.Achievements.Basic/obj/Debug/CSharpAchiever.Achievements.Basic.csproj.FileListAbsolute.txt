@@ -1,7 +1,0 @@
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Achievements.Basic\bin\Debug\CSharpAchiever.Achievements.Basic.dll
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Achievements.Basic\bin\Debug\CSharpAchiever.Achievements.Basic.pdb
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Achievements.Basic\bin\Debug\CSharpAchiever.Core.dll
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Achievements.Basic\bin\Debug\CSharpAchiever.Core.pdb
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Achievements.Basic\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Achievements.Basic\obj\Debug\CSharpAchiever.Achievements.Basic.dll
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSharpAchiever.Achievements.Basic\obj\Debug\CSharpAchiever.Achievements.Basic.pdb

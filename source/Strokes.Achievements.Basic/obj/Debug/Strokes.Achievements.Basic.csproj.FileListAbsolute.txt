@@ -1,7 +1,0 @@
-C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Achievements.Basic\bin\Debug\CSharpAchiever.Achievements.Basic.dll
-C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Achievements.Basic\bin\Debug\CSharpAchiever.Achievements.Basic.pdb
-C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Achievements.Basic\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Achievements.Basic\obj\Debug\CSharpAchiever.Achievements.Basic.dll
-C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Achievements.Basic\obj\Debug\CSharpAchiever.Achievements.Basic.pdb
-C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Achievements.Basic\bin\Debug\CSharpAchiever.Core.dll
-C:\Users\Jonas Swiatek\Source Code\strokes\Strokes\Strokes.Achievements.Basic\bin\Debug\CSharpAchiever.Core.pdb

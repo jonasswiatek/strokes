@@ -1,7 +1,0 @@
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Achievements.Basic\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Achievements.Basic\bin\Debug\CSAchiever.Achievements.Basic.dll
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Achievements.Basic\bin\Debug\CSAchiever.Achievements.Basic.pdb
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Achievements.Basic\bin\Debug\CSAchiever.Core.dll
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Achievements.Basic\bin\Debug\CSAchiever.Core.pdb
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Achievements.Basic\obj\Debug\CSAchiever.Achievements.Basic.dll
-C:\Users\Jonas Swiatek\Source Code\itu-qk01-f2011\CSharpAchiever\CSAchiever.Achievements.Basic\obj\Debug\CSAchiever.Achievements.Basic.pdb
