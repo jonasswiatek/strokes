@@ -1,0 +1,7 @@
+[patterns]
+**.xml = native
+**.cs = native
+**.csproj = native
+**.txt = native
+**.atg = native
+**.xaml = native

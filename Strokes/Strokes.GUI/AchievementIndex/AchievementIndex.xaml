@@ -1,0 +1,12 @@
+﻿<Window x:Class="CSharpAchiever.GUI.AchievementIndex.AchievementIndex"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Achievements for C#" Height="473" Width="470" Background="#FF585858" ResizeMode="NoResize">
+    <Grid Height="388" VerticalAlignment="Bottom">
+        <Button Content="Reset completed" Height="23" HorizontalAlignment="Left" Margin="344,-41,0,0" Name="button1" VerticalAlignment="Top" Width="104" Click="button1_Click" />
+        <ScrollViewer HorizontalAlignment="Stretch" Name="scrollViewer1" VerticalAlignment="Stretch" Margin="0">
+            <StackPanel Name="AchievementStack" />
+        </ScrollViewer>
+        <Label Content="All achievements available" Height="28" Foreground="#FFCBCBCB" HorizontalAlignment="Left" Margin="0,-46,0,0" Name="label1" FontSize="16" FontWeight="Bold" VerticalAlignment="Top" />
+    </Grid>
+</Window>
