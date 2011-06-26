@@ -8,8 +8,8 @@
     <ProjectGuid>{AE5FA15D-3D0A-49DC-9571-3493C32C3831}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSharpAchiever.Achievements.Basic</RootNamespace>
-    <AssemblyName>CSharpAchiever.Achievements.Basic</AssemblyName>
+    <RootNamespace>Strokes.Achievements.Basic</RootNamespace>
+    <AssemblyName>Strokes.Achievements.Basic</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

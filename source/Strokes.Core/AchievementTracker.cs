@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Xml.Linq;
 
-namespace CSharpAchiever.Core
+namespace Strokes.Core
 {
     public class AchievementTracker
     {
-        private static List<Type> _achievements;
+        private static readonly List<Type> Achievements = new List<Type>();
+        private static bool _loaded;
+
         /// <summary>
         /// Searches all assemblies for implementations of the Achievement class.
         /// 
@@ -19,10 +20,8 @@ namespace CSharpAchiever.Core
         /// <returns>IList containing all concrete implementations of the Achievement class</returns>
         public static IList<Type> FindAllAchievementTypes()
         {
-            if (_achievements == null)
+            if (!_loaded)
             {
-                _achievements = new List<Type>();
-
                 var currentAssembly = Assembly.GetExecutingAssembly();
                 var assemblyDirectorySegments = currentAssembly.Location.Split("\\".ToCharArray());
                 var assemblyDirectory = "";
@@ -36,11 +35,25 @@ namespace CSharpAchiever.Core
                 foreach (var file in files)
                 {
                     var assembly = Assembly.LoadFrom(file);
-                    _achievements.AddRange(assembly.GetTypes().Where(a => a.BaseType == typeof(Achievement)));
+                    LoadAchievementsFromAssembly(assembly);
                 }
+
+                _loaded = true;
             }
 
-            return _achievements;
+            return Achievements;
+        }
+
+        /// <summary>
+        /// Loads all Achievement-implementations from the pass assembly and tracks their progress
+        /// </summary>
+        /// <param name="assembly"></param>
+        public static void LoadAchievementsFromAssembly(Assembly assembly)
+        {
+            if(assembly == null)
+                throw new ArgumentNullException("assembly");
+
+            Achievements.AddRange(assembly.GetTypes().Where(a => a.BaseType == typeof(Achievement)));
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
-using CSharpAchiever.Core;
+using Strokes.Core;
+using Strokes.GUI;
 
 namespace CSharpAchiever.GUI.AchievementIndex
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpAchiever.Core
+namespace Strokes.Core
 {
     public class DetectionSession
     {

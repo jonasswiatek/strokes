@@ -1,4 +1,4 @@
-﻿namespace CSharpAchiever.Core
+﻿namespace Strokes.Core
 {
     public class BuildInformation
     {

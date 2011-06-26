@@ -1,25 +1,29 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.ComponentModel.Design;
 using CodeCube.CSharpAchiever_Achiever_VSIX;
-using CSharpAchiever.AchievementDispatcher;
-using CSharpAchiever.Core;
 using CSharpAchiever.GUI.AchievementIndex;
+using CSharpAchiever.VSX;
 using EnvDTE;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Shell;
+using Strokes.AchievementDispatcher;
+using Strokes.Core;
+using Strokes.Core.Integration;
 
-namespace CSharpAchiever.VSX
+namespace Strokes.VSX
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideAutoLoad("{f1536ef8-92ec-443c-9ed7-fdadf150da82}")] /* Auto Load this addin when a solution loads. Maybe this should be C# Project's guid */
     [Guid(GuidList.guidCSharpAchiever_Achiever_VSIXPkgString)]
-    public sealed class CSharpAchieverAchieverVsxPackage : Package, IVsUpdateSolutionEvents2
+    [ProvideService(typeof(IAchevementLibraryService))]
+    public sealed class CSharpAchieverAchieverVsxPackage : Package, IVsUpdateSolutionEvents2, IAchevementLibraryService
     {
         public CSharpAchieverAchieverVsxPackage()
         {
@@ -52,7 +56,7 @@ namespace CSharpAchiever.VSX
                 var menuItem = new MenuCommand(MenuItemCallback, menuCommandID );
                 mcs.AddCommand( menuItem );
             }
-
+            
             //Subscribe to Build events
             // Get solution build manager 
             sbm = ServiceProvider.GlobalProvider.GetService(typeof(SVsSolutionBuildManager)) as IVsSolutionBuildManager2;
@@ -62,6 +66,10 @@ namespace CSharpAchiever.VSX
             }
 
             dte = (DTE)GetService(typeof(DTE));
+
+            //Promote the Achievement Library service
+            var serviceContainer = (IServiceContainer)this;
+            serviceContainer.AddService(typeof(IAchevementLibraryService), this, true);
         }
 
         protected override void Dispose(bool disposing)
@@ -74,6 +82,14 @@ namespace CSharpAchiever.VSX
         } 
 
         #endregion
+
+        /// <summary>
+        /// Called by third party extensions to register their achievement assemblies.
+        /// </summary>
+        /// <param name="assembly"></param>
+        public void RegisterAchievementAssembly(Assembly assembly)
+        {
+        }
 
         /// <summary>
         /// Called when the Tools -> C# Achievements menu is clicked.

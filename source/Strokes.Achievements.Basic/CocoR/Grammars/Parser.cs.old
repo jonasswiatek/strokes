@@ -1176,11 +1176,14 @@ private void RegisterBasicAchievement(BasicAchievement achievement)
 public enum BasicAchievement
 {
 	PrivateSetter,
+	
 	QueryExpression,
 	JoinExpression,
 	LambdaExpression,
+
 	AnonymousObject,
 	ParamsParameter,
+
 	ForLoop,
 	ForeachLoop,
 	WhileLoop,

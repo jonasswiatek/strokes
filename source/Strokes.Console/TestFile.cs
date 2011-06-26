@@ -1,4 +1,4 @@
-﻿namespace CSharpAchiever.Console
+﻿namespace Strokes.Console
 {
     public class TestFile
     {

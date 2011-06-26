@@ -4,10 +4,12 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
-using CSharpAchiever.Core;
 using System.Linq;
+using CSharpAchiever.GUI;
+using CSharpAchiever.GUI.AchievementIndex;
+using Strokes.Core;
 
-namespace CSharpAchiever.GUI
+namespace Strokes.GUI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -154,7 +156,7 @@ namespace CSharpAchiever.GUI
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            var achievementIndex = new AchievementIndex.AchievementIndex();
+            var achievementIndex = new AchievementIndex();
             achievementIndex.Show();
         }
     }

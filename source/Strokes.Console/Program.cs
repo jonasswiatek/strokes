@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows;
-using CSharpAchiever.AchievementDispatcher;
-using CSharpAchiever.Core;
 using CSharpAchiever.GUI.AchievementIndex;
+using Strokes.AchievementDispatcher;
+using Strokes.Core;
 
-namespace CSharpAchiever.Console
+namespace Strokes.Console
 {
     class Program
     {

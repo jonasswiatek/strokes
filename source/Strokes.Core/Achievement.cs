@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpAchiever.Core
+namespace Strokes.Core
 {
     public abstract class Achievement
     {

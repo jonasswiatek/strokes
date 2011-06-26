@@ -8,8 +8,8 @@
     <ProjectGuid>{6ED1F2F7-1861-4807-B825-C16C341E8785}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSharpAchiever.Console</RootNamespace>
-    <AssemblyName>CSharpAchiever.Console</AssemblyName>
+    <RootNamespace>Strokes.Console</RootNamespace>
+    <AssemblyName>Strokes.Console</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

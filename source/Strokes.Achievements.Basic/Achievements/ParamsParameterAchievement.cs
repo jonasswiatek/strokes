@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using CSharpAchiever.Achievements.Basic.CocoR;
-using CSharpAchiever.Core;
+using Strokes.Achievements.Basic.CocoR;
+using Strokes.Core;
 
-namespace CSharpAchiever.Achievements.Basic.Achievements
+namespace Strokes.Achievements.Basic.Achievements
 {
     [AchievementDescription("Params Parameter", AchievementDescription = "Write a method that uses the params keyword in it's arguments", AchievementCategory = "Basic Achievements")]
     public class ParamsParameterAchievement : Achievement

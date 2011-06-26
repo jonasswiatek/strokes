@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CSharpAchiever.Core;
-using CSharpAchiever.GUI;
+using Strokes.Core;
+using Strokes.GUI;
 
-namespace CSharpAchiever.AchievementDispatcher
+namespace Strokes.AchievementDispatcher
 {
     public class DetectionDispatcher
     {

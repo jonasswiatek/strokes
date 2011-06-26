@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
-namespace CSharpAchiever.Core
+
+namespace Strokes.Core
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple=false)]
     public class AchievementDescriptionAttribute : Attribute

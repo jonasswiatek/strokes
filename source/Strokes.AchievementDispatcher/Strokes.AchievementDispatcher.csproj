@@ -8,8 +8,8 @@
     <ProjectGuid>{FD3A809B-C627-4698-A04D-59DA61C556D7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSharpAchiever.AchievementDispatcher</RootNamespace>
-    <AssemblyName>CSharpAchiever.AchievementDispatcher</AssemblyName>
+    <RootNamespace>Strokes.AchievementDispatcher</RootNamespace>
+    <AssemblyName>Strokes.AchievementDispatcher</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

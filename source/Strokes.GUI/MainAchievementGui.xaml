@@ -1,4 +1,4 @@
-﻿<Window x:Class="CSharpAchiever.GUI.MainAchievementGui"
+﻿<Window x:Class="Strokes.GUI.MainAchievementGui"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="" Name="MainGui" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="Manual" ResizeMode="NoResize" BorderThickness="3" Topmost="True" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="154" Width="503" Background="{x:Null}" ShowInTaskbar="False">

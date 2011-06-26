@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.Core", "Strokes.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.GUI", "Strokes.GUI\Strokes.GUI.csproj", "{CCA3165B-3D87-45AB-AD18-168CF04A1417}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.Challanges.VSX", "Strokes.Challanges.VSX\Strokes.Challanges.VSX.csproj", "{17030F4B-77CF-4780-8C00-DFFE6412F49E}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CSharpAchiever.vsmdi
@@ -86,6 +88,16 @@ Global
 		{CCA3165B-3D87-45AB-AD18-168CF04A1417}.Release|Mixed Platforms.Build.0 = Release|x86
 		{CCA3165B-3D87-45AB-AD18-168CF04A1417}.Release|x86.ActiveCfg = Release|x86
 		{CCA3165B-3D87-45AB-AD18-168CF04A1417}.Release|x86.Build.0 = Release|x86
+		{17030F4B-77CF-4780-8C00-DFFE6412F49E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17030F4B-77CF-4780-8C00-DFFE6412F49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17030F4B-77CF-4780-8C00-DFFE6412F49E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{17030F4B-77CF-4780-8C00-DFFE6412F49E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{17030F4B-77CF-4780-8C00-DFFE6412F49E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{17030F4B-77CF-4780-8C00-DFFE6412F49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17030F4B-77CF-4780-8C00-DFFE6412F49E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17030F4B-77CF-4780-8C00-DFFE6412F49E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{17030F4B-77CF-4780-8C00-DFFE6412F49E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{17030F4B-77CF-4780-8C00-DFFE6412F49E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

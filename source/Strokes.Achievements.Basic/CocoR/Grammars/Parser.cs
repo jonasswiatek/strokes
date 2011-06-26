@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 using System;
 
-namespace CSharpAchiever.Achievements.Basic.CocoR.Grammars {
+namespace Strokes.Achievements.Basic.CocoR.Grammars {
 
 
 

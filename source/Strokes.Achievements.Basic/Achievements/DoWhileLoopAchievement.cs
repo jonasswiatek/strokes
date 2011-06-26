@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using CSharpAchiever.Achievements.Basic.CocoR;
-using CSharpAchiever.Core;
+using Strokes.Achievements.Basic.CocoR;
+using Strokes.Core;
 
-namespace CSharpAchiever.Achievements.Basic.Achievements
+namespace Strokes.Achievements.Basic.Achievements
 {
     [AchievementDescription("DoWhile loop", AchievementDescription = "Use a do-while loop", AchievementCategory = "Basic Achievements")]
     public class DoWhileLoopAchievement : Achievement

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using CSharpAchiever.Achievements.Basic.CocoR.Grammars;
+using Strokes.Achievements.Basic.CocoR.Grammars;
 
-namespace CSharpAchiever.Achievements.Basic.CocoR
+namespace Strokes.Achievements.Basic.CocoR
 {
     public class BasicCocoRDetector
     {

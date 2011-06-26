@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using CSharpAchiever.Core;
+using Strokes.Core;
 
-namespace CSharpAchiever.GUI
+namespace Strokes.GUI
 {
     /// <summary>
     /// Interaction logic for Achievement.xaml
@@ -23,8 +23,8 @@ namespace CSharpAchiever.GUI
             var imageSource = new BitmapImage();
             imageSource.BeginInit();
             var url = achievementDescriptor.IsCompleted
-                          ? "/CSharpAchiever.GUI;component/480px-symbol_check_svg.png"
-                          : "/CSharpAchiever.GUI;component/Cross_red_3d.png";
+                          ? "/Strokes.GUI;component/480px-symbol_check_svg.png"
+                          : "/Strokes.GUI;component/Cross_red_3d.png";
             
             imageSource.UriSource = new Uri(url, UriKind.Relative);
             imageSource.EndInit();
