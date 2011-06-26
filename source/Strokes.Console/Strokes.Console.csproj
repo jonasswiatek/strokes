@@ -58,10 +58,6 @@
       <Project>{FD3A809B-C627-4698-A04D-59DA61C556D7}</Project>
       <Name>Strokes.AchievementDispatcher</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Strokes.Achievements.Basic\Strokes.Achievements.Basic.csproj">
-      <Project>{AE5FA15D-3D0A-49DC-9571-3493C32C3831}</Project>
-      <Name>Strokes.Achievements.Basic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
       <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>
       <Name>Strokes.Core</Name>

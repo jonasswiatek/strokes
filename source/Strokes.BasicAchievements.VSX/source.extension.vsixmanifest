@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
-  <Identifier Id="6653b20f-393f-4a6c-a5d5-aa9274deaf9a">
-    <Name>Strokes - Challenges for C#</Name>
+  <Identifier Id="19eca707-4551-44ce-b758-b2b47d880247">
+    <Name>Strokes - Basic C# Achievements</Name>
     <Author>Jonas Swiatek</Author>
     <Version>1.0</Version>
-    <Description xml:space="preserve">A set of programming challanges for C#</Description>
+    <Description xml:space="preserve">Provides a basic set of achievements for C#</Description>
     <Locale>1033</Locale>
     <InstalledByMsi>false</InstalledByMsi>
     <SupportedProducts>
       <VisualStudio Version="10.0">
+        <Edition>Ultimate</Edition>
+        <Edition>Premium</Edition>
         <Edition>Pro</Edition>
+        <Edition>Express_All</Edition>
       </VisualStudio>
     </SupportedProducts>
     <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />

@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Collections;
 
-namespace Strokes.Achievements.Basic.CocoR.Grammars {
+namespace Strokes.BasicAchievements.CocoR.Grammars {
 
 public class Token {
 	public int kind;    // token kind

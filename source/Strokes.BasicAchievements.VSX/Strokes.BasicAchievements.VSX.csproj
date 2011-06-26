@@ -4,12 +4,12 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4AE216B7-8FCC-446A-8A58-8705C1DB844E}</ProjectGuid>
+    <ProjectGuid>{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}</ProjectGuid>
     <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Strokes.VSX</RootNamespace>
-    <AssemblyName>Strokes.VSX</AssemblyName>
+    <RootNamespace>Strokes.BasicAchievements</RootNamespace>
+    <AssemblyName>Strokes.BasicAchievements.VSX</AssemblyName>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -44,17 +44,13 @@
       <Private>false</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="EnvDTE">
@@ -113,6 +109,25 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Achievements\AnonymousObjectAchievement.cs" />
+    <Compile Include="Achievements\DoWhileLoopAchievement.cs" />
+    <Compile Include="Achievements\ForAchievement.cs" />
+    <Compile Include="Achievements\ForEachAchievement.cs" />
+    <Compile Include="Achievements\LambdaExpressonAchievement.cs" />
+    <Compile Include="Achievements\ParamsParameterAchievement.cs" />
+    <Compile Include="Achievements\PrivateSetterAchievement.cs" />
+    <Compile Include="Achievements\QueryExpressonAchievement.cs" />
+    <Compile Include="Achievements\TryCatchFinallyStatementAchievement.cs" />
+    <Compile Include="Achievements\TryCatchStatementAchievement.cs" />
+    <Compile Include="Achievements\TryFinallyStatementAchievement.cs" />
+    <Compile Include="Achievements\WhileLoopAchievement.cs" />
+    <Compile Include="CocoR\CocoRDetector.cs" />
+    <Compile Include="CocoR\Grammars\Parser.cs">
+      <DependentUpon>CSharpAchievements.atg</DependentUpon>
+    </Compile>
+    <Compile Include="CocoR\Grammars\Scanner.cs">
+      <DependentUpon>CSharpAchievements.atg</DependentUpon>
+    </Compile>
     <Compile Include="Guids.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -120,9 +135,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Strokes.VSX.VSIXPackage.cs" />
+    <Compile Include="Strokes.BasicAchievements.VSXPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PkgCmdID.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
@@ -136,6 +150,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="CocoR\Grammars\CSharpAchievements.atg">
+      <Generator>CocoFileGenerator</Generator>
+      <LastGenOutput>CSharpAchievements.log</LastGenOutput>
+    </None>
+    <None Include="CocoR\Grammars\CSharpAchievements.log">
+      <DependentUpon>CSharpAchievements.atg</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </None>
+    <None Include="CocoR\Grammars\Parser.frame" />
+    <None Include="CocoR\Grammars\Scanner.frame" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
@@ -144,28 +168,12 @@
     <None Include="Key.snk" />
   </ItemGroup>
   <ItemGroup>
-    <VSCTCompile Include="Strokes.VSX.vsct">
-      <ResourceName>Menus.ctmenu</ResourceName>
-    </VSCTCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Images_32bit.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Strokes.AchievementDispatcher\Strokes.AchievementDispatcher.csproj">
-      <Project>{FD3A809B-C627-4698-A04D-59DA61C556D7}</Project>
-      <Name>Strokes.AchievementDispatcher</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
       <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>
       <Name>Strokes.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Strokes.GUI\Strokes.GUI.csproj">
-      <Project>{CCA3165B-3D87-45AB-AD18-168CF04A1417}</Project>
-      <Name>Strokes.GUI</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -10,65 +10,62 @@
     <RecentFiles>
       <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:Achievement.cs" caret="13" fromTop="1" />
       <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:AchievementDescriptionAttribute.cs" caret="1008" fromTop="31" />
-      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:AchievementTracker.cs" caret="5645" fromTop="136" />
       <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:BuildInformation.cs" caret="15" fromTop="0" />
       <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:DetectionSession.cs" caret="69" fromTop="3" />
       <File id="6ED1F2F7-1861-4807-B825-C16C341E8785/f:TestFile.cs" caret="1473" fromTop="74" />
       <File id="6ED1F2F7-1861-4807-B825-C16C341E8785/f:Program.cs" caret="158" fromTop="6" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:CocoR/f:CocoRDetector.cs" caret="176" fromTop="6" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:CocoR/d:Grammars/f:Parser.cs" caret="0" fromTop="0" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:CocoR/d:Grammars/f:Scanner.cs" caret="0" fromTop="0" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:AnonymousObjectAchievement.cs" caret="710" fromTop="14" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:DoWhileLoopAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:ForAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:ForEachAchievement.cs" caret="94" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:LambdaExpressonAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:ParamsParameterAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:PrivateSetterAchievement.cs" caret="94" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:QueryExpressonAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:TryCatchStatementAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:TryCatchFinallyStatementAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:TryFinallyStatementAchievement.cs" caret="96" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:WhileLoopAchievement.cs" caret="99" fromTop="4" />
-      <File id="FD3A809B-C627-4698-A04D-59DA61C556D7/f:DetectionDispatcher.cs" caret="2299" fromTop="56" />
       <File id="CCA3165B-3D87-45AB-AD18-168CF04A1417/f:AchievementGui.xaml.cs" caret="1004" fromTop="26" />
       <File id="CCA3165B-3D87-45AB-AD18-168CF04A1417/d:AchievementIndex/f:AchievementIndex.xaml.cs" caret="427" fromTop="18" />
-      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/d:Integration/f:IAchevementLibraryService.cs" caret="375" fromTop="14" />
-      <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Guids.cs" caret="229" fromTop="8" />
       <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:PkgCmdID.cs" caret="0" fromTop="0" />
-      <File id="17030F4B-77CF-4780-8C00-DFFE6412F49E/f:Strokes.Challanges.VSXPackage.cs" caret="3648" fromTop="38" />
-      <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Strokes.VSX.VSIXPackage.cs" caret="3400" fromTop="36" />
+      <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Guids.cs" caret="229" fromTop="8" />
+      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/d:Integration/f:IAchevementLibraryService.cs" caret="315" fromTop="12" />
+      <File id="17030F4B-77CF-4780-8C00-DFFE6412F49E/f:Strokes.Challanges.VSXPackage.cs" caret="2122" fromTop="21" />
+      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:AchievementTracker.cs" caret="742" fromTop="21" />
+      <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Strokes.VSX.VSIXPackage.cs" caret="3768" fromTop="62" />
+      <File id="FD3A809B-C627-4698-A04D-59DA61C556D7/f:DetectionDispatcher.cs" caret="1419" fromTop="28" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:CocoR/d:Grammars/f:CSharpAchievements.log" caret="0" fromTop="0" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:CocoR/d:Grammars/f:Scanner.cs" caret="0" fromTop="0" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:CocoR/d:Grammars/f:CSharpAchievements.atg" caret="548" fromTop="26" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:Achievements/f:AnonymousObjectAchievement.cs" caret="901" fromTop="17" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:CocoR/d:Grammars/f:Parser.cs" caret="34300" fromTop="26" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:CocoR/f:CocoRDetector.cs" caret="454" fromTop="13" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:Achievements/f:DoWhileLoopAchievement.cs" caret="882" fromTop="12" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:Achievements/f:WhileLoopAchievement.cs" caret="888" fromTop="21" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:Achievements/f:ParamsParameterAchievement.cs" caret="960" fromTop="22" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:Achievements/f:PrivateSetterAchievement.cs" caret="943" fromTop="22" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:Achievements/f:TryCatchFinallyStatementAchievement.cs" caret="952" fromTop="21" />
     </RecentFiles>
     <RecentEdits>
-      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:AchievementTracker.cs" caret="5645" fromTop="136" />
-      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:BuildInformation.cs" caret="15" fromTop="0" />
-      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:DetectionSession.cs" caret="69" fromTop="3" />
-      <File id="6ED1F2F7-1861-4807-B825-C16C341E8785/f:Program.cs" caret="158" fromTop="6" />
-      <File id="6ED1F2F7-1861-4807-B825-C16C341E8785/f:TestFile.cs" caret="1473" fromTop="74" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:AnonymousObjectAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:CocoR/f:CocoRDetector.cs" caret="102" fromTop="3" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:AnonymousObjectAchievement.cs" caret="710" fromTop="14" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:DoWhileLoopAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:ForAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:ForEachAchievement.cs" caret="94" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:LambdaExpressonAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:ParamsParameterAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:PrivateSetterAchievement.cs" caret="94" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:QueryExpressonAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:TryCatchStatementAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:TryCatchFinallyStatementAchievement.cs" caret="99" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:TryFinallyStatementAchievement.cs" caret="96" fromTop="4" />
-      <File id="AE5FA15D-3D0A-49DC-9571-3493C32C3831/d:Achievements/f:WhileLoopAchievement.cs" caret="99" fromTop="4" />
-      <File id="FD3A809B-C627-4698-A04D-59DA61C556D7/f:DetectionDispatcher.cs" caret="2299" fromTop="56" />
-      <File id="CCA3165B-3D87-45AB-AD18-168CF04A1417/f:AchievementGui.xaml.cs" caret="1004" fromTop="26" />
-      <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Strokes.VSX.VSIXPackage.cs" caret="2706" fromTop="28" />
-      <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Strokes.VSX.VSIXPackage.cs" caret="71" fromTop="3" />
-      <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Strokes.VSX.VSIXPackage.cs" caret="1321" fromTop="28" />
-      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/d:Integration/f:IAchevementLibraryService.cs" caret="317" fromTop="12" />
-      <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Strokes.VSX.VSIXPackage.cs" caret="6957" fromTop="26" />
       <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Strokes.VSX.VSIXPackage.cs" caret="994" fromTop="24" />
-      <File id="17030F4B-77CF-4780-8C00-DFFE6412F49E/f:Strokes.Challanges.VSXPackage.cs" caret="3648" fromTop="38" />
       <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Strokes.VSX.VSIXPackage.cs" caret="3317" fromTop="32" />
+      <File id="17030F4B-77CF-4780-8C00-DFFE6412F49E/f:Strokes.Challanges.VSXPackage.cs" caret="433" fromTop="5" />
+      <File id="17030F4B-77CF-4780-8C00-DFFE6412F49E/f:Strokes.Challanges.VSXPackage.cs" caret="492" fromTop="12" />
+      <File id="17030F4B-77CF-4780-8C00-DFFE6412F49E/f:Strokes.Challanges.VSXPackage.cs" caret="2296" fromTop="37" />
+      <File id="17030F4B-77CF-4780-8C00-DFFE6412F49E/f:Strokes.Challanges.VSXPackage.cs" caret="2203" fromTop="43" />
+      <File id="17030F4B-77CF-4780-8C00-DFFE6412F49E/f:Strokes.Challanges.VSXPackage.cs" caret="1993" fromTop="34" />
+      <File id="17030F4B-77CF-4780-8C00-DFFE6412F49E/f:Strokes.Challanges.VSXPackage.cs" caret="726" fromTop="12" />
+      <File id="17030F4B-77CF-4780-8C00-DFFE6412F49E/f:Strokes.Challanges.VSXPackage.cs" caret="1694" fromTop="29" />
+      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/d:Integration/f:IAchevementLibraryService.cs" caret="315" fromTop="12" />
+      <File id="17030F4B-77CF-4780-8C00-DFFE6412F49E/f:Strokes.Challanges.VSXPackage.cs" caret="2122" fromTop="21" />
+      <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Strokes.VSX.VSIXPackage.cs" caret="7112" fromTop="40" />
+      <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Strokes.VSX.VSIXPackage.cs" caret="3927" fromTop="45" />
+      <File id="4AE216B7-8FCC-446A-8A58-8705C1DB844E/f:Strokes.VSX.VSIXPackage.cs" caret="3768" fromTop="26" />
+      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:AchievementTracker.cs" caret="326" fromTop="12" />
+      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:AchievementTracker.cs" caret="784" fromTop="20" />
+      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:AchievementTracker.cs" caret="321" fromTop="3" />
+      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:AchievementTracker.cs" caret="1633" fromTop="35" />
+      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:AchievementTracker.cs" caret="2109" fromTop="47" />
+      <File id="89159588-EFA4-431C-9128-3A564B53D1A4/f:AchievementTracker.cs" caret="1855" fromTop="29" />
+      <File id="FD3A809B-C627-4698-A04D-59DA61C556D7/f:DetectionDispatcher.cs" caret="1177" fromTop="28" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:CocoR/f:CocoRDetector.cs" caret="753" fromTop="3" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:CocoR/d:Grammars/f:CSharpAchievements.atg" caret="574" fromTop="26" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:CocoR/d:Grammars/f:Scanner.cs" caret="0" fromTop="0" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:Achievements/f:AnonymousObjectAchievement.cs" caret="901" fromTop="5" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:Achievements/f:AnonymousObjectAchievement.cs" caret="901" fromTop="2" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:CocoR/f:CocoRDetector.cs" caret="228" fromTop="8" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:CocoR/f:CocoRDetector.cs" caret="96" fromTop="3" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:Achievements/f:DoWhileLoopAchievement.cs" caret="882" fromTop="12" />
+      <File id="5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:Achievements/f:WhileLoopAchievement.cs" caret="879" fromTop="21" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -87,12 +84,35 @@
       <Item value="ServiceProvider`0" priority="0" />
       <Item value="Guid`0" priority="0" />
       <Item value="void" priority="0" />
-      <Item value="return" priority="0" />
+      <Item value="return" priority="1" />
       <Item value="achievementLib" priority="0" />
       <Item value="serviceContainer" priority="0" />
       <Item value="typeof" priority="0" />
-      <Item value="IAchevementLibraryService`0" priority="0" />
+      <Item value="IAchevementLibraryService`0" priority="1" />
       <Item value="this" priority="0" />
+      <Item value="if" priority="1" />
+      <Item value="als" priority="0" />
+      <Item value="null" priority="1" />
+      <Item value="private" priority="1" />
+      <Item value="TaiwanCalendar`0" priority="1" />
+      <Item value="GetService`1" priority="1" />
+      <Item value="T`0" priority="1" />
+      <Item value="where" priority="0" />
+      <Item value="public" priority="0" />
+      <Item value="static" priority="1" />
+      <Item value="_achievements" priority="0" />
+      <Item value="new" priority="1" />
+      <Item value="List&lt;Type&gt;" priority="0" />
+      <Item value="false" priority="0" />
+      <Item value="true" priority="0" />
+      <Item value="Assembly`0" priority="0" />
+      <Item value="LoadAchievementsFromAssembly`0" priority="0" />
+      <Item value="assembly" priority="1" />
+      <Item value="throw" priority="0" />
+      <Item value="ArgumentNullException" priority="0" />
+      <Item value="using" priority="0" />
+      <Item value="System" priority="0" />
+      <Item value="Linq" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@Microsoft.VisualStudio.Shell.ServiceProvider">
       <Item value="GlobalProvider" priority="0" />

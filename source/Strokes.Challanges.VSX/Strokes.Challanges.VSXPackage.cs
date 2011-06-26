@@ -15,8 +15,7 @@ namespace Microsoft.Strokes_Challanges_VSX
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
-    [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideAutoLoad("{f1536ef8-92ec-443c-9ed7-fdadf150da82}")] /* Autoload when the a solution is loaded addin starts  */
+    [ProvideAutoLoad("{f1536ef8-92ec-443c-9ed7-fdadf150da82}")] /* Autoload when the a solution is loaded */
     [Guid(GuidList.guidStrokes_Challanges_VSXPkgString)]
     public sealed class Strokes_Challanges_VSXPackage : Package
     {

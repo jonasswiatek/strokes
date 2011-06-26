@@ -89,6 +89,7 @@ namespace Strokes.VSX
         /// <param name="assembly"></param>
         public void RegisterAchievementAssembly(Assembly assembly)
         {
+            AchievementTracker.LoadAchievementsFromAssembly(assembly);
         }
 
         /// <summary>
