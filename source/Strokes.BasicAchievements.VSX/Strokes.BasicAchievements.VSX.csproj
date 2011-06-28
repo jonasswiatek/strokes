@@ -113,6 +113,7 @@
     <Compile Include="Achievements\DoWhileLoopAchievement.cs" />
     <Compile Include="Achievements\ForAchievement.cs" />
     <Compile Include="Achievements\ForEachAchievement.cs" />
+    <Compile Include="Achievements\InlineCommentAchievement.cs" />
     <Compile Include="Achievements\LambdaExpressonAchievement.cs" />
     <Compile Include="Achievements\ParamsParameterAchievement.cs" />
     <Compile Include="Achievements\PrivateSetterAchievement.cs" />

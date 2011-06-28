@@ -23,9 +23,9 @@ namespace Strokes.VSX
     [ProvideAutoLoad("{f1536ef8-92ec-443c-9ed7-fdadf150da82}")] /* Auto Load this addin when a solution loads. Maybe this should be C# Project's guid */
     [Guid(GuidList.guidCSharpAchiever_Achiever_VSIXPkgString)]
     [ProvideService(typeof(IAchevementLibraryService))]
-    public sealed class CSharpAchieverAchieverVsxPackage : Package, IVsUpdateSolutionEvents2, IAchevementLibraryService
+    public sealed class StrokesVsxPackage : Package, IVsUpdateSolutionEvents2, IAchevementLibraryService
     {
-        public CSharpAchieverAchieverVsxPackage()
+        public StrokesVsxPackage()
         {
             Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", this.ToString()));
         }

@@ -53,7 +53,12 @@ namespace Strokes.Core
             if(assembly == null)
                 throw new ArgumentNullException("assembly");
 
-            Achievements.AddRange(assembly.GetTypes().Where(a => a.BaseType == typeof(Achievement)));
+            var achievementsInAssembly = assembly.GetTypes().Where(a => a.BaseType == typeof (Achievement));
+            foreach(var achievement in achievementsInAssembly)
+            {
+                if(!Achievements.Contains(achievement))
+                    Achievements.Add(achievement);
+            }
         }
 
         /// <summary>

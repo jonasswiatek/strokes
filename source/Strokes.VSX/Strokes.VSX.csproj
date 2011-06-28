@@ -120,7 +120,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Strokes.VSX.VSIXPackage.cs" />
+    <Compile Include="StrokesVsxPackage.VSX.VSIXPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PkgCmdID.cs" />
   </ItemGroup>
