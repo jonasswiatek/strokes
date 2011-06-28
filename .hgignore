@@ -6,6 +6,11 @@ syntax: glob
 *.old
 *.atgmap
 thumbs.db
+*.user
+*.suo
+*.vsmdi
+*.testsettings
+
 
 #-- Directories
 App_Data/*
@@ -16,10 +21,6 @@ tmp/
 TestResults/
 
 #-- Microsoft Visual Studio specific
-*.user
-*.suo
-*.vsmdi
-*.testsettings
 
 #-- MonoDevelop specific
 *.pidb
