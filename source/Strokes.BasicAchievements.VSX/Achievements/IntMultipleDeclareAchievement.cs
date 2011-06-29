@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Strokes.BasicAchievements.CocoR;
+using Strokes.BasicAchievements.CocoR.Grammars;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
@@ -13,17 +15,10 @@ namespace Strokes.BasicAchievements.Achievements
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
-            if (!File.Exists(detectionSession.BuildInformation.ActiveFile)) //Return out if the file doesn't exist (I don't think this will ever be the case - but better catch all 'em exceptions!
-                return false;
+            var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>(); //Gets a cached BasicCocoRDetector instance.
+            var parser = cocoRDetector.GetParser(detectionSession.BuildInformation.ActiveFile); //Gets a parser for the document.
 
-            //Get the content of the file.
-            var fileContent = File.ReadAllText(detectionSession.BuildInformation.ActiveFile);
-
-            //Define a regular expression we can match against.
-            var Regex = new Regex(@"int ( *?[\w-]+ *?)(, *?[\w-]+ *?)+;", RegexOptions.Multiline); 
-
-            //If there is a match, this will return true and unlock the achievement.)
-            return Regex.IsMatch(fileContent);
+            return parser.DeclaredFields.Any(a => a.FieldType == "int" && a.DeclarationCount > 1); //Any int declarations that declares more than one int.
         }
     }
 }

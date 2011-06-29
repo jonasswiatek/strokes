@@ -1173,6 +1173,127 @@ private void RegisterBasicAchievement(BasicAchievement achievement)
 	}
 }
 
+private Initializable lastInitializable = null;
+
+public List<DeclaredField> DeclaredFields = new List<DeclaredField>();
+
+private void RegisterDeclaredField(Token token, Modifiers modifiers)
+{
+	var field = new DeclaredField() {
+		FieldType = token.val,
+		Token = token,
+		Modifiers = GetModifiers(modifiers)
+	};
+
+	DeclaredFields.Add(field);
+	lastInitializable = field;
+}
+
+public List<DeclaredProperty> DeclaredProperties = new List<DeclaredProperty>();
+
+private void RegisterDeclaredProperty(Token token, Modifiers modifiers)
+{
+	DeclaredProperties.Add(new DeclaredProperty() {
+		PropertyType = token.val,
+		Token = token,
+		Modifiers = GetModifiers(modifiers)
+	});
+}
+
+private void LastPropertyHadPrivateSetter()
+{
+	DeclaredProperties[DeclaredProperties.Count - 1].HasPrivateSetter = true;
+}
+
+private void BumpLastFieldDeclarationsCount()
+{
+	DeclaredFields[DeclaredFields.Count - 1].DeclarationCount++;
+}
+
+private void VariableInitialized()
+{
+	lastInitializable.IsInitialized = true;
+}
+
+public class Initializable
+{
+	public bool IsInitialized;
+}
+
+public class DeclaredField : Initializable
+{
+	public string FieldType;
+	public Token Token;
+	public int DeclarationCount = 1;
+	public IEnumerable<Modifier> Modifiers;
+}
+
+public class DeclaredProperty
+{
+	public string PropertyType;
+	public Token Token;
+	public bool HasPrivateSetter;
+	public IEnumerable<Modifier> Modifiers;
+}
+
+private IEnumerable<Modifier> GetModifiers(Modifiers m)
+{
+	if(m.Has(noneMod))
+	{
+		//yield return Modifier.None; this will always yield, so it's rather implicit
+	}
+	if(m.Has(newMod))
+	{
+		yield return Modifier.New;
+	}
+	if(m.Has(publicMod))
+	{
+		yield return Modifier.Public;
+	}
+	if(m.Has(protectedMod))
+	{
+		yield return Modifier.Protected;
+	}
+	if(m.Has(internalMod))
+	{
+		yield return Modifier.Internal;
+	}
+	if(m.Has(privateMod))
+	{
+		yield return Modifier.Private;
+	}
+	if(m.Has(unsafeMod))
+	{
+		yield return Modifier.Unsafe;
+	}
+	if(m.Has(staticMod))
+	{
+		yield return Modifier.Static;
+	}
+	if(m.Has(volatileMod))
+	{
+		yield return Modifier.Volatile;
+	}
+	if(m.Has(readonlyMod))
+	{
+		yield return Modifier.Readonly;
+	}
+}
+
+public enum Modifier
+{
+	None,
+	Internal,
+	Private,
+	Protected,
+	Public,
+	Static,
+	New,
+	Unsafe,
+	Readonly,
+	Volatile
+}
+
 public enum BasicAchievement
 {
 	PrivateSetter,
@@ -1983,7 +2104,8 @@ public struct CodeAnchor
 			} else if (IsFieldDecl()) {
 				m.Check(fieldsMod);
 				if (type == TypeKind.@void) { Error("field type must not be void"); }
-				
+				RegisterDeclaredField(t, m);
+				                                       
 				VariableDeclarators(m);
 				Expect(116);
 			} else if (la.kind == 1) {
@@ -1991,7 +2113,8 @@ public struct CodeAnchor
 				if (la.kind == 97) {
 					m.Check(propEvntMethsMod);
 					if (type == TypeKind.@void) { Error("property type must not be void"); }
-					
+					RegisterDeclaredProperty(t, m);
+					                                       
 					Get();
 					AccessorDeclarations(m);
 					Expect(113);
@@ -2129,6 +2252,7 @@ public struct CodeAnchor
 		}
 		while (la.kind == 88) {
 			Get();
+			if(IsFieldDecl()) BumpLastFieldDeclarationsCount(); 
 			Expect(1);
 			if (la.kind == 86) {
 				Get();
@@ -2361,7 +2485,7 @@ public struct CodeAnchor
 			} else if (la.val.Equals("set")) {
 				Expect(1);
 				if (setFound) Error("set already declared");  setFound = true;
-				if(am.Has(privateMod)) RegisterBasicAchievement(BasicAchievement.PrivateSetter); 
+				if(am.Has(privateMod)) { RegisterBasicAchievement(BasicAchievement.PrivateSetter); LastPropertyHadPrivateSetter(); } 
 			} else if (la.kind == 1) {
 				Get();
 				Error("set or get expected"); 
@@ -2443,6 +2567,7 @@ public struct CodeAnchor
 	void VariableInitializer() {
 		if (StartOf(19)) {
 			Expression();
+			VariableInitialized(); 
 		} else if (la.kind == 97) {
 			ArrayInitializer();
 		} else SynErr(182);

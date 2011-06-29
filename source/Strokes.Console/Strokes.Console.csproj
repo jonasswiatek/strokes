@@ -11,7 +11,8 @@
     <RootNamespace>Strokes.Console</RootNamespace>
     <AssemblyName>Strokes.Console</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -58,6 +59,10 @@
       <Project>{FD3A809B-C627-4698-A04D-59DA61C556D7}</Project>
       <Name>Strokes.AchievementDispatcher</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Strokes.BasicAchievements.VSX\Strokes.BasicAchievements.VSX.csproj">
+      <Project>{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}</Project>
+      <Name>Strokes.BasicAchievements.VSX</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
       <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>
       <Name>Strokes.Core</Name>
@@ -66,6 +71,9 @@
       <Project>{CCA3165B-3D87-45AB-AD18-168CF04A1417}</Project>
       <Name>Strokes.GUI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
