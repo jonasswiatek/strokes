@@ -1179,6 +1179,7 @@ public List<DeclaredField> DeclaredFields = new List<DeclaredField>();
 
 private void RegisterDeclaredField(Token token, Modifiers modifiers)
 {
+	System.Diagnostics.Debug.WriteLine("Field: " + token.val);
 	var field = new DeclaredField() {
 		FieldType = token.val,
 		Token = token,
@@ -1193,6 +1194,7 @@ public List<DeclaredProperty> DeclaredProperties = new List<DeclaredProperty>();
 
 private void RegisterDeclaredProperty(Token token, Modifiers modifiers)
 {
+	System.Diagnostics.Debug.WriteLine("Property: " + token.val);
 	DeclaredProperties.Add(new DeclaredProperty() {
 		PropertyType = token.val,
 		Token = token,
@@ -1202,17 +1204,25 @@ private void RegisterDeclaredProperty(Token token, Modifiers modifiers)
 
 private void LastPropertyHadPrivateSetter()
 {
+	System.Diagnostics.Debug.WriteLine("LastPropertyHadPrivateSetter");
 	DeclaredProperties[DeclaredProperties.Count - 1].HasPrivateSetter = true;
 }
 
 private void BumpLastFieldDeclarationsCount()
 {
+	System.Diagnostics.Debug.WriteLine("BumpLastFieldDeclarationsCount");
 	DeclaredFields[DeclaredFields.Count - 1].DeclarationCount++;
 }
 
-private void VariableInitialized()
+private void VariableInitialized(Token token)
 {
-	lastInitializable.IsInitialized = true;
+	System.Diagnostics.Debug.WriteLine("VariableInitialized: " + token.line);
+	
+	//TODO: This shouldn't be null at all. If it does, then I've been sloppy. I'm sloppy right now!
+	if(lastInitializable != null)
+		lastInitializable.IsInitialized = true;
+
+	lastInitializable = null;
 }
 
 public class Initializable
@@ -1223,6 +1233,7 @@ public class Initializable
 public class DeclaredField : Initializable
 {
 	public string FieldType;
+	public string FieldKind;
 	public Token Token;
 	public int DeclarationCount = 1;
 	public IEnumerable<Modifier> Modifiers;
@@ -1231,6 +1242,7 @@ public class DeclaredField : Initializable
 public class DeclaredProperty
 {
 	public string PropertyType;
+	public string PropertyKind;
 	public Token Token;
 	public bool HasPrivateSetter;
 	public IEnumerable<Modifier> Modifiers;
@@ -2567,7 +2579,7 @@ public struct CodeAnchor
 	void VariableInitializer() {
 		if (StartOf(19)) {
 			Expression();
-			VariableInitialized(); 
+			VariableInitialized(t); 
 		} else if (la.kind == 97) {
 			ArrayInitializer();
 		} else SynErr(182);

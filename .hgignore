@@ -4,6 +4,7 @@ syntax: glob
 *.bak
 *.log
 *.old
+*.orig
 *.atgmap
 thumbs.db
 *.user
