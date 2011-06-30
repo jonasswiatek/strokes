@@ -110,6 +110,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Achievements\AnonymousObjectAchievement.cs" />
+    <Compile Include="Achievements\ConstKeywordAchievement.cs" />
+    <Compile Include="Achievements\EnumInitializerAchievement.cs" />
     <Compile Include="Achievements\DoWhileLoopAchievement.cs" />
     <Compile Include="Achievements\ForAchievement.cs" />
     <Compile Include="Achievements\ForEachAchievement.cs" />

@@ -1310,6 +1310,9 @@ public enum BasicAchievement
 {
 	PrivateSetter,
 	
+    EnumInitializer,
+    ConstKeyword,
+
 	QueryExpression,
 	JoinExpression,
 	LambdaExpression,
@@ -1324,7 +1327,8 @@ public enum BasicAchievement
 	
 	TryCatchStatement,
 	TryCatchFinallyStatement,
-	TryFinallyStatment
+    TryFinallyStatment,
+    
 }
 
 public struct CodeAnchor
@@ -1930,6 +1934,7 @@ public struct CodeAnchor
 			while (NotFinalComma()) {
 				Expect(88);
 				EnumMemberDeclaration();
+                RegisterBasicAchievement(BasicAchievement.EnumInitializer);
 			}
 			if (la.kind == 88) {
 				Get();
@@ -3058,6 +3063,7 @@ public struct CodeAnchor
 				Expect(86);
 				Expression();
 			}
+            RegisterBasicAchievement(BasicAchievement.ConstKeyword); 
 			Expect(116);
 		} else if (la.kind == _void || IsLocalVarDecl()) {
 			LocalVariableDeclaration();
