@@ -80,10 +80,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AchievementGui.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AchievementIndex\AchievementIndex.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,9 +92,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AchievementGui.xaml.cs">
-      <DependentUpon>AchievementGui.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AchievementIndex\AchievementIndex.xaml.cs">
       <DependentUpon>AchievementIndex.xaml</DependentUpon>
     </Compile>
