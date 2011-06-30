@@ -29,8 +29,6 @@ namespace Strokes.GUI
         {
             InitializeComponent();
 
-            Opacity = 0;
-
             //Align window
             Left = 50;
             Top = SystemParameters.PrimaryScreenHeight - Height - 100;
@@ -102,22 +100,21 @@ namespace Strokes.GUI
 
             #endregion
 
-            achievement_stackPanel.Children.Clear();
+           
             var ach = achievementQueue.Dequeue();
 
             var descriptor = ach.GetAchievementDescriptor();
             AchievementTracker.RegisterAchievementCompleted(descriptor);
-
-            var achievement = new AchievementGui(descriptor);
-            achievement_stackPanel.Children.Add(achievement);
-
+            achievementtemplate.DataContext = descriptor;
+            
+            
             //Set progress info
             var allAchievements = AchievementTracker.GetAllAchievementDescriptors();
             var completed = allAchievements.Count(a => a.IsCompleted);
             var total = allAchievements.Count();
 
-            var text = completed + " of " + total + " completed";
-            achievementProgress_label.Content = text;
+            var text = completed + "/" + total + " completed";
+            achievementProgress_txb.Text = text;  //This could in the future also be databound/simplified, now it would only generate more code instead of less without a modelview-like tier
 
             timer = new Timer(TimeOut, this, interval, interval);
         }
@@ -154,7 +151,7 @@ namespace Strokes.GUI
             }
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void viewmore_button_Click(object sender, RoutedEventArgs e)
         {
             var achievementIndex = new AchievementIndex();
             achievementIndex.Show();

@@ -2,6 +2,10 @@
 using System.Windows.Media;
 using Strokes.Core;
 using Strokes.GUI;
+using System.Windows.Data;
+using System.Windows.Media.Imaging;
+using System;
+using System.Diagnostics;
 
 namespace CSharpAchiever.GUI.AchievementIndex
 {
@@ -19,23 +23,18 @@ namespace CSharpAchiever.GUI.AchievementIndex
 
         private void InitAchievementList()
         {
-            AchievementStack.Children.Clear();
             var achievements = AchievementTracker.GetAllAchievementDescriptors();
-            foreach (var achievement in achievements)
-            {
-                var achievementGui = new AchievementGui(achievement)
-                                         {
-                                             BorderThickness = new Thickness(0, 0, 0, 2),
-                                             BorderBrush = Brushes.White
-                                         };
-                AchievementStack.Children.Add(achievementGui);
-            }
+            AchievementStack.ItemsSource = achievements;
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+
+
+        private void resetBtn_Click(object sender, RoutedEventArgs e)
         {
             AchievementTracker.ResetAchievementProgress();
             InitAchievementList();
         }
     }
+
+   
 }
