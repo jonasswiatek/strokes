@@ -1163,90 +1163,11 @@ void checkForContextSwitch() {
 
 Stack tryResults = new Stack();
 
-public Dictionary<BasicAchievement, CodeAnchor> BasicAchievements = new Dictionary<BasicAchievement, CodeAnchor>();
+/*------------------------------------------------------------------------*
+ *----- CODE GRAPH -------------------------------------------------------*
+ *------------------------------------------------------------------------*/
 
-private void RegisterBasicAchievement(BasicAchievement achievement)
-{
-	if(!BasicAchievements.ContainsKey(achievement))
-	{
-		BasicAchievements.Add(achievement, new CodeAnchor { Line = la.line, Column = la.col });
-	}
-}
-
-private Initializable lastInitializable = null;
-
-public List<DeclaredField> DeclaredFields = new List<DeclaredField>();
-
-private void RegisterDeclaredField(Token token, Modifiers modifiers)
-{
-	System.Diagnostics.Debug.WriteLine("Field: " + token.val);
-	var field = new DeclaredField() {
-		FieldType = token.val,
-		Token = token,
-		Modifiers = GetModifiers(modifiers)
-	};
-
-	DeclaredFields.Add(field);
-	lastInitializable = field;
-}
-
-public List<DeclaredProperty> DeclaredProperties = new List<DeclaredProperty>();
-
-private void RegisterDeclaredProperty(Token token, Modifiers modifiers)
-{
-	System.Diagnostics.Debug.WriteLine("Property: " + token.val);
-	DeclaredProperties.Add(new DeclaredProperty() {
-		PropertyType = token.val,
-		Token = token,
-		Modifiers = GetModifiers(modifiers)
-	});
-}
-
-private void LastPropertyHadPrivateSetter()
-{
-	System.Diagnostics.Debug.WriteLine("LastPropertyHadPrivateSetter");
-	DeclaredProperties[DeclaredProperties.Count - 1].HasPrivateSetter = true;
-}
-
-private void BumpLastFieldDeclarationsCount()
-{
-	System.Diagnostics.Debug.WriteLine("BumpLastFieldDeclarationsCount");
-	DeclaredFields[DeclaredFields.Count - 1].DeclarationCount++;
-}
-
-private void VariableInitialized(Token token)
-{
-	System.Diagnostics.Debug.WriteLine("VariableInitialized: " + token.line);
-	
-	//TODO: This shouldn't be null at all. If it does, then I've been sloppy. I'm sloppy right now!
-	if(lastInitializable != null)
-		lastInitializable.IsInitialized = true;
-
-	lastInitializable = null;
-}
-
-public class Initializable
-{
-	public bool IsInitialized;
-}
-
-public class DeclaredField : Initializable
-{
-	public string FieldType;
-	public string FieldKind;
-	public Token Token;
-	public int DeclarationCount = 1;
-	public IEnumerable<Modifier> Modifiers;
-}
-
-public class DeclaredProperty
-{
-	public string PropertyType;
-	public string PropertyKind;
-	public Token Token;
-	public bool HasPrivateSetter;
-	public IEnumerable<Modifier> Modifiers;
-}
+public CodeGraph Graph = new CodeGraph();
 
 private IEnumerable<Modifier> GetModifiers(Modifiers m)
 {
@@ -1290,51 +1211,6 @@ private IEnumerable<Modifier> GetModifiers(Modifiers m)
 	{
 		yield return Modifier.Readonly;
 	}
-}
-
-public enum Modifier
-{
-	None,
-	Internal,
-	Private,
-	Protected,
-	Public,
-	Static,
-	New,
-	Unsafe,
-	Readonly,
-	Volatile
-}
-
-public enum BasicAchievement
-{
-	PrivateSetter,
-	
-    EnumInitializer,
-    ConstKeyword,
-
-	QueryExpression,
-	JoinExpression,
-	LambdaExpression,
-
-	AnonymousObject,
-	ParamsParameter,
-
-	ForLoop,
-	ForeachLoop,
-	WhileLoop,
-	DoWhileLoop,
-	
-	TryCatchStatement,
-	TryCatchFinallyStatement,
-    TryFinallyStatment,
-    
-}
-
-public struct CodeAnchor
-{
-	public int Line;
-	public int Column;
 }
 
 /*------------------------------------------------------------------------*
@@ -1707,6 +1583,7 @@ public struct CodeAnchor
 		} else if (la.kind == 25) {
 			m.Check(nonClassTypesMod); 
 			Get();
+			Graph.RegisterBasicAchievement(BasicAchievement.EnumInitializer); 
 			Expect(1);
 			if (la.kind == 87) {
 				Get();
@@ -1934,7 +1811,6 @@ public struct CodeAnchor
 			while (NotFinalComma()) {
 				Expect(88);
 				EnumMemberDeclaration();
-                RegisterBasicAchievement(BasicAchievement.EnumInitializer);
 			}
 			if (la.kind == 88) {
 				Get();
@@ -1988,7 +1864,7 @@ public struct CodeAnchor
 			Get();
 			Type(out type, false);
 			if (type != TypeKind.array) { Error("params argument must be an array"); } 
-			RegisterBasicAchievement(BasicAchievement.ParamsParameter); 
+			Graph.RegisterBasicAchievement(BasicAchievement.ParamsParameter); 
 			Expect(1);
 		} else SynErr(153);
 	}
@@ -2023,11 +1899,13 @@ public struct CodeAnchor
 			m.Check(constantsMod); 
 			Get();
 			Type(out type, false);
+			Graph.RegisterConstant(t, GetModifiers(m)); 
 			Expect(1);
 			Expect(86);
 			Expression();
 			while (la.kind == 88) {
 				Get();
+				Graph.BumpLastConstantDeclarationsCount(); 
 				Expect(1);
 				Expect(86);
 				Expression();
@@ -2121,7 +1999,7 @@ public struct CodeAnchor
 			} else if (IsFieldDecl()) {
 				m.Check(fieldsMod);
 				if (type == TypeKind.@void) { Error("field type must not be void"); }
-				RegisterDeclaredField(t, m);
+				Graph.RegisterDeclaredField(t, GetModifiers(m));
 				                                       
 				VariableDeclarators(m);
 				Expect(116);
@@ -2130,7 +2008,7 @@ public struct CodeAnchor
 				if (la.kind == 97) {
 					m.Check(propEvntMethsMod);
 					if (type == TypeKind.@void) { Error("property type must not be void"); }
-					RegisterDeclaredProperty(t, m);
+					Graph.RegisterDeclaredProperty(t, GetModifiers(m));
 					                                       
 					Get();
 					AccessorDeclarations(m);
@@ -2226,7 +2104,7 @@ public struct CodeAnchor
 		if (la.kind == 123) {
 			QueryExpression();
 		} else if (IsImplicitTypedLambdaExpression()) {
-			RegisterBasicAchievement(BasicAchievement.LambdaExpression); 
+			Graph.RegisterBasicAchievement(BasicAchievement.LambdaExpression); 
 			ImplicitLambdaExpression();
 		} else if (IsExplicitTypedLambdaExpression()) {
 			Expect(99);
@@ -2269,7 +2147,7 @@ public struct CodeAnchor
 		}
 		while (la.kind == 88) {
 			Get();
-			if(IsFieldDecl()) BumpLastFieldDeclarationsCount(); 
+			if(IsFieldDecl()) Graph.BumpLastFieldDeclarationsCount(); 
 			Expect(1);
 			if (la.kind == 86) {
 				Get();
@@ -2502,7 +2380,7 @@ public struct CodeAnchor
 			} else if (la.val.Equals("set")) {
 				Expect(1);
 				if (setFound) Error("set already declared");  setFound = true;
-				if(am.Has(privateMod)) { RegisterBasicAchievement(BasicAchievement.PrivateSetter); LastPropertyHadPrivateSetter(); } 
+				if(am.Has(privateMod)) { Graph.RegisterBasicAchievement(BasicAchievement.PrivateSetter); Graph.LastPropertyHadPrivateSetter(); } 
 			} else if (la.kind == 1) {
 				Get();
 				Error("set or get expected"); 
@@ -2584,7 +2462,7 @@ public struct CodeAnchor
 	void VariableInitializer() {
 		if (StartOf(19)) {
 			Expression();
-			VariableInitialized(t); 
+			Graph.VariableInitialized(t); 
 		} else if (la.kind == 97) {
 			ArrayInitializer();
 		} else SynErr(182);
@@ -3053,6 +2931,7 @@ public struct CodeAnchor
 			Statement();
 		} else if (la.kind == 17) {
 			Get();
+			System.Diagnostics.Debug.WriteLine("Constant - in scope"); 
 			Type(out dummy, false);
 			Expect(1);
 			Expect(86);
@@ -3063,7 +2942,6 @@ public struct CodeAnchor
 				Expect(86);
 				Expression();
 			}
-            RegisterBasicAchievement(BasicAchievement.ConstKeyword); 
 			Expect(116);
 		} else if (la.kind == _void || IsLocalVarDecl()) {
 			LocalVariableDeclaration();
@@ -3123,7 +3001,7 @@ public struct CodeAnchor
 			Expression();
 			Expect(115);
 			EmbeddedStatement();
-			RegisterBasicAchievement(BasicAchievement.WhileLoop); 
+			Graph.RegisterBasicAchievement(BasicAchievement.WhileLoop); 
 		} else if (la.kind == 22) {
 			Get();
 			EmbeddedStatement();
@@ -3132,7 +3010,7 @@ public struct CodeAnchor
 			Expression();
 			Expect(115);
 			Expect(116);
-			RegisterBasicAchievement(BasicAchievement.DoWhileLoop); 
+			Graph.RegisterBasicAchievement(BasicAchievement.DoWhileLoop); 
 		} else if (la.kind == 33) {
 			Get();
 			Expect(99);
@@ -3148,7 +3026,7 @@ public struct CodeAnchor
 				ForIterator();
 			}
 			Expect(115);
-			RegisterBasicAchievement(BasicAchievement.ForLoop); 
+			Graph.RegisterBasicAchievement(BasicAchievement.ForLoop); 
 			EmbeddedStatement();
 		} else if (la.kind == 34) {
 			Get();
@@ -3158,7 +3036,7 @@ public struct CodeAnchor
 			Expect(38);
 			Expression();
 			Expect(115);
-			RegisterBasicAchievement(BasicAchievement.ForeachLoop); 
+			Graph.RegisterBasicAchievement(BasicAchievement.ForeachLoop); 
 			EmbeddedStatement();
 		} else if (la.kind == 10) {
 			Get();
@@ -3196,12 +3074,12 @@ public struct CodeAnchor
 				CatchClauses();
 				if (la.kind == 30) {
 					Get();
-					RegisterBasicAchievement(BasicAchievement.TryCatchFinallyStatement); 
+					Graph.RegisterBasicAchievement(BasicAchievement.TryCatchFinallyStatement); 
 					Block();
 				}
 			} else if (la.kind == 30) {
 				Get();
-				RegisterBasicAchievement(BasicAchievement.TryFinallyStatment); 
+				Graph.RegisterBasicAchievement(BasicAchievement.TryFinallyStatment); 
 				Block();
 			} else SynErr(194);
 		} else if (la.kind == 43) {
@@ -3282,7 +3160,7 @@ public struct CodeAnchor
 
 	void CatchClauses() {
 		Expect(13);
-		RegisterBasicAchievement(BasicAchievement.TryCatchStatement); 
+		Graph.RegisterBasicAchievement(BasicAchievement.TryCatchStatement); 
 		if (la.kind == 97) {
 			Block();
 		} else if (la.kind == 99) {
@@ -3421,7 +3299,7 @@ public struct CodeAnchor
 
 	void QueryExpression() {
 		enterContext(); 
-		RegisterBasicAchievement(BasicAchievement.QueryExpression); 
+		Graph.RegisterBasicAchievement(BasicAchievement.QueryExpression); 
 		FromClause();
 		QueryBody();
 		leaveContext(); 
@@ -3926,7 +3804,7 @@ public struct CodeAnchor
 	}
 
 	void AnonymousObjectInitializer() {
-		RegisterBasicAchievement(BasicAchievement.AnonymousObject); 
+		Graph.RegisterBasicAchievement(BasicAchievement.AnonymousObject); 
 		Expect(97);
 		if (StartOf(19)) {
 			MemberDeclaratorList();

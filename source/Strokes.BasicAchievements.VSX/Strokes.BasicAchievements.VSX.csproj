@@ -127,6 +127,7 @@
     <Compile Include="Achievements\TryFinallyStatementAchievement.cs" />
     <Compile Include="Achievements\WhileLoopAchievement.cs" />
     <Compile Include="CocoR\CocoRDetector.cs" />
+    <Compile Include="CocoR\CodeGraph.cs" />
     <Compile Include="CocoR\Grammars\Parser.cs">
       <DependentUpon>CSharpAchievements.atg</DependentUpon>
     </Compile>

@@ -1025,90 +1025,11 @@ void checkForContextSwitch() {
 
 Stack tryResults = new Stack();
 
-public Dictionary<BasicAchievement, CodeAnchor> BasicAchievements = new Dictionary<BasicAchievement, CodeAnchor>();
+/*------------------------------------------------------------------------*
+ *----- CODE GRAPH -------------------------------------------------------*
+ *------------------------------------------------------------------------*/
 
-private void RegisterBasicAchievement(BasicAchievement achievement)
-{
-	if(!BasicAchievements.ContainsKey(achievement))
-	{
-		BasicAchievements.Add(achievement, new CodeAnchor { Line = la.line, Column = la.col });
-	}
-}
-
-private Initializable lastInitializable = null;
-
-public List<DeclaredField> DeclaredFields = new List<DeclaredField>();
-
-private void RegisterDeclaredField(Token token, Modifiers modifiers)
-{
-	System.Diagnostics.Debug.WriteLine("Field: " + token.val);
-	var field = new DeclaredField() {
-		FieldType = token.val,
-		Token = token,
-		Modifiers = GetModifiers(modifiers)
-	};
-
-	DeclaredFields.Add(field);
-	lastInitializable = field;
-}
-
-public List<DeclaredProperty> DeclaredProperties = new List<DeclaredProperty>();
-
-private void RegisterDeclaredProperty(Token token, Modifiers modifiers)
-{
-	System.Diagnostics.Debug.WriteLine("Property: " + token.val);
-	DeclaredProperties.Add(new DeclaredProperty() {
-		PropertyType = token.val,
-		Token = token,
-		Modifiers = GetModifiers(modifiers)
-	});
-}
-
-private void LastPropertyHadPrivateSetter()
-{
-	System.Diagnostics.Debug.WriteLine("LastPropertyHadPrivateSetter");
-	DeclaredProperties[DeclaredProperties.Count - 1].HasPrivateSetter = true;
-}
-
-private void BumpLastFieldDeclarationsCount()
-{
-	System.Diagnostics.Debug.WriteLine("BumpLastFieldDeclarationsCount");
-	DeclaredFields[DeclaredFields.Count - 1].DeclarationCount++;
-}
-
-private void VariableInitialized(Token token)
-{
-	System.Diagnostics.Debug.WriteLine("VariableInitialized: " + token.line);
-	
-	//TODO: This shouldn't be null at all. If it does, then I've been sloppy. I'm sloppy right now!
-	if(lastInitializable != null)
-		lastInitializable.IsInitialized = true;
-
-	lastInitializable = null;
-}
-
-public class Initializable
-{
-	public bool IsInitialized;
-}
-
-public class DeclaredField : Initializable
-{
-	public string FieldType;
-	public string FieldKind;
-	public Token Token;
-	public int DeclarationCount = 1;
-	public IEnumerable<Modifier> Modifiers;
-}
-
-public class DeclaredProperty
-{
-	public string PropertyType;
-	public string PropertyKind;
-	public Token Token;
-	public bool HasPrivateSetter;
-	public IEnumerable<Modifier> Modifiers;
-}
+public CodeGraph Graph = new CodeGraph();
 
 private IEnumerable<Modifier> GetModifiers(Modifiers m)
 {
@@ -1152,47 +1073,6 @@ private IEnumerable<Modifier> GetModifiers(Modifiers m)
 	{
 		yield return Modifier.Readonly;
 	}
-}
-
-public enum Modifier
-{
-	None,
-	Internal,
-	Private,
-	Protected,
-	Public,
-	Static,
-	New,
-	Unsafe,
-	Readonly,
-	Volatile
-}
-
-public enum BasicAchievement
-{
-	PrivateSetter,
-	
-	QueryExpression,
-	JoinExpression,
-	LambdaExpression,
-
-	AnonymousObject,
-	ParamsParameter,
-
-	ForLoop,
-	ForeachLoop,
-	WhileLoop,
-	DoWhileLoop,
-	
-	TryCatchStatement,
-	TryCatchFinallyStatement,
-	TryFinallyStatment
-}
-
-public struct CodeAnchor
-{
-	public int Line;
-	public int Column;
 }
 
 /*------------------------------------------------------------------------*
@@ -1526,7 +1406,7 @@ TypeDeclaration<Modifiers m>                                (. TypeKind dummy; .
       { InterfaceMemberDeclaration } "}" [ ";" ]
     )
   |                                                         (. m.Check(nonClassTypesMod); .)
-    "enum" ident [ ":" IntegralType ]
+    "enum" (. Graph.RegisterBasicAchievement(BasicAchievement.EnumInitializer); .) ident [ ":" IntegralType ]
     EnumBody [ ";" ]
   |                                                         (. m.Check(nonClassTypesMod); .)
     "delegate" Type<out dummy, true> ident
@@ -1581,9 +1461,9 @@ ClassMemberDeclaration<Modifiers m>
 StructMemberDeclaration<Modifiers m>                 (. TypeKind type; int op; .)
 =
   (                                                  (. m.Check(constantsMod); .)
-    "const" 
-    Type<out type, false> ident "=" Expression
-    { "," ident "=" Expression } ";"
+    "const"											
+    Type<out type, false> (. Graph.RegisterConstant(t, GetModifiers(m)); .) ident "=" Expression
+    { "," (. Graph.BumpLastConstantDeclarationsCount(); .) ident "=" Expression } ";"
 
 
   | /* Event */                                      (. m.Check(propEvntMethsMod); .)
@@ -1645,7 +1525,7 @@ StructMemberDeclaration<Modifiers m>                 (. TypeKind type; int op; .
     | /* Field */
       IF (IsFieldDecl())                             (. m.Check(fieldsMod);
                                                         if (type == TypeKind.@void) { Error("field type must not be void"); }
-														RegisterDeclaredField(t, m);
+														Graph.RegisterDeclaredField(t, GetModifiers(m));
                                                      .)
        VariableDeclarators<m> ";"
 
@@ -1654,7 +1534,7 @@ StructMemberDeclaration<Modifiers m>                 (. TypeKind type; int op; .
       MemberName
       ( /* Property */                               (. m.Check(propEvntMethsMod);
                                                         if (type == TypeKind.@void) { Error("property type must not be void"); }
-														RegisterDeclaredProperty(t, m);
+														Graph.RegisterDeclaredProperty(t, GetModifiers(m));
                                                      .)
         "{"
         AccessorDeclarations<m>        
@@ -1765,7 +1645,7 @@ LocalVariableDeclarator                                              (. TypeKind
 
 VariableInitializer													
 =																	
-  ( Expression														(. VariableInitialized(t); .)
+  ( Expression														(. Graph.VariableInitialized(t); .)
   | ArrayInitializer
   )
 .
@@ -1799,7 +1679,7 @@ FormalParameterList                                                  (. TypeKind
     ident
     [ "," FormalParameterList ]
   | "params"
-    Type<out type, false>                                            (. if (type != TypeKind.array) { Error("params argument must be an array"); } .) (. RegisterBasicAchievement(BasicAchievement.ParamsParameter); .)
+    Type<out type, false>                                            (. if (type != TypeKind.array) { Error("params argument must be an array"); } .) (. Graph.RegisterBasicAchievement(BasicAchievement.ParamsParameter); .)
     ident
   )
 .
@@ -1822,7 +1702,7 @@ AccessorDeclarations<Modifiers m>
   [                                                                  (. am = new Modifiers(this); .)
     { Attributes } ModifierList<am>                                  (. am.Check(accessorsPossib1Mod, accessorsPossib2Mod); .)
     ( IF (la.val.Equals("get")) ident                                (. if (getFound) Error("get already declared");  getFound = true; .)
-    | IF (la.val.Equals("set")) ident                                (. if (setFound) Error("set already declared");  setFound = true;.) (. if(am.Has(privateMod)) { RegisterBasicAchievement(BasicAchievement.PrivateSetter); LastPropertyHadPrivateSetter(); } .)
+    | IF (la.val.Equals("set")) ident                                (. if (setFound) Error("set already declared");  setFound = true;.) (. if(am.Has(privateMod)) { Graph.RegisterBasicAchievement(BasicAchievement.PrivateSetter); Graph.LastPropertyHadPrivateSetter(); } .)
     | ident                                                          (. Error("set or get expected"); .)
     ) (Block | ";")
   ]
@@ -2047,7 +1927,7 @@ TypeName
 Statement                                                                      (. TypeKind dummy; .)
 = ( IF (kindInContext(la.kind) == _ident && Peek(1).kind == _colon)
     ident ":" Statement
-  | "const" Type<out dummy, false> ident "=" Expression
+  | "const" (. System.Diagnostics.Debug.WriteLine("Constant - in scope"); .) Type<out dummy, false> ident "=" Expression
     { "," ident "=" Expression } ";"
   | IF (la.kind == _void || IsLocalVarDecl()) LocalVariableDeclaration ";"
   | EmbeddedStatement
@@ -2069,14 +1949,14 @@ EmbeddedStatement                                                              (
   
   | "switch" "(" Expression ")" "{" { SwitchSection } "}"
   
-  | "while" "(" Expression ")" EmbeddedStatement								(. RegisterBasicAchievement(BasicAchievement.WhileLoop); .)
+  | "while" "(" Expression ")" EmbeddedStatement								(. Graph.RegisterBasicAchievement(BasicAchievement.WhileLoop); .)
   
-  | "do" EmbeddedStatement "while" "(" Expression ")" ";"						(. RegisterBasicAchievement(BasicAchievement.DoWhileLoop); .)
+  | "do" EmbeddedStatement "while" "(" Expression ")" ";"						(. Graph.RegisterBasicAchievement(BasicAchievement.DoWhileLoop); .)
   
-  | "for" "(" [ ForInitializer ] ";" [ Expression ]  ";" [ ForIterator ] ")"	(. RegisterBasicAchievement(BasicAchievement.ForLoop); .)
+  | "for" "(" [ ForInitializer ] ";" [ Expression ]  ";" [ ForIterator ] ")"	(. Graph.RegisterBasicAchievement(BasicAchievement.ForLoop); .)
     EmbeddedStatement
   
-  | "foreach" "(" LocalVariableType ident "in" Expression ")"					(. RegisterBasicAchievement(BasicAchievement.ForeachLoop); .)
+  | "foreach" "(" LocalVariableType ident "in" Expression ")"					(. Graph.RegisterBasicAchievement(BasicAchievement.ForeachLoop); .)
     EmbeddedStatement
   
   | "break" ";"
@@ -2089,7 +1969,7 @@ EmbeddedStatement                                                              (
   
   | "throw" [ Expression ] ";"
   
-  | "try" Block ( CatchClauses [ "finally" (. RegisterBasicAchievement(BasicAchievement.TryCatchFinallyStatement); .) Block ] | "finally" (. RegisterBasicAchievement(BasicAchievement.TryFinallyStatment); .) Block )			
+  | "try" Block ( CatchClauses [ "finally" (. Graph.RegisterBasicAchievement(BasicAchievement.TryCatchFinallyStatement); .) Block ] | "finally" (. Graph.RegisterBasicAchievement(BasicAchievement.TryFinallyStatment); .) Block )			
   
   | "lock" "(" Expression ")" EmbeddedStatement
   
@@ -2162,7 +2042,7 @@ ForIterator
 
 CatchClauses
 =
-  "catch"	(. RegisterBasicAchievement(BasicAchievement.TryCatchStatement); .)
+  "catch"	(. Graph.RegisterBasicAchievement(BasicAchievement.TryCatchStatement); .)
   ( Block
   | "(" ClassType [ ident ] ")" Block [ CatchClauses ]
   )
@@ -2182,7 +2062,7 @@ Expression
 =
                                                                                (. checkForContextSwitch(); .)
   ( QueryExpression 
-  | IF (IsImplicitTypedLambdaExpression())										(. RegisterBasicAchievement(BasicAchievement.LambdaExpression); .)
+  | IF (IsImplicitTypedLambdaExpression())										(. Graph.RegisterBasicAchievement(BasicAchievement.LambdaExpression); .)
     ImplicitLambdaExpression
   | IF (IsExplicitTypedLambdaExpression())										
     "("
@@ -2394,7 +2274,7 @@ Primary                                                    (. TypeKind type; boo
   }
 .
 
-AnonymousObjectInitializer			(. RegisterBasicAchievement(BasicAchievement.AnonymousObject); .)
+AnonymousObjectInitializer			(. Graph.RegisterBasicAchievement(BasicAchievement.AnonymousObject); .)
 =
   "{"
   [ MemberDeclaratorList ]
@@ -2500,7 +2380,7 @@ ImplicitAnonymousFunctionParameter
 VariableDeclarators<Modifiers m>
 =
   ident [ "=" VariableInitializer ]
-  { "," (. if(IsFieldDecl()) BumpLastFieldDeclarationsCount(); .)
+  { "," (. if(IsFieldDecl()) Graph.BumpLastFieldDeclarationsCount(); .)
     ident [ "=" VariableInitializer ] 
   }
 .
@@ -2573,7 +2453,7 @@ TypeParameterConstraintsClause
 
 QueryExpression
 =
-                             (. enterContext(); .) (. RegisterBasicAchievement(BasicAchievement.QueryExpression); .)
+                             (. enterContext(); .) (. Graph.RegisterBasicAchievement(BasicAchievement.QueryExpression); .)
   FromClause
   QueryBody                  (. leaveContext(); .)
 .

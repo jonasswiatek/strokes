@@ -8,12 +8,12 @@ namespace Strokes.BasicAchievements.CocoR
     {
         //TODO: IMPLEMENT ACTUAL CACHING!
 
-        public IEnumerable<Parser.BasicAchievement> DetectAchievements(string file)
+        public IEnumerable<BasicAchievement> DetectAchievements(string file)
         {
             var scanner = new Scanner(file);
             var parser = new Parser(scanner);
             parser.Parse();
-            return parser.BasicAchievements.Keys;
+            return parser.Graph.BasicAchievements.Keys;
         }
 
         public Parser GetParser(string file)

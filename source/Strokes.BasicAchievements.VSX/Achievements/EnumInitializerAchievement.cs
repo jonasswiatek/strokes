@@ -13,10 +13,9 @@ namespace Strokes.BasicAchievements.Achievements
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
             var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>();
-            IEnumerable<Parser.BasicAchievement> achievements =
-                cocoRDetector.DetectAchievements(detectionSession.BuildInformation.ActiveFile);
+            var achievements = cocoRDetector.DetectAchievements(detectionSession.BuildInformation.ActiveFile);
 
-            return achievements.Contains(CocoR.Grammars.Parser.BasicAchievement.EnumInitializer);
+            return achievements.Contains(BasicAchievement.EnumInitializer);
         }
     }
 }

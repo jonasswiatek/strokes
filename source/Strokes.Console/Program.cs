@@ -17,12 +17,22 @@ namespace Strokes.Console
 
             parser.Parse();
 
-            foreach(var field in parser.DeclaredFields)
+            System.Console.WriteLine("FIELDS");
+            foreach(var field in parser.Graph.DeclaredFields)
             {
                 System.Console.WriteLine(string.Format("On line {3} -- Field Type: {0}, Field declaration count: {1}, initialized: {2}, modifiers: {4}", field.FieldType, field.DeclarationCount, field.IsInitialized, field.Token.line, string.Join(", ", field.Modifiers)));
             }
 
-            foreach (var property in parser.DeclaredProperties)
+            System.Console.WriteLine("");
+            System.Console.WriteLine("CONSTANTS");
+            foreach (var constant in parser.Graph.DeclaredConstants)
+            {
+                System.Console.WriteLine(string.Format("On line {2} -- Constant Type: {0}, Field declaration count: {1}, modifiers: {3}", constant.FieldType, constant.DeclarationCount, constant.Token.line, string.Join(", ", constant.Modifiers)));
+            }
+
+            System.Console.WriteLine("");
+            System.Console.WriteLine("PROPERTIES");
+            foreach (var property in parser.Graph.DeclaredProperties)
             {
                 System.Console.WriteLine(string.Format("On line {2} -- Property type: {0}, private setter: {1}, modifiers: {3}", property.PropertyType, property.HasPrivateSetter, property.Token.line, string.Join(", ", property.Modifiers)));
             }

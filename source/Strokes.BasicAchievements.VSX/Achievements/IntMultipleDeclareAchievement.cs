@@ -18,7 +18,7 @@ namespace Strokes.BasicAchievements.Achievements
             var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>(); //Gets a cached BasicCocoRDetector instance.
             var parser = cocoRDetector.GetParser(detectionSession.BuildInformation.ActiveFile); //Gets a parser for the document.
 
-            return parser.DeclaredFields.Any(a => a.FieldType == "int" && a.DeclarationCount > 1); //Any int declarations that declares more than one int.
+            return parser.Graph.DeclaredFields.Any(a => a.FieldType == "int" && a.DeclarationCount > 1); //Any int declarations that declares more than one int.
         }
     }
 }

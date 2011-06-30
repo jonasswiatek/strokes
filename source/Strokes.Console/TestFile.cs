@@ -3,7 +3,7 @@
     public class TestFile
     {
         public readonly static int aaa = 2, bbb = 4;
-        private int ccc;
+        private const int ccc = 5, rofl = 3;
         public static int ddd { get; private set; }
         int eee { get; set; }
         
@@ -12,6 +12,7 @@
         public TestFile(string someProperty)
         {
             int hhh = 2;
+            const int blaaaaa = 2;
         }
     }
 }
