@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Strokes.Core;
 
 namespace Strokes.GUI
 {
@@ -19,9 +20,19 @@ namespace Strokes.GUI
     /// </summary>
     public partial class AchievementPane : UserControl
     {
+        
         public AchievementPane()
         {
             InitializeComponent();
+
+            InitAchievementList();
         }
+
+        private void InitAchievementList()
+        {
+            var achievements = AchievementTracker.GetAllAchievementDescriptors();
+            AchievementStack.ItemsSource = achievements;
+        }
+
     }
 }
