@@ -84,6 +84,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AchievementPane.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AchievementTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,6 +98,9 @@
     </Page>
     <Compile Include="AchievementIndex\AchievementIndex.xaml.cs">
       <DependentUpon>AchievementIndex.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AchievementPane.xaml.cs">
+      <DependentUpon>AchievementPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="AchievementTemplate.xaml.cs">
       <DependentUpon>AchievementTemplate.xaml</DependentUpon>

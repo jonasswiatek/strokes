@@ -14,6 +14,7 @@ using Microsoft.VisualStudio.Shell;
 using Strokes.AchievementDispatcher;
 using Strokes.Core;
 using Strokes.Core.Integration;
+using Strokes.GUI;
 
 namespace Strokes.VSX
 {
@@ -22,6 +23,7 @@ namespace Strokes.VSX
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideAutoLoad("{f1536ef8-92ec-443c-9ed7-fdadf150da82}")] /* Auto Load this addin when a solution loads. Maybe this should be C# Project's guid */
     [Guid(GuidList.guidCSharpAchiever_Achiever_VSIXPkgString)]
+    [ProvideToolWindow(typeof(AchievementStatisticsToolWindow), Style = VsDockStyle.Tabbed)]
     [ProvideService(typeof(IAchevementLibraryService))]
     public sealed class StrokesVsxPackage : Package, IVsUpdateSolutionEvents2, IAchevementLibraryService
     {
@@ -99,8 +101,27 @@ namespace Strokes.VSX
         /// <param name="e"></param>
         private void MenuItemCallback(object sender, EventArgs e)
         {
-            var achievementIndex = new AchievementIndex();
-            achievementIndex.Show();
+            //Commented to use the AchievementPane instead
+            //var achievementIndex = new AchievementIndex();
+            //achievementIndex.Show();
+
+            var wnd = CreateToolWindow();
+            var windowFrame = (IVsWindowFrame)wnd.Frame;
+            windowFrame.Show();
+        }
+
+        private AchievementStatisticsToolWindow CreateToolWindow()
+        {
+            // Get the instance number 0 of this tool window. This window is single instance so this instance
+            // is actually the only one.
+            // The last flag is set to true so that if the tool window does not exists it will be created.
+            var window = (AchievementStatisticsToolWindow)this.FindToolWindow(typeof(AchievementStatisticsToolWindow), 0, true);
+            if ((null == window) || (null == window.Frame))
+            {
+                throw new NotSupportedException("Can't show!");
+            }
+
+            return window;
         }
 
         /// <summary>

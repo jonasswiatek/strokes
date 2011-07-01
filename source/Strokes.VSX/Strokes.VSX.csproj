@@ -123,6 +123,7 @@
     <Compile Include="StrokesVsxPackage.VSX.VSIXPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PkgCmdID.cs" />
+    <Compile Include="AchievementStatisticsToolWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
