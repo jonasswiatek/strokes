@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Strokes.CSharpCodeGraph.CocoR.Grammars;
+using Strokes.CSharpCodeGraph.Interfaces;
 
-namespace Strokes.CSharpCodeGraph
+namespace Strokes.CSharpCodeGraph.CodeElements
 {
-    public class TypeName : CodeElement, ITypeNamed
+    public class NamedType : CodeElement, INamedType
     {
         public IList<string> TypeNames = new List<string>();
 

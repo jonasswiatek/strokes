@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Strokes.CSharpCodeGraph.CocoR.Grammars;
+using Strokes.CSharpCodeGraph.CodeElements;
+using Strokes.CSharpCodeGraph.CodeElements.TypeDeclarations;
+using Strokes.CSharpCodeGraph.Interfaces;
 
 namespace Strokes.CSharpCodeGraph
 {
@@ -17,46 +20,45 @@ namespace Strokes.CSharpCodeGraph
             return parser.doc;
         }
 
+        #region Exposed elements
+
         public IList<UsingDirective> Usings = new List<UsingDirective>();
         public IList<Namespace> Namespaces = new List<Namespace>();
         public IList<TypeDeclaration> TypeDeclarations = new List<TypeDeclaration>();
 
+        #endregion
+
         internal Namespace CurrentNamespace;
-        internal TypeDeclaration CurrentType;
+        internal TypeDeclaration CurrentTypeDeclaration;
+        internal INamedType CurrentNamedType;
 
-        internal void Add(CodeElement element)
+        internal void Handle(CodeElement element)
         {
-            if(element is ITypeNamed)
+            if(element is INamedType)
             {
-                _currentTypeNamed = (ITypeNamed)element;
+                CurrentNamedType = (INamedType)element;
             }
-
-            if(element is UsingDirective)
+            if(element is TypeDeclaration)
             {
-                Usings.Add((UsingDirective) element);
+                CurrentTypeDeclaration = (TypeDeclaration) element;
             }
-            else if(element is Namespace)
+            if(element is Namespace)
             {
                 CurrentNamespace = (Namespace) element;
-                Namespaces.Add((Namespace) element);
-            }
-            else if(element is TypeDeclaration)
-            {
-                if(CurrentNamespace != null)
-                {
-                    CurrentNamespace.TypeDeclarations.Add((TypeDeclaration)element);
-                }
-                else
-                {
-                    TypeDeclarations.Add((TypeDeclaration)element);
-                }
             }
         }
 
-        private ITypeNamed _currentTypeNamed;
-        internal void ProcessTypeName(Token token)
+        internal void Add(UsingDirective usingDirective)
         {
-            _currentTypeNamed.AddTypeNameFromToken(token);
+            Handle(usingDirective);
+            Usings.Add(usingDirective);
+        }
+
+        internal void Add(Namespace @namespace)
+        {
+            Handle(@namespace);
+            CurrentNamespace = @namespace;
+            Namespaces.Add(@namespace);
         }
 
         internal void EndNamespace()
@@ -64,9 +66,32 @@ namespace Strokes.CSharpCodeGraph
             CurrentNamespace = null;
         }
 
-        internal void EndType()
+        internal void Add(TypeDeclaration typeDeclaration)
         {
-            CurrentNamespace = null;
+            Handle(typeDeclaration);
+            if (CurrentNamespace != null)
+            {
+                CurrentNamespace.TypeDeclarations.Add(typeDeclaration);
+            }
+            else
+            {
+                TypeDeclarations.Add(typeDeclaration);
+            }
         }
+
+        internal void EndTypeDeclaration()
+        {
+            CurrentTypeDeclaration = null;
+        }
+
+        
+        internal void ProcessTypeName(Token token)
+        {
+            CurrentNamedType.AddTypeNameFromToken(token);
+        }
+
+
+
+
     }
 }

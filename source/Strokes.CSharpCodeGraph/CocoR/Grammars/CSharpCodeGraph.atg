@@ -1386,28 +1386,28 @@ TypeDeclaration<Modifiers m>                                (. TypeKind dummy; .
   ( [ ident                                                 (. if (!"partial".Equals(t.val)) { Error("partial expected, found: " + t.val); } .)
     ]
     (                                                       (. m.Check(classesMod); .)
-       "class" (. doc.ClassDeclaration(t, GetModifiers(m)); .) ident										
+       "class" (. doc.ClassDeclaration(t, GetModifiers(m)); .) ident	(. doc.TypeName(t); .)									
        [ TypeParameterList ] [ ClassBase ]
        { TypeParameterConstraintsClause } ClassBody [ ";" ]
     |                                                       (. m.Check(nonClassTypesMod); .)
-      "struct" ident
+      "struct" (. doc.StructDeclaration(t, GetModifiers(m)); .) ident (. doc.TypeName(t); .)
       [ TypeParameterList ]
-      [ ":" TypeName
-      { "," TypeName
+      [ ":" (. doc.ImplementInterface(t); .) TypeName
+      { "," (. doc.ImplementInterface(t); .) TypeName
       } ]     
       { TypeParameterConstraintsClause } StructBody [ ";" ]
     |                                                       (. m.Check(nonClassTypesMod); .)
-      "interface" ident
+      "interface" (. doc.InterfaceDeclaration(t, GetModifiers(m)); .) ident (. doc.TypeName(t); .)
       [ TypeParameterList ] 
-      [ ":" TypeName
-      { "," TypeName
+      [ ":" (. doc.ImplementInterface(t); .) TypeName
+      { "," (. doc.ImplementInterface(t); .) TypeName
       } ]
       { TypeParameterConstraintsClause }
       "{"
       { InterfaceMemberDeclaration } "}" [ ";" ]
     )
   |                                                         (. m.Check(nonClassTypesMod); .)
-    "enum" ident [ ":" IntegralType ]
+    "enum" (. doc.EnumDeclaration(t, GetModifiers(m)); .) ident (. doc.TypeName(t); .) [ ":" IntegralType ]
     EnumBody [ ";" ]
   |                                                         (. m.Check(nonClassTypesMod); .)
     "delegate" Type<out dummy, true> ident
@@ -1420,7 +1420,7 @@ TypeDeclaration<Modifiers m>                                (. TypeKind dummy; .
 
 ClassBase
 =
-  ":" ClassType { "," TypeName }
+  ":" (. doc.ImplementInterface(t); .) ClassType { "," (. doc.ImplementInterface(t); .) TypeName }
 . 
 
 ClassBody

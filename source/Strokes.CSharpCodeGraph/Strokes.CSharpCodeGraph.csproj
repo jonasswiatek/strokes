@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassDeclaration.cs" />
+    <Compile Include="CodeElements\TypeDeclarations\ClassDeclaration.cs" />
     <Compile Include="CocoR\CodeGraphExtensions.cs" />
     <Compile Include="CocoR\Grammars\Parser.cs">
       <DependentUpon>CSharpCodeGraph.atg</DependentUpon>
@@ -49,14 +49,17 @@
       <DependentUpon>CSharpCodeGraph.atg</DependentUpon>
     </Compile>
     <Compile Include="CodeDocument.cs" />
-    <Compile Include="CodeElement.cs" />
-    <Compile Include="ITypeNamed.cs" />
-    <Compile Include="Modifier.cs" />
-    <Compile Include="Namespace.cs" />
+    <Compile Include="CodeElements\CodeElement.cs" />
+    <Compile Include="CodeElements\TypeDeclarations\EnumDeclaration.cs" />
+    <Compile Include="CodeElements\TypeDeclarations\StructDeclaration.cs" />
+    <Compile Include="CodeElements\TypeDeclarations\InterfaceDeclaration.cs" />
+    <Compile Include="Interfaces\INamedType.cs" />
+    <Compile Include="CodeElements\Modifier.cs" />
+    <Compile Include="CodeElements\Namespace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypeDeclaration.cs" />
-    <Compile Include="TypeName.cs" />
-    <Compile Include="UsingDirective.cs" />
+    <Compile Include="CodeElements\TypeDeclarations\TypeDeclaration.cs" />
+    <Compile Include="CodeElements\NamedType.cs" />
+    <Compile Include="CodeElements\UsingDirective.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CocoR\Grammars\CSharpCodeGraph.atg">

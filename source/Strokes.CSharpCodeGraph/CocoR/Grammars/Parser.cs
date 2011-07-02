@@ -1527,6 +1527,7 @@ private IEnumerable<Modifier> GetModifiers(Modifiers m)
 				Get();
 				doc.ClassDeclaration(t, GetModifiers(m)); 
 				Expect(1);
+				doc.TypeName(t); 
 				if (la.kind == 101) {
 					TypeParameterList();
 				}
@@ -1543,15 +1544,19 @@ private IEnumerable<Modifier> GetModifiers(Modifiers m)
 			} else if (la.kind == 66) {
 				m.Check(nonClassTypesMod); 
 				Get();
+				doc.StructDeclaration(t, GetModifiers(m)); 
 				Expect(1);
+				doc.TypeName(t); 
 				if (la.kind == 101) {
 					TypeParameterList();
 				}
 				if (la.kind == 87) {
 					Get();
+					doc.ImplementInterface(t); 
 					TypeName();
 					while (la.kind == 88) {
 						Get();
+						doc.ImplementInterface(t); 
 						TypeName();
 					}
 				}
@@ -1565,15 +1570,19 @@ private IEnumerable<Modifier> GetModifiers(Modifiers m)
 			} else if (la.kind == 40) {
 				m.Check(nonClassTypesMod); 
 				Get();
+				doc.InterfaceDeclaration(t, GetModifiers(m)); 
 				Expect(1);
+				doc.TypeName(t); 
 				if (la.kind == 101) {
 					TypeParameterList();
 				}
 				if (la.kind == 87) {
 					Get();
+					doc.ImplementInterface(t); 
 					TypeName();
 					while (la.kind == 88) {
 						Get();
+						doc.ImplementInterface(t); 
 						TypeName();
 					}
 				}
@@ -1592,7 +1601,9 @@ private IEnumerable<Modifier> GetModifiers(Modifiers m)
 		} else if (la.kind == 25) {
 			m.Check(nonClassTypesMod); 
 			Get();
+			doc.EnumDeclaration(t, GetModifiers(m)); 
 			Expect(1);
+			doc.TypeName(t); 
 			if (la.kind == 87) {
 				Get();
 				IntegralType();
@@ -1639,9 +1650,11 @@ private IEnumerable<Modifier> GetModifiers(Modifiers m)
 
 	void ClassBase() {
 		Expect(87);
+		doc.ImplementInterface(t); 
 		ClassType();
 		while (la.kind == 88) {
 			Get();
+			doc.ImplementInterface(t); 
 			TypeName();
 		}
 	}
