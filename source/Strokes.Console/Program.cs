@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using CSharpAchiever.GUI.AchievementIndex;
-using Strokes.AchievementDispatcher;
 using Strokes.BasicAchievements.CocoR.Grammars;
 using Strokes.Core;
 

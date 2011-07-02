@@ -11,7 +11,6 @@ using EnvDTE;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Shell;
-using Strokes.AchievementDispatcher;
 using Strokes.Core;
 using Strokes.Core.Integration;
 using Strokes.GUI;

@@ -55,10 +55,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Strokes.AchievementDispatcher\Strokes.AchievementDispatcher.csproj">
-      <Project>{FD3A809B-C627-4698-A04D-59DA61C556D7}</Project>
-      <Name>Strokes.AchievementDispatcher</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Strokes.BasicAchievements.VSX\Strokes.BasicAchievements.VSX.csproj">
       <Project>{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}</Project>
       <Name>Strokes.BasicAchievements.VSX</Name>

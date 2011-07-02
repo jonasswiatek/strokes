@@ -95,7 +95,7 @@ namespace Strokes.Core
         }
 
         /// <summary>
-        /// Stores, in an XML file, that the passed achievement has been done
+        /// Stores, in an XML file, that the passed achievement has been completed
         /// </summary>
         /// <param name="achievementDescriptor"></param>
         public static void RegisterAchievementCompleted(AchievementDescriptionAttribute achievementDescriptor)

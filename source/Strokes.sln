@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.VSX", "Strokes.VSX\Strokes.VSX.csproj", "{4AE216B7-8FCC-446A-8A58-8705C1DB844E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.AchievementDispatcher", "Strokes.AchievementDispatcher\Strokes.AchievementDispatcher.csproj", "{FD3A809B-C627-4698-A04D-59DA61C556D7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.Console", "Strokes.Console\Strokes.Console.csproj", "{6ED1F2F7-1861-4807-B825-C16C341E8785}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.Core", "Strokes.Core\Strokes.Core.csproj", "{89159588-EFA4-431C-9128-3A564B53D1A4}"
@@ -14,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.Challanges.VSX", "Strokes.Challanges.VSX\Strokes.Challanges.VSX.csproj", "{17030F4B-77CF-4780-8C00-DFFE6412F49E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.BasicAchievements.VSX", "Strokes.BasicAchievements.VSX\Strokes.BasicAchievements.VSX.csproj", "{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Achievement Projects", "Achievement Projects", "{2B7159F2-6552-4902-BE15-C295BC3DF242}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -38,16 +38,6 @@ Global
 		{4AE216B7-8FCC-446A-8A58-8705C1DB844E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4AE216B7-8FCC-446A-8A58-8705C1DB844E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4AE216B7-8FCC-446A-8A58-8705C1DB844E}.Release|x86.ActiveCfg = Release|Any CPU
-		{FD3A809B-C627-4698-A04D-59DA61C556D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD3A809B-C627-4698-A04D-59DA61C556D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD3A809B-C627-4698-A04D-59DA61C556D7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{FD3A809B-C627-4698-A04D-59DA61C556D7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{FD3A809B-C627-4698-A04D-59DA61C556D7}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{FD3A809B-C627-4698-A04D-59DA61C556D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD3A809B-C627-4698-A04D-59DA61C556D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD3A809B-C627-4698-A04D-59DA61C556D7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{FD3A809B-C627-4698-A04D-59DA61C556D7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{FD3A809B-C627-4698-A04D-59DA61C556D7}.Release|x86.ActiveCfg = Release|Any CPU
 		{6ED1F2F7-1861-4807-B825-C16C341E8785}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{6ED1F2F7-1861-4807-B825-C16C341E8785}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{6ED1F2F7-1861-4807-B825-C16C341E8785}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -101,5 +91,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17030F4B-77CF-4780-8C00-DFFE6412F49E} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
+		{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
 	EndGlobalSection
 EndGlobal
