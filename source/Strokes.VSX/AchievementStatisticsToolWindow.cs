@@ -14,7 +14,7 @@ using Strokes.GUI;
 
 namespace Strokes.VSX
 {
-    [Guid("5c1947b9-a2ea-42cd-8299-f2603a9c033d")]
+    [Guid("860da2e9-60ef-4698-b539-ff847e203824")]
     public class AchievementStatisticsToolWindow : ToolWindowPane
     {
         private DocumentEvents _documentEvents;

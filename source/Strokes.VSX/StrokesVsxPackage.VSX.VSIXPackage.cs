@@ -21,10 +21,13 @@ namespace Strokes.VSX
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideAutoLoad("{f1536ef8-92ec-443c-9ed7-fdadf150da82}")] /* Auto Load this addin when a solution loads. Maybe this should be C# Project's guid */
-    [Guid(GuidList.guidCSharpAchiever_Achiever_VSIXPkgString)]
-    [ProvideToolWindow(typeof(AchievementStatisticsToolWindow), Style = VsDockStyle.Tabbed)]
+
+    [ProvideAutoLoad("{adfc4e64-0397-11d1-9f4e-00a0c911004f}")]
+    
+    [ProvideToolWindow(typeof(AchievementStatisticsToolWindow), Style = VsDockStyle.MDI)]
     [ProvideService(typeof(IAchevementLibraryService))]
+
+    [Guid(GuidList.guidCSharpAchiever_Achiever_VSIXPkgString)]
     public sealed class StrokesVsxPackage : Package, IVsUpdateSolutionEvents2, IAchevementLibraryService
     {
         public StrokesVsxPackage()
@@ -71,7 +74,7 @@ namespace Strokes.VSX
 
             //Promote the Achievement Library service
             var serviceContainer = (IServiceContainer)this;
-            serviceContainer.AddService(typeof(IAchevementLibraryService), this, true);
+            serviceContainer.AddService(typeof (IAchevementLibraryService), this, true);
         }
 
         protected override void Dispose(bool disposing)
@@ -101,13 +104,17 @@ namespace Strokes.VSX
         /// <param name="e"></param>
         private void MenuItemCallback(object sender, EventArgs e)
         {
-            //Commented to use the AchievementPane instead
-            //var achievementIndex = new AchievementIndex();
-            //achievementIndex.Show();
+            ShowAchievementPane(true);
+        }
 
+        private void ShowAchievementPane(bool activate)
+        {
             var wnd = CreateToolWindow();
             var windowFrame = (IVsWindowFrame)wnd.Frame;
-            windowFrame.Show();
+            if (activate)
+                windowFrame.Show();
+            else
+                windowFrame.ShowNoActivate();
         }
 
         private AchievementStatisticsToolWindow CreateToolWindow()

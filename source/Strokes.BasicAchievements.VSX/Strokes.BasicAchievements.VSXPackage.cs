@@ -11,7 +11,8 @@ namespace Strokes.BasicAchievements
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [Guid(GuidList.guidStrokes_BasicAchievements_VSXPkgString)]
-    [ProvideAutoLoad("{f1536ef8-92ec-443c-9ed7-fdadf150da82}")] /* Autoload when the a solution is loaded */
+    //[ProvideAutoLoad("{f1536ef8-92ec-443c-9ed7-fdadf150da82}")] /* Autoload when the a solution is loaded */
+    [ProvideAutoLoad("{adfc4e64-0397-11d1-9f4e-00a0c911004f}")]
     public sealed class Strokes_BasicAchievements_VSXPackage : Package
     {
         public Strokes_BasicAchievements_VSXPackage()
