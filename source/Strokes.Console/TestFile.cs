@@ -1,4 +1,10 @@
-﻿namespace Strokes.Console
+﻿using System;
+using System.Windows;
+using CSharpAchiever.GUI.AchievementIndex;
+using Strokes.Core;
+using Strokes.CSharpCodeGraph.CocoR.Grammars;
+
+namespace Strokes.Console
 {
     public class TestFile
     {
