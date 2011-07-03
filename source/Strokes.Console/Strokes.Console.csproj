@@ -68,10 +68,6 @@
       <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>
       <Name>Strokes.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Strokes.CSharpCodeGraph\Strokes.CSharpCodeGraph.csproj">
-      <Project>{887CB0F2-C6C4-4CE9-BAD3-721C2E38EDDB}</Project>
-      <Name>Strokes.CSharpCodeGraph</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Strokes.GUI\Strokes.GUI.csproj">
       <Project>{CCA3165B-3D87-45AB-AD18-168CF04A1417}</Project>
       <Name>Strokes.GUI</Name>

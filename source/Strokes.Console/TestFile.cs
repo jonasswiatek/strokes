@@ -2,7 +2,6 @@
 using System.Windows;
 using CSharpAchiever.GUI.AchievementIndex;
 using Strokes.Core;
-using Strokes.CSharpCodeGraph.CocoR.Grammars;
 
 namespace Strokes.Console
 {

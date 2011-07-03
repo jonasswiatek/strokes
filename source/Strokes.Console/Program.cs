@@ -5,8 +5,6 @@ using CSharpAchiever.GUI.AchievementIndex;
 using ICSharpCode.NRefactory;
 using ICSharpCode.NRefactory.Ast;
 using Strokes.Core;
-using Strokes.CSharpCodeGraph;
-using Strokes.CSharpCodeGraph.CocoR.Grammars;
 using System.Linq;
 
 namespace Strokes.Console
