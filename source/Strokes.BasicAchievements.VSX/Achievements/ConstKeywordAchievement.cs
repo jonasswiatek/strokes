@@ -1,20 +1,40 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Strokes.BasicAchievements.CocoR;
-using Strokes.BasicAchievements.CocoR.Grammars;
+using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.Visitors;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Create a constant", AchievementDescription = "Use the const keyword", AchievementCategory = "Basic Achievements")]
-    public class ConstKeywordAchievement : Achievement
+    public class ConstKeywordAchievement : NRefactoryAchievement
     {
-        public override bool DetectAchievement(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor()
         {
-            var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>(); //Gets a cached BasicCocoRDetector instance.
-            var parser = cocoRDetector.GetParser(detectionSession.BuildInformation.ActiveFile); //Gets a parser for the document.
+            return new Visitor();
+        }
 
-            return parser.Graph.DeclaredConstants.Any();
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitFieldDeclaration(FieldDeclaration fieldDeclaration, object data)
+            {
+                if ((fieldDeclaration.Modifier & Modifiers.Const) == Modifiers.Const)
+                {
+                    IsAchievementUnlocked = true;
+                }
+
+                return base.VisitFieldDeclaration(fieldDeclaration, data);
+            }
+
+            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
+            {
+                if ((localVariableDeclaration.Modifier & Modifiers.Const) == Modifiers.Const)
+                {
+                    IsAchievementUnlocked = true;
+                }
+                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
+            }
         }
     }
 }

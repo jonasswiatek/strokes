@@ -1,21 +1,30 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Strokes.BasicAchievements.CocoR;
-using Strokes.BasicAchievements.CocoR.Grammars;
+using ICSharpCode.NRefactory.Ast;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Create enumeration", AchievementDescription = "Create an enum type.",
-        AchievementCategory = "Basic Achievements")]
-    public class EnumInitializerAchievement : Achievement
+    [AchievementDescription("Create enumeration", AchievementDescription = "Create an enum type.", AchievementCategory = "Basic Achievements")]
+    public class EnumInitializerAchievement : NRefactoryAchievement
     {
-        public override bool DetectAchievement(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor()
         {
-            var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>();
-            var achievements = cocoRDetector.DetectAchievements(detectionSession.BuildInformation.ActiveFile);
+            return new Visitor();
+        }
 
-            return achievements.Contains(BasicAchievement.EnumInitializer);
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
+            {
+                if (typeDeclaration.Type == ClassType.Enum)
+                {
+                    IsAchievementUnlocked = true;
+                }
+
+                return base.VisitTypeDeclaration(typeDeclaration, data);
+            }
         }
     }
 }

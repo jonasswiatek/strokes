@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Strokes.Core
 {
-    public class DetectionSession
+    public class DetectionSession : IDisposable
     {
         public BuildInformation BuildInformation { get; private set; }
         private readonly IDictionary<Type, object> _sessionObjects = new Dictionary<Type, object>();
@@ -21,6 +22,15 @@ namespace Strokes.Core
             }
 
             return (T)_sessionObjects[typeof(T)];
+        }
+
+        public void Dispose()
+        {
+            //Dispose all disposable children
+            foreach(var disposable in _sessionObjects.Values.OfType<IDisposable>())
+            {
+                disposable.Dispose();
+            }
         }
     }
 }

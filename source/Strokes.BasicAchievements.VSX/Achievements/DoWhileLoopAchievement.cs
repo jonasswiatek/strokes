@@ -1,22 +1,31 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Strokes.BasicAchievements.CocoR;
-using Strokes.BasicAchievements.CocoR.Grammars;
+using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.Visitors;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("DoWhile loop", AchievementDescription = "Use a do-while loop",
-        AchievementCategory = "Basic Achievements")]
-    public class DoWhileLoopAchievement : Achievement
+    [AchievementDescription("DoWhile loop", AchievementDescription = "Use a do-while loop", AchievementCategory = "Basic Achievements")]
+    public class DoWhileLoopAchievement : NRefactoryAchievement
     {
-        public override bool DetectAchievement(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor()
         {
-            var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>();
-            IEnumerable<BasicAchievement> achievements =
-                cocoRDetector.DetectAchievements(detectionSession.BuildInformation.ActiveFile);
+            return new Visitor();
+        }
 
-            return achievements.Contains(BasicAchievement.DoWhileLoop);
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitDoLoopStatement(DoLoopStatement doLoopStatement, object data)
+            {
+                if (doLoopStatement.ConditionPosition == ConditionPosition.End) //DoWhile loops has their condition at ConditionPosition.End, while has it at ConditionPosition.Start.
+                {
+                    IsAchievementUnlocked = true;
+                }
+
+                return base.VisitDoLoopStatement(doLoopStatement, data);
+            }
         }
     }
 }

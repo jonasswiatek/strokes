@@ -1,22 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Strokes.BasicAchievements.CocoR;
-using Strokes.BasicAchievements.CocoR.Grammars;
+using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.Visitors;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Anonymous Object", AchievementDescription = "Create an anonymous object",
-        AchievementCategory = "Basic Achievements")]
-    public class AnonymousObjectAchievement : Achievement
+    [AchievementDescription("Anonymous Object", AchievementDescription = "Create an anonymous object", AchievementCategory = "Basic Achievements")]
+    public class AnonymousObjectAchievement : NRefactoryAchievement
     {
-        public override bool DetectAchievement(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor()
         {
-            var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>();
-            IEnumerable<BasicAchievement> achievements =
-                cocoRDetector.DetectAchievements(detectionSession.BuildInformation.ActiveFile);
+            return new Visitor();
+        }
 
-            return achievements.Contains(BasicAchievement.AnonymousObject);
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitVariableDeclaration(VariableDeclaration variableDeclaration, object data)
+            {
+                var objectCreateExpression = variableDeclaration.Initializer as ObjectCreateExpression;
+                if (objectCreateExpression != null && objectCreateExpression.IsAnonymousType)
+                {
+                    IsAchievementUnlocked = true;
+                }
+
+                return base.VisitVariableDeclaration(variableDeclaration, data);
+            }
         }
     }
 }

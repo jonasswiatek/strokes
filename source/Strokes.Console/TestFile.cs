@@ -6,50 +6,32 @@ using Strokes.CSharpCodeGraph.CocoR.Grammars;
 
 namespace Strokes.Console
 {
-    public class TestFile : Strokes.Console.SomeClass, ISomeInterface, Strokes.Console.ISomeOtherInterface
+    public class TestFile
     {
-        public readonly static int aaa = 2, bbb = 4;
-        private const int ccc = 5, rofl = 3;
-        public static int ddd { get; private set; }
-        int eee { get; set; }
+        private const int fieldConstant = 2;
         
-        string fff = "";
-        public TestFile(string someProperty)
+        public void Bla()
         {
-            int hhh = 2;
-            const int blaaaaa = 2;
+            do
+            {
+
+            } while (false);
+
+            while(false)
+            {
+                
+            }
+
+            for(int i = 0; false; i++)
+            {
+                
+            }
         }
     }
 
-    public class SomeClass
+    public enum Rofl
     {
-        
-    }
-
-    public enum Roflmao
-    {
-        Lol,
-        kk
-    }
-
-    public struct SomeStruct
-    {
-        public int someInt;
-        private float someFloat;
-    }
-
-    public interface ISomeInterface
-    {
-        
-    }
-
-    public interface ISomeOtherInterface : Strokes.Console.IBalls
-    {
-
-    }
-
-    public interface IBalls
-    {
-        
+        mao,
+        lul
     }
 }

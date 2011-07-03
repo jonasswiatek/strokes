@@ -33,6 +33,10 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.NRefactory, Version=4.0.0.7070, Culture=neutral, PublicKeyToken=efe927acf176eea2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.OLE.Interop" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop" />
@@ -113,28 +117,22 @@
     <Compile Include="Achievements\ConstKeywordAchievement.cs" />
     <Compile Include="Achievements\EnumInitializerAchievement.cs" />
     <Compile Include="Achievements\DoWhileLoopAchievement.cs" />
-    <Compile Include="Achievements\ForAchievement.cs" />
-    <Compile Include="Achievements\ForEachAchievement.cs" />
-    <Compile Include="Achievements\InlineCommentAchievement.cs" />
-    <Compile Include="Achievements\IntDeclareAndInitializeAchievement.cs" />
-    <Compile Include="Achievements\IntMultipleDeclareAchievement.cs" />
-    <Compile Include="Achievements\LambdaExpressonAchievement.cs" />
-    <Compile Include="Achievements\ParamsParameterAchievement.cs" />
-    <Compile Include="Achievements\PrivateSetterAchievement.cs" />
-    <Compile Include="Achievements\QueryExpressonAchievement.cs" />
-    <Compile Include="Achievements\TryCatchFinallyStatementAchievement.cs" />
-    <Compile Include="Achievements\TryCatchStatementAchievement.cs" />
-    <Compile Include="Achievements\TryFinallyStatementAchievement.cs" />
-    <Compile Include="Achievements\WhileLoopAchievement.cs" />
-    <Compile Include="CocoR\CocoRDetector.cs" />
-    <Compile Include="CocoR\CodeGraph.cs" />
-    <Compile Include="CocoR\Grammars\Parser.cs">
-      <DependentUpon>CSharpAchievements.atg</DependentUpon>
-    </Compile>
-    <Compile Include="CocoR\Grammars\Scanner.cs">
-      <DependentUpon>CSharpAchievements.atg</DependentUpon>
-    </Compile>
+    <None Include="Achievements\ForAchievement.cs" />
+    <None Include="Achievements\ForEachAchievement.cs" />
+    <None Include="Achievements\InlineCommentAchievement.cs" />
+    <None Include="Achievements\IntDeclareAndInitializeAchievement.cs" />
+    <None Include="Achievements\IntMultipleDeclareAchievement.cs" />
+    <None Include="Achievements\LambdaExpressonAchievement.cs" />
+    <None Include="Achievements\ParamsParameterAchievement.cs" />
+    <None Include="Achievements\PrivateSetterAchievement.cs" />
+    <None Include="Achievements\QueryExpressonAchievement.cs" />
+    <None Include="Achievements\TryCatchFinallyStatementAchievement.cs" />
+    <None Include="Achievements\TryCatchStatementAchievement.cs" />
+    <None Include="Achievements\TryFinallyStatementAchievement.cs" />
+    <None Include="Achievements\WhileLoopAchievement.cs" />
     <Compile Include="Guids.cs" />
+    <Compile Include="NRefactory\NRefactoryAchievement.cs" />
+    <Compile Include="NRefactory\NRefactorySession.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,16 +154,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="CocoR\Grammars\CSharpAchievements.atg">
-      <Generator>CocoFileGenerator</Generator>
-      <LastGenOutput>CSharpAchievements.log</LastGenOutput>
-    </None>
-    <None Include="CocoR\Grammars\CSharpAchievements.log">
-      <DependentUpon>CSharpAchievements.atg</DependentUpon>
-      <AutoGen>True</AutoGen>
-    </None>
-    <None Include="CocoR\Grammars\Parser.frame" />
-    <None Include="CocoR\Grammars\Scanner.frame" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
@@ -174,6 +162,7 @@
     <None Include="Key.snk" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="lib\ICSharpCode.NRefactory.dll" />
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -16,24 +16,28 @@ namespace Strokes.VSX
         /// <param name="buildInformation">Objects specifying documents to parse for achievements.</param>
         public static bool Dispatch(BuildInformation buildInformation)
         {
-            var detectionSession = new DetectionSession(buildInformation);
-            var achievementTypes = AchievementTracker.FindAllAchievementTypes();
-
             var unlockedAchievements = new List<Achievement>();
-            var completedAchievements = AchievementTracker.GetCompletedAchievements();
-            foreach (var achievementType in achievementTypes)
+
+            //Dispatch in a disposable context
+            using (var detectionSession = new DetectionSession(buildInformation))
             {
-                var achievement = (Achievement)Activator.CreateInstance(achievementType);
-                var descriptor = achievement.GetAchievementDescriptor();
+                var achievementTypes = AchievementTracker.FindAllAchievementTypes();
 
-                if (completedAchievements.Contains(descriptor.AchievementTitle)) //Skip if this achievement has already been completed
-                    continue;
-            
-                var achievementUnlocked = achievement.DetectAchievement(detectionSession);
-
-                if (achievementUnlocked)
+                var completedAchievements = AchievementTracker.GetCompletedAchievements();
+                foreach (var achievementType in achievementTypes)
                 {
-                    unlockedAchievements.Add(achievement);
+                    var achievement = (Achievement)Activator.CreateInstance(achievementType);
+                    var descriptor = achievement.GetAchievementDescriptor();
+
+                    if (completedAchievements.Contains(descriptor.AchievementTitle)) //Skip if this achievement has already been completed
+                        continue;
+
+                    var achievementUnlocked = achievement.DetectAchievement(detectionSession);
+
+                    if (achievementUnlocked)
+                    {
+                        unlockedAchievements.Add(achievement);
+                    }
                 }
             }
 

@@ -1,9 +1,13 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using CSharpAchiever.GUI.AchievementIndex;
+using ICSharpCode.NRefactory;
+using ICSharpCode.NRefactory.Ast;
 using Strokes.Core;
 using Strokes.CSharpCodeGraph;
 using Strokes.CSharpCodeGraph.CocoR.Grammars;
+using System.Linq;
 
 namespace Strokes.Console
 {
@@ -12,26 +16,21 @@ namespace Strokes.Console
         [STAThread]
         static void Main(string[] args)
         {
-            var codeGraph = CodeDocument.From(System.IO.Path.GetFullPath("TestFile.cs"));
-            
-            System.Console.WriteLine("Using directives");
-            foreach(var usingDirective in codeGraph.Usings)
+            using (IParser parser = ParserFactory.CreateParser(System.IO.Path.GetFullPath("TestFile.cs")))
             {
-                System.Console.WriteLine(usingDirective.FullName);
-            }
+                parser.Parse();
+                // this allows retrieving comments, preprocessor directives, etc. (stuff that isn't part of the syntax)
+                var specials = parser.Lexer.SpecialTracker.RetrieveSpecials();
+                // this retrieves the root node of the result AST
+                var result = parser.CompilationUnit;
+                
+                if (parser.Errors.Count > 0)
+                {
+                    MessageBox.Show(parser.Errors.ErrorOutput, "Parse errors");
+                }
 
-            System.Console.WriteLine("");
-            System.Console.WriteLine("Namespaces");
-            foreach (var nameSpace in codeGraph.Namespaces)
-            {
-                System.Console.WriteLine(nameSpace.FullName);
-            }
-
-            System.Console.WriteLine("");
-            System.Console.WriteLine("Type declarations");
-            foreach (var typeDeclaration in codeGraph.TypeDeclarations)
-            {
-                System.Console.WriteLine(typeDeclaration.FullName);
+                result.AcceptVisitor(new AchievementVisitor(), null);
+                var bla = "";
             }
 
             System.Console.Read();
