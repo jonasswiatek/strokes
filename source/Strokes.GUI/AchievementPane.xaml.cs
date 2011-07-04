@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Strokes.Core;
+using Strokes.Data;
 
 namespace Strokes.GUI
 {
@@ -30,6 +31,9 @@ namespace Strokes.GUI
 
         private void InitAchievementList()
         {
+            var achievementDescriptorRepository = new AchievementDescriptorRepository();
+            var achievs = achievementDescriptorRepository.GetAll(); //Please note that this method returns another object that the AchievementTracker.GetAllAchievementDescriptors(). It needs to be rewritten to run on this new dataobject (Strokes.Core.Model.AchievementDescriptor).
+
             var achievements = AchievementTracker.GetAllAchievementDescriptors();
                        
             AchievementStack.ItemsSource = achievements;

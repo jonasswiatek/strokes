@@ -53,7 +53,7 @@ namespace Strokes.GUI
             {
                 foreach(var achievement in achievements)
                 {
-                    if(!_achievementGui.achievementQueue.Any(a => a.GetAchievementDescriptor().AchievementTitle == achievement.GetAchievementDescriptor().AchievementTitle))
+                    if (!_achievementGui.achievementQueue.Any(a => a.GetDescriptorAttribute().AchievementTitle == achievement.GetDescriptorAttribute().AchievementTitle))
                     {
                         _achievementGui.achievementQueue.Enqueue(achievement);
                     }
@@ -103,7 +103,7 @@ namespace Strokes.GUI
            
             var ach = achievementQueue.Dequeue();
 
-            var descriptor = ach.GetAchievementDescriptor();
+            var descriptor = ach.GetDescriptorAttribute();
             AchievementTracker.RegisterAchievementCompleted(descriptor);
             achievementtemplate.DataContext = descriptor;
             

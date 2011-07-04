@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{89159588-EFA4-431C-9128-3A564B53D1A4}</ProjectGuid>
+    <ProjectGuid>{4E7CB214-E45C-4D84-9AD1-D406507BB0AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Strokes.Core</RootNamespace>
-    <AssemblyName>Strokes.Core</AssemblyName>
+    <RootNamespace>Strokes.Model</RootNamespace>
+    <AssemblyName>Strokes.Model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,16 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Achievement.cs" />
-    <Compile Include="AchievementContext.cs" />
-    <Compile Include="AchievementDescriptionAttribute.cs" />
-    <Compile Include="AchievementTracker.cs" />
-    <Compile Include="BuildInformation.cs" />
-    <Compile Include="Contracts\IAchievementDescriptorRepository.cs" />
-    <Compile Include="DetectionSession.cs" />
-    <Compile Include="Integration\IAchevementLibraryService.cs" />
-    <Compile Include="Model\AchievementDescriptor.cs" />
-    <Compile Include="Model\CompletedAchievement.cs" />
+    <Compile Include="AchievementDescriptor.cs" />
+    <Compile Include="CompletedAchievement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

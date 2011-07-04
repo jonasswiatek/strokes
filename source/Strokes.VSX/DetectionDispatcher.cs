@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Strokes.Core;
+using Strokes.Core.Contracts;
+using Strokes.Core.Model;
+using Strokes.Data;
 using Strokes.GUI;
 
 namespace Strokes.VSX
@@ -14,48 +17,37 @@ namespace Strokes.VSX
         /// This method is detection method agnostic. It simply forwards the BuildInformation object to all implementations of the Achievement class.
         /// </summary>
         /// <param name="buildInformation">Objects specifying documents to parse for achievements.</param>
-        public static bool Dispatch(BuildInformation buildInformation)
+        public bool Dispatch(BuildInformation buildInformation)
         {
-            var unlockedAchievements = new List<Achievement>();
+            var unlockedAchievements = new List<AchievementDescriptor>();
+            var achievementDescriptorRepository = new AchievementDescriptorRepository(); //TODO: Resolve with IoC
 
             //Dispatch in a disposable context
             using (var detectionSession = new DetectionSession(buildInformation))
             {
-                var achievementTypes = AchievementTracker.FindAllAchievementTypes();
+                var achievementDEscriptors = achievementDescriptorRepository.GetAll();
 
-                var completedAchievements = AchievementTracker.GetCompletedAchievements();
-                foreach (var achievementType in achievementTypes)
+                var uncompletedAchievements = achievementDEscriptors.Where(a => !a.IsCompleted);
+
+                foreach (var achievementDescriptor in uncompletedAchievements)
                 {
-                    var achievement = (Achievement)Activator.CreateInstance(achievementType);
-                    var descriptor = achievement.GetAchievementDescriptor();
-
-                    if (completedAchievements.Contains(descriptor.AchievementTitle)) //Skip if this achievement has already been completed
-                        continue;
+                    var achievement = (Achievement)Activator.CreateInstance(achievementDescriptor.AchievementType);
 
                     var achievementUnlocked = achievement.DetectAchievement(detectionSession);
 
                     if (achievementUnlocked)
                     {
-                        unlockedAchievements.Add(achievement);
+                        unlockedAchievements.Add(achievementDescriptor);
                     }
                 }
             }
 
             if(unlockedAchievements.Count() > 0)
             {
-                DisplayAchievements(unlockedAchievements);
+                AchievementContext.OnAchievementsUnlocked(this, unlockedAchievements);
                 return true;
             }
             return false;
-        }
-
-        /// <summary>
-        /// Dispatches an achievement on to the MainAchievement GUI
-        /// </summary>
-        /// <param name="achievements">Achievement to pass on</param>
-        private static void DisplayAchievements(IEnumerable<Achievement> achievements)
-        {
-            MainAchievementGui.DisplayAchievements(achievements);
         }
     }
 }

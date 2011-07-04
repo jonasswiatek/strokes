@@ -6,7 +6,7 @@ namespace Strokes.Core
     {
         public abstract bool DetectAchievement(DetectionSession detectionSession);
 
-        public AchievementDescriptionAttribute GetAchievementDescriptor()
+        public AchievementDescriptionAttribute GetDescriptorAttribute()
         {
             var achievementDescriptors = GetType().GetCustomAttributes(typeof(AchievementDescriptionAttribute), true);
             if (achievementDescriptors.Length == 1) /* There cannot be more of these, it's either zero or one because AllowMultiple is set to false */

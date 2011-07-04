@@ -13,6 +13,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Shell;
 using Strokes.Core;
 using Strokes.Core.Integration;
+using Strokes.Data;
 using Strokes.GUI;
 
 namespace Strokes.VSX
@@ -74,6 +75,8 @@ namespace Strokes.VSX
             //Promote the Achievement Library service
             var serviceContainer = (IServiceContainer)this;
             serviceContainer.AddService(typeof (IAchevementLibraryService), this, true);
+
+            GuiInitializer.Initialize();
         }
 
         protected override void Dispose(bool disposing)
@@ -93,7 +96,8 @@ namespace Strokes.VSX
         /// <param name="assembly"></param>
         public void RegisterAchievementAssembly(Assembly assembly)
         {
-            AchievementTracker.LoadAchievementsFromAssembly(assembly);
+            var achievementDescriptorRepository = new AchievementDescriptorRepository(); //TODO: Resolve with IoC
+            achievementDescriptorRepository.LoadFromAssembly(assembly);
         }
 
         /// <summary>
@@ -147,7 +151,8 @@ namespace Strokes.VSX
                     var documentFile = activeDocument.FullName;
                     if (documentFile.EndsWith(".cs"))
                     {
-                        DetectionDispatcher.Dispatch(new BuildInformation()
+                        var detectionDispatcher = new DetectionDispatcher();
+                        detectionDispatcher.Dispatch(new BuildInformation()
                         {
                             ActiveFile = documentFile
                         });

@@ -109,6 +109,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GuiInitializer.cs" />
     <Compile Include="MainAchievementGui.xaml.cs">
       <DependentUpon>MainAchievementGui.xaml</DependentUpon>
     </Compile>
