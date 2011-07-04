@@ -53,12 +53,26 @@ namespace Strokes.Core
             if(assembly == null)
                 throw new ArgumentNullException("assembly");
 
-            var achievementsInAssembly = assembly.GetTypes().Where(a => a.BaseType == typeof (Achievement));
+            var achievementsInAssembly = assembly.GetTypes().Where(a => IsAchievementDescendant(a.UnderlyingSystemType) && !a.IsAbstract);
             foreach(var achievement in achievementsInAssembly)
             {
                 if(!Achievements.Contains(achievement))
                     Achievements.Add(achievement);
             }
+        }
+
+        private static bool IsAchievementDescendant(Type type)
+        {
+            if (type.BaseType == null)
+                return false;
+
+            var baseType = type;
+            while(baseType.BaseType != typeof(Achievement) && baseType.BaseType != null)
+            {
+                baseType = baseType.BaseType;
+            }
+
+            return baseType.BaseType == typeof (Achievement);
         }
 
         /// <summary>
