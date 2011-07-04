@@ -8,6 +8,7 @@ namespace Strokes.Console
 {
     public class TestFile
     {
+        private int b = 2;
         public void Bla(int[] blsa)
         {
             do
