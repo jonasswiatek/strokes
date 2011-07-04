@@ -6,15 +6,18 @@ using System.Linq;
 
 namespace Strokes.Console
 {
-    public class TestFile
+    public class TestFile : IDisposable
     {
-        private int b = 2;
+        private int bla = 2;
+        private float g;
         public void Bla(int[] blsa)
         {
-            do
-            {
+            g = 4.4f;
+        }
 
-            } while (false);
+        public void Dispose()
+        {
+            
         }
     }
 }

@@ -10,8 +10,8 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Inline Commentary", AchievementDescription = "Write an inline comment", AchievementCategory = "Basic Achievements")]
-    public class InlineCommentAchievement : Achievement
+    [AchievementDescription("Block comment", AchievementDescription = "Write a block comment", AchievementCategory = "Basic Achievements")]
+    public class BlockCommentAchievement : Achievement
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
@@ -20,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
             parser.Parse();
             var specials = parser.Lexer.SpecialTracker.RetrieveSpecials();
 
-            return specials.OfType<Comment>().Any(a => a.CommentType == CommentType.SingleLine);
+            return specials.OfType<Comment>().Any(a => a.CommentType == CommentType.Block);
         }
     }
 }

@@ -10,8 +10,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare and initialize int", AchievementDescription = "Declare and initialize int in one statement", AchievementCategory = "Basic Achievements")]
-    public class IntDeclareAndInitializeAchievement : NRefactoryAchievement
+    public abstract class DeclareInitializePrimitiveType<T> : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
         {
@@ -20,9 +19,10 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            private string TypeToFind = typeof(T).ToString();
             public override object VisitFieldDeclaration(FieldDeclaration fieldDeclaration, object data)
             {
-                if (fieldDeclaration.TypeReference.Type == "System.Int32")
+                if (fieldDeclaration.TypeReference.Type == TypeToFind)
                 {
                     if(fieldDeclaration.Fields.Count > 0)
                     {
@@ -38,7 +38,7 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
-                if (localVariableDeclaration.TypeReference.Type == "System.Int32")
+                if (localVariableDeclaration.TypeReference.Type == TypeToFind)
                 {
                     if (localVariableDeclaration.Variables.Count > 0)
                     {

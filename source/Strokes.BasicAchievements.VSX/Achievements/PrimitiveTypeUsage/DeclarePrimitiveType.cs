@@ -10,8 +10,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare multiple integers in one statement", AchievementDescription = "Declare multiple integers in one go", AchievementCategory = "Basic Achievements")]
-    public class IntMultipleDeclareAchievement : NRefactoryAchievement
+    public abstract class DeclarePrimitiveType<T> : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
         {
@@ -20,13 +19,17 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            private string TypeToFind = typeof (T).ToString();
             public override object VisitFieldDeclaration(FieldDeclaration fieldDeclaration, object data)
             {
-                if (fieldDeclaration.TypeReference.Type == "System.Int32")
+                if (fieldDeclaration.TypeReference.Type == TypeToFind)
                 {
-                    if (fieldDeclaration.Fields.Count >= 2)
+                    if(fieldDeclaration.Fields.Count == 1)
                     {
-                        IsAchievementUnlocked = true;
+                        if(fieldDeclaration.Fields[0].Initializer.IsNull)
+                        {
+                            IsAchievementUnlocked = true;
+                        }
                     }
                 }
 
@@ -35,11 +38,14 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
-                if (localVariableDeclaration.TypeReference.Type == "System.Int32")
+                if (localVariableDeclaration.TypeReference.Type == TypeToFind)
                 {
-                    if (localVariableDeclaration.Variables.Count >= 2)
+                    if (localVariableDeclaration.Variables.Count == 1)
                     {
-                        IsAchievementUnlocked = true;
+                        if (localVariableDeclaration.Variables[0].Initializer.IsNull)
+                        {
+                            IsAchievementUnlocked = true;
+                        }
                     }
                 }
 

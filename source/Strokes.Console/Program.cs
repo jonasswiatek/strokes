@@ -29,7 +29,6 @@ namespace Strokes.Console
                     var specials = parser.Lexer.SpecialTracker.RetrieveSpecials();
                     // this retrieves the root node of the result AST
                     var result = parser.CompilationUnit;
-
                     if (parser.Errors.Count > 0)
                     {
                         MessageBox.Show(parser.Errors.ErrorOutput, "Parse errors");

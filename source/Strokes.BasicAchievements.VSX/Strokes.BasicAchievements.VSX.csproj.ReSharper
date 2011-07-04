@@ -1,0 +1,5 @@
+<Configuration>
+  <NamespaceFolders>
+    <SkipFolder>5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8/d:Achievements/d:PrimitiveTypeUsage</SkipFolder>
+  </NamespaceFolders>
+</Configuration>

@@ -10,9 +10,14 @@ namespace Strokes.Console
 {
     public class AchievementVisitor : ICSharpCode.NRefactory.Visitors.AbstractAstVisitor 
     {
-        public override object VisitTryCatchStatement(TryCatchStatement tryCatchStatement, object data)
+        public override object VisitAssignmentExpression(AssignmentExpression assignmentExpression, object data)
         {
-            return base.VisitTryCatchStatement(tryCatchStatement, data);
+            var primitiveExpression = assignmentExpression.Right as PrimitiveExpression;
+            if (primitiveExpression != null)
+            {
+
+            }
+            return base.VisitAssignmentExpression(assignmentExpression, data);
         }
     }
 }
