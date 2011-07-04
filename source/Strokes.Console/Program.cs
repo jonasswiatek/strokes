@@ -37,7 +37,6 @@ namespace Strokes.Console
                     result.AcceptVisitor(new AchievementVisitor(), null);
                     var bla = "";
                 }
-
                 System.Console.Read();
             }
             else
