@@ -31,6 +31,7 @@ namespace Strokes.GUI
         private void InitAchievementList()
         {
             var achievements = AchievementTracker.GetAllAchievementDescriptors();
+                       
             AchievementStack.ItemsSource = achievements;
         }
 
