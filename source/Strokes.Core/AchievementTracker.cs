@@ -67,7 +67,7 @@ namespace Strokes.Core
                 return false;
 
             var baseType = type;
-            while(baseType.BaseType != typeof(Achievement) && baseType.BaseType != null)
+            while(baseType.BaseType != null && baseType.BaseType != typeof(Achievement))
             {
                 baseType = baseType.BaseType;
             }
