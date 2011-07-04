@@ -31,6 +31,6 @@ namespace Strokes.Console
     public enum Rofl
     {
         mao,
-        lul
+        lul  //in dutch this means penis in a pejorative way :)
     }
 }
