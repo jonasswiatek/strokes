@@ -1,23 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Strokes.BasicAchievements.CocoR;
-using Strokes.BasicAchievements.CocoR.Grammars;
+using ICSharpCode.NRefactory.Ast;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Params Parameter",
-        AchievementDescription = "Write a method that uses the params keyword in it's arguments",
-        AchievementCategory = "Basic Achievements")]
-    public class ParamsParameterAchievement : Achievement
+    [AchievementDescription("Params Parameter", AchievementDescription = "Write a method that uses the params keyword in it's arguments", AchievementCategory = "Basic Achievements")]
+    public class ParamsParameterAchievement : NRefactoryAchievement
     {
-        public override bool DetectAchievement(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor()
         {
-            var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>();
-            IEnumerable<BasicAchievement> achievements =
-                cocoRDetector.DetectAchievements(detectionSession.BuildInformation.ActiveFile);
+            return new Visitor();
+        }
 
-            return achievements.Contains(BasicAchievement.ParamsParameter);
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitParameterDeclarationExpression(ParameterDeclarationExpression parameterDeclarationExpression, object data)
+            {
+                if (parameterDeclarationExpression.ParamModifier == ParameterModifiers.Params)
+                {
+                    IsAchievementUnlocked = true;
+                }
+                return base.VisitParameterDeclarationExpression(parameterDeclarationExpression, data);
+            }
         }
     }
 }

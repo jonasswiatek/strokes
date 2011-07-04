@@ -4,21 +4,47 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Strokes.BasicAchievements.CocoR;
-using Strokes.BasicAchievements.CocoR.Grammars;
+using ICSharpCode.NRefactory.Ast;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Declare multiple integers in one statement", AchievementDescription = "Declare multiple integers in one go", AchievementCategory = "Basic Achievements")]
-    public class IntMultipleDeclareAchievement : Achievement
+    public class IntMultipleDeclareAchievement : NRefactoryAchievement
     {
-        public override bool DetectAchievement(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor()
         {
-            var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>(); //Gets a cached BasicCocoRDetector instance.
-            var parser = cocoRDetector.GetParser(detectionSession.BuildInformation.ActiveFile); //Gets a parser for the document.
+            return new Visitor();
+        }
 
-            return parser.Graph.DeclaredFields.Any(a => a.FieldType == "int" && a.DeclarationCount > 1); //Any int declarations that declares more than one int.
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitFieldDeclaration(FieldDeclaration fieldDeclaration, object data)
+            {
+                if (fieldDeclaration.TypeReference.Type == "System.Int32")
+                {
+                    if (fieldDeclaration.Fields.Count >= 2)
+                    {
+                        IsAchievementUnlocked = true;
+                    }
+                }
+
+                return base.VisitFieldDeclaration(fieldDeclaration, data);
+            }
+
+            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
+            {
+                if (localVariableDeclaration.TypeReference.Type == "System.Int32")
+                {
+                    if (localVariableDeclaration.Variables.Count >= 2)
+                    {
+                        IsAchievementUnlocked = true;
+                    }
+                }
+
+                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
+            }
         }
     }
 }

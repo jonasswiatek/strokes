@@ -1,22 +1,30 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Strokes.BasicAchievements.CocoR;
-using Strokes.BasicAchievements.CocoR.Grammars;
+using ICSharpCode.NRefactory.Ast;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Try-Catch Statement", AchievementDescription = "Use a try-catch statement",
         AchievementCategory = "Basic Achievements")]
-    public class TryCatchStatementAchievement : Achievement
+    public class TryCatchStatementAchievement : NRefactoryAchievement
     {
-        public override bool DetectAchievement(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor()
         {
-            var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>();
-            IEnumerable<BasicAchievement> achievements =
-                cocoRDetector.DetectAchievements(detectionSession.BuildInformation.ActiveFile);
+            return new Visitor();
+        }
 
-            return achievements.Contains(BasicAchievement.TryCatchStatement);
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitTryCatchStatement(TryCatchStatement tryCatchStatement, object data)
+            {
+                if (tryCatchStatement.CatchClauses.Count > 0 && tryCatchStatement.FinallyBlock.IsNull)
+                {
+                    IsAchievementUnlocked = true;
+                }
+                return base.VisitTryCatchStatement(tryCatchStatement, data);
+            }
         }
     }
 }

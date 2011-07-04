@@ -1,22 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Strokes.BasicAchievements.CocoR;
-using Strokes.BasicAchievements.CocoR.Grammars;
+using ICSharpCode.NRefactory.Ast;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Lambda Expression", AchievementDescription = "Use a lambda expression",
-        AchievementCategory = "Basic Achievements")]
-    public class LambdaExpressonAchievement : Achievement
+    [AchievementDescription("Lambda Expression", AchievementDescription = "Use a lambda expression", AchievementCategory = "Basic Achievements")]
+    public class LambdaExpressonAchievement : NRefactoryAchievement
     {
-        public override bool DetectAchievement(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor()
         {
-            var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>();
-            IEnumerable<BasicAchievement> achievements =
-                cocoRDetector.DetectAchievements(detectionSession.BuildInformation.ActiveFile);
+            return new Visitor();
+        }
 
-            return achievements.Contains(BasicAchievement.LambdaExpression);
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitLambdaExpression(LambdaExpression lambdaExpression, object data)
+            {
+                IsAchievementUnlocked = true;
+                return base.VisitLambdaExpression(lambdaExpression, data);
+            }
         }
     }
 }
