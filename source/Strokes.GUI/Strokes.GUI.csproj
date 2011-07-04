@@ -171,6 +171,10 @@
       <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>
       <Name>Strokes.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Strokes.Data\Strokes.Data.csproj">
+      <Project>{798B2FC9-2538-4F93-9AF4-D7EA102C1CE7}</Project>
+      <Name>Strokes.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

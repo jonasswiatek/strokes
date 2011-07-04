@@ -31,6 +31,6 @@ namespace Strokes.Console
     public enum Rofl
     {
         mao,
-        lul  //in dutch this means penis in a pejorative way :)
+        lul  //in dutch this means penis in a pejorative way :) - haha, well it's the variation of lol I use whenever I already have a variable named that (from lulz - e.g. LulzSec).
     }
 }
