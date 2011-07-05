@@ -16,15 +16,25 @@ namespace Strokes.GUI
         /// 
         /// All handling of achievement persistance should NO LONGER be handled in this project. This project must redact all references to AchievementTracker in Strokes.Core (this class is to be deleted).
         /// </summary>
+        /// 
+
+
+
         public static void Initialize()
         {
             AchievementContext.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
+           
         }
+
+       
 
         static void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)
         {
             var debugString = "Achievements unlocked: " + string.Join(", ", args.Achievements.Select(a => a.Name));
             System.Diagnostics.Debug.WriteLine(debugString);
+
+            MainAchievementGui.DisplayAchievements(args.Achievements);
+
         }
     }
 }

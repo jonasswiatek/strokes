@@ -3,21 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:template="clr-namespace:Strokes.GUI"
         Title="" Name="MainGui" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="Manual" ResizeMode="NoResize" BorderThickness="3" Topmost="True" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Background="{x:Null}" ShowInTaskbar="False">
-    <Border BorderBrush="Silver" BorderThickness="3"  Name="border1" CornerRadius="20" Background="#FF585858" HorizontalAlignment="Left" VerticalAlignment="Top">
-        <Grid Name="BorderInnerGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" ></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard Name="FormFade">
+                    <DoubleAnimation  Name="FormFadeAnimation"
+                                            Storyboard.TargetName="MainGui"
+                                            Storyboard.TargetProperty="(Window.Opacity)"
+                                            From="0.0" To="1.0" Duration="0:0:1"
+                                            AutoReverse="False" RepeatBehavior="1x"
+                                         />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Border BorderBrush="DarkKhaki" BorderThickness="3"  Name="border1" CornerRadius="2" Background="#FF585858" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid Name="BorderInnerGrid" Height="100" Width="250" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"></RowDefinition>
-                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="auto" ></RowDefinition>
+                <RowDefinition ></RowDefinition>
             </Grid.RowDefinitions>
            
-            <TextBlock Text="Achievement Unlocked" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="15,0,0,0" FontSize="20" FontWeight="Bold" Foreground="#FFCBCBCB" />
-            <template:AchievementTemplate Grid.Row="1" Grid.Column="0"  Margin="15,0,0,5" x:Name="achievementtemplate"   />
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="progress"  HorizontalAlignment="Right" Margin="0,15,15,0" Name="achievementProgress_txb" VerticalAlignment="Top" Foreground="#FFCBCBCB"/>
-            <Button  Grid.Row="1" Grid.Column="1" Content="View more"  HorizontalAlignment="Left" Margin="15,15,15,15" Name="viewmore_button" VerticalAlignment="Top" Click="viewmore_button_Click" />
+            <TextBlock Text="Achievement Unlocked" Grid.Row="0"  HorizontalAlignment="Left" Margin="15,0,0,0" FontSize="12"  Foreground="#FFCBCBCB" />
+            <template:AchievementTemplate Grid.Row="1"  Margin="15,0,0,5"  />
+           
+           
         </Grid>
     </Border>
 </Window>

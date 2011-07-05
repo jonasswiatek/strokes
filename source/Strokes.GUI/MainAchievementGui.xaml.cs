@@ -8,7 +8,7 @@ using System.Linq;
 using CSharpAchiever.GUI;
 using CSharpAchiever.GUI.AchievementIndex;
 using Strokes.Core;
-
+using Strokes.Core.Model;
 namespace Strokes.GUI
 {
     /// <summary>
@@ -16,145 +16,79 @@ namespace Strokes.GUI
     /// </summary>
     public partial class  MainAchievementGui : Window
     {
-        private Timer timer;
-        private int closeTimeout = 6000;
-        private int currentTime;
-        private int interval = 200;
-
-        private Queue<Achievement> achievementQueue;
+        private DispatcherTimer _timer;
+        private Queue<AchievementDescriptor> _achievementsQueue;
 
         private static MainAchievementGui _achievementGui = null;
 
-        public MainAchievementGui(IEnumerable<Achievement> achievements)
+        public MainAchievementGui(IEnumerable<AchievementDescriptor> achievements)
         {
             InitializeComponent();
-
+            _achievementsQueue = new Queue<AchievementDescriptor>(achievements);
             //Align window
-            Left = 50;
-            Top = SystemParameters.PrimaryScreenHeight - Height - 100;
+            
+            if (_achievementsQueue.Count == 0)
+                this.Close();
 
-            //Click in window close feature
-            MouseDown += AchievementMouseDown;
-
-            //Create achievement queue
-            achievementQueue = new Queue<Achievement>(achievements);
-            if(achievementQueue.Count == 0)
-            {
-                CloseWindow();
-            }
-
-            //Pop first achievement
             PopAchievement();
+            
         }
 
-        public static void DisplayAchievements(IEnumerable<Achievement> achievements)
+        public static void DisplayAchievements(IEnumerable<AchievementDescriptor> achievements)
         {
-            if(_achievementGui != null)
+            if (_achievementGui != null) //Aaah:) Singleton pattern. Couldn't figure this one out at forst.
             {
-                foreach(var achievement in achievements)
+                foreach (var achievement in achievements)
                 {
-                    if (!_achievementGui.achievementQueue.Any(a => a.GetDescriptorAttribute().AchievementTitle == achievement.GetDescriptorAttribute().AchievementTitle))
-                    {
-                        _achievementGui.achievementQueue.Enqueue(achievement);
-                    }
+                    _achievementGui._achievementsQueue.Enqueue(achievement);
                 }
-
-                return; //return out, app is already running and the required stuff has been enqueued
+                return;
             }
 
             _achievementGui = new MainAchievementGui(achievements);
 
             if (Application.Current != null)
-            {
                 _achievementGui.Show();
-            }
             else
-            {
                 new Application().Run(_achievementGui);
-            }
         }
+
 
         private void PopAchievement()
         {
-            #region Fade out/in
-
-            var storyboard = new Storyboard();
-            var duration = new TimeSpan(0, 0, 0, 0, 500);
-
-            var fadeOut = new DoubleAnimation { From = 1.0, To = 0.0, Duration = new Duration(duration) };
-            var fadeIn = new DoubleAnimation { From = 0.0, To = 1.0, Duration = new Duration(duration) };
-
-            Storyboard.SetTarget(fadeOut, this);
-            Storyboard.SetTargetProperty(fadeOut, new PropertyPath(OpacityProperty));
-
-            Storyboard.SetTarget(fadeIn, this);
-            Storyboard.SetTargetProperty(fadeIn, new PropertyPath(OpacityProperty));
-
-            if (Opacity > 0.0)
-            {
-                storyboard.Children.Add(fadeOut);
-                fadeIn.BeginTime = duration; //offset fadein
-            }
-            storyboard.Children.Add(fadeIn);
-            storyboard.Begin(this);
-
-            #endregion
-
            
-            var ach = achievementQueue.Dequeue();
 
-            var descriptor = ach.GetDescriptorAttribute();
-            AchievementTracker.RegisterAchievementCompleted(descriptor);
-            achievementtemplate.DataContext = descriptor;
+            var ach = _achievementsQueue.Dequeue();
+            ach.IsCompleted = true; //Temporary fix to show the correct icon (better is ISCompleted is set to true before we enter this)
+            this.DataContext = ach;
+
+            this.Show();
+
+            this.Top = SystemParameters.PrimaryScreenHeight - 100 -5; //Ugly hardcoding; but somehow not able to get windowdimensions
+            this.Left = SystemParameters.PrimaryScreenWidth - 250 -5;
+            //Todo bind progress
+
+            _timer = new DispatcherTimer();
+            _timer.Tick+=new EventHandler(timer_Elapsed);
+            _timer.Interval = new TimeSpan(0, 0, 2);
+            _timer.Start();
+                     
             
-            
-            //Set progress info
-            var allAchievements = AchievementTracker.GetAllAchievementDescriptors();
-            var completed = allAchievements.Count(a => a.IsCompleted);
-            var total = allAchievements.Count();
-
-            var text = completed + "/" + total + " completed";
-            achievementProgress_txb.Text = text;  //This could in the future also be databound/simplified, now it would only generate more code instead of less without a modelview-like tier
-
-            timer = new Timer(TimeOut, this, interval, interval);
         }
 
-        void AchievementMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+
+        void timer_Elapsed(object sender, EventArgs e)
         {
-            currentTime = closeTimeout;
-        }
-
-        private void CloseWindow()
-        {
-            _achievementGui = null;
-            Close();
-        }
-
-        private void TimeOut(object state)
-        {
-            currentTime = currentTime + interval;
-
-            Console.WriteLine(currentTime);
-
-            if (currentTime >= closeTimeout)
+            _timer.Stop();
+            if (_achievementsQueue.Count == 0)
             {
-                timer.Change(int.MaxValue, int.MaxValue);
-                if(achievementQueue.Count == 0)
-                {
-                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(CloseWindow));
-                }
-                else
-                {
-                    currentTime = 0;
-                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(PopAchievement));
-                }
+                this.Close();
             }
+            else
+                this.PopAchievement();
         }
 
-        private void viewmore_button_Click(object sender, RoutedEventArgs e)
-        {
-            var achievementIndex = new AchievementIndex();
-            achievementIndex.Show();
-        }
+
+
     }
 }

@@ -16,8 +16,8 @@
         </Grid.ColumnDefinitions>
         <Image Height="40" Grid.Column="0"  Margin="5,5,5,5" Name="image1"  Width="40" Source="{Binding IsCompleted, Converter={StaticResource ImageConverter}}" />
         <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10,5,5,5">
-            <TextBlock Text="{Binding AchievementTitle}"  Name="achievement_title"  FontWeight="Bold" Foreground="#FFCBCBCB" />
-            <TextBlock Name="achievement_description" Text="{Binding AchievementDescription}" TextWrapping="Wrap" Foreground="#FFCBCBCB"  />
+            <TextBlock Text="{Binding Name}"  Name="achievement_title"  FontWeight="Bold" Foreground="GreenYellow" />
+            <TextBlock Name="achievement_description" Text="{Binding Description}" TextWrapping="Wrap" Foreground="#FFCBCBCB"  />
         </StackPanel>
     </Grid>
 </UserControl>
