@@ -21,23 +21,14 @@ namespace Strokes.GUI
     /// </summary>
     public partial class AchievementPane : UserControl
     {
-        
+        public AllAchievementsViewModel vm;
         public AchievementPane()
         {
             InitializeComponent();
 
-            InitAchievementList();
+             vm = new AllAchievementsViewModel();
+             this.DataContext = vm;
+
         }
-
-        private void InitAchievementList()
-        {
-            var achievementDescriptorRepository = new AchievementDescriptorRepository();
-            var achievs = achievementDescriptorRepository.GetAll(); //Please note that this method returns another object that the AchievementTracker.GetAllAchievementDescriptors(). It needs to be rewritten to run on this new dataobject (Strokes.Core.Model.AchievementDescriptor).
-
-            var achievements = AchievementTracker.GetAllAchievementDescriptors();
-                       
-            AchievementStack.ItemsSource = achievements;
-        }
-
     }
 }
