@@ -49,7 +49,6 @@
     <Compile Include="Achievement.cs" />
     <Compile Include="AchievementContext.cs" />
     <Compile Include="AchievementDescriptionAttribute.cs" />
-    <Compile Include="AchievementTracker.cs" />
     <Compile Include="BuildInformation.cs" />
     <Compile Include="Contracts\IAchievementDescriptorRepository.cs" />
     <Compile Include="DetectionSession.cs" />

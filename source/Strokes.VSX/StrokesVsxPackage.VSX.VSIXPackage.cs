@@ -5,7 +5,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.ComponentModel.Design;
 using CodeCube.CSharpAchiever_Achiever_VSIX;
-using CSharpAchiever.GUI.AchievementIndex;
 using CSharpAchiever.VSX;
 using EnvDTE;
 using Microsoft.VisualStudio;

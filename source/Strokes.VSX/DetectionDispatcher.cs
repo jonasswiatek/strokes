@@ -25,9 +25,9 @@ namespace Strokes.VSX
             //Dispatch in a disposable context
             using (var detectionSession = new DetectionSession(buildInformation))
             {
-                var achievementDEscriptors = achievementDescriptorRepository.GetAll();
+                var achievementDescriptors = achievementDescriptorRepository.GetAll();
 
-                var uncompletedAchievements = achievementDEscriptors.Where(a => !a.IsCompleted);
+                var uncompletedAchievements = achievementDescriptors.Where(a => !a.IsCompleted || AchievementContext.DisablePersist);
 
                 foreach (var achievementDescriptor in uncompletedAchievements)
                 {
@@ -37,6 +37,7 @@ namespace Strokes.VSX
 
                     if (achievementUnlocked)
                     {
+                        achievementDescriptor.IsCompleted = true;
                         unlockedAchievements.Add(achievementDescriptor);
                     }
                 }

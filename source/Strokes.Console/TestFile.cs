@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using CSharpAchiever.GUI.AchievementIndex;
 using Strokes.Core;
 using System.Linq;
 

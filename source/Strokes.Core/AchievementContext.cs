@@ -19,7 +19,6 @@ namespace Strokes.Core
             if(AchievementsUnlocked != null)
             {
                 AchievementsUnlocked(sender, new AchievementsUnlockedEventArgs {Achievements = unlockedAchievements});
-
             }
         }
     }

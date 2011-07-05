@@ -6,21 +6,14 @@ namespace Strokes.Core
     [AttributeUsage(AttributeTargets.Class, AllowMultiple=false)]
     public class AchievementDescriptionAttribute : Attribute
     {
-        /// <summary>
-        /// Indicates that this achievement has been completed.
-        /// This attribute is not meant to be configured by the implementing class, but is for internal use.
-        /// </summary>
-        public bool IsCompleted
-        {
-            get
-            {
-                var achievements = AchievementTracker.GetCompletedAchievements();
-                return achievements.Contains(AchievementTitle);
-            }
-        }
         public string AchievementTitle { get; private set; }
         public string AchievementDescription { get; set; }
         public string AchievementCategory { get; set; }
+
+        /// <summary>
+        /// ImageUri for an achievements image. This should refer to a resource within the assembly that specifies the achievement.
+        /// </summary>
+        public string ImageUri { get; set; }
 
         public AchievementDescriptionAttribute(string achievementTitle)
         {

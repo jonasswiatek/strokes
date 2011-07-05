@@ -33,7 +33,8 @@ namespace Strokes.Data
                            AchievementType = achievement.GetType(),
                            Category = descriptionAttribute.AchievementCategory,
                            Description = descriptionAttribute.AchievementDescription,
-                           Name = descriptionAttribute.AchievementTitle
+                           Name = descriptionAttribute.AchievementTitle,
+                           ImageUri = descriptionAttribute.ImageUri
                        };
         } 
     }

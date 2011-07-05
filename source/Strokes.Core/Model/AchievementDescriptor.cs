@@ -8,6 +8,7 @@ namespace Strokes.Core.Model
         public string Name { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
+        public string ImageUri { get; set; }
         public Type AchievementType { get; set; }
 
         // Inferable data

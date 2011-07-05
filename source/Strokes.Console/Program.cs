@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using CSharpAchiever.GUI.AchievementIndex;
 using ICSharpCode.NRefactory;
 using ICSharpCode.NRefactory.Ast;
 using Strokes.BasicAchievements.Achievements;
