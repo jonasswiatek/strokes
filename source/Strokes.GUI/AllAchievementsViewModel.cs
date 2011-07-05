@@ -13,7 +13,6 @@ namespace Strokes.GUI
     public class AllAchievementsViewModel: INotifyPropertyChanged
     {
         public ObservableCollection<AchievementsPerCategory> achievementsOrdered { get; set; }
-
         public AllAchievementsViewModel()
         {
             LoadModel();
@@ -23,9 +22,14 @@ namespace Strokes.GUI
 
         private void LoadModel()
         {
-            #region keep closed unless you really want to see ugly code
             var achievementDescriptorRepository = new AchievementDescriptorRepository();
             var achievs = achievementDescriptorRepository.GetAll(); //Please note that this method returns another object that the AchievementTracker.GetAllAchievementDescriptors(). It needs to be rewritten to run on this new dataobject (Strokes.Core.Model.AchievementDescriptor).
+            
+            //by Jonas: Fancy pants extension method that uses linq. AchievementCategory is now part of Strokes.Core.Model as well
+            var achievementCategories = achievs.AsCategories();
+
+            #region keep closed unless you really want to see ugly code
+            
             achievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
             //1° should we be doing this here? Better if this happens in catagory?
             //2° I think somewhat with some linq-experience can do this in 1 or 2 step?
