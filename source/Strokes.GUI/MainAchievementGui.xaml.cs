@@ -15,7 +15,7 @@ namespace Strokes.GUI
     public partial class  MainAchievementGui : Window
     {
         private DispatcherTimer _timer;
-        private Queue<AchievementDescriptor> _achievementsQueue;
+        private readonly Queue<AchievementDescriptor> _achievementsQueue;
 
         private static MainAchievementGui _achievementGui = null;
 
@@ -50,7 +50,9 @@ namespace Strokes.GUI
             _achievementGui = new MainAchievementGui(achievements);
 
             if (Application.Current != null)
-                _achievementGui.Show();
+            {
+                _achievementGui.Show();       
+            }
             else
                 new Application().Run(_achievementGui);
         }
@@ -58,16 +60,29 @@ namespace Strokes.GUI
 
         public void PopAchievement()
         {
-            var ach = _achievementsQueue.Dequeue();
-            //This has now been fixed - the dispatches sets this properly.
-            //ach.IsCompleted = true; //Temporary fix to show the correct icon (better is ISCompleted is set to true before we enter this).
-            
-            DataContext = ach;
+            var currentAchievement = _achievementsQueue.Dequeue();
+
+            DataContext = currentAchievement;
             Show();
 
             //by Jonas: Fixed this. The MainAchievementGui.xaml must specify d:DesignHeight="160" d:DesignWidth="290" as attributes for width and height to work (I think the transparent window just assumes some disproportionate size otherwise)
-            Top = SystemParameters.PrimaryScreenHeight - Height - 5;
-            Left = SystemParameters.PrimaryScreenWidth - Width - 5;
+            const int rightMargin = 5;
+            const int bottomMargin = rightMargin;
+
+            //Some fancy code, that ensures that the unlocked-box remains within the bounds of visual studio.
+            if (Application.Current != null && Application.Current.MainWindow.WindowState == WindowState.Normal) //Visual studio is not maximized, and we need to recalculate bounds.
+            {
+                var mainWindow = Application.Current.MainWindow;
+                Left = mainWindow.Left + mainWindow.Width - Width - rightMargin;
+                Top = mainWindow.Top + mainWindow.Height - Height - bottomMargin;
+            }
+            else
+            {
+                //Fullscreen mode - but we need to get the height of the system processbar (the width and height doesn't update on the MainWindow when it's manually maximized).
+                //Maybe there is something usefull for that on SystemParameters.
+                Left = SystemParameters.PrimaryScreenWidth - Width - rightMargin;
+                Top = SystemParameters.PrimaryScreenHeight - Height - bottomMargin;
+            }
 
             //Todo bind progress
 
