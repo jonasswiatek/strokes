@@ -44,6 +44,13 @@ namespace Strokes.VSX
 
             if(unlockedAchievements.Count() > 0)
             {
+                //Mark the completed achievements
+                foreach(var completedAchievement in unlockedAchievements)
+                {
+                    achievementDescriptorRepository.MarkAchievementAsCompleted(completedAchievement);
+                }
+
+                //Dispatch to event listeners
                 AchievementContext.OnAchievementsUnlocked(this, unlockedAchievements);
                 return true;
             }

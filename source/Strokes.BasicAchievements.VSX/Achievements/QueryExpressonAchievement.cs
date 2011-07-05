@@ -1,22 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Strokes.BasicAchievements.CocoR;
-using Strokes.BasicAchievements.CocoR.Grammars;
+using ICSharpCode.NRefactory.Ast;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Query Expression", AchievementDescription = "Use a query expression",
         AchievementCategory = "Basic Achievements")]
-    public class QueryExpressonAchievement : Achievement
+    public class QueryExpressonAchievement : NRefactoryAchievement
     {
-        public override bool DetectAchievement(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor()
         {
-            var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>();
-            IEnumerable<BasicAchievement> achievements =
-                cocoRDetector.DetectAchievements(detectionSession.BuildInformation.ActiveFile);
+            return new Visitor();
+        }
 
-            return achievements.Contains(BasicAchievement.QueryExpression);
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitQueryExpression(QueryExpression queryExpression, object data)
+            {
+                IsAchievementUnlocked = true;
+                return base.VisitQueryExpression(queryExpression, data);
+            }
         }
     }
 }

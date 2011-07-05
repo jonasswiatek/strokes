@@ -11,7 +11,7 @@ using Strokes.Core.Model;
 
 namespace Strokes.Data
 {
-    public class AchievementDescriptorRepository : IAchievementDescriptorRepository 
+    public class AchievementDescriptorRepository : IAchievementDescriptorRepository
     {
         private static readonly List<AchievementDescriptor> Achievements = new List<AchievementDescriptor>();
         private const string AchievementStorageDirectory = "Strokes for Visual Studio";
@@ -39,9 +39,8 @@ namespace Strokes.Data
             }
         }
 
-        public void MarkAchievementAsCompleted(Achievement achievement)
+        public void MarkAchievementAsCompleted(AchievementDescriptor achievementDescriptor)
         {
-            var achievementDescriptor = achievement.GetAchievementDescriptor();
             var completedAchievement = new CompletedAchievement(achievementDescriptor)
                                            {
                                                DateCompleted = DateTime.Now,
@@ -94,7 +93,10 @@ namespace Strokes.Data
 
             using(var file = File.Open(filename, FileMode.OpenOrCreate)) //Ensure disposal of file handle
             {
-                var serializer = new XmlSerializer(typeof(CompletedAchievement));
+                if(file.Length <= 0)
+                    return new List<CompletedAchievement>();
+
+                var serializer = new XmlSerializer(typeof(List<CompletedAchievement>));
                 var completedAchievements = (List<CompletedAchievement>)serializer.Deserialize(file);
 
                 return completedAchievements;
@@ -103,11 +105,14 @@ namespace Strokes.Data
 
         private static void PersistCompletedAchievements()
         {
+            if (AchievementContext.DisablePersist)
+                return;
+
             var filename = GetAchievementStorageFile();
 
             using (var file = File.Open(filename, FileMode.Create)) //Ensure disposal of file handle
             {
-                var serializer = new XmlSerializer(typeof(CompletedAchievement));
+                var serializer = new XmlSerializer(typeof(List<CompletedAchievement>));
                 serializer.Serialize(file, CompletedAchievements);
             }
         }

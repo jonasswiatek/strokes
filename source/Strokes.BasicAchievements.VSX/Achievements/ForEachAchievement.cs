@@ -1,22 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Strokes.BasicAchievements.CocoR;
-using Strokes.BasicAchievements.CocoR.Grammars;
+using ICSharpCode.NRefactory.Ast;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Foreach loop", AchievementDescription = "Use a foreach loop",
         AchievementCategory = "Basic Achievements")]
-    public class ForEachAchievement : Achievement
+    public class ForEachAchievement : NRefactoryAchievement
     {
-        public override bool DetectAchievement(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor()
         {
-            var cocoRDetector = detectionSession.GetSessionObjectOfType<BasicCocoRDetector>();
-            IEnumerable<BasicAchievement> achievements =
-                cocoRDetector.DetectAchievements(detectionSession.BuildInformation.ActiveFile);
+            return new Visitor();
+        }
 
-            return achievements.Contains(BasicAchievement.ForeachLoop);
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitForeachStatement(ForeachStatement foreachStatement, object data)
+            {
+                IsAchievementUnlocked = true;
+                return base.VisitForeachStatement(foreachStatement, data);
+            }
         }
     }
 }
