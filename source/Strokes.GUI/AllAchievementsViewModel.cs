@@ -24,40 +24,21 @@ namespace Strokes.GUI
 
         private void ReLoadModel()
         {
-            #region keep closed unless you really want to see ugly code
-            var achievementDescriptorRepository = new AchievementDescriptorRepository();
-            var achievs = achievementDescriptorRepository.GetAll(); //Please note that this method returns another object that the AchievementTracker.GetAllAchievementDescriptors(). It needs to be rewritten to run on this new dataobject (Strokes.Core.Model.AchievementDescriptor).
+            
             achievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
 
-            //1° should we be doing this here? Better if this happens in achievementrepo?
+            var achievementDescriptorRepository = new AchievementDescriptorRepository();
+            var achievs = achievementDescriptorRepository.GetAll(); //Please note that this method returns another object that the AchievementTracker.GetAllAchievementDescriptors(). It needs to be rewritten to run on this new dataobject (Strokes.Core.Model.AchievementDescriptor).
+            var achcats = achievs.AsCategories();
 
-            //Get all categories
-            List<string> allcats = new List<string>();
-            foreach (var ach in achievs)
+            foreach (var achcat in achcats)
             {
-                if (!allcats.Contains(ach.Category))
-                {
-                    allcats.Add(ach.Category);
-                    achievementsOrdered.Add(new AchievementsPerCategory() { CategoryName = ach.Category });
-                }
-
-                //Insert into correct category
-                var achcat = (from p in achievementsOrdered where p.CategoryName == ach.Category select p).Single();
-                achcat.Add(ach);
+                AchievementsPerCategory cattoadd= new AchievementsPerCategory(){CategoryName= achcat.CategoryName};
+                foreach (var ach in achcat.Achievements)
+                    cattoadd.Add(ach);
+                achievementsOrdered.Add(cattoadd);
             }
-
-
-
-
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                achievementsOrdered.Add(new AchievementsPerCategory() { CategoryName = "Test" });
-                achievementsOrdered[1].Add(new AchievementDescriptor() { Description = "Test 1 2 3", Name = "Debug achievement" });
-                achievementsOrdered[1].Add(new AchievementDescriptor() { Description = "Test 1 2 3 completed", Name = "Debug achievement", IsCompleted = true });
-            }
-            #endregion
-            
-            
+   
             TotalAchievements = (from t in achievementsOrdered select t.Count).Sum();
             TotalCompleted = (from t in achievementsOrdered select t.TotalCompleted).Sum();
            
