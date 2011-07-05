@@ -7,6 +7,63 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1024">
 
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" >
+            <Setter Property="FontFamily" Value="Arial"></Setter>
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="Margin" Value="5,5,5,5"></Setter>
+            <Setter Property="Foreground" Value="LightGray"></Setter>
+        </Style>
+
+        <Style x:Key="TitleStyle" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+        <Style TargetType="Grid" >
+            <Setter Property="Background" Value="#FF585858"></Setter>
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="#FF585858"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+        </Style>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Background" Value="#FF585858"></Setter>
+            <Setter Property="Margin" Value="2"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="BurlyWood"></Setter>
+                    
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+
+            <DataTemplate x:Key="AchievementTemplate" >
+            
+                <Border BorderThickness="1" Margin="1" 
+                        BorderBrush="Orange" 
+                        Background="{Binding Path=Background, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}">
+                    <Grid  >
+                        <local:AchievementTemplate Margin="5" />
+                    </Grid>
+                </Border>
+           
+        </DataTemplate>
+
+        <DataTemplate x:Key="CategoryTemplate">
+            <Grid Background="Orange" Margin="0">
+                <Border BorderThickness="1" Margin="2" 
+                        BorderBrush="Teal" 
+                        Background="{Binding Path=Background, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}">
+                    <Grid Margin="2" >
+                        <TextBlock HorizontalAlignment="Center"  Text="{Binding CategoryName}" Style="{StaticResource TitleStyle}"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
     
     <Grid>
         <Grid.RowDefinitions>
@@ -20,37 +77,35 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.ColumnSpan="3" Margin="10,10,10,10">
-            <TextBlock>Information page</TextBlock>
+            <TextBlock Style="{StaticResource TitleStyle}">Information page</TextBlock>
             <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center"> Log in to strokes to get your achievements tracked and stuff. </TextBlock>
             </Border>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Margin="10,10,10,10">
-            <TextBlock>Achievement Categories</TextBlock>
-            <ListBox Margin="5,5,5,5" x:Name="categroriesLB" IsSynchronizedWithCurrentItem="true" ItemsSource="{Binding Path=achievementsOrdered}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding CategoryName}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+            <TextBlock Style="{StaticResource TitleStyle}">Achievement Categories</TextBlock>
+            <ListBox Margin="5,5,5,5" 
+                     x:Name="categroriesLB" 
+                     IsSynchronizedWithCurrentItem="true" 
+                     ItemsSource="{Binding Path=achievementsOrdered}"
+                     ItemTemplate="{StaticResource CategoryTemplate}"
+                     >
+
             </ListBox>
         </StackPanel>
 
 
         <ListBox Margin="10,10,10,10" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                 Grid.Row="1" Grid.Column="1"  Background="#FF585858"
-                 ItemsSource="{Binding Path=achievementsOrdered/Achievements}" >
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <local:AchievementTemplate Margin="10" />
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-           
+                 Grid.Row="1" Grid.Column="1" 
+                 ItemsSource="{Binding Path=achievementsOrdered/Achievements}" 
+                 ItemTemplate="{StaticResource AchievementTemplate}">
 
+        </ListBox>
 
         <StackPanel Grid.Column="2" Grid.Row="1" Margin="10,10,10,10">
-            <TextBlock TextWrapping="Wrap">Information about what achievements other people you know have been completing.</TextBlock>
+            <TextBlock TextWrapping="Wrap">
+                Information about what achievements other people you know have been completing.
+            </TextBlock>
             <ListBox></ListBox>
 
         </StackPanel>

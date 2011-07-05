@@ -9,7 +9,7 @@
     <UserControl.Resources>
         <local:BoolToImageUriConverter x:Key="ImageConverter"/>
     </UserControl.Resources>
-    <Grid Margin="10" Background="#FF585858" >
+    <Grid  Background="#FF585858" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
