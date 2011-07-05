@@ -13,22 +13,23 @@ namespace Strokes.GUI
     public class AllAchievementsViewModel: INotifyPropertyChanged
     {
         public ObservableCollection<AchievementsPerCategory> achievementsOrdered { get; set; }
-
+        public int TotalCompleted { get; set; }
+        public int TotalAchievements { get; set; }
         public AllAchievementsViewModel()
         {
-            LoadModel();
-
+            ReLoadModel();
+            
             AchievementContext.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
         }
 
-        private void LoadModel()
+        private void ReLoadModel()
         {
             #region keep closed unless you really want to see ugly code
             var achievementDescriptorRepository = new AchievementDescriptorRepository();
             var achievs = achievementDescriptorRepository.GetAll(); //Please note that this method returns another object that the AchievementTracker.GetAllAchievementDescriptors(). It needs to be rewritten to run on this new dataobject (Strokes.Core.Model.AchievementDescriptor).
             achievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
-            //1° should we be doing this here? Better if this happens in catagory?
-            //2° I think somewhat with some linq-experience can do this in 1 or 2 step?
+
+            //1° should we be doing this here? Better if this happens in achievementrepo?
 
             //Get all categories
             List<string> allcats = new List<string>();
@@ -42,25 +43,34 @@ namespace Strokes.GUI
 
                 //Insert into correct category
                 var achcat = (from p in achievementsOrdered where p.CategoryName == ach.Category select p).Single();
-                achcat.Achievements.Add(ach);
+                achcat.Add(ach);
             }
 
-            //DEbug test
-            achievementsOrdered.Add(new AchievementsPerCategory() { CategoryName = "Test" });
-            achievementsOrdered[1].Achievements.Add(new AchievementDescriptor() { Description = "Test 1 2 3", Name = "Debug achievement" });
+
+
+
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                achievementsOrdered.Add(new AchievementsPerCategory() { CategoryName = "Test" });
+                achievementsOrdered[1].Add(new AchievementDescriptor() { Description = "Test 1 2 3", Name = "Debug achievement" });
+                achievementsOrdered[1].Add(new AchievementDescriptor() { Description = "Test 1 2 3 completed", Name = "Debug achievement", IsCompleted = true });
+            }
             #endregion
+            
+            
+            TotalAchievements = (from t in achievementsOrdered select t.Count).Sum();
+            TotalCompleted = (from t in achievementsOrdered select t.TotalCompleted).Sum();
+           
         }
 
         void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)
         {
-
-            LoadModel();
+            ReLoadModel();
             OnPropertyChanged("achievementsOrdered");
+            OnPropertyChanged("TotalCompleted");
         }
 
-
-
-
+        #region INotify stuff
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
@@ -72,18 +82,30 @@ namespace Strokes.GUI
             }
 
         }
+        #endregion
     }
 
-    public class AchievementsPerCategory 
+    public class AchievementsPerCategory:ObservableCollection<AchievementDescriptor> 
     {
-        public string CategoryName { get; set; }
-        public ObservableCollection<AchievementDescriptor> Achievements { get; set; }
+                
+        public string CategoryName { get; set; }        
+        public int TotalCompleted { get; set; }
+       
 
         public AchievementsPerCategory()
         {
             CategoryName = "Not Set";
-            Achievements = new ObservableCollection<AchievementDescriptor>();
+            TotalCompleted = 0;
+           
         }
+
+        protected override void InsertItem(int index, AchievementDescriptor item)
+        {
+            if (item.IsCompleted)
+                TotalCompleted++;
+            
+            base.InsertItem(index, item);
+        } 
 
     }
 }
