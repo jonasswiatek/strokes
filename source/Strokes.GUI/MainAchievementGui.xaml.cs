@@ -54,7 +54,9 @@ namespace Strokes.GUI
                 _achievementGui.Show();       
             }
             else
+            {
                 new Application().Run(_achievementGui);
+            }
         }
 
 
@@ -70,7 +72,7 @@ namespace Strokes.GUI
             const int bottomMargin = rightMargin;
 
             //Some fancy code, that ensures that the unlocked-box remains within the bounds of visual studio.
-            if (Application.Current != null && Application.Current.MainWindow.WindowState == WindowState.Normal) //Visual studio is not maximized, and we need to recalculate bounds.
+            if (Application.Current != null && Application.Current.MainWindow.WindowState == WindowState.Normal && Application.Current.MainWindow != this) //Visual studio is not maximized, and we need to recalculate bounds.
             {
                 var mainWindow = Application.Current.MainWindow;
                 Left = mainWindow.Left + mainWindow.Width - Width - rightMargin;
@@ -78,16 +80,15 @@ namespace Strokes.GUI
             }
             else
             {
-                //Fullscreen mode - but we need to get the height of the system processbar (the width and height doesn't update on the MainWindow when it's manually maximized).
-                //Maybe there is something usefull for that on SystemParameters.
+                //Fullscreen mode. Adjusts for processbar and frame-borders.
                 Left = SystemParameters.PrimaryScreenWidth - Width - rightMargin;
-                Top = SystemParameters.PrimaryScreenHeight - Height - bottomMargin;
+                Top = SystemParameters.MaximizedPrimaryScreenHeight - SystemParameters.ResizeFrameHorizontalBorderHeight - Height - bottomMargin;
             }
 
             //Todo bind progress
 
             _timer = new DispatcherTimer();
-            _timer.Tick+=new EventHandler(timer_Elapsed);
+            _timer.Tick += timer_Elapsed;
             _timer.Interval = new TimeSpan(0, 0, 2);
             _timer.Start();
         }

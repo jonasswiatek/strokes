@@ -7,9 +7,13 @@ namespace Strokes.Console
 {
     public class TestFile
     {
+        private const int b = 2;
         public void Bla(int[] blsa)
         {
-            System.Console.WriteLine("Rofl: {0}", 2);
+            while(true)
+            {
+                
+            }
         }
     }
 }

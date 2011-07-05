@@ -116,6 +116,7 @@
     <Compile Include="Achievements\AnonymousObjectAchievement.cs" />
     <Compile Include="Achievements\ConstKeywordAchievement.cs" />
     <Compile Include="Achievements\BlockCommentAchievement.cs" />
+    <Compile Include="Achievements\InfiniteWhileLoopAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\AbstractMethodCall.cs" />
     <Compile Include="Achievements\MethodCalls\PrintWithPlaceholdersAchevement.cs" />
     <Compile Include="Achievements\MethodCalls\PrintToConsoleAchevement.cs" />
