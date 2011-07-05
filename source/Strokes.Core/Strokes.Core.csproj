@@ -54,6 +54,7 @@
     <Compile Include="Contracts\IAchievementDescriptorRepository.cs" />
     <Compile Include="DetectionSession.cs" />
     <Compile Include="Integration\IAchevementLibraryService.cs" />
+    <Compile Include="Model\AchievementCategory.cs" />
     <Compile Include="Model\AchievementDescriptor.cs" />
     <Compile Include="Model\CompletedAchievement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
