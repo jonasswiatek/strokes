@@ -48,8 +48,8 @@
                         Background="{Binding Path=Background, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}">
             <Grid  >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <local:AchievementTemplateBare Grid.Column="0" Margin="5" />
                 <Image Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1"  Margin="5,5,5,5"  Width="40" Source="{Binding IsCompleted, Converter={StaticResource ImageConverter}}" />
