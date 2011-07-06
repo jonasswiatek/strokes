@@ -20,14 +20,14 @@
     </Window.Triggers>
 
     <Border BorderBrush="DarkKhaki" BorderThickness="3"  Name="border1" CornerRadius="2" Background="#FF585858" HorizontalAlignment="Left" VerticalAlignment="Top">
-        <Grid Name="BorderInnerGrid" Height="100" Width="250" >
+        <Grid Name="BorderInnerGrid" Height="100" Width="300" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" ></RowDefinition>
                 <RowDefinition ></RowDefinition>
             </Grid.RowDefinitions>
            
             <TextBlock Text="Achievement Unlocked" Grid.Row="0"  HorizontalAlignment="Left" Margin="15,0,0,0" FontSize="12"  Foreground="#FFCBCBCB" />
-            <template:AchievementTemplate Grid.Row="1"  Margin="15,0,0,5"  />
+            <template:AchievementTemplateBare Grid.Row="1"  Margin="15,0,0,5"  />
            
            
         </Grid>

@@ -80,33 +80,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AllAchievementsViewModel.cs" />
+    <Compile Include="Resources\AchievementTemplateBare.xaml.cs">
+      <DependentUpon>AchievementTemplateBare.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Convertors\BoolToImageUriConverter.cs" />
+    <Compile Include="ViewModels\AllAchievementsViewModel.cs" />
     <Page Include="AchievementPane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AchievementTemplate.xaml">
+    <Page Include="Resources\AchievementTemplateBare.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainAchievementGui.xaml">
+    <Page Include="Resources\MainAchievementGui.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="AchievementPane.xaml.cs">
       <DependentUpon>AchievementPane.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AchievementTemplate.xaml.cs">
-      <DependentUpon>AchievementTemplate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GuiInitializer.cs" />
-    <Compile Include="MainAchievementGui.xaml.cs">
+    <Compile Include="Resources\MainAchievementGui.xaml.cs">
       <DependentUpon>MainAchievementGui.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
