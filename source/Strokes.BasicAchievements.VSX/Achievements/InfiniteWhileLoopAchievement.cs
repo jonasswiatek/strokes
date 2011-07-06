@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Infinite while loop", AchievementDescription = "Create an infinite while-loop", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Infinite while loop", AchievementDescription = "Create an infinite while-loop", AchievementCategory = "Funny Achievements")]
     public class InfiniteWhileLoopAchievement : NRefactoryAchievement
     {
         //Abstract method enforced by the base-class

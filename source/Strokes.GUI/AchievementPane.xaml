@@ -59,9 +59,9 @@
                     <Grid Margin="2" >
                         <StackPanel Orientation="Horizontal">
                         <TextBlock HorizontalAlignment="Center"  Text="{Binding CategoryName}" Style="{StaticResource TitleStyle}"/>
-                            <TextBlock Text="{Binding TotalCompleted}"></TextBlock>
+                            <TextBlock Text="{Binding TotalCompleted, Mode=OneWay}"></TextBlock>
                             <TextBlock Text="/"></TextBlock>
-                            <TextBlock Text="{Binding Count}"></TextBlock>
+                            <TextBlock Text="{Binding Count, Mode=OneWay}"></TextBlock>
                         </StackPanel>
                     </Grid>
                 </Border>
@@ -87,14 +87,18 @@
                 <StackPanel Orientation="Vertical">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center"> Log in to strokes to get your achievements tracked and stuff. </TextBlock>
                     <TextBlock>Summary:</TextBlock>
-                    <StackPanel Orientation="Horizontal" Margin="15">
-                         <TextBlock> Total achievements earned: </TextBlock>
-                        <TextBlock Text="{Binding TotalCompleted}"></TextBlock>
-                        <TextBlock Text=" of "></TextBlock>
-                        <TextBlock Text="{Binding TotalAchievements}"></TextBlock>
-                        
-                    </StackPanel>
-                    <ProgressBar Margin="15,0,15,5" Height ="20" Value="{Binding TotalCompleted}" Maximum="{Binding TotalAchievements}" Background="#FF9A9A9A" Foreground="#FF7DF25A"></ProgressBar>
+                    <TextBlock Margin="15">
+                        <TextBlock.Inlines>
+                            <Run> Total achievements earned: </Run>
+                            <Run Text="{Binding TotalCompleted, Mode=OneWay}"></Run>
+                            <Run> of </Run>
+                            <Run Text="{Binding TotalAchievements, Mode=OneWay}"></Run>
+                            <Run> (</Run>
+                            <Run Text="{Binding PercentageCompleted, Mode=OneWay}"></Run>
+                            <Run> %)</Run>
+                        </TextBlock.Inlines>
+                    </TextBlock>
+                    <ProgressBar Margin="15,0,15,5" Height ="20" Value="{Binding TotalCompleted, Mode=OneWay}" Maximum="{Binding TotalAchievements}" Background="#FF9A9A9A" Foreground="#FF7DF25A"></ProgressBar>
                 </StackPanel>
                 
             </Border>
