@@ -7,9 +7,9 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
     [AchievementDescription("Ghost in the Shell", AchievementDescription = "Print something to the console", AchievementCategory = "Basic Achievements")]
-    public class PrintToConsoleAchevement : AbstractMethodCall
+    public class PrintToConsoleAchievement : AbstractMethodCall
     {
-        public PrintToConsoleAchevement() : base("System.Console.WriteLine")
+        public PrintToConsoleAchievement() : base("System.Console.WriteLine")
         {
         }
     }

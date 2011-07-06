@@ -6,9 +6,8 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Query Expression", AchievementDescription = "Use a query expression",
-        AchievementCategory = "Basic Achievements")]
-    public class QueryExpressonAchievement : NRefactoryAchievement
+    [AchievementDescription("Lambda Expression", AchievementDescription = "Use a lambda expression", AchievementCategory = "Basic Achievements")]
+    public class LambdaExpressionAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
         {
@@ -17,10 +16,10 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            public override object VisitQueryExpression(QueryExpression queryExpression, object data)
+            public override object VisitLambdaExpression(LambdaExpression lambdaExpression, object data)
             {
                 IsAchievementUnlocked = true;
-                return base.VisitQueryExpression(queryExpression, data);
+                return base.VisitLambdaExpression(lambdaExpression, data);
             }
         }
     }

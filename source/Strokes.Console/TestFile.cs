@@ -7,13 +7,17 @@ namespace Strokes.Console
 {
     public class TestFile
     {
-        private const int b = 2;
+       
         public void Bla(int[] blsa)
         {
-            while(true)
+            switch (3)
             {
-                
+                default:
+                    break;
             }
+            
+           
+
         }
     }
 }

@@ -7,9 +7,9 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
     [AchievementDescription("Print with placeholders", AchievementDescription = "Print something to the console using placeholders", AchievementCategory = "Basic Achievements")]
-    public class PrintWithPlaceholdersAchevement : AbstractMethodCall
+    public class PrintWithPlaceholdersAchievement : AbstractMethodCall
     {
-        public PrintWithPlaceholdersAchevement() : base("System.Console.WriteLine")
+        public PrintWithPlaceholdersAchievement() : base("System.Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
                                      {
