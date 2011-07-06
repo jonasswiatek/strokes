@@ -157,8 +157,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="480px-symbol_check_svg.png" />
-    <Resource Include="Cross_red_3d.png" />
+    <Resource Include="Icons\checked.png" />
+    <Resource Include="Icons\cross.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
@@ -170,7 +170,15 @@
       <Name>Strokes.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Icons\Basic\AnonObject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Basic\BlockComment.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

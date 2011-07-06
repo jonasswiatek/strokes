@@ -40,9 +40,9 @@ namespace Strokes.GUI
                     image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
 
                     if ((bool)value)
-                        image.UriSource = new System.Uri("pack://application:,,,/Strokes.GUI;component/480px-symbol_check_svg.png");
+                        image.UriSource = new System.Uri("pack://application:,,,/Strokes.GUI;component/Icons/checked.png");
                     else
-                        image.UriSource = new System.Uri("pack://application:,,,/Strokes.GUI;component/Cross_red_3d.png");
+                        image.UriSource = new System.Uri("pack://application:,,,/Strokes.GUI;component/Icons/cross.png");
 
                     image.EndInit();
                 }
