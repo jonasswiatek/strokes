@@ -10,11 +10,12 @@ namespace Strokes.Console
        
         public void Bla(int[] blsa)
         {
-            int i = 5;
+            goto test;
 
-            int j = (int)i;
+            test:
+            int i;
            
-
+            
         }
     }
 }

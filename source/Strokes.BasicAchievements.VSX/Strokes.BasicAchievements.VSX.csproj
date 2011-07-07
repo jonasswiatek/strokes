@@ -114,11 +114,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Achievements\AnonymousObjectAchievement.cs" />
+    <Compile Include="Achievements\CastAchievement.cs" />
     <Compile Include="Achievements\ConstKeywordAchievement.cs" />
     <Compile Include="Achievements\BlockCommentAchievement.cs" />
+    <Compile Include="Achievements\Funny\GotoAchievement.cs" />
     <Compile Include="Achievements\Expressions\OperatorAndAchievement.cs" />
     <Compile Include="Achievements\Expressions\OperatorOrAchievement.cs" />
     <Compile Include="Achievements\Expressions\IfCompoundExpressionAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\PrintToConsoleAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\DefaultCaseInSwitchAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\SwitchAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\ElseIfStatementAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\IfElseStatementAchievement.cs" />
@@ -126,7 +130,7 @@
     <Compile Include="Achievements\Funny\InfiniteWhileLoopAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\AbstractMethodCall.cs" />
     <Compile Include="Achievements\MethodCalls\PrintWithPlaceholdersAchievement.cs" />
-    <Compile Include="Achievements\MethodCalls\PrintToConsoleAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\UseConsoleReadLineAchievement.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\AssignValueToPrimitiveType.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Double\AssignDouble.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Double\DeclareInitializeDouble.cs" />
