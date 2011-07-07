@@ -116,6 +116,7 @@
     <Compile Include="Achievements\AnonymousObjectAchievement.cs" />
     <Compile Include="Achievements\ConstKeywordAchievement.cs" />
     <Compile Include="Achievements\BlockCommentAchievement.cs" />
+    <Compile Include="Achievements\CastToSameTypeAchievement.cs" />
     <Compile Include="Achievements\Expressions\OperatorAndAchievement.cs" />
     <Compile Include="Achievements\Expressions\OperatorOrAchievement.cs" />
     <Compile Include="Achievements\Expressions\IfCompoundExpressionAchievement.cs" />
@@ -191,6 +192,8 @@
     <None Include="Key.snk" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Achievements\Icons\Basic\AnonObject.png" />
+    <Resource Include="Achievements\Icons\Basic\BlockComment.png" />
     <Content Include="lib\ICSharpCode.NRefactory.dll" />
     <Content Include="Resources\Package.ico" />
   </ItemGroup>

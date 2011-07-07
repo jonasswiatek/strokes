@@ -9,7 +9,7 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Anonymous Object", AchievementDescription = "Create an anonymous object", AchievementCategory = "Basic Achievements",
-        ImageUri = "pack://application:,,,/Strokes.GUI;component/Icons/Basic/AnonObject.png")]
+        ImageUri = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/AnonObject.png")]
     public class AnonymousObjectAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

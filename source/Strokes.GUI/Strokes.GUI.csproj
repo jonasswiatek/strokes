@@ -176,13 +176,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Basic\AnonObject.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icons\default.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\Basic\BlockComment.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

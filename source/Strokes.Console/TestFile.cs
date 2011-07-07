@@ -10,14 +10,9 @@ namespace Strokes.Console
        
         public void Bla(int[] blsa)
         {
-            switch (3)
-            {
-                default:
-                    break;
-            }
-            /* test
-             * test
-             * */
+            int i = 5;
+
+            int j = (int)i;
            
 
         }
