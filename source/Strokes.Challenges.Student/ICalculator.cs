@@ -16,7 +16,7 @@ namespace Strokes.Challenges.Student
     }
 
     [Serializable]
-    public class CalculatorTester : MarshalByRefObject
+    public class CalculatorTestRunner : MarshalByRefObject
     {
         public bool Run(string assemblyToTest)
         {

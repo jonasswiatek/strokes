@@ -25,6 +25,9 @@ namespace Strokes.BasicAchievements.Challenges
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
+            if (string.IsNullOrEmpty(detectionSession.BuildInformation.ContainingProject))
+                return false;
+
             //Some string hackery
             var path = Path.Combine(Path.GetDirectoryName(detectionSession.BuildInformation.ContainingProject), "bin", "debug"); //Should come from project output dir rather than assuming defaults
             var dlls = new List<string>();
@@ -65,9 +68,9 @@ namespace Strokes.BasicAchievements.Challenges
             var domain = AppDomain.CreateDomain("CalculatorRunner", null, setup);
             try
             {
-                //Get a reference to CalculatorTester inside the new domain (strings are simply required here)
-                var calculatorTester = (CalculatorTester)domain.CreateInstanceAndUnwrap("Strokes.Challenges.Student",
-                                                                      "Strokes.Challenges.Student.CalculatorTester");
+                //Get a reference to CalculatorTestRunner inside the new domain (strings are simply required here)
+                var calculatorTester = (CalculatorTestRunner)domain.CreateInstanceAndUnwrap("Strokes.Challenges.Student",
+                                                                      "Strokes.Challenges.Student.CalculatorTestRunner");
 
                 //Pass all the paths to the external project output, to the Tester inside the new AppDomain
                 foreach (var dll in dlls.Where(a => !a.Contains("Strokes.Challenges.Student.dll")))

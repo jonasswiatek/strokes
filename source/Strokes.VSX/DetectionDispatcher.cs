@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Strokes.Core;
 using Strokes.Core.Contracts;
@@ -29,6 +30,8 @@ namespace Strokes.VSX
 
                 var uncompletedAchievements = achievementDescriptors.Where(a => !a.IsCompleted || AchievementContext.DisablePersist);
 
+                var stopWatch = new Stopwatch();
+                stopWatch.Start();
                 foreach (var achievementDescriptor in uncompletedAchievements)
                 {
                     var achievement = (Achievement)Activator.CreateInstance(achievementDescriptor.AchievementType);
@@ -41,6 +44,9 @@ namespace Strokes.VSX
                         unlockedAchievements.Add(achievementDescriptor);
                     }
                 }
+                stopWatch.Stop();
+                var dispatchTimeElapsed = stopWatch.ElapsedMilliseconds;
+                Trace.WriteLine("Detection time elapsed: " + dispatchTimeElapsed);
             }
 
             if(unlockedAchievements.Count() > 0)

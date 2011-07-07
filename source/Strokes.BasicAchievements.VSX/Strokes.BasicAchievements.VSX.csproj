@@ -116,7 +116,6 @@
     <Compile Include="Achievements\AnonymousObjectAchievement.cs" />
     <Compile Include="Achievements\ConstKeywordAchievement.cs" />
     <Compile Include="Achievements\BlockCommentAchievement.cs" />
-    <Compile Include="Achievements\CastToSameTypeAchievement.cs" />
     <Compile Include="Achievements\Expressions\OperatorAndAchievement.cs" />
     <Compile Include="Achievements\Expressions\OperatorOrAchievement.cs" />
     <Compile Include="Achievements\Expressions\IfCompoundExpressionAchievement.cs" />
