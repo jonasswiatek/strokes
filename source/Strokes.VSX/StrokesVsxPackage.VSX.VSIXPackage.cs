@@ -68,9 +68,9 @@ namespace Strokes.VSX
             {
                 sbm.AdviseUpdateSolutionEvents(this, out updateSolutionEventsCookie);
             }
-
+            
             dte = (DTE)GetService(typeof(DTE));
-
+            
             //Promote the Achievement Library service
             var serviceContainer = (IServiceContainer)this;
             serviceContainer.AddService(typeof (IAchevementLibraryService), this, true);
@@ -150,9 +150,11 @@ namespace Strokes.VSX
                     var documentFile = activeDocument.FullName;
                     if (documentFile.EndsWith(".cs"))
                     {
+                        var projectItem = activeDocument.ProjectItem.ContainingProject;
                         var detectionDispatcher = new DetectionDispatcher();
                         detectionDispatcher.Dispatch(new BuildInformation()
                         {
+                            ContainingProject = projectItem.FileName,
                             ActiveFile = documentFile
                         });
                     }

@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Achievement Projects", "Ach
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.Data", "Strokes.Data\Strokes.Data.csproj", "{798B2FC9-2538-4F93-9AF4-D7EA102C1CE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.Challenges.Student", "Strokes.Challenges.Student\Strokes.Challenges.Student.csproj", "{281244B6-DD45-45C1-850C-031EEEE50F0F}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CSharpAchiever.vsmdi
@@ -88,11 +90,22 @@ Global
 		{798B2FC9-2538-4F93-9AF4-D7EA102C1CE7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{798B2FC9-2538-4F93-9AF4-D7EA102C1CE7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{798B2FC9-2538-4F93-9AF4-D7EA102C1CE7}.Release|x86.ActiveCfg = Release|Any CPU
+		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
+		{281244B6-DD45-45C1-850C-031EEEE50F0F} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
 	EndGlobalSection
 EndGlobal
