@@ -157,6 +157,7 @@
     <Compile Include="Achievements\TryCatchStatementAchievement.cs" />
     <Compile Include="Achievements\TryFinallyStatementAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\WhileLoopAchievement.cs" />
+    <Compile Include="Challenges\AssemblyRunner.cs" />
     <Compile Include="Challenges\CalculatorChallenge.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="NRefactory\NRefactoryAchievement.cs" />
