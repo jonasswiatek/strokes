@@ -100,7 +100,7 @@ namespace Strokes.GUI
             OnPropertyChanged("PercentageCompleted");
         }
 
-        #region INotify stuff
+         #region INotify stuff
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {

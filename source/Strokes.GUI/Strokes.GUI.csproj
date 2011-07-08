@@ -84,6 +84,7 @@
       <DependentUpon>AchievementTemplateBare.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\Convertors\BoolToImageUriConverter.cs" />
+    <Compile Include="Resources\Convertors\BoolToVisibilityConverter.cs" />
     <Compile Include="ViewModels\AllAchievementsViewModel.cs" />
     <Page Include="AchievementPane.xaml">
       <SubType>Designer</SubType>

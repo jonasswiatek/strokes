@@ -4,13 +4,17 @@
 
     <!--Convertors-->
     <local:BoolToImageUriConverter x:Key="ImageConverter"/>
+    <local:BoolToVisibilityConverter x:Key="VisibilityConverter"/>
     
     <!--Styles-->
+    <SolidColorBrush x:Key="BasicBackGround" Color="#FF585858" />
+
     <Style TargetType="TextBlock" >
+        <!--<Setter Property="Margin" Value="5,5,5,5"></Setter>-->
+        <Setter Property="Foreground" Value="LightGray"></Setter>
         <Setter Property="FontFamily" Value="Arial"></Setter>
         <Setter Property="FontSize" Value="12"></Setter>
-        <Setter Property="Margin" Value="5,5,5,5"></Setter>
-        <Setter Property="Foreground" Value="LightGray"></Setter>
+
     </Style>
     <Style x:Key="TitleStyle" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
         <Setter Property="FontSize" Value="16"></Setter>
@@ -18,14 +22,17 @@
     </Style>  
     
     <Style TargetType="Grid" >
-        <Setter Property="Background" Value="#FF585858"></Setter>
+        <Setter Property="Background" Value="{StaticResource BasicBackGround}"></Setter>
     </Style>
+
+
     <Style TargetType="ListBox">
-        <Setter Property="Background" Value="#FF585858"></Setter>
+        <Setter Property="Background" Value="{StaticResource BasicBackGround}"></Setter>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"/>
     </Style>
     <Style TargetType="ListBoxItem">
-        <Setter Property="Background" Value="#FF585858"></Setter>
+        <Setter Property="Background" Value="{StaticResource BasicBackGround}"></Setter>
         <Setter Property="Margin" Value="2"></Setter>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
@@ -36,8 +43,107 @@
         </Style.Triggers>
 
     </Style>
-
     
+    <!--TabControlItem Style-->
+    <Style x:Key="TabItemFocusVisual">
+        <Setter Property="Control.Template">
+        	<Setter.Value>
+        		<ControlTemplate>
+        			<Rectangle Margin="3,3,3,1" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+        		</ControlTemplate>
+        	</Setter.Value>
+        </Setter>
+    </Style>
+    <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#8C8E94"/>
+    <SolidColorBrush x:Key="ButtonNormalBackground" Color="Gray"/>
+    <SolidColorBrush x:Key="TabItemHotBackground" Color="LightGray"/>
+
+    <SolidColorBrush x:Key="TabItemSelectedBackground" Color="Orange"/>
+    <SolidColorBrush x:Key="TabItemHotBorderBrush" Color="#3C7FB1"/>
+    <SolidColorBrush x:Key="TabItemDisabledBackground" Color="#F4F4F4"/>
+    <SolidColorBrush x:Key="TabItemDisabledBorderBrush" Color="#FFC9C7BA"/>
+    <Style x:Key="TabItemStyle1" TargetType="{x:Type TabItem}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource TabItemFocusVisual}"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Padding" Value="6,1,6,1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+        <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+        	<Setter.Value>
+        		<ControlTemplate TargetType="{x:Type TabItem}">
+        			<Grid SnapsToDevicePixels="true">
+        				<Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+        					<ContentPresenter x:Name="Content" ContentSource="Header" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        				</Border>
+        			</Grid>
+        			<ControlTemplate.Triggers>
+        				<Trigger Property="IsMouseOver" Value="true">
+        					<Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemHotBackground}"/>
+        				</Trigger>
+        				<Trigger Property="IsSelected" Value="true">
+        					<Setter Property="Panel.ZIndex" Value="1"/>
+        					<Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemSelectedBackground}"/>
+        				</Trigger>
+        				<MultiTrigger>
+        					<MultiTrigger.Conditions>
+        						<Condition Property="IsSelected" Value="false"/>
+        						<Condition Property="IsMouseOver" Value="true"/>
+        					</MultiTrigger.Conditions>
+        					<Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource TabItemHotBorderBrush}"/>
+        				</MultiTrigger>
+        				<Trigger Property="TabStripPlacement" Value="Bottom">
+        					<Setter Property="BorderThickness" TargetName="Bd" Value="1,0,1,1"/>
+        				</Trigger>
+        				<Trigger Property="TabStripPlacement" Value="Left">
+        					<Setter Property="BorderThickness" TargetName="Bd" Value="1,1,0,1"/>
+        				</Trigger>
+        				<Trigger Property="TabStripPlacement" Value="Right">
+        					<Setter Property="BorderThickness" TargetName="Bd" Value="0,1,1,1"/>
+        				</Trigger>
+        				<MultiTrigger>
+        					<MultiTrigger.Conditions>
+        						<Condition Property="IsSelected" Value="true"/>
+        						<Condition Property="TabStripPlacement" Value="Top"/>
+        					</MultiTrigger.Conditions>
+        					<Setter Property="Margin" Value="-2,-2,-2,-1"/>
+        					<Setter Property="Margin" TargetName="Content" Value="0,0,0,1"/>
+        				</MultiTrigger>
+        				<MultiTrigger>
+        					<MultiTrigger.Conditions>
+        						<Condition Property="IsSelected" Value="true"/>
+        						<Condition Property="TabStripPlacement" Value="Bottom"/>
+        					</MultiTrigger.Conditions>
+        					<Setter Property="Margin" Value="-2,-1,-2,-2"/>
+        					<Setter Property="Margin" TargetName="Content" Value="0,1,0,0"/>
+        				</MultiTrigger>
+        				<MultiTrigger>
+        					<MultiTrigger.Conditions>
+        						<Condition Property="IsSelected" Value="true"/>
+        						<Condition Property="TabStripPlacement" Value="Left"/>
+        					</MultiTrigger.Conditions>
+        					<Setter Property="Margin" Value="-2,-2,-1,-2"/>
+        					<Setter Property="Margin" TargetName="Content" Value="0,0,1,0"/>
+        				</MultiTrigger>
+        				<MultiTrigger>
+        					<MultiTrigger.Conditions>
+        						<Condition Property="IsSelected" Value="true"/>
+        						<Condition Property="TabStripPlacement" Value="Right"/>
+        					</MultiTrigger.Conditions>
+        					<Setter Property="Margin" Value="-1,-2,-2,-2"/>
+        					<Setter Property="Margin" TargetName="Content" Value="1,0,0,0"/>
+        				</MultiTrigger>
+        				<Trigger Property="IsEnabled" Value="false">
+        					<Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemDisabledBackground}"/>
+        					<Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource TabItemDisabledBorderBrush}"/>
+        					<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+        				</Trigger>
+        			</ControlTemplate.Triggers>
+        		</ControlTemplate>
+        	</Setter.Value>
+        </Setter>
+    </Style>
     
     <!--DataTemplates-->
 
@@ -46,13 +152,22 @@
         <Border BorderThickness="1" Margin="1" 
                         BorderBrush="Orange" 
                         Background="{Binding Path=Background, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}">
-            <Grid  >
+            <Grid Background="#FF585858">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <local:AchievementTemplateBare Grid.Column="0" Margin="5" />
-                <Image Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1"  Margin="5,5,5,5"  Width="40" Source="{Binding IsCompleted, Converter={StaticResource ImageConverter}}" />
+				<StackPanel Grid.Column="1" Margin="15,15,10,10" >
+	                <TextBlock Visibility="{Binding IsCompleted, Converter={StaticResource VisibilityConverter}}" HorizontalAlignment="Right" Foreground="LightGray">
+	                	<Run>Unlocked: </Run>            
+						<Run Text="{Binding DateCompleted, FallbackValue=''}"></Run>
+					</TextBlock>
+					<Image Margin="5,5,5,5" 
+						Height="20" Width="20" 
+						HorizontalAlignment="Right" VerticalAlignment="Center" 
+						Source="{Binding IsCompleted, Converter={StaticResource ImageConverter}, FallbackValue='pack://application:,,,/Strokes.GUI;component/Icons/cross.png'}" />
+				</StackPanel>
             </Grid>
         </Border>
 
@@ -63,16 +178,19 @@
                         BorderBrush="Teal" 
                         Background="{Binding Path=Background, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}">
                 <Grid Margin="2" >
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Center"  Text="{Binding CategoryName}" Style="{StaticResource TitleStyle}"/>
-                        <TextBlock Text="{Binding TotalCompleted, Mode=OneWay}"></TextBlock>
-                        <TextBlock Text="/"></TextBlock>
-                        <TextBlock Text="{Binding Count, Mode=OneWay}"></TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock   Text="{Binding CategoryName}" Style="{StaticResource TitleStyle}"/>
+                        <TextBlock Style="{StaticResource TitleStyle}" Margin="10,0,0,0">
+                            <Run>(</Run>
+                            <Run Text="{Binding TotalCompleted, Mode=OneWay}"></Run>          
+                            <Run Text="/"></Run>
+                            <Run Text="{Binding Count, Mode=OneWay}"></Run>
+                            <Run>)</Run>
+                        </TextBlock>
                     </StackPanel>
                 </Grid>
             </Border>
         </Grid>
     </DataTemplate>
-
-    
+ 
 </ResourceDictionary>

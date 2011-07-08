@@ -7,7 +7,8 @@
              d:DesignHeight="800" d:DesignWidth="1024">
     
     <UserControl.Resources>
-        <ResourceDictionary Source="Resources/Resources.xaml"/>
+        <ResourceDictionary Source="Resources/Resources.xaml">
+        </ResourceDictionary>
     </UserControl.Resources>
 
 
@@ -16,17 +17,12 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition ></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
         
         <!--Upperframe with global achievement results-->
-        <StackPanel Grid.ColumnSpan="3" Margin="10,10,10,10">
+        <StackPanel Grid.Row="0" Margin="10,10,10,10">
             <TextBlock Style="{StaticResource TitleStyle}">Information page</TextBlock>
            
-            <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5">
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="0">
                 <StackPanel Orientation="Vertical">
                     <TextBlock TextWrapping="Wrap" TextAlignment="Center"> Log in to strokes to get your achievements tracked and stuff. </TextBlock>
                     <!--Total completed achievements overview+progressbar-->
@@ -49,39 +45,55 @@
                 
             </Border>
         </StackPanel>
-        
-        <!--Achievement catagories listbox-->
-        <StackPanel Grid.Column="0" Grid.Row="1" Margin="10,10,10,10">
-            <TextBlock Style="{StaticResource TitleStyle}">Achievement Categories</TextBlock>
-            <ListBox Margin="5,5,5,5" 
-                     IsSynchronizedWithCurrentItem="true" 
-                     ItemsSource="{Binding Path=achievementsOrdered}"
-                     ItemTemplate="{StaticResource CategoryTemplate}"
-                     ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                     >
 
-            </ListBox>
-        </StackPanel>
+        <TabControl  Grid.Row="1" Margin="10,0,10,5" Background="{StaticResource BasicBackGround}" >
+            <TabItem Header="Personal Achievements" Style="{DynamicResource TabItemStyle1}">
+                <Grid Background="{StaticResource BasicBackGround}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                
 
-        <!--Achievements listbox of selected category-->
-        <ListBox Grid.Row="1" Grid.Column="1" 
-                 Margin="10,10,10,10" 
-                 ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                 ItemsSource="{Binding achievementsOrdered/}" 
-                 ItemTemplate="{StaticResource AchievementTemplate}">
-        </ListBox>
+                <!--Achievement categories listbox-->
+                <StackPanel Grid.Column="0" Margin="10,10,10,10" >
+                    <TextBlock Style="{StaticResource TitleStyle}">Achievement Categories</TextBlock>
+                    <ListBox Margin="5,5,5,5" 
+                             IsSynchronizedWithCurrentItem="true" 
+                             ItemsSource="{Binding Path=achievementsOrdered}"
+                             ItemTemplate="{StaticResource CategoryTemplate}"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             >
 
-        <!--Rightframe with results of other 'players'-->
-        <StackPanel Grid.Column="2" Grid.Row="1" Margin="10,10,10,10">
-            <TextBlock TextWrapping="Wrap">
-                Information about what achievements other people you know have been completing.
-            </TextBlock>
-            <ListBox></ListBox>
+                    </ListBox>
+                </StackPanel>
 
-        </StackPanel>
-        
+                <!--Achievements listbox of selected category-->
+               <ListBox  Grid.Column="1"
+                         Margin="10,10,10,10" 
+                         ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                         ItemsSource="{Binding achievementsOrdered/, Mode=OneWay}" 
+                         ItemTemplate="{StaticResource AchievementTemplate}">
+                </ListBox>
+
+               
+                </Grid>
+            </TabItem>
+            <TabItem Header="Leaderboards" Style="{DynamicResource TabItemStyle1}">
+                <Grid>
+                    <!--Rightframe with results of other 'players'-->
+                    <StackPanel Margin="10,10,10,10" Visibility="Collapsed">
+                        <TextBlock TextWrapping="Wrap">
+                    Information about what achievements other people you know have been completing.
+                        </TextBlock>
+                        <ListBox></ListBox>
+
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
         
     </Grid>
 </UserControl>
