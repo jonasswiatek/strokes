@@ -17,9 +17,9 @@ namespace Strokes.GUI.Resources
     /// <summary>
     /// Interaction logic for AchievementMiniControl.xaml
     /// </summary>
-    public partial class AchievementMiniControl : UserControl
+    public partial class AchievementViewportControl : UserControl
     {
-        public AchievementMiniControl()
+        public AchievementViewportControl()
         {
             InitializeComponent();
         }

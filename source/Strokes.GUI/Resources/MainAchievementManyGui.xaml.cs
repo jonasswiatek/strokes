@@ -75,7 +75,7 @@ namespace Strokes.GUI
                                              {
                                                  if (currentAchievement.CodeLocaton != null)
                                                  {
-                                                     var achievementFloatingControl = new AchievementMiniControl();
+                                                     var achievementFloatingControl = new AchievementViewportControl();
                                                      achievementFloatingControl.DataContext = currentAchievement;
 
                                                      AchievementContext.OnAchievementClicked(this, new AchievementClickedEventArgs
