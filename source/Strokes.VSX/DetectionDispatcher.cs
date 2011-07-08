@@ -40,6 +40,7 @@ namespace Strokes.VSX
 
                     if (achievementUnlocked)
                     {
+                        achievementDescriptor.CodeLocaton = achievement.AchievementCodeLocation;
                         achievementDescriptor.IsCompleted = true;
                         unlockedAchievements.Add(achievementDescriptor);
                     }

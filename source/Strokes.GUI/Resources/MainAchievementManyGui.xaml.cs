@@ -10,7 +10,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Strokes.Core;
 using Strokes.Core.Model;
+using Strokes.GUI.Resources;
 
 namespace Strokes.GUI
 {
@@ -25,18 +27,13 @@ namespace Strokes.GUI
         {
             InitializeComponent();
  
-
-
-
             foreach (var ach in achievements)
             {
                 _achievements.Add(ach); 
             }
-
-
             //Prepare grid
             
-              for (int i = 0; i < _achievements.Count; i++)
+            for (int i = 0; i < _achievements.Count; i++)
             {
                 achievementgrid.RowDefinitions.Add(new RowDefinition());
             }
@@ -69,26 +66,36 @@ namespace Strokes.GUI
         {
             int i = 0;
 
-            foreach (var ach in _achievements)
+            foreach (var achievementDescriptor in _achievements)
             {
-                AchievementTemplateBare achievement = new AchievementTemplateBare();
-                achievement.DataContext = ach;
-                
-                achievement.SetValue(Grid.RowProperty, i);
+                var achievement = new AchievementTemplateBare();
+                var currentAchievement = achievementDescriptor; //Modified closure - this is needed because of the lambda expression below.
 
+                achievement.MouseDown += (sender, args) =>
+                                             {
+                                                 if (currentAchievement.CodeLocaton != null)
+                                                 {
+                                                     var achievementFloatingControl = new AchievementMiniControl();
+                                                     achievementFloatingControl.DataContext = currentAchievement;
+
+                                                     AchievementContext.OnAchievementClicked(this, new AchievementClickedEventArgs
+                                                                                                     {
+                                                                                                         AchievementDescriptor = currentAchievement,
+                                                                                                         UIElement = achievementFloatingControl
+                                                                                                     });
+                                                 }
+                                             };
+
+                achievement.DataContext = currentAchievement;
+                achievement.SetValue(Grid.RowProperty, i);
                 achievementgrid.Children.Add(achievement);
-                
                 i++;
             }
         }
 
         private void closeBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
-
-
-
-        
     }
 }

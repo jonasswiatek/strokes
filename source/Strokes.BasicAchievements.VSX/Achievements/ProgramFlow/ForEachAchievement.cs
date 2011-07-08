@@ -19,7 +19,8 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitForeachStatement(ForeachStatement foreachStatement, object data)
             {
-                IsAchievementUnlocked = true;
+                UnlockWith(foreachStatement);
+
                 return base.VisitForeachStatement(foreachStatement, data);
             }
         }

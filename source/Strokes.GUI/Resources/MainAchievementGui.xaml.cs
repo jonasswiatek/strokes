@@ -7,6 +7,8 @@ using System.Windows.Threading;
 using System.Linq;
 using Strokes.Core;
 using Strokes.Core.Model;
+using Strokes.GUI.Resources;
+
 namespace Strokes.GUI
 {
     /// <summary>
@@ -18,6 +20,7 @@ namespace Strokes.GUI
         private readonly Queue<AchievementDescriptor> _achievementsQueue;
 
         private static MainAchievementGui _achievementGui = null;
+        private AchievementDescriptor _currentAchievement;
 
         public MainAchievementGui(IEnumerable<AchievementDescriptor> achievements)
         {
@@ -28,6 +31,23 @@ namespace Strokes.GUI
                 Close();
 
             PopAchievement();
+
+            MouseDown += MainAchievementGuiMouseDoubleClick;
+        }
+
+        void MainAchievementGuiMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if(_currentAchievement.CodeLocaton != null)
+            {
+                var achievementFloatingControl = new AchievementMiniControl();
+                achievementFloatingControl.DataContext = _currentAchievement;
+                
+                AchievementContext.OnAchievementClicked(this, new AchievementClickedEventArgs()
+                                                                  {
+                                                                      AchievementDescriptor = _currentAchievement,
+                                                                      UIElement = achievementFloatingControl
+                                                                  });
+            }
         }
 
         public static void DisplayAchievements(IEnumerable<AchievementDescriptor> achievements)
@@ -62,9 +82,9 @@ namespace Strokes.GUI
 
         public void PopAchievement()
         {
-            var currentAchievement = _achievementsQueue.Dequeue();
+            _currentAchievement = _achievementsQueue.Dequeue();
 
-            DataContext = currentAchievement;
+            DataContext = _currentAchievement;
             Show();
 
             //by Jonas: Fixed this. The MainAchievementGui.xaml must specify d:DesignHeight="160" d:DesignWidth="290" as attributes for width and height to work (I think the transparent window just assumes some disproportionate size otherwise)

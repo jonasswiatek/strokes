@@ -20,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if (parameterDeclarationExpression.ParamModifier == ParameterModifiers.Params)
                 {
-                    IsAchievementUnlocked = true;
+                    UnlockWith(parameterDeclarationExpression);
                 }
                 return base.VisitParameterDeclarationExpression(parameterDeclarationExpression, data);
             }

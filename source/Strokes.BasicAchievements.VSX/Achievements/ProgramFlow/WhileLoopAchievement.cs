@@ -21,7 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if (doLoopStatement.ConditionPosition == ConditionPosition.Start) //DoWhile loops has their condition at ConditionPosition.End, while has it at ConditionPosition.Start.
                 {
-                    IsAchievementUnlocked = true;
+                    UnlockWith(doLoopStatement);
                 }
 
                 return base.VisitDoLoopStatement(doLoopStatement, data);

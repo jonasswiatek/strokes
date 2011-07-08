@@ -21,7 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if ((fieldDeclaration.Modifier & Modifiers.Const) == Modifiers.Const)
                 {
-                    IsAchievementUnlocked = true;
+                    UnlockWith(fieldDeclaration);
                 }
 
                 return base.VisitFieldDeclaration(fieldDeclaration, data);
@@ -31,7 +31,7 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if ((localVariableDeclaration.Modifier & Modifiers.Const) == Modifiers.Const)
                 {
-                    IsAchievementUnlocked = true;
+                    UnlockWith(localVariableDeclaration);
                 }
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }

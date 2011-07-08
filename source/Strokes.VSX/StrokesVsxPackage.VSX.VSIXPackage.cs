@@ -84,6 +84,12 @@ namespace Strokes.VSX
             serviceContainer.AddService(typeof (IAchevementLibraryService), this, true);
 
             GuiInitializer.Initialize();
+            AchievementContext.AchievementClicked += new AchievementContext.AchievementClickedHandler(AchievementContext_AchievementClicked);
+        }
+
+        void AchievementContext_AchievementClicked(object sender, AchievementClickedEventArgs args)
+        {
+            dte.ItemOperations.OpenFile(args.AchievementDescriptor.CodeLocaton.FileName, EnvDTE.Constants.vsViewKindCode);
         }
 
         protected override void Dispose(bool disposing)

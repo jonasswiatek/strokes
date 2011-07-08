@@ -28,7 +28,7 @@ namespace Strokes.BasicAchievements.Achievements
                     {
                         if(fieldDeclaration.Fields[0].Initializer.IsNull)
                         {
-                            IsAchievementUnlocked = true;
+                            UnlockWith(fieldDeclaration);
                         }
                     }
                 }
@@ -44,7 +44,7 @@ namespace Strokes.BasicAchievements.Achievements
                     {
                         if (localVariableDeclaration.Variables[0].Initializer.IsNull)
                         {
-                            IsAchievementUnlocked = true;
+                            UnlockWith(localVariableDeclaration);
                         }
                     }
                 }

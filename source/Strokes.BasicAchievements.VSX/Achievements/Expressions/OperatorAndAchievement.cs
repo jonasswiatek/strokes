@@ -6,8 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Use AND (&&) operator", AchievementDescription = "Make use of the AND operator",
-        AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Use AND (&&) operator", AchievementDescription = "Make use of the AND operator", AchievementCategory = "Basic Achievements")]
     public class OperatorAndAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -15,17 +14,15 @@ namespace Strokes.BasicAchievements.Achievements
             return new Visitor();
         }
 
-        
-
         private class Visitor : AbstractAchievementVisitor
         {
             public override object VisitBinaryOperatorExpression(BinaryOperatorExpression binaryOperatorExpression, object data)
             {
                 if (binaryOperatorExpression.Op == BinaryOperatorType.LogicalAnd)
-                    IsAchievementUnlocked = true;
+                    UnlockWith(binaryOperatorExpression);
+
                 return base.VisitBinaryOperatorExpression(binaryOperatorExpression, data);
             }
-
         }
     }
 }

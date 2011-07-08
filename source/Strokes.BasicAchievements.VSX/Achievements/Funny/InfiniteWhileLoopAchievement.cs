@@ -38,7 +38,7 @@ namespace Strokes.BasicAchievements.Achievements
                     if(condition != null && condition.StringValue == "true") //We could also do: if(condition != null && (bool)condition.Value)
                     {
                         //Set this bool-member to true, to signal to the base class that this achievement's conditions have been met.
-                        IsAchievementUnlocked = true;
+                        UnlockWith(doLoopStatement);
                     }
                 }
 

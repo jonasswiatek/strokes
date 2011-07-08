@@ -20,11 +20,10 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitIfElseStatement(IfElseStatement ifElseStatement, object data)
             {
                 if (ifElseStatement.HasElseIfSections)
-                    IsAchievementUnlocked = true;
+                    UnlockWith(ifElseStatement.ElseIfSections[0]);
+
                 return base.VisitIfElseStatement(ifElseStatement, data);
-            } 
-
-
+            }
         }
     }
 }

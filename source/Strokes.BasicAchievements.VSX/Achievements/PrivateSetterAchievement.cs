@@ -22,7 +22,7 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if ((propertyDeclaration.SetRegion.Modifier & Modifiers.Private) == Modifiers.Private)
                 {
-                    IsAchievementUnlocked = true;
+                    UnlockWith(propertyDeclaration.SetRegion);
                 }
 
                 return base.VisitPropertyDeclaration(propertyDeclaration, data);

@@ -11,6 +11,8 @@ namespace Strokes.Core.Model
         public string ImageUri { get; set; }
         public Type AchievementType { get; set; }
 
+        public AchievementCodeLocation CodeLocaton { get; set; }
+
         // Inferable data
         public bool IsCompleted { get; set; }
         public DateTime DateCompleted { get; set; }

@@ -21,10 +21,27 @@ namespace Strokes.Core
                 AchievementsUnlocked(sender, new AchievementsUnlockedEventArgs {Achievements = unlockedAchievements});
             }
         }
+
+        public delegate void AchievementClickedHandler(object sender, AchievementClickedEventArgs args);
+        public static event AchievementClickedHandler AchievementClicked;
+
+        public static void OnAchievementClicked(object sender, AchievementClickedEventArgs args)
+        {
+            if(AchievementClicked != null)
+            {
+                AchievementClicked(sender, args);
+            }
+        }
     }
 
     public class AchievementsUnlockedEventArgs
     {
         public IEnumerable<AchievementDescriptor> Achievements;
+    }
+
+    public class AchievementClickedEventArgs
+    {
+        public AchievementDescriptor AchievementDescriptor;
+        public object UIElement;
     }
 }

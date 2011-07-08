@@ -24,5 +24,6 @@
   </References>
   <Content>
     <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
+    <MefComponent>|Strokes.VsAdornments|</MefComponent>
   </Content>
 </Vsix>

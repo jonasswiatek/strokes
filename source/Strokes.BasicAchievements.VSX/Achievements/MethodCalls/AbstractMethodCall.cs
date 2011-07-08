@@ -75,14 +75,14 @@ namespace Strokes.BasicAchievements.Achievements
 
                                     if (i++ == reqSet.Requirements.Count - 1)
                                     {
-                                        IsAchievementUnlocked = true;
+                                        UnlockWith(invocationExpression);
                                     }
                                 }
                             }
                         }
                         else
                         {
-                            IsAchievementUnlocked = true;
+                            UnlockWith(invocationExpression);
                         }
                     }
                 }

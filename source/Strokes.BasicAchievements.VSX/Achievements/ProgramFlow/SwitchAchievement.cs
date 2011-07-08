@@ -19,7 +19,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitSwitchStatement(SwitchStatement switchStatement, object data)
             {
-                IsAchievementUnlocked = true;
+                UnlockWith(switchStatement);
                 return base.VisitSwitchStatement(switchStatement, data);
             }
         }

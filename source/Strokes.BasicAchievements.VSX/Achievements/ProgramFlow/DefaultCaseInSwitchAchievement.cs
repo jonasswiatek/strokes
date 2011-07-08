@@ -22,7 +22,7 @@ namespace Strokes.BasicAchievements.Achievements
                 foreach (var label in switchSection.SwitchLabels)
                 {
                     if (label.IsDefault)
-                        IsAchievementUnlocked = true;
+                        UnlockWith(switchSection);
                 }
                 return base.VisitSwitchSection(switchSection, data);
             }

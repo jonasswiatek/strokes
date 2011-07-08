@@ -18,7 +18,8 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitForStatement(ForStatement forStatement, object data)
             {
-                IsAchievementUnlocked = true;
+                UnlockWith(forStatement);
+
                 return base.VisitForStatement(forStatement, data);
             }
         }

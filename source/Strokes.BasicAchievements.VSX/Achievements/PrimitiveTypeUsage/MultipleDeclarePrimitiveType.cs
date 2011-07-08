@@ -26,7 +26,7 @@ namespace Strokes.BasicAchievements.Achievements
                 {
                     if (fieldDeclaration.Fields.Count >= 2)
                     {
-                        IsAchievementUnlocked = true;
+                        UnlockWith(fieldDeclaration);
                     }
                 }
 
@@ -39,7 +39,7 @@ namespace Strokes.BasicAchievements.Achievements
                 {
                     if (localVariableDeclaration.Variables.Count >= 2)
                     {
-                        IsAchievementUnlocked = true;
+                        UnlockWith(localVariableDeclaration);
                     }
                 }
 

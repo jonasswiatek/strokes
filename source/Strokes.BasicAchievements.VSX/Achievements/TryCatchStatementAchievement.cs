@@ -21,7 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if (tryCatchStatement.CatchClauses.Count > 0 && tryCatchStatement.FinallyBlock.IsNull)
                 {
-                    IsAchievementUnlocked = true;
+                    UnlockWith(tryCatchStatement);
                 }
                 return base.VisitTryCatchStatement(tryCatchStatement, data);
             }

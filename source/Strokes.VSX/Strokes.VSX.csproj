@@ -47,6 +47,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
@@ -171,7 +172,14 @@
       <Project>{CCA3165B-3D87-45AB-AD18-168CF04A1417}</Project>
       <Name>Strokes.GUI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Strokes.VsAdornments\Strokes.VsAdornments.csproj">
+      <Project>{0337CE42-C1AF-44C7-96E0-91072F36D877}</Project>
+      <Name>Strokes.VsAdornments</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>

@@ -27,9 +27,10 @@ namespace Strokes.BasicAchievements.Achievements
                 {
                     if(primitiveExpression.Value.GetType().ToString() == TypeToFind)
                     {
-                        IsAchievementUnlocked = true;
+                        UnlockWith(assignmentExpression);
                     }
                 }
+
                 return base.VisitAssignmentExpression(assignmentExpression, data);
             }
         }

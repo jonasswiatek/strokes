@@ -24,7 +24,7 @@ namespace Strokes.BasicAchievements.Achievements
                 var objectCreateExpression = variableDeclaration.Initializer as ObjectCreateExpression;
                 if (objectCreateExpression != null && objectCreateExpression.IsAnonymousType)
                 {
-                    IsAchievementUnlocked = true;
+                    UnlockWith(variableDeclaration);
                 }
 
                 return base.VisitVariableDeclaration(variableDeclaration, data);

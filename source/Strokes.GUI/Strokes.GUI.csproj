@@ -80,6 +80,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Resources\AchievementMiniControl.xaml.cs">
+      <DependentUpon>AchievementMiniControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\AchievementTemplateBare.xaml.cs">
       <DependentUpon>AchievementTemplateBare.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
     </Compile>
     <Compile Include="ViewModels\AllAchievementsViewModel.cs" />
     <Page Include="AchievementPane.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\AchievementMiniControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

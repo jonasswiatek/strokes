@@ -20,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if (typeDeclaration.Type == ClassType.Enum)
                 {
-                    IsAchievementUnlocked = true;
+                    UnlockWith(typeDeclaration);
                 }
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);

@@ -20,7 +20,8 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitUsingStatement(UsingStatement usingStatement, object data)
             {
-                IsAchievementUnlocked = true;
+                UnlockWith(usingStatement);
+
                 return base.VisitUsingStatement(usingStatement, data);
             }
         }

@@ -22,10 +22,10 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitBinaryOperatorExpression(BinaryOperatorExpression binaryOperatorExpression, object data)
             {
                 if (binaryOperatorExpression.Op == BinaryOperatorType.LogicalOr)
-                    IsAchievementUnlocked = true;
+                    UnlockWith(binaryOperatorExpression);
+
                 return base.VisitBinaryOperatorExpression(binaryOperatorExpression, data);
             }
-
         }
     }
 }

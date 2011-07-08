@@ -27,6 +27,12 @@ namespace Strokes.BasicAchievements.NRefactory
 
                 if(visitor.IsAchievementUnlocked)
                 {
+                    AchievementCodeLocation = visitor.CodeLocation;
+                    if(AchievementCodeLocation != null)
+                    {
+                        AchievementCodeLocation.FileName = file;
+                    }
+                    
                     unlocked = true;
                     break;
                 }
@@ -39,6 +45,21 @@ namespace Strokes.BasicAchievements.NRefactory
 
         protected abstract class AbstractAchievementVisitor : AbstractAstVisitor
         {
+            public AchievementCodeLocation CodeLocation;
+
+            public void UnlockWith(AbstractNode location)
+            {
+                CodeLocation = new AchievementCodeLocation();
+
+                CodeLocation.From.Line = location.StartLocation.Line;
+                CodeLocation.From.Column = location.StartLocation.Column;
+
+                CodeLocation.To.Line = location.EndLocation.Line;
+                CodeLocation.To.Column = location.EndLocation.Column;
+
+                IsAchievementUnlocked = true;
+            }
+
             public bool IsAchievementUnlocked;
         }
     }

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.Data", "Strokes.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.Challenges.Student", "Strokes.Challenges.Student\Strokes.Challenges.Student.csproj", "{281244B6-DD45-45C1-850C-031EEEE50F0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.VsAdornments", "Strokes.VsAdornments\Strokes.VsAdornments.csproj", "{0337CE42-C1AF-44C7-96E0-91072F36D877}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CSharpAchiever.vsmdi
@@ -100,6 +102,16 @@ Global
 		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{281244B6-DD45-45C1-850C-031EEEE50F0F}.Release|x86.ActiveCfg = Release|Any CPU
+		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

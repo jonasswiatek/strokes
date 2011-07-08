@@ -20,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitCastExpression(CastExpression castExpression, object data)
             {
                 //This was the hardest achievement to write ever :p
-                IsAchievementUnlocked = true;
+                UnlockWith(castExpression);
 
                 return base.VisitCastExpression(castExpression, data);
             }

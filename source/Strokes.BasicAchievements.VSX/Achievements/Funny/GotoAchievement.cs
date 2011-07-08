@@ -19,10 +19,10 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitGotoStatement(GotoStatement gotoStatement, object data)
             {
-                IsAchievementUnlocked = true;
+                UnlockWith(gotoStatement);
+
                 return base.VisitGotoStatement(gotoStatement, data);
             }
-            
         }
     }
 }

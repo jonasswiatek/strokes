@@ -18,7 +18,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitLambdaExpression(LambdaExpression lambdaExpression, object data)
             {
-                IsAchievementUnlocked = true;
+                UnlockWith(lambdaExpression);
                 return base.VisitLambdaExpression(lambdaExpression, data);
             }
         }

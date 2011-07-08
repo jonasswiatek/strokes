@@ -19,7 +19,8 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitQueryExpression(QueryExpression queryExpression, object data)
             {
-                IsAchievementUnlocked = true;
+                UnlockWith(queryExpression);
+
                 return base.VisitQueryExpression(queryExpression, data);
             }
         }

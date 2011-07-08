@@ -14,8 +14,10 @@ namespace Strokes.Console
 
             test:
             int i;
-           
-            
+
+            i = 4;
+
+            double d;
         }
     }
 }

@@ -21,11 +21,10 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 var condition = ifElseStatement.Condition as BinaryOperatorExpression;
                 if(condition!=null)
-                    IsAchievementUnlocked = true;
+                    UnlockWith(ifElseStatement);
+
                 return base.VisitIfElseStatement(ifElseStatement, data);
-            } 
-
-
+            }
         }
     }
 }
