@@ -15,14 +15,22 @@ namespace Strokes.VsAdornments
     internal sealed class AchievementAdornmentsFactory : IWpfTextViewCreationListener
     {
         /// <summary>
-        /// Defines the adornment layer for the adornment. This layer is ordered 
-        /// after the selection layer in the Z-order
+        /// Test highlight adornment layer
         /// </summary>
         [Export(typeof(AdornmentLayerDefinition))]
         [Name("AchievementAdornments")]
         [Order(After = PredefinedAdornmentLayers.Selection, Before = PredefinedAdornmentLayers.Text)]
         [TextViewRole(PredefinedTextViewRoles.Document)]
         public AdornmentLayerDefinition editorAdornmentLayer = null;
+
+        /// <summary>
+        /// Test highlight adornment layer
+        /// </summary>
+        [Export(typeof(AdornmentLayerDefinition))]
+        [Name("AchievementAdornmentsDescription")]
+        [Order(After = PredefinedAdornmentLayers.Caret)]
+        [TextViewRole(PredefinedTextViewRoles.Document)]
+        public AdornmentLayerDefinition editorAdornmentDescriptionLayer = null;
 
         /// <summary>
         /// Instantiates a AchievementAdornments manager when a textView is created.

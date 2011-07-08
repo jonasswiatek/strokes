@@ -15,7 +15,7 @@ namespace Strokes.VsAdornments
     ///</summary>
     public class AchievementAdornments
     {
-        readonly IAdornmentLayer _layer;
+        readonly IAdornmentLayer _layer, _descriptionLayer;
         readonly IWpfTextView _view;
         readonly Brush _brush;
         readonly Pen _pen;
@@ -24,6 +24,7 @@ namespace Strokes.VsAdornments
         {
             _view = view;
             _layer = view.GetAdornmentLayer("AchievementAdornments");
+            _descriptionLayer = view.GetAdornmentLayer("AchievementAdornmentsDescription");
 
             //Listen to any event that changes the layout (text changes, scrolling, etc)
             _view.LayoutChanged += OnLayoutChanged;
@@ -53,6 +54,7 @@ namespace Strokes.VsAdornments
             _achievementUiElement = null;
             _adornmentVisible = false;
             _layer.RemoveAllAdornments();
+            _descriptionLayer.RemoveAllAdornments();
         }
 
         void AchievementContext_AchievementClicked(object sender, AchievementClickedEventArgs args)
@@ -110,7 +112,7 @@ namespace Strokes.VsAdornments
 
                 _adornmentVisible = true;
                 _layer.AddAdornment(AdornmentPositioningBehavior.TextRelative, span, null, image, (tag, element) => _adornmentVisible = false);
-                _layer.AddAdornment(AdornmentPositioningBehavior.TextRelative, span, null, _achievementUiElement, null);
+                _descriptionLayer.AddAdornment(AdornmentPositioningBehavior.TextRelative, span, null, _achievementUiElement, null);
             }
         }
 
@@ -131,6 +133,7 @@ namespace Strokes.VsAdornments
             {
                 //A codeLocation is set, but now showing. Remove anything we have on screen, and rebuild.
                 _layer.RemoveAllAdornments();
+                _descriptionLayer.RemoveAllAdornments();
                 CreateAdornment();
             }
         }
