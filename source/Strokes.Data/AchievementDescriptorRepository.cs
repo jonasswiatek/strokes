@@ -117,6 +117,14 @@ namespace Strokes.Data
             }
         }
 
+        public void ResetCompletedAchievements()
+        {
+            var filename = GetAchievementStorageFile();
+
+            if (File.Exists(filename))
+                File.Delete(filename);
+        }
+
         private static string GetAchievementStorageFile()
         {
             var userDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
