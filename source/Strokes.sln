@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.Challenges.Student"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.VsAdornments", "Strokes.VsAdornments\Strokes.VsAdornments.csproj", "{0337CE42-C1AF-44C7-96E0-91072F36D877}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.ChallengeRunner", "Strokes.ChallengeRunner\Strokes.ChallengeRunner.csproj", "{830D128B-8D1C-4151-A2E7-3054DBF34126}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CSharpAchiever.vsmdi
@@ -112,6 +114,16 @@ Global
 		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0337CE42-C1AF-44C7-96E0-91072F36D877}.Release|x86.ActiveCfg = Release|Any CPU
+		{830D128B-8D1C-4151-A2E7-3054DBF34126}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{830D128B-8D1C-4151-A2E7-3054DBF34126}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{830D128B-8D1C-4151-A2E7-3054DBF34126}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{830D128B-8D1C-4151-A2E7-3054DBF34126}.Debug|x86.ActiveCfg = Debug|x86
+		{830D128B-8D1C-4151-A2E7-3054DBF34126}.Debug|x86.Build.0 = Debug|x86
+		{830D128B-8D1C-4151-A2E7-3054DBF34126}.Release|Any CPU.ActiveCfg = Release|x86
+		{830D128B-8D1C-4151-A2E7-3054DBF34126}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{830D128B-8D1C-4151-A2E7-3054DBF34126}.Release|Mixed Platforms.Build.0 = Release|x86
+		{830D128B-8D1C-4151-A2E7-3054DBF34126}.Release|x86.ActiveCfg = Release|x86
+		{830D128B-8D1C-4151-A2E7-3054DBF34126}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,5 +131,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
 		{281244B6-DD45-45C1-850C-031EEEE50F0F} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
+		{830D128B-8D1C-4151-A2E7-3054DBF34126} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
 	EndGlobalSection
 EndGlobal

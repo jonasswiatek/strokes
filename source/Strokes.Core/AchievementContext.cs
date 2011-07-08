@@ -9,7 +9,7 @@ namespace Strokes.Core
     public static class AchievementContext
     {
         //Disables the persistance of unlocked achievements. Practical for testing.
-        public static bool DisablePersist = false;
+        public static bool DisablePersist = true;
 
         public delegate void AchievementsUnlockedHandler(object sender, AchievementsUnlockedEventArgs args);
         public static event AchievementsUnlockedHandler AchievementsUnlocked;

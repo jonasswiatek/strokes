@@ -15,6 +15,14 @@ namespace Strokes.Challenges.Student
         float Divide(int a, int b);
     }
 
+    public class CalculatorTest
+    {
+        public static bool TestChallenge(string outputDirectory)
+        {
+            return false;
+        }
+    }
+
     [Serializable]
     public class CalculatorTestRunner : MarshalByRefObject
     {
