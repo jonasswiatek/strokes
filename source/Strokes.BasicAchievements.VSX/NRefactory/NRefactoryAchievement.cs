@@ -13,14 +13,26 @@ namespace Strokes.BasicAchievements.NRefactory
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
             var nRefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
-            var parser = nRefactorySession.GetParser(detectionSession.BuildInformation.ActiveFile);
-            parser.Parse();
 
-            var result = parser.CompilationUnit;
-            var visitor = CreateVisitor();
+            var unlocked = false;
+            foreach(var file in detectionSession.BuildInformation.ChangedFiles)
+            {
+                var parser = nRefactorySession.GetParser(file);
+                parser.Parse();
 
-            result.AcceptVisitor(visitor, Guid.NewGuid());
-            return visitor.IsAchievementUnlocked;
+                var result = parser.CompilationUnit;
+                var visitor = CreateVisitor();
+
+                result.AcceptVisitor(visitor, Guid.NewGuid());
+
+                if(visitor.IsAchievementUnlocked)
+                {
+                    unlocked = true;
+                    break;
+                }
+            }
+
+            return unlocked;
         }
 
         protected abstract AbstractAchievementVisitor CreateVisitor();

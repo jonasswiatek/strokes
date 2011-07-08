@@ -25,11 +25,11 @@ namespace Strokes.BasicAchievements.Challenges
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
-            if (string.IsNullOrEmpty(detectionSession.BuildInformation.ContainingProject))
+            if (string.IsNullOrEmpty(detectionSession.BuildInformation.ActiveProject))
                 return false;
 
             //Some string hackery
-            var path = Path.Combine(Path.GetDirectoryName(detectionSession.BuildInformation.ContainingProject), "bin", "debug"); //Should come from project output dir rather than assuming defaults
+            var path = Path.Combine(Path.GetDirectoryName(detectionSession.BuildInformation.ActiveProject), "bin", "debug"); //Should come from project output dir rather than assuming defaults
             var dlls = new List<string>();
 
             //Some directory listing hackery

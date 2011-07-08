@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.ComponentModel.Design;
@@ -14,6 +16,8 @@ using Strokes.Core;
 using Strokes.Core.Integration;
 using Strokes.Data;
 using Strokes.GUI;
+using System.Linq;
+using Strokes.VSX.Trackers;
 
 namespace Strokes.VSX
 {
@@ -27,20 +31,23 @@ namespace Strokes.VSX
     [ProvideService(typeof(IAchevementLibraryService))]
 
     [Guid(GuidList.guidCSharpAchiever_Achiever_VSIXPkgString)]
-    public sealed class StrokesVsxPackage : Package, IVsUpdateSolutionEvents2, IAchevementLibraryService
+    public sealed class StrokesVsxPackage : Package, IAchevementLibraryService
     {
         public StrokesVsxPackage()
         {
             Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", this.ToString()));
         }
 
-        private IVsSolutionBuildManager2 sbm = null;
-        private uint updateSolutionEventsCookie;
+        //Solution build manager service, and it's cookie.
+        public IVsSolutionBuildManager2 Sbm = null;
+        private uint _updateSolutionEventsCookie;
+
+        private BuildTracker _buildTracker;
+
+        //DTE object
         private DTE dte;
 
-        /////////////////////////////////////////////////////////////////////////////
-        // Overriden Package Implementation
-        #region Package Members
+        #region VSX Initialization
 
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
@@ -51,7 +58,7 @@ namespace Strokes.VSX
             Trace.WriteLine (string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
             base.Initialize();
             
-            // Add our command handlers for menu (commands must exist in the .vsct file)
+            //Add our command handlers for menu (commands must exist in the .vsct file)
             var mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if ( null != mcs )
             {
@@ -60,17 +67,18 @@ namespace Strokes.VSX
                 var menuItem = new MenuCommand(MenuItemCallback, menuCommandID );
                 mcs.AddCommand( menuItem );
             }
-            
-            //Subscribe to Build events
-            // Get solution build manager 
-            sbm = ServiceProvider.GlobalProvider.GetService(typeof(SVsSolutionBuildManager)) as IVsSolutionBuildManager2;
-            if (sbm != null)
-            {
-                sbm.AdviseUpdateSolutionEvents(this, out updateSolutionEventsCookie);
-            }
-            
+
+            //Obtain DTE service.
             dte = (DTE)GetService(typeof(DTE));
-            
+
+            //Subscribe to Build events
+            Sbm = ServiceProvider.GlobalProvider.GetService(typeof(SVsSolutionBuildManager)) as IVsSolutionBuildManager2;
+            if (Sbm != null)
+            {
+                _buildTracker = new BuildTracker(dte);
+                Sbm.AdviseUpdateSolutionEvents(_buildTracker, out _updateSolutionEventsCookie);
+            }
+
             //Promote the Achievement Library service
             var serviceContainer = (IServiceContainer)this;
             serviceContainer.AddService(typeof (IAchevementLibraryService), this, true);
@@ -83,21 +91,13 @@ namespace Strokes.VSX
             base.Dispose(disposing);
 
             // Unadvise all events 
-            if (sbm != null && updateSolutionEventsCookie != 0)
-                sbm.UnadviseUpdateSolutionEvents(updateSolutionEventsCookie);
+            if (Sbm != null && _updateSolutionEventsCookie != 0)
+                Sbm.UnadviseUpdateSolutionEvents(_updateSolutionEventsCookie);
         } 
 
         #endregion
 
-        /// <summary>
-        /// Called by third party extensions to register their achievement assemblies.
-        /// </summary>
-        /// <param name="assembly"></param>
-        public void RegisterAchievementAssembly(Assembly assembly)
-        {
-            var achievementDescriptorRepository = new AchievementDescriptorRepository(); //TODO: Resolve with IoC
-            achievementDescriptorRepository.LoadFromAssembly(assembly);
-        }
+        #region Tools menu item and Achievement Pane activation
 
         /// <summary>
         /// Called when the Tools -> C# Achievements menu is clicked.
@@ -133,91 +133,16 @@ namespace Strokes.VSX
             return window;
         }
 
-        /// <summary>
-        /// This event is called when the solution has completed it's build
-        /// </summary>
-        /// <param name="fSucceeded"></param>
-        /// <param name="fModified"></param>
-        /// <param name="fCancelCommand"></param>
-        /// <returns></returns>
-        int IVsUpdateSolutionEvents.UpdateSolution_Done(int fSucceeded, int fModified, int fCancelCommand)
-        {
-            if (fSucceeded != 0)
-            {
-                var activeDocument = dte.ActiveDocument;
-                if(activeDocument != null)
-                {
-                    var documentFile = activeDocument.FullName;
-                    if (documentFile.EndsWith(".cs"))
-                    {
-                        var projectItem = activeDocument.ProjectItem.ContainingProject;
-                        var detectionDispatcher = new DetectionDispatcher();
-                        detectionDispatcher.Dispatch(new BuildInformation()
-                        {
-                            ContainingProject = projectItem.FileName,
-                            ActiveFile = documentFile
-                        });
-                    }
-                }
-            }
-            return VSConstants.S_OK;
-        }
-
-        #region Unused events
-        int IVsUpdateSolutionEvents.UpdateSolution_Begin(ref int pfCancelUpdate)
-        {
-            return VSConstants.S_OK;
-        }
-
-        public int UpdateProjectCfg_Begin(IVsHierarchy pHierProj, IVsCfg pCfgProj, IVsCfg pCfgSln, uint dwAction, ref int pfCancel)
-        {
-            return VSConstants.S_OK;
-        }
-
-        public int UpdateProjectCfg_Done(IVsHierarchy pHierProj, IVsCfg pCfgProj, IVsCfg pCfgSln, uint dwAction, int fSuccess, int fCancel)
-        {
-            return VSConstants.S_OK;
-        }
-
-        int IVsUpdateSolutionEvents2.UpdateSolution_StartUpdate(ref int pfCancelUpdate)
-        {
-            return VSConstants.S_OK; 
-        }
-
-        int IVsUpdateSolutionEvents2.UpdateSolution_Done(int fSucceeded, int fModified, int fCancelCommand)
-        {
-            return VSConstants.S_OK;
-        }
-
-        int IVsUpdateSolutionEvents2.UpdateSolution_Cancel()
-        {
-            return VSConstants.S_OK; 
-        }
-
-        int IVsUpdateSolutionEvents2.OnActiveProjectCfgChange(IVsHierarchy pIVsHierarchy)
-        {
-            return VSConstants.S_OK; 
-        }
-
-        int IVsUpdateSolutionEvents2.UpdateSolution_Begin(ref int pfCancelUpdate)
-        {
-            return VSConstants.S_OK; 
-        }
-
-        int IVsUpdateSolutionEvents.UpdateSolution_StartUpdate(ref int pfCancelUpdate)
-        {
-            return VSConstants.S_OK; 
-        }
-
-        int IVsUpdateSolutionEvents.UpdateSolution_Cancel()
-        {
-            return VSConstants.S_OK; 
-        }
-
-        int IVsUpdateSolutionEvents.OnActiveProjectCfgChange(IVsHierarchy pIVsHierarchy)
-        {
-            return VSConstants.S_OK;
-        }
         #endregion
+
+        /// <summary>
+        /// Called by third party extensions to register their achievement assemblies.
+        /// </summary>
+        /// <param name="assembly">Assembly to scan for achievements</param>
+        public void RegisterAchievementAssembly(Assembly assembly)
+        {
+            var achievementDescriptorRepository = new AchievementDescriptorRepository(); //TODO: Resolve with IoC
+            achievementDescriptorRepository.LoadFromAssembly(assembly);
+        }
     }
 }
