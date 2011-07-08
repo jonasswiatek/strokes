@@ -10,14 +10,11 @@ namespace Strokes.Console
        
         public void Bla(int[] blsa)
         {
-            goto test;
 
-            test:
-            int i;
 
-            i = 4;
-
-            double d;
         }
+
+
+        public int MyProp2 { get; private set; }
     }
 }

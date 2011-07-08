@@ -117,6 +117,9 @@
     <Compile Include="Achievements\CastAchievement.cs" />
     <Compile Include="Achievements\ConstKeywordAchievement.cs" />
     <Compile Include="Achievements\BlockCommentAchievement.cs" />
+    <Compile Include="Achievements\CreateAutoPropertyAchievement.cs" />
+    <Compile Include="Achievements\CreatePropertyAchievement.cs" />
+    <Compile Include="Achievements\NotOperatorAchievement.cs" />
     <Compile Include="Achievements\Funny\GotoAchievement.cs" />
     <Compile Include="Achievements\Expressions\OperatorAndAchievement.cs" />
     <Compile Include="Achievements\Expressions\OperatorOrAchievement.cs" />
@@ -198,6 +201,12 @@
   <ItemGroup>
     <Resource Include="Achievements\Icons\Basic\AnonObject.png" />
     <Resource Include="Achievements\Icons\Basic\BlockComment.png" />
+    <Resource Include="Achievements\Icons\Basic\LambdaExpr.png" />
+    <Resource Include="Achievements\Icons\Basic\OrOperator.png" />
+    <Resource Include="Achievements\Icons\Basic\AndOperator.png" />
+    <Resource Include="Achievements\Icons\Empty.png" />
+    <Resource Include="Achievements\Icons\Basic\NotOperator.png" />
+    <Resource Include="Achievements\Icons\Basic\Cast.png" />
     <Content Include="lib\ICSharpCode.NRefactory.dll" />
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
