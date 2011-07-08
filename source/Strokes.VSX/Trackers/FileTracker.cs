@@ -10,8 +10,32 @@ namespace Strokes.VSX.Trackers
 {
     public class FileTracker
     {
-        public static List<string> GetChangedFiles(Solution solution, DateTime since)
+        /// <summary>
+        /// Gets a projects build output directory 
+        /// </summary>
+        /// <param name="project">Project to determine output directory of</param>
+        /// <returns></returns>
+        public static string GetProjectOutputDirectory(Project project)
         {
+            try
+            {
+                var projectFolder = Path.GetDirectoryName(project.FileName);
+                var outputPath = (string)project.ConfigurationManager.ActiveConfiguration.Properties.Item("OutputPath").Value;
+                var assemblyFileName = (string)project.Properties.Item("AssemblyName").Value;
+
+                return Path.Combine(new[] {
+                                      projectFolder,
+                                      outputPath
+                                  });
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<string> GetChangedFiles(Solution solution, DateTime since)
+        {   
             var allFiles = new List<string>();
             foreach (Project project in solution.Projects)
             {

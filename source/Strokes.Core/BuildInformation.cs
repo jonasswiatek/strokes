@@ -4,5 +4,6 @@
     {
         public string[] ChangedFiles;
         public string ActiveProject;
+        public string ActiveProjectOutputDirectory;
     }
 }

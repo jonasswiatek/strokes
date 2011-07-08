@@ -67,10 +67,12 @@ namespace Strokes.VSX.Trackers
                             }
 
                             var projectItem = activeDocument.ProjectItem.ContainingProject;
-                            buildInformation.ChangedFiles = changedFiles.ToArray();
                             buildInformation.ActiveProject = projectItem.FileName;
+                            buildInformation.ActiveProjectOutputDirectory = FileTracker.GetProjectOutputDirectory(projectItem);
                         }
                     }
+
+                    buildInformation.ChangedFiles = changedFiles.ToArray();
 
                     //Validate build information
                     if (buildInformation.ActiveProject == null && buildInformation.ChangedFiles.Length == 0)
