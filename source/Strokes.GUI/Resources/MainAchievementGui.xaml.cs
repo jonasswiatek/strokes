@@ -68,6 +68,7 @@ namespace Strokes.GUI
             Show();
 
             //by Jonas: Fixed this. The MainAchievementGui.xaml must specify d:DesignHeight="160" d:DesignWidth="290" as attributes for width and height to work (I think the transparent window just assumes some disproportionate size otherwise)
+            //Tim: not sure this is correct fix. normally d:DesignHeight is merely the size of the preview in visual studio, and has nothing to do with the runtime dimensions
             const int rightMargin = 5;
             const int bottomMargin = rightMargin;
 

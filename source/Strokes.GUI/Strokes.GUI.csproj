@@ -85,6 +85,9 @@
     </Compile>
     <Compile Include="Resources\Convertors\BoolToImageUriConverter.cs" />
     <Compile Include="Resources\Convertors\BoolToVisibilityConverter.cs" />
+    <Compile Include="Resources\MainAchievementManyGui.xaml.cs">
+      <DependentUpon>MainAchievementManyGui.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AllAchievementsViewModel.cs" />
     <Page Include="AchievementPane.xaml">
       <SubType>Designer</SubType>
@@ -109,6 +112,10 @@
     <Compile Include="Resources\MainAchievementGui.xaml.cs">
       <DependentUpon>MainAchievementGui.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\MainAchievementManyGui.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -23,7 +23,7 @@
         <Grid Name="BorderInnerGrid" Height="100" Width="300" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" ></RowDefinition>
-                <RowDefinition ></RowDefinition>
+                <RowDefinition Height="*" ></RowDefinition>
             </Grid.RowDefinitions>
            
             <TextBlock Text="Achievement Unlocked" Grid.Row="0"  HorizontalAlignment="Left" Margin="15,0,0,0" FontSize="12"  Foreground="#FFCBCBCB" />

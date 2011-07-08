@@ -33,7 +33,15 @@ namespace Strokes.GUI
             var debugString = "Achievements unlocked: " + string.Join(", ", args.Achievements.Select(a => a.Name));
             System.Diagnostics.Debug.WriteLine(debugString);
 
-            MainAchievementGui.DisplayAchievements(args.Achievements);
+            
+            var count= (from p in args.Achievements select p).Count();
+            if (count > 3)
+            {
+                //Should this be a static class like the other one?
+                MainAchievementManyGui many = new MainAchievementManyGui(args.Achievements);
+            }
+            else
+                MainAchievementGui.DisplayAchievements(args.Achievements);
 
         }
     }
