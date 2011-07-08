@@ -51,18 +51,23 @@ namespace Strokes.VSX.Trackers
                     _lastAchievementCheck = DateTime.Now;
 
                     //Construct build information
-                    var buildInformation = new BuildInformation
-                    {
-                        ChangedFiles = changedFiles.ToArray()
-                    };
+                    var buildInformation = new BuildInformation();
 
                     var activeDocument = dte.ActiveDocument;
                     if (activeDocument != null)
                     {
                         var documentFile = activeDocument.FullName;
+
                         if (documentFile.EndsWith(".cs"))
                         {
+                            if (!changedFiles.Contains(documentFile))
+                            {
+                                //Always check active document.
+                                changedFiles.Add(documentFile);
+                            }
+
                             var projectItem = activeDocument.ProjectItem.ContainingProject;
+                            buildInformation.ChangedFiles = changedFiles.ToArray();
                             buildInformation.ActiveProject = projectItem.FileName;
                         }
                     }
