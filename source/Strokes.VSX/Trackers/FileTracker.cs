@@ -34,6 +34,12 @@ namespace Strokes.VSX.Trackers
             }
         }
 
+        /// <summary>
+        /// Gets all files within the passed solution that has been changed since the passed DateTime
+        /// </summary>
+        /// <param name="solution">Solution containing files</param>
+        /// <param name="since">DateTime to limit to</param>
+        /// <returns></returns>
         public static List<string> GetChangedFiles(Solution solution, DateTime since)
         {   
             var allFiles = new List<string>();
