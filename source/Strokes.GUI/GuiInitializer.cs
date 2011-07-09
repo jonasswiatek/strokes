@@ -34,14 +34,8 @@ namespace Strokes.GUI
             System.Diagnostics.Debug.WriteLine(debugString);
 
             
-            var count= (from p in args.Achievements select p).Count();
-            if (count > 3)
-            {
-                //Should this be a static class like the other one?
-                MainAchievementManyGui many = new MainAchievementManyGui(args.Achievements);
-            }
-            else
-                MainAchievementGui.DisplayAchievements(args.Achievements);
+           
+            MainAchievementManyGui many = new MainAchievementManyGui(args.Achievements);
 
         }
     }
