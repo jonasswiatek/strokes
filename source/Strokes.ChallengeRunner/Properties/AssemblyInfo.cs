@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Strokes.Model")]
+[assembly: AssemblyTitle("Strokes.ChallengeRunner")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Strokes.Model")]
+[assembly: AssemblyProduct("Strokes.ChallengeRunner")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("62641b5e-bb2b-42dd-b123-18d8bc4c40c8")]
+[assembly: Guid("89090f64-6637-46ee-8226-113d44512b72")]
 
 // Version information for an assembly consists of the following four values:
 //

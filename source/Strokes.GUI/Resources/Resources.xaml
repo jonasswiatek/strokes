@@ -148,7 +148,6 @@
     <!--DataTemplates-->
 
     <DataTemplate x:Key="AchievementTemplate" >
-
         <Border BorderThickness="1" Margin="1" 
                         BorderBrush="Orange" 
                         Background="{Binding Path=Background, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}">
@@ -170,27 +169,28 @@
 				</StackPanel>
             </Grid>
         </Border>
-
     </DataTemplate>
     <DataTemplate x:Key="CategoryTemplate">
         <Grid Background="Orange" Margin="0">
-            <Border BorderThickness="1" Margin="2" 
-                        BorderBrush="Teal" 
+            <Border     BorderThickness="1"
+                        Margin="2"
+                        BorderBrush="Teal"
                         Background="{Binding Path=Background, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}">
-                <Grid Margin="2" >
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock   Text="{Binding CategoryName}" Style="{StaticResource TitleStyle}"/>
-                        <TextBlock Style="{StaticResource TitleStyle}" Margin="10,0,0,0">
-                            <Run>(</Run>
-                            <Run Text="{Binding TotalCompleted, Mode=OneWay}"></Run>          
-                            <Run Text="/"></Run>
-                            <Run Text="{Binding Count, Mode=OneWay}"></Run>
-                            <Run>)</Run>
-                        </TextBlock>
-                    </StackPanel>
+                <Grid Margin="10, 3, 10, 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="{Binding CategoryName}" Style="{StaticResource TitleStyle}" />
+                    <TextBlock Grid.Column="1" Style="{StaticResource TitleStyle}" Margin="10,0,0,0" TextAlignment="Right">
+                        <Run>(</Run>
+                        <Run Text="{Binding TotalCompleted, Mode=OneWay}"></Run>
+                        <Run Text="/"></Run>
+                        <Run Text="{Binding Count, Mode=OneWay}"></Run>
+                        <Run>)</Run>
+                    </TextBlock>
                 </Grid>
             </Border>
         </Grid>
     </DataTemplate>
- 
 </ResourceDictionary>

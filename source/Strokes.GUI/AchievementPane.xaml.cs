@@ -30,5 +30,11 @@ namespace Strokes.GUI
              this.DataContext = vm;
 
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            var achievementDescriptorRepository = new AchievementDescriptorRepository();
+            achievementDescriptorRepository.ResetCompletedAchievements();
+        }
     }
 }
