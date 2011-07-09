@@ -161,8 +161,8 @@
     <Compile Include="Achievements\TryCatchStatementAchievement.cs" />
     <Compile Include="Achievements\TryFinallyStatementAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\WhileLoopAchievement.cs" />
-    <Compile Include="Challenges\AssemblyRunner.cs" />
     <Compile Include="Challenges\CalculatorChallenge.cs" />
+    <Compile Include="Challenges\Challenge.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="NRefactory\NRefactoryAchievement.cs" />
     <Compile Include="NRefactory\NRefactorySession.cs" />
@@ -205,10 +205,6 @@
     <ProjectReference Include="..\Strokes.ChallengeRunner\Strokes.ChallengeRunner.csproj">
       <Project>{830D128B-8D1C-4151-A2E7-3054DBF34126}</Project>
       <Name>Strokes.ChallengeRunner</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Strokes.Challenges.Student\Strokes.Challenges.Student.csproj">
-      <Project>{281244B6-DD45-45C1-850C-031EEEE50F0F}</Project>
-      <Name>Strokes.Challenges.Student</Name>
     </ProjectReference>
     <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
       <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>

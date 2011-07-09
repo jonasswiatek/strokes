@@ -11,36 +11,52 @@ namespace Strokes.ChallengeRunner
     {
         static void Main(string[] args)
         {
-            var targetDirectory = args[0];
-            var targetChallenge = args[1];
-
-            //Load all assemblies in targetDirectory
-            var assemblies = new List<string>();
-
-            //Some directory listing hackery
-            assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.dll", SearchOption.AllDirectories).Where(file => file.IndexOf("vshost") < 0));
-            assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.exe", SearchOption.AllDirectories).Where(file => file.IndexOf("vshost") < 0));
-
-            Type targetType = null;
-
-            //Find targetChallenge-type in the found assemblies
-            foreach(var file in assemblies)
+            if(args.Length != 2)
             {
-                var assembly = Assembly.LoadFrom(file);
-                var types = assembly.GetTypes();
-
-                targetType = types.SingleOrDefault(a => a.FullName == targetChallenge);
-                if (targetType != null)
-                    break;
+                Console.Write("FAILED: " + string.Join(", ", args));
+                return;
             }
 
-            var methodInfo = targetType.GetMethod("TestChallenge");
-            if (methodInfo == null)
-                return;
+            var targetDirectory = args[0].Replace("*", " ");
+            var targetChallenge = args[1];
 
-            var result = (bool)methodInfo.Invoke(null, new[] {targetDirectory});
+            var result = "NOT_OK";
+            try
+            {
+                //Load all assemblies in targetDirectory
+                var assemblies = new List<string>();
 
-            Console.WriteLine(result ? "OK" : "FAILED");
+                //Some directory listing hackery
+                assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.dll", SearchOption.AllDirectories).Where(file => file.IndexOf("vshost") < 0));
+                assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.exe", SearchOption.AllDirectories).Where(file => file.IndexOf("vshost") < 0));
+
+                Type targetType = null;
+
+                //Find targetChallenge-type in the found assemblies
+                foreach(var file in assemblies)
+                {
+                    var assembly = Assembly.LoadFrom(file);
+                    var types = assembly.GetTypes();
+
+                    targetType = types.SingleOrDefault(a => a.FullName == targetChallenge);
+                    if (targetType != null)
+                        break;
+                }
+
+                var methodInfo = targetType.GetMethod("TestChallenge");
+                if (methodInfo == null)
+                    return;
+
+                var testResult = (bool)methodInfo.Invoke(null, new[] {targetDirectory});
+                if (testResult)
+                    result = "OK";
+            }
+            catch(Exception e)
+            {
+                result = e.Message;
+            }
+
+            Console.Write(result);
         }
     }
 }

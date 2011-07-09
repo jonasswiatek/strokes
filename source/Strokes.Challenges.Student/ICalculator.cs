@@ -19,28 +19,26 @@ namespace Strokes.Challenges.Student
     {
         public static bool TestChallenge(string outputDirectory)
         {
-            return false;
-        }
-    }
+            var assemblies = new List<string>();
 
-    [Serializable]
-    public class CalculatorTestRunner : MarshalByRefObject
-    {
-        public bool Run(string assemblyToTest)
-        {
-            //Load the assembly we're testing;
-            var assembly = Assembly.Load(File.ReadAllBytes(assemblyToTest), new byte[0]);
+            //Some directory listing hackery
+            assemblies.AddRange(Directory.GetFiles(outputDirectory, "*.dll", SearchOption.AllDirectories).Where(file => file.IndexOf("vshost") < 0));
+            assemblies.AddRange(Directory.GetFiles(outputDirectory, "*.exe", SearchOption.AllDirectories).Where(file => file.IndexOf("vshost") < 0));
 
-            ICalculator externalCalculatorImplementation = null;
+            Type calculatorImplType = null;
 
-            //See if we can find an implementation of ICalculator
-            var assemblyTypes = assembly.GetTypes();
-
-            var calculator = assemblyTypes.FirstOrDefault(t => typeof(ICalculator).IsAssignableFrom(t));
-            if (calculator != null)
+            foreach (var file in assemblies.Where(c => !c.Contains("Strokes.Challenges.Student")))
             {
-                externalCalculatorImplementation = Activator.CreateInstance(calculator) as ICalculator;
+                var assembly = Assembly.LoadFrom(file);
+                var types = assembly.GetTypes();
+
+                calculatorImplType = types.SingleOrDefault(c => typeof (ICalculator).IsAssignableFrom(c));
+
+                if (calculatorImplType != null)
+                    break;
             }
+
+            var externalCalculatorImplementation = calculatorImplType != null ? Activator.CreateInstance(calculatorImplType) as ICalculator : null;
 
             //No calculator implementation was found, so return false.
             if (externalCalculatorImplementation == null)
