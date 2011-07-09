@@ -47,7 +47,9 @@ namespace Strokes.ChallengeRunner
                 if (methodInfo == null)
                     return;
 
-                var testResult = (bool)methodInfo.Invoke(null, new[] {targetDirectory});
+                var instance = Activator.CreateInstance(targetType);
+
+                var testResult = (bool)methodInfo.Invoke(instance, new[] { targetDirectory });
                 if (testResult)
                     result = "OK";
             }
