@@ -113,13 +113,17 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Achievements\Classes\AbstractMethod.cs" />
     <Compile Include="Achievements\AnonymousObjectAchievement.cs" />
     <Compile Include="Achievements\CastAchievement.cs" />
+    <Compile Include="Achievements\Classes\DestructorAchievement.cs" />
     <Compile Include="Achievements\ConstKeywordAchievement.cs" />
     <Compile Include="Achievements\BlockCommentAchievement.cs" />
-    <Compile Include="Achievements\CreateAutoPropertyAchievement.cs" />
-    <Compile Include="Achievements\CreatePropertyAchievement.cs" />
-    <Compile Include="Achievements\NotOperatorAchievement.cs" />
+    <Compile Include="Achievements\Classes\ExtensionMethod.cs" />
+    <Compile Include="Achievements\TestAchievement.cs" />
+    <Compile Include="Achievements\Classes\CreateAutoPropertyAchievement.cs" />
+    <Compile Include="Achievements\Classes\CreatePropertyAchievement.cs" />
+    <Compile Include="Achievements\Expressions\NotOperatorAchievement.cs" />
     <Compile Include="Achievements\Funny\GotoAchievement.cs" />
     <Compile Include="Achievements\Expressions\OperatorAndAchievement.cs" />
     <Compile Include="Achievements\Expressions\OperatorOrAchievement.cs" />
@@ -148,6 +152,7 @@
     <Compile Include="Achievements\PrimitiveTypeUsage\Double\DeclareDouble.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Integer\DeclareInt.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\DeclarePrimitiveType.cs" />
+    <Compile Include="Achievements\TypeOfAchievement.cs" />
     <Compile Include="Achievements\UsingStatementAchievement.cs" />
     <Compile Include="Achievements\EnumInitializerAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\DoWhileLoopAchievement.cs" />
@@ -158,7 +163,7 @@
     <Compile Include="Achievements\PrimitiveTypeUsage\MultipleDeclarePrimitiveType.cs" />
     <Compile Include="Achievements\Expressions\LambdaExpressionAchievement.cs" />
     <Compile Include="Achievements\ParamsParameterAchievement.cs" />
-    <Compile Include="Achievements\PrivateSetterAchievement.cs" />
+    <Compile Include="Achievements\Classes\PrivateSetterAchievement.cs" />
     <Compile Include="Achievements\Expressions\QueryExpressionAchievement.cs" />
     <Compile Include="Achievements\TryCatchFinallyStatementAchievement.cs" />
     <Compile Include="Achievements\TryCatchStatementAchievement.cs" />

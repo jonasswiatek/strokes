@@ -5,16 +5,17 @@ using System.Linq;
 
 namespace Strokes.Console
 {
-    public class TestFile
+     public class TestFile:IComparable
     {
-       
-        public void Bla(int[] blsa)
+
+
+
+
+
+
+        public int CompareTo(object obj)
         {
-
-
+            return 0;
         }
-
-
-        public int MyProp2 { get; private set; }
     }
 }
