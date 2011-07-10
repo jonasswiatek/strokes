@@ -20,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitObjectCreateExpression(ObjectCreateExpression objectCreateExpression, object data)
             {
                 CollectionInitializerExpression expr = objectCreateExpression.ObjectInitializer as CollectionInitializerExpression;
-                if (expr != null)
+                if (expr.CreateExpressions.Count>0)
                     UnlockWith(objectCreateExpression);
                 return base.VisitObjectCreateExpression(objectCreateExpression, data);
             }
