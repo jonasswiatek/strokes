@@ -117,6 +117,13 @@
     <Compile Include="Achievements\AnonymousObjectAchievement.cs" />
     <Compile Include="Achievements\CastAchievement.cs" />
     <Compile Include="Achievements\Classes\AbstractClass.cs" />
+    <Compile Include="Achievements\Classes\UseAsKeyword.cs" />
+    <Compile Include="Achievements\Classes\UseIsKeyword.cs" />
+    <Compile Include="Achievements\Classes\OverloadOperator.cs" />
+    <Compile Include="Achievements\Classes\OverrideGetHashCode.cs" />
+    <Compile Include="Achievements\Classes\OverrideEquals.cs" />
+    <Compile Include="Achievements\Classes\OverrideToString.cs" />
+    <Compile Include="Achievements\Classes\CreateInterface.cs" />
     <Compile Include="Achievements\Classes\InstantiateObjectWithInitAchievement.cs" />
     <Compile Include="Achievements\Classes\InstantiateObjectAchievement.cs" />
     <Compile Include="Achievements\Classes\CreateOverloadedConstructorAchievement.cs" />
