@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractChallengeTester.cs" />
+    <Compile Include="CaesarChallenge\CaesarTest.cs" />
+    <Compile Include="CaesarChallenge\ICaesar.cs" />
     <Compile Include="CalculatorChallenge\CalculatorTest.cs" />
     <Compile Include="CalculatorChallenge\ICalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

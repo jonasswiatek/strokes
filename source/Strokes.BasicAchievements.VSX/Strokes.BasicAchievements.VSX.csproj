@@ -171,6 +171,7 @@
     <Compile Include="Achievements\ProgramFlow\WhileLoopAchievement.cs" />
     <Compile Include="Challenges\CalculatorChallenge.cs" />
     <Compile Include="Challenges\Challenge.cs" />
+    <Compile Include="Challenges\CaesarChallenge.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="NRefactory\NRefactoryAchievement.cs" />
     <Compile Include="NRefactory\NRefactorySession.cs" />
