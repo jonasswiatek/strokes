@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Typeof", AchievementDescription = "Use typeof keyword", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Test", AchievementDescription = "Test", AchievementCategory = "Basic Achievements")]
     public class TestAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -17,11 +17,14 @@ namespace Strokes.BasicAchievements.Achievements
         private class Visitor : AbstractAchievementVisitor
         {
 
-            public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
+            public override object VisitVariableDeclaration(VariableDeclaration variableDeclaration, object data)
             {
-                return base.VisitMethodDeclaration(methodDeclaration, data);
+                ObjectCreateExpression expr = variableDeclaration.Initializer as ObjectCreateExpression;
+                if (expr != null)
+                    UnlockWith(variableDeclaration);
+                
+                return base.VisitVariableDeclaration(variableDeclaration, data);
             }
-            
         }
     }
 }

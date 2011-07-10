@@ -5,17 +5,26 @@ using System.Linq;
 
 namespace Strokes.Console
 {
-     public class TestFile:IComparable
+    public class TestFile
     {
+         public TestFile()
+         { }
+         
+         void go()
+         {
+          
+         }
+         void go(int y)
+         {
+         }public int MyProperty { get; set; }
+    }
 
-
-
-
-
-
-        public int CompareTo(object obj)
+    public class pr
+    {
+        public void main()
         {
-            return 0;
+            TestFile t = new TestFile() { MyProperty = 43 };
         }
     }
+
 }
