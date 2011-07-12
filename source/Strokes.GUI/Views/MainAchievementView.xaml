@@ -17,6 +17,9 @@
         WindowStartupLocation="Manual"
         WindowStyle="None"
         mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/Strokes.GUI;component/Resources/Styles/Generic.xaml" />
+    </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>
