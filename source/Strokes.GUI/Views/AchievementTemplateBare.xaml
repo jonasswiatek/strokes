@@ -3,21 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             d:DesignHeight="300"
-             d:DesignWidth="300"
+             d:DesignHeight="100"
+             d:DesignWidth="400"
              mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/Strokes.GUI;component/Resources/Styles/Generic.xaml" />
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"
-                              MinWidth="89" />
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0"
-                Width="65"
-                Height="65"
                 Margin="0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
@@ -34,7 +31,7 @@
             <TextBlock
                        Foreground="{DynamicResource AchivementHeaderForeground}"
                        Text="{Binding Name,
-                                      FallbackValue=ChallengeName,
+                                      FallbackValue=[Achievement Name Here],
                                       Mode=OneWay}"
                        TextWrapping="Wrap" FontWeight="Bold" />
             <TextBlock Foreground="{DynamicResource AchivementForeground}"

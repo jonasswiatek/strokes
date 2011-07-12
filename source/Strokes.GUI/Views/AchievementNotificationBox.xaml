@@ -1,0 +1,54 @@
+﻿<Window     x:Class="Strokes.GUI.Views.AchievementNotificationBox"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            mc:Ignorable="d" 
+            d:DesignHeight="200"
+            d:DesignWidth="400"
+            Name="AchevementNotificationBox"
+            WindowStyle="None"
+            AllowsTransparency="True"
+            WindowStartupLocation="Manual"
+            ResizeMode="NoResize"
+            BorderThickness="3"
+            Topmost="True"
+            ShowInTaskbar="False"
+            SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <ResourceDictionary Source="../Resources/Resources.xaml">
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Name="OuterGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!-- Topbar -->
+        <TextBlock Text="Achievement Unlocked" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="15,0,0,0" FontSize="12" Foreground="#FFCBCBCB"/>
+        <Border Grid.Column="1"
+                Grid.Row="0"
+                Background="DarkKhaki">
+            <Image Name="CloseWindowImage"
+               Width="20"
+               Height="20"
+               Source="../Resources/Icons/gtk-close.png"
+                   MouseDown="CloseWindowImage_MouseDown"/>
+        </Border>
+
+        <!-- Achievements -->
+        <ListBox    Grid.Column="0"   
+                    Grid.Row="1"
+                    Margin="3,3,3,3"
+                    ItemsSource="{Binding DataContext, ElementName=AchevementNotificationBox}"
+                    ItemTemplate="{StaticResource AchievementNotificationTemplate}"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    MaxHeight="300">
+        </ListBox>
+    </Grid>
+</Window>

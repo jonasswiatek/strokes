@@ -14,17 +14,5 @@ namespace Strokes.Console
          {
           
          }
-         void go(int y)
-         {
-         }public int MyProperty { get; set; }
     }
-
-    public class pr
-    {
-        public void main()
-        {
-            TestFile t = new TestFile() { MyProperty = 43 };
-        }
-    }
-
 }

@@ -27,7 +27,7 @@
     <SolidColorBrush x:Key="TabItemDisabledBorderBrush"
                      Color="#FFC9C7BA" />
     <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}"
-                     Color="{StaticResource BasicBackGround.Color}" />
+                     Color="#333333" />
 
     <Style TargetType="{x:Type TextBlock}">
         <!--  <Setter Property="Margin" Value="5,5,5,5"></Setter>  -->
@@ -189,6 +189,21 @@
     </Style>
 
     <!--  DataTemplates  -->
+
+    <DataTemplate x:Key="AchievementNotificationTemplate">
+        <Border Margin="1"
+                Background="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}, Mode=FindAncestor}}"
+                BorderBrush="Orange"
+                BorderThickness="1">
+            <Grid Background="#FF585858">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <local:AchievementTemplateBare Grid.Column="0"
+                                               Margin="5" />
+            </Grid>
+        </Border>
+    </DataTemplate>
 
     <DataTemplate x:Key="AchievementTemplate">
         <Border Margin="1"

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Strokes.Core;
+using Strokes.GUI.Views;
 
 namespace Strokes.GUI
 {
@@ -35,7 +36,8 @@ namespace Strokes.GUI
             System.Diagnostics.Debug.WriteLine("Achievements unlocked: " 
                 + string.Join(", ", args.Achievements.Select(a => a.Name)));
 
-            var many = new MainAchievementContainerView(args.Achievements);
+            //MainAchievementManyGui many = new MainAchievementManyGui(args.Achievements);
+            AchievementNotificationBox.ShowAchievements(args.Achievements);
         }
     }
 }

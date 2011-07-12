@@ -41,6 +41,7 @@ namespace Strokes.Console
             {
                 AchievementContext.AchievementsUnlocked += new AchievementContext.AchievementsUnlockedHandler(AchievementContext_AchievementsUnlocked);
                 GuiInitializer.Initialize();
+
                 var achievementDescriptorRepository = new AchievementDescriptorRepository(); //TODO: Resolve with IoC
                 achievementDescriptorRepository.LoadFromAssembly(typeof(AnonymousObjectAchievement).Assembly);
                 DetectionDispatcher.DetectionCompleted += new EventHandler<DetectionCompletedEventArgs>(DetectionDispatcher_DetectionCompleted);

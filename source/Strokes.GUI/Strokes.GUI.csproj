@@ -90,8 +90,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Views\AchievementViewportControl.xaml.cs">
-      <DependentUpon>AchievementViewportControl.xaml</DependentUpon>
+    <Compile Include="Views\AchievementNotificationBox.xaml.cs">
+      <DependentUpon>AchievementNotificationBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AchievementTemplateBare.xaml.cs">
       <DependentUpon>AchievementTemplateBare.xaml</DependentUpon>
@@ -102,6 +102,10 @@
       <DependentUpon>MainAchievementContainerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AllAchievementsViewModel.cs" />
+    <Page Include="Views\AchievementNotificationBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AchievementPane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,9 +115,21 @@
       <SubType>Designer</SubType>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
+    <Page Include="Resources\Resources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Styles\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\VS2010.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\VS2010.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AchievementViewportControl.xaml">
       <SubType>Designer</SubType>
@@ -209,7 +225,13 @@
     <Resource Include="Resources\Icons\default.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Icons\gtk-close.png" />
+  </ItemGroup>
+  <ItemGroup>
     <DesignData Include="SampleData\AllAchievementsViewModelSampleData.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AchievementNotification\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
