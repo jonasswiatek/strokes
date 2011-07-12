@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NotifyPropertyWeaver</name>
+    </assembly>
+    <members>
+        <member name="T:NotifyPropertyWeaver.DependsOnAttribute">
+            <summary>
+            Injects this property to be notified when a dependant property is set.
+            </summary>
+        </member>
+        <member name="M:NotifyPropertyWeaver.DependsOnAttribute.#ctor(System.String)">
+            <summary>
+             Initializes a new instance of <see cref="T:NotifyPropertyWeaver.DependsOnAttribute"/>.
+            </summary>
+            <param name="dependency">A property that the assigned property depends on.</param>
+        </member>
+        <member name="M:NotifyPropertyWeaver.DependsOnAttribute.#ctor(System.String,System.String[])">
+            <summary>
+             Initializes a new instance of <see cref="T:NotifyPropertyWeaver.DependsOnAttribute"/>.
+            </summary>
+            <param name="dependency">A property that the assigned property depends on.</param>
+            <param name="otherDependencies">The properties that the assigned property depends on.</param>
+        </member>
+        <member name="T:NotifyPropertyWeaver.DoNotNotifyAttribute">
+            <summary>
+            Exclude a <see cref="T:System.Type"/> or property from notification.
+            </summary>
+            <remarks>
+            Used when <see cref="T:NotifyPropertyWeaver.NotifyForAllAttribute"/> is used.
+            </remarks>
+        </member>
+        <member name="T:NotifyPropertyWeaver.NotifyForAllAttribute">
+            <summary>
+            Enables property notification for all properties on the <see cref="T:System.Type"/> or <see cref="T:System.Reflection.Assembly"/>.
+            </summary>
+        </member>
+        <member name="T:NotifyPropertyWeaver.NotifyPropertyAttribute">
+            <summary>
+            Enables property notification.
+            </summary>
+        </member>
+        <member name="P:NotifyPropertyWeaver.NotifyPropertyAttribute.PerformEqualityCheck">
+            <summary>
+            <b>true</b> to perform an equality check before firing property notification; otherwise <b>false</b>.
+            </summary>
+            <remarks>Defaults to <b>false</b>.</remarks>
+        </member>
+        <member name="P:NotifyPropertyWeaver.NotifyPropertyAttribute.AlsoNotifyFor">
+            <summary>
+            The names of other properties to perform notification for.
+            </summary>
+        </member>
+        <member name="P:NotifyPropertyWeaver.NotifyPropertyAttribute.SetIsChanged">
+            <summary>
+            Gets the object's changed status.
+            </summary>
+        </member>
+    </members>
+</doc>

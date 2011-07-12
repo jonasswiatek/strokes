@@ -1,40 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Strokes.Core;
-using Strokes.Data;
-
-namespace Strokes.GUI
+﻿namespace Strokes.GUI
 {
-    /// <summary>
-    /// Interaction logic for AchievementPane.xaml
-    /// </summary>
-    public partial class AchievementPane : UserControl
+    public partial class AchievementPane
     {
-        public AllAchievementsViewModel vm;
         public AchievementPane()
         {
             InitializeComponent();
-
-             vm = new AllAchievementsViewModel();
-             this.DataContext = vm;
-
-        }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            var achievementDescriptorRepository = new AchievementDescriptorRepository();
-            achievementDescriptorRepository.ResetCompletedAchievements();
         }
     }
 }

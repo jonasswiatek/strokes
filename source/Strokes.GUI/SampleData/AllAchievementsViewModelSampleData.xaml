@@ -1,0 +1,81 @@
+<Strokes_GUI:AllAchievementsViewModel xmlns:Strokes_Core="clr-namespace:Strokes.Core;assembly=Strokes.Core"
+                                      xmlns:Strokes_Core_Model="clr-namespace:Strokes.Core.Model;assembly=Strokes.Core"
+                                      xmlns:Strokes_GUI="clr-namespace:Strokes.GUI"
+                                      PercentageCompleted="58"
+                                      TotalAchievements="72"
+                                      TotalCompleted="42">
+    <Strokes_GUI:AllAchievementsViewModel.AchievementsOrdered>
+        <Strokes_GUI:AchievementsPerCategory CategoryName="Basic Archivements"
+                                             PercentageCompleted="0"
+                                             TotalCompleted="0">
+            <Strokes_Core_Model:AchievementDescriptor Name="Abstract Class"
+                                                      Category="Basic Achivements"
+                                                      DateCompleted="07/12/2011 11:12:58"
+                                                      Description="Create an abstract class"
+                                                      ImageUri="../Icons/default.png"
+                                                      IsCompleted="True" />
+            <Strokes_Core_Model:AchievementDescriptor Name="Abstact Method"
+                                                      Category="Basic Achivements"
+                                                      DateCompleted="07/12/2011 11:12:58"
+                                                      Description="Create a abstract method"
+                                                      ImageUri="../Icons/default.png"
+                                                      IsCompleted="False" />
+            <Strokes_Core_Model:AchievementDescriptor Name="Anonymous Object"
+                                                      Category="Basic Achivements"
+                                                      DateCompleted="07/12/2011 11:12:58"
+                                                      Description="Create an anonymous object"
+                                                      ImageUri="../Icons/default.png"
+                                                      IsCompleted="False" />
+            <Strokes_Core_Model:AchievementDescriptor Name="As"
+                                                      Category="Basic Achivements"
+                                                      DateCompleted="07/12/2011 11:12:58"
+                                                      Description="Try the 'as' operator"
+                                                      ImageUri="../Icons/default.png"
+                                                      IsCompleted="False" />
+            <Strokes_Core_Model:AchievementDescriptor Name="Lambda"
+                                                      Category="Basic Achivements"
+                                                      DateCompleted="07/12/2011 11:12:58"
+                                                      Description="Try a lambda operator"
+                                                      ImageUri="../Icons/default.png"
+                                                      IsCompleted="False" />
+        </Strokes_GUI:AchievementsPerCategory>
+        <Strokes_GUI:AchievementsPerCategory CategoryName="Challenges"
+                                             PercentageCompleted="0"
+                                             TotalCompleted="0">
+            <Strokes_Core_Model:AchievementDescriptor Name="Amet adipiscing"
+                                                      Category="Natoque sociosqu ipsum"
+                                                      DateCompleted="07/12/2011 11:12:58"
+                                                      Description="Rutrum non"
+                                                      ImageUri="../Icons/default.png"
+                                                      IsCompleted="True" />
+            <Strokes_Core_Model:AchievementDescriptor Name="Eget porttitor justo"
+                                                      Category="Ante posuere arcu"
+                                                      DateCompleted="07/12/2011 11:12:58"
+                                                      Description="Parturient potenti per"
+                                                      ImageUri="../Icons/default.png"
+                                                      IsCompleted="False" />
+            <Strokes_Core_Model:AchievementDescriptor Name="Eros tincidunt"
+                                                      Category="Pretium sapien elit lacus enim"
+                                                      DateCompleted="07/12/2011 11:12:58"
+                                                      Description="Lorem rhoncus semper erat"
+                                                      ImageUri="../Icons/default.png"
+                                                      IsCompleted="True" />
+        </Strokes_GUI:AchievementsPerCategory>
+        <Strokes_GUI:AchievementsPerCategory CategoryName="Funny Achivements"
+                                             PercentageCompleted="0"
+                                             TotalCompleted="0">
+            <Strokes_Core_Model:AchievementDescriptor Name="Neque sed vestibulum phasellus"
+                                                      Category="Vulputate odio aliquam aliquet orci"
+                                                      DateCompleted="07/12/2011 11:12:58"
+                                                      Description="Nam massa metus morbi"
+                                                      ImageUri="../Icons/default.png"
+                                                      IsCompleted="False" />
+            <Strokes_Core_Model:AchievementDescriptor Name="Convallis porta dignissim"
+                                                      Category="Netus nulla dis"
+                                                      DateCompleted="07/12/2011 11:12:58"
+                                                      Description="Pede consequat volutpat aenean"
+                                                      ImageUri="../Icons/default.png"
+                                                      IsCompleted="True" />
+        </Strokes_GUI:AchievementsPerCategory>
+    </Strokes_GUI:AllAchievementsViewModel.AchievementsOrdered>
+</Strokes_GUI:AllAchievementsViewModel>

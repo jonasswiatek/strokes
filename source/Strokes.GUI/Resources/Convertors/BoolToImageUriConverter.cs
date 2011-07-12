@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
@@ -9,12 +7,18 @@ namespace Strokes.GUI
 {
     public sealed class BoolToImageUriConverter : IValueConverter
     {
+        private static Uri CheckedImageUri
+            = new Uri("pack://application:,,,/Strokes.GUI;component/Icons/checked.png");
 
-        public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        private static Uri UncheckedImageUri
+            = new Uri("pack://application:,,,/Strokes.GUI;component/Icons/cross.png");
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            BitmapImage image = new BitmapImage();
             if (value != null)
             {
+                var image = new BitmapImage();
+
                 try
                 {
                     image.BeginInit();
@@ -22,9 +26,9 @@ namespace Strokes.GUI
                     image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
 
                     if ((bool)value)
-                        image.UriSource = new System.Uri("pack://application:,,,/Strokes.GUI;component/Icons/checked.png");
+                        image.UriSource = CheckedImageUri;
                     else
-                        image.UriSource = new System.Uri("pack://application:,,,/Strokes.GUI;component/Icons/cross.png");
+                        image.UriSource = UncheckedImageUri;
 
                     image.EndInit();
                 }
@@ -32,11 +36,14 @@ namespace Strokes.GUI
                 {
                     image = null;
                 }
+
+                return image;
             }
-            return image;
+
+            return value;
         }
 
-        public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new System.NotImplementedException();
         }

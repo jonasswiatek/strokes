@@ -1,32 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Data;
-using System.Windows.Media.Imaging;
+using System.Globalization;
 using System.Windows;
+using System.Windows.Data;
 
 namespace Strokes.GUI
 {
     public sealed class BoolToVisibilityConverter : IValueConverter
     {
-        //This converter could be ignored if the viewmodel does the conversion for us (but requires that the viewmodel uses it's own AchievementDesriptor class)
-        public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-           
-            if (value != null)
+            if (value is bool)
             {
-                if ((bool)value)
-                    return Visibility.Visible;
-                else
-                    return Visibility.Hidden;
+                return (bool)value
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
             }
-            return Visibility.Hidden;
+
+            return Visibility.Visible;
         }
 
-        public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
