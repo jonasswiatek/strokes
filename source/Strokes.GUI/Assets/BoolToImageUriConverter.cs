@@ -8,10 +8,10 @@ namespace Strokes.GUI
     public sealed class BoolToImageUriConverter : IValueConverter
     {
         private static Uri CheckedImageUri
-            = new Uri("pack://application:,,,/Strokes.GUI;component/Icons/checked.png");
+            = new Uri("pack://application:,,,/Strokes.GUI;component/Resources/Icons/checked.png");
 
         private static Uri UncheckedImageUri
-            = new Uri("pack://application:,,,/Strokes.GUI;component/Icons/cross.png");
+            = new Uri("pack://application:,,,/Strokes.GUI;component/Resources/Icons/cross.png");
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

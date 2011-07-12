@@ -90,15 +90,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Resources\AchievementViewportControl.xaml.cs">
+    <Compile Include="Views\AchievementViewportControl.xaml.cs">
       <DependentUpon>AchievementViewportControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resources\AchievementTemplateBare.xaml.cs">
+    <Compile Include="Views\AchievementTemplateBare.xaml.cs">
       <DependentUpon>AchievementTemplateBare.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Convertors\BoolToImageUriConverter.cs" />
-    <Compile Include="Resources\Convertors\BoolToVisibilityConverter.cs" />
-    <Compile Include="Resources\MainAchievementContainerView.xaml.cs">
+    <Compile Include="Assets\BoolToImageUriConverter.cs" />
+    <Compile Include="Assets\BoolToVisibilityConverter.cs" />
+    <Compile Include="Views\MainAchievementContainerView.xaml.cs">
       <DependentUpon>MainAchievementContainerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AllAchievementsViewModel.cs" />
@@ -111,15 +111,19 @@
       <SubType>Designer</SubType>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
-    <Page Include="Resources\AchievementViewportControl.xaml">
+    <Page Include="Resources\Styles\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\AchievementTemplateBare.xaml">
+    <Page Include="Views\AchievementViewportControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\MainAchievementView.xaml">
+    <Page Include="Views\AchievementTemplateBare.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainAchievementView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -127,20 +131,16 @@
       <DependentUpon>AchievementPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="GuiInitializer.cs" />
-    <Compile Include="Resources\MainAchievementView.xaml.cs">
+    <Compile Include="Views\MainAchievementView.xaml.cs">
       <DependentUpon>MainAchievementView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resources\MainAchievementContainerView.xaml">
+    <Page Include="Views\MainAchievementContainerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Resources.xaml">
+    <Page Include="Resources\Styles\Themes\Dark.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\VS2010.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -192,8 +192,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\checked.png" />
-    <Resource Include="Icons\cross.png" />
+    <Resource Include="Resources\Icons\checked.png" />
+    <Resource Include="Resources\Icons\cross.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
@@ -206,7 +206,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\default.png" />
+    <Resource Include="Resources\Icons\default.png" />
   </ItemGroup>
   <ItemGroup>
     <DesignData Include="SampleData\AllAchievementsViewModelSampleData.xaml" />

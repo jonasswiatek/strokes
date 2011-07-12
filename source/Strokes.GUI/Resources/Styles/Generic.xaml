@@ -1,0 +1,98 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Strokes.GUI">
+    <!--  Converters  -->
+    <local:BoolToImageUriConverter x:Key="ImageConverter" />
+    <local:BoolToVisibilityConverter x:Key="VisibilityConverter" />
+
+    <!--  Brushes  -->
+    <SolidColorBrush x:Key="AchivementBackground"
+                     Color="#585858" />
+
+    <SolidColorBrush x:Key="AchivementForeground"
+                     Color="Honeydew" />
+
+    <SolidColorBrush x:Key="AchivementHeaderForeground"
+                     Color="Lime" />
+    
+    <SolidColorBrush x:Key="AchivementBorder"
+                     Color="#8C8E94" />
+
+    <SolidColorBrush x:Key="AchivementInnerBorder"
+                     Color="Green" />
+    
+    <SolidColorBrush x:Key="AchivementTabItemBorder"
+                     Color="#8C8E94" />
+
+    <SolidColorBrush x:Key="TabControlNormalBorderBrush" 
+                     Color="#8C8E94"/>
+
+    <SolidColorBrush x:Key="AchivementTemplateBorder"
+                     Color="Orange" />
+
+    <SolidColorBrush x:Key="AchivementItemSelectedBackground"
+                     Color="Orange" />
+    
+    <SolidColorBrush x:Key="AchivementItemSelectedForeground"
+                     Color="Black" />
+
+    <SolidColorBrush x:Key="SelectedListBoxItemBackground"
+                     Color="Honeydew" />
+    
+    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}"
+                     Color="{StaticResource AchivementBackground.Color}" />
+
+    <!--  Font Sizes  -->
+
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <!--  Thickness  -->
+    <Thickness x:Key="ArchivementBorderThickness"
+               Bottom="1" Top="1" Left="1" Right="1" />
+
+    <Thickness x:Key="ArchivementControlMargin"
+               Bottom="10" Top="10" Left="10" Right="10" />
+
+    <Thickness x:Key="ArchivementsListBoxMargin"
+               Bottom="10" Top="10" Left="10" Right="10" />
+
+    <!--  Generic ListBox Styles  -->
+
+    <Style TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    </Style>
+
+    <Style TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Background" Value="{StaticResource AchivementBackground}" />
+        <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
+        <Setter Property="Margin" Value="2" />
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{StaticResource SelectedListBoxItemBackground}" />
+                <Setter Property="Foreground" Value="{StaticResource AchivementItemSelectedForeground}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!--  Generic TabItem Styles  -->
+
+    <Style x:Key="TabItemFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="3,3,3,1"
+                               SnapsToDevicePixels="true"
+                               Stroke="{StaticResource AchivementTabItemBorder}"
+                               StrokeDashArray="1 2"
+                               StrokeThickness="1" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>
