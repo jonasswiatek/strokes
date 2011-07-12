@@ -21,9 +21,9 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if(typeDeclaration.Type== ClassType.Class && typeDeclaration.Name!="Program")
                     UnlockWith(typeDeclaration);
+
                 return base.VisitTypeDeclaration(typeDeclaration, data);
             }
-
         }
     }
 }

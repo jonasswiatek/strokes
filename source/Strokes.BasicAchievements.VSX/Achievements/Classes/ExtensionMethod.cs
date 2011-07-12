@@ -19,8 +19,9 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (methodDeclaration.IsExtensionMethod == true)
+                if (methodDeclaration.IsExtensionMethod)
                     UnlockWith(methodDeclaration);
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
 

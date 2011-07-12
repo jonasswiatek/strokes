@@ -21,7 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitPropertyDeclaration(PropertyDeclaration propertyDeclaration, object data)
             {
 
-                if (propertyDeclaration.GetRegion.Block.IsNull == true && propertyDeclaration.SetRegion.Block.IsNull)
+                if (propertyDeclaration.GetRegion.Block.IsNull && propertyDeclaration.SetRegion.Block.IsNull)
                     UnlockWith(propertyDeclaration);
 
                 return base.VisitPropertyDeclaration(propertyDeclaration, data);

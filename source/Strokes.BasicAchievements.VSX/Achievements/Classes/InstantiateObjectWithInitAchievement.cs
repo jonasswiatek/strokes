@@ -19,9 +19,11 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitObjectCreateExpression(ObjectCreateExpression objectCreateExpression, object data)
             {
-                CollectionInitializerExpression expr = objectCreateExpression.ObjectInitializer as CollectionInitializerExpression;
+                var expr = objectCreateExpression.ObjectInitializer as CollectionInitializerExpression;
+
                 if (expr.CreateExpressions.Count>0)
-                    UnlockWith(objectCreateExpression);
+                    UnlockWith(objectCreateExpression.ObjectInitializer); //Handing over the ObjectInitializer will make it highlight that code region only.
+
                 return base.VisitObjectCreateExpression(objectCreateExpression, data);
             }
 

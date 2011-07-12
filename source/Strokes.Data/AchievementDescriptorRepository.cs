@@ -28,7 +28,7 @@ namespace Strokes.Data
         {
             foreach(var achievement in Achievements)
             {
-                var completedAchievement = CompletedAchievements.SingleOrDefault(a => a.Name == achievement.Name);
+                var completedAchievement = CompletedAchievements.FirstOrDefault(a => a.Name == achievement.Name);
                 if(completedAchievement != null)
                 {
                     achievement.DateCompleted = completedAchievement.DateCompleted;
