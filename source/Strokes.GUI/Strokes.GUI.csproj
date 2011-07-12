@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{CCA3165B-3D87-45AB-AD18-168CF04A1417}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Strokes.GUI</RootNamespace>
     <AssemblyName>Strokes.GUI</AssemblyName>
@@ -76,10 +76,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
     <Compile Include="Resources\AchievementViewportControl.xaml.cs">
       <DependentUpon>AchievementViewportControl.xaml</DependentUpon>
     </Compile>
@@ -110,10 +106,6 @@
     </Page>
     <Compile Include="AchievementPane.xaml.cs">
       <DependentUpon>AchievementPane.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="GuiInitializer.cs" />
     <Compile Include="Resources\MainAchievementGui.xaml.cs">
@@ -146,7 +138,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
     <None Include="Key.snk" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

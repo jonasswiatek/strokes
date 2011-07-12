@@ -60,6 +60,12 @@ namespace Strokes.BasicAchievements.NRefactory
                 IsAchievementUnlocked = true;
             }
 
+            /*public override object VisitCompilationUnit(CompilationUnit compilationUnit, object data)
+            {
+                return compilationUnit.AcceptChildren(this, data);
+            }*/
+
+
             public bool IsAchievementUnlocked;
         }
     }
