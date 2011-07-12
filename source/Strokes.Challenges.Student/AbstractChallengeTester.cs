@@ -14,29 +14,29 @@ namespace Strokes.Challenges.Student
             var assemblies = new List<string>();
 
             //Some directory listing hackery
-            assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.dll", SearchOption.AllDirectories).Where(file => file.IndexOf("vshost") < 0));
-            assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.exe", SearchOption.AllDirectories).Where(file => file.IndexOf("vshost") < 0));
+            assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.dll", SearchOption.AllDirectories).Where(file => !file.Contains("vshost")));
+            assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.exe", SearchOption.AllDirectories).Where(file => !file.Contains("vshost")));
 
-            Type calculatorImplType = null;
+            Type implType = null;
 
             foreach (var file in assemblies.Where(c => !c.Contains("Strokes.Challenges.Student")))
             {
                 var assembly = Assembly.LoadFrom(file);
                 var types = assembly.GetTypes();
 
-                calculatorImplType = types.SingleOrDefault(c => typeof(T).IsAssignableFrom(c));
+                implType = types.SingleOrDefault(c => typeof(T).IsAssignableFrom(c));
 
-                if (calculatorImplType != null)
+                if (implType != null)
                     break;
             }
 
-            var externalCalculatorImplementation = calculatorImplType != null ? Activator.CreateInstance(calculatorImplType) as T : null;
+            var externalImplementation = implType != null ? Activator.CreateInstance(implType) as T : null;
 
             //No calculator implementation was found, so return false.
-            if (externalCalculatorImplementation == null)
+            if (externalImplementation == null)
                 return false;
 
-            return TestImplementation(externalCalculatorImplementation);
+            return TestImplementation(externalImplementation);
         }
         public abstract bool TestImplementation(T implementation);
     }

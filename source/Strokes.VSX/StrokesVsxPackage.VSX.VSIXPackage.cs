@@ -42,6 +42,8 @@ namespace Strokes.VSX
         public IVsSolutionBuildManager2 Sbm = null;
         private uint _updateSolutionEventsCookie;
 
+        public IVsStatusbar statusBar = null;
+
         private BuildTracker _buildTracker;
 
         //DTE object
@@ -79,12 +81,21 @@ namespace Strokes.VSX
                 Sbm.AdviseUpdateSolutionEvents(_buildTracker, out _updateSolutionEventsCookie);
             }
 
+            //Statusbar
+            statusBar = GetService(typeof (SVsStatusbar)) as IVsStatusbar;
+
             //Promote the Achievement Library service
             var serviceContainer = (IServiceContainer)this;
             serviceContainer.AddService(typeof (IAchevementLibraryService), this, true);
 
             GuiInitializer.Initialize();
             AchievementContext.AchievementClicked += new AchievementContext.AchievementClickedHandler(AchievementContext_AchievementClicked);
+            DetectionDispatcher.DetectionCompleted += new EventHandler<DetectionCompletedEventArgs>(DetectionDispatcher_DetectionCompleted);
+        }
+
+        void DetectionDispatcher_DetectionCompleted(object sender, DetectionCompletedEventArgs e)
+        {
+            statusBar.SetText(string.Format("{0} achievements tested in {1} milliseconds", e.AchievementsTested, e.ElapsedMilliseconds));
         }
 
         void AchievementContext_AchievementClicked(object sender, AchievementClickedEventArgs args)

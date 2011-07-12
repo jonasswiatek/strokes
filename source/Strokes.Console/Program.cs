@@ -45,8 +45,7 @@ namespace Strokes.Console
                 var achievementDescriptorRepository = new AchievementDescriptorRepository(); //TODO: Resolve with IoC
                 achievementDescriptorRepository.LoadFromAssembly(typeof(AnonymousObjectAchievement).Assembly);
 
-                var detectionDispatcher = new DetectionDispatcher();
-                detectionDispatcher.Dispatch(new BuildInformation()
+                DetectionDispatcher.Dispatch(new BuildInformation()
                 {
                     ChangedFiles = new[] { System.IO.Path.GetFullPath("TestFile.cs") }
                 });

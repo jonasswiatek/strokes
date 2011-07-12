@@ -23,7 +23,7 @@ namespace Strokes.BasicAchievements.NRefactory
                 var result = parser.CompilationUnit;
                 var visitor = CreateVisitor();
 
-                result.AcceptVisitor(visitor, Guid.NewGuid());
+                result.AcceptVisitor(visitor, null);
 
                 if(visitor.IsAchievementUnlocked)
                 {

@@ -85,9 +85,7 @@ namespace Strokes.VSX.Trackers
                     //Lock builds while detection is occuring - this prevents parallel detection
                     _isAchievementDetectionRunning = true;
 
-                    //Dispatch
-                    var detectionDispatcher = new DetectionDispatcher();
-                    detectionDispatcher.Dispatch(buildInformation);
+                    DetectionDispatcher.Dispatch(buildInformation);
                 }
                 finally
                 {

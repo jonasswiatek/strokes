@@ -12,13 +12,22 @@ namespace Strokes.VSX
 {
     public class DetectionDispatcher
     {
+        public static event EventHandler<DetectionCompletedEventArgs> DetectionCompleted;
+        protected static void OnDetectionCompleted(object sender, DetectionCompletedEventArgs args)
+        {
+            if(DetectionCompleted != null)
+            {
+                DetectionCompleted(sender, args);
+            }
+        }
+
         /// <summary>
         /// Dispatches handling of achievement detection in the file(s) specified in the passed BuildInformation object.
         /// 
         /// This method is detection method agnostic. It simply forwards the BuildInformation object to all implementations of the Achievement class.
         /// </summary>
         /// <param name="buildInformation">Objects specifying documents to parse for achievements.</param>
-        public bool Dispatch(BuildInformation buildInformation)
+        public static bool Dispatch(BuildInformation buildInformation)
         {
             var unlockedAchievements = new List<AchievementDescriptor>();
             var achievementDescriptorRepository = new AchievementDescriptorRepository(); //TODO: Resolve with IoC
@@ -46,8 +55,11 @@ namespace Strokes.VSX
                     }
                 }
                 stopWatch.Stop();
-                var dispatchTimeElapsed = stopWatch.ElapsedMilliseconds;
-                Trace.WriteLine("Detection time elapsed: " + dispatchTimeElapsed);
+                OnDetectionCompleted(null, new DetectionCompletedEventArgs()
+                                               {
+                                                   AchievementsTested = uncompletedAchievements.Count(),
+                                                   ElapsedMilliseconds = (int)stopWatch.ElapsedMilliseconds
+                                               });
             }
 
             if(unlockedAchievements.Count() > 0)
@@ -59,10 +71,16 @@ namespace Strokes.VSX
                 }
 
                 //Dispatch to event listeners
-                AchievementContext.OnAchievementsUnlocked(this, unlockedAchievements);
+                AchievementContext.OnAchievementsUnlocked(null, unlockedAchievements);
                 return true;
             }
             return false;
         }
+    }
+
+    public class DetectionCompletedEventArgs : EventArgs
+    {
+        public int AchievementsTested;
+        public int ElapsedMilliseconds;
     }
 }
