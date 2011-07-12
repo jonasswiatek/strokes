@@ -17,9 +17,9 @@ namespace Strokes.VSX
     [Guid("860da2e9-60ef-4698-b539-ff847e203824")]
     public class AchievementStatisticsToolWindow : ToolWindowPane
     {
-        private DocumentEvents _documentEvents;
-        private SolutionEvents _solutionEvents;
-        private WindowEvents _windowEvents;
+        //private DocumentEvents _documentEvents;
+        //private SolutionEvents _solutionEvents;
+        //private WindowEvents _windowEvents;
 
         public AchievementStatisticsToolWindow() : base(null)
         {

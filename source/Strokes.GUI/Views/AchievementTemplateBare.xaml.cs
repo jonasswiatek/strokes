@@ -1,8 +1,8 @@
 ﻿namespace Strokes.GUI
 {
-    public partial class AchievementPane
+    public partial class AchievementTemplateBare
     {
-        public AchievementPane()
+        public AchievementTemplateBare()
         {
             InitializeComponent();
         }

@@ -1,117 +1,168 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using Strokes.Data;
-using Strokes.Core.Model;
-using System.Collections.ObjectModel;
+using System.Windows.Input;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using Strokes.Core;
-using System.ComponentModel;
+using Strokes.Core.Model;
+using Strokes.Data;
 
 namespace Strokes.GUI
 {
-    public class AllAchievementsViewModel: INotifyPropertyChanged
+    public class AllAchievementsViewModel : ViewModelBase
     {
-        public ObservableCollection<AchievementsPerCategory> achievementsOrdered { get;private set; }
-
-        public int TotalAchievements { get { return (from t in achievementsOrdered select t.Count).Sum(); }  }
-        public int TotalCompleted { get { return (from t in achievementsOrdered select t.TotalCompleted).Sum(); } }
-        public int PercentageCompleted { get { return TotalAchievements != 0 ?   (int)(((double)TotalCompleted / (double)TotalAchievements)*100):  0;}
-          
-        }
+        private const string OrderedAchievementsFieldName = "AchievementsOrdered";
+        private const string TotalAchievementsFieldName = "TotalAchievements";
+        private const string TotalCompletedFieldName = "TotalCompleted";
+        private const string PercentageCompletedFieldName = "PercentageCompleted";
 
         public AllAchievementsViewModel()
         {
-            ReLoadModel();
-            
+            this.AchievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
+            this.ResetCommand = new RelayCommand(ResetExecute);
+
+            ReloadViewModel();
+
             AchievementContext.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
         }
 
-        private void ReLoadModel()
+        public ObservableCollection<AchievementsPerCategory> AchievementsOrdered
         {
-            
-            achievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
-
-            var achievementDescriptorRepository = new AchievementDescriptorRepository();
-            var achievs = achievementDescriptorRepository.GetAll(); //Please note that this method returns another object that the AchievementTracker.GetAllAchievementDescriptors(). It needs to be rewritten to run on this new dataobject (Strokes.Core.Model.AchievementDescriptor).
-            var achcats = achievs.AsCategories();
-
-            foreach (var achcat in achcats)
-            {
-                AchievementsPerCategory cattoadd= new AchievementsPerCategory(){CategoryName= achcat.CategoryName};
-                foreach (var ach in achcat.Achievements)
-                    cattoadd.Add(ach);
-                achievementsOrdered.Add(cattoadd);
-            }
-  
+            get;
+            private set;
         }
 
-        void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)
+        public ICommand ResetCommand
         {
-            foreach (var ach in args.Achievements)
+            get;
+            private set;
+        }
+
+        public int TotalAchievements
+        {
+            get
             {
-                foreach (var cat in achievementsOrdered)
+                return AchievementsOrdered.Sum(t => t.Count);
+            }
+        }
+
+        public int TotalCompleted
+        {
+            get
+            {
+                return AchievementsOrdered.Sum(t => t.TotalCompleted);
+            }
+        }
+
+        public int PercentageCompleted
+        {
+            get
+            {
+                return TotalAchievements != 0 ? (int)(((double)TotalCompleted / (double)TotalAchievements) * 100) : 0;
+            }
+
+        }
+
+        private void ResetExecute()
+        {
+            new AchievementDescriptorRepository().ResetCompletedAchievements();
+        }
+
+        private void ReloadViewModel()
+        {
+            AchievementsOrdered.Clear();
+
+            var repository = new AchievementDescriptorRepository();
+            //Please note that this method returns another object that the AchievementTracker.GetAllAchievementDescriptors(). 
+            // It needs to be rewritten to run on this new dataobject (Strokes.Core.Model.AchievementDescriptor).
+            var achivements = repository.GetAll();
+            var categories = achivements.AsCategories();
+
+            foreach (var category in categories)
+            {
+                var archivementCategory = new AchievementsPerCategory()
                 {
-                    if (ach.Category == cat.CategoryName)
+                    CategoryName = category.CategoryName,
+                };
+
+                foreach (var achivement in category.Achievements)
+                {
+                    archivementCategory.Add(achivement);
+                }
+
+                AchievementsOrdered.Add(archivementCategory);
+            }
+        }
+
+        private void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)
+        {
+            foreach (var achivement in args.Achievements)
+            {
+                foreach (var category in AchievementsOrdered)
+                {
+                    if (achivement.Category == category.CategoryName)
                     {
-                        cat.Update(ach);
+                        category.Update(achivement);
                         break;
                     }
                 }
             }
-            OnPropertyChanged("achievementsOrdered");
-            OnPropertyChanged("TotalCompleted");
-            OnPropertyChanged("PercentageCompleted");
-        }
 
-        #region INotify stuff
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = this.PropertyChanged;
-            if (handler != null) 
-            {
-               var e = new PropertyChangedEventArgs(propertyName);
-               handler(this, e);
-            }
-
+            RaisePropertyChanged(OrderedAchievementsFieldName);
+            RaisePropertyChanged(TotalCompletedFieldName);
+            RaisePropertyChanged(PercentageCompletedFieldName);
         }
-        #endregion
     }
 
-    public class AchievementsPerCategory:ObservableCollection<AchievementDescriptor>, INotifyPropertyChanged 
+    public class AchievementsPerCategory : ObservableCollection<AchievementDescriptor>, INotifyPropertyChanged
     {
-                
-        public string CategoryName { get; set; }        
-        public int TotalCompleted {get { return (from t in this where t.IsCompleted==true select t).Count(); } }
-        public int PercentageCompleted { get { return this.Count != 0 ? (int)(((double)TotalCompleted / (double)this.Count) * 100) : 0; } }
-
         public AchievementsPerCategory()
         {
-            CategoryName = "Not Set";  
+            CategoryName = "Not Set";
         }
 
-
-        internal void Update(AchievementDescriptor ach)
+        public string CategoryName
         {
-            var achtorefresh = (from a in this where a.Name == ach.Name select a).SingleOrDefault();
-            achtorefresh = ach;
-            OnPropertyChanged("TotalCompleted");
-            OnPropertyChanged("PercentageCompleted");
+            get;
+            set;
         }
 
-         #region INotify stuff
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
+        public int TotalCompleted
         {
-            PropertyChangedEventHandler handler = this.PropertyChanged;
-            if (handler != null)
+            get
             {
-                var e = new PropertyChangedEventArgs(propertyName);
-                handler(this, e);
+                return this.Count(t => t.IsCompleted);
+            }
+        }
+
+        public int PercentageCompleted
+        {
+            get
+            {
+                return this.Count != 0 ? (int)(((double)TotalCompleted / (double)this.Count) * 100) : 0;
+            }
+        }
+
+        internal void Update(AchievementDescriptor descriptor)
+        {
+            var achivementDescriptor = this.SingleOrDefault(a => a.Name == descriptor.Name);
+
+            if (achivementDescriptor != null)
+            {
+                achivementDescriptor = descriptor;
             }
 
+            RaisePropertyChanged("TotalCompleted");
+            RaisePropertyChanged("PercentageCompleted");
         }
-        #endregion
+
+        internal void RaisePropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
