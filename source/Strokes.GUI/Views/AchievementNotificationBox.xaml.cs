@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Strokes.Core;
 using Strokes.Core.Model;
 
 namespace Strokes.GUI.Views
@@ -22,12 +23,17 @@ namespace Strokes.GUI.Views
 
             //Bind some shit
             DataContext = CurrentAchievements;
+            AchievementContext.AchievementDetectionStarting += new System.EventHandler(AchievementContext_AchievementDetectionStarting);
+        }
+
+        void AchievementContext_AchievementDetectionStarting(object sender, System.EventArgs e)
+        {
+            Close();
         }
 
         private void CloseWindowImage_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            CurrentAchievements.Clear();
-            Hide();
+            Close();
         }
 
         protected void AddAchievements(IEnumerable<AchievementDescriptor> achievementDescriptors)
@@ -35,37 +41,6 @@ namespace Strokes.GUI.Views
             foreach(var achevementDescriptor in achievementDescriptors)
             {
                 CurrentAchievements.Add(achevementDescriptor);
-            }
-
-            if (!IsVisible && CurrentAchievements.Count > 0)
-            {
-                //This is only to support the Strokes.Console-project
-                if (Application.Current != null)
-                {
-                    //During a real Visual Studio integrated run, this is called.
-                    Show();
-                }
-                else
-                {
-                    //When activated from a console-app, this is called.
-                    new Application().Run(this);
-                }
-
-                /* When this code is left in, it seems to only work the first time. I think it requires to be syncronized with when the ListBox is done layouting.
-                const int rightMargin = 5;
-                const int bottomMargin = 5;
-
-                if (Application.Current != null && Application.Current.MainWindow.WindowState == WindowState.Normal && Application.Current.MainWindow != this)
-                {
-                    Left = Application.Current.MainWindow.Left + Application.Current.MainWindow.Width - Width - rightMargin;
-                    Top = Application.Current.MainWindow.Top + Application.Current.MainWindow.Height - Height - bottomMargin;
-                }
-                else
-                {
-                    Left = SystemParameters.PrimaryScreenWidth - Width - rightMargin;
-                    Top = SystemParameters.MaximizedPrimaryScreenHeight - SystemParameters.ResizeFrameHorizontalBorderHeight - Height - bottomMargin;
-                }
-                 * */
             }
         }
 
@@ -78,12 +53,35 @@ namespace Strokes.GUI.Views
              * If we don't have a singleton instance active - then create one.
              * We need this, if more achievements gets unlocked while this box is still showing.
              */
-            if(Instance == null)
+
+            var instance = new AchievementNotificationBox();
+            instance.AddAchievements(achievementDescriptors);
+
+            const int rightMargin = 5;
+            const int bottomMargin = 5;
+
+            if (Application.Current != null && Application.Current.MainWindow.WindowState == WindowState.Normal && Application.Current.MainWindow != instance)
             {
-                Instance = new AchievementNotificationBox();
+                instance.Left = Application.Current.MainWindow.Left + Application.Current.MainWindow.Width - instance.Width - rightMargin;
+                instance.Top = Application.Current.MainWindow.Top + Application.Current.MainWindow.Height - instance.Height - bottomMargin;
+            }
+            else
+            {
+                instance.Left = SystemParameters.PrimaryScreenWidth - instance.Width - rightMargin;
+                instance.Top = SystemParameters.MaximizedPrimaryScreenHeight - SystemParameters.ResizeFrameHorizontalBorderHeight - instance.Height - bottomMargin;
             }
 
-            Instance.AddAchievements(achievementDescriptors);
+            //This is only to support the Strokes.Console-project
+            if (Application.Current != null)
+            {
+                //During a real Visual Studio integrated run, this is called.
+                instance.Show();
+            }
+            else
+            {
+                //When activated from a console-app, this is called.
+                new Application().Run(instance);
+            }
         }
     }
 }

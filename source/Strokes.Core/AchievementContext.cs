@@ -13,6 +13,7 @@ namespace Strokes.Core
 
         public delegate void AchievementsUnlockedHandler(object sender, AchievementsUnlockedEventArgs args);
         public static event AchievementsUnlockedHandler AchievementsUnlocked;
+        public static event EventHandler AchievementDetectionStarting;
 
         public static void OnAchievementsUnlocked(object sender, IEnumerable<AchievementDescriptor> unlockedAchievements)
         {
@@ -30,6 +31,14 @@ namespace Strokes.Core
             if(AchievementClicked != null)
             {
                 AchievementClicked(sender, args);
+            }
+        }
+
+        public static void OnAchievementDetectionStarting(object sender, EventArgs e)
+        {
+            if(AchievementDetectionStarting != null)
+            {
+                AchievementDetectionStarting(sender, e);
             }
         }
     }

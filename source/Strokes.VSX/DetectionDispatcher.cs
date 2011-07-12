@@ -29,6 +29,7 @@ namespace Strokes.VSX
         /// <param name="buildInformation">Objects specifying documents to parse for achievements.</param>
         public static bool Dispatch(BuildInformation buildInformation)
         {
+            AchievementContext.OnAchievementDetectionStarting(null, new EventArgs());
             var unlockedAchievements = new List<AchievementDescriptor>();
             var achievementDescriptorRepository = new AchievementDescriptorRepository(); //TODO: Resolve with IoC
 
