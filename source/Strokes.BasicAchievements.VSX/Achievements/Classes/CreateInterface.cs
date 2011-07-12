@@ -19,11 +19,11 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if(typeDeclaration.Type== ClassType.Interface)
+                if(typeDeclaration.Type == ClassType.Interface)
                     UnlockWith(typeDeclaration);
+
                 return base.VisitTypeDeclaration(typeDeclaration, data);
             }
-
         }
     }
 }

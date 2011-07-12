@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Objectivy!", AchievementDescription = "Create an object", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Objectify!", AchievementDescription = "Create an object", AchievementCategory = "Basic Achievements")]
     public class InstantiateObjectAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -20,6 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitObjectCreateExpression(ObjectCreateExpression objectCreateExpression, object data)
             {
                 UnlockWith(objectCreateExpression);
+
                 return base.VisitObjectCreateExpression(objectCreateExpression, data);
             }
         }

@@ -44,6 +44,7 @@ namespace Strokes.Console
                 GuiInitializer.Initialize();
                 var achievementDescriptorRepository = new AchievementDescriptorRepository(); //TODO: Resolve with IoC
                 achievementDescriptorRepository.LoadFromAssembly(typeof(AnonymousObjectAchievement).Assembly);
+                DetectionDispatcher.DetectionCompleted += new EventHandler<DetectionCompletedEventArgs>(DetectionDispatcher_DetectionCompleted);
 
                 DetectionDispatcher.Dispatch(new BuildInformation()
                 {
@@ -52,6 +53,11 @@ namespace Strokes.Console
 
                 System.Console.Read();
             }
+        }
+
+        static void DetectionDispatcher_DetectionCompleted(object sender, DetectionCompletedEventArgs e)
+        {
+            System.Console.WriteLine(string.Format("{0} achievements tested in {1} milliseconds", e.AchievementsTested, e.ElapsedMilliseconds));
         }
 
         static void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)

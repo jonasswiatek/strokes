@@ -21,9 +21,9 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if (methodDeclaration.Modifier.HasFlag(Modifiers.Abstract))
                     UnlockWith(methodDeclaration);
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-
         }
     }
 }
