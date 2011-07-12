@@ -91,7 +91,7 @@
                     Padding="0"
                     Style="{DynamicResource TabControlStyle}">
             <TabItem Header="My Achivements"
-                     Style="{DynamicResource TabItemStyle}">
+                     Style="{DynamicResource TabItemStyle}" FontSize="12">
                 <Grid Background="White">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -121,7 +121,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Leaderboard"
-                     Style="{DynamicResource TabItemStyle}">
+                     Style="{DynamicResource TabItemStyle}" FontSize="12">
                 <Grid>
                     <!--  Rightframe with results of other 'players'  -->
                     <StackPanel Margin="10,10,10,10">
@@ -132,7 +132,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Settings"
-                     Style="{DynamicResource TabItemStyle}">
+                     Style="{DynamicResource TabItemStyle}" FontSize="12">
                 <Grid>
                     <!--  Settings  -->
                     <StackPanel Margin="10,10,10,10"
