@@ -12,7 +12,12 @@
         <viewmodel:AllAchievementsViewModel />
     </UserControl.DataContext>
     <UserControl.Resources>
-        <ResourceDictionary Source="pack://application:,,,/Strokes.GUI;component/Resources/Styles/Generic.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Generic.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Themes/Dark.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid Background="{DynamicResource AchivementBackground}">
         <Grid.RowDefinitions>
