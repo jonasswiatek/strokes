@@ -7,7 +7,7 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Use AND (&&) operator", AchievementDescription = "Make use of the AND operator", AchievementCategory = "Basic Achievements",
-    ImageUri = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/AndOperator.png")]
+    Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/AndOperator.png")]
     public class OperatorAndAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

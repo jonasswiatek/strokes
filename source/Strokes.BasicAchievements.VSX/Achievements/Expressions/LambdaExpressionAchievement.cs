@@ -7,7 +7,7 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Lambda Expression", AchievementDescription = "Use a lambda expression", AchievementCategory = "Basic Achievements"
-         , ImageUri = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/LambdaExpr.png")] //For some reason this one doesn't work...
+         , Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/LambdaExpr.png")] //For some reason this one doesn't work...
     public class LambdaExpressionAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

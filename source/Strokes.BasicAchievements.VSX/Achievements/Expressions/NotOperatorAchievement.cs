@@ -7,7 +7,7 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Invert!", AchievementDescription = "Use a not operator to invert an expression", AchievementCategory = "Basic Achievements"
-        ,ImageUri = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/NotOperator.png")]
+        ,Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/NotOperator.png")]
     public class NotOperatorAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

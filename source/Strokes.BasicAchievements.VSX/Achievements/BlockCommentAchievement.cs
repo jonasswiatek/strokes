@@ -11,7 +11,7 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Block comment", AchievementDescription = "Write a block comment", AchievementCategory = "Basic Achievements",
-        ImageUri = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/BlockComment.png")]
+        Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/BlockComment.png")]
     public class BlockCommentAchievement : Achievement
     {
         public override bool DetectAchievement(DetectionSession detectionSession)

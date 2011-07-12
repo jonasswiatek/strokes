@@ -28,14 +28,17 @@ namespace Strokes.Data
         public static AchievementDescriptor GetAchievementDescriptor(this Achievement achievement)
         {
             var descriptionAttribute = GetDescriptionAttribute(achievement);
-            return new AchievementDescriptor
-                       {
-                           AchievementType = achievement.GetType(),
-                           Category = descriptionAttribute.AchievementCategory,
-                           Description = descriptionAttribute.AchievementDescription,
-                           Name = descriptionAttribute.AchievementTitle,
-                           ImageUri = descriptionAttribute.ImageUri
-                       };
+            
+            var descriptor = new AchievementDescriptor
+            {
+                AchievementType = achievement.GetType(),
+                Category = descriptionAttribute.AchievementCategory,
+                Description = descriptionAttribute.AchievementDescription,
+                Name = descriptionAttribute.AchievementTitle,
+                Image = descriptionAttribute.Image,
+            };
+
+            return descriptor;
         } 
     }
 }

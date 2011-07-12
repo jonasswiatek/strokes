@@ -23,7 +23,7 @@
             <Image Width="64"
                    Height="64"
                    Margin="0"
-                   Source="{Binding ImageUri}" HorizontalAlignment="Left" />
+                   Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}" HorizontalAlignment="Left" />
         </Border>
         <StackPanel Grid.Column="1"
                     Margin="10,5,5,5"

@@ -7,7 +7,7 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Swords to plowshares", AchievementDescription = "Cast a variable explicitely", AchievementCategory = "Basic Achievements"
-        , ImageUri = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/Cast.png")]
+        , Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/Cast.png")]
     public class CastAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

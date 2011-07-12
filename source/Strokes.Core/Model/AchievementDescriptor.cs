@@ -22,7 +22,7 @@ namespace Strokes.Core.Model
             set;
         }
         
-        public string ImageUri
+        public string Image
         {
             get;
             set;

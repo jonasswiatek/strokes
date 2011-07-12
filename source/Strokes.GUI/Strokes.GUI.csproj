@@ -90,6 +90,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\StringToImageSourceConverter.cs" />
     <Compile Include="Views\AchievementNotificationBox.xaml.cs">
       <DependentUpon>AchievementNotificationBox.xaml</DependentUpon>
     </Compile>
@@ -98,6 +99,9 @@
     </Compile>
     <Compile Include="Assets\BoolToImageUriConverter.cs" />
     <Compile Include="Assets\BoolToVisibilityConverter.cs" />
+    <Compile Include="Views\AchievementViewportControl.xaml.cs">
+      <DependentUpon>AchievementViewportControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainAchievementContainerView.xaml.cs">
       <DependentUpon>MainAchievementContainerView.xaml</DependentUpon>
     </Compile>
@@ -106,7 +110,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AchievementPane.xaml">
+    <Page Include="Views\AchievementPane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,21 +119,9 @@
       <SubType>Designer</SubType>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
-    <Page Include="Resources\Resources.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Resources\Styles\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Styles\VS2010.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\VS2010.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AchievementViewportControl.xaml">
       <SubType>Designer</SubType>
@@ -143,7 +135,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AchievementPane.xaml.cs">
+    <Compile Include="Views\AchievementPane.xaml.cs">
       <DependentUpon>AchievementPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="GuiInitializer.cs" />
@@ -230,9 +222,7 @@
   <ItemGroup>
     <DesignData Include="SampleData\AllAchievementsViewModelSampleData.xaml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AchievementNotification\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
