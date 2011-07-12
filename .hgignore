@@ -11,7 +11,7 @@ thumbs.db
 *.suo
 *.vsmdi
 *.testsettings
-
+*.ReSharper
 
 #-- Directories
 App_Data/*
