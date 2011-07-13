@@ -42,6 +42,21 @@ namespace Strokes.VSX
 
                 var stopWatch = new Stopwatch();
                 stopWatch.Start();
+                //Parallelization seems to generally run faster
+                uncompletedAchievements.AsParallel().ForAll(a =>
+                                                                {
+                                                                    var achievement = (Achievement)Activator.CreateInstance(a.AchievementType);
+
+                                                                    var achievementUnlocked = achievement.DetectAchievement(detectionSession);
+
+                                                                    if (achievementUnlocked)
+                                                                    {
+                                                                        a.CodeLocaton = achievement.AchievementCodeLocation;
+                                                                        a.IsCompleted = true;
+                                                                        unlockedAchievements.Add(a);
+                                                                    }
+                                                                });
+                /* Commented syncronous execution commented
                 foreach (var achievementDescriptor in uncompletedAchievements)
                 {
                     var achievement = (Achievement)Activator.CreateInstance(achievementDescriptor.AchievementType);
@@ -55,6 +70,7 @@ namespace Strokes.VSX
                         unlockedAchievements.Add(achievementDescriptor);
                     }
                 }
+                 */
                 stopWatch.Stop();
                 OnDetectionCompleted(null, new DetectionCompletedEventArgs()
                                                {
