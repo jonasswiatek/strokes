@@ -14,43 +14,53 @@
         Topmost="True"
         WindowStartupLocation="Manual"
         WindowStyle="None"
-        mc:Ignorable="d">
+        mc:Ignorable="d"
+        Background="#585858">
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/Strokes.GUI;component/Resources/Styles/Generic.xaml" />
     </Window.Resources>
-    <Grid Name="OuterGrid"
+    <Border HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="#FF585858"
+            BorderBrush="DarkKhaki"
+            BorderThickness="3"
+            CornerRadius="2">
+
+        <Grid Name="OuterGrid"
           Margin="4"
           HorizontalAlignment="Stretch"
           VerticalAlignment="Stretch">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="20" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <!--  Topbar  -->
-        <TextBlock Grid.Row="0"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!--  Topbar  -->
+            <TextBlock Grid.Row="0"
                    Grid.Column="0"
                    Margin="5,0,0,0"
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Center"
                    FontSize="12"
-                   Foreground="Black"
-                   Text="Achievement Unlocked" />
-        <Border Grid.Row="0"
+                   Foreground="DarkKhaki"
+                   FontWeight="Bold"
+                   Text="Achievement(s) Unlocked" />
+            <Border Grid.Row="0"
                 Grid.Column="1"
                 Background="White">
-            <Image Name="CloseWindowImage"
+                <Image Name="CloseWindowImage"
                    Width="20"
                    Height="20"
                    MouseDown="CloseWindowImage_MouseDown"
                    Source="../Resources/Icons/gtk-close.png" />
-        </Border>
-        <!--  Achievements  -->
-        <ListBox Grid.Row="1"
+            </Border>
+            <!--  Achievements  -->
+            <ListBox Grid.Row="1"
                  Grid.Column="0"
+                 Grid.ColumnSpan="2"
                  MaxHeight="300"
                  Margin="3,3,3,3"
                  HorizontalContentAlignment="Stretch"
@@ -58,6 +68,9 @@
                                        ElementName=AchevementNotificationBox}"
                  ItemTemplate="{StaticResource AchievementNotificationTemplate}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" />
-    </Grid>
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 ScrollViewer.CanContentScroll="False"
+                 BorderBrush="{x:Null}" />
+        </Grid>
+    </Border>
 </Window>

@@ -54,51 +54,29 @@ namespace Strokes.GUI.Views
             {
                 return;
             }
-
-            // If we don't have a singleton instance active - then create one.
-            // We need this, if more achievements gets unlocked while this box is still showing.
-
+            
             var instance = new AchievementNotificationBox();
             instance.AddAchievements(achievementDescriptors);
-
-            const int rightMargin = 5;
-            const int bottomMargin = 5;
-
-            if (Application.Current != null &&
-                Application.Current.MainWindow.WindowState == WindowState.Normal &&
-                Application.Current.MainWindow != instance)
-            {
-                instance.Left = Application.Current.MainWindow.Left
-                              + Application.Current.MainWindow.Width
-                              - instance.Width
-                              - rightMargin;
-
-                instance.Top = Application.Current.MainWindow.Top
-                             + Application.Current.MainWindow.Height
-                             - instance.Height
-                             - bottomMargin;
-            }
-            else
-            {
-                instance.Left = SystemParameters.PrimaryScreenWidth
-                              - instance.Width
-                              - rightMargin;
-
-                instance.Left = 1000;
-
-                instance.Top = SystemParameters.MaximizedPrimaryScreenHeight
-                             - SystemParameters.ResizeFrameHorizontalBorderHeight
-                             - instance.Height
-                             - bottomMargin;
-
-                instance.Top = 200;
-            }
 
             // This is only to support the Strokes.Console-project
             if (Application.Current != null)
             {
                 // During a real Visual Studio integrated run, this is called.
                 instance.Show();
+
+                const int rightMargin = 5;
+                const int bottomMargin = 5;
+
+                if (Application.Current != null && Application.Current.MainWindow.WindowState == WindowState.Normal && Application.Current.MainWindow != instance)
+                {
+                    instance.Left = Application.Current.MainWindow.Left + Application.Current.MainWindow.Width - instance.Width - rightMargin;
+                    instance.Top = Application.Current.MainWindow.Top + Application.Current.MainWindow.Height - instance.Height - bottomMargin;
+                }
+                else
+                {
+                    instance.Left = SystemParameters.PrimaryScreenWidth - instance.Width - rightMargin;
+                    instance.Top = SystemParameters.MaximizedPrimaryScreenHeight - SystemParameters.ResizeFrameHorizontalBorderHeight - instance.Height - bottomMargin;
+                }
             }
             else
             {
