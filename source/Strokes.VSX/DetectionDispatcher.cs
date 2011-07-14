@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Strokes.Core;
 using Strokes.Core.Contracts;
 using Strokes.Core.Model;
@@ -37,40 +38,34 @@ namespace Strokes.VSX
             using (var detectionSession = new DetectionSession(buildInformation))
             {
                 var achievementDescriptors = achievementDescriptorRepository.GetAll();
-
                 var uncompletedAchievements = achievementDescriptors.Where(a => !a.IsCompleted || AchievementContext.DisablePersist);
 
                 var stopWatch = new Stopwatch();
                 stopWatch.Start();
-                //Parallelization seems to generally run faster
-                uncompletedAchievements.AsParallel().ForAll(a =>
-                                                                {
-                                                                    var achievement = (Achievement)Activator.CreateInstance(a.AchievementType);
 
-                                                                    var achievementUnlocked = achievement.DetectAchievement(detectionSession);
-
-                                                                    if (achievementUnlocked)
-                                                                    {
-                                                                        a.CodeLocaton = achievement.AchievementCodeLocation;
-                                                                        a.IsCompleted = true;
-                                                                        unlockedAchievements.Add(a);
-                                                                    }
-                                                                });
-                /* Commented syncronous execution commented
-                foreach (var achievementDescriptor in uncompletedAchievements)
+                //Create tasks
+                var tasks = new Task[uncompletedAchievements.Count()];
+                var i = 0;
+                foreach(var uncompletedAchievement in uncompletedAchievements)
                 {
-                    var achievement = (Achievement)Activator.CreateInstance(achievementDescriptor.AchievementType);
+                    var a = uncompletedAchievement;
+                    tasks[i++] = Task.Factory.StartNew(() =>
+                                                           {
+                                                               var achievement = (Achievement)Activator.CreateInstance(a.AchievementType);
 
-                    var achievementUnlocked = achievement.DetectAchievement(detectionSession);
+                                                               var achievementUnlocked = achievement.DetectAchievement(detectionSession);
 
-                    if (achievementUnlocked)
-                    {
-                        achievementDescriptor.CodeLocaton = achievement.AchievementCodeLocation;
-                        achievementDescriptor.IsCompleted = true;
-                        unlockedAchievements.Add(achievementDescriptor);
-                    }
+                                                               if (achievementUnlocked)
+                                                               {
+                                                                   a.CodeLocaton = achievement.AchievementCodeLocation;
+                                                                   a.IsCompleted = true;
+                                                                   unlockedAchievements.Add(a);
+                                                               }
+                                                           });
                 }
-                 */
+
+                //Wait for all tasks to complete.
+                Task.WaitAll(tasks);
                 stopWatch.Stop();
                 OnDetectionCompleted(null, new DetectionCompletedEventArgs()
                                                {
