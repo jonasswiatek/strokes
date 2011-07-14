@@ -167,10 +167,18 @@
                 BorderThickness="1">
             <Grid Background="#FF585858">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <local:AchievementTemplateBare Grid.Column="0"
                                                Margin="5" />
+                <Image  Name="GotoSource"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Margin="3"
+                        Grid.Column="1"
+                        Source="../../Icons/magnifying_glass_icon1.gif"
+                        Cursor="Hand" />
             </Grid>
         </Border>
     </DataTemplate>

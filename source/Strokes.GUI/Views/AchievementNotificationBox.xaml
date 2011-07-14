@@ -57,20 +57,21 @@
                    MouseDown="CloseWindowImage_MouseDown"
                    Source="../Resources/Icons/gtk-close.png" />
             </Border>
-            <!--  Achievements  -->
-            <ListBox Grid.Row="1"
-                 Grid.Column="0"
-                 Grid.ColumnSpan="2"
-                 MaxHeight="300"
-                 Margin="3,3,3,3"
-                 HorizontalContentAlignment="Stretch"
-                 ItemsSource="{Binding DataContext,
-                                       ElementName=AchevementNotificationBox}"
-                 ItemTemplate="{StaticResource AchievementNotificationTemplate}"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 ScrollViewer.VerticalScrollBarVisibility="Auto"
-                 ScrollViewer.CanContentScroll="False"
-                 BorderBrush="{x:Null}" />
+            
+            <!--  Achievements. Using ItemsControl instead of ListBox to eliminate the SelectedItemColor-thing -->
+            <ScrollViewer   VerticalScrollBarVisibility="Auto" 
+                            HorizontalScrollBarVisibility="Hidden"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            MaxHeight="300"
+                            Margin="3,3,3,3">
+                <ItemsControl   Name="UnlockedAchievementsList"
+                                HorizontalContentAlignment="Stretch"
+                                ItemsSource="{Binding DataContext, ElementName=AchevementNotificationBox}"
+                                ItemTemplate="{StaticResource AchievementNotificationTemplate}"
+                                />
+            </ScrollViewer>
         </Grid>
     </Border>
 </Window>

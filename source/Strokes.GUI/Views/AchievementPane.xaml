@@ -80,17 +80,17 @@
                                  SelectedIndex="0" />
                     </StackPanel>
                     <!--  Achievements listbox of selected category  -->
-                    <ListBox Grid.Column="1"
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" Grid.Column="1">
+                        <ItemsControl 
                              Margin="0"
                              Background="{DynamicResource AchivementBackground}"
                              BorderBrush="{x:Null}"
                              Foreground="{DynamicResource AchivementForeground}"
-                             ItemsSource="{Binding SelectedItem,
-                                                   ElementName=AchivementsCategoryListBox}"
+                             ItemsSource="{Binding SelectedItem, ElementName=AchivementsCategoryListBox}"
                              ItemTemplate="{DynamicResource AchievementTemplate}"
                              Padding="{DynamicResource ArchivementsListBoxMargin}"
-                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                             ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                             />
+                    </ScrollViewer>
                 </Grid>
             </TabItem>
             <TabItem Header="Leaderboard"
