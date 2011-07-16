@@ -38,13 +38,7 @@
             <Border HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     BorderBrush="Black"
-                    BorderThickness="2,2,0,0">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                        <GradientStop Color="#FF565351" />
-                        <GradientStop Offset="1" Color="#FF383635" />
-                    </LinearGradientBrush>
-                </Border.Background>
+                    BorderThickness="2,2,0,0" Background="{DynamicResource AchivementLightBackground}">
                 <Grid Name="OuterGrid"
                       Margin="4"
                       HorizontalAlignment="Stretch"
@@ -93,15 +87,17 @@
                 </LinearGradientBrush>
             </Grid.Background>
         </Grid>
-        <Path Width="16"
+        <Grid Width="16" Height="16" IsHitTestVisible="True" Background="{DynamicResource AchivementLightBackground}" MouseDown="CloseWindowImage_MouseDown" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,8,8,0">
+            <Path Width="16"
               Height="16"
-              Margin="0,8,6.504,0"
+              Margin="0"
               HorizontalAlignment="Right"
               VerticalAlignment="Top"
+                  IsHitTestVisible="False"
               Data="M15.381998,0 L18.245998,2.8769992 12.001545,9.0962803 18.136998,15.255987 15.261998,18.116995 9.1275464,11.958695 2.8639997,18.196993 0,15.321995 6.2632071,9.0832198 0.085997172,2.8819945 2.9609967,0.019995081 9.1371127,6.220525 z"
               Fill="White"
-              MouseDown="CloseWindowImage_MouseDown"
               Stretch="Fill"
               Stroke="Black" />
+        </Grid>
     </Grid>
 </Window>
