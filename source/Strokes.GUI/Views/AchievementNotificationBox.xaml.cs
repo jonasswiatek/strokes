@@ -25,6 +25,9 @@ namespace Strokes.GUI.Views
 
             if (DesignerProperties.GetIsInDesignMode(this) == false)
                 UnlockedAchievementsList.LayoutUpdated += UnlockedAchievementsList_LayoutUpdated;
+
+            //Close this window again if another detection session is launched by the achivement context.
+            AchievementContext.AchievementDetectionStarting += (sender, args) => Close();
         }
 
         private AchivementNotificationViewModel ViewModel
@@ -35,6 +38,11 @@ namespace Strokes.GUI.Views
             }
         }
 
+        /// <summary>
+        /// Locates the magnifying glass inside the templates, and binds an event to it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UnlockedAchievementsList_LayoutUpdated(object sender, EventArgs e)
         {
             if (isEventsBound)
@@ -81,11 +89,6 @@ namespace Strokes.GUI.Views
             container.ApplyTemplate();
 
             return container.ContentTemplate.FindName(controlName, container);
-        }
-
-        private void AchievementContext_AchievementDetectionStarting(object sender, System.EventArgs e)
-        {
-            Close();
         }
 
         private void CloseWindowImage_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

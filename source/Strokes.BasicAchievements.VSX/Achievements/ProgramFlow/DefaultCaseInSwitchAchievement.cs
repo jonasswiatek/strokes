@@ -19,11 +19,11 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitSwitchSection(SwitchSection switchSection, object data)
             {
-                foreach (var label in switchSection.SwitchLabels)
-                {
-                    if (label.IsDefault)
-                        UnlockWith(switchSection);
-                }
+                //Slightly improved, so only the actual default label will highlight, and not the entire switch statement.
+                var defaultLabel = switchSection.SwitchLabels.FirstOrDefault(a => a.IsDefault);
+                if(defaultLabel != null)
+                    UnlockWith(defaultLabel);
+
                 return base.VisitSwitchSection(switchSection, data);
             }
         }
