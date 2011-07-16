@@ -24,7 +24,7 @@ namespace Strokes.GUI.Views
             AchievementContext.AchievementDetectionStarting += AchievementContext_AchievementDetectionStarting;
         }
 
-        protected ObservableCollection<AchievementDescriptor> CurrentAchievements 
+        protected ObservableCollection<AchievementDescriptor> CurrentAchievements
         {
             get;
             set;
@@ -54,33 +54,37 @@ namespace Strokes.GUI.Views
             {
                 return;
             }
-            
+
             var instance = new AchievementNotificationBox();
             instance.AddAchievements(achievementDescriptors);
 
-            // This is only to support the Strokes.Console-project
             if (Application.Current != null)
             {
-                // During a real Visual Studio integrated run, this is called.
                 instance.Show();
 
-                const int rightMargin = 5;
-                const int bottomMargin = 5;
+                const int rightMargin = 1;
+                const int bottomMargin = 8;
 
-                if (Application.Current != null && Application.Current.MainWindow.WindowState == WindowState.Normal && Application.Current.MainWindow != instance)
+                if (Application.Current != null &&
+                    Application.Current.MainWindow.WindowState == WindowState.Normal &&
+                    Application.Current.MainWindow != instance)
                 {
-                    instance.Left = Application.Current.MainWindow.Left + Application.Current.MainWindow.Width - instance.Width - rightMargin;
-                    instance.Top = Application.Current.MainWindow.Top + Application.Current.MainWindow.Height - instance.Height - bottomMargin;
+                    instance.Left = Application.Current.MainWindow.Left +
+                                    Application.Current.MainWindow.Width - instance.Width - rightMargin;
+
+                    instance.Top = Application.Current.MainWindow.Top +
+                                   Application.Current.MainWindow.Height - instance.Height - bottomMargin;
                 }
                 else
                 {
                     instance.Left = SystemParameters.PrimaryScreenWidth - instance.Width - rightMargin;
-                    instance.Top = SystemParameters.MaximizedPrimaryScreenHeight - SystemParameters.ResizeFrameHorizontalBorderHeight - instance.Height - bottomMargin;
+
+                    instance.Top = SystemParameters.MaximizedPrimaryScreenHeight -
+                                   SystemParameters.ResizeFrameHorizontalBorderHeight - instance.Height - bottomMargin;
                 }
             }
             else
             {
-                // When activated from a console-app, this is called.
                 new Application().Run(instance);
             }
         }

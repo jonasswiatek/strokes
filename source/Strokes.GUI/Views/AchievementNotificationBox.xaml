@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Name="AchevementNotificationBox"
         AllowsTransparency="True"
+        Background="{x:Null}"
         BorderThickness="3"
         d:DesignHeight="200"
         d:DesignWidth="400"
@@ -14,63 +15,88 @@
         Topmost="True"
         WindowStartupLocation="Manual"
         WindowStyle="None"
-        mc:Ignorable="d"
-        Background="#585858">
+        mc:Ignorable="d">
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/Strokes.GUI;component/Resources/Styles/Generic.xaml" />
     </Window.Resources>
-    <Border HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            Background="#FF585858"
-            BorderBrush="DarkKhaki"
-            BorderThickness="3"
-            CornerRadius="2">
-
-        <Grid Name="OuterGrid"
-          Margin="4"
-          HorizontalAlignment="Stretch"
-          VerticalAlignment="Stretch">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="20" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <!--  Topbar  -->
-            <TextBlock Grid.Row="0"
-                   Grid.Column="0"
-                   Margin="5,0,0,0"
-                   HorizontalAlignment="Stretch"
-                   VerticalAlignment="Center"
-                   FontSize="12"
-                   Foreground="DarkKhaki"
-                   FontWeight="Bold"
-                   Text="Achievement(s) Unlocked" />
-            <Border Grid.Row="0"
-                Grid.Column="1"
-                Background="White">
-                <Image Name="CloseWindowImage"
-                   Width="20"
-                   Height="20"
-                   MouseDown="CloseWindowImage_MouseDown"
-                   Source="../Resources/Icons/gtk-close.png" />
+    <Grid>
+        <Border Margin="0,0,0,2"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                BorderThickness="0,0,2,0">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Offset="0.271" Color="Black" />
+                    <GradientStop Offset="1" Color="#FF44617D" />
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    BorderBrush="Black"
+                    BorderThickness="2,2,0,0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FF565351" />
+                        <GradientStop Offset="1" Color="#FF383635" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid Name="OuterGrid"
+                      Margin="4"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"
+                                       MinHeight="25" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--  Topbar  -->
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Margin="-18,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               Text="Achievement(s) Unlocked!" />
+                    <!--  Achievements  -->
+                    <ListBox Grid.Row="1"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="2"
+                             MaxHeight="300"
+                             Margin="3,3,3,3"
+                             BorderBrush="{x:Null}"
+                             HorizontalContentAlignment="Stretch"
+                             ItemsSource="{Binding DataContext,
+                                                   ElementName=AchevementNotificationBox}"
+                             ItemTemplate="{StaticResource AchievementNotificationTemplate}"
+                             ScrollViewer.CanContentScroll="False"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                </Grid>
             </Border>
-            <!--  Achievements  -->
-            <ListBox Grid.Row="1"
-                 Grid.Column="0"
-                 Grid.ColumnSpan="2"
-                 MaxHeight="300"
-                 Margin="3,3,3,3"
-                 HorizontalContentAlignment="Stretch"
-                 ItemsSource="{Binding DataContext,
-                                       ElementName=AchevementNotificationBox}"
-                 ItemTemplate="{StaticResource AchievementNotificationTemplate}"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 ScrollViewer.VerticalScrollBarVisibility="Auto"
-                 ScrollViewer.CanContentScroll="False"
-                 BorderBrush="{x:Null}" />
+        </Border>
+        <Grid Height="2"
+              VerticalAlignment="Bottom">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0" Color="Black" />
+                    <GradientStop Offset="1" Color="#FF44617D" />
+                </LinearGradientBrush>
+            </Grid.Background>
         </Grid>
-    </Border>
+        <Path Width="18.246"
+              Height="18.197"
+              Margin="0,8,8,0"
+              HorizontalAlignment="Right"
+              VerticalAlignment="Top"
+              Data="M15.381998,0 L18.245998,2.8769992 12.001545,9.0962803 18.136998,15.255987 15.261998,18.116995 9.1275464,11.958695 2.8639997,18.196993 0,15.321995 6.2632071,9.0832198 0.085997172,2.8819945 2.9609967,0.019995081 9.1371127,6.220525 z"
+              Fill="White"
+              MouseDown="CloseWindowImage_MouseDown"
+              Stretch="Fill"
+              Stroke="Black" />
+    </Grid>
 </Window>
