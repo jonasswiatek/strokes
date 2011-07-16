@@ -5,31 +5,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:template="clr-namespace:Strokes.GUI"
              Cursor="Arrow"
-             d:DesignWidth="290"
              mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/Strokes.GUI;component/Resources/Styles/Generic.xaml" />
     </UserControl.Resources>
     <Border HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Background="#FF585858"
-            BorderBrush="DarkKhaki"
-            BorderThickness="3"
-            CornerRadius="2">
-        <Grid Width="300"
+            Background="#FF262626"
+            BorderBrush="Black"
+            BorderThickness="2">
+        <Grid
               Height="100">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0"
-                       Margin="15,0,0,0"
+                       Margin="15,4,0,0"
                        HorizontalAlignment="Left"
                        FontSize="12"
                        Foreground="#FFCBCBCB"
-                       Text="Achievement Unlocked" />
+                       Text="Achievement Unlocked!" />
             <template:AchievementTemplateBare Grid.Row="1"
-                                              Margin="15,0,0,5" />
+                                              Margin="15,0,15,5" />
         </Grid>
     </Border>
 </UserControl>

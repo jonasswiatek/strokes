@@ -9,8 +9,6 @@
         Background="{x:Null}"
         BorderThickness="3"
         d:DataContext="{d:DesignData Source=/SampleData/NotificationViewModelSampleData.xaml}"
-        d:DesignHeight="300"
-        d:DesignWidth="600"
         ResizeMode="NoResize"
         ShowInTaskbar="False"
         SizeToContent="WidthAndHeight"
@@ -63,8 +61,8 @@
                                Margin="-30,0,0,0"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Top"
+                               FontFamily="Segoe UI Semibold"
                                FontSize="16"
-                               FontWeight="Bold"
                                Foreground="White"
                                Text="Achievement(s) Unlocked!" />
                     <!--  Achievements. Using ItemsControl instead of ListBox to eliminate the SelectedItemColor-thing  -->
@@ -72,8 +70,8 @@
                                   Grid.Column="0"
                                   Grid.ColumnSpan="2"
                                   MaxHeight="300"
-                                  Template="{DynamicResource AchivementScrollViewerControlTemplate}"
                                   HorizontalScrollBarVisibility="Hidden"
+                                  Template="{DynamicResource AchivementScrollViewerControlTemplate}"
                                   VerticalScrollBarVisibility="Auto">
                         <ItemsControl Name="UnlockedAchievementsList"
                                       HorizontalContentAlignment="Stretch"

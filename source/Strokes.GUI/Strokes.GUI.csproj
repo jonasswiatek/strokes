@@ -104,9 +104,6 @@
     <Compile Include="Views\AchievementViewportControl.xaml.cs">
       <DependentUpon>AchievementViewportControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainAchievementContainerView.xaml.cs">
-      <DependentUpon>MainAchievementContainerView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\AllAchievementsViewModel.cs" />
     <Page Include="Views\AchievementNotificationBox.xaml">
       <SubType>Designer</SubType>
@@ -133,21 +130,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainAchievementView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="Views\AchievementPane.xaml.cs">
       <DependentUpon>AchievementPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="GuiInitializer.cs" />
-    <Compile Include="Views\MainAchievementView.xaml.cs">
-      <DependentUpon>MainAchievementView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Views\MainAchievementContainerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resources\Styles\Themes\Dark.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,10 +188,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icons\checked.png" />
-    <Resource Include="Resources\Icons\cross.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
       <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>
       <Name>Strokes.Core</Name>
@@ -223,9 +205,6 @@
       <SubType>Designer</SubType>
     </DesignData>
     <DesignData Include="SampleData\AllAchievementsViewModelSampleData.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icons\magnifying_glass.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

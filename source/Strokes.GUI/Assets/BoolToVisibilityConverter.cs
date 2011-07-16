@@ -9,11 +9,22 @@ namespace Strokes.GUI
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool)
+            if (value is bool) 
             {
-                return (bool)value
-                    ? Visibility.Visible
-                    : Visibility.Collapsed;
+                if (parameter == null)
+                {
+                    return (bool)value
+                        ? Visibility.Visible
+                        : Visibility.Collapsed;
+                }
+                else
+                {
+                    var equal = bool.Parse(parameter.ToString());
+
+                    return (bool)value == equal
+                        ? Visibility.Visible
+                        : Visibility.Collapsed;
+                }
             }
 
             return Visibility.Visible;

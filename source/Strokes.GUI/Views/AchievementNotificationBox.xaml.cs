@@ -8,6 +8,7 @@ using Strokes.Core;
 using Strokes.Core.Model;
 using Strokes.GUI.Resources;
 using System.ComponentModel;
+using System.Windows.Shapes;
 
 namespace Strokes.GUI.Views
 {
@@ -44,10 +45,12 @@ namespace Strokes.GUI.Views
             foreach (AchievementDescriptor item in UnlockedAchievementsList.Items)
             {
                 var dataItem = item;
-                var gotoCodebutton = FindItemControl(UnlockedAchievementsList, "GotoSource", item) as Image;
+                var gotoCodebutton = FindItemControl(UnlockedAchievementsList, "PART_MagnifierGlassPath", item) as FrameworkElement;
 
                 if (gotoCodebutton == null)
+                {
                     continue;
+                }
 
                 if (dataItem.CodeLocaton == null)
                 {
