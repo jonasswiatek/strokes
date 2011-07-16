@@ -175,13 +175,13 @@
     <!--  DataTemplates  -->
 
     <DataTemplate x:Key="AchievementNotificationTemplate">
-        <Border Margin="1"
+        <Border Margin="0,0,0,4"
                 Background="{Binding Background,
                                      RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem},
                                                                     Mode=FindAncestor}}"
-                BorderBrush="Orange"
-                BorderThickness="1">
-            <Grid Background="#FF585858">
+                BorderBrush="{DynamicResource AchivementBorder}"
+                BorderThickness="0,0,1,0">
+            <Grid Background="#FF262626">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />

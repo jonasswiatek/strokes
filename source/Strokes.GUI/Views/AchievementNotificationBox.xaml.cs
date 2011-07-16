@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using Strokes.Core;
 using Strokes.Core.Model;
 using Strokes.GUI.Resources;
+using System.ComponentModel;
 
 namespace Strokes.GUI.Views
 {
@@ -15,29 +16,30 @@ namespace Strokes.GUI.Views
     /// </summary>
     public partial class AchievementNotificationBox : Window
     {
-        private bool _isEventsBound;
+        private bool isEventsBound;
 
         public AchievementNotificationBox()
         {
             InitializeComponent();
 
-            this.CurrentAchievements = new ObservableCollection<AchievementDescriptor>();
-            this.DataContext = CurrentAchievements;
-            UnlockedAchievementsList.LayoutUpdated += new EventHandler(UnlockedAchievementsList_LayoutUpdated);
+            if (DesignerProperties.GetIsInDesignMode(this) == false)
+                UnlockedAchievementsList.LayoutUpdated += UnlockedAchievementsList_LayoutUpdated;
         }
 
-        protected ObservableCollection<AchievementDescriptor> CurrentAchievements
+        private AchivementNotificationViewModel ViewModel
         {
-            get;
-            set;
+            get
+            {
+                return DataContext as AchivementNotificationViewModel;
+            }
         }
 
         private void UnlockedAchievementsList_LayoutUpdated(object sender, EventArgs e)
         {
-            if (_isEventsBound)
+            if (isEventsBound)
                 return;
 
-            _isEventsBound = true;
+            isEventsBound = true;
 
             foreach (AchievementDescriptor item in UnlockedAchievementsList.Items)
             {
@@ -92,7 +94,7 @@ namespace Strokes.GUI.Views
         {
             foreach (var achevementDescriptor in achievementDescriptors)
             {
-                CurrentAchievements.Add(achevementDescriptor);
+                ViewModel.CurrentAchievements.Add(achevementDescriptor);
             }
         }
 

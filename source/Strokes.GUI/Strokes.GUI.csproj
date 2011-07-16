@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\StringToImageSourceConverter.cs" />
+    <Compile Include="ViewModels\AchivementNotificationViewModel.cs" />
     <Compile Include="Views\AchievementNotificationBox.xaml.cs">
       <DependentUpon>AchievementNotificationBox.xaml</DependentUpon>
     </Compile>
@@ -218,6 +219,9 @@
     <Resource Include="Resources\Icons\default.png" />
   </ItemGroup>
   <ItemGroup>
+    <DesignData Include="SampleData\NotificationViewModelSampleData.xaml">
+      <SubType>Designer</SubType>
+    </DesignData>
     <DesignData Include="SampleData\AllAchievementsViewModelSampleData.xaml" />
   </ItemGroup>
   <ItemGroup>
