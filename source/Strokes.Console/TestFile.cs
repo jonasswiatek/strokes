@@ -7,8 +7,6 @@ namespace Strokes.Console
 {
     public class TestFile
     {
-        public string bla { get; set; }
-        public string blaa { get; private set; }
          public TestFile()
          { }
          

@@ -3,6 +3,7 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:local="clr-namespace:Strokes.GUI"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     mc:Ignorable="d">
 
     <!--  Converters  -->
@@ -12,7 +13,7 @@
 
     <!--  Brushes  -->
     <SolidColorBrush x:Key="AchivementBackground"
-                     Color="#585858" />
+                     Color="#FF2A2827" />
 
     <SolidColorBrush x:Key="AchivementForeground"
                      Color="Honeydew" />
@@ -21,22 +22,26 @@
                      Color="Lime" />
 
     <SolidColorBrush x:Key="AchivementBorder"
-                     Color="#8C8E94" />
+                     Color="#FF4D4B48" />
 
     <SolidColorBrush x:Key="AchivementInnerBorder"
                      Color="Green" />
 
     <SolidColorBrush x:Key="AchivementTabItemBorder"
-                     Color="#8C8E94" />
+                     Color="#FF4D4B48" />
 
     <SolidColorBrush x:Key="TabControlNormalBorderBrush"
-                     Color="#8C8E94" />
+                     Color="#FF4D4B48" />
 
-    <SolidColorBrush x:Key="AchivementTemplateBorder"
-                     Color="Orange" />
+    <LinearGradientBrush x:Key="AchivementTemplateBorder" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Offset="0" Color="#FF4D6D8D" />
+        <GradientStop Offset="0.396" Color="#FF8AB7DE" />
+    </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="AchivementItemSelectedBackground"
-                     Color="Orange" />
+	<LinearGradientBrush x:Key="AchivementItemSelectedBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+    	<GradientStop Color="#FF8AB7DE" Offset="0.6"/>
+    	<GradientStop Color="#FF537494"/>
+    </LinearGradientBrush>
 
     <SolidColorBrush x:Key="AchivementItemSelectedForeground"
                      Color="Black" />
@@ -44,9 +49,30 @@
     <SolidColorBrush x:Key="SelectedListBoxItemBackground"
                      Color="Honeydew" />
 
-    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}"
-                     Color="#585858" />
+    <SolidColorBrush
+                     Color="#FF383635" x:Key="{x:Static SystemColors.ControlBrushKey}"
+                     />
 
+    <DrawingBrush x:Key="ProgressBarTileBrush"
+                  TileMode="Tile"
+                  Viewport="0,0,0.1,0.1">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="#FF383635">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,100,100" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF4D6D8C">
+                    <GeometryDrawing.Geometry>
+                        <GeometryGroup>
+                            <RectangleGeometry Rect="0,0,75,100" />
+                        </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
     <!--  Font Sizes  -->
 
     <Style TargetType="{x:Type TextBlock}">
@@ -81,15 +107,19 @@
     </Style>
 
     <Style TargetType="{x:Type ListBoxItem}">
-        <Setter Property="Background" Value="{StaticResource AchivementBackground}" />
-        <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
-        <Setter Property="Margin" Value="2" />
-        <Style.Triggers>
+        <!--
+            <Setter Property="Background" Value="{StaticResource AchivementBackground}" />
+            <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
+        -->
+        <Setter Property="Margin" Value="0,0,0,4" />
+        <!--
+            <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{StaticResource SelectedListBoxItemBackground}" />
-                <Setter Property="Foreground" Value="{StaticResource AchivementItemSelectedForeground}" />
+            <Setter Property="Background" Value="{StaticResource SelectedListBoxItemBackground}" />
+            <Setter Property="Foreground" Value="{StaticResource AchivementItemSelectedForeground}" />
             </Trigger>
-        </Style.Triggers>
+            </Style.Triggers>
+        -->
     </Style>
 
     <!--  Generic TabItem Styles  -->
@@ -116,7 +146,8 @@
         <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
         <Setter Property="Padding" Value="6,1,6,1" />
         <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}" />
-        <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}" />
+        <Setter Property="Width" Value="121" />
+        <Setter Property="Height" Value="42" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
@@ -124,14 +155,11 @@
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid ClipToBounds="True">
                         <Border x:Name="PART_Border"
-                                BorderThickness="1,1,1,0"
-                                Padding="2">
+                                BorderThickness="0">
                             <Grid>
                                 <ContentPresenter x:Name="PART_Content"
-                                                  HorizontalAlignment="{Binding HorizontalContentAlignment,
-                                                                                RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                                  VerticalAlignment="{Binding VerticalContentAlignment,
-                                                                              RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                  HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
                                                   ContentSource="Header"
                                                   RecognizesAccessKey="True" />
                             </Grid>
@@ -140,7 +168,6 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Panel.ZIndex" Value="1" />
-                            <Setter Property="Foreground" Value="{StaticResource AchivementItemSelectedForeground}" />
                             <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource AchivementItemSelectedBackground}" />
                             <Setter TargetName="PART_Border" Property="BorderBrush" Value="{StaticResource AchivementTabItemBorder}" />
                             <Setter TargetName="PART_Border" Property="Margin" Value="0,0,2,0" />
@@ -148,7 +175,7 @@
                         <Trigger Property="IsSelected" Value="False">
                             <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
                             <Setter TargetName="PART_Border" Property="Margin" Value="0,0,2,0" />
-                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource AchivementBackground}" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="#6E6A69" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -160,37 +187,25 @@
 
     <DataTemplate x:Key="AchievementNotificationTemplate">
         <Border Margin="1"
-                Background="{Binding Background,
-                                     RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem},
-                                                                    Mode=FindAncestor}}"
+                Background="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}, Mode=FindAncestor}}"
                 BorderBrush="Orange"
                 BorderThickness="1">
             <Grid Background="#FF585858">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <local:AchievementTemplateBare Grid.Column="0"
                                                Margin="5" />
-                <Image  Name="GotoSource"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        Margin="3"
-                        Grid.Column="1"
-                        Source="../../Icons/magnifying_glass_icon1.gif"
-                        Cursor="Hand" />
             </Grid>
         </Border>
     </DataTemplate>
 
     <DataTemplate x:Key="AchievementTemplate">
-        <Border Margin="1"
-                Background="{Binding Background,
-                                     RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem},
-                                                                    Mode=FindAncestor}}"
-                BorderBrush="{StaticResource AchivementTemplateBorder}"
+        <Border Margin="0"
+                Background="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}, Mode=FindAncestor}}"
+                BorderBrush="{DynamicResource AchivementBorder}"
                 BorderThickness="1">
-            <Grid>
+            <Grid Background="#FF262626">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="*" />
@@ -202,65 +217,41 @@
                             Margin="15,10,10,10">
                     <TextBlock HorizontalAlignment="Left"
                                VerticalAlignment="Top"
-                               Foreground="{StaticResource AchivementForeground}"
-                               Visibility="{Binding IsCompleted,
-                                                    Converter={StaticResource BoolToVisibilityConverter}}">
-                        <Run Text="Unlocked:" />
-                        <Run Text=" " />
-                        <Run Text="{Binding DateCompleted, FallbackValue=''}" />
-                    </TextBlock>
+                               Visibility="{Binding IsCompleted, Converter={StaticResource BoolToVisibilityConverter}}"
+                               Foreground="#FFB4B4B4"
+                               ><Run Text="Unlocked:" /><Run Text=" "/><Run Text=" " /><Run Text=" "/><Run Text="{Binding DateCompleted, FallbackValue=''}" /></TextBlock>
                     <Image Width="20"
                            Height="20"
                            Margin="5,5,5,5"
                            HorizontalAlignment="Right"
                            VerticalAlignment="Center"
-                           Source="{Binding IsCompleted,
-                                            Converter={StaticResource BoolToImageUriConverter}}" />
+                           Source="{Binding IsCompleted, Converter={StaticResource BoolToImageUriConverter}}" />
                 </StackPanel>
             </Grid>
         </Border>
     </DataTemplate>
 
     <DataTemplate x:Key="CategoryTemplate">
-        <Grid Margin="0"
-              Background="{DynamicResource AchivementItemSelectedBackground}">
-            <Border Margin="2"
-                    Background="{Binding Background,
-                                         RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem},
-                                                                        Mode=FindAncestor}}"
-                    BorderBrush="{DynamicResource AchivementInnerBorder}"
-                    BorderThickness="1">
-                <Grid Margin="10, 3, 10, 3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               FontSize="12"
-                               Foreground="{Binding Foreground,
-                                                    RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem},
-                                                                                   Mode=FindAncestor}}"
-                               Text="{Binding CategoryName}" />
-                    <TextBlock Grid.Column="1"
-                               Margin="10,0,0,0"
-                               FontSize="12"
-                               Foreground="{Binding Foreground,
-                                                    RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem},
-                                                                                   Mode=FindAncestor}}"
-                               TextAlignment="Right">
-                        <Run Text="(" />
-                        <Run Text=" " />
-                        <Run Text="{Binding TotalCompleted, Mode=OneWay}" />
-                        <Run Text=" " />
-                        <Run Text="/" />
-                        <Run Text=" " />
-                        <Run Text="{Binding Count, Mode=OneWay}" />
-                        <Run Text=" " />
-                        <Run Text=")" />
-                    </TextBlock>
-                </Grid>
-            </Border>
-        </Grid>
+        <Border Margin="0"
+                Background="#FF262626"
+                BorderBrush="{DynamicResource AchivementBorder}"
+                BorderThickness="1">
+            <Grid Margin="10, 3, 10, 3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           FontSize="12"
+                           Foreground="White"
+                           Text="{Binding CategoryName}" />
+                <TextBlock Grid.Column="1"
+                           Margin="10,0,0,0"
+                           FontSize="12"
+                           Foreground="White"
+                           TextAlignment="Right"><Run Text="(" /><Run Text=" "/><Run Text=" " /><Run Text=" "/><Run Text="{Binding TotalCompleted, Mode=OneWay}" /><Run Text=" "/><Run Text=" " /><Run Text=" "/><Run Text="/" /><Run Text=" "/><Run Text=" " /><Run Text=" "/><Run Text="{Binding Count, Mode=OneWay}" /><Run Text=" "/><Run Text=" " /><Run Text=" "/><Run Text=")" /></TextBlock>
+            </Grid>
+        </Border>
     </DataTemplate>
 
     <Style x:Key="AchivementTabControlStyle"
@@ -269,7 +260,7 @@
         <Setter Property="Padding" Value="4,4,4,4" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}" />
-        <Setter Property="Background" Value="#F9F9F9" />
+        <Setter Property="Background" Value="White" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -290,26 +281,25 @@
                                            Height="*" />
                         </Grid.RowDefinitions>
                         <TabPanel x:Name="HeaderPanel"
-                                  Grid.Row="0"
-                                  Grid.Column="0"
-                                  Margin="2,2,2,0"
-                                  Panel.ZIndex="1"
-                                  IsItemsHost="true"
-                                  KeyboardNavigation.TabIndex="1" />
-                        <Border x:Name="ContentPanel"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                KeyboardNavigation.DirectionalNavigation="Contained"
-                                KeyboardNavigation.TabIndex="2"
-                                KeyboardNavigation.TabNavigation="Local">
-                            <ContentPresenter x:Name="PART_SelectedContentHost"
-                                              Margin="{TemplateBinding Padding}"
-                                              ContentSource="SelectedContent"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Border>
+                    		Margin="0"
+                    		Panel.ZIndex="1"
+                    		IsItemsHost="true"
+                    		KeyboardNavigation.TabIndex="1" Height="42" Grid.Row="1" VerticalAlignment="Top" />
+                    	<Border x:Name="ContentPanel"
+                    		Grid.Row="1"
+                    		Grid.Column="0"
+                    		Margin="0,50,0,0"
+                    		Background="{TemplateBinding Background}"
+                    		BorderBrush="{TemplateBinding BorderBrush}"
+                    		BorderThickness="{TemplateBinding BorderThickness}"
+                    		KeyboardNavigation.DirectionalNavigation="Contained"
+                    		KeyboardNavigation.TabIndex="2"
+                    		KeyboardNavigation.TabNavigation="Local">
+                    		<ContentPresenter x:Name="PART_SelectedContentHost"
+                    			Margin="{TemplateBinding Padding}"
+                    			ContentSource="SelectedContent"
+                    			SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    	</Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="TabStripPlacement" Value="Bottom">
@@ -349,5 +339,177 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <ControlTemplate x:Key="AchivementListBoxControlTemplate"
+                     TargetType="{x:Type ListBox}">
+        <Border x:Name="Bd"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Padding="1"
+                SnapsToDevicePixels="True">
+            <ScrollViewer Focusable="False"
+                          Padding="{TemplateBinding Padding}"
+                          PanningMode="Both"
+                          VerticalScrollBarVisibility="Disabled">
+                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+            </ScrollViewer>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+            </Trigger>
+            <Trigger Property="IsGrouping" Value="True">
+                <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <LinearGradientBrush x:Key="ProgressBarBackground" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Offset="0" Color="#BABABA" />
+        <GradientStop Offset="0.5" Color="#C7C7C7" />
+        <GradientStop Offset="1" Color="#BABABA" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ProgressBarBorderBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0" Color="#B2B2B2" />
+        <GradientStop Offset="1" Color="#8C8C8C" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ProgressBarGlassyHighlight" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.5385" Color="#50FFFFFF" />
+        <GradientStop Offset="0.5385" Color="#00FFFFFF" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ProgressBarTopHighlight" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.05" Color="#80FFFFFF" />
+        <GradientStop Offset="0.25" Color="#00FFFFFF" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ProgressBarIndicatorAnimatedFill" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Offset="0" Color="#00FFFFFF" />
+        <GradientStop Offset="0.4" Color="#60FFFFFF" />
+        <GradientStop Offset="0.6" Color="#60FFFFFF" />
+        <GradientStop Offset="1" Color="#00FFFFFF" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ProgressBarIndicatorDarkEdgeLeft" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Offset="0" Color="#0C000000" />
+        <GradientStop Offset="0.3" Color="#20000000" />
+        <GradientStop Offset="1" Color="#00000000" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ProgressBarIndicatorDarkEdgeRight" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Offset="0" Color="#00000000" />
+        <GradientStop Offset="0.7" Color="#20000000" />
+        <GradientStop Offset="1" Color="#0C000000" />
+    </LinearGradientBrush>
+    <RadialGradientBrush x:Key="ProgressBarIndicatorLightingEffectLeft" RadiusX="1" RadiusY="1" RelativeTransform="1,0,0,1,0.5,0.5">
+        <GradientStop Offset="0" Color="#60FFFFC4" />
+        <GradientStop Offset="1" Color="#00FFFFC4" />
+    </RadialGradientBrush>
+    <LinearGradientBrush x:Key="ProgressBarIndicatorLightingEffect" StartPoint="0,1" EndPoint="0,0">
+        <GradientStop Offset="0" Color="#60FFFFC4" />
+        <GradientStop Offset="1" Color="#00FFFFC4" />
+    </LinearGradientBrush>
+    <RadialGradientBrush x:Key="ProgressBarIndicatorLightingEffectRight" RadiusX="1" RadiusY="1" RelativeTransform="1,0,0,1,-0.5,0.5">
+        <GradientStop Offset="0" Color="#60FFFFC4" />
+        <GradientStop Offset="1" Color="#00FFFFC4" />
+    </RadialGradientBrush>
+    <LinearGradientBrush x:Key="ProgressBarIndicatorGlassyHighlight" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.5385" Color="#90FFFFFF" />
+        <GradientStop Offset="0.5385" Color="#00FFFFFF" />
+    </LinearGradientBrush>
+    <Style x:Key="AchivementProgressBarStyle"
+           TargetType="{x:Type ProgressBar}">
+        <Setter Property="Foreground" Value="#01D328" />
+        <Setter Property="Background" Value="{StaticResource ProgressBarBackground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ProgressBarBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ProgressBar}">
+                    <Grid x:Name="TemplateRoot"
+                          SnapsToDevicePixels="true">
+                        <Rectangle Fill="{TemplateBinding Background}"
+                                   RadiusX="0"
+                                   RadiusY="0"
+                                   StrokeThickness="0" />
+                        <Border Margin="1"
+                                CornerRadius="0" />
+                        <Border Margin="1"
+                                BorderBrush="{x:Null}"
+                                BorderThickness="1,0,1,1" />
+                        <Rectangle x:Name="PART_Track"
+                                   Margin="1" />
+                        <Decorator x:Name="PART_Indicator"
+                                   Margin="1"
+                                   HorizontalAlignment="Left">
+                            <Grid x:Name="Foreground"
+                                  Margin="2">
+                                <Rectangle x:Name="Indicator"
+                                           Fill="{DynamicResource ProgressBarTileBrush}" />
+                            </Grid>
+                        </Decorator>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="0" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Orientation" Value="Vertical">
+                            <Setter TargetName="TemplateRoot" Property="LayoutTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsIndeterminate" Value="true">
+                            <Setter TargetName="Indicator" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsIndeterminate" Value="false" />
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+	<Style x:Key="ButtonFocusVisual">
+		<Setter Property="Control.Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+		<GradientStop Color="#F3F3F3" Offset="0"/>
+		<GradientStop Color="#EBEBEB" Offset="0.5"/>
+		<GradientStop Color="#DDDDDD" Offset="0.5"/>
+		<GradientStop Color="#CDCDCD" Offset="1"/>
+	</LinearGradientBrush>
+	<SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
+
+	<Style x:Key="AchivementButtonStyle" TargetType="{x:Type Button}">
+		<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+		<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Padding" Value="1"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<Border BorderBrush="#FFB1AFAC" BorderThickness="1" CornerRadius="1" Padding="10,5">
+						<Border.Background>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FF383635" Offset="1"/>
+								<GradientStop Color="#FF6B6866"/>
+							</LinearGradientBrush>
+						</Border.Background>
+						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+					</Border>
+                    <ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter Property="Foreground" Value="#ADADAD"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 
 </ResourceDictionary>

@@ -11,7 +11,7 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0"
@@ -23,18 +23,22 @@
             <Image Width="64"
                    Height="64"
                    Margin="0"
-                   Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}" HorizontalAlignment="Left" />
+                   HorizontalAlignment="Left"
+                   Source="{Binding Image,
+                                    Converter={StaticResource StringToImageSourceConverter}}" />
         </Border>
         <StackPanel Grid.Column="1"
                     Margin="10,5,5,5"
                     Orientation="Vertical">
-            <TextBlock
-                       Foreground="{DynamicResource AchivementHeaderForeground}"
+            <TextBlock FontSize="16"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource AchivementForeground}"
                        Text="{Binding Name,
                                       FallbackValue=[Achievement Name Here],
                                       Mode=OneWay}"
-                       TextWrapping="Wrap" FontWeight="Bold" />
-            <TextBlock Foreground="{DynamicResource AchivementForeground}"
+                       TextWrapping="Wrap" />
+            <TextBlock FontSize="16"
+                       Foreground="#FFB4B4B4"
                        Text="{Binding Description,
                                       FallbackValue=Description,
                                       Mode=OneWay}"
