@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Strokes.Core;
 using Strokes.Core.Model;
+using Strokes.GUI.Resources;
 
 namespace Strokes.GUI.Views
 {
@@ -14,20 +15,67 @@ namespace Strokes.GUI.Views
     /// </summary>
     public partial class AchievementNotificationBox : Window
     {
+        private bool _isEventsBound;
+
         public AchievementNotificationBox()
         {
             InitializeComponent();
 
             this.CurrentAchievements = new ObservableCollection<AchievementDescriptor>();
             this.DataContext = CurrentAchievements;
-
-            AchievementContext.AchievementDetectionStarting += AchievementContext_AchievementDetectionStarting;
+            UnlockedAchievementsList.LayoutUpdated += new EventHandler(UnlockedAchievementsList_LayoutUpdated);
         }
 
         protected ObservableCollection<AchievementDescriptor> CurrentAchievements
         {
             get;
             set;
+        }
+
+        private void UnlockedAchievementsList_LayoutUpdated(object sender, EventArgs e)
+        {
+            if (_isEventsBound)
+                return;
+
+            _isEventsBound = true;
+
+            foreach (AchievementDescriptor item in UnlockedAchievementsList.Items)
+            {
+                var dataItem = item;
+                var gotoCodebutton = FindItemControl(UnlockedAchievementsList, "GotoSource", item) as Image;
+
+                if (gotoCodebutton == null)
+                    continue;
+
+                if (dataItem.CodeLocaton == null)
+                {
+                    gotoCodebutton.IsEnabled = false;
+                }
+                else
+                {
+                    gotoCodebutton.MouseDown += (se, args) =>
+                    {
+                        var achevementDescriptor = dataItem;
+
+                        AchievementContext.OnAchievementClicked(gotoCodebutton, new AchievementClickedEventArgs
+                        {
+                            AchievementDescriptor = achevementDescriptor,
+                            UIElement = new AchievementViewportControl()
+                            {
+                                DataContext = achevementDescriptor
+                            }
+                        });
+                    };
+                }
+            }
+        }
+
+        private static object FindItemControl(ItemsControl itemsControl, string controlName, object item)
+        {
+            var container = itemsControl.ItemContainerGenerator.ContainerFromItem(item) as ContentPresenter;
+            container.ApplyTemplate();
+
+            return container.ContentTemplate.FindName(controlName, container);
         }
 
         private void AchievementContext_AchievementDetectionStarting(object sender, System.EventArgs e)
@@ -58,15 +106,16 @@ namespace Strokes.GUI.Views
             var instance = new AchievementNotificationBox();
             instance.AddAchievements(achievementDescriptors);
 
+            // This is only to support the Strokes.Console-project
             if (Application.Current != null)
             {
+                // During a real Visual Studio integrated run, this is called.
                 instance.Show();
 
                 const int rightMargin = 1;
                 const int bottomMargin = 8;
 
-                if (Application.Current != null &&
-                    Application.Current.MainWindow.WindowState == WindowState.Normal &&
+                if (Application.Current.MainWindow.WindowState == WindowState.Normal &&
                     Application.Current.MainWindow != instance)
                 {
                     instance.Left = Application.Current.MainWindow.Left +
@@ -78,13 +127,13 @@ namespace Strokes.GUI.Views
                 else
                 {
                     instance.Left = SystemParameters.PrimaryScreenWidth - instance.Width - rightMargin;
-
                     instance.Top = SystemParameters.MaximizedPrimaryScreenHeight -
                                    SystemParameters.ResizeFrameHorizontalBorderHeight - instance.Height - bottomMargin;
                 }
             }
             else
             {
+                // When activated from a console-app, this is called.
                 new Application().Run(instance);
             }
         }

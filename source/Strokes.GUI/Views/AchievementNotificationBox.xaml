@@ -62,20 +62,20 @@
                                FontWeight="Bold"
                                Foreground="White"
                                Text="Achievement(s) Unlocked!" />
-                    <!--  Achievements  -->
-                    <ListBox Grid.Row="1"
-                             Grid.Column="0"
-                             Grid.ColumnSpan="2"
-                             MaxHeight="300"
-                             Margin="3,3,3,3"
-                             BorderBrush="{x:Null}"
-                             HorizontalContentAlignment="Stretch"
-                             ItemsSource="{Binding DataContext,
-                                                   ElementName=AchevementNotificationBox}"
-                             ItemTemplate="{StaticResource AchievementNotificationTemplate}"
-                             ScrollViewer.CanContentScroll="False"
-                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                             ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                    <!--  Achievements. Using ItemsControl instead of ListBox to eliminate the SelectedItemColor-thing  -->
+                    <ScrollViewer Grid.Row="1"
+                                  Grid.Column="0"
+                                  Grid.ColumnSpan="2"
+                                  MaxHeight="300"
+                                  Margin="3,3,3,3"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Auto">
+                        <ItemsControl Name="UnlockedAchievementsList"
+                                      HorizontalContentAlignment="Stretch"
+                                      ItemsSource="{Binding DataContext,
+                                                            ElementName=AchevementNotificationBox}"
+                                      ItemTemplate="{StaticResource AchievementNotificationTemplate}" />
+                    </ScrollViewer>
                 </Grid>
             </Border>
         </Border>
