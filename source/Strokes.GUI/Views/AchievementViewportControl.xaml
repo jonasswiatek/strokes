@@ -24,7 +24,7 @@
                        Margin="15,4,0,0"
                        HorizontalAlignment="Left"
                        FontSize="12"
-                       Foreground="#FFCBCBCB"
+                       Foreground="{DynamicResource ArchivementSubtleFontColor}"
                        Text="Achievement Unlocked!" />
             <template:AchievementTemplateBare Grid.Row="1"
                                               Margin="15,0,15,5" />

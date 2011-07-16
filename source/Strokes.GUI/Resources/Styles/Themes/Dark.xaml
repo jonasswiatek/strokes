@@ -13,42 +13,62 @@
     <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
 
     <!--  Brushes  -->
-    <SolidColorBrush x:Key="AchivementBackground"
-                     Color="#FF2A2827" />
+    <SolidColorBrush x:Key="AchivementDarkBackground"
+                     Color="#FF262626" />
+
+    <SolidColorBrush x:Key="ArchivementLightBackground"
+                     Color="#FF383635" />
 
     <SolidColorBrush x:Key="AchivementForeground"
-                     Color="Honeydew" />
-
-    <SolidColorBrush x:Key="AchivementHeaderForeground"
-                     Color="Lime" />
+                     Color="White" />
 
     <SolidColorBrush x:Key="AchivementBorder"
                      Color="#FF4D4B48" />
 
-    <SolidColorBrush x:Key="AchivementInnerBorder"
-                     Color="Green" />
+    <SolidColorBrush x:Key="ArchivementSubtleFontColor"
+                     Color="#FFCBCBCB" />
 
-    <SolidColorBrush x:Key="AchivementTabItemBorder"
-                     Color="#FF4D4B48" />
-
-    <SolidColorBrush x:Key="TabControlNormalBorderBrush"
-                     Color="#FF4D4B48" />
-
-    <LinearGradientBrush x:Key="AchivementTemplateBorder" StartPoint="0.5,0" EndPoint="0.5,1">
-        <GradientStop Offset="0" Color="#FF4D6D8D" />
-        <GradientStop Offset="0.396" Color="#FF8AB7DE" />
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="AchivementItemSelectedBackground" StartPoint="0.5,0" EndPoint="0.5,1">
+    <LinearGradientBrush x:Key="AchivementTabItemSelectedBackground" StartPoint="0.5,0" EndPoint="0.5,1">
         <GradientStop Offset="0.6" Color="#FF8AB7DE" />
         <GradientStop Color="#FF537494" />
     </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="AchivementTabItemBackground"
+                     Color="#FF6E6A69" />
+
+    <SolidColorBrush x:Key="ListBoxItemSelectedColor"
+                     Color="#FF4D6D8C" />
+
+    <SolidColorBrush x:Key="ProgressBarIndicatorColor"
+                     Color="#FF4D6D8C" />
 
     <SolidColorBrush x:Key="AchivementItemSelectedForeground"
                      Color="Black" />
 
     <SolidColorBrush x:Key="SelectedListBoxItemBackground"
                      Color="Honeydew" />
+
+    <SolidColorBrush x:Key="ScrollBarUpDownBorder"
+                     Color="#FF575552" />
+
+    <SolidColorBrush x:Key="ScrollBarUpDownTriangleStroke"
+                     Color="#FF63605E" />
+    <SolidColorBrush x:Key="ScrollBarUpDownTriangleFill"
+                     Color="#FFAFADAD" />
+
+    <SolidColorBrush x:Key="ScrollBarThumbBackground"
+                     Color="#FF474542" />
+
+    <SolidColorBrush x:Key="ButtonBorderBrush"
+                     Color="#FFB1AFAC" />
+
+    <LinearGradientBrush x:Key="ButtonBackgroundBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Offset="1" Color="#FF454545" />
+        <GradientStop Color="#FF6B6866" Offset="0.48" />
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="ScrollBarBackground"
+                     Color="#FF171614" />
 
     <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}"
                      Color="Transparent" />
@@ -59,39 +79,10 @@
     <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
                      Color="Transparent" />
 
-    <DrawingBrush x:Key="ProgressBarTileBrush"
-                  TileMode="Tile"
-                  Viewport="0,0,0.1,0.1">
-        <DrawingBrush.Drawing>
-            <DrawingGroup>
-                <GeometryDrawing Brush="#FF383635">
-                    <GeometryDrawing.Geometry>
-                        <RectangleGeometry Rect="0,0,100,100" />
-                    </GeometryDrawing.Geometry>
-                </GeometryDrawing>
-                <GeometryDrawing Brush="#FF4D6D8C">
-                    <GeometryDrawing.Geometry>
-                        <GeometryGroup>
-                            <RectangleGeometry Rect="0,0,75,100" />
-                        </GeometryGroup>
-                    </GeometryDrawing.Geometry>
-                </GeometryDrawing>
-            </DrawingGroup>
-        </DrawingBrush.Drawing>
-    </DrawingBrush>
-
-    <!--  Font Sizes  -->
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
         <Setter Property="FontSize" Value="12" />
     </Style>
-
-    <!--  Thickness  -->
-    <Thickness x:Key="ArchivementBorderThickness"
-               Bottom="1"
-               Left="1"
-               Right="1"
-               Top="1" />
 
     <Thickness x:Key="ArchivementControlMargin"
                Bottom="10"
@@ -105,42 +96,22 @@
                Right="10"
                Top="10" />
 
-    <!--  Generic ListBox Styles  -->
-
     <Style TargetType="{x:Type ListBox}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     </Style>
 
     <Style TargetType="{x:Type ListBoxItem}">
-        <Setter Property="Background" Value="#FF383635" />
+        <Setter Property="Background" Value="{StaticResource AchivementLightBackground}" />
         <Setter Property="Margin" Value="0,0,0,4" />
     </Style>
-
-    <!--  Generic TabItem Styles  -->
-
-    <Style x:Key="TabItemFocusVisual">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle Margin="3,3,3,1"
-                               SnapsToDevicePixels="true"
-                               Stroke="{StaticResource AchivementTabItemBorder}"
-                               StrokeDashArray="1 2"
-                               StrokeThickness="1" />
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!--  TabControlItem Style  -->
 
     <Style x:Key="AchivementTabItemStyle"
            TargetType="{x:Type TabItem}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource TabItemFocusVisual}" />
         <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
         <Setter Property="Padding" Value="6,1,6,1" />
-        <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AchivementBorder}" />
         <Setter Property="Width" Value="121" />
         <Setter Property="Height" Value="42" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -150,7 +121,7 @@
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid ClipToBounds="True">
                         <Border x:Name="PART_Border"
-                                BorderThickness="0">
+                                Margin="0,0,2,0">
                             <Grid>
                                 <ContentPresenter x:Name="PART_Content"
                                                   HorizontalAlignment="{Binding HorizontalContentAlignment,
@@ -165,14 +136,11 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Panel.ZIndex" Value="1" />
-                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource AchivementItemSelectedBackground}" />
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{StaticResource AchivementTabItemBorder}" />
-                            <Setter TargetName="PART_Border" Property="Margin" Value="0,0,2,0" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource AchivementTabItemSelectedBackground}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="False">
                             <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
-                            <Setter TargetName="PART_Border" Property="Margin" Value="0,0,2,0" />
-                            <Setter TargetName="PART_Border" Property="Background" Value="#6E6A69" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource AchivementTabItemBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -180,30 +148,30 @@
         </Setter>
     </Style>
 
-    <!--  DataTemplates  -->
-
     <DataTemplate x:Key="AchievementNotificationTemplate">
         <Border Margin="0,0,0,4"
                 BorderBrush="{DynamicResource AchivementBorder}"
                 BorderThickness="0,0,1,0">
-            <Grid Background="#FF262626">
+            <Grid Background="{StaticResource AchivementDarkBackground}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <local:AchievementTemplateBare Grid.Column="0"
                                                MaxWidth="400"
-                                               Margin="5" HorizontalAlignment="Left" />
+                                               Margin="5"
+                                               HorizontalAlignment="Left" />
                 <Grid x:Name="PART_MagnifierGlassPath"
                       Grid.Column="1"
-                      Visibility="{Binding CodeLocation, Converter={StaticResource NullToVisibilityConverter}}"
                       Width="Auto"
                       Height="21.312"
                       Margin="0,15,15,0"
                       HorizontalAlignment="Stretch"
                       VerticalAlignment="Top"
-                      Background="#FF262626"
-                      IsHitTestVisible="True">
+                      Background="{StaticResource AchivementDarkBackground}"
+                      IsHitTestVisible="True"
+                      Visibility="{Binding CodeLocation,
+                                           Converter={StaticResource NullToVisibilityConverter}}">
                     <Path Grid.Column="0"
                           Width="21.281"
                           Height="21.312"
@@ -226,7 +194,7 @@
                                                                     Mode=FindAncestor}}"
                 BorderBrush="{DynamicResource AchivementBorder}"
                 BorderThickness="1">
-            <Grid Background="#FF262626">
+            <Grid Background="{StaticResource AchivementDarkBackground}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="*" />
@@ -238,7 +206,7 @@
                             Margin="15,10,10,10">
                     <TextBlock HorizontalAlignment="Left"
                                VerticalAlignment="Top"
-                               Foreground="#FFB4B4B4"
+                               Foreground="{StaticResource ArchivementSubtleFontColor}"
                                Visibility="{Binding IsCompleted,
                                                     Converter={StaticResource BoolToVisibilityConverter}}">
                         <Run Text="Unlocked:" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text="{Binding DateCompleted, FallbackValue=''}" />
@@ -274,9 +242,9 @@
 
     <DataTemplate x:Key="CategoryTemplate">
         <Grid x:Name="PART_Background"
-              Background="#FF383635">
+              Background="{StaticResource AchivementLightBackground}">
             <Border Margin="3,0,0,0"
-                    Background="#FF262626"
+                    Background="{StaticResource AchivementDarkBackground}"
                     BorderBrush="{DynamicResource AchivementBorder}"
                     BorderThickness="1">
                 <Grid Margin="10, 3, 10, 3">
@@ -303,7 +271,7 @@
                                            RelativeSource={RelativeSource Mode=FindAncestor,
                                                                           AncestorType={x:Type ListBoxItem}}}"
                          Value="True">
-                <Setter TargetName="PART_Background" Property="Background" Value="#FF4D6D8C" />
+                <Setter TargetName="PART_Background" Property="Background" Value="{StaticResource ListBoxItemSelectedColor}" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
@@ -313,7 +281,7 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
         <Setter Property="Padding" Value="4,4,4,4" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ArchivementBorder}" />
         <Setter Property="Background" Value="White" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -396,6 +364,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
     <ControlTemplate x:Key="AchivementListBoxControlTemplate"
                      TargetType="{x:Type ListBox}">
         <Border x:Name="Bd"
@@ -420,58 +389,9 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    <LinearGradientBrush x:Key="ProgressBarBackground" StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Offset="0" Color="#BABABA" />
-        <GradientStop Offset="0.5" Color="#C7C7C7" />
-        <GradientStop Offset="1" Color="#BABABA" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="ProgressBarBorderBrush" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#B2B2B2" />
-        <GradientStop Offset="1" Color="#8C8C8C" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="ProgressBarGlassyHighlight" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0.5385" Color="#50FFFFFF" />
-        <GradientStop Offset="0.5385" Color="#00FFFFFF" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="ProgressBarTopHighlight" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0.05" Color="#80FFFFFF" />
-        <GradientStop Offset="0.25" Color="#00FFFFFF" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="ProgressBarIndicatorAnimatedFill" StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Offset="0" Color="#00FFFFFF" />
-        <GradientStop Offset="0.4" Color="#60FFFFFF" />
-        <GradientStop Offset="0.6" Color="#60FFFFFF" />
-        <GradientStop Offset="1" Color="#00FFFFFF" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="ProgressBarIndicatorDarkEdgeLeft" StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Offset="0" Color="#0C000000" />
-        <GradientStop Offset="0.3" Color="#20000000" />
-        <GradientStop Offset="1" Color="#00000000" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="ProgressBarIndicatorDarkEdgeRight" StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Offset="0" Color="#00000000" />
-        <GradientStop Offset="0.7" Color="#20000000" />
-        <GradientStop Offset="1" Color="#0C000000" />
-    </LinearGradientBrush>
-    <RadialGradientBrush x:Key="ProgressBarIndicatorLightingEffectLeft" RadiusX="1" RadiusY="1" RelativeTransform="1,0,0,1,0.5,0.5">
-        <GradientStop Offset="0" Color="#60FFFFC4" />
-        <GradientStop Offset="1" Color="#00FFFFC4" />
-    </RadialGradientBrush>
-    <LinearGradientBrush x:Key="ProgressBarIndicatorLightingEffect" StartPoint="0,1" EndPoint="0,0">
-        <GradientStop Offset="0" Color="#60FFFFC4" />
-        <GradientStop Offset="1" Color="#00FFFFC4" />
-    </LinearGradientBrush>
-    <RadialGradientBrush x:Key="ProgressBarIndicatorLightingEffectRight" RadiusX="1" RadiusY="1" RelativeTransform="1,0,0,1,-0.5,0.5">
-        <GradientStop Offset="0" Color="#60FFFFC4" />
-        <GradientStop Offset="1" Color="#00FFFFC4" />
-    </RadialGradientBrush>
-    <LinearGradientBrush x:Key="ProgressBarIndicatorGlassyHighlight" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0.5385" Color="#90FFFFFF" />
-        <GradientStop Offset="0.5385" Color="#00FFFFFF" />
-    </LinearGradientBrush>
+
     <Style x:Key="AchivementProgressBarStyle"
            TargetType="{x:Type ProgressBar}">
-        <Setter Property="Foreground" Value="#01D328" />
         <Setter Property="Background" Value="{StaticResource ProgressBarBackground}" />
         <Setter Property="BorderBrush" Value="{StaticResource ProgressBarBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -497,7 +417,7 @@
                             <Grid x:Name="Foreground"
                                   Margin="2">
                                 <Rectangle x:Name="Indicator"
-                                           Fill="#FF4D6D8C" />
+                                           Fill="{StaticResource ProgressBarIndicatorColor}" />
                             </Grid>
                         </Decorator>
                         <Border BorderBrush="{TemplateBinding BorderBrush}"
@@ -521,6 +441,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style x:Key="ButtonFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -534,16 +455,10 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <SolidColorBrush x:Key="ButtonNormalBackground"
-                     Color="#FF575552" />
-    <SolidColorBrush x:Key="ButtonNormalBorder"
-                     Color="#FF707070" />
 
     <Style x:Key="AchivementButtonStyle"
            TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
-        <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}" />
-        <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -552,31 +467,22 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border BorderBrush="#FFB1AFAC"
+                    <Border Background="{StaticResource ButtonBackgroundBrush}"
+                            BorderBrush="{StaticResource ButtonBorderBrush}"
                             BorderThickness="1"
                             CornerRadius="1"
                             Padding="10,5">
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                <GradientStop Offset="1" Color="#FF383635" />
-                                <GradientStop Color="#FF6B6866" />
-                            </LinearGradientBrush>
-                        </Border.Background>
                         <ContentPresenter Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           RecognizesAccessKey="True"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="#ADADAD" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
     <ControlTemplate x:Key="AchivementScrollViewerControlTemplate"
                      TargetType="{x:Type ScrollViewer}">
         <Grid x:Name="Grid"
@@ -631,10 +537,7 @@
                                        RelativeSource={RelativeSource TemplatedParent}}" />
         </Grid>
     </ControlTemplate>
-    <SolidColorBrush x:Key="VerticalScrollBarBackground"
-                     Color="#FF171614" />
-    <SolidColorBrush x:Key="ScrollBarDisabledBackground"
-                     Color="#F4F4F4" />
+
     <Style x:Key="ScrollBarUpButton"
            TargetType="{x:Type RepeatButton}">
         <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -644,25 +547,22 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
                     <Border Margin="2"
-                            Background="#FF575552"
+                            Background="{StaticResource ScrollBarUpDownBorder}"
                             CornerRadius="1"
                             Padding="0">
                         <Polygon Margin="0,-4,0,0"
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center"
+                                 Fill="{StaticResource ScrollBarUpDownTriangleFill}"
                                  Points="0,8 4,4 8,8 0,8"
-                                 Stroke="#FF63605E"
-                                 StrokeThickness="0">
-                            <Polygon.Fill>
-                                <SolidColorBrush Opacity="0.4"
-                                                 Color="#FFAFADAD" />
-                            </Polygon.Fill>
-                        </Polygon>
+                                 Stroke="{StaticResource ScrollBarUpDownTriangle}"
+                                 StrokeThickness="0" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style x:Key="ScrollBarDownButton"
            TargetType="{x:Type RepeatButton}">
         <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -672,25 +572,22 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
                     <Border Margin="2"
-                            Background="#FF575552"
+                            Background="{StaticResource ScrollBarUpDownBorder}"
                             CornerRadius="1"
                             Padding="0">
                         <Polygon Margin="0,0,0,0"
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center"
+                                 Fill="{StaticResource ScrollBarUpDownTriangleFill}"
                                  Points="0,0 4,4 8,0 0,0"
-                                 Stroke="#FF63605E"
-                                 StrokeThickness="0">
-                            <Polygon.Fill>
-                                <SolidColorBrush Opacity="0.4"
-                                                 Color="#FFAFADAD" />
-                            </Polygon.Fill>
-                        </Polygon>
+                                 Stroke="{StaticResource ScrollBarUpDownTriangle}"
+                                 StrokeThickness="0" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style x:Key="VerticalScrollBarPageButton"
            TargetType="{x:Type RepeatButton}">
         <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -707,6 +604,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style x:Key="ScrollBarThumb"
            TargetType="{x:Type Thumb}">
         <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -715,14 +613,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border Margin="2"
-                            Background="#FF474542"
+                            Background="{StaticResource ScrollBarThumbBackground}"
                             CornerRadius="1" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <SolidColorBrush x:Key="HorizontalScrollBarBackground"
-                     Color="#FF171614" />
+
     <Style x:Key="HorizontalScrollBarPageButton"
            TargetType="{x:Type RepeatButton}">
         <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -739,9 +636,10 @@
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style x:Key="AchivementScrollBarStyle"
            TargetType="{x:Type ScrollBar}">
-        <Setter Property="Background" Value="{StaticResource VerticalScrollBarBackground}" />
+        <Setter Property="Background" Value="{StaticResource ScrollBarBackground}" />
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -751,7 +649,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollBar}">
                     <Grid x:Name="Bg"
-                          Background="#FF171614"
+                          Background="{StaticResource ScrollBarBackground}"
                           SnapsToDevicePixels="true">
                         <Grid.RowDefinitions>
                             <RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}" />
@@ -784,11 +682,6 @@
                                       Microsoft_Windows_Themes:ScrollChrome.ScrollGlyph="DownArrow"
                                       Style="{StaticResource ScrollBarDownButton}" />
                     </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="Bg" Property="Background" Value="{StaticResource ScrollBarDisabledBackground}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -798,7 +691,7 @@
                 <Setter Property="MinWidth" Value="0" />
                 <Setter Property="Height" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}" />
                 <Setter Property="MinHeight" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}" />
-                <Setter Property="Background" Value="{StaticResource HorizontalScrollBarBackground}" />
+                <Setter Property="Background" Value="{StaticResource ScrollBarBackground}" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ScrollBar}">
@@ -836,11 +729,6 @@
                                               Microsoft_Windows_Themes:ScrollChrome.ScrollGlyph="RightArrow"
                                               Style="{StaticResource ScrollBarButton}" />
                             </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsEnabled" Value="false">
-                                    <Setter TargetName="Bg" Property="Background" Value="{StaticResource ScrollBarDisabledBackground}" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

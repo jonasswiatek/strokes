@@ -37,7 +37,7 @@
                        TextWrapping="Wrap" 
                        FontFamily="Segoe UI Semibold" />
             <TextBlock FontSize="16"
-                       Foreground="#FFB4B4B4"
+                       Foreground="{DynamicResource ArchivementSubtleFontColor}"
                        Text="{Binding Description,
                                       FallbackValue=Description,
                                       Mode=OneWay}"
