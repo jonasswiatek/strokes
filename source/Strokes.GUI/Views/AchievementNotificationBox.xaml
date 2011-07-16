@@ -9,6 +9,8 @@
         Background="{x:Null}"
         BorderThickness="3"
         d:DataContext="{d:DesignData Source=/SampleData/NotificationViewModelSampleData.xaml}"
+        d:DesignHeight="400"
+        d:DesignWidth="500"
         ResizeMode="NoResize"
         ShowInTaskbar="False"
         SizeToContent="WidthAndHeight"
@@ -69,7 +71,8 @@
                     <ScrollViewer Grid.Row="1"
                                   Grid.Column="0"
                                   Grid.ColumnSpan="2"
-                                  MaxHeight="300"
+                                  MaxHeight="250"
+                                  MaxWidth="500"
                                   HorizontalScrollBarVisibility="Hidden"
                                   Template="{DynamicResource AchivementScrollViewerControlTemplate}"
                                   VerticalScrollBarVisibility="Auto">

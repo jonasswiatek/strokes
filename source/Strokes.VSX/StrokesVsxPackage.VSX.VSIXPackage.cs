@@ -100,7 +100,7 @@ namespace Strokes.VSX
 
         void AchievementContext_AchievementClicked(object sender, AchievementClickedEventArgs args)
         {
-            dte.ItemOperations.OpenFile(args.AchievementDescriptor.CodeLocaton.FileName, EnvDTE.Constants.vsViewKindCode);
+            dte.ItemOperations.OpenFile(args.AchievementDescriptor.CodeLocation.FileName, EnvDTE.Constants.vsViewKindCode);
         }
 
         protected override void Dispose(bool disposing)

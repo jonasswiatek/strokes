@@ -62,10 +62,10 @@ namespace Strokes.VsAdornments
             Reset();
             
             var filePath = GetFilePath(_view);
-            if (args.AchievementDescriptor.CodeLocaton.FileName != filePath)
+            if (args.AchievementDescriptor.CodeLocation.FileName != filePath)
                 return;
 
-            _codeLocation = args.AchievementDescriptor.CodeLocaton;
+            _codeLocation = args.AchievementDescriptor.CodeLocation;
             _achievementUiElement = (UIElement) args.UIElement;
 
             CreateAdornment();

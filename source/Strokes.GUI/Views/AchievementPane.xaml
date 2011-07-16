@@ -100,6 +100,8 @@
                                       Background="{x:Null}"
                                       BorderBrush="{x:Null}"
                                       Foreground="{DynamicResource AchivementForeground}"
+                                      VirtualizingStackPanel.IsVirtualizing="True" 
+                                      VirtualizingStackPanel.VirtualizationMode="Standard"
                                       ItemsSource="{Binding SelectedItem,
                                                             ElementName=AchivementsCategoryListBox}"
                                       ItemTemplate="{DynamicResource AchievementTemplate}"

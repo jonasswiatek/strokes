@@ -57,7 +57,7 @@ namespace Strokes.VSX
 
                                                                if (achievementUnlocked)
                                                                {
-                                                                   a.CodeLocaton = achievement.AchievementCodeLocation;
+                                                                   a.CodeLocation = achievement.AchievementCodeLocation;
                                                                    a.IsCompleted = true;
                                                                    unlockedAchievements.Add(a);
                                                                }

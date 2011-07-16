@@ -34,7 +34,7 @@ namespace Strokes.Core.Model
             set;
         }
 
-        public AchievementCodeLocation CodeLocaton
+        public AchievementCodeLocation CodeLocation
         {
             get;
             set;

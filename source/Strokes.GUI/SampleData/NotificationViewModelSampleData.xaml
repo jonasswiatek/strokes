@@ -1,4 +1,5 @@
-<Strokes_GUI:AchivementNotificationViewModel xmlns:Strokes_Core="clr-namespace:Strokes.Core;assembly=Strokes.Core"
+<Strokes_GUI:AchivementNotificationViewModel xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                             xmlns:Strokes_Core="clr-namespace:Strokes.Core;assembly=Strokes.Core"
                                              xmlns:Strokes_Core_Model="clr-namespace:Strokes.Core.Model;assembly=Strokes.Core"
                                              xmlns:Strokes_GUI="clr-namespace:Strokes.GUI">
     <Strokes_GUI:AchivementNotificationViewModel.CurrentAchievements>
@@ -7,10 +8,8 @@
                                                   DateCompleted="07/16/2011 13:47:10"
                                                   Description="Sed curabitur class cras aenean"
                                                   Image="/Strokes.GUI;component/Resources/Icons/default.png"
-                                                  IsCompleted="True">
-            <Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
-                <Strokes_Core:AchievementCodeLocation />
-            </Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+                                                  IsCompleted="True"
+                                                  CodeLocation="{x:Null}">
         </Strokes_Core_Model:AchievementDescriptor>
         <Strokes_Core_Model:AchievementDescriptor Name="Vivamus adipiscing"
                                                   Category="Est phasellus"
@@ -18,9 +17,9 @@
                                                   Description="Curae vestibulum hac praesent donec"
                                                   Image="/Strokes.GUI;component/Resources/Icons/default.png"
                                                   IsCompleted="False">
-            <Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            <Strokes_Core_Model:AchievementDescriptor.CodeLocation>
                 <Strokes_Core:AchievementCodeLocation />
-            </Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            </Strokes_Core_Model:AchievementDescriptor.CodeLocation>
         </Strokes_Core_Model:AchievementDescriptor>
         <Strokes_Core_Model:AchievementDescriptor Name="Aptent ante"
                                                   Category="Parturient vestibulum aliquam"
@@ -28,9 +27,9 @@
                                                   Description="Amet consequat"
                                                   Image="/Strokes.GUI;component/Resources/Icons/default.png"
                                                   IsCompleted="True">
-            <Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            <Strokes_Core_Model:AchievementDescriptor.CodeLocation>
                 <Strokes_Core:AchievementCodeLocation />
-            </Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            </Strokes_Core_Model:AchievementDescriptor.CodeLocation>
         </Strokes_Core_Model:AchievementDescriptor>
         <Strokes_Core_Model:AchievementDescriptor Name="Bibendum congue"
                                                   Category="Nec non etiam adipiscing"
@@ -38,9 +37,9 @@
                                                   Description="Per accumsan"
                                                   Image="/Strokes.GUI;component/Resources/Icons/default.png"
                                                   IsCompleted="False">
-            <Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            <Strokes_Core_Model:AchievementDescriptor.CodeLocation>
                 <Strokes_Core:AchievementCodeLocation />
-            </Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            </Strokes_Core_Model:AchievementDescriptor.CodeLocation>
         </Strokes_Core_Model:AchievementDescriptor>
         <Strokes_Core_Model:AchievementDescriptor Name="Arcu commodo"
                                                   Category="Dictumst cursus eleifend dictum fusce"
@@ -48,9 +47,9 @@
                                                   Description="Facilisi vestibulum blandit"
                                                   Image="/Strokes.GUI;component/Resources/Icons/default.png"
                                                   IsCompleted="True">
-            <Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            <Strokes_Core_Model:AchievementDescriptor.CodeLocation>
                 <Strokes_Core:AchievementCodeLocation />
-            </Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            </Strokes_Core_Model:AchievementDescriptor.CodeLocation>
         </Strokes_Core_Model:AchievementDescriptor>
         <Strokes_Core_Model:AchievementDescriptor Name="Diam nam facilisis sed litora"
                                                   Category="Faucibus habitant nulla parturient"
@@ -58,9 +57,9 @@
                                                   Description="Lectus sit elementum"
                                                   Image="/Strokes.GUI;component/Resources/Icons/default.png"
                                                   IsCompleted="False">
-            <Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            <Strokes_Core_Model:AchievementDescriptor.CodeLocation>
                 <Strokes_Core:AchievementCodeLocation />
-            </Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            </Strokes_Core_Model:AchievementDescriptor.CodeLocation>
         </Strokes_Core_Model:AchievementDescriptor>
         <Strokes_Core_Model:AchievementDescriptor Name="Dolor lobortis hac leo mus"
                                                   Category="Vestibulum fermentum"
@@ -68,9 +67,9 @@
                                                   Description="Inceptos dis vestibulum augue"
                                                   Image="/Strokes.GUI;component/Resources/Icons/default.png"
                                                   IsCompleted="True">
-            <Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            <Strokes_Core_Model:AchievementDescriptor.CodeLocation>
                 <Strokes_Core:AchievementCodeLocation />
-            </Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            </Strokes_Core_Model:AchievementDescriptor.CodeLocation>
         </Strokes_Core_Model:AchievementDescriptor>
         <Strokes_Core_Model:AchievementDescriptor Name="Vestibulum fringilla mollis vestibulum habitasse"
                                                   Category="Conubia mattis nec elit enim"
@@ -78,9 +77,9 @@
                                                   Description="Adipiscing erat fames parturient"
                                                   Image="/Strokes.GUI;component/Resources/Icons/default.png"
                                                   IsCompleted="False">
-            <Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            <Strokes_Core_Model:AchievementDescriptor.CodeLocation>
                 <Strokes_Core:AchievementCodeLocation />
-            </Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            </Strokes_Core_Model:AchievementDescriptor.CodeLocation>
         </Strokes_Core_Model:AchievementDescriptor>
         <Strokes_Core_Model:AchievementDescriptor Name="Sem montes egestas lorem"
                                                   Category="Hendrerit himenaeos ipsum"
@@ -88,9 +87,9 @@
                                                   Description="Non justo per nascetur lacus"
                                                   Image="/Strokes.GUI;component/Resources/Icons/default.png"
                                                   IsCompleted="True">
-            <Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            <Strokes_Core_Model:AchievementDescriptor.CodeLocation>
                 <Strokes_Core:AchievementCodeLocation />
-            </Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            </Strokes_Core_Model:AchievementDescriptor.CodeLocation>
         </Strokes_Core_Model:AchievementDescriptor>
         <Strokes_Core_Model:AchievementDescriptor Name="Metus adipiscing"
                                                   Category="Magna massa"
@@ -98,9 +97,9 @@
                                                   Description="Nostra pharetra euismod"
                                                   Image="/Strokes.GUI;component/Resources/Icons/default.png"
                                                   IsCompleted="False">
-            <Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            <Strokes_Core_Model:AchievementDescriptor.CodeLocation>
                 <Strokes_Core:AchievementCodeLocation />
-            </Strokes_Core_Model:AchievementDescriptor.CodeLocaton>
+            </Strokes_Core_Model:AchievementDescriptor.CodeLocation>
         </Strokes_Core_Model:AchievementDescriptor>
     </Strokes_GUI:AchivementNotificationViewModel.CurrentAchievements>
 </Strokes_GUI:AchivementNotificationViewModel>

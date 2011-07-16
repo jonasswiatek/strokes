@@ -34,7 +34,8 @@
                        Text="{Binding Name,
                                       FallbackValue=[Achievement Name Here],
                                       Mode=OneWay}"
-                       TextWrapping="Wrap" FontFamily="Segoe UI Semibold" />
+                       TextWrapping="Wrap" 
+                       FontFamily="Segoe UI Semibold" />
             <TextBlock FontSize="16"
                        Foreground="#FFB4B4B4"
                        Text="{Binding Description,
