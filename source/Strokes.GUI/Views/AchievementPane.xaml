@@ -50,7 +50,8 @@
                                      BorderBrush="#FF706D69"
                                      Foreground="White"
                                      Maximum="{Binding TotalAchievements}"
-                                     Style="{DynamicResource AchivementProgressBarStyle}" Value="{Binding TotalCompleted}" />
+                                     Style="{DynamicResource AchivementProgressBarStyle}"
+                                     Value="{Binding TotalCompleted, Mode=OneWay}" />
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -93,7 +94,8 @@
                     <!--  Achievements listbox of selected category  -->
                     <ScrollViewer Grid.Column="1"
                                   HorizontalScrollBarVisibility="Hidden"
-                                  VerticalScrollBarVisibility="Auto" Template="{DynamicResource AchivementScrollViewerControlTemplate}">
+                                  Template="{DynamicResource AchivementScrollViewerControlTemplate}"
+                                  VerticalScrollBarVisibility="Auto">
                         <ItemsControl Margin="0"
                                       Background="{x:Null}"
                                       BorderBrush="{x:Null}"
