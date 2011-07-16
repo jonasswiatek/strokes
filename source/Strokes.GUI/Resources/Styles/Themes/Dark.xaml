@@ -3,7 +3,6 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:local="clr-namespace:Strokes.GUI"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     mc:Ignorable="d">
 
     <!--  Converters  -->
@@ -64,7 +63,7 @@
 
     <LinearGradientBrush x:Key="ButtonBackgroundBrush" StartPoint="0.5,0" EndPoint="0.5,1">
         <GradientStop Offset="1" Color="#FF454545" />
-        <GradientStop Color="#FF6B6866" Offset="0.48" />
+        <GradientStop Offset="0.48" Color="#FF6B6866" />
     </LinearGradientBrush>
 
     <SolidColorBrush x:Key="ScrollBarBackground"
@@ -660,7 +659,6 @@
                         </Grid.RowDefinitions>
                         <RepeatButton Command="{x:Static ScrollBar.LineUpCommand}"
                                       IsEnabled="{TemplateBinding IsMouseOver}"
-                                      Microsoft_Windows_Themes:ScrollChrome.ScrollGlyph="UpArrow"
                                       Style="{StaticResource ScrollBarUpButton}" />
                         <Track x:Name="PART_Track"
                                Grid.Row="1"
@@ -681,7 +679,6 @@
                         <RepeatButton Grid.Row="2"
                                       Command="{x:Static ScrollBar.LineDownCommand}"
                                       IsEnabled="{TemplateBinding IsMouseOver}"
-                                      Microsoft_Windows_Themes:ScrollChrome.ScrollGlyph="DownArrow"
                                       Style="{StaticResource ScrollBarDownButton}" />
                     </Grid>
                 </ControlTemplate>
@@ -708,7 +705,6 @@
                                 </Grid.ColumnDefinitions>
                                 <RepeatButton Command="{x:Static ScrollBar.LineLeftCommand}"
                                               IsEnabled="{TemplateBinding IsMouseOver}"
-                                              Microsoft_Windows_Themes:ScrollChrome.ScrollGlyph="LeftArrow"
                                               Style="{StaticResource ScrollBarButton}" />
                                 <Track x:Name="PART_Track"
                                        Grid.Column="1"
@@ -722,14 +718,12 @@
                                                       Style="{StaticResource HorizontalScrollBarPageButton}" />
                                     </Track.IncreaseRepeatButton>
                                     <Track.Thumb>
-                                        <Thumb Microsoft_Windows_Themes:ScrollChrome.ScrollGlyph="HorizontalGripper"
-                                               Style="{StaticResource ScrollBarThumb}" />
+                                        <Thumb Style="{StaticResource ScrollBarThumb}" />
                                     </Track.Thumb>
                                 </Track>
                                 <RepeatButton Grid.Column="2"
                                               Command="{x:Static ScrollBar.LineRightCommand}"
                                               IsEnabled="{TemplateBinding IsMouseOver}"
-                                              Microsoft_Windows_Themes:ScrollChrome.ScrollGlyph="RightArrow"
                                               Style="{StaticResource ScrollBarButton}" />
                             </Grid>
                         </ControlTemplate>
