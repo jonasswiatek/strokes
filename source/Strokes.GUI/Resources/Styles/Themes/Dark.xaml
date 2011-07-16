@@ -50,7 +50,13 @@
                      Color="Honeydew" />
 
     <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}"
-                     Color="#FF383635" />
+                     Color="Transparent" />
+
+    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                     Color="Transparent" />
+
+    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                     Color="Transparent" />
 
     <DrawingBrush x:Key="ProgressBarTileBrush"
                   TileMode="Tile"
@@ -106,6 +112,7 @@
     </Style>
 
     <Style TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Background" Value="#FF383635" />
         <Setter Property="Margin" Value="0,0,0,4" />
     </Style>
 
@@ -256,28 +263,39 @@
     </DataTemplate>
 
     <DataTemplate x:Key="CategoryTemplate">
-        <Border Margin="0"
-                Background="#FF262626"
-                BorderBrush="{DynamicResource AchivementBorder}"
-                BorderThickness="1">
-            <Grid Margin="10, 3, 10, 3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0"
-                           FontSize="12"
-                           Foreground="White"
-                           Text="{Binding CategoryName}" />
-                <TextBlock Grid.Column="1"
-                           Margin="10,0,0,0"
-                           FontSize="12"
-                           Foreground="White"
-                           TextAlignment="Right">
-                    <Run Text="(" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text="{Binding TotalCompleted, Mode=OneWay}" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text="/" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text="{Binding Count, Mode=OneWay}" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text=")" />
-                </TextBlock>
-            </Grid>
-        </Border>
+        <Grid x:Name="PART_Background"
+              Background="#FF383635">
+            <Border Margin="3,0,0,0"
+                    Background="#FF262626"
+                    BorderBrush="{DynamicResource AchivementBorder}"
+                    BorderThickness="1">
+                <Grid Margin="10, 3, 10, 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+                               FontSize="12"
+                               Foreground="White"
+                               Text="{Binding CategoryName}" />
+                    <TextBlock Grid.Column="1"
+                               Margin="10,0,0,0"
+                               FontSize="12"
+                               Foreground="White"
+                               TextAlignment="Right">
+                        <Run Text="(" /><Run Text=" " /><Run Text="{Binding TotalCompleted, Mode=OneWay}" /><Run Text=" " /><Run Text="/" /><Run Text=" " /><Run Text="{Binding Count, Mode=OneWay}" /><Run Text=" " /><Run Text=")" />
+                    </TextBlock>
+                </Grid>
+            </Border>
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=IsSelected,
+                                           RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                          AncestorType={x:Type ListBoxItem}}}"
+                         Value="True">
+                <Setter TargetName="PART_Background" Property="Background" Value="#FF4D6D8C" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
     </DataTemplate>
 
     <Style x:Key="AchivementTabControlStyle"
