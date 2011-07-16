@@ -31,7 +31,7 @@
                     BorderThickness="2">
                 <StackPanel Orientation="Vertical">
                     <!--  Total completed achievements overview+progressbar  -->
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Background="{DynamicResource AchivementLightBackground}">
                         <TextBlock Margin="15"
                                    Foreground="{DynamicResource AchivementForeground}">
                             <TextBlock.Inlines>
@@ -46,7 +46,7 @@
                         </TextBlock>
                         <ProgressBar Height="20"
                                      Margin="10,0,10,10"
-                                     Background="#FF383635"
+                                     Background="{DynamicResource AchivementDarkBackground}"
                                      BorderBrush="#FF706D69"
                                      Foreground="White"
                                      Maximum="{Binding TotalAchievements}"
@@ -58,7 +58,7 @@
         </StackPanel>
         <TabControl Grid.Row="1"
                     Margin="{DynamicResource ArchivementControlMargin}"
-                    Background="{DynamicResource AchivementItemSelectedBackground}"
+                    Background="{DynamicResource AchivementLightBackground}"
                     BorderBrush="{DynamicResource AchivementBorder}"
                     BorderThickness="2"
                     Padding="0"

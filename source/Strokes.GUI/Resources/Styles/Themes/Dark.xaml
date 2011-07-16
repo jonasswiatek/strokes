@@ -16,7 +16,7 @@
     <SolidColorBrush x:Key="AchivementDarkBackground"
                      Color="#FF262626" />
 
-    <SolidColorBrush x:Key="ArchivementLightBackground"
+    <SolidColorBrush x:Key="AchivementLightBackground"
                      Color="#FF383635" />
 
     <SolidColorBrush x:Key="AchivementForeground"
@@ -241,8 +241,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="CategoryTemplate">
-        <Grid x:Name="PART_Background"
-              Background="{StaticResource AchivementLightBackground}">
+        <Grid x:Name="PART_Background">
             <Border Margin="3,0,0,0"
                     Background="{StaticResource AchivementDarkBackground}"
                     BorderBrush="{DynamicResource AchivementBorder}"
@@ -392,6 +391,7 @@
 
     <Style x:Key="AchivementProgressBarStyle"
            TargetType="{x:Type ProgressBar}">
+        <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="{StaticResource ProgressBarBackground}" />
         <Setter Property="BorderBrush" Value="{StaticResource ProgressBarBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -461,6 +461,8 @@
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="1" />
@@ -555,7 +557,7 @@
                                  VerticalAlignment="Center"
                                  Fill="{StaticResource ScrollBarUpDownTriangleFill}"
                                  Points="0,8 4,4 8,8 0,8"
-                                 Stroke="{StaticResource ScrollBarUpDownTriangle}"
+                                 Stroke="{StaticResource ScrollBarUpDownTriangleStroke}"
                                  StrokeThickness="0" />
                     </Border>
                 </ControlTemplate>
@@ -580,7 +582,7 @@
                                  VerticalAlignment="Center"
                                  Fill="{StaticResource ScrollBarUpDownTriangleFill}"
                                  Points="0,0 4,4 8,0 0,0"
-                                 Stroke="{StaticResource ScrollBarUpDownTriangle}"
+                                 Stroke="{StaticResource ScrollBarUpDownTriangleStroke}"
                                  StrokeThickness="0" />
                     </Border>
                 </ControlTemplate>
@@ -689,6 +691,7 @@
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="Width" Value="Auto" />
                 <Setter Property="MinWidth" Value="0" />
+                <Setter Property="Background" Value="{StaticResource ScrollBarBackground}" />
                 <Setter Property="Height" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}" />
                 <Setter Property="MinHeight" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}" />
                 <Setter Property="Background" Value="{StaticResource ScrollBarBackground}" />
