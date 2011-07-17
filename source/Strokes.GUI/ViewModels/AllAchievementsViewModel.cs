@@ -77,8 +77,6 @@ namespace Strokes.GUI
             AchievementsOrdered.Clear();
 
             var repository = new AchievementDescriptorRepository();
-            //Please note that this method returns another object that the AchievementTracker.GetAllAchievementDescriptors(). 
-            // It needs to be rewritten to run on this new dataobject (Strokes.Core.Model.AchievementDescriptor).
             var achivements = repository.GetAll();
             var categories = achivements.AsCategories();
 
