@@ -41,11 +41,11 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("String equals", AchievementDescription = "Use the String.Equals method", AchievementCategory = "Strings")]
-    public class StringEqualsAchievement : AbstractMethodCall
+    [AchievementDescription("String joining", AchievementDescription = "Use the String.Join method", AchievementCategory = "Strings")]
+    public class StringJoinAchievement : AbstractMethodCall
     {
-        public StringEqualsAchievement()
-            : base("System.String.Equals")
+        public StringJoinAchievement()
+            : base("System.String.Join")
         {
         }
     }
