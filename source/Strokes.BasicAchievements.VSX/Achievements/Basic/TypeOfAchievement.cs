@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Typeof", AchievementDescription = "Use typeof keyword", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Typeof", AchievementDescription = "Use typeof keyword", AchievementCategory = "Fundamentals")]
     public class TypeOfAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

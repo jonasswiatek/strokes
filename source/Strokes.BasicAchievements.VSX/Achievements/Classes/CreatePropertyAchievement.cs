@@ -8,7 +8,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Create a property",
         AchievementDescription = "Write a property of any type ",
-        AchievementCategory = "Basic Achievements")]
+        AchievementCategory = "Class")]
     public class CreatePropertyAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

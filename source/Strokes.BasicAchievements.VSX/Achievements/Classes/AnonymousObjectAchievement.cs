@@ -8,7 +8,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Anonymous Object", AchievementDescription = "Create an anonymous object", AchievementCategory = "Basic Achievements",
+    [AchievementDescription("Anonymous Object", AchievementDescription = "Create an anonymous object", AchievementCategory = "Class",
         Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/AnonObject.png")]
     public class AnonymousObjectAchievement : NRefactoryAchievement
     {

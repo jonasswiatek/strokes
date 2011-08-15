@@ -8,7 +8,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Using statement", AchievementDescription = "Use the using-statement", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Using statement", AchievementDescription = "Use the using-statement", AchievementCategory = "Fundamentals")]
     public class UsingStatementAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

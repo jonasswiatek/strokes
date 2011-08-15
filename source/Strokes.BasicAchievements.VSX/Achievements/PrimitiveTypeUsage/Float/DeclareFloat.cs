@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare a float", AchievementDescription = "Declare, but do not initialize, a float in one statement", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Declare a float", AchievementDescription = "Declare, but do not initialize, a float in one statement", AchievementCategory = "Primitive type")]
     public class DeclareFloat : DeclarePrimitiveType<float>
     {
     }

@@ -8,7 +8,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Private Setter",
         AchievementDescription = "Write a property of any type with a private setter",
-        AchievementCategory = "Basic Achievements")]
+        AchievementCategory = "Class")]
     public class PrivateSetterAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

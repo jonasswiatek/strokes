@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("Print with placeholders", AchievementDescription = "Print something to the console using placeholders", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Print with placeholders", AchievementDescription = "Print something to the console using placeholders", AchievementCategory = "Console")]
     public class PrintWithPlaceholdersAchievement : AbstractMethodCall
     {
         public PrintWithPlaceholdersAchievement() : base("System.Console.WriteLine")
@@ -19,7 +19,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                                                                 new TypeAndValueRequirement
                                                                     {
                                                                         Type = typeof (string),
-                                                                        Regex = @"\{\d\}"
+                                                                        Regex = @"\{ *\d *\}"
                                                                     },
                                                                 new TypeAndValueRequirement
                                                                     {

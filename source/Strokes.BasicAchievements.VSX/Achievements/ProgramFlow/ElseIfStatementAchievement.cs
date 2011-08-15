@@ -7,7 +7,7 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Use else if statement", AchievementDescription = "Make use of an else if statement",
-        AchievementCategory = "Basic Achievements")]
+        AchievementCategory = "Program flow")]
     public class ElseIfStatementAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

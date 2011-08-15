@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Create object with initializers", AchievementDescription = "Create an object using object initializer notation", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Create object with initializers", AchievementDescription = "Create an object using object initializer notation", AchievementCategory = "Class")]
     public class InstantiateObjectWithInitAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

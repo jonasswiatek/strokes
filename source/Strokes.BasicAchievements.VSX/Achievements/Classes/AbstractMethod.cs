@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Abstract method", AchievementDescription = "Create an abstract method", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Abstract method", AchievementDescription = "Create an abstract method", AchievementCategory = "Class")]
     public class AbstractMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

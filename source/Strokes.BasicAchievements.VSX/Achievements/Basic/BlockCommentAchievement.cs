@@ -10,7 +10,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Block comment", AchievementDescription = "Write a block comment", AchievementCategory = "Basic Achievements",
+    [AchievementDescription("Block comment", AchievementDescription = "Write a block comment", AchievementCategory = "Fundamentals",
         Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/BlockComment.png")]
     public class BlockCommentAchievement : Achievement
     {

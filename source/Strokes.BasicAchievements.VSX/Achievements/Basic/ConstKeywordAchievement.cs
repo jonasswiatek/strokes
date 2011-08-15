@@ -7,7 +7,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Create a constant", AchievementDescription = "Use the const keyword", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Create a constant", AchievementDescription = "Use the const keyword", AchievementCategory = "Fundamentals")]
     public class ConstKeywordAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

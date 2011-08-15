@@ -14,7 +14,7 @@ namespace Strokes.BasicAchievements.Achievements
         private readonly string _methodName;
         protected List<TypeAndValueRequirementSet> RequiredOverloads = new List<TypeAndValueRequirementSet>();
 
-        protected AbstractMethodCall(string methodName)
+        protected AbstractMethodCall(string methodName) 
         {
             _methodName = methodName;
         }

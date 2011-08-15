@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Create enumeration", AchievementDescription = "Create an enum type.", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Create enumeration", AchievementDescription = "Create an enum type.", AchievementCategory = "Fundamentals")]
     public class EnumInitializerAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

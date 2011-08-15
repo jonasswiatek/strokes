@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Call base", AchievementDescription = "Call another base constructor using the base() keyword from a constructor", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Call base", AchievementDescription = "Call another base constructor using the base() keyword from a constructor", AchievementCategory = "Class")]
     public class CreateBaseConstructorInitAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

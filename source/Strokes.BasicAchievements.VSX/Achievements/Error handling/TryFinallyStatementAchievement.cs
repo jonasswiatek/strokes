@@ -8,7 +8,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("Try-Finally Statement",
         AchievementDescription = "Use the a try-finally without a catch statement.",
-        AchievementCategory = "Basic Achievements")]
+        AchievementCategory = "Error handling")]
     public class TryFinallyStatementAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
