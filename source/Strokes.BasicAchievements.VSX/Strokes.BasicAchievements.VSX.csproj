@@ -145,6 +145,7 @@
     <Compile Include="Achievements\Basic\ConstKeywordAchievement.cs" />
     <Compile Include="Achievements\Basic\BlockCommentAchievement.cs" />
     <Compile Include="Achievements\Classes\ExtensionMethod.cs" />
+    <Compile Include="Achievements\Funny\SomeFunnyAchievement.cs" />
     <Compile Include="Achievements\Funny\TooManyDimensionArrayDeclarationAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\PrintWithEscapeCharactersAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\FormatSpecifier.cs" />
