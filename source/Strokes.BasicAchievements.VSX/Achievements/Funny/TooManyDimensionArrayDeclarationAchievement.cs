@@ -7,7 +7,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Solving string theory?", AchievementDescription = "You've declared an array with more than 11 dimensions", AchievementCategory = "Arrays")]
+    [AchievementDescription("Solving string theory?", AchievementDescription = "You've declared an array with more than 11 dimensions", AchievementCategory = "Funny")]
     public class TooManyDimensionArrayDeclarationAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
