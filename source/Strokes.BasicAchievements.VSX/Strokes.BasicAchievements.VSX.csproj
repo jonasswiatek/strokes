@@ -113,10 +113,19 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Achievements\Arrays\ArrayDeclarationAchievement.cs" />
+    <Compile Include="Achievements\Arrays\ArrayDeclarateInitAchievement.cs" />
+    <Compile Include="Achievements\Arrays\ArrayLengthPropertyAchievement.cs" />
+    <Compile Include="Achievements\Arrays\JaggedArrayDeclarationAchievement.cs" />
+    <Compile Include="Achievements\Arrays\MultipleDimensionArrayDeclarationAchievement.cs" />
+    <Compile Include="Achievements\Basic\ArithmeticOperatorAchievement.cs" />
+    <Compile Include="Achievements\Basic\EnumInitializerExplicitAchievement.cs" />
+    <Compile Include="Achievements\Basic\ShorthandArithmeticOperatorAchievement.cs" />
     <Compile Include="Achievements\Classes\AbstractMethod.cs" />
     <Compile Include="Achievements\Classes\AnonymousObjectAchievement.cs" />
     <Compile Include="Achievements\Basic\CastAchievement.cs" />
     <Compile Include="Achievements\Classes\AbstractClass.cs" />
+    <Compile Include="Achievements\Classes\IComparableInterface.cs" />
     <Compile Include="Achievements\Classes\UseAsKeyword.cs" />
     <Compile Include="Achievements\Classes\UseIsKeyword.cs" />
     <Compile Include="Achievements\Classes\OverloadOperator.cs" />
@@ -136,6 +145,8 @@
     <Compile Include="Achievements\Basic\ConstKeywordAchievement.cs" />
     <Compile Include="Achievements\Basic\BlockCommentAchievement.cs" />
     <Compile Include="Achievements\Classes\ExtensionMethod.cs" />
+    <Compile Include="Achievements\Funny\TooManyDimensionArrayDeclarationAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\Console\PrintWithEscapeCharactersAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\FormatSpecifier.cs" />
     <Compile Include="Achievements\MethodCalls\Console\PrintWithPlaceholdersFieldSizeAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\ArrayClassMethodsAchievement.cs" />
@@ -145,6 +156,7 @@
     <Compile Include="Achievements\MethodCalls\MethodBasics\ParamsParameterAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\MethodBasics\RefParameterAchievement.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\AssignChar.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareHexShorthandChar.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareInitializeChar.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareChar.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\MultipleDeclareChar.cs" />

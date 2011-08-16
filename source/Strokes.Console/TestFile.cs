@@ -5,14 +5,9 @@ using System.Linq;
 
 namespace Strokes.Console
 {
+
     public class TestFile
     {
-         public TestFile()
-         { }
-         
-         void go()
-         {
-          
-         }
+        enum Days { Monday , Tuesday };
     }
 }
