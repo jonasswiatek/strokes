@@ -6,9 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Try-Catch Statement", AchievementDescription = "Use a try-catch statement",
-        AchievementCategory = "Basic Achievements")]
-    public class TryCatchStatementAchievement : NRefactoryAchievement
+    [AchievementDescription("Try-Catch-Finally Statement", AchievementDescription = "Use a try-catch-finally statement",
+        AchievementCategory = "Error handling")]
+    public class TryCatchFinallyStatementAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
         {
@@ -19,7 +19,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitTryCatchStatement(TryCatchStatement tryCatchStatement, object data)
             {
-                if (tryCatchStatement.CatchClauses.Count > 0 && tryCatchStatement.FinallyBlock.IsNull)
+                if(tryCatchStatement.CatchClauses.Count > 0 && !tryCatchStatement.FinallyBlock.IsNull)
                 {
                     UnlockWith(tryCatchStatement);
                 }

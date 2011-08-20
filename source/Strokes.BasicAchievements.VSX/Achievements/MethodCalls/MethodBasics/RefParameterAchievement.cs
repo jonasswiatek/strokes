@@ -6,8 +6,8 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Params Parameter", AchievementDescription = "Write a method that uses the params keyword in its arguments", AchievementCategory = "Basic Achievements")]
-    public class ParamsParameterAchievement : NRefactoryAchievement
+    [AchievementDescription("Ref Parameter", AchievementDescription = "Write a method that uses the ref keyword in its arguments", AchievementCategory = "Method")]
+    public class RefParameterAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
         {
@@ -18,7 +18,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitParameterDeclarationExpression(ParameterDeclarationExpression parameterDeclarationExpression, object data)
             {
-                if (parameterDeclarationExpression.ParamModifier == ParameterModifiers.Params)
+                if (parameterDeclarationExpression.ParamModifier == ParameterModifiers.Ref)
                 {
                     UnlockWith(parameterDeclarationExpression);
                 }

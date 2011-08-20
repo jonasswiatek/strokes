@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Is", AchievementDescription = "Create an expression with the IS keyword", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Is", AchievementDescription = "Create an expression with the IS keyword", AchievementCategory = "Class")]
     public class UseIsKeywordAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

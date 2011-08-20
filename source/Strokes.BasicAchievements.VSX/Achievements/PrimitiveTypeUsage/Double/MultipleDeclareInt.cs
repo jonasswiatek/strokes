@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare multiple doubles in one statement", AchievementDescription = "Declare multiple doubles in one go", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Declare multiple doubles in one statement", AchievementDescription = "Declare multiple doubles in one go", AchievementCategory = "Primitive type")]
     public class MultipleDeclareDouble : MultipleDeclarePrimitiveType<double>
     {
     }

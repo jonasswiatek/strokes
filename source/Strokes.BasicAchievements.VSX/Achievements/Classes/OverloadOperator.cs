@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Operator overload", AchievementDescription = "Overload an operator", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Operator overload", AchievementDescription = "Overload an operator", AchievementCategory = "Class")]
     public class OverloadOperatorAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

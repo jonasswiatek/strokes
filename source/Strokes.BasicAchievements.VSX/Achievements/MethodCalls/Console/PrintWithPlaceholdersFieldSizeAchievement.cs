@@ -6,10 +6,10 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("Print with placeholders", AchievementDescription = "Print something to the console using placeholders", AchievementCategory = "Basic Achievements")]
-    public class PrintWithPlaceholdersAchievement : AbstractMethodCall
+    [AchievementDescription("Use placeholders and field size when writing to the screen", AchievementDescription = "Print something to the console using placeholders and explicit field sizes", AchievementCategory = "Console")]
+    public class PrintWithPlaceholdersFieldSizeAchievement : AbstractMethodCall
     {
-        public PrintWithPlaceholdersAchievement() : base("System.Console.WriteLine")
+        public PrintWithPlaceholdersFieldSizeAchievement() : base("System.Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
                                      {
@@ -19,7 +19,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                                                                 new TypeAndValueRequirement
                                                                     {
                                                                         Type = typeof (string),
-                                                                        Regex = @"\{\d\}"
+                                                                        Regex = @"\{ *\d *\, *\d\ *}"  //Tim: Isn't there a way to simply let the regex ignore whitespace?  / ... /x doesn't work....
                                                                     },
                                                                 new TypeAndValueRequirement
                                                                     {

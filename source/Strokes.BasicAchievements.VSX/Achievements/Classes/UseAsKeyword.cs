@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("As", AchievementDescription = "Try explicit cast with AS keyword", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("As", AchievementDescription = "Try explicit cast with AS keyword", AchievementCategory = "Class")]
     public class UseAsKeywordAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

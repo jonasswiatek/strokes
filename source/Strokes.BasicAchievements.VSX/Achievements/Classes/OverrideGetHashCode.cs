@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("ID object", AchievementDescription = "Override System.Object.GetHashCode() method", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("ID object", AchievementDescription = "Override System.Object.GetHashCode() method", AchievementCategory = "Class")]
     public class OverrideGetHashCodeAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

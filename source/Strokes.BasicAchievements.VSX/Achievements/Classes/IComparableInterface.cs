@@ -6,8 +6,8 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Create enumeration", AchievementDescription = "Create an enum type.", AchievementCategory = "Basic Achievements")]
-    public class EnumInitializerAchievement : NRefactoryAchievement
+    [AchievementDescription("IComparable", AchievementDescription = "Write a class that implements IComparable", AchievementCategory = "Class")]
+    public class IComparableAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
         {
@@ -18,9 +18,17 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if (typeDeclaration.Type == ClassType.Enum)
+                if (typeDeclaration.Type == ClassType.Class)
                 {
-                    UnlockWith(typeDeclaration);
+                    foreach (var basetype in typeDeclaration.BaseTypes)
+                    {
+                        if (basetype.Type == "System.IComparable" || basetype.Type == "IComparable")
+                        {
+                            UnlockWith(typeDeclaration);
+                            break;
+                        }
+                    }
+                    
                 }
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);

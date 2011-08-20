@@ -7,8 +7,8 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Create a constant", AchievementDescription = "Use the const keyword", AchievementCategory = "Basic Achievements")]
-    public class ConstKeywordAchievement : NRefactoryAchievement
+    [AchievementDescription("Declare a multidimensional array", AchievementDescription = "Declare a multidimensional array", AchievementCategory = "Arrays")]
+    public class DeclareMultipleDimArrayAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
         {
@@ -17,22 +17,10 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            public override object VisitFieldDeclaration(FieldDeclaration fieldDeclaration, object data)
-            {
-                if ((fieldDeclaration.Modifier & Modifiers.Const) == Modifiers.Const)
-                {
-                    UnlockWith(fieldDeclaration);
-                }
-
-                return base.VisitFieldDeclaration(fieldDeclaration, data);
-            }
-
             public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
-                if ((localVariableDeclaration.Modifier & Modifiers.Const) == Modifiers.Const)
-                {
+                if (localVariableDeclaration.TypeReference.IsArrayType && localVariableDeclaration.TypeReference.RankSpecifier[0]>=1) //Tim= not so happy about hardocing this RankSpecifier, not sure when this specifier contains more than 1 element
                     UnlockWith(localVariableDeclaration);
-                }
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
         }

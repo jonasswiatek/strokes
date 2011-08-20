@@ -10,7 +10,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Inline Commentary", AchievementDescription = "Write an inline comment", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Inline Commentary", AchievementDescription = "Write an inline comment", AchievementCategory = "Fundamentals")]
     public class InlineCommentAchievement : Achievement
     {
         public override bool DetectAchievement(DetectionSession detectionSession)

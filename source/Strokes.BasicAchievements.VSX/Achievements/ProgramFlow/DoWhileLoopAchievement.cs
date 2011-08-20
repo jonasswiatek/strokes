@@ -7,7 +7,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("DoWhile loop", AchievementDescription = "Use a do-while loop", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("DoWhile loop", AchievementDescription = "Use a do-while loop", AchievementCategory = "Program flow")]
     public class DoWhileLoopAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

@@ -7,7 +7,7 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("What if...", AchievementDescription = "Make use of an if statement",
-        AchievementCategory = "Basic Achievements")]
+        AchievementCategory = "Program flow")]
     public class IfStatementAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

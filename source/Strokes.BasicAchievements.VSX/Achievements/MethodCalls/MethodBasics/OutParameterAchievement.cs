@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Out Parameter", AchievementDescription = "Write a method that uses the out keyword in its arguments", AchievementCategory = "Basic Achievements")]
+    [AchievementDescription("Out Parameter", AchievementDescription = "Write a method that uses the out keyword in its arguments", AchievementCategory = "Method")]
     public class OutParameterAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
