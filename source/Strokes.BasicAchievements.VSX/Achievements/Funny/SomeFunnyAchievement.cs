@@ -27,7 +27,7 @@ namespace Strokes.BasicAchievements.Achievements
 
 
     [AchievementDescription("Telling a story", AchievementDescription = "Created a method longer than 100 lines", AchievementCategory = "Funny")]
-    public class EpicTaleAchievement : NRefactoryAchievement
+    public class TellingAStoryAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
         {

@@ -6,12 +6,12 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.ComponentModel.Design;
-using CodeCube.CSharpAchiever_Achiever_VSIX;
 using CSharpAchiever.VSX;
 using EnvDTE;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Shell;
+using Strokes.BasicAchievements;
 using Strokes.Core;
 using Strokes.Core.Integration;
 using Strokes.Data;
@@ -87,6 +87,9 @@ namespace Strokes.VSX
             //Promote the Achievement Library service
             var serviceContainer = (IServiceContainer)this;
             serviceContainer.AddService(typeof (IAchevementLibraryService), this, true);
+
+            //Initialize Basic achievements
+            RegisterAchievementAssembly(typeof(Strokes_BasicAchievements_VSXPackage).Assembly);
 
             GuiInitializer.Initialize();
             AchievementContext.AchievementClicked += new AchievementContext.AchievementClickedHandler(AchievementContext_AchievementClicked);
