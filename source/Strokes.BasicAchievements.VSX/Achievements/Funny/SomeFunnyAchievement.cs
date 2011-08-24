@@ -9,7 +9,7 @@ namespace Strokes.BasicAchievements.Achievements
     /* Fun achievements from: http://blog.whiletrue.com/2011/01/what-if-visual-studio-had-achievements/
     TO Do:
      * 
-     * Job Security – Written a LINQ query with over 30 lines of code
+     
      * Spaghetti Monster – Written a single line with more than 300 characters
      * Pasta Chef – Created a class with more than 100 fields, properties or methods
      * The Poet – Written a source file with more than 10,000 lines
@@ -25,6 +25,24 @@ namespace Strokes.BasicAchievements.Achievements
      * 
      * */
 
+    [AchievementDescription("Job Security", AchievementDescription = "Written a LINQ query with over 10 lines of code", AchievementCategory = "Funny")]
+    public class JobSecurityAchievement : NRefactoryAchievement
+    {
+        protected override AbstractAchievementVisitor CreateVisitor()
+        {
+            return new Visitor();
+        }
+
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitQueryExpression(QueryExpression queryExpression, object data)
+            {
+                if (queryExpression.EndLocation.Line - queryExpression.StartLocation.Line >= 10)
+                    UnlockWith(queryExpression);
+                return base.VisitQueryExpression(queryExpression, data);
+            }
+        }
+    }
 
     [AchievementDescription("Telling a story", AchievementDescription = "Created a method longer than 100 lines", AchievementCategory = "Funny")]
     public class TellingAStoryAchievement : NRefactoryAchievement
