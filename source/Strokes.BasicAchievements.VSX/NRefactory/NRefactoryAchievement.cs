@@ -8,6 +8,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.NRefactory
 {
+    /// <summary>
+    /// Base class for achievements that use a straight-forward NRefactory method to detect achievements
+    /// </summary>
     public abstract class NRefactoryAchievement : Achievement
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
