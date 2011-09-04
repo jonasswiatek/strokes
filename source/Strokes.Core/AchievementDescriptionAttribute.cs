@@ -6,6 +6,8 @@ namespace Strokes.Core
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class AchievementDescriptionAttribute : Attribute
     {
+        public Type ParentAchievement { get; set; }
+
         public string AchievementTitle
         {
             get;
