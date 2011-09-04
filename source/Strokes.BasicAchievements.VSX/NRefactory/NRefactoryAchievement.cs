@@ -18,7 +18,8 @@ namespace Strokes.BasicAchievements.NRefactory
             var nRefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
 
             var unlocked = false;
-            foreach(var file in detectionSession.BuildInformation.ChangedFiles)
+            /* Commented and replaced with below code, because currently we only want to detect in whatever source file the user has open
+             * foreach(var file in detectionSession.BuildInformation.ChangedFiles)
             {
                 var parser = nRefactorySession.GetParser(file);
                 parser.Parse();
@@ -39,6 +40,30 @@ namespace Strokes.BasicAchievements.NRefactory
                     unlocked = true;
                     break;
                 }
+            }*/
+
+            if(string.IsNullOrEmpty(detectionSession.BuildInformation.ActiveFile))
+            {
+                return false;
+            }
+
+            var parser = nRefactorySession.GetParser(detectionSession.BuildInformation.ActiveFile);
+            parser.Parse();
+
+            var result = parser.CompilationUnit;
+            var visitor = CreateVisitor();
+
+            result.AcceptVisitor(visitor, null);
+
+            if (visitor.IsAchievementUnlocked)
+            {
+                AchievementCodeLocation = visitor.CodeLocation;
+                if (AchievementCodeLocation != null)
+                {
+                    AchievementCodeLocation.FileName = detectionSession.BuildInformation.ActiveFile;
+                }
+
+                unlocked = true;
             }
 
             return unlocked;
