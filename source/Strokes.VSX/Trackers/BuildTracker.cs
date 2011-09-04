@@ -60,6 +60,7 @@ namespace Strokes.VSX.Trackers
 
                         if (documentFile.EndsWith(".cs"))
                         {
+                            buildInformation.ActiveFile = documentFile;
                             if (!changedFiles.Contains(documentFile))
                             {
                                 //Always check active document.
