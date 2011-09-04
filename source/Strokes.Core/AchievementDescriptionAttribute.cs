@@ -6,6 +6,9 @@ namespace Strokes.Core
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class AchievementDescriptionAttribute : Attribute
     {
+        /// <summary>
+        /// Point to an achievement type that must be completed prior to this unlocking
+        /// </summary>
         public Type ParentAchievement { get; set; }
 
         public string AchievementTitle
