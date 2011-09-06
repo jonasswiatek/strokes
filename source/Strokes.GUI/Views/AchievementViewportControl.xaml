@@ -32,11 +32,11 @@
             	    Stroke="Black" Height="16" />
             </Grid>                
             <TextBlock Grid.Row="0"
-                       Margin="15,4,0,0"
+                       Margin="15,0,0,0"
                        HorizontalAlignment="Left"
-                       FontSize="12"
+                       FontSize="16"
                        Foreground="{DynamicResource ArchivementSubtleFontColor}"
-                       Text="Achievement Unlocked!" />
+                       Text="Achievement Unlocked!" FontFamily="Segoe UI Semibold" />
             <template:AchievementTemplateBare Grid.Row="1"
                                               Margin="15,0,15,5" />
         </Grid>
