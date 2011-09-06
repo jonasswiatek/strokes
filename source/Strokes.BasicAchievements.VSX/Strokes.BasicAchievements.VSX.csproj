@@ -121,6 +121,7 @@
     <Compile Include="Achievements\Arrays\JaggedArrayDeclarationAchievement.cs" />
     <Compile Include="Achievements\Arrays\MultipleDimensionArrayDeclarationAchievement.cs" />
     <Compile Include="Achievements\Basic\ArithmeticOperatorAchievement.cs" />
+    <Compile Include="Achievements\Basic\ProgramWithStartupParamsAchievement.cs" />
     <Compile Include="Achievements\Basic\EnumInitializerExplicitAchievement.cs" />
     <Compile Include="Achievements\Basic\ShorthandArithmeticOperatorAchievement.cs" />
     <Compile Include="Achievements\Classes\AbstractMethod.cs" />
@@ -155,6 +156,9 @@
     <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\ArrayClassMethodsAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\ConvertToAchievements.cs" />
     <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\StringMethodsAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\MethodBasics\DeclareStaticMethod.cs" />
+    <Compile Include="Achievements\MethodCalls\MethodBasics\DeclareMethodMultipleParams.cs" />
+    <Compile Include="Achievements\MethodCalls\MethodBasics\DeclareMethod.cs" />
     <Compile Include="Achievements\MethodCalls\MethodBasics\OutParameterAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\MethodBasics\ParamsParameterAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\MethodBasics\RefParameterAchievement.cs" />
