@@ -54,11 +54,11 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            int count = 0;
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
                 if (methodDeclaration.Body.EndLocation.Line - methodDeclaration.Body.StartLocation.Line >= 100)
                     UnlockWith(methodDeclaration);
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
         }
@@ -74,11 +74,11 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            int count = 0;
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
                 if (methodDeclaration.Body.EndLocation.Line - methodDeclaration.Body.StartLocation.Line >= 300)
                     UnlockWith(methodDeclaration);
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
         }
