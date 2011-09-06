@@ -14,29 +14,37 @@
             Background="{DynamicResource AchivementLightBackground}"
             BorderBrush="Black"
             BorderThickness="2">
-        <Grid
-              Height="100">
+        <Grid Height="100">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Grid Width="16" Height="16" IsHitTestVisible="True" Background="{DynamicResource AchivementLightBackground}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,4,4">
+            <Grid Width="16"
+                  Height="16"
+                  Margin="0,4,4,4"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Top"
+                  Background="{DynamicResource AchivementLightBackground}"
+                  IsHitTestVisible="True">
                 <Path Width="16"
-            	    Margin="0"
-            	    HorizontalAlignment="Right"
-            	    Data="M15.381998,0 L18.245998,2.8769992 12.001545,9.0962803 18.136998,15.255987 15.261998,18.116995 9.1275464,11.958695 2.8639997,18.196993 0,15.321995 6.2632071,9.0832198 0.085997172,2.8819945 2.9609967,0.019995081 9.1371127,6.220525 z"
-            	    Fill="White"
-            	    MouseDown="CloseWindowImage_MouseDown"
-            	    Stretch="Fill"
+                      Height="16"
+                      Margin="0"
+                      HorizontalAlignment="Right"
+                      Data="M15.381998,0 L18.245998,2.8769992 12.001545,9.0962803 18.136998,15.255987 15.261998,18.116995 9.1275464,11.958695 2.8639997,18.196993 0,15.321995 6.2632071,9.0832198 0.085997172,2.8819945 2.9609967,0.019995081 9.1371127,6.220525 z"
+                      Fill="White"
                       IsHitTestVisible="False"
-            	    Stroke="Black" Height="16" />
-            </Grid>                
+                      MouseDown="CloseWindowImage_MouseDown"
+                      Stretch="Fill"
+                      Stroke="Black" />
+            </Grid>
             <TextBlock Grid.Row="0"
                        Margin="15,0,0,0"
                        HorizontalAlignment="Left"
+                       FontFamily="Segoe UI Semibold"
                        FontSize="16"
                        Foreground="{DynamicResource ArchivementSubtleFontColor}"
-                       Text="Achievement Unlocked!" FontFamily="Segoe UI Semibold" />
+                       Text="{Binding Resources.AchivementUnlocked,
+                                      Source={StaticResource AppResources}}" />
             <template:AchievementTemplateBare Grid.Row="1"
                                               Margin="15,0,15,5" />
         </Grid>

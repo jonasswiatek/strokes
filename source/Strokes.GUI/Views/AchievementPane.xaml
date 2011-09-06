@@ -23,21 +23,20 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <!--  Upperframe with global achievement results  -->
         <StackPanel Grid.Row="0"
                     Margin="{DynamicResource ArchivementControlMargin}">
             <Border Background="{DynamicResource ArchivementLightBackground}"
                     BorderBrush="{DynamicResource AchivementBorder}"
                     BorderThickness="2">
                 <StackPanel Orientation="Vertical">
-                    <!--  Total completed achievements overview+progressbar  -->
-                    <StackPanel Orientation="Vertical" Background="{DynamicResource AchivementLightBackground}">
+                    <StackPanel Background="{DynamicResource AchivementLightBackground}"
+                                Orientation="Vertical">
                         <TextBlock Margin="15"
                                    Foreground="{DynamicResource AchivementForeground}">
                             <TextBlock.Inlines>
-                                <Run Text="Total achievements earned:" />
+                                <Run Text="{Binding Resources.TotalAchievementsEarned, Source={StaticResource AppResources}}" />
                                 <Run Text="{Binding TotalCompleted, Mode=OneWay}" />
-                                <Run Text="of" />
+                                <Run Text="{Binding Resources.Of, Source={StaticResource AppResources}}" />
                                 <Run Text="{Binding TotalAchievements, Mode=OneWay}" />
                                 <Run Text="(" />
                                 <Run Text="{Binding PercentageCompleted, Mode=OneWay}" />
@@ -51,7 +50,8 @@
                                      Foreground="White"
                                      Maximum="{Binding TotalAchievements}"
                                      Style="{DynamicResource AchivementProgressBarStyle}"
-                                     Value="{Binding TotalCompleted, Mode=OneWay}" />
+                                     Value="{Binding TotalCompleted,
+                                                     Mode=OneWay}" />
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -63,7 +63,8 @@
                     BorderThickness="2"
                     Padding="0"
                     Style="{DynamicResource AchivementTabControlStyle}">
-            <TabItem Header="MY ACHIVEMENTS"
+            <TabItem Header="{Binding Resources.MyAchievementsHeader,
+                                      Source={StaticResource AppResources}}"
                      Style="{DynamicResource AchivementTabItemStyle}">
                 <TabItem.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -78,7 +79,6 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <!--  Achievement categories listbox  -->
                     <StackPanel Grid.Column="0">
                         <ListBox x:Name="AchivementsCategoryListBox"
                                  Width="210"
@@ -91,7 +91,6 @@
                                  SelectedIndex="0"
                                  Template="{DynamicResource AchivementListBoxControlTemplate}" />
                     </StackPanel>
-                    <!--  Achievements listbox of selected category  -->
                     <ScrollViewer Grid.Column="1"
                                   HorizontalScrollBarVisibility="Hidden"
                                   Template="{DynamicResource AchivementScrollViewerControlTemplate}"
@@ -100,29 +99,30 @@
                                       Background="{x:Null}"
                                       BorderBrush="{x:Null}"
                                       Foreground="{DynamicResource AchivementForeground}"
-                                      VirtualizingStackPanel.IsVirtualizing="True" 
-                                      VirtualizingStackPanel.VirtualizationMode="Standard"
                                       ItemsSource="{Binding SelectedItem,
                                                             ElementName=AchivementsCategoryListBox}"
                                       ItemTemplate="{DynamicResource AchievementTemplate}"
-                                      Padding="{DynamicResource ArchivementsListBoxMargin}" />
+                                      Padding="{DynamicResource ArchivementsListBoxMargin}"
+                                      VirtualizingStackPanel.IsVirtualizing="True"
+                                      VirtualizingStackPanel.VirtualizationMode="Standard" />
                     </ScrollViewer>
                 </Grid>
             </TabItem>
-            <TabItem Header="LEADERBOARD"
+            <TabItem Header="{Binding Resources.LeaderboardHeader,
+                                      Source={StaticResource AppResources}}"
                      Style="{DynamicResource AchivementTabItemStyle}">
                 <Grid Background="{DynamicResource AchivementBackground}">
-                    <!--  Rightframe with results of other 'players'  -->
                     <StackPanel Margin="10,10,10,10">
-                        <TextBlock Text="Information about what achievements other people you know have been completing."
+                        <TextBlock Text="{Binding Resources.LeaderboardHelpText,
+                                                  Source={StaticResource AppResources}}"
                                    TextWrapping="Wrap" />
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="SETTINGS"
+            <TabItem Header="{Binding Resources.SettingsHeader,
+                                      Source={StaticResource AppResources}}"
                      Style="{DynamicResource AchivementTabItemStyle}">
                 <Grid Background="{DynamicResource AchivementBackground}">
-                    <!--  Settings  -->
                     <StackPanel Margin="10,10,10,10"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
@@ -134,7 +134,8 @@
                                 Background="{x:Null}"
                                 BorderBrush="{DynamicResource AchivementBorder}"
                                 Command="{Binding ResetCommand}"
-                                Content="RESET ACHIVEMENT PROGRESS"
+                                Content="{Binding Resources.ResetAchievements,
+                                                  Source={StaticResource AppResources}}"
                                 Foreground="{DynamicResource AchivementForeground}"
                                 Style="{DynamicResource AchivementButtonStyle}" />
                     </StackPanel>

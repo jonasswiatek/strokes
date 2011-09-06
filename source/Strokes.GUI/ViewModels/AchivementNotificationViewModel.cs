@@ -11,7 +11,7 @@ namespace Strokes.GUI
     {
         public AchivementNotificationViewModel()
         {
-            this.CurrentAchievements = new ObservableCollection<AchievementDescriptor>();            
+            this.CurrentAchievements = new ObservableCollection<AchievementDescriptor>();
         }
 
         public ObservableCollection<AchievementDescriptor> CurrentAchievements

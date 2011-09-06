@@ -24,23 +24,20 @@
                    Height="64"
                    Margin="0"
                    HorizontalAlignment="Left"
-                   Source="{Binding Image, Converter={StaticResource StringToImageSourceConverter}}" />
+                   Source="{Binding Image,
+                                    Converter={StaticResource StringToImageSourceConverter}}" />
         </Border>
         <StackPanel Grid.Column="1"
                     Margin="10,5,5,5"
                     Orientation="Vertical">
-            <TextBlock FontSize="16"
+            <TextBlock FontFamily="Segoe UI Semibold"
+                       FontSize="16"
                        Foreground="{DynamicResource AchivementForeground}"
-                       Text="{Binding Name,
-                                      FallbackValue=[Achievement Name Here],
-                                      Mode=OneWay}"
-                       TextWrapping="Wrap" 
-                       FontFamily="Segoe UI Semibold" />
+                       Text="{Binding Name, Mode=OneWay}"
+                       TextWrapping="Wrap" />
             <TextBlock FontSize="16"
                        Foreground="{DynamicResource ArchivementSubtleFontColor}"
-                       Text="{Binding Description,
-                                      FallbackValue=Description,
-                                      Mode=OneWay}"
+                       Text="{Binding Description, Mode=OneWay}"
                        TextWrapping="Wrap" />
         </StackPanel>
     </Grid>
