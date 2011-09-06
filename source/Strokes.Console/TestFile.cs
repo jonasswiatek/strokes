@@ -11,6 +11,7 @@ namespace Strokes.Console
 
         public void t(out int k, out int f, out int h)
         {
+            var i = 4;
             k = 3;
             f = 6;
             h = 3;

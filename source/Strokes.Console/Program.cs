@@ -47,8 +47,8 @@ namespace Strokes.Console
                 DetectionDispatcher.DetectionCompleted += new EventHandler<DetectionCompletedEventArgs>(DetectionDispatcher_DetectionCompleted);
 
                 DetectionDispatcher.Dispatch(new BuildInformation()
-                {
-                    ChangedFiles = new[] { System.IO.Path.GetFullPath("TestFile.cs") }
+                                                 {
+                                                     ActiveFile = System.IO.Path.GetFullPath("TestFile.cs")
                 });
 
                 System.Console.Read();

@@ -18,17 +18,13 @@ namespace Strokes.BasicAchievements.Achievements
             var nRefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
 
             var unlocked = false;
-            foreach(var file in detectionSession.BuildInformation.ChangedFiles)
-            {
-                var parser = nRefactorySession.GetParser(file);
-                parser.Parse();
-                var specials = parser.Lexer.SpecialTracker.RetrieveSpecials();
 
-                unlocked = specials.OfType<Comment>().Any(a => a.CommentType == CommentType.SingleLine);
+            var parser = nRefactorySession.GetParser(detectionSession.BuildInformation.ActiveFile);
+            parser.Parse();
+            var specials = parser.Lexer.SpecialTracker.RetrieveSpecials();
 
-                if(unlocked)
-                    break;
-            }
+            unlocked = specials.OfType<Comment>().Any(a => a.CommentType == CommentType.SingleLine);
+
 
             return unlocked;
         }
