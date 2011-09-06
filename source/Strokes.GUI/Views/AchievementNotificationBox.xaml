@@ -61,7 +61,7 @@
                                FontSize="16"
                                Foreground="{DynamicResource AchivementForeground}"
                                Text="{Binding Resources.AchivementsUnlocked,
-                                              Source={StaticResource AppResources}}" />
+                                              Source={StaticResource AppResources}, Mode=OneWay}" />
                     <ScrollViewer Grid.Row="1"
                                   Grid.Column="0"
                                   Grid.ColumnSpan="2"

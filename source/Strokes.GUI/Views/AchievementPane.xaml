@@ -25,8 +25,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0"
                     Margin="{DynamicResource ArchivementControlMargin}">
-            <Border Background="{DynamicResource ArchivementLightBackground}"
-                    BorderBrush="{DynamicResource AchivementBorder}"
+            <Border BorderBrush="{DynamicResource AchivementBorder}"
                     BorderThickness="2">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Background="{DynamicResource AchivementLightBackground}"
@@ -34,9 +33,9 @@
                         <TextBlock Margin="15"
                                    Foreground="{DynamicResource AchivementForeground}">
                             <TextBlock.Inlines>
-                                <Run Text="{Binding Resources.TotalAchievementsEarned, Source={StaticResource AppResources}}" />
+                                <Run Text="{Binding Resources.TotalAchievementsEarned, Source={StaticResource AppResources}, Mode=OneWay}" />
                                 <Run Text="{Binding TotalCompleted, Mode=OneWay}" />
-                                <Run Text="{Binding Resources.Of, Source={StaticResource AppResources}}" />
+                                <Run Text="{Binding Resources.Of, Source={StaticResource AppResources}, Mode=OneWay}" />
                                 <Run Text="{Binding TotalAchievements, Mode=OneWay}" />
                                 <Run Text="(" />
                                 <Run Text="{Binding PercentageCompleted, Mode=OneWay}" />
@@ -64,7 +63,7 @@
                     Padding="0"
                     Style="{DynamicResource AchivementTabControlStyle}">
             <TabItem Header="{Binding Resources.MyAchievementsHeader,
-                                      Source={StaticResource AppResources}}"
+                                      Source={StaticResource AppResources}, Mode=OneWay}"
                      Style="{DynamicResource AchivementTabItemStyle}">
                 <TabItem.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -74,7 +73,7 @@
                         <GradientStop Offset="1" Color="#FFCDCDCD" />
                     </LinearGradientBrush>
                 </TabItem.Background>
-                <Grid Background="{DynamicResource ArchivementLightBackground}">
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
@@ -109,9 +108,9 @@
                 </Grid>
             </TabItem>
             <TabItem Header="{Binding Resources.LeaderboardHeader,
-                                      Source={StaticResource AppResources}}"
+                                      Source={StaticResource AppResources}, Mode=OneWay}"
                      Style="{DynamicResource AchivementTabItemStyle}">
-                <Grid Background="{DynamicResource AchivementBackground}">
+                <Grid>
                     <StackPanel Margin="10,10,10,10">
                         <TextBlock Text="{Binding Resources.LeaderboardHelpText,
                                                   Source={StaticResource AppResources}}"
@@ -120,9 +119,9 @@
                 </Grid>
             </TabItem>
             <TabItem Header="{Binding Resources.SettingsHeader,
-                                      Source={StaticResource AppResources}}"
+                                      Source={StaticResource AppResources}, Mode=OneWay}"
                      Style="{DynamicResource AchivementTabItemStyle}">
-                <Grid Background="{DynamicResource AchivementBackground}">
+                <Grid>
                     <StackPanel Margin="10,10,10,10"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
@@ -135,7 +134,7 @@
                                 BorderBrush="{DynamicResource AchivementBorder}"
                                 Command="{Binding ResetCommand}"
                                 Content="{Binding Resources.ResetAchievements,
-                                                  Source={StaticResource AppResources}}"
+                                                  Source={StaticResource AppResources}, Mode=OneWay}"
                                 Foreground="{DynamicResource AchivementForeground}"
                                 Style="{DynamicResource AchivementButtonStyle}" />
                     </StackPanel>

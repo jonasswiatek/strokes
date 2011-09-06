@@ -44,7 +44,7 @@
                        FontSize="16"
                        Foreground="{DynamicResource ArchivementSubtleFontColor}"
                        Text="{Binding Resources.AchivementUnlocked,
-                                      Source={StaticResource AppResources}}" />
+                                      Source={StaticResource AppResources}, Mode=OneWay}" />
             <template:AchievementTemplateBare Grid.Row="1"
                                               Margin="15,0,15,5" />
         </Grid>

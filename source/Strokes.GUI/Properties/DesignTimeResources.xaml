@@ -6,5 +6,5 @@
         <ResourceDictionary Source="/Strokes.GUI;component/Resources/Styles/Generic.xaml"/>
         <ResourceDictionary Source="/Strokes.GUI;component/Resources/Styles/Themes/Dark.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    <r:AppResources x:Name="AppResources" />
+    <r:AppResources x:Key="AppResources" />
 </ResourceDictionary>
