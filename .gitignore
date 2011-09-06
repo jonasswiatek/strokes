@@ -24,17 +24,22 @@
 *.lib
 *.sbr
 *.sdf
+*.docstates
+*.opensdf
 ipch/
 obj/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
+[Tt]estResults*/
+TDD*/
 Ankh.NoLoad
 
 #Tooling
 _ReSharper*/
 *.resharper
 [Tt]est[Rr]esult*
+StyleCop.*
 
 # Office Temp Files
 ~$*
