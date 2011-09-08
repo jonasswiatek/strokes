@@ -6,7 +6,12 @@ using System.Linq;
 namespace Strokes.Console
 {
 
-    public class TestFile
+    public class Bl
+    {
+       public virtual void it(){}
+    }
+
+    public class TestFile:Bl
     {
 
         public void t(out int k, out int f, out int h)
@@ -16,5 +21,8 @@ namespace Strokes.Console
             f = 6;
             h = 3;
         }
+
+        public override sealed extern void it();
+
     }
 }

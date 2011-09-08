@@ -128,6 +128,7 @@
     <Compile Include="Achievements\Classes\AnonymousObjectAchievement.cs" />
     <Compile Include="Achievements\Basic\CastAchievement.cs" />
     <Compile Include="Achievements\Classes\AbstractClass.cs" />
+    <Compile Include="Achievements\Classes\VirtualOverrideMethodAchievements.cs" />
     <Compile Include="Achievements\Classes\IComparableInterface.cs" />
     <Compile Include="Achievements\Classes\UseAsKeyword.cs" />
     <Compile Include="Achievements\Classes\UseIsKeyword.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Achievements\Basic\ConstKeywordAchievement.cs" />
     <Compile Include="Achievements\Basic\BlockCommentAchievement.cs" />
     <Compile Include="Achievements\Classes\ExtensionMethod.cs" />
+    <Compile Include="Achievements\Funny\TooManyModifiersDeclarationAchievement.cs" />
     <Compile Include="Achievements\Funny\SomeFunnyAchievement.cs" />
     <Compile Include="Achievements\Funny\TooManyDimensionArrayDeclarationAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\PrintWithEscapeCharactersAchievement.cs" />
