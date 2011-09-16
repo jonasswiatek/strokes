@@ -93,7 +93,7 @@
   <ItemGroup>
     <Compile Include="Assets\NullToVisibilityConverter.cs" />
     <Compile Include="Assets\StringToImageSourceConverter.cs" />
-    <Compile Include="Resources\AppResources.cs" />
+    <Compile Include="Properties\AppResources.cs" />
     <Compile Include="ViewModels\AchivementNotificationViewModel.cs" />
     <Compile Include="Views\AchievementNotificationBox.xaml.cs">
       <DependentUpon>AchievementNotificationBox.xaml</DependentUpon>

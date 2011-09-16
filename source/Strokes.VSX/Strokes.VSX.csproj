@@ -34,6 +34,12 @@
     <CopyVsixExtensionFiles>False</CopyVsixExtensionFiles>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF4">
+      <HintPath>..\packages\MvvmLightLibs.3.0.2\lib\net40\GalaSoft.MvvmLight.Extras.WPF4.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF4, Version=3.0.0.30125, Culture=neutral, PublicKeyToken=6fcde8ddc3781e3e, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.3.0.2\lib\net40\GalaSoft.MvvmLight.WPF4.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.OLE.Interop" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop" />

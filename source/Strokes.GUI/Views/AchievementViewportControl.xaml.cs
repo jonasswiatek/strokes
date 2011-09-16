@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Strokes.GUI.Resources
+namespace Strokes.GUI
 {
     public partial class AchievementViewportControl
     {

@@ -208,7 +208,7 @@
                                Foreground="{StaticResource ArchivementSubtleFontColor}"
                                Visibility="{Binding IsCompleted,
                                                     Converter={StaticResource BoolToVisibilityConverter}}">
-                        <Run Text="{Binding Resources.Unlocked, Source={StaticResource AppResources}, Mode=OneWay}" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text="{Binding DateCompleted, FallbackValue=''}" />
+                        <Run Text="Unlocked:" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text="{Binding DateCompleted, FallbackValue=''}" />
                     </TextBlock>
                 </StackPanel>
                 <Path Grid.Column="1"

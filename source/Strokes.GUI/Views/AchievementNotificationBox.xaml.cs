@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using Strokes.Core;
 using Strokes.Core.Model;
-using Strokes.GUI.Resources;
 using System.ComponentModel;
 using System.Windows.Shapes;
 
