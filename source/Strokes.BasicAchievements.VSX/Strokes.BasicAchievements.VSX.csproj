@@ -121,8 +121,6 @@
     <Compile Include="Achievements\Arrays\JaggedArrayDeclarationAchievement.cs" />
     <Compile Include="Achievements\Arrays\MultipleDimensionArrayDeclarationAchievement.cs" />
     <Compile Include="Achievements\Basic\ArithmeticOperatorAchievement.cs" />
-    <Compile Include="Achievements\Basic\TESTERACHIEVEMENT.CS" />
-    <Compile Include="Achievements\Basic\EnumSwitchAchievement.cs" />
     <Compile Include="Achievements\Basic\ProgramWithStartupParamsAchievement.cs" />
     <Compile Include="Achievements\Basic\EnumInitializerExplicitAchievement.cs" />
     <Compile Include="Achievements\Basic\ShorthandArithmeticOperatorAchievement.cs" />
