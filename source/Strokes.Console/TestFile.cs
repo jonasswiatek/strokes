@@ -5,24 +5,31 @@ using System.Linq;
 
 namespace Strokes.Console
 {
-
-    public class Bl
+    public class TestFile
     {
-       public virtual void it(){}
+        public void Method()
+        {
+            SomeEnum bla = SomeEnum.More;
+
+            switch(bla)
+            {
+                case SomeEnum.More:
+                    System.Console.Write("More");
+                    return;
+                case SomeEnum.All:
+                    System.Console.Write("All");
+                    return;
+                default:
+                    System.Console.Write("Default");
+                    return;
+            }
+        }
     }
 
-    public class TestFile:Bl
+    public enum SomeEnum
     {
-
-        public void t(out int k, out int f, out int h)
-        {
-            var i = 4;
-            k = 3;
-            f = 6;
-            h = 3;
-        }
-
-        public override sealed extern void it();
-
+        All,
+        Many,
+        More
     }
 }

@@ -53,14 +53,14 @@ namespace Strokes.VSX
                                                            {
                                                                var achievement = (Achievement)Activator.CreateInstance(a.AchievementType);
 
-                                                               var achievementUnlocked = achievement.DetectAchievement(detectionSession);
+                                                                var achievementUnlocked = achievement.DetectAchievement(detectionSession);
 
-                                                               if (achievementUnlocked)
-                                                               {
-                                                                   a.CodeLocation = achievement.AchievementCodeLocation;
-                                                                   a.IsCompleted = true;
-                                                                   unlockedAchievements.Add(a);
-                                                               }
+                                                                if (achievementUnlocked)
+                                                                {
+                                                                    a.CodeLocation = achievement.AchievementCodeLocation;
+                                                                    a.IsCompleted = true;
+                                                                    unlockedAchievements.Add(a);
+                                                                }
                                                            });
                 }
 

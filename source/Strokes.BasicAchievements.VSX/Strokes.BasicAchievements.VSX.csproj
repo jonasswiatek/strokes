@@ -169,6 +169,7 @@
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareInitializeChar.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareChar.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\MultipleDeclareChar.cs" />
+    <Compile Include="Achievements\ProgramFlow\EnumSwitchAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\ForEachWithEnumAchievement.cs" />
     <Compile Include="Achievements\Classes\CreateAutoPropertyAchievement.cs" />
     <Compile Include="Achievements\Classes\CreatePropertyAchievement.cs" />
