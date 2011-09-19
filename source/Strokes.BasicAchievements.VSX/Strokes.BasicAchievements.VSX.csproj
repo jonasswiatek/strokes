@@ -150,9 +150,13 @@
     <Compile Include="Achievements\Basic\BlockCommentAchievement.cs" />
     <Compile Include="Achievements\Classes\ExtensionMethod.cs" />
     <Compile Include="Achievements\Error handling\CatchManyExceptions.cs" />
+    <Compile Include="Achievements\Error handling\TryCatchRethrowStatementAchievement.cs" />
+    <Compile Include="Achievements\Error handling\TryCatchIgnoreStatementAchievement.cs" />
+    <Compile Include="Achievements\Funny\BeastNumberAchievement.cs" />
     <Compile Include="Achievements\Funny\TooManyModifiersDeclarationAchievement.cs" />
     <Compile Include="Achievements\Funny\SomeFunnyAchievement.cs" />
     <Compile Include="Achievements\Funny\TooManyDimensionArrayDeclarationAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\Console\HelloWorldAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\PrintWithEscapeCharactersAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\FormatSpecifier.cs" />
     <Compile Include="Achievements\MethodCalls\Console\PrintWithPlaceholdersFieldSizeAchievement.cs" />
@@ -179,6 +183,7 @@
     <Compile Include="Achievements\PrimitiveTypeUsage\Double\AssignBoundaryValueDouble.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Integer\AssignBoundaryValueInt.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Float\AssignBoundaryValueFloat.cs" />
+    <Compile Include="Achievements\ProgramFlow\NestedIfStatementAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\EnumSwitchAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\IfShorthandAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\ForEachWithEnumAchievement.cs" />
