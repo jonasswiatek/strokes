@@ -149,6 +149,7 @@
     <Compile Include="Achievements\Basic\ConstKeywordAchievement.cs" />
     <Compile Include="Achievements\Basic\BlockCommentAchievement.cs" />
     <Compile Include="Achievements\Classes\ExtensionMethod.cs" />
+    <Compile Include="Achievements\Error handling\CatchManyExceptions.cs" />
     <Compile Include="Achievements\Funny\TooManyModifiersDeclarationAchievement.cs" />
     <Compile Include="Achievements\Funny\SomeFunnyAchievement.cs" />
     <Compile Include="Achievements\Funny\TooManyDimensionArrayDeclarationAchievement.cs" />
@@ -166,11 +167,18 @@
     <Compile Include="Achievements\MethodCalls\MethodBasics\OutParameterAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\MethodBasics\ParamsParameterAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\MethodBasics\RefParameterAchievement.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Char\AssignBoundaryValueChar.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\AssignChar.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareEscapeChar.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareHexShorthandChar.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareInitializeChar.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareChar.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Char\MultipleDeclareChar.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\AssignUpperBoundaryValue.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\AssignLowerBoundaryValue.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Double\AssignBoundaryValueDouble.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Integer\AssignBoundaryValueInt.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Float\AssignBoundaryValueFloat.cs" />
     <Compile Include="Achievements\ProgramFlow\EnumSwitchAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\IfShorthandAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\ForEachWithEnumAchievement.cs" />
