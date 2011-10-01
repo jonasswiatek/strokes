@@ -120,4 +120,25 @@
   <data name="Arrays" xml:space="preserve">
     <value>Arrays</value>
   </data>
+  <data name="Challenges" xml:space="preserve">
+    <value>Challenges</value>
+  </data>
+  <data name="Class" xml:space="preserve">
+    <value>Class</value>
+  </data>
+  <data name="ErrorHandling" xml:space="preserve">
+    <value>Error handling</value>
+  </data>
+  <data name="Expressions" xml:space="preserve">
+    <value>Expressions</value>
+  </data>
+  <data name="Fundamentals" xml:space="preserve">
+    <value>Fundamentals</value>
+  </data>
+  <data name="Funny" xml:space="preserve">
+    <value>Funny</value>
+  </data>
+  <data name="PrimitiveType" xml:space="preserve">
+    <value>Primitive type</value>
+  </data>
 </root>

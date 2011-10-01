@@ -68,5 +68,68 @@ namespace Strokes.Core.Properties {
                 return ResourceManager.GetString("Arrays", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Challenges.
+        /// </summary>
+        public static string Challenges {
+            get {
+                return ResourceManager.GetString("Challenges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class.
+        /// </summary>
+        public static string Class {
+            get {
+                return ResourceManager.GetString("Class", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error handling.
+        /// </summary>
+        public static string ErrorHandling {
+            get {
+                return ResourceManager.GetString("ErrorHandling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expressions.
+        /// </summary>
+        public static string Expressions {
+            get {
+                return ResourceManager.GetString("Expressions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fundamentals.
+        /// </summary>
+        public static string Fundamentals {
+            get {
+                return ResourceManager.GetString("Fundamentals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Funny.
+        /// </summary>
+        public static string Funny {
+            get {
+                return ResourceManager.GetString("Funny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primitive type.
+        /// </summary>
+        public static string PrimitiveType {
+            get {
+                return ResourceManager.GetString("PrimitiveType", resourceCulture);
+            }
+        }
     }
 }
