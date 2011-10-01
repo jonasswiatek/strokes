@@ -61,7 +61,7 @@ namespace Strokes.BasicAchievements.Achievements
                                     {
                                         if(requirement.Type == typeof(string) && requirement.Regex != null)
                                         {
-                                            var regex = new Regex(requirement.Regex);
+                                            var regex = new Regex(requirement.Regex, requirement.RegexOptions);
                                             if (!regex.IsMatch(primitiveArgumentExpression.Value.ToString()))
                                             {
                                                 break;
@@ -101,9 +101,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public Type Type;
             public string Regex;
-            
-            // Claus: Add the ability to use RegexOptions.
-            //public RegexOptions RegexOptions; 
+            public RegexOptions RegexOptions = RegexOptions.None; 
         }
     }
 }

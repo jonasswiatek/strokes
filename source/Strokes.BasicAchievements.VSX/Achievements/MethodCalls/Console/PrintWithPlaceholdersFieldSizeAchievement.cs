@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Strokes.Core;
+using System.Text.RegularExpressions;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
@@ -21,7 +22,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                     new TypeAndValueRequirement
                     {
                         Type = typeof (string),
-                        // Tim: Isn't there a way to simply let the regex ignore whitespace?  / ... /x doesn't work....
+                        RegexOptions = RegexOptions.IgnorePatternWhitespace,
                         Regex = @"\{ *\d *\, *\d\ *}",  
                     },
                     new TypeAndValueRequirement

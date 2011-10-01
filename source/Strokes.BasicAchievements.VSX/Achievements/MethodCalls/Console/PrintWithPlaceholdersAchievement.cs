@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Strokes.Core;
+using System.Text.RegularExpressions;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
@@ -21,6 +22,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                     new TypeAndValueRequirement
                     {
                         Type = typeof (string),
+                        RegexOptions = RegexOptions.IgnorePatternWhitespace,
                         Regex = @"\{ *\d *\}"
                     },
                     new TypeAndValueRequirement
