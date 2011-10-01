@@ -144,6 +144,9 @@
   <data name="Funny" xml:space="preserve">
     <value>Funny</value>
   </data>
+  <data name="Method" xml:space="preserve">
+    <value>Method</value>
+  </data>
   <data name="PrimitiveType" xml:space="preserve">
     <value>Primitive type</value>
   </data>

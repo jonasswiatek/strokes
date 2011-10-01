@@ -142,6 +142,15 @@ namespace Strokes.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Method.
+        /// </summary>
+        public static string Method {
+            get {
+                return ResourceManager.GetString("Method", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Primitive type.
         /// </summary>
         public static string PrimitiveType {
