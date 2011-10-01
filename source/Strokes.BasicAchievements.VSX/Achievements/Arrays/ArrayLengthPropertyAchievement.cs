@@ -21,8 +21,11 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
-                if (memberReferenceExpression.MemberName == "Length") //Tim: not 100% ok, will trigger any .Length usage...So needs to check if TargetObject is in fact an array..Not sure how that works
+                var identifier = (IdentifierExpression)memberReferenceExpression.TargetObject;
+
+                if (identifier.Identifier == "array" && memberReferenceExpression.MemberName == "Length") 
                     UnlockWith(memberReferenceExpression);
+
                 return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
             }
 
