@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare multiple floats in one statement", AchievementDescription = "Declare multiple floats in one go", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@MultipleDeclareFloatName",
+        AchievementDescription = "@MultipleDeclareFloatDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class MultipleDeclareFloat : MultipleDeclarePrimitiveType<float>
     {
     }

@@ -6,8 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Sir Catch-a-lot", AchievementDescription = "Catch more than 5 exception explicitely",
-        AchievementCategory = "Error handling")]
+    [AchievementDescription("@CatchManyExceptionsAchievementName",
+        AchievementDescription = "@CatchManyExceptionsAchievementDescription",
+        AchievementCategory = "@ErrorHandling")]
     public class CatchManyExceptionsAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

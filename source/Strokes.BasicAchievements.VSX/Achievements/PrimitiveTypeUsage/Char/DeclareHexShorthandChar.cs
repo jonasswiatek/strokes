@@ -8,7 +8,9 @@ using System.Text.RegularExpressions;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("I talk in hex", AchievementDescription = "Use hexadecimal shorthand to create a char", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@DeclareHexShorthandCharAchievementName",
+        AchievementDescription = "@DeclareHexShorthandCharAchievementDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class DeclareHexShorthandCharAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

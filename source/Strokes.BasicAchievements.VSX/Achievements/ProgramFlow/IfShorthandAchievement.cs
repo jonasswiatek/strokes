@@ -6,8 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("?:", AchievementDescription = "Write a conditional expression",
-        AchievementCategory = "Program flow")]
+    [AchievementDescription("@IfShorthandAchievementName",
+        AchievementDescription = "@IfShorthandAchievementDescription",
+        AchievementCategory = "@ProgramFlow")]
     public class IfShorthandAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

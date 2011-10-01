@@ -6,8 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Use compound expression in if statement", AchievementDescription = "Make use of multiple expression in one if statement (usage of &&,||, etc. operators)",
-        AchievementCategory = "Expressions")]
+    [AchievementDescription("@IfCompoundExpressionAchievementName",
+        AchievementDescription = "@IfCompoundExpressionAchievementDescription",
+        AchievementCategory = "@Expressions")]
     public class IfCompoundExpressionAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

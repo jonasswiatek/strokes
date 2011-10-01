@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare and initialize an int", AchievementDescription = "Declare and initialize an int in one statement", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@DeclareInitializeIntName",
+        AchievementDescription = "@DeclareInitializeIntDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class DeclareInitializeInt : DeclareInitializePrimitiveType<int>
     {
     }

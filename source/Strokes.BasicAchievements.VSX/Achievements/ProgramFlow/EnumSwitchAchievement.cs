@@ -8,7 +8,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Enumswitch", AchievementDescription = "Switch over an enum", AchievementCategory = "Program flow")]
+    [AchievementDescription("@EnumSwitchAchievementName",
+        AchievementDescription = "@EnumSwitchAchievementDescription",
+        AchievementCategory = "@ProgramFlow")]
     public class EnumSwitchAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

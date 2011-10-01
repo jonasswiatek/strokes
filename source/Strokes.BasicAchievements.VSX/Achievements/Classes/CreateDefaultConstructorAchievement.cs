@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Explicit default", AchievementDescription = "Write a default class constructor", AchievementCategory = "Class")]
+    [AchievementDescription("@CreateDefaultConstructorAchievementName",
+        AchievementDescription = "@CreateDefaultConstructorAchievementDescription",
+        AchievementCategory = "@Class")]
     public class CreateDefaultConstructorAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

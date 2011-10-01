@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare and initialize a double", AchievementDescription = "Declare and initialize a double in one statement", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@DeclareInitializeDoubleName",
+        AchievementDescription = "@DeclareInitializeDoubleDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class DeclareInitializeDouble : DeclareInitializePrimitiveType<double>
     {
     }

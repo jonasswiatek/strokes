@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare a char", AchievementDescription = "Declare, but do not initialize, a char in one statement", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@MultipleDeclareCharName",
+        AchievementDescription = "@MultipleDeclareCharDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class DeclareChar : DeclarePrimitiveType<char>
     {
     }

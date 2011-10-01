@@ -6,8 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("While loop", AchievementDescription = "Use a while loop",
-        AchievementCategory = "Program flow")]
+    [AchievementDescription("@DoWhileLoopAchievementName",
+        AchievementDescription = "@DoWhileLoopAchievementDescription",
+        AchievementCategory = "@ProgramFlow")]
     public class WhileLoopAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

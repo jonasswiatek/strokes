@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("That's tiny", AchievementDescription = "Create a method that only contains one single return expression", AchievementCategory = "Method")]
+    [AchievementDescription("@CreateSingleLineMethodAchievementName",
+        AchievementDescription = "@CreateSingleLineMethodAchievementDescription",
+        AchievementCategory = "@Method")]
     public class CreateSingleLineMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

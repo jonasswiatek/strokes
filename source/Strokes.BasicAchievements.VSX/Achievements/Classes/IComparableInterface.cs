@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("IComparable", AchievementDescription = "Write a class that implements IComparable", AchievementCategory = "Class")]
+    [AchievementDescription("@IComparableAchievementName",
+        AchievementDescription = "@IComparableAchievementDescription",
+        AchievementCategory = "@Class")]
     public class IComparableAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

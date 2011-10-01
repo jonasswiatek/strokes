@@ -7,7 +7,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Define a default switch case", AchievementDescription = "Create a default case in a  switch statement", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@DefaultCaseInSwitchSwitchAchievementName",
+        AchievementDescription = "@DefaultCaseInSwitchSwitchAchievementDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class DefaultCaseInSwitchSwitchAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

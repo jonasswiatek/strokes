@@ -79,6 +79,42 @@ namespace Strokes.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Write a Caesar encryption/decryption module.
+        /// </summary>
+        public static string CaesarChallengeDescription {
+            get {
+                return ResourceManager.GetString("CaesarChallengeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Caesar.
+        /// </summary>
+        public static string CaesarChallengeName {
+            get {
+                return ResourceManager.GetString("CaesarChallengeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Implement the ICalculator interface.
+        /// </summary>
+        public static string CalculatorChallengeDescription {
+            get {
+                return ResourceManager.GetString("CalculatorChallengeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calculator.
+        /// </summary>
+        public static string CalculatorChallengeName {
+            get {
+                return ResourceManager.GetString("CalculatorChallengeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Declare an array.
         /// </summary>
         public static string DeclareArrayAchievementDescription {

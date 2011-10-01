@@ -88,6 +88,24 @@ namespace Strokes.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Console.
+        /// </summary>
+        public static string Console {
+            get {
+                return ResourceManager.GetString("Console", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Converting.
+        /// </summary>
+        public static string Converting {
+            get {
+                return ResourceManager.GetString("Converting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error handling.
         /// </summary>
         public static string ErrorHandling {
@@ -129,6 +147,15 @@ namespace Strokes.Core.Properties {
         public static string PrimitiveType {
             get {
                 return ResourceManager.GetString("PrimitiveType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Program flow.
+        /// </summary>
+        public static string ProgramFlow {
+            get {
+                return ResourceManager.GetString("ProgramFlow", resourceCulture);
             }
         }
     }

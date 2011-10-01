@@ -6,8 +6,10 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Use OR (||) operator", AchievementDescription = "Make use of the OR operator",
-        AchievementCategory = "Expressions", Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/OrOperator.png")]
+    [AchievementDescription("@OperatorOrAchievementName",
+        AchievementDescription = "@OperatorOrAchievementDescription",
+        AchievementCategory = "@Expressions"
+        Image="/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/OrOperator.png")]
     public class OperatorOrAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

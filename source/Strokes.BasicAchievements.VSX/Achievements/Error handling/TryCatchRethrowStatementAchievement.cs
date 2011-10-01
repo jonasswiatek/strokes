@@ -6,8 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Operation:Activate umbrella", AchievementDescription = "Write a catch statement that simply rethrows the exception",
-        AchievementCategory = "Error handling")]
+    [AchievementDescription("@TryCatchRethrowStatementAchievementName",
+        AchievementDescription = "@TryCatchRethrowStatementAchievementDescription",
+        AchievementCategory = "@ErrorHandling")]
     public class TryCatchRethrowStatementAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

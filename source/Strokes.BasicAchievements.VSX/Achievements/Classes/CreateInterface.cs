@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Interface", AchievementDescription = "Create an interface", AchievementCategory = "Class")]
+    [AchievementDescription("@CreateInterfaceAchievementName",
+        AchievementDescription = "@CreateInterfaceAchievementDescription",
+        AchievementCategory = "@Class")]
     public class CreateInterfaceAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

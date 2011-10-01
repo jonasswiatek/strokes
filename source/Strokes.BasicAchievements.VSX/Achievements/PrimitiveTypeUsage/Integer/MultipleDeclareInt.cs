@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare multiple integers in one statement", AchievementDescription = "Declare multiple integers in one go", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@MultipleDeclareIntName",
+        AchievementDescription = "@MultipleDeclareIntDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class MultipleDeclareInt : MultipleDeclarePrimitiveType<int>
     {
     }

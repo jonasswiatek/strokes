@@ -6,8 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Try-Catch Statement", AchievementDescription = "Use a try-catch statement",
-        AchievementCategory = "Error handling")]
+    [AchievementDescription("@TryCatchStatementAchievementName",
+        AchievementDescription = "@TryCatchStatementAchievementDescription",
+        AchievementCategory = "@ErrorHandling")]
     public class TryCatchStatementAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

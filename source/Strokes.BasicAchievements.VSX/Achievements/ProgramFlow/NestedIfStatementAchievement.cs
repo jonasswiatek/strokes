@@ -6,8 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("If-in-if", AchievementDescription = "Write an if statement inside another if",
-        AchievementCategory = "Program flow")]
+    [AchievementDescription("@NestedIfStatementAchievementName",
+        AchievementDescription = "@NestedIfStatementAchievementDescription",
+        AchievementCategory = "@ProgramFlow")]
     public class NestedIfStatementAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

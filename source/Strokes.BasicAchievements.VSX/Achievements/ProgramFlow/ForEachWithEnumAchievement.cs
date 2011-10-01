@@ -6,8 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Enumerate an enumeration", AchievementDescription = "Use a foreach loop to enumerate over all elements of ...an enumeration.",
-        AchievementCategory = "Program flow")]
+    [AchievementDescription("@ForEachWithEnumAchievementName",
+        AchievementDescription = "@ForEachWithEnumAchievementDescription",
+        AchievementCategory = "@ProgramFlow")]
     public class ForEachWithEnumAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

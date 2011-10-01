@@ -6,27 +6,29 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("Hello world", AchievementDescription = "Write the most-writen program ever", AchievementCategory = "Console")]
+    [AchievementDescription("@HelloWorldAchievementName",
+        AchievementDescription = "@HelloWorldAchievementDescription",
+        AchievementCategory = "@Console")]
     public class HelloWorldAchievement : AbstractMethodCall
     {
         public HelloWorldAchievement(): base("System.Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
-                                     {
-                                         Repeating = true,
-                                         Requirements = new List<TypeAndValueRequirement>
-                                                            {
-                                                                new TypeAndValueRequirement
-                                                                    {
-                                                                        Type = typeof (string),
-                                                                        Regex = @"hello world"
-                                                                    },
-                                                                new TypeAndValueRequirement
-                                                                    {
-                                                                        Type = typeof (object)
-                                                                    }
-                                                            }
-                                     };
+            {
+                Repeating = true,
+                Requirements = new List<TypeAndValueRequirement>
+                {
+                    new TypeAndValueRequirement
+                    {
+                        Type = typeof (string),
+                        Regex = @"hello world"
+                    },
+                    new TypeAndValueRequirement
+                    {
+                        Type = typeof (object)
+                    }
+                }
+            };
 
             RequiredOverloads.Add(requirementSet);
         }

@@ -6,8 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Try-Catch-Ignore", AchievementDescription = "Write an empty catch statement",
-        AchievementCategory = "Error handling")]
+    [AchievementDescription("@TryCatchIgnoreStatementAchievementName",
+        AchievementDescription = "@TryCatchIgnoreStatementAchievementDescription",
+        AchievementCategory = "@ErrorHandling")]
     public class TryCatchIgnoreStatementAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

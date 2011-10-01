@@ -101,6 +101,9 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public Type Type;
             public string Regex;
+            
+            // Claus: Add the ability to use RegexOptions.
+            //public RegexOptions RegexOptions; 
         }
     }
 }

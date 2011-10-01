@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Params Parameter", AchievementDescription = "Write a method that uses the params keyword in its arguments", AchievementCategory = "Method")]
+    [AchievementDescription("@ParamsParameterAchievementName",
+        AchievementDescription = "@ParamsParameterAchievementDescription",
+        AchievementCategory = "@Method")]
     public class ParamsParameterAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

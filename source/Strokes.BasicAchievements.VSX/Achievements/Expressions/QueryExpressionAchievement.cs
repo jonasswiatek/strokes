@@ -6,8 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Query Expression", AchievementDescription = "Use a query expression",
-        AchievementCategory = "Expressions")]
+    [AchievementDescription("@QueryExpressionAchievementName",
+        AchievementDescription = "@QueryExpressionAchievementDescription",
+        AchievementCategory = "@Expressions")]
     public class QueryExpressionAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

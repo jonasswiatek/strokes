@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Into the void", AchievementDescription = "Create a method that returns void", AchievementCategory = "Method")]
+    [AchievementDescription("@CreateMethodReturnVoidAchievementName",
+        AchievementDescription = "@CreateMethodReturnVoidAchievementDescription",
+        AchievementCategory = "@Method")]
     public class CreateMethodReturnVoidAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -31,7 +33,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Return int", AchievementDescription = "Create a method that returns an int", AchievementCategory = "Method")]
+    [AchievementDescription("@CreateMethodReturnIntAchievementName",
+        AchievementDescription = "@CreateMethodReturnIntAchievementDescription",
+        AchievementCategory = "@Method")]
     public class CreateMethodReturnIntAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -56,7 +60,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Return a string", AchievementDescription = "Create a method that returns a string", AchievementCategory = "Method")]
+    [AchievementDescription("@CreateMethodReturnStringAchievementName",
+        AchievementDescription = "@CreateMethodReturnStringAchievementDescription",
+        AchievementCategory = "@Method")]
     public class CreateMethodReturnStringAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -81,7 +87,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Return a bool", AchievementDescription = "Create a method that returns a boolean", AchievementCategory = "Method")]
+    [AchievementDescription("@CreateMethodReturnBoolAchievementName",
+        AchievementDescription = "@CreateMethodReturnBoolAchievementDescription",
+        AchievementCategory = "@Method")]
     public class CreateMethodReturnBoolAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -106,7 +114,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Return char", AchievementDescription = "Create a method that returns a char", AchievementCategory = "Method")]
+    [AchievementDescription("@CreateMethodReturnCharAchievementName",
+        AchievementDescription = "@CreateMethodReturnCharAchievementDescription",
+        AchievementCategory = "@Method")]
     public class CreateMethodReturnCharAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -132,7 +142,9 @@ namespace Strokes.BasicAchievements.Achievements
     }
 
 
-    [AchievementDescription("Return double", AchievementDescription = "Create a method that returns a double", AchievementCategory = "Method")]
+    [AchievementDescription("@CreateMethodReturnDoubleAchievementName",
+        AchievementDescription = "@CreateMethodReturnDoubleAchievementDescription",
+        AchievementCategory = "@Method")]
     public class CreateMethodReturnDoubleAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -157,7 +169,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Return float", AchievementDescription = "Create a method that returns a float", AchievementCategory = "Method")]
+    [AchievementDescription("@CreateMethodReturnFloatAchievementName",
+        AchievementDescription = "@CreateMethodReturnFloatAchievementDescription",
+        AchievementCategory = "@Method")]
     public class CreateMethodReturnFloatAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

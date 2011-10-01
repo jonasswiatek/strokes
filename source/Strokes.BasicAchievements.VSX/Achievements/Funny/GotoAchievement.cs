@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Spaghetti Bolognese ", AchievementDescription = "Please don't use goto anymore. You've got the achievement, happy now?", AchievementCategory = "Funny")]
+    [AchievementDescription("@GotoAchievementName",
+        AchievementDescription = "@GotoAchievementDescription",
+        AchievementCategory = "@Funny")]
     public class GotoAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

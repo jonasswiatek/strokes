@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Objectify!", AchievementDescription = "Create an object", AchievementCategory = "Class")]
+    [AchievementDescription("@InstantiateObjectAchievementName",
+        AchievementDescription = "@InstantiateObjectAchievementDescription",
+        AchievementCategory = "@Class")]
     public class InstantiateObjectAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

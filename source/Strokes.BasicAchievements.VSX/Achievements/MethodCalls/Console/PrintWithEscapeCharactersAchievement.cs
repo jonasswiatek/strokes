@@ -6,29 +6,34 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("Print a newline using \\n", AchievementDescription = "Print a newline to the console using \\n", AchievementCategory = "Console")]
+    [AchievementDescription("@PrintNewLineAchievementName",
+        AchievementDescription = "@PrintNewLineAchievementDescription",
+        AchievementCategory = "@Console")]
     public class PrintNewLineAchievement : AbstractMethodCall
     {
-        public PrintNewLineAchievement() : base("System.Console.WriteLine")
+        public PrintNewLineAchievement()
+            : base("System.Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
-                                     {
-                                         Repeating = true,
-                                         Requirements = new List<TypeAndValueRequirement>
-                                                            {
-                                                                new TypeAndValueRequirement
-                                                                    {
-                                                                        Type = typeof (string),
-                                                                        Regex = @"\n"
-                                                                    }
-                                                            }
-                                     };
+            {
+                Repeating = true,
+                Requirements = new List<TypeAndValueRequirement>
+                {
+                    new TypeAndValueRequirement
+                    {
+                        Type = typeof (string),
+                        Regex = @"\n"
+                    }
+                }
+            };
 
             RequiredOverloads.Add(requirementSet);
         }
     }
 
-    [AchievementDescription("Print a tab using \\t", AchievementDescription = "Print a horizontal tab to the console using \\t", AchievementCategory = "Console")]
+    [AchievementDescription("@PrintHorizontalTabAchievementName",
+        AchievementDescription = "@PrintHorizontalTabAchievementDescription",
+        AchievementCategory = "Console")]
     public class PrintHorizontalTabAchievement : AbstractMethodCall
     {
         public PrintHorizontalTabAchievement()
@@ -38,20 +43,22 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
-                                                            {
-                                                                new TypeAndValueRequirement
-                                                                    {
-                                                                        Type = typeof (string),
-                                                                        Regex = @"\t"
-                                                                    }
-                                                            }
+                {
+                    new TypeAndValueRequirement
+                    {
+                        Type = typeof (string),
+                        Regex = @"\t"
+                    }
+                }
             };
 
             RequiredOverloads.Add(requirementSet);
         }
     }
 
-    [AchievementDescription("Print a \" using \\\"", AchievementDescription = "Print a quote (\") to the console using \\\"", AchievementCategory = "Console")]
+    [AchievementDescription("@PrintQuoteCharAchievementName",
+        AchievementDescription = "@PrintQuoteCharAchievementDescription",
+        AchievementCategory = "Console")]
     public class PrintQuoteCharAchievement : AbstractMethodCall
     {
         public PrintQuoteCharAchievement()
@@ -61,20 +68,22 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
-                                                            {
-                                                                new TypeAndValueRequirement
-                                                                    {
-                                                                        Type = typeof (string),
-                                                                        Regex = "\\\""
-                                                                    }
-                                                            }
+                {
+                    new TypeAndValueRequirement
+                    {
+                        Type = typeof (string),
+                        Regex = "\\\""
+                    }
+                }
             };
 
             RequiredOverloads.Add(requirementSet);
         }
     }
 
-    [AchievementDescription("Print a \' using \\\'", AchievementDescription = "Print a quote (\') to the console using \\\'", AchievementCategory = "Console")]
+    [AchievementDescription("@PrintSingleQuoteCharAchievementName",
+        AchievementDescription = "@PrintSingleQuoteCharAchievementDescription",
+        AchievementCategory = "Console")]
     public class PrintSingleQuoteCharAchievement : AbstractMethodCall
     {
         public PrintSingleQuoteCharAchievement()
@@ -84,20 +93,22 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
-                                                            {
-                                                                new TypeAndValueRequirement
-                                                                    {
-                                                                        Type = typeof (string),
-                                                                        Regex = "\\\'"
-                                                                    }
-                                                            }
+                {
+                    new TypeAndValueRequirement
+                    {
+                        Type = typeof (string),
+                        Regex = "\\\'"
+                    }
+                }
             };
 
             RequiredOverloads.Add(requirementSet);
         }
     }
 
-    [AchievementDescription("Print a \\ using \\\\", AchievementDescription = "Print a quote (\\) to the console using \\\\", AchievementCategory = "Console")]
+    [AchievementDescription("@PrintBackSlashCharAchievementName",
+        AchievementDescription = "@PrintBackSlashCharAchievementDescription",
+        AchievementCategory = "Console")]
     public class PrintBackSlashCharAchievement : AbstractMethodCall
     {
         public PrintBackSlashCharAchievement()
@@ -107,13 +118,13 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
-                                                            {
-                                                                new TypeAndValueRequirement
-                                                                    {
-                                                                        Type = typeof (string),
-                                                                        Regex = "\\\\"
-                                                                    }
-                                                            }
+                {
+                    new TypeAndValueRequirement
+                    {
+                        Type = typeof (string),
+                        Regex = "\\\\"
+                    }
+                }
             };
 
             RequiredOverloads.Add(requirementSet);

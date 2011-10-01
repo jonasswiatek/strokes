@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Virtual Reality", AchievementDescription = "Create a virtual method", AchievementCategory = "Class")]
+    [AchievementDescription("@VirtualMethodAchievementName",
+        AchievementDescription = "@VirtualMethodAchievementDescription",
+        AchievementCategory = "@Class")]
     public class VirtualMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -25,7 +27,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Override!", AchievementDescription = "Override a method", AchievementCategory = "Class")]
+    [AchievementDescription("Override!", AchievementDescription = "Override a method", AchievementCategory = "@Class")]
     public class OVerrideMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

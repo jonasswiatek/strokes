@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Method man and the Wu-Tang Clan", AchievementDescription = "Create a method with 2 or more parameters", AchievementCategory = "Method")]
+    [AchievementDescription("@CreateMethodMultipleParametersAchievementName",
+        AchievementDescription = "@CreateMethodMultipleParametersAchievementDescription",
+        AchievementCategory = "@Method")]
     public class CreateMethodMultipleParametersAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -31,7 +33,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Method man and a friend", AchievementDescription = "Create a method with 1 parameter", AchievementCategory = "Method")]
+    [AchievementDescription("Method man and a friend", AchievementDescription = "Create a method with 1 parameter", AchievementCategory = "@Method")]
     public class CreateMethodOneParameterAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

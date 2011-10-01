@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("I'll tell you how to count", AchievementDescription = "Create an enum with explicit value(s)", AchievementCategory = "Fundamentals")]
+    [AchievementDescription("@EnumInitializerExplicitAchievementName",
+        AchievementDescription = "@EnumInitializerExplicitAchievementDescription",
+        AchievementCategory = "@Fundamentals")]
     public class EnumInitializerExplicitAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

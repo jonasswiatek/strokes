@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare multiple chars in one statement", AchievementDescription = "Declare multiple chars in one go", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@MultipleDeclareCharName",
+        AchievementDescription = "@MultipleDeclareCharDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class MultipleDeclareChar : MultipleDeclarePrimitiveType<char>
     {
     }

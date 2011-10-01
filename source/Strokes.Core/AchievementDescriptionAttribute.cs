@@ -78,6 +78,14 @@ namespace Strokes.Core
             }
         }
 
+        public string AchievementCategoryIdentifier
+        {
+            get
+            {
+                return category;
+            }
+            }
+
         /// <summary>
         /// Image for an achievements image. 
         /// </summary>

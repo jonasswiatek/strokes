@@ -9,7 +9,9 @@ using System.Text.RegularExpressions;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Escape char", AchievementDescription = "Declare an escape character char", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@DeclareEscapeCharAchievementName",
+        AchievementDescription = "@DeclareEscapeCharAchievementDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class DeclareEscapeCharAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

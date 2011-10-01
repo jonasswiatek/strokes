@@ -126,6 +126,12 @@
   <data name="Class" xml:space="preserve">
     <value>Class</value>
   </data>
+  <data name="Console" xml:space="preserve">
+    <value>Console</value>
+  </data>
+  <data name="Converting" xml:space="preserve">
+    <value>Converting</value>
+  </data>
   <data name="ErrorHandling" xml:space="preserve">
     <value>Error handling</value>
   </data>
@@ -140,5 +146,8 @@
   </data>
   <data name="PrimitiveType" xml:space="preserve">
     <value>Primitive type</value>
+  </data>
+  <data name="ProgramFlow" xml:space="preserve">
+    <value>Program flow</value>
   </data>
 </root>

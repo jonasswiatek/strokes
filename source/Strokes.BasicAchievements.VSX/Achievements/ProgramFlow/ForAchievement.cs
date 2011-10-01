@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("For loop", AchievementDescription = "Use a for loop", AchievementCategory = "Program flow")]
+    [AchievementDescription("@ForAchievementName",
+        AchievementDescription = "@ForAchievementDescription",
+        AchievementCategory = "@ProgramFlow")]
     public class ForAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

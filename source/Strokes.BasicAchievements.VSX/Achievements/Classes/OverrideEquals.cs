@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Define equality", AchievementDescription = "Override System.Object.Equals", AchievementCategory = "Class")]
+    [AchievementDescription("@OverrideEqualsAchievementName",
+        AchievementDescription = "@OverrideEqualsAchievementDescription",
+        AchievementCategory = "@Class")]
     public class OverrideEqualsAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

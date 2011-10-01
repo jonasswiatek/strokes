@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Assign a float value", AchievementDescription = "Assign a value to an existing float variable", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@AssignFloatName",
+        AchievementDescription = "@AssignFloatDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class AssignFloat : AssignValueToPrimitiveType<float>
     {
     }

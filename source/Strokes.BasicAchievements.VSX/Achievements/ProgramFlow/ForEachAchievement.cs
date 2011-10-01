@@ -6,8 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Foreach loop", AchievementDescription = "Use a foreach loop",
-        AchievementCategory = "Program flow", ParentAchievement = typeof(ForAchievement))]
+    [AchievementDescription("@ForEachAchievementName",
+        AchievementDescription = "@ForEachAchievementDescription",
+        AchievementCategory = "@ProgramFlow")]
     public class ForEachAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

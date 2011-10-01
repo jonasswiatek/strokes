@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Ref Parameter", AchievementDescription = "Write a method that uses the ref keyword in its arguments", AchievementCategory = "Method")]
+    [AchievementDescription("@RefParameterAchievementName",
+        AchievementDescription = "@RefParameterAchievementDescription",
+        AchievementCategory = "@Method")]
     public class RefParameterAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

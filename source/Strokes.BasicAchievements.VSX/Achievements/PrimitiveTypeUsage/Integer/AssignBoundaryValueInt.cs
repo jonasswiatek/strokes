@@ -6,12 +6,16 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Living on the edge", AchievementDescription = "Assign the maximal allowed value to an integer (beware the overflow!)", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@UpperBoundaryValueIntName",
+        AchievementDescription = "@UpperBoundaryValueIntDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class UpperBoundaryValueInt : AssignUpperBoundaryValue<int>
     {
     }
 
-    [AchievementDescription("Living on the negative edge", AchievementDescription = "Assign the minimal allowed value to an integer (beware the overflow!)", AchievementCategory = "Primitive type")]
+    [AchievementDescription("@LowerBoundaryValueIntName",
+        AchievementDescription = "@LowerBoundaryValueIntDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class LowerBoundaryValueInt : AssignLowerBoundaryValue<int>
     {
     }

@@ -7,7 +7,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Multiplexing", AchievementDescription = "Create a switch statement", AchievementCategory = "Program flow")]
+    [AchievementDescription("@DefaultCaseInSwitchSwitchAchievementName",
+        AchievementDescription = "@DefaultCaseInSwitchSwitchAchievementDescription",
+        AchievementCategory = "@PrimitiveType")]
     public class SwitchAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

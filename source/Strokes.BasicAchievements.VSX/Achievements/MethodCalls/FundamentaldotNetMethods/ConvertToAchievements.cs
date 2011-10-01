@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("Convert to Char", AchievementDescription = "Use the Convert.ToChar method", AchievementCategory = "Converting")]
+    [AchievementDescription("@ConvertToCharAchievementName",
+        AchievementDescription = "@ConvertToCharAchievementDescription",
+        AchievementCategory = "@Converting")]
     public class ConvertToCharAchievement : AbstractMethodCall
     {
         public ConvertToCharAchievement() : base("System.Convert.ToChar")
@@ -14,7 +16,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("Convert to Decimal", AchievementDescription = "Use the Convert.ToDecimal method", AchievementCategory = "Converting")]
+    [AchievementDescription("@ConvertToDecimalAchievementName",
+        AchievementDescription = "@ConvertToDecimalAchievementDescription",
+        AchievementCategory = "@Converting")]
     public class ConvertToDecimalAchievement : AbstractMethodCall
     {
         public ConvertToDecimalAchievement()
@@ -23,7 +27,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("Convert to double", AchievementDescription = "Use the Convert.ToDouble method", AchievementCategory = "Converting")]
+    [AchievementDescription("@ConvertToDoubleAchievementName",
+        AchievementDescription = "@ConvertToDoubleAchievementDescription",
+        AchievementCategory = "@Converting")]
     public class ConvertToDoubleAchievement : AbstractMethodCall
     {
         public ConvertToDoubleAchievement()
@@ -32,7 +38,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("Convert to Int32", AchievementDescription = "Use the Convert.ToInt32 method", AchievementCategory = "Converting")]
+    [AchievementDescription("@ConvertToInt32AchievementName",
+        AchievementDescription = "@ConvertToInt32AchievementDescription",
+        AchievementCategory = "@Converting")]
     public class ConvertToInt32Achievement : AbstractMethodCall
     {
         public ConvertToInt32Achievement()

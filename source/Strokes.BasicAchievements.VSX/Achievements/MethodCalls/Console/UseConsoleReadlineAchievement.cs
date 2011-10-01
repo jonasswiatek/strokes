@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("Use Console.ReadLine()", AchievementDescription = "Get input from the user", AchievementCategory = "Console")]
+    [AchievementDescription("@UseConsoleReadlineAchievementName",
+        AchievementDescription = "@UseConsoleReadlineAchievementDescription",
+        AchievementCategory = "@Console")]
     public class UseConsoleReadlineAchievement : AbstractMethodCall
     {
         public UseConsoleReadlineAchievement() : base("System.Console.ReadLine")

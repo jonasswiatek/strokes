@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Use the ++ operator", AchievementDescription = "Write an expression that uses the ++ operator", AchievementCategory = "Fundamentals")]
+    [AchievementDescription("@PlusPlusOperatorAchievementName",
+        AchievementDescription = "@PlusPlusOperatorAchievementDescription",
+        AchievementCategory = "@Fundamentals")]
     public class PlusPlusOperatorAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -25,7 +27,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Use the -- operator", AchievementDescription = "Write an expression that uses the -- operator", AchievementCategory = "Fundamentals")]
+    [AchievementDescription("@MinusMinusOperatorAchievementName",
+        AchievementDescription = "@MinusMinusOperatorAchievementDescription",
+        AchievementCategory = "@Fundamentals")]
     public class MinusMinusOperatorAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("ToString()", AchievementDescription = "Override System.Object.ToString() method", AchievementCategory = "Class")]
+    [AchievementDescription("@OverrideToStringAchievementName",
+        AchievementDescription = "@OverrideToStringAchievementDescription",
+        AchievementCategory = "@Class")]
     public class OverrideToStringAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

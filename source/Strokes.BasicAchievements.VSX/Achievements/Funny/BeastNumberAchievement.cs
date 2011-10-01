@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("The number of the beast...", AchievementDescription = "Assign a value of 666 to an integer", AchievementCategory = "Funny")]
+    [AchievementDescription("@BeastNumberAchievementName",
+        AchievementDescription = "@BeastNumberAchievementDescription",
+        AchievementCategory = "@Funny")]
     public class BeastNumberAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

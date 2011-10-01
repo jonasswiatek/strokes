@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("Clear an array", AchievementDescription = "Use the Array.Clear method to Clear an array", AchievementCategory = "Arrays")]
+    [AchievementDescription("@ArrayClearMethodAchievementName",
+        AchievementDescription = "@ArrayClearMethodAchievementDescription",
+        AchievementCategory = "@Arrays")]
     public class ArrayClearMethodAchievement : AbstractMethodCall
     {
         public ArrayClearMethodAchievement() : base("System.Array.Clear")
@@ -14,7 +16,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("IndexOf an array", AchievementDescription = "Use the Array.IndexOf method to IndexOf an array", AchievementCategory = "Arrays")]
+    [AchievementDescription("@ArrayIndexOfMethodAchievementName",
+        AchievementDescription = "@ArrayIndexOfMethodAchievementDescription",
+        AchievementCategory = "@Arrays")]
     public class ArrayIndexOfMethodAchievement : AbstractMethodCall
     {
         public ArrayIndexOfMethodAchievement()
@@ -23,7 +27,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("Reverse an array", AchievementDescription = "Use the Array.Reverse method to Reverse an array", AchievementCategory = "Arrays")]
+    [AchievementDescription("@ArrayReverseMethodAchievementName",
+        AchievementDescription = "@ArrayReverseMethodAchievementDescription",
+        AchievementCategory = "@Arrays")]
     public class ArrayReverseMethodAchievement : AbstractMethodCall
     {
         public ArrayReverseMethodAchievement()
@@ -32,7 +38,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("Sort an array", AchievementDescription = "Use the Array.Sort method to sort an array", AchievementCategory = "Arrays")]
+    [AchievementDescription("@ArraySortMethodAchievementName",
+        AchievementDescription = "@ArraySortMethodAchievementDescription",
+        AchievementCategory = "@Arrays")]
     public class ArraySortMethodAchievement : AbstractMethodCall
     {
         public ArraySortMethodAchievement()

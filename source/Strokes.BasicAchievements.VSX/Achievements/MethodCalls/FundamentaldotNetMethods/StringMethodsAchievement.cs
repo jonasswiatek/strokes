@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("String comparing", AchievementDescription = "Use the String.Compare method", AchievementCategory = "Strings")]
+    [AchievementDescription("@StringCompareAchievementName",
+        AchievementDescription = "@StringCompareAchievementDescription",
+        AchievementCategory = "Strings")]
     public class StringCompareAchievement : AbstractMethodCall
     {
         public StringCompareAchievement() : base("System.String.Compare")
@@ -14,7 +16,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("String concaten-what?", AchievementDescription = "Use the String.Concat method", AchievementCategory = "Strings")]
+    [AchievementDescription("@StringConcatAchievementName",
+        AchievementDescription = "@StringConcatAchievementDescription",
+        AchievementCategory = "Strings")]
     public class StringConcatAchievement : AbstractMethodCall
     {
         public StringConcatAchievement()
@@ -23,7 +27,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("String copying", AchievementDescription = "Use the String.Copy method", AchievementCategory = "Strings")]
+    [AchievementDescription("@StringCopyAchievementName",
+        AchievementDescription = "@StringCopyAchievementDescription",
+        AchievementCategory = "Strings")]
     public class StringCopyAchievement : AbstractMethodCall
     {
         public StringCopyAchievement()
@@ -32,7 +38,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("String equals", AchievementDescription = "Use the String.Equals method", AchievementCategory = "Strings")]
+    [AchievementDescription("@StringEqualsAchievementName",
+        AchievementDescription = "@StringEqualsAchievementDescription",
+        AchievementCategory = "Strings")]
     public class StringEqualsAchievement : AbstractMethodCall
     {
         public StringEqualsAchievement()
@@ -41,7 +49,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("String joining", AchievementDescription = "Use the String.Join method", AchievementCategory = "Strings")]
+    [AchievementDescription("@StringJoinAchievementName",
+        AchievementDescription = "@StringJoinAchievementDescription",
+        AchievementCategory = "Strings")]
     public class StringJoinAchievement : AbstractMethodCall
     {
         public StringJoinAchievement()

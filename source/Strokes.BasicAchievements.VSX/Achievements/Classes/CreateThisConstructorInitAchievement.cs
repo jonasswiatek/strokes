@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Dis a constructor", AchievementDescription = "Call another constructor using the this() keyword from a constructor", AchievementCategory = "Class")]
+    [AchievementDescription("@CreateThisConstructorInitAchievementName",
+        AchievementDescription = "@CreateThisConstructorInitAchievementDescription",
+        AchievementCategory = "@Class")]
     public class CreateThisConstructorInitAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

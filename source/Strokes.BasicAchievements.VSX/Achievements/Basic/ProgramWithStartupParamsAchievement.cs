@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Write a program that accepts and uses parameters to startup", AchievementDescription = "Write a program that accepts and uses parameters to startup", AchievementCategory = "Fundamentals")]
+    [AchievementDescription("@ProgramWithStartupParamsAchievementName",
+        AchievementDescription = "@ProgramWithStartupParamsAchievementDescription",
+        AchievementCategory = "@Fundamentals")]
     public class ProgramWithStartupParamsAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

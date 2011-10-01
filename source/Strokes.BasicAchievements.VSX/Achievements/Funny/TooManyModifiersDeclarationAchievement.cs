@@ -7,7 +7,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Modifier addict", AchievementDescription = "Declare a method with lots of modifiers", AchievementCategory = "Funny")]
+    [AchievementDescription("@TooManyModifiersMethodDeclarationAchievementName",
+        AchievementDescription = "@TooManyModifiersMethodDeclarationAchievementDescription",
+        AchievementCategory = "@Funny")]
     public class TooManyModifiersMethodDeclarationAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Challenges
 {
-    [AchievementDescription("Caesar", AchievementDescription = "Write a Caesar encryption/decryption module", AchievementCategory = "Challenges")]
+    [AchievementDescription("@CaesarChallengeName", 
+        AchievementDescription = "@CaesarChallengeDescription", 
+        AchievementCategory = "@Challenges")]
     public class CaesarChallenge : Challenge
     {
         public CaesarChallenge() : base("Strokes.Challenges.Student.CaesarChallenge.CaesarTest") 

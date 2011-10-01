@@ -25,7 +25,9 @@ namespace Strokes.BasicAchievements.Achievements
      * 
      * */
 
-    [AchievementDescription("Job Security", AchievementDescription = "Written a LINQ query with over 10 lines of code", AchievementCategory = "Funny")]
+    [AchievementDescription("@JobSecurityAchievementName",
+        AchievementDescription = "@JobSecurityAchievementDescription",
+        AchievementCategory = "@Funny")]
     public class JobSecurityAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -44,7 +46,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Telling a story", AchievementDescription = "Created a method longer than 100 lines", AchievementCategory = "Funny")]
+    [AchievementDescription("@TellingAStoryAchievementName",
+        AchievementDescription = "@TellingAStoryAchievementDescription",
+        AchievementCategory = "@Funny")]
     public class TellingAStoryAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -64,7 +68,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Epic Tale", AchievementDescription = "Created a method longer than 300 lines", AchievementCategory = "Funny")]
+    [AchievementDescription("@EpicTaleAchievementName",
+        AchievementDescription = "@EpicTaleAchievementDescription",
+        AchievementCategory = "@Funny")]
     public class EpicTaleAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -84,7 +90,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("The Parametizer", AchievementDescription = "Created a method with more than 10 non optional parameters", AchievementCategory = "Funny")]
+    [AchievementDescription("@ParametizerAchievementName",
+        AchievementDescription = "@ParametizerAchievementDescription",
+        AchievementCategory = "@Funny")]
     public class ParametizerAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -113,7 +121,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Grand Unified Theory", AchievementDescription = "Design a class that implements at least 5 interfaces", AchievementCategory = "Funny")]
+    [AchievementDescription("@GUTAchievementName",
+        AchievementDescription = "@GUTAchievementDescription",
+        AchievementCategory = "@Funny")]
     public class GUTAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -144,7 +154,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Every Option Considered", AchievementDescription = "Created an enum with more than 10 values", AchievementCategory = "Funny")]
+    [AchievementDescription("@EveryOptionEnumAchievementName",
+        AchievementDescription = "@EveryOptionEnumAchievementDescription",
+        AchievementCategory = "@Funny")]
     public class EveryOptionEnumAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -170,7 +182,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Procedural Programmer", AchievementDescription = "Created a method with more than 10 out parameters", AchievementCategory = "Funny")]
+    [AchievementDescription("@ProceduralProgrammerAchievementName",
+        AchievementDescription = "@ProceduralProgrammerAchievementDescription",
+        AchievementCategory = "@Funny")]
     public class ProceduralProgrammerAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

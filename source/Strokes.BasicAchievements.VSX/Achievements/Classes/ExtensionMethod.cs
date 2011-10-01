@@ -6,7 +6,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Extended!", AchievementDescription = "Create an extension method", AchievementCategory = "Class")]
+    [AchievementDescription("@ExtensionMethodAchievementName",
+        AchievementDescription = "@ExtensionMethodAchievementDescription",
+        AchievementCategory = "@Class")]
     public class ExtensionMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
