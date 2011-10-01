@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Strokes.Core;
 using Strokes.Core.Model;
+using System.Resources;
+using System.Runtime.Serialization;
+using System.Reflection;
 
 namespace Strokes.Data
 {
@@ -11,12 +14,13 @@ namespace Strokes.Data
     {
         public static AchievementDescriptionAttribute GetDescriptionAttribute(this Achievement achievement)
         {
-            var descriptionAttributes = achievement.GetType().GetCustomAttributes(typeof (AchievementDescriptionAttribute), true);
-            if(descriptionAttributes.Length == 1)
+            var descriptionAttributes = achievement.GetType().GetCustomAttributes(typeof(AchievementDescriptionAttribute), true);
+            
+            if (descriptionAttributes.Length == 1)
             {
                 return (AchievementDescriptionAttribute)descriptionAttributes[0];
             }
-            
+
             if (descriptionAttributes.Length > 1)
             {
                 throw new ArgumentException("Achievement class defines more than one AchievementDescriptionAttribute", "achievement");
@@ -28,17 +32,39 @@ namespace Strokes.Data
         public static AchievementDescriptor GetAchievementDescriptor(this Achievement achievement)
         {
             var descriptionAttribute = GetDescriptionAttribute(achievement);
-            
+            var assembly = achievement.GetType().Assembly;
+
+            var achivementResourcesType = assembly.GetType("Strokes.Resources.AchivementResources");
+            var categoryResourcesType = assembly.GetType("Strokes.Resources.AchivementCategoryResources");
+
+            var achivementResources = (ResourceManager)achivementResourcesType.GetProperty("ResourceManager", 
+                BindingFlags.Static | BindingFlags.Public).GetValue(null, null);
+
+            var categoryResources = (ResourceManager)categoryResourcesType.GetProperty("ResourceManager", 
+                BindingFlags.Static | BindingFlags.Public).GetValue(null, null);
+
+            var category = descriptionAttribute.AchievementCategory;
+            if (category.StartsWith("@") && category.Length > 1)
+                category = categoryResources.GetString(category.Substring(1));
+
+            var title = descriptionAttribute.AchievementTitle;
+            if (title.StartsWith("@") && title.Length > 1)
+                title = achivementResources.GetString(title.Substring(1));
+
+            var description = descriptionAttribute.AchievementDescription;
+            if (description.StartsWith("@") && description.Length > 1)
+                description = achivementResources.GetString(description.Substring(1));
+
             var descriptor = new AchievementDescriptor
             {
                 AchievementType = achievement.GetType(),
-                Category = descriptionAttribute.AchievementCategory,
-                Description = descriptionAttribute.AchievementDescription,
-                Name = descriptionAttribute.AchievementTitle,
+                Category = category,
+                Description = description,
+                Name = title,
                 Image = descriptionAttribute.Image,
             };
 
             return descriptor;
-        } 
+        }
     }
 }

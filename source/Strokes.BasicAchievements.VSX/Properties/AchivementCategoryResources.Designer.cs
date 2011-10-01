@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Strokes.BasicAchievements.Properties {
+namespace Strokes.Resources {
     using System;
     
     
