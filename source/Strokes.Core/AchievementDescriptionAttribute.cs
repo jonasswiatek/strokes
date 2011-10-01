@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Resources;
-using Strokes.Core.Properties;
+using System.Threading;
+using System.Reflection;
 
 namespace Strokes.Core
 {
@@ -11,6 +12,27 @@ namespace Strokes.Core
         private string description = string.Empty;
         private string category = string.Empty;
         private string title = string.Empty;
+
+        private static ResourceManager GetResourceManager(string baseName)
+        {
+            return new ResourceManager(baseName, Assembly.Load("Strokes.BasicAchievements.VSX"));
+        }
+
+        private static ResourceManager AchivementResources
+        {
+            get
+            {
+                return GetResourceManager("Strokes.BasicAchievements.Properties.AchivementResources");
+            }
+        }
+
+        public static ResourceManager AchivementCategoryResources
+        {
+            get
+            {
+                return GetResourceManager("Strokes.BasicAchievements.Properties.AchivementCategoryResources");
+            }
+        }
 
         /// <summary>
         /// Point to an achievement type that must be completed prior to this unlocking
@@ -30,7 +52,7 @@ namespace Strokes.Core
             get
             {
                 if (title.StartsWith("@") && title.Length > 1)
-                    return AchivementResources.ResourceManager.GetString(title.Substring(1));
+                    return AchivementResources.GetString(title.Substring(1));
                 else
                     return title;
             }
@@ -49,7 +71,7 @@ namespace Strokes.Core
             get
             {
                 if (description.StartsWith("@") && description.Length > 1)
-                    return AchivementResources.ResourceManager.GetString(description.Substring(1));
+                    return AchivementResources.GetString(description.Substring(1));
                 else
                     return description;
             }
@@ -68,7 +90,7 @@ namespace Strokes.Core
             get
             {
                 if (category.StartsWith("@") && category.Length > 1)
-                    return AchivementCategoryResources.ResourceManager.GetString(category.Substring(1));
+                    return AchivementCategoryResources.GetString(category.Substring(1));
                 else
                     return category;
             }

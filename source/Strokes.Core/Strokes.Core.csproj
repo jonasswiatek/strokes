@@ -57,72 +57,10 @@
     <Compile Include="Model\AchievementCategory.cs" />
     <Compile Include="Model\AchievementDescriptor.cs" />
     <Compile Include="Model\CompletedAchievement.cs" />
-    <Compile Include="Properties\AchivementResources.Designer.cs">
-      <DependentUpon>AchivementResources.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\AchivementCategoryResources.Designer.cs">
-      <DependentUpon>AchivementCategoryResources.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Properties\AchivementResources.ru-RU.Designer.cs">
-      <DependentUpon>AchivementResources.ru-RU.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Properties\AchivementResources.da-DK.Designer.cs">
-      <DependentUpon>AchivementResources.da-DK.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Properties\AchivementCategoryResources.da-DK.Designer.cs">
-      <DependentUpon>AchivementCategoryResources.da-DK.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Properties\AchivementCategoryResources.ru-RU.Designer.cs">
-      <DependentUpon>AchivementCategoryResources.ru-RU.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Key.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\AchivementResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AchivementResources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\AchivementCategoryResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AchivementCategoryResources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\AchivementResources.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AchivementResources.ru-RU.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\AchivementResources.da-DK.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AchivementResources.da-DK.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\AchivementCategoryResources.da-DK.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AchivementCategoryResources.da-DK.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\AchivementCategoryResources.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AchivementCategoryResources.ru-RU.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

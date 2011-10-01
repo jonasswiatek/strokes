@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Strokes.Core.Properties {
+namespace Strokes.BasicAchievements.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Strokes.Core.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Strokes.Core.Properties.AchivementCategoryResources", typeof(AchivementCategoryResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Strokes.BasicAchievements.Properties.AchivementCategoryResources", typeof(AchivementCategoryResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
