@@ -8,7 +8,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescription("@OperatorOrAchievementName",
         AchievementDescription = "@OperatorOrAchievementDescription",
-        AchievementCategory = "@Expressions"
+        AchievementCategory = "@Expressions",
         Image="/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/OrOperator.png")]
     public class OperatorOrAchievement : NRefactoryAchievement
     {

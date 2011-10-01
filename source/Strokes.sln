@@ -23,10 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.ChallengeRunner", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.ChallengeTemplate", "Strokes.ChallengeTemplate\Strokes.ChallengeTemplate.csproj", "{456819E0-122D-4BA0-BDC8-ED8C7B713DF0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debugging", "Debugging", "{2C7BC783-D6DC-4199-9F62-880E78D8AFFE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AchievementLocalizor", "AchievementLocalizor\AchievementLocalizor.csproj", "{65116F8E-C4CE-4B55-ADDF-74E5FA25C688}"
-EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CSharpAchiever.vsmdi
@@ -140,23 +136,11 @@ Global
 		{456819E0-122D-4BA0-BDC8-ED8C7B713DF0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{456819E0-122D-4BA0-BDC8-ED8C7B713DF0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{456819E0-122D-4BA0-BDC8-ED8C7B713DF0}.Release|x86.ActiveCfg = Release|Any CPU
-		{65116F8E-C4CE-4B55-ADDF-74E5FA25C688}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{65116F8E-C4CE-4B55-ADDF-74E5FA25C688}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{65116F8E-C4CE-4B55-ADDF-74E5FA25C688}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{65116F8E-C4CE-4B55-ADDF-74E5FA25C688}.Debug|x86.ActiveCfg = Debug|x86
-		{65116F8E-C4CE-4B55-ADDF-74E5FA25C688}.Debug|x86.Build.0 = Debug|x86
-		{65116F8E-C4CE-4B55-ADDF-74E5FA25C688}.Release|Any CPU.ActiveCfg = Release|x86
-		{65116F8E-C4CE-4B55-ADDF-74E5FA25C688}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{65116F8E-C4CE-4B55-ADDF-74E5FA25C688}.Release|Mixed Platforms.Build.0 = Release|x86
-		{65116F8E-C4CE-4B55-ADDF-74E5FA25C688}.Release|x86.ActiveCfg = Release|x86
-		{65116F8E-C4CE-4B55-ADDF-74E5FA25C688}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6ED1F2F7-1861-4807-B825-C16C341E8785} = {2C7BC783-D6DC-4199-9F62-880E78D8AFFE}
-		{65116F8E-C4CE-4B55-ADDF-74E5FA25C688} = {2C7BC783-D6DC-4199-9F62-880E78D8AFFE}
 		{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
 		{281244B6-DD45-45C1-850C-031EEEE50F0F} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
 		{830D128B-8D1C-4151-A2E7-3054DBF34126} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
