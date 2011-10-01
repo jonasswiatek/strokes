@@ -7,7 +7,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare an array", AchievementDescription = "Declare an array", AchievementCategory = "Arrays")]
+    [AchievementDescription("@DeclareArrayAchievementName",
+        AchievementDescription = "@DeclareArrayAchievementDescription",
+        AchievementCategory = "@Arrays")]
     public class DeclareArrayAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

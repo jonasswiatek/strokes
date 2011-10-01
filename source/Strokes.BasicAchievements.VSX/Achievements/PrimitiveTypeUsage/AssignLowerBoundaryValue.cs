@@ -79,7 +79,7 @@ namespace Strokes.BasicAchievements.Achievements
                             if (assignmentExpression.Right is PrimitiveExpression)
                             {
                                 PrimitiveExpression prim = (PrimitiveExpression) assignmentExpression.Right;
-                                if (prim.Value == "MinValue")
+                                if (prim.Value.Equals("MinValue"))
                                     UnlockWith(assignmentExpression);
                             }
                             else if (assignmentExpression.Right is MemberReferenceExpression)

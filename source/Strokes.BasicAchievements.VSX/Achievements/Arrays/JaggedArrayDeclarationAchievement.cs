@@ -7,7 +7,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("JAG", AchievementDescription = "Declare a jagged multidimensional array ([][] instead of [,])", AchievementCategory = "Arrays")]
+    [AchievementDescription("@JaggedArrayAchievementName",
+        AchievementDescription = "@JaggedArrayAchievementDescription",
+        AchievementCategory = "@Arrays")]
     public class JaggedArrayAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

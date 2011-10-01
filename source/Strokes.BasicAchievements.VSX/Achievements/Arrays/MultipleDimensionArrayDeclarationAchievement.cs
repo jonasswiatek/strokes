@@ -7,7 +7,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare a multidimensional array", AchievementDescription = "Declare a multidimensional array", AchievementCategory = "Arrays")]
+    [AchievementDescription("@DeclareMultipleDimArrayAchievementName", 
+        AchievementDescription = "@DeclareMultipleDimArrayAchievementDescription", 
+        AchievementCategory = "@Arrays")]
     public class DeclareMultipleDimArrayAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -19,8 +21,10 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
-                if (localVariableDeclaration.TypeReference.IsArrayType && localVariableDeclaration.TypeReference.RankSpecifier[0]>=1) //Tim= not so happy about hardocing this RankSpecifier, not sure when this specifier contains more than 1 element
+                //Tim= not so happy about hardocing this RankSpecifier, not sure when this specifier contains more than 1 element
+                if (localVariableDeclaration.TypeReference.IsArrayType && localVariableDeclaration.TypeReference.RankSpecifier[0]>=1) 
                     UnlockWith(localVariableDeclaration);
+
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
         }

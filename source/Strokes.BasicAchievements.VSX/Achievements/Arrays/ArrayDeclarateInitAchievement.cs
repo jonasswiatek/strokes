@@ -7,7 +7,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Declare and initialize an array with an initializer list", AchievementDescription = "Declare and initialize an array with initializer list", AchievementCategory = "Arrays")]
+    [AchievementDescription("@DeclareInitArrayAchievementName",
+        AchievementDescription = "@DeclareInitArrayAchievementDescription",
+        AchievementCategory = "@Arrays")]
     public class DeclareInitArrayAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

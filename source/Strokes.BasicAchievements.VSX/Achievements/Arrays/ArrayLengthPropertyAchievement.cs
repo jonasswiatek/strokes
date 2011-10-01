@@ -7,7 +7,9 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("Array length", AchievementDescription = "Use the Length property of an array", AchievementCategory = "Arrays")]
+    [AchievementDescription("@ArrayLengthPropertyAchievementName",
+        AchievementDescription = "@ArrayLengthPropertyAchievementDescription",
+        AchievementCategory = "@Arrays")]
     public class ArrayLengthPropertyAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

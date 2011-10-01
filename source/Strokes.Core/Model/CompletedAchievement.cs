@@ -6,6 +6,7 @@ namespace Strokes.Core.Model
     {
         public CompletedAchievement()
         {
+            Name = string.Empty;
         }
 
         public CompletedAchievement(AchievementDescriptor achievementDescriptor)
@@ -13,24 +14,45 @@ namespace Strokes.Core.Model
             Name = achievementDescriptor.Name;
         }
 
-        // Inferable data
-        public string Name { get; set; }
-        public bool IsCompleted { get; set; }
-        public DateTime DateCompleted { get; set; }
+        public string Name
+        {
+            get;
+            set;
+        }
 
-        //Equals, hashcode and all that jazz
+        public bool IsCompleted
+        {
+            get;
+            set;
+        }
+
+        public DateTime DateCompleted
+        {
+            get;
+            set;
+        }
+
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (CompletedAchievement)) return false;
-            return Equals((CompletedAchievement) obj);
+            if (ReferenceEquals(null, obj))
+                return false;
+            
+            if (ReferenceEquals(this, obj))
+                return true;
+            
+            if (obj.GetType() != typeof(CompletedAchievement))
+                return false;
+
+            return Equals((CompletedAchievement)obj);
         }
 
         public bool Equals(CompletedAchievement other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
+            if (ReferenceEquals(null, other))
+                return false;
+            
+            if (ReferenceEquals(this, other))
+                return true;
 
             return other.Name.Equals(Name);
         }
@@ -40,8 +62,9 @@ namespace Strokes.Core.Model
             unchecked
             {
                 int result = (Name != null ? Name.GetHashCode() : 0);
-                result = (result*397) ^ IsCompleted.GetHashCode();
-                result = (result*397) ^ DateCompleted.GetHashCode();
+                result = (result * 397) ^ IsCompleted.GetHashCode();
+                result = (result * 397) ^ DateCompleted.GetHashCode();
+                
                 return result;
             }
         }

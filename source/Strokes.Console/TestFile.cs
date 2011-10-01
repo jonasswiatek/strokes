@@ -9,27 +9,7 @@ namespace Strokes.Console
     {
         public void Method()
         {
-            SomeEnum bla = SomeEnum.More;
-
-            switch(bla)
-            {
-                case SomeEnum.More:
-                    System.Console.Write("More");
-                    return;
-                case SomeEnum.All:
-                    System.Console.Write("All");
-                    return;
-                default:
-                    System.Console.Write("Default");
-                    return;
-            }
+            int[] array = new int[] { 1, 2, 3, 4, 5 };
         }
-    }
-
-    public enum SomeEnum
-    {
-        All,
-        Many,
-        More
     }
 }

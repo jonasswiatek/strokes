@@ -80,7 +80,7 @@ namespace Strokes.BasicAchievements.Achievements
                             if (assignmentExpression.Right is PrimitiveExpression)
                             {
                                 PrimitiveExpression prim = (PrimitiveExpression) assignmentExpression.Right;
-                                if (prim.Value == "MaxValue")
+                                if (prim.Value.Equals("MaxValue"))
                                     UnlockWith(assignmentExpression);
                             }
                             else if (assignmentExpression.Right is MemberReferenceExpression)
