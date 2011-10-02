@@ -43,3 +43,6 @@ StyleCop.*
 
 # Office Temp Files
 ~$*
+
+#Tabs Studio Files
+Strokes.tss
