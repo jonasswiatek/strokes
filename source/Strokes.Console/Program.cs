@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using ICSharpCode.NRefactory;
 using ICSharpCode.NRefactory.Ast;
@@ -18,6 +20,11 @@ namespace Strokes.Console
         static void Main(string[] args)
         {
             var fullChain = true;
+
+            var cultureToTest = "da-DK"; //set to "ru-RU" to enable russian.
+            
+            //Comment the following line to use operating system default culture.
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureToTest);
 
             if(!fullChain)
             {
