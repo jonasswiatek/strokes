@@ -117,4 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AchivementsUnlocked" xml:space="preserve">
+    <value>Достижения открыты!</value>
+  </data>
+  <data name="AchivementUnlocked" xml:space="preserve">
+    <value>Достижение открыто!</value>
+  </data>
+  <data name="LeaderboardHeader" xml:space="preserve">
+    <value>ЛИДЕРЫ</value>
+  </data>
+  <data name="LeaderboardHelpText" xml:space="preserve">
+    <value>Информация о достижениях ваших знакомых.</value>
+  </data>
+  <data name="MyAchievementsHeader" xml:space="preserve">
+    <value>МОИ ДОСТИЖЕНИЯ</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="ResetAchievements" xml:space="preserve">
+    <value>СБРОСИТЬ ВСЕ ДОСТИЖЕНИЯ</value>
+  </data>
+  <data name="SettingsHeader" xml:space="preserve">
+    <value>НАСТРОЙКИ</value>
+  </data>
+  <data name="TotalAchievementsEarned" xml:space="preserve">
+    <value>Всего открытых достижений:</value>
+  </data>
+  <data name="Unlocked" xml:space="preserve">
+    <value>Открыто:</value>
+  </data>
 </root>
