@@ -153,6 +153,8 @@
     <Compile Include="Achievements\Error handling\TryCatchRethrowStatementAchievement.cs" />
     <Compile Include="Achievements\Error handling\TryCatchIgnoreStatementAchievement.cs" />
     <Compile Include="Achievements\Funny\BeastNumberAchievement.cs" />
+    <Compile Include="Achievements\Funny\SpeechlessAchievement.cs" />
+    <Compile Include="Achievements\Funny\CurseALotAchievement.cs" />
     <Compile Include="Achievements\Funny\TooManyModifiersDeclarationAchievement.cs" />
     <Compile Include="Achievements\Funny\SomeFunnyAchievement.cs" />
     <Compile Include="Achievements\Funny\TooManyDimensionArrayDeclarationAchievement.cs" />
@@ -272,6 +274,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Properties\AchivementResources.nl.Designer.cs">
+      <DependentUpon>AchivementResources.nl.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AchivementCategoryResources.nl.Designer.cs">
+      <DependentUpon>AchivementCategoryResources.nl.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Strokes.BasicAchievements.VSXPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -311,6 +323,18 @@
       <LastGenOutput>AchivementResources.ru-RU.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
       <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\AchivementResources.nl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchivementResources.nl.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\AchivementCategoryResources.nl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchivementCategoryResources.nl.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
