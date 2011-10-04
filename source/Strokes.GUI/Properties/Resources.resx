@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AchivementsUnlocked" xml:space="preserve">
+  <data name="AchievementsUnlocked" xml:space="preserve">
     <value>Achievement(s) Unlocked!</value>
   </data>
-  <data name="AchivementUnlocked" xml:space="preserve">
+  <data name="AchievementUnlocked" xml:space="preserve">
     <value>Achievement Unlocked!</value>
   </data>
   <data name="LeaderboardHeader" xml:space="preserve">
@@ -130,13 +130,13 @@
     <value>Information about what achievements other people you know have been completing.</value>
   </data>
   <data name="MyAchievementsHeader" xml:space="preserve">
-    <value>MY ACHIVEMENTS</value>
+    <value>MY AchievementS</value>
   </data>
   <data name="Of" xml:space="preserve">
     <value>of</value>
   </data>
   <data name="ResetAchievements" xml:space="preserve">
-    <value>RESET ACHIVEMENT PROGRESS</value>
+    <value>RESET Achievement PROGRESS</value>
   </data>
   <data name="SettingsHeader" xml:space="preserve">
     <value>SETTINGS</value>

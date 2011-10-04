@@ -7,9 +7,9 @@ using Strokes.Core.Model;
 
 namespace Strokes.GUI
 {
-    public class AchivementNotificationViewModel
+    public class AchievementNotificationViewModel
     {
-        public AchivementNotificationViewModel()
+        public AchievementNotificationViewModel()
         {
             this.CurrentAchievements = new ObservableCollection<AchievementDescriptor>();
         }

@@ -38,11 +38,11 @@
                     Orientation="Vertical">
             <TextBlock FontFamily="Segoe UI Semibold"
                        FontSize="16"
-                       Foreground="{DynamicResource AchivementForeground}"
+                       Foreground="{DynamicResource AchievementForeground}"
                        Text="{Binding Name, Mode=OneWay}"
                        TextWrapping="Wrap" />
             <TextBlock FontSize="16"
-                       Foreground="{DynamicResource ArchivementSubtleFontColor}"
+                       Foreground="{DynamicResource AchievementSubtleFontColor}"
                        Text="{Binding Description, Mode=OneWay}"
                        TextWrapping="Wrap" />
         </StackPanel>

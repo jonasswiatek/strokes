@@ -20,7 +20,7 @@
         WindowStyle="None"
         mc:Ignorable="d">
     <Window.DataContext>
-        <viewmodels:AchivementNotificationViewModel />
+        <viewmodels:AchievementNotificationViewModel />
     </Window.DataContext>
     <Window.Resources>
         <ResourceDictionary>
@@ -43,7 +43,7 @@
             </Border.BorderBrush>
             <Border HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Background="{DynamicResource AchivementLightBackground}"
+                    Background="{DynamicResource AchievementLightBackground}"
                     BorderBrush="Black"
                     BorderThickness="2,2,0,0">
                 <Grid Name="OuterGrid"
@@ -64,8 +64,8 @@
                                VerticalAlignment="Top"
                                FontFamily="Segoe UI Semibold"
                                FontSize="16"
-                               Foreground="{DynamicResource AchivementForeground}"
-                               Text="{Binding Resources.AchivementsUnlocked,
+                               Foreground="{DynamicResource AchievementForeground}"
+                               Text="{Binding Resources.AchievementsUnlocked,
                                               Source={StaticResource AppResources},
                                               Mode=OneWay}" />
                     <ScrollViewer Grid.Row="1"
@@ -74,7 +74,7 @@
                                   MaxWidth="500"
                                   MaxHeight="250"
                                   HorizontalScrollBarVisibility="Hidden"
-                                  Template="{DynamicResource AchivementScrollViewerControlTemplate}"
+                                  Template="{DynamicResource AchievementScrollViewerControlTemplate}"
                                   VerticalScrollBarVisibility="Auto">
                         <ItemsControl Name="UnlockedAchievementsList"
                                       HorizontalContentAlignment="Stretch"
@@ -97,7 +97,7 @@
               Margin="0,8,8,0"
               HorizontalAlignment="Right"
               VerticalAlignment="Top"
-              Background="{DynamicResource AchivementLightBackground}"
+              Background="{DynamicResource AchievementLightBackground}"
               IsHitTestVisible="True"
               MouseDown="CloseWindowImage_MouseDown">
             <Path Width="16"
