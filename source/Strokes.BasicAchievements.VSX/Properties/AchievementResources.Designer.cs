@@ -484,7 +484,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prop [tab][tab].
+        ///   Looks up a localized string similar to Prop [Tab][Tab].
         /// </summary>
         public static string CreateAutoPropertyAchievementName {
             get {
@@ -835,7 +835,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Call another constructor using the this() keyword from a constructor.
+        ///   Looks up a localized string similar to Call another constructor using the this keyword from a constructor.
         /// </summary>
         public static string CreateThisConstructorInitAchievementDescription {
             get {
