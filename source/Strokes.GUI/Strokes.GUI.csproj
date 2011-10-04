@@ -101,7 +101,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ViewModels\AchivementNotificationViewModel.cs" />
+    <Compile Include="ViewModels\AchievementNotificationViewModel.cs" />
     <Compile Include="Views\AchievementNotificationBox.xaml.cs">
       <DependentUpon>AchievementNotificationBox.xaml</DependentUpon>
     </Compile>

@@ -34,10 +34,10 @@ namespace Strokes.Data
             var descriptionAttribute = GetDescriptionAttribute(achievement);
             var assembly = achievement.GetType().Assembly;
 
-            var achivementResourcesType = assembly.GetType("Strokes.Resources.AchivementResources");
-            var categoryResourcesType = assembly.GetType("Strokes.Resources.AchivementCategoryResources");
+            var AchievementResourcesType = assembly.GetType("Strokes.Resources.AchievementResources");
+            var categoryResourcesType = assembly.GetType("Strokes.Resources.AchievementCategoryResources");
 
-            var achivementResources = (ResourceManager)achivementResourcesType.GetProperty("ResourceManager", 
+            var AchievementResources = (ResourceManager)AchievementResourcesType.GetProperty("ResourceManager", 
                 BindingFlags.Static | BindingFlags.Public).GetValue(null, null);
 
             var categoryResources = (ResourceManager)categoryResourcesType.GetProperty("ResourceManager", 
@@ -49,11 +49,11 @@ namespace Strokes.Data
 
             var title = descriptionAttribute.AchievementTitle;
             if (title.StartsWith("@") && title.Length > 1)
-                title = achivementResources.GetString(title.Substring(1));
+                title = AchievementResources.GetString(title.Substring(1));
 
             var description = descriptionAttribute.AchievementDescription;
             if (description.StartsWith("@") && description.Length > 1)
-                description = achivementResources.GetString(description.Substring(1));
+                description = AchievementResources.GetString(description.Substring(1));
 
             var descriptor = new AchievementDescriptor
             {
