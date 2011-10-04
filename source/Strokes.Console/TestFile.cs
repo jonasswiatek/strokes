@@ -9,7 +9,8 @@ namespace Strokes.Console
     {
         public void Method()
         {
-            int[] array = new int[] { 1, 2, 3, 4, 5 };
+            int blah;
+            int blah2; int blah3; int blah4; int blah5; int blah6; int blah7;
         }
     }
 }

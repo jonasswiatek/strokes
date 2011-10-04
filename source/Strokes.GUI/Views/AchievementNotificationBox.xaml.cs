@@ -25,15 +25,15 @@ namespace Strokes.GUI.Views
             if (DesignerProperties.GetIsInDesignMode(this) == false)
                 UnlockedAchievementsList.LayoutUpdated += UnlockedAchievementsList_LayoutUpdated;
 
-            //Close this window again if another detection session is launched by the achivement context.
+            //Close this window again if another detection session is launched by the Achievement context.
             AchievementContext.AchievementDetectionStarting += (sender, args) => Close();
         }
 
-        private AchivementNotificationViewModel ViewModel
+        private AchievementNotificationViewModel ViewModel
         {
             get
             {
-                return DataContext as AchivementNotificationViewModel;
+                return DataContext as AchievementNotificationViewModel;
             }
         }
 

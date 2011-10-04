@@ -6,8 +6,8 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@DoWhileLoopAchievementName",
-        AchievementDescription = "@DoWhileLoopAchievementDescription",
+    [AchievementDescription("@WhileLoopAchievementName",
+        AchievementDescription = "@WhileLoopAchievementDescription",
         AchievementCategory = "@ProgramFlow")]
     public class WhileLoopAchievement : NRefactoryAchievement
     {

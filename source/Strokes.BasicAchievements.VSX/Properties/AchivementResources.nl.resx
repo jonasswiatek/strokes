@@ -117,10 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CreateClassAchievementDescription" xml:space="preserve">
-    <value>Lav en klasse</value>
+  <data name="UseAsKeywordAchievementDescription" xml:space="preserve">
+    <value>Probeer een expliciete cast te doen met het AS keyword</value>
   </data>
-  <data name="CreateClassAchievementName" xml:space="preserve">
-    <value>Klasse!</value>
+  <data name="UseAsKeywordAchievementName" xml:space="preserve">
+    <value>As</value>
+  </data>
+  <data name="UseConsoleReadlineAchievementDescription" xml:space="preserve">
+    <value>Vraag invoer van de gebruiker</value>
+  </data>
+  <data name="UseConsoleReadlineAchievementName" xml:space="preserve">
+    <value>Gebruik Console.ReadLine()</value>
+  </data>
+  <data name="UseIsKeywordAchievementDescription" xml:space="preserve">
+    <value>Maak een expressie met het IS keyword</value>
+  </data>
+  <data name="UseIsKeywordAchievementName" xml:space="preserve">
+    <value>Is</value>
+  </data>
+  <data name="UsingStatementAchievementDescription" xml:space="preserve">
+    <value>Gebruikt de using-statement</value>
+  </data>
+  <data name="UsingStatementAchievementName" xml:space="preserve">
+    <value>Using statement</value>
+  </data>
+  <data name="VirtualMethodAchievementDescription" xml:space="preserve">
+    <value>Maak een virtuele method (virtual)</value>
+  </data>
+  <data name="VirtualMethodAchievementName" xml:space="preserve">
+    <value>Virtual Reality</value>
+  </data>
+  <data name="WhileLoopAchievementDescription" xml:space="preserve">
+    <value>Gebruik een while loop</value>
+  </data>
+  <data name="WhileLoopAchievementName" xml:space="preserve">
+    <value>While loop</value>
   </data>
 </root>

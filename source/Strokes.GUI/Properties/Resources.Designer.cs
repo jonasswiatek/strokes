@@ -63,18 +63,18 @@ namespace Strokes.GUI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Achievement(s) Unlocked!.
         /// </summary>
-        public static string AchivementsUnlocked {
+        public static string AchievementsUnlocked {
             get {
-                return ResourceManager.GetString("AchivementsUnlocked", resourceCulture);
+                return ResourceManager.GetString("AchievementsUnlocked", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Achievement Unlocked!.
         /// </summary>
-        public static string AchivementUnlocked {
+        public static string AchievementUnlocked {
             get {
-                return ResourceManager.GetString("AchivementUnlocked", resourceCulture);
+                return ResourceManager.GetString("AchievementUnlocked", resourceCulture);
             }
         }
         
@@ -97,7 +97,7 @@ namespace Strokes.GUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MY ACHIVEMENTS.
+        ///   Looks up a localized string similar to MY AchievementS.
         /// </summary>
         public static string MyAchievementsHeader {
             get {
@@ -115,7 +115,7 @@ namespace Strokes.GUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RESET ACHIVEMENT PROGRESS.
+        ///   Looks up a localized string similar to RESET Achievement PROGRESS.
         /// </summary>
         public static string ResetAchievements {
             get {
