@@ -82,17 +82,17 @@ namespace Strokes.GUI
 
             foreach (var category in categories)
             {
-                var archivementCategory = new AchievementsPerCategory()
+                var AchievementCategory = new AchievementsPerCategory()
                 {
                     CategoryName = category.CategoryName,
                 };
 
                 foreach (var Achievement in category.Achievements)
                 {
-                    archivementCategory.Add(Achievement);
+                    AchievementCategory.Add(Achievement);
                 }
 
-                AchievementsOrdered.Add(archivementCategory);
+                AchievementsOrdered.Add(AchievementCategory);
             }
         }
 

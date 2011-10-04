@@ -21,10 +21,10 @@
     <SolidColorBrush x:Key="AchievementForeground"
                      Color="White" />
 
-    <SolidColorBrush x:Key="ArchivementBorder"
+    <SolidColorBrush x:Key="AchievementBorder"
                      Color="#FF4D4B48" />
 
-    <SolidColorBrush x:Key="ArchivementSubtleFontColor"
+    <SolidColorBrush x:Key="AchievementSubtleFontColor"
                      Color="#FFCBCBCB" />
 
     <LinearGradientBrush x:Key="AchievementTabItemSelectedBackground" StartPoint="0.5,0" EndPoint="0.5,1">
@@ -83,13 +83,13 @@
         <Setter Property="FontSize" Value="12" />
     </Style>
 
-    <Thickness x:Key="ArchivementControlMargin"
+    <Thickness x:Key="AchievementControlMargin"
                Bottom="10"
                Left="10"
                Right="10"
                Top="10" />
 
-    <Thickness x:Key="ArchivementsListBoxMargin"
+    <Thickness x:Key="AchievementsListBoxMargin"
                Bottom="10"
                Left="10"
                Right="10"
@@ -201,7 +201,7 @@
                             Margin="15,10,10,10">
                     <TextBlock HorizontalAlignment="Left"
                                VerticalAlignment="Top"
-                               Foreground="{StaticResource ArchivementSubtleFontColor}"
+                               Foreground="{StaticResource AchievementSubtleFontColor}"
                                Visibility="{Binding IsCompleted,
                                                     Converter={StaticResource BoolToVisibilityConverter}}">
                         <Run Text="Unlocked:" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text="{Binding DateCompleted, FallbackValue=''}" />
@@ -275,7 +275,7 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
         <Setter Property="Padding" Value="4,4,4,4" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{StaticResource ArchivementBorder}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AchievementBorder}" />
         <Setter Property="Background" Value="White" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />

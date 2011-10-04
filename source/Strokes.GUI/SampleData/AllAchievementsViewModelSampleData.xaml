@@ -5,7 +5,7 @@
                                       TotalAchievements="72"
                                       TotalCompleted="42">
     <Strokes_GUI:AllAchievementsViewModel.AchievementsOrdered>
-        <Strokes_GUI:AchievementsPerCategory CategoryName="Basic Archivements"
+        <Strokes_GUI:AchievementsPerCategory CategoryName="Basic Achievements"
                                              PercentageCompleted="0"
                                              TotalCompleted="0">
             <Strokes_Core_Model:AchievementDescriptor Name="Achievement Name"

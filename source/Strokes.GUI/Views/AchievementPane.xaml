@@ -25,7 +25,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Margin="{DynamicResource ArchivementControlMargin}">
+        <StackPanel Grid.Row="0" Margin="{DynamicResource AchievementControlMargin}">
             <Border BorderBrush="{DynamicResource AchievementBorder}" BorderThickness="2">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Background="{DynamicResource AchievementLightBackground}" Orientation="Vertical">
@@ -54,7 +54,7 @@
             </Border>
         </StackPanel>
         <TabControl Grid.Row="1"
-                    Margin="{DynamicResource ArchivementControlMargin}"
+                    Margin="{DynamicResource AchievementControlMargin}"
                     Background="{DynamicResource AchievementLightBackground}"
                     BorderBrush="{DynamicResource AchievementBorder}"
                     BorderThickness="2"
@@ -77,7 +77,7 @@
                     <StackPanel Grid.Column="0">
                         <ListBox x:Name="AchievementsCategoryListBox"
                                  Width="210"
-                                 Margin="{DynamicResource ArchivementControlMargin}"
+                                 Margin="{DynamicResource AchievementControlMargin}"
                                  BorderThickness="0"
                                  ItemsSource="{Binding AchievementsOrdered}"
                                  ItemTemplate="{DynamicResource CategoryTemplate}"
@@ -97,7 +97,7 @@
                                       ItemsSource="{Binding SelectedItem,
                                                             ElementName=AchievementsCategoryListBox}"
                                       ItemTemplate="{DynamicResource AchievementTemplate}"
-                                      Padding="{DynamicResource ArchivementsListBoxMargin}"
+                                      Padding="{DynamicResource AchievementsListBoxMargin}"
                                       VirtualizingStackPanel.IsVirtualizing="True"
                                       VirtualizingStackPanel.VirtualizationMode="Standard" />
                     </ScrollViewer>

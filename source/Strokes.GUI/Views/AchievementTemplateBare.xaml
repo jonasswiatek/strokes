@@ -42,7 +42,7 @@
                        Text="{Binding Name, Mode=OneWay}"
                        TextWrapping="Wrap" />
             <TextBlock FontSize="16"
-                       Foreground="{DynamicResource ArchivementSubtleFontColor}"
+                       Foreground="{DynamicResource AchievementSubtleFontColor}"
                        Text="{Binding Description, Mode=OneWay}"
                        TextWrapping="Wrap" />
         </StackPanel>
