@@ -226,7 +226,7 @@
     <value>Создайте метод, возвращающий float</value>
 </data>
   <data name="JaggedArrayAchievementName" xml:space="preserve">
-    <value>Зуб</value>
+    <value>Пила</value>
 </data>
   <data name="JaggedArrayAchievementDescription" xml:space="preserve">
     <value>Объявите вложенный многомерный массив ([][] вместо [,])</value>
@@ -247,67 +247,67 @@
     <value>Объявите несколько переменных типа float в одном операторе</value>
 </data>
   <data name="MultipleDeclareFloatDescription" xml:space="preserve">
-    <value>Declare multiple floats in one go</value>
+    <value>Объявите несколько переменных типа float за раз</value>
 </data>
   <data name="DeclareInitializeFloatName" xml:space="preserve">
-    <value>Declare and initialize float</value>
+    <value>Объявите и проинициализируйте float</value>
 </data>
   <data name="DeclareInitializeFloatDescription" xml:space="preserve">
-    <value>Declare and initialize a float in one statement</value>
+    <value>Объявите и проинициализируйте float одним оператором</value>
 </data>
   <data name="MultipleDeclareDoubleName" xml:space="preserve">
-    <value>Declare multiple doubles in one statement</value>
+    <value>Объявите несколько переменных типа double в одном операторе</value>
 </data>
   <data name="MultipleDeclareDoubleDescription" xml:space="preserve">
-    <value>Declare multiple doubles in one go</value>
+    <value>Объявите несколько переменных типа double за раз</value>
 </data>
   <data name="PrintToConsoleAchievementName" xml:space="preserve">
-    <value>Ghost in the Shell</value>
+    <value>Призрак в доспехах</value>
 </data>
   <data name="PrintToConsoleAchievementDescription" xml:space="preserve">
-    <value>Print something to the console</value>
+    <value>Выведите что-нибудь на консоль</value>
 </data>
   <data name="ForEachWithEnumAchievementName" xml:space="preserve">
-    <value>Enumerate an enumeration</value>
+    <value>Переберите перечисление</value>
 </data>
   <data name="ForEachWithEnumAchievementDescription" xml:space="preserve">
-    <value>Use a foreach loop to enumerate over all elements of ...an enumeration.</value>
+    <value>Используйте цикл foreach чтобы пройтись по всем элементам перечисления</value>
 </data>
   <data name="PrintNewLineAchievementName" xml:space="preserve">
-    <value>Print a newline using \n</value>
+    <value>Выведите новую строку с помощью символа \n</value>
 </data>
   <data name="PrintNewLineAchievementDescription" xml:space="preserve">
-    <value>Print a newline to the console using \n</value>
+    <value>Выведите новую строку на консоль с помощью символa \n</value>
 </data>
   <data name="PrintHorizontalTabAchievementName" xml:space="preserve">
-    <value>Print a tab using \t</value>
+    <value>Выведите табуляцию с помощью символа \t</value>
 </data>
   <data name="PrintHorizontalTabAchievementDescription" xml:space="preserve">
-    <value>Print a horizontal tab to the console using \t</value>
+    <value>Выведите горизонтальную табуляцию на консоль с помощью символа \t</value>
 </data>
   <data name="PrintQuoteCharAchievementName" xml:space="preserve">
-    <value>Print a " using \"</value>
+    <value>Выведите символ " используя escape-последовательность \"</value>
 </data>
   <data name="PrintQuoteCharAchievementDescription" xml:space="preserve">
-    <value>Print a quote (") to the console using \"</value>
+    <value>Выведите двойную кавычку (") на консоль используя escape-последовательность \"</value>
 </data>
   <data name="PrintSingleQuoteCharAchievementName" xml:space="preserve">
-    <value>Print a ' using \'</value>
+    <value>Выведите символ ' используя escape-последовательность \'</value>
 </data>
   <data name="PrintSingleQuoteCharAchievementDescription" xml:space="preserve">
-    <value>Print a quote (') to the console using \'</value>
+    <value>Выведите кавычку (') на консоль используя escape-последовательность \'</value>
 </data>
   <data name="PrintBackSlashCharAchievementName" xml:space="preserve">
-    <value>Print a \ using \\</value>
+    <value>Выведите символ \ используя escape-последовательность \\</value>
 </data>
   <data name="PrintBackSlashCharAchievementDescription" xml:space="preserve">
-    <value>Print a quote (\) to the console using \\</value>
+    <value>Выведите обратный слеш (\) на консоль используя escape-последовательность \\</value>
 </data>
   <data name="BeastNumberAchievementName" xml:space="preserve">
-    <value>The number of the beast...</value>
+    <value>Число зверя...</value>
 </data>
   <data name="BeastNumberAchievementDescription" xml:space="preserve">
-    <value>Assign a value of 666 to an integer</value>
+    <value>Назначьте целой переменной значение 666</value>
 </data>
   <data name="TryCatchIgnoreStatementAchievementName" xml:space="preserve">
     <value>Try-Catch-Ignore</value>

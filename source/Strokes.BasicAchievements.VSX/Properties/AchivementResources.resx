@@ -301,7 +301,7 @@
     <value>Print a \ using \\</value>
   </data>
   <data name="PrintBackSlashCharAchievementDescription" xml:space="preserve">
-    <value>Print a quote (\) to the console using \\</value>
+    <value>Print a backslash (\) to the console using \\</value>
   </data>
   <data name="BeastNumberAchievementName" xml:space="preserve">
     <value>The number of the beast...</value>

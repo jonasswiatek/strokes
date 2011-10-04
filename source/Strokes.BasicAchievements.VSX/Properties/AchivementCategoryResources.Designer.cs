@@ -22,14 +22,14 @@ namespace Strokes.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AchivementCategoryResources {
+    public class AchievementCategoryResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AchivementCategoryResources() {
+        internal AchievementCategoryResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Strokes.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Strokes.BasicAchievements.Properties.AchivementCategoryResources", typeof(AchivementCategoryResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Strokes.BasicAchievements.Properties.AchievementCategoryResources", typeof(AchievementCategoryResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
