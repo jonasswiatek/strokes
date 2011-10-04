@@ -178,7 +178,7 @@
     <value>Use a try-catch-finally statement</value>
   </data>
   <data name="CreateAutoPropertyAchievementName" xml:space="preserve">
-    <value>Prop [tab][tab]</value>
+    <value>Prop [Tab][Tab]</value>
   </data>
   <data name="CreateAutoPropertyAchievementDescription" xml:space="preserve">
     <value>Create an auto property </value>
@@ -427,7 +427,7 @@
     <value>Dis a constructor</value>
   </data>
   <data name="CreateThisConstructorInitAchievementDescription" xml:space="preserve">
-    <value>Call another constructor using the this() keyword from a constructor</value>
+    <value>Call another constructor using the this keyword from a constructor</value>
   </data>
   <data name="DeclareInitArrayAchievementName" xml:space="preserve">
     <value>Declare and initialize an array with an initializer list</value>
