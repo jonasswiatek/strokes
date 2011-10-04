@@ -46,3 +46,6 @@ StyleCop.*
 
 #Tabs Studio Files
 Strokes.tss
+
+#Build output
+build-output/
