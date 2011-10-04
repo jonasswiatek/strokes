@@ -12,27 +12,27 @@
     <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
 
     <!--  Brushes  -->
-    <SolidColorBrush x:Key="AchivementDarkBackground"
+    <SolidColorBrush x:Key="AchievementDarkBackground"
                      Color="#FF262626" />
 
-    <SolidColorBrush x:Key="AchivementLightBackground"
+    <SolidColorBrush x:Key="AchievementLightBackground"
                      Color="#FF383635" />
 
-    <SolidColorBrush x:Key="AchivementForeground"
+    <SolidColorBrush x:Key="AchievementForeground"
                      Color="White" />
 
-    <SolidColorBrush x:Key="AchivementBorder"
+    <SolidColorBrush x:Key="ArchivementBorder"
                      Color="#FF4D4B48" />
 
     <SolidColorBrush x:Key="ArchivementSubtleFontColor"
                      Color="#FFCBCBCB" />
 
-    <LinearGradientBrush x:Key="AchivementTabItemSelectedBackground" StartPoint="0.5,0" EndPoint="0.5,1">
+    <LinearGradientBrush x:Key="AchievementTabItemSelectedBackground" StartPoint="0.5,0" EndPoint="0.5,1">
         <GradientStop Offset="0.6" Color="#FF8AB7DE" />
         <GradientStop Color="#FF537494" />
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="AchivementTabItemBackground"
+    <SolidColorBrush x:Key="AchievementTabItemBackground"
                      Color="#FF6E6A69" />
 
     <SolidColorBrush x:Key="ListBoxItemSelectedColor"
@@ -41,7 +41,7 @@
     <SolidColorBrush x:Key="ProgressBarIndicatorColor"
                      Color="#FF4D6D8C" />
 
-    <SolidColorBrush x:Key="AchivementItemSelectedForeground"
+    <SolidColorBrush x:Key="AchievementItemSelectedForeground"
                      Color="Black" />
 
     <SolidColorBrush x:Key="SelectedListBoxItemBackground"
@@ -79,7 +79,7 @@
                      Color="Transparent" />
 
     <Style TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
+        <Setter Property="Foreground" Value="{StaticResource AchievementForeground}" />
         <Setter Property="FontSize" Value="12" />
     </Style>
 
@@ -101,16 +101,15 @@
     </Style>
 
     <Style TargetType="{x:Type ListBoxItem}">
-        <Setter Property="Background" Value="{StaticResource AchivementLightBackground}" />
+        <Setter Property="Background" Value="{StaticResource AchievementLightBackground}" />
         <Setter Property="Margin" Value="0,0,0,4" />
     </Style>
 
-    <Style x:Key="AchivementTabItemStyle"
+    <Style x:Key="AchievementTabItemStyle"
            TargetType="{x:Type TabItem}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource TabItemFocusVisual}" />
-        <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
+        <Setter Property="Foreground" Value="{StaticResource AchievementForeground}" />
         <Setter Property="Padding" Value="6,1,6,1" />
-        <Setter Property="BorderBrush" Value="{StaticResource AchivementBorder}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AchievementBorder}" />
         <Setter Property="Width" Value="121" />
         <Setter Property="Height" Value="42" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -135,11 +134,11 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Panel.ZIndex" Value="1" />
-                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource AchivementTabItemSelectedBackground}" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource AchievementTabItemSelectedBackground}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="False">
-                            <Setter Property="Foreground" Value="{StaticResource AchivementForeground}" />
-                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource AchivementTabItemBackground}" />
+                            <Setter Property="Foreground" Value="{StaticResource AchievementForeground}" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource AchievementTabItemBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -149,9 +148,9 @@
 
     <DataTemplate x:Key="AchievementNotificationTemplate">
         <Border Margin="0,0,0,4"
-                BorderBrush="{DynamicResource AchivementBorder}"
+                BorderBrush="{DynamicResource AchievementBorder}"
                 BorderThickness="0,0,1,0">
-            <Grid Background="{StaticResource AchivementDarkBackground}">
+            <Grid Background="{StaticResource AchievementDarkBackground}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -167,7 +166,7 @@
                       Margin="0,15,15,0"
                       HorizontalAlignment="Stretch"
                       VerticalAlignment="Top"
-                      Background="{StaticResource AchivementDarkBackground}"
+                      Background="{StaticResource AchievementDarkBackground}"
                       IsHitTestVisible="True"
                       Visibility="{Binding CodeLocation,
                                            Converter={StaticResource NullToVisibilityConverter}}">
@@ -188,16 +187,16 @@
 
     <DataTemplate x:Key="AchievementTemplate">
         <Border Margin="0,0,0,4"
-                BorderBrush="{StaticResource AchivementBorder}"
+                BorderBrush="{StaticResource AchievementBorder}"
                 BorderThickness="1">
-            <Grid Background="{StaticResource AchivementDarkBackground}">
+            <Grid Background="{StaticResource AchievementDarkBackground}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <local:AchievementTemplateBare Grid.Column="0"
                                                Margin="5"
-                                               Foreground="{DynamicResource AchivementForeground}" />
+                                               Foreground="{DynamicResource AchievementForeground}" />
                 <StackPanel Grid.Column="1"
                             Margin="15,10,10,10">
                     <TextBlock HorizontalAlignment="Left"
@@ -239,8 +238,8 @@
     <DataTemplate x:Key="CategoryTemplate">
         <Grid x:Name="PART_Background">
             <Border Margin="3,0,0,0"
-                    Background="{StaticResource AchivementDarkBackground}"
-                    BorderBrush="{DynamicResource AchivementBorder}"
+                    Background="{StaticResource AchievementDarkBackground}"
+                    BorderBrush="{DynamicResource AchievementBorder}"
                     BorderThickness="1">
                 <Grid Margin="10, 3, 10, 3">
                     <Grid.ColumnDefinitions>
@@ -271,7 +270,7 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <Style x:Key="AchivementTabControlStyle"
+    <Style x:Key="AchievementTabControlStyle"
            TargetType="{x:Type TabControl}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
         <Setter Property="Padding" Value="4,4,4,4" />
@@ -360,7 +359,7 @@
         </Setter>
     </Style>
 
-    <ControlTemplate x:Key="AchivementListBoxControlTemplate"
+    <ControlTemplate x:Key="AchievementListBoxControlTemplate"
                      TargetType="{x:Type ListBox}">
         <Border x:Name="Bd"
                 Background="{TemplateBinding Background}"
@@ -385,11 +384,9 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="AchivementProgressBarStyle"
+    <Style x:Key="AchievementProgressBarStyle"
            TargetType="{x:Type ProgressBar}">
         <Setter Property="Foreground" Value="White" />
-        <Setter Property="Background" Value="{StaticResource ProgressBarBackground}" />
-        <Setter Property="BorderBrush" Value="{StaticResource ProgressBarBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
@@ -452,7 +449,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="AchivementButtonStyle"
+    <Style x:Key="AchievementButtonStyle"
            TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -481,7 +478,7 @@
         </Setter>
     </Style>
 
-    <ControlTemplate x:Key="AchivementScrollViewerControlTemplate"
+    <ControlTemplate x:Key="AchievementScrollViewerControlTemplate"
                      TargetType="{x:Type ScrollViewer}">
         <Grid x:Name="Grid"
               Background="{TemplateBinding Background}">
@@ -514,7 +511,7 @@
                        Cursor="Arrow"
                        Maximum="{TemplateBinding ScrollableHeight}"
                        Minimum="0"
-                       Style="{DynamicResource AchivementScrollBarStyle}"
+                       Style="{DynamicResource AchievementScrollBarStyle}"
                        ViewportSize="{TemplateBinding ViewportHeight}"
                        Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
                        Value="{Binding VerticalOffset,
@@ -635,7 +632,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="AchivementScrollBarStyle"
+    <Style x:Key="AchievementScrollBarStyle"
            TargetType="{x:Type ScrollBar}">
         <Setter Property="Background" Value="{StaticResource ScrollBarBackground}" />
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />

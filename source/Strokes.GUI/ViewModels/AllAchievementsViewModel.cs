@@ -77,8 +77,8 @@ namespace Strokes.GUI
             AchievementsOrdered.Clear();
 
             var repository = new AchievementDescriptorRepository();
-            var achivements = repository.GetAll();
-            var categories = achivements.AsCategories();
+            var Achievements = repository.GetAll();
+            var categories = Achievements.AsCategories();
 
             foreach (var category in categories)
             {
@@ -87,9 +87,9 @@ namespace Strokes.GUI
                     CategoryName = category.CategoryName,
                 };
 
-                foreach (var achivement in category.Achievements)
+                foreach (var Achievement in category.Achievements)
                 {
-                    archivementCategory.Add(achivement);
+                    archivementCategory.Add(Achievement);
                 }
 
                 AchievementsOrdered.Add(archivementCategory);
@@ -98,13 +98,13 @@ namespace Strokes.GUI
 
         private void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)
         {
-            foreach (var achivement in args.Achievements)
+            foreach (var Achievement in args.Achievements)
             {
                 foreach (var category in AchievementsOrdered)
                 {
-                    if (achivement.Category == category.CategoryName)
+                    if (Achievement.Category == category.CategoryName)
                     {
-                        category.Update(achivement);
+                        category.Update(Achievement);
                         break;
                     }
                 }
@@ -147,11 +147,11 @@ namespace Strokes.GUI
 
         internal void Update(AchievementDescriptor descriptor)
         {
-            var achivementDescriptor = this.SingleOrDefault(a => a.Name == descriptor.Name);
+            var AchievementDescriptor = this.SingleOrDefault(a => a.Name == descriptor.Name);
 
-            if (achivementDescriptor != null)
+            if (AchievementDescriptor != null)
             {
-                achivementDescriptor = descriptor;
+                AchievementDescriptor = descriptor;
             }
 
             RaisePropertyChanged("TotalCompleted");
