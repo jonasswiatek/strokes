@@ -30,7 +30,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                 }
             };
 
-            RequiredOverloads.Add(requirementSet);
+            requiredOverloads.Add(requirementSet);
         }
     }
 }

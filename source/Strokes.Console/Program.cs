@@ -24,7 +24,7 @@ namespace Strokes.Console
             var cultureToTest = "ru-RU"; //set to "ru-RU" to enable russian.set to "nl" for dutch
             
             //Comment the following line to use operating system default culture.
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureToTest);
+            //Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureToTest);
 
             if(!fullChain)
             {

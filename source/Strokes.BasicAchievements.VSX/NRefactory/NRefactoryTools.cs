@@ -14,21 +14,25 @@ namespace Strokes.BasicAchievements.NRefactory
 
             callChain.Add(memberReferenceExpression.MemberName);
 
-            var reference = memberReferenceExpression.TargetObject as MemberReferenceExpression;
+            Expression reference = memberReferenceExpression.TargetObject as IdentifierExpression;
             while (reference != null)
             {
-                callChain.Add(reference.MemberName);
-                if (reference.TargetObject is IdentifierExpression)
+                if (reference is MemberReferenceExpression)
                 {
-                    var identifier = reference.TargetObject as IdentifierExpression;
-                    callChain.Add(identifier.Identifier);
+                    callChain.Add((reference as MemberReferenceExpression).MemberName);
+
+                    reference = memberReferenceExpression.TargetObject as IdentifierExpression;
+                }
+                else if (reference is IdentifierExpression)
+                {
+                    callChain.Add((reference as IdentifierExpression).Identifier);
                     break;
                 }
-
-                reference = reference.TargetObject as MemberReferenceExpression;
             }
 
-            return string.Join(".", callChain.ToArray().Reverse());
+            var callstring = string.Join(".", callChain.ToArray().Reverse());
+
+            return callstring;
         }
     }
 }

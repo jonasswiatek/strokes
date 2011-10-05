@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Arrays")]
     public class ArrayClearMethodAchievement : AbstractMethodCall
     {
-        public ArrayClearMethodAchievement() : base("System.Array.Clear")
+        public ArrayClearMethodAchievement() : base("Array.Clear")
         {
         }
     }
