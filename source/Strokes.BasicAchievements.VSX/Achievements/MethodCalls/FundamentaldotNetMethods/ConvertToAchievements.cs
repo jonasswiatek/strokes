@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Converting")]
     public class ConvertToCharAchievement : AbstractMethodCall
     {
-        public ConvertToCharAchievement() : base("System.Convert.ToChar")
+        public ConvertToCharAchievement() : base("Convert.ToChar")
         {
         }
     }
@@ -22,7 +22,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
     public class ConvertToDecimalAchievement : AbstractMethodCall
     {
         public ConvertToDecimalAchievement()
-            : base("System.Convert.ToDecimal")
+            : base("Convert.ToDecimal")
         {
         }
     }
@@ -33,7 +33,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
     public class ConvertToDoubleAchievement : AbstractMethodCall
     {
         public ConvertToDoubleAchievement()
-            : base("System.Convert.ToDouble")
+            : base("Convert.ToDouble")
         {
         }
     }
@@ -44,7 +44,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
     public class ConvertToInt32Achievement : AbstractMethodCall
     {
         public ConvertToInt32Achievement()
-            : base("System.Convert.ToInt32")
+            : base("Convert.ToInt32")
         {
         }
     }

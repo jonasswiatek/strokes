@@ -33,7 +33,9 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Method man and a friend", AchievementDescription = "Create a method with 1 parameter", AchievementCategory = "@Method")]
+    [AchievementDescription("Method man and a friend", 
+        AchievementDescription = "Create a method with 1 parameter", 
+        AchievementCategory = "@Method")]
     public class CreateMethodOneParameterAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

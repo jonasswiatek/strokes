@@ -12,8 +12,9 @@ namespace Strokes.Console
     {
         public void Method()
         {
-            int blah;
-            int blah2; int blah3; int blah4; int blah5; int blah6; int blah7;
+            int[] foo = new int[] { 1, 2, 3 };
+
+            System.Array.Clear(foo, 0, 1);
         }
     }
 }

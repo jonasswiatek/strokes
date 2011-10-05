@@ -13,7 +13,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
     public class FormatSpecifierAchievement : AbstractMethodCall
     {
         public FormatSpecifierAchievement()
-            : base("System.Console.WriteLine")
+            : base("Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
             {
@@ -33,7 +33,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                 }
             };
 
-            RequiredOverloads.Add(requirementSet);
+            requiredOverloads.Add(requirementSet);
         }
 
 

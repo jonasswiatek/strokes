@@ -6,29 +6,41 @@ using ICSharpCode.NRefactory.Ast;
 
 namespace Strokes.BasicAchievements.NRefactory
 {
-    public class NRefactoryTools
+    public static class NRefactoryTools
     {
-        public static string GetCallChainAsString(MemberReferenceExpression memberReferenceExpression)
+        public static string GetCallChainAsString(this MemberReferenceExpression memberReferenceExpression)
         {
-            var callChain = new List<string>();
+            var callChain = new List<string>()
+            {
+                memberReferenceExpression.MemberName
+            };
 
-            callChain.Add(memberReferenceExpression.MemberName);
+            Expression reference = memberReferenceExpression.TargetObject;
 
-            var reference = memberReferenceExpression.TargetObject as MemberReferenceExpression;
             while (reference != null)
             {
-                callChain.Add(reference.MemberName);
-                if (reference.TargetObject is IdentifierExpression)
+                if (reference is MemberReferenceExpression)
                 {
-                    var identifier = reference.TargetObject as IdentifierExpression;
-                    callChain.Add(identifier.Identifier);
+                    callChain.Add((reference as MemberReferenceExpression).MemberName);
+
+                    reference = memberReferenceExpression.TargetObject as IdentifierExpression;
+                }
+                else if (reference is IdentifierExpression)
+                {
+                    var identifier = (reference as IdentifierExpression).Identifier;
+
+                    // Ignore the 'System' namespace.
+                    if (identifier != "System")
+                        callChain.Add(identifier);
+
                     break;
                 }
-
-                reference = reference.TargetObject as MemberReferenceExpression;
             }
 
-            return string.Join(".", callChain.ToArray().Reverse());
+            // Reverse the callstring, so 'Clear.Array.System' becomes 'System.Array.Clear'.
+            callChain.Reverse();
+
+            return string.Join(".", callChain);
         }
     }
 }
