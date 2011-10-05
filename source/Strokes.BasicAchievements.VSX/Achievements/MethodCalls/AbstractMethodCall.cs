@@ -49,9 +49,7 @@ namespace Strokes.BasicAchievements.Achievements
                 var memberReferenceExpression = invocationExpression.TargetObject as MemberReferenceExpression;
                 if (memberReferenceExpression != null)
                 {
-                    // TODO: HelloWorld bug here. MethodToFind is set (from constructor parameter) to Class + Method name, 
-                    //  but GetCallChainAsString returns only method name - WriteLine
-                    var methodName = NRefactoryTools.GetCallChainAsString(memberReferenceExpression);
+                    var methodName = memberReferenceExpression.GetCallChainAsString();
                     
                     if (MethodToFind == methodName)
                     {

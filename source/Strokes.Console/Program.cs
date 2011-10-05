@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Ignore warnings in the test file.
+#pragma warning disable
+using System;
 using System.Globalization;
 using System.IO;
 using System.Threading;
@@ -54,8 +56,8 @@ namespace Strokes.Console
                 DetectionDispatcher.DetectionCompleted += new EventHandler<DetectionCompletedEventArgs>(DetectionDispatcher_DetectionCompleted);
 
                 DetectionDispatcher.Dispatch(new BuildInformation()
-                                                 {
-                                                     ActiveFile = System.IO.Path.GetFullPath("TestFile.cs")
+                {
+                    ActiveFile = System.IO.Path.GetFullPath("TestFile.cs")
                 });
 
                 System.Console.Read();
@@ -73,3 +75,5 @@ namespace Strokes.Console
         }
     }
 }
+
+#pragma warning restore

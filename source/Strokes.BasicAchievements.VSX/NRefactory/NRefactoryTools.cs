@@ -6,15 +6,17 @@ using ICSharpCode.NRefactory.Ast;
 
 namespace Strokes.BasicAchievements.NRefactory
 {
-    public class NRefactoryTools
+    public static class NRefactoryTools
     {
-        public static string GetCallChainAsString(MemberReferenceExpression memberReferenceExpression)
+        public static string GetCallChainAsString(this MemberReferenceExpression memberReferenceExpression)
         {
-            var callChain = new List<string>();
+            var callChain = new List<string>()
+            {
+                memberReferenceExpression.MemberName
+            };
 
-            callChain.Add(memberReferenceExpression.MemberName);
+            Expression reference = memberReferenceExpression.TargetObject;
 
-            Expression reference = memberReferenceExpression.TargetObject as IdentifierExpression;
             while (reference != null)
             {
                 if (reference is MemberReferenceExpression)
@@ -25,14 +27,20 @@ namespace Strokes.BasicAchievements.NRefactory
                 }
                 else if (reference is IdentifierExpression)
                 {
-                    callChain.Add((reference as IdentifierExpression).Identifier);
+                    var identifier = (reference as IdentifierExpression).Identifier;
+
+                    // Ignore the 'System' namespace.
+                    if (identifier != "System")
+                        callChain.Add(identifier);
+
                     break;
                 }
             }
 
-            var callstring = string.Join(".", callChain.ToArray().Reverse());
+            // Reverse the callstring, so 'Clear.Array.System' becomes 'System.Array.Clear'.
+            callChain.Reverse();
 
-            return callstring;
+            return string.Join(".", callChain);
         }
     }
 }

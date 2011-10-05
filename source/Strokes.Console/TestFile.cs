@@ -14,7 +14,7 @@ namespace Strokes.Console
         {
             int[] foo = new int[] { 1, 2, 3 };
 
-            Array.Clear(foo, 0, 1);
+            System.Array.Clear(foo, 0, 1);
         }
     }
 }
