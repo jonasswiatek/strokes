@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class PrintToConsoleAchievement : AbstractMethodCall
     {
-        public PrintToConsoleAchievement() : base("System.Console.WriteLine")
+        public PrintToConsoleAchievement() : base("Console.WriteLine")
         {
         }
     }

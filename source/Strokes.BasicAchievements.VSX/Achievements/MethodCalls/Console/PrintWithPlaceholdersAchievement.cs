@@ -12,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class PrintWithPlaceholdersAchievement : AbstractMethodCall
     {
-        public PrintWithPlaceholdersAchievement() : base("System.Console.WriteLine")
+        public PrintWithPlaceholdersAchievement() : base("Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
             {

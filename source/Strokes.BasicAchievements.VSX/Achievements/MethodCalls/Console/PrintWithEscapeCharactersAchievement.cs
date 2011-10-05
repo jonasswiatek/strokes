@@ -12,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
     public class PrintNewLineAchievement : AbstractMethodCall
     {
         public PrintNewLineAchievement()
-            : base("System.Console.WriteLine")
+            : base("Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
             {
@@ -37,7 +37,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
     public class PrintHorizontalTabAchievement : AbstractMethodCall
     {
         public PrintHorizontalTabAchievement()
-            : base("System.Console.WriteLine")
+            : base("Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
             {
@@ -62,7 +62,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
     public class PrintQuoteCharAchievement : AbstractMethodCall
     {
         public PrintQuoteCharAchievement()
-            : base("System.Console.WriteLine")
+            : base("Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
             {
@@ -87,7 +87,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
     public class PrintSingleQuoteCharAchievement : AbstractMethodCall
     {
         public PrintSingleQuoteCharAchievement()
-            : base("System.Console.WriteLine")
+            : base("Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
             {
@@ -112,7 +112,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
     public class PrintBackSlashCharAchievement : AbstractMethodCall
     {
         public PrintBackSlashCharAchievement()
-            : base("System.Console.WriteLine")
+            : base("Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
             {
