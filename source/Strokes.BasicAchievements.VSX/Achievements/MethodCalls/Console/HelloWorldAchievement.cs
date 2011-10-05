@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class HelloWorldAchievement : AbstractMethodCall
     {
-        public HelloWorldAchievement(): base("System.Console.WriteLine")
+        public HelloWorldAchievement(): base("Console.WriteLine")
         {
             var requirementSet = new TypeAndValueRequirementSet
             {
