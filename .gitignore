@@ -45,7 +45,7 @@ StyleCop.*
 ~$*
 
 #Tabs Studio Files
-Strokes.tss
+*.tss
 
 #Build output
 build-output/
