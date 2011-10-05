@@ -10,6 +10,7 @@ using GalaSoft.MvvmLight.Command;
 using Strokes.Core;
 using Strokes.Core.Model;
 using Strokes.Data;
+using System.Collections.Specialized;
 
 namespace Strokes.GUI
 {
@@ -81,12 +82,12 @@ namespace Strokes.GUI
 
             foreach (var category in achievements.AsCategories())
             {
-                //var sortedAchievements = category.Achievements
-                //        .OrderByDescending(a => a.IsCompleted)
-                //        .ThenBy(a => a.DateCompleted)
-                //        .ThenBy(a => a.Description);
+                var sortedAchievements = category.Achievements
+                        .OrderByDescending(a => a.IsCompleted)
+                        .ThenByDescending(a => a.DateCompleted)
+                        .ThenBy(a => a.Name);
 
-                AchievementsOrdered.Add(new AchievementsPerCategory(category.Achievements)
+                AchievementsOrdered.Add(new AchievementsPerCategory(sortedAchievements)
                 {
                     CategoryName = category.CategoryName,
                 });
@@ -154,7 +155,9 @@ namespace Strokes.GUI
 
             if (achievementDescriptor != null)
             {
-                InsertItem(this.IndexOf(achievementDescriptor), descriptor);
+                achievementDescriptor = descriptor;
+                
+                ApplySort();
 
                 RaisePropertyChanged("TotalCompleted");
                 RaisePropertyChanged("PercentageCompleted");
@@ -166,23 +169,17 @@ namespace Strokes.GUI
             base.OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }
 
-        protected override void InsertItem(int index, AchievementDescriptor item)
+        private void ApplySort()
         {
-            for (int i = 0; i < this.Count; i++)
+             var sortedItems = this.OrderByDescending(a => a.IsCompleted)
+                                   .ThenByDescending(a => a.DateCompleted)
+                                   .ThenBy(a => a.Name)
+                                   .ToList();
+
+            foreach (var item in sortedItems)
             {
-                switch (Math.Sign(this[i].CompareTo(item)))
-                {
-                    case 0:
-                        throw new InvalidOperationException("Cannot insert duplicated items");
-                    case 1:
-                        base.InsertItem(i, item);
-                        return;
-                    case -1:
-                        break;
-                }
+                Move(IndexOf(item), sortedItems.IndexOf(item));
             }
- 
-            base.InsertItem(this.Count, item);
         }
     }
 }

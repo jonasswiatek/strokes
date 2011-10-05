@@ -1,8 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Strokes.Core.Model
 {
-    public class AchievementDescriptor : IComparable<AchievementDescriptor>
+    public class AchievementDescriptor : INotifyPropertyChanged
     {
         public string Name
         {
@@ -45,20 +46,16 @@ namespace Strokes.Core.Model
             get;
             set;
         }
+
         public DateTime DateCompleted
         {
             get;
             set;
         }
 
-        #region IComparable<AchievementDescriptor> Members
+        #region INotifyPropertyChanged Members
 
-        public int CompareTo(AchievementDescriptor other)
-        {
-            return other.IsCompleted.CompareTo(this.IsCompleted) 
-                + this.DateCompleted.CompareTo(other.DateCompleted)
-                + this.Description.CompareTo(other.Description);
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
     }
