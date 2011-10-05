@@ -17,9 +17,12 @@ namespace Strokes.Core
 
         public static void OnAchievementsUnlocked(object sender, IEnumerable<AchievementDescriptor> unlockedAchievements)
         {
-            if(AchievementsUnlocked != null)
+            if (AchievementsUnlocked != null)
             {
-                AchievementsUnlocked(sender, new AchievementsUnlockedEventArgs {Achievements = unlockedAchievements});
+                AchievementsUnlocked(sender, new AchievementsUnlockedEventArgs
+                {
+                    Achievements = unlockedAchievements
+                });
             }
         }
 

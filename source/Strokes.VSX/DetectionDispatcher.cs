@@ -16,7 +16,7 @@ namespace Strokes.VSX
         public static event EventHandler<DetectionCompletedEventArgs> DetectionCompleted;
         protected static void OnDetectionCompleted(object sender, DetectionCompletedEventArgs args)
         {
-            if(DetectionCompleted != null)
+            if (DetectionCompleted != null)
             {
                 DetectionCompleted(sender, args);
             }
@@ -46,38 +46,38 @@ namespace Strokes.VSX
                 //Create tasks
                 var tasks = new Task[uncompletedAchievements.Count()];
                 var i = 0;
-                foreach(var uncompletedAchievement in uncompletedAchievements)
+                foreach (var uncompletedAchievement in uncompletedAchievements)
                 {
                     var a = uncompletedAchievement;
                     tasks[i++] = Task.Factory.StartNew(() =>
-                                                           {
-                                                               var achievement = (Achievement)Activator.CreateInstance(a.AchievementType);
+                    {
+                        var achievement = (Achievement)Activator.CreateInstance(a.AchievementType);
 
-                                                                var achievementUnlocked = achievement.DetectAchievement(detectionSession);
+                        var achievementUnlocked = achievement.DetectAchievement(detectionSession);
 
-                                                                if (achievementUnlocked)
-                                                                {
-                                                                    a.CodeLocation = achievement.AchievementCodeLocation;
-                                                                    a.IsCompleted = true;
-                                                                    unlockedAchievements.Add(a);
-                                                                }
-                                                           });
+                        if (achievementUnlocked)
+                        {
+                            a.CodeLocation = achievement.AchievementCodeLocation;
+                            a.IsCompleted = true;
+                            unlockedAchievements.Add(a);
+                        }
+                    });
                 }
 
                 //Wait for all tasks to complete.
                 Task.WaitAll(tasks);
                 stopWatch.Stop();
                 OnDetectionCompleted(null, new DetectionCompletedEventArgs()
-                                               {
-                                                   AchievementsTested = uncompletedAchievements.Count(),
-                                                   ElapsedMilliseconds = (int)stopWatch.ElapsedMilliseconds
-                                               });
+                {
+                    AchievementsTested = uncompletedAchievements.Count(),
+                    ElapsedMilliseconds = (int)stopWatch.ElapsedMilliseconds
+                });
             }
 
-            if(unlockedAchievements.Count() > 0)
+            if (unlockedAchievements.Count() > 0)
             {
-                //Mark the completed achievements
-                foreach(var completedAchievement in unlockedAchievements)
+                // Mark the completed achievements
+                foreach (var completedAchievement in unlockedAchievements)
                 {
                     achievementDescriptorRepository.MarkAchievementAsCompleted(completedAchievement);
                 }

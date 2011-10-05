@@ -41,11 +41,15 @@ namespace Strokes.Data
 
         public void MarkAchievementAsCompleted(AchievementDescriptor achievementDescriptor)
         {
+            // Used to update the GUI
+            achievementDescriptor.DateCompleted = DateTime.Now;
+            achievementDescriptor.IsCompleted = true;
+
             var completedAchievement = new CompletedAchievement(achievementDescriptor)
-                                           {
-                                               DateCompleted = DateTime.Now,
-                                               IsCompleted = true
-                                           };
+            {
+                DateCompleted = DateTime.Now,
+                IsCompleted = true
+            };
 
             if(!CompletedAchievements.Contains(completedAchievement))
             {

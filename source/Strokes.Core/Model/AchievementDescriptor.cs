@@ -53,10 +53,10 @@ namespace Strokes.Core.Model
             set;
         }
 
-        #region INotifyPropertyChanged Members
-
+#pragma warning disable 67
+        
         public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
+        
+#pragma warning restore 67
     }
 }
