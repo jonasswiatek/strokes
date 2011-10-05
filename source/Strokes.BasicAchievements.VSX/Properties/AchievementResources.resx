@@ -1035,4 +1035,10 @@
   <data name="SpeechlessAchievementName" xml:space="preserve">
     <value>How original...</value>
   </data>
+  <data name="DangerousEqualityCheckAchievementName" xml:space="preserve">
+    <value>Double Trouble</value>
+  </data>
+  <data name="DangerousEqualityCheckAchievementDescription" xml:space="preserve">
+    <value>Check for equality between floating point numbers (hint: this could fail)</value>
+  </data>
 </root>

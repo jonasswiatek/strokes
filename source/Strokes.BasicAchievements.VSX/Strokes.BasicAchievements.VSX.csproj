@@ -187,6 +187,7 @@
     <Compile Include="Achievements\PrimitiveTypeUsage\Double\AssignBoundaryValueDouble.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Integer\AssignBoundaryValueInt.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\Float\AssignBoundaryValueFloat.cs" />
+    <Compile Include="Achievements\ProgramFlow\DangerousEqualityCheckAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\NestedIfStatementAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\EnumSwitchAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\IfShorthandAchievement.cs" />
