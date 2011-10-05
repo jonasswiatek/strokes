@@ -21,7 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitIfElseStatement(IfElseStatement ifElseStatement, object data)
             {
                 var condition = ifElseStatement.Condition as BinaryOperatorExpression;
-                if(condition!=null)
+                if(condition!=null && condition.Op!= BinaryOperatorType.Equality) //Tim: mmm, this achievements needs more testing because this doens't work right 
                     UnlockWith(ifElseStatement);
 
                 return base.VisitIfElseStatement(ifElseStatement, data);

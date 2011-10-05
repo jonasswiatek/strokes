@@ -6,8 +6,8 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@PlusPlusOperatorAchievementName",
-        AchievementDescription = "@PlusPlusOperatorAchievementDescription",
+    [AchievementDescription("@PlusOperatorAchievementName",
+        AchievementDescription = "@PlusOperatorAchievementDescription",
         AchievementCategory = "@Fundamentals")]
     public class PlusOperatorAchievement : NRefactoryAchievement
     {
@@ -28,8 +28,8 @@ namespace Strokes.BasicAchievements.Achievements
     }
 
 
-    [AchievementDescription("@MinusMinusOperatorAchievementName",
-        AchievementDescription = "@MinusMinusOperatorAchievementDescription",
+    [AchievementDescription("@MinusOperatorAchievementName",
+        AchievementDescription = "@MinusOperatorAchievementDescription",
         AchievementCategory = "@Fundamentals")]
     public class MinusOperatorAchievement : NRefactoryAchievement
     {
