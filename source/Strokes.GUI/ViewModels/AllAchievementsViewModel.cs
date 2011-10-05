@@ -77,39 +77,35 @@ namespace Strokes.GUI
             AchievementsOrdered.Clear();
 
             var repository = new AchievementDescriptorRepository();
-            var Achievements = repository.GetAll();
-            var categories = Achievements.AsCategories();
+            var achievements = repository.GetAll();
 
-            foreach (var category in categories)
+            foreach (var category in achievements.AsCategories())
             {
-                var AchievementCategory = new AchievementsPerCategory()
+                //var sortedAchievements = category.Achievements
+                //        .OrderByDescending(a => a.IsCompleted)
+                //        .ThenBy(a => a.DateCompleted)
+                //        .ThenBy(a => a.Description);
+
+                AchievementsOrdered.Add(new AchievementsPerCategory(category.Achievements)
                 {
                     CategoryName = category.CategoryName,
-                };
-
-                foreach (var Achievement in category.Achievements)
-                {
-                    AchievementCategory.Add(Achievement);
-                }
-                AchievementCategory.Sort();
-                AchievementsOrdered.Add(AchievementCategory);
+                });
             }
         }
 
         private void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)
         {
-            foreach (var Achievement in args.Achievements)
+            foreach (var achievement in args.Achievements)
             {
                 foreach (var category in AchievementsOrdered)
                 {
-                    if (Achievement.Category == category.CategoryName)
+                    if (achievement.Category == category.CategoryName)
                     {
-                        category.Update(Achievement);
+                        category.Update(achievement);
                         break;
                     }
                 }
             }
-
 
             RaisePropertyChanged(OrderedAchievementsFieldName);
             RaisePropertyChanged(TotalCompletedFieldName);
@@ -121,7 +117,13 @@ namespace Strokes.GUI
     {
         public AchievementsPerCategory()
         {
-            CategoryName = "Not Set";
+            CategoryName = "Unknown";
+        }
+
+        public AchievementsPerCategory(IEnumerable<AchievementDescriptor> collection)
+            : base(collection)
+        {
+            CategoryName = "Unknown";
         }
 
         public string CategoryName
@@ -148,15 +150,15 @@ namespace Strokes.GUI
 
         internal void Update(AchievementDescriptor descriptor)
         {
-            var AchievementDescriptor = this.SingleOrDefault(a => a.Name == descriptor.Name);
+            var achievementDescriptor = this.SingleOrDefault(a => a.Name == descriptor.Name);
 
-            if (AchievementDescriptor != null)
+            if (achievementDescriptor != null)
             {
-                AchievementDescriptor = descriptor;
+                InsertItem(this.IndexOf(achievementDescriptor), descriptor);
+
+                RaisePropertyChanged("TotalCompleted");
+                RaisePropertyChanged("PercentageCompleted");
             }
-           this.Sort();
-            RaisePropertyChanged("TotalCompleted");
-            RaisePropertyChanged("PercentageCompleted");
         }
 
         internal void RaisePropertyChanged(string propertyName)
@@ -164,22 +166,23 @@ namespace Strokes.GUI
             base.OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }
 
-        internal void Sort()
+        protected override void InsertItem(int index, AchievementDescriptor item)
         {
-            //This looks convoluted. Any Danish or Russian people that can make this a more clena solution? =)))
-
-            
-            var sortme = from a in this orderby a.IsCompleted descending , a.DateCompleted, a.Description select a;
-            ObservableCollection<AchievementDescriptor> sorted= new ObservableCollection<AchievementDescriptor>();
-            foreach (AchievementDescriptor ach in sortme)
+            for (int i = 0; i < this.Count; i++)
             {
-                sorted.Add(ach);
+                switch (Math.Sign(this[i].CompareTo(item)))
+                {
+                    case 0:
+                        throw new InvalidOperationException("Cannot insert duplicated items");
+                    case 1:
+                        base.InsertItem(i, item);
+                        return;
+                    case -1:
+                        break;
+                }
             }
-            this.Clear();
-            foreach (AchievementDescriptor achsorted in sorted)
-            {
-                this.Add(achsorted);
-            }
+ 
+            base.InsertItem(this.Count, item);
         }
     }
 }

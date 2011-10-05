@@ -2,7 +2,7 @@
 
 namespace Strokes.Core.Model
 {
-    public class AchievementDescriptor
+    public class AchievementDescriptor : IComparable<AchievementDescriptor>
     {
         public string Name
         {
@@ -50,5 +50,16 @@ namespace Strokes.Core.Model
             get;
             set;
         }
+
+        #region IComparable<AchievementDescriptor> Members
+
+        public int CompareTo(AchievementDescriptor other)
+        {
+            return other.IsCompleted.CompareTo(this.IsCompleted) 
+                + this.DateCompleted.CompareTo(other.DateCompleted)
+                + this.Description.CompareTo(other.Description);
+        }
+
+        #endregion
     }
 }

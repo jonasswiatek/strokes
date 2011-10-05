@@ -97,7 +97,7 @@ namespace Strokes.GUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MY AchievementS.
+        ///   Looks up a localized string similar to MY ACHIEVEMENTS.
         /// </summary>
         public static string MyAchievementsHeader {
             get {
@@ -115,7 +115,7 @@ namespace Strokes.GUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RESET Achievement PROGRESS.
+        ///   Looks up a localized string similar to RESET ACHIEVEMENT PROGRESS.
         /// </summary>
         public static string ResetAchievements {
             get {

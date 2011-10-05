@@ -130,13 +130,13 @@
     <value>Information about what achievements other people you know have been completing.</value>
   </data>
   <data name="MyAchievementsHeader" xml:space="preserve">
-    <value>MY AchievementS</value>
+    <value>MY ACHIEVEMENTS</value>
   </data>
   <data name="Of" xml:space="preserve">
     <value>of</value>
   </data>
   <data name="ResetAchievements" xml:space="preserve">
-    <value>RESET Achievement PROGRESS</value>
+    <value>RESET ACHIEVEMENT PROGRESS</value>
   </data>
   <data name="SettingsHeader" xml:space="preserve">
     <value>SETTINGS</value>
