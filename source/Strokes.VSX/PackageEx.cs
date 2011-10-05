@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.Shell;
 using System.ComponentModel.Design;
+using Strokes.Core.Integration;
 
 namespace Strokes.VSX
 {

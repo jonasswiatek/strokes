@@ -34,7 +34,7 @@ namespace Strokes.VSX.Trackers
         /// <returns>
         /// If the method succeeds, it returns <c>S_OK</c>. If it fails, it returns an error code.
         /// </returns>
-        private int IVsUpdateSolutionEvents.UpdateSolution_Begin(ref int pfCancelUpdate)
+        int IVsUpdateSolutionEvents.UpdateSolution_Begin(ref int pfCancelUpdate)
         {
             if (isAchievementDetectionRunning)
             {
@@ -56,7 +56,7 @@ namespace Strokes.VSX.Trackers
         /// <returns>
         /// If the method succeeds, it returns <c>S_OK</c>. If it fails, it returns an error code.
         /// </returns>
-        private int IVsUpdateSolutionEvents.UpdateSolution_Done(int fSucceeded, int fModified, int fCancelCommand)
+        int IVsUpdateSolutionEvents.UpdateSolution_Done(int fSucceeded, int fModified, int fCancelCommand)
         {
             if (fSucceeded != 0)
             {

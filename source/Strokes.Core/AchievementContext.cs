@@ -31,7 +31,7 @@ namespace Strokes.Core
 
         public static void OnAchievementClicked(object sender, AchievementClickedEventArgs args)
         {
-            if(AchievementClicked != null)
+            if (AchievementClicked != null)
             {
                 AchievementClicked(sender, args);
             }
@@ -39,7 +39,7 @@ namespace Strokes.Core
 
         public static void OnAchievementDetectionStarting(object sender, EventArgs e)
         {
-            if(AchievementDetectionStarting != null)
+            if (AchievementDetectionStarting != null)
             {
                 AchievementDetectionStarting(sender, e);
             }
@@ -48,12 +48,25 @@ namespace Strokes.Core
 
     public class AchievementsUnlockedEventArgs
     {
-        public IEnumerable<AchievementDescriptor> Achievements;
+        public IEnumerable<AchievementDescriptor> Achievements
+        {
+            get;
+            set;
+        }
     }
 
     public class AchievementClickedEventArgs
     {
-        public AchievementDescriptor AchievementDescriptor;
-        public object UIElement;
+        public AchievementDescriptor AchievementDescriptor
+        {
+            get;
+            set;
+        }
+
+        public object UIElement
+        {
+            get;
+            set;
+        }
     }
 }

@@ -51,6 +51,11 @@ namespace Strokes.VSX
             var achievementDescriptorRepository =
                 StrokesVsxPackageEx.GetGlobalService<AchievementDescriptorRepository>();
 
+            // For non VSX projects, the GlobalService won't be initialized, 
+            // and as such, it will return null.
+            if (achievementDescriptorRepository == null)
+                achievementDescriptorRepository = new AchievementDescriptorRepository();
+
             using (var detectionSession = new DetectionSession(buildInformation))
             {
                 var achievementDescriptors = achievementDescriptorRepository.GetAll();
