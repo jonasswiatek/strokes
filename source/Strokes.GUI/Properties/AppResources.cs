@@ -14,17 +14,4 @@ namespace Strokes.GUI.Properties
             }
         }
     }
-
-    public static class GuiResources
-    {
-        private static Resources resources = new Resources();
-
-        public static Resources Resources
-        {
-            get
-            {
-                return resources;
-            }
-        }
-    }
 }
