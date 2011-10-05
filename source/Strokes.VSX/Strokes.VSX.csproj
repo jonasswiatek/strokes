@@ -127,6 +127,7 @@
   <ItemGroup>
     <Compile Include="DetectionDispatcher.cs" />
     <Compile Include="Guids.cs" />
+    <Compile Include="PackageEx.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

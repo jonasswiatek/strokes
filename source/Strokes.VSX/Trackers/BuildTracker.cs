@@ -9,27 +9,37 @@ using Strokes.Core;
 
 namespace Strokes.VSX.Trackers
 {
+    /// <summary>
+    /// Build Tracker used to track build events for solution and project builds.
+    /// </summary>
     public class BuildTracker : IVsUpdateSolutionEvents2
     {
         private DTE dte;
+        private DateTime lastAchievementCheck = DateTime.Now;
+        private bool isAchievementDetectionRunning;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BuildTracker"/> class.
+        /// </summary>
+        /// <param name="dte">The DTE.</param>
         public BuildTracker(DTE dte)
         {
             this.dte = dte;
         }
 
-        //When we last checked for achievements (used to track which files should be checked upon build. This could be changed to DateTime.Min to ensure that everything is checked on first compile
-        private DateTime _lastAchievementCheck = DateTime.Now;
-
-        //Used to block builds while achievements are being detected. Too much rape?
-        private bool _isAchievementDetectionRunning;
-
-        //Gets called just before a build, and can cancel it if needed.
-        int IVsUpdateSolutionEvents.UpdateSolution_Begin(ref int pfCancelUpdate)
+        /// <summary>
+        /// Called before any build actions have begun. This is the last chance to cancel the build before any building begins.
+        /// </summary>
+        /// <param name="pfCancelUpdate">Pointer to a flag indicating cancel update.</param>
+        /// <returns>
+        /// If the method succeeds, it returns <c>S_OK</c>. If it fails, it returns an error code.
+        /// </returns>
+        private int IVsUpdateSolutionEvents.UpdateSolution_Begin(ref int pfCancelUpdate)
         {
-            if (_isAchievementDetectionRunning)
+            if (isAchievementDetectionRunning)
             {
-                pfCancelUpdate = 1; //Cancel build if detection is currently running.
+                // Cancel build if detection is currently running.
+                pfCancelUpdate = 1;
 
                 return VSConstants.S_OK;
             }
@@ -37,20 +47,28 @@ namespace Strokes.VSX.Trackers
             return VSConstants.S_OK;
         }
 
-        //Gets called after a build
-        int IVsUpdateSolutionEvents.UpdateSolution_Done(int fSucceeded, int fModified, int fCancelCommand)
+        /// <summary>
+        /// Called when a build is completed.
+        /// </summary>
+        /// <param name="fSucceeded"><c>true</c> if no update actions failed.</param>
+        /// <param name="fModified"><c>true</c> if any update action succeeded.</param>
+        /// <param name="fCancelCommand"><c>true</c> if update actions were canceled.</param>
+        /// <returns>
+        /// If the method succeeds, it returns <c>S_OK</c>. If it fails, it returns an error code.
+        /// </returns>
+        private int IVsUpdateSolutionEvents.UpdateSolution_Done(int fSucceeded, int fModified, int fCancelCommand)
         {
             if (fSucceeded != 0)
             {
                 try
                 {
-                    //Get all .cs files in solution projects, that has changed since _lastAchievementCheck
-                    var changedFiles = FileTracker.GetChangedFiles(dte.Solution, _lastAchievementCheck);
+                    // Get all .cs files in solution projects, that has changed since _lastAchievementCheck
+                    var changedFiles = FileTracker.GetChangedFiles(dte.Solution, lastAchievementCheck);
 
-                    //Update _lastAchievementCheck
-                    _lastAchievementCheck = DateTime.Now;
+                    // Update _lastAchievementCheck
+                    lastAchievementCheck = DateTime.Now;
 
-                    //Construct build information
+                    // Construct build information
                     var buildInformation = new BuildInformation();
 
                     var activeDocument = dte.ActiveDocument;
@@ -61,13 +79,14 @@ namespace Strokes.VSX.Trackers
                         if (documentFile.EndsWith(".cs"))
                         {
                             buildInformation.ActiveFile = documentFile;
+
                             if (!changedFiles.Contains(documentFile))
                             {
-                                //Always check active document.
+                                // Always check active document.
                                 changedFiles.Add(documentFile);
                             }
 
-                            //Fill relevant values on buildInformation
+                            // Fill relevant values on buildInformation
                             var projectItem = activeDocument.ProjectItem.ContainingProject;
                             buildInformation.ActiveProject = projectItem.FileName;
                             buildInformation.ActiveProjectOutputDirectory = FileTracker.GetProjectOutputDirectory(projectItem);
@@ -76,28 +95,30 @@ namespace Strokes.VSX.Trackers
 
                     buildInformation.ChangedFiles = changedFiles.ToArray();
 
-                    //Validate build information
+                    // Validate build information
                     if (buildInformation.ActiveProject == null && buildInformation.ChangedFiles.Length == 0)
                     {
-                        //Build information contains nothing - so we won't detect achievements
+                        // Build information contains nothing - so we won't detect achievements
                         return VSConstants.S_OK;
                     }
 
-                    //Lock builds while detection is occuring - this prevents parallel detection
-                    _isAchievementDetectionRunning = true;
+                    // Lock builds while detection is occuring - this prevents parallel detection
+                    isAchievementDetectionRunning = true;
 
                     DetectionDispatcher.Dispatch(buildInformation);
                 }
                 finally
                 {
-                    //Unlock builds
-                    _isAchievementDetectionRunning = false;
+                    // Unlock builds
+                    isAchievementDetectionRunning = false;
                 }
             }
+
             return VSConstants.S_OK;
         }
 
-        #region Unused events
+        #region Unused Events
+
         public int UpdateProjectCfg_Begin(IVsHierarchy pHierProj, IVsCfg pCfgProj, IVsCfg pCfgSln, uint dwAction, ref int pfCancel)
         {
             return VSConstants.S_OK;
@@ -147,6 +168,7 @@ namespace Strokes.VSX.Trackers
         {
             return VSConstants.S_OK;
         }
+
         #endregion
     }
 }

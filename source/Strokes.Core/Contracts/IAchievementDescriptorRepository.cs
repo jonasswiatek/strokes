@@ -10,6 +10,7 @@ namespace Strokes.Core.Contracts
     public interface IAchievementDescriptorRepository
     {
         IEnumerable<AchievementDescriptor> GetAll();
+        
         void MarkAchievementAsCompleted(AchievementDescriptor achievement);
 
         void LoadFromAssembly(Assembly assembly);

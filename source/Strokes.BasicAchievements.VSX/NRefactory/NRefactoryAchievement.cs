@@ -18,29 +18,32 @@ namespace Strokes.BasicAchievements.NRefactory
             var nRefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
 
             var unlocked = false;
-            /* Commented and replaced with below code, because currently we only want to detect in whatever source file the user has open
-             * foreach(var file in detectionSession.BuildInformation.ChangedFiles)
-            {
-                var parser = nRefactorySession.GetParser(file);
-                parser.Parse();
+            
+            // Commented and replaced with below code, because currently we only want to detect 
+            // in whatever source file the user has open.
+            
+            //foreach(var file in detectionSession.BuildInformation.ChangedFiles)
+            //{
+            //    var parser = nRefactorySession.GetParser(file);
+            //    parser.Parse();
 
-                var result = parser.CompilationUnit;
-                var visitor = CreateVisitor();
+            //    var result = parser.CompilationUnit;
+            //    var visitor = CreateVisitor();
 
-                result.AcceptVisitor(visitor, null);
+            //    result.AcceptVisitor(visitor, null);
 
-                if(visitor.IsAchievementUnlocked)
-                {
-                    AchievementCodeLocation = visitor.CodeLocation;
-                    if(AchievementCodeLocation != null)
-                    {
-                        AchievementCodeLocation.FileName = file;
-                    }
+            //    if(visitor.IsAchievementUnlocked)
+            //    {
+            //        AchievementCodeLocation = visitor.CodeLocation;
+            //        if(AchievementCodeLocation != null)
+            //        {
+            //            AchievementCodeLocation.FileName = file;
+            //        }
                     
-                    unlocked = true;
-                    break;
-                }
-            }*/
+            //        unlocked = true;
+            //        break;
+            //    }
+            //}
 
             if(string.IsNullOrEmpty(detectionSession.BuildInformation.ActiveFile))
             {
@@ -88,11 +91,10 @@ namespace Strokes.BasicAchievements.NRefactory
                 IsAchievementUnlocked = true;
             }
 
-            /*public override object VisitCompilationUnit(CompilationUnit compilationUnit, object data)
-            {
-                return compilationUnit.AcceptChildren(this, data);
-            }*/
-
+            //public override object VisitCompilationUnit(CompilationUnit compilationUnit, object data)
+            //{
+            //    return compilationUnit.AcceptChildren(this, data);
+            //}
 
             public bool IsAchievementUnlocked;
         }

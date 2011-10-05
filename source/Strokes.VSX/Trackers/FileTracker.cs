@@ -8,6 +8,9 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 namespace Strokes.VSX.Trackers
 {
+    /// <summary>
+    /// File Tracker for tracking file changes.
+    /// </summary>
     public class FileTracker
     {
         /// <summary>
@@ -23,10 +26,7 @@ namespace Strokes.VSX.Trackers
                 var outputPath = (string)project.ConfigurationManager.ActiveConfiguration.Properties.Item("OutputPath").Value;
                 var assemblyFileName = (string)project.Properties.Item("AssemblyName").Value;
 
-                return Path.Combine(new[] {
-                                      projectFolder,
-                                      outputPath
-                                  });
+                return Path.Combine(new[] { projectFolder, outputPath });
             }
             catch
             {
@@ -35,13 +35,13 @@ namespace Strokes.VSX.Trackers
         }
 
         /// <summary>
-        /// Gets all files within the passed solution that has been changed since the passed DateTime
+        /// Gets all files within the passed solution that has been changed since the passed DateTime.
         /// </summary>
         /// <param name="solution">Solution containing files</param>
         /// <param name="since">DateTime to limit to</param>
-        /// <returns></returns>
+        /// <returns>A list of all changed files.</returns>
         public static List<string> GetChangedFiles(Solution solution, DateTime since)
-        {   
+        {
             var allFiles = new List<string>();
             foreach (Project project in solution.Projects)
             {
@@ -66,9 +66,16 @@ namespace Strokes.VSX.Trackers
             return allFiles.Where(a => File.GetLastWriteTime(a) > since).ToList();
         }
 
+        /// <summary>
+        /// Gets the dirty files.
+        /// </summary>
+        /// <param name="path">The files path.</param>
+        /// <param name="item">The Visual Studio project item.</param>
+        /// <returns>A list of dirty files.</returns>
         private static List<string> GetDirtyFiles(string path, ProjectItem item)
         {
             var result = new List<string>();
+
             foreach (ProjectItem itm in item.ProjectItems)
             {
                 if (itm.Name.EndsWith(".cs"))

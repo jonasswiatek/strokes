@@ -1,9 +1,10 @@
-﻿// Guids.cs
-// MUST match guids.h
-using System;
+﻿using System;
 
 namespace CSharpAchiever.VSX
 {
+    /// <summary>
+    /// List of GUIDs. Must match guids.h
+    /// </summary>
     static class GuidList
     {
         public const string guidCSharpAchiever_Achiever_VSIXPkgString = "29f86376-691c-4ffd-a81a-b72937a6d439";

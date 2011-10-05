@@ -1,11 +1,10 @@
-﻿// PkgCmdID.cs
-// MUST match PkgCmdID.h
-namespace Strokes.VSX
+﻿namespace Strokes.VSX
 {
+    /// <summary>
+    /// Command ID List. Must match PkgCmdID.h
+    /// </summary>
     static class PkgCmdIDList
     {
-        public const uint showAchievementIndex =        0x100;
-
-
+        public const uint showAchievementIndex = 0x100;
     };
 }
