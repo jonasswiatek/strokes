@@ -10,7 +10,7 @@
     <local:BoolToImageUriConverter x:Key="BoolToImageUriConverter" />
     <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
-
+    <local:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
     <!--  Brushes  -->
     <SolidColorBrush x:Key="AchievementDarkBackground"
                      Color="#FF262626" />
@@ -189,7 +189,7 @@
         <Border Margin="0,0,0,4"
                 BorderBrush="{StaticResource AchievementBorder}"
                 BorderThickness="1">
-            <Grid Background="{StaticResource AchievementDarkBackground}">
+            <Grid Background="{StaticResource AchievementDarkBackground}" Opacity="{Binding IsCompleted, Converter={StaticResource BoolToOpacityConverter}}" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="*" />

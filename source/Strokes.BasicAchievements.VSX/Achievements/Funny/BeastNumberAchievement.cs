@@ -24,9 +24,13 @@ namespace Strokes.BasicAchievements.Achievements
                 if(assignmentExpression.Right is PrimitiveExpression)
                 {
                     PrimitiveExpression prim = (PrimitiveExpression) assignmentExpression.Right;
-                    
-                    if((int)prim.Value==666  )
-                        UnlockWith(assignmentExpression);
+
+                    int number;
+                    if (int.TryParse(prim.StringValue, out number))
+                    {
+                        if (number == 666)
+                            UnlockWith(assignmentExpression);
+                    }
                 }
                 return base.VisitAssignmentExpression(assignmentExpression, data);
             }

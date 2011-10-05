@@ -91,7 +91,7 @@ namespace Strokes.GUI
                 {
                     AchievementCategory.Add(Achievement);
                 }
-
+                AchievementCategory.Sort();
                 AchievementsOrdered.Add(AchievementCategory);
             }
         }
@@ -109,6 +109,7 @@ namespace Strokes.GUI
                     }
                 }
             }
+
 
             RaisePropertyChanged(OrderedAchievementsFieldName);
             RaisePropertyChanged(TotalCompletedFieldName);
@@ -153,7 +154,7 @@ namespace Strokes.GUI
             {
                 AchievementDescriptor = descriptor;
             }
-
+           this.Sort();
             RaisePropertyChanged("TotalCompleted");
             RaisePropertyChanged("PercentageCompleted");
         }
@@ -161,6 +162,24 @@ namespace Strokes.GUI
         internal void RaisePropertyChanged(string propertyName)
         {
             base.OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+        }
+
+        internal void Sort()
+        {
+            //This looks convoluted. Any Danish or Russian people that can make this a more clena solution? =)))
+
+            
+            var sortme = from a in this orderby a.IsCompleted descending , a.DateCompleted, a.Description select a;
+            ObservableCollection<AchievementDescriptor> sorted= new ObservableCollection<AchievementDescriptor>();
+            foreach (AchievementDescriptor ach in sortme)
+            {
+                sorted.Add(ach);
+            }
+            this.Clear();
+            foreach (AchievementDescriptor achsorted in sorted)
+            {
+                this.Add(achsorted);
+            }
         }
     }
 }
