@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Strokes Achievement Project</Name>
+    <Description>Project for completing Strokes Achievements and Challenges</Description>
+    <Icon>Strokes.VsTemplate.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+    <SortOrder>1000</SortOrder>
+    <TemplateID>b01d0b94-6a04-460c-b49c-dfa4d057f4a4</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>StrokesAchievement</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">CalculatorChallenge.cs</ProjectItem>
+      <Folder Name="strokes_lib">
+        <ProjectItem>Strokes.Challenges.dll</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

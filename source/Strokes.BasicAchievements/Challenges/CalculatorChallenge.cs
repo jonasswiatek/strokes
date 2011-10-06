@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Challenges
         AchievementCategory = "@Challenges")]
     public class CalculatorChallenge : Challenge
     {
-        public CalculatorChallenge() : base("Strokes.Challenges.Student.CalculatorChallenge.CalculatorTest") 
+        public CalculatorChallenge() : base("Strokes.Challenges.CalculatorChallenge.CalculatorTest") 
         {
         }
     }

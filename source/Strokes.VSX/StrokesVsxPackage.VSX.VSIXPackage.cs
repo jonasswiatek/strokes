@@ -21,7 +21,7 @@ namespace Strokes.VSX
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideAutoLoad("{adfc4e64-0397-11d1-9f4e-00a0c911004f}")]
+    [ProvideAutoLoad("{adfc4e64-0397-11d1-9f4e-00a0c911004f}")] //This is UICONTEXT_NoSolution - meaning Strokes will start together with Visual Studio regardless of which type of project is loaded.
     [ProvideToolWindow(typeof(AchievementStatisticsToolWindow), Style = VsDockStyle.MDI)]
     [ProvideService(typeof(IAchevementLibraryService))]
     [Guid(GuidList.guidCSharpAchiever_Achiever_VSIXPkgString)]

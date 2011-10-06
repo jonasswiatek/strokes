@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Strokes.Challenges.Student.CalculatorChallenge;
+using Strokes.Challenges.CalculatorChallenge;
 $if$ ($targetframeworkversion$ >= 3.5)using System.Linq;
 $endif$using System.Text;
 
 namespace $safeprojectname$
 {
-	public class Calculator : ICalculator
+	public class CalculatorChallenge : ICalculator
 	{
         public int Add(int a, int b)
         {

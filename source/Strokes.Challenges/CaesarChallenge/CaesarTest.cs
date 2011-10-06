@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-
-namespace Strokes.Challenges.Student.CaesarChallenge
+﻿namespace Strokes.Challenges.CaesarChallenge
 {
     public class CaesarTest : AbstractChallengeTester<ICaesar>
     {

@@ -1,4 +1,4 @@
-﻿namespace Strokes.Challenges.Student.CalculatorChallenge
+﻿namespace Strokes.Challenges.CalculatorChallenge
 {
     public interface ICalculator
     {

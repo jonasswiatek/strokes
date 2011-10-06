@@ -1,4 +1,4 @@
-﻿namespace Strokes.Challenges.Student.CaesarChallenge
+﻿namespace Strokes.Challenges.CaesarChallenge
 {
     public interface ICaesar
     {

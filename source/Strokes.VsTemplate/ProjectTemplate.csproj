@@ -13,6 +13,12 @@
 		<TargetFrameworkVersion>v$targetframeworkversion$</TargetFrameworkVersion>
 		<FileAlignment>512</FileAlignment>
 	</PropertyGroup>
+  <PropertyGroup>
+    <StrokesProjectType>
+      <Achievements>true</Achievements>
+      <Challenges>true</Challenges>
+    </StrokesProjectType>
+  </PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 		<DebugSymbols>true</DebugSymbols>
 		<DebugType>full</DebugType>
@@ -42,16 +48,16 @@
  		$endif$
 		<Reference Include="System.Data"/>
 		<Reference Include="System.Xml"/>
-    <Reference Include="Strokes.Challenges.Student">
-      <HintPath>.\strokes_lib\Strokes.Challenges.Student.dll</HintPath>
+    <Reference Include="Strokes.Challenges">
+      <HintPath>.\strokes_lib\Strokes.Challenges.dll</HintPath>
     </Reference>
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Include="Calculator.cs" />
+		<Compile Include="CalculatorChallenge.cs" />
 		<Compile Include="Properties\AssemblyInfo.cs" />
 	</ItemGroup>
   <ItemGroup>
-    <None Include="strokes_lib\Strokes.Challenges.Student.dll" />
+    <None Include="strokes_lib\Strokes.Challenges.dll" />
   </ItemGroup>
 	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

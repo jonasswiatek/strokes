@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Challenges
         AchievementCategory = "@Challenges")]
     public class CaesarChallenge : Challenge
     {
-        public CaesarChallenge() : base("Strokes.Challenges.Student.CaesarChallenge.CaesarTest") 
+        public CaesarChallenge() : base("Strokes.Challenges.CaesarChallenge.CaesarTest") 
         {
         }
     }

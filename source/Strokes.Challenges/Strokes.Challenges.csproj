@@ -8,8 +8,8 @@
     <ProjectGuid>{281244B6-DD45-45C1-850C-031EEEE50F0F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Strokes.Challenges.Student</RootNamespace>
-    <AssemblyName>Strokes.Challenges.Student</AssemblyName>
+    <RootNamespace>Strokes.Challenges</RootNamespace>
+    <AssemblyName>Strokes.Challenges</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

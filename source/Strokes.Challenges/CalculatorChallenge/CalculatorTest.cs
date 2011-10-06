@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Strokes.Challenges.Student.CalculatorChallenge
+namespace Strokes.Challenges.CalculatorChallenge
 {
     public class CalculatorTest : AbstractChallengeTester<ICalculator>
     {

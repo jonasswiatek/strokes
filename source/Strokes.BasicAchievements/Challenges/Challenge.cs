@@ -28,7 +28,7 @@ namespace Strokes.BasicAchievements.Challenges
             dlls.AddRange(Directory.GetFiles(detectionSession.BuildInformation.ActiveProjectOutputDirectory, "*.exe", SearchOption.AllDirectories).Where(file => file.IndexOf("vshost") < 0));
 
             //If the Strokes.Challenges.Student-dll isn't in the build output, this project can with certainty be said to not be a challenge-solve attempt.
-            if (!dlls.Any(dll => dll.Contains("Strokes.Challenges.Student.dll")))
+            if (!dlls.Any(dll => dll.Contains("Strokes.Challenges.dll")))
                 return false;
 
             var processStartInfo = new ProcessStartInfo ();

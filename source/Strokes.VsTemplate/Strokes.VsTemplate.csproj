@@ -7,8 +7,8 @@
     <ProjectGuid>{456819E0-122D-4BA0-BDC8-ED8C7B713DF0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Strokes.ChallengeTemplate</RootNamespace>
-    <AssemblyName>Strokes.ChallengeTemplate</AssemblyName>
+    <RootNamespace>Strokes.VsTemplate</RootNamespace>
+    <AssemblyName>Strokes.VsTemplate</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
@@ -64,15 +64,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AssemblyInfo.cs" />
-    <None Include="Calculator.cs" />
+    <None Include="CalculatorChallenge.cs" />
     <None Include="ProjectTemplate.csproj" />
-    <None Include="Strokes.ChallengeTemplate.ico" />
+    <None Include="Strokes.VsTemplate.ico" />
   </ItemGroup>
   <ItemGroup>
-    <VSTemplate Include="Strokes.ChallengeTemplate.vstemplate" />
+    <VSTemplate Include="Strokes.VsTemplate.vstemplate" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="strokes_lib\Strokes.Challenges.Student.dll" />
+    <Content Include="strokes_lib\Strokes.Challenges.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.targets" />
