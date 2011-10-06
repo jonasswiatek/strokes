@@ -174,9 +174,9 @@
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Strokes.BasicAchievements.VSX\Strokes.BasicAchievements.VSX.csproj">
+    <ProjectReference Include="..\Strokes.BasicAchievements\Strokes.BasicAchievements.csproj">
       <Project>{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}</Project>
-      <Name>Strokes.BasicAchievements.VSX</Name>
+      <Name>Strokes.BasicAchievements</Name>
     </ProjectReference>
     <ProjectReference Include="..\Strokes.ChallengeRunner\Strokes.ChallengeRunner.csproj">
       <Project>{830D128B-8D1C-4151-A2E7-3054DBF34126}</Project>

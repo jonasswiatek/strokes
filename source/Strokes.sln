@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.Core", "Strokes.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.GUI", "Strokes.GUI\Strokes.GUI.csproj", "{CCA3165B-3D87-45AB-AD18-168CF04A1417}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.BasicAchievements.VSX", "Strokes.BasicAchievements.VSX\Strokes.BasicAchievements.VSX.csproj", "{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strokes.BasicAchievements", "Strokes.BasicAchievements\Strokes.BasicAchievements.csproj", "{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Achievement Projects", "Achievement Projects", "{2B7159F2-6552-4902-BE15-C295BC3DF242}"
 EndProject

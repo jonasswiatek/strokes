@@ -73,7 +73,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Strokes.BasicAchievements.VSX\Strokes.BasicAchievements.VSX.csproj">
+    <ProjectReference Include="..\Strokes.BasicAchievements\Strokes.BasicAchievements.csproj">
       <Project>{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}</Project>
       <Name>Strokes.BasicAchievements.VSX</Name>
     </ProjectReference>

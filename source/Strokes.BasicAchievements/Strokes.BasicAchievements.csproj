@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Strokes.BasicAchievements</RootNamespace>
+    <AssemblyName>Strokes.BasicAchievements</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CreateVsixContainer>False</CreateVsixContainer>
+    <DeployExtension>False</DeployExtension>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CreateVsixContainer>False</CreateVsixContainer>
+    <DeployExtension>False</DeployExtension>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.NRefactory, Version=4.0.0.7070, Culture=neutral, PublicKeyToken=efe927acf176eea2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Achievements\Arrays\ArrayDeclarationAchievement.cs" />
+    <Compile Include="Achievements\Arrays\ArrayDeclarateInitAchievement.cs" />
+    <Compile Include="Achievements\Arrays\ArrayLengthPropertyAchievement.cs" />
+    <Compile Include="Achievements\Arrays\JaggedArrayDeclarationAchievement.cs" />
+    <Compile Include="Achievements\Arrays\MultipleDimensionArrayDeclarationAchievement.cs" />
+    <Compile Include="Achievements\Basic\ArithmeticOperatorAchievement.cs" />
+    <Compile Include="Achievements\Basic\ProgramWithStartupParamsAchievement.cs" />
+    <Compile Include="Achievements\Basic\EnumInitializerExplicitAchievement.cs" />
+    <Compile Include="Achievements\Basic\ShorthandArithmeticOperatorAchievement.cs" />
+    <Compile Include="Achievements\Classes\AbstractMethod.cs" />
+    <Compile Include="Achievements\Classes\AnonymousObjectAchievement.cs" />
+    <Compile Include="Achievements\Basic\CastAchievement.cs" />
+    <Compile Include="Achievements\Classes\AbstractClass.cs" />
+    <Compile Include="Achievements\Classes\VirtualOverrideMethodAchievements.cs" />
+    <Compile Include="Achievements\Classes\IComparableInterface.cs" />
+    <Compile Include="Achievements\Classes\UseAsKeyword.cs" />
+    <Compile Include="Achievements\Classes\UseIsKeyword.cs" />
+    <Compile Include="Achievements\Classes\OverloadOperator.cs" />
+    <Compile Include="Achievements\Classes\OverrideGetHashCode.cs" />
+    <Compile Include="Achievements\Classes\OverrideEquals.cs" />
+    <Compile Include="Achievements\Classes\OverrideToString.cs" />
+    <Compile Include="Achievements\Classes\CreateInterface.cs" />
+    <Compile Include="Achievements\Classes\InstantiateObjectWithInitAchievement.cs" />
+    <Compile Include="Achievements\Classes\InstantiateObjectAchievement.cs" />
+    <Compile Include="Achievements\Classes\CreateOverloadedConstructorAchievement.cs" />
+    <Compile Include="Achievements\Classes\CreateClass.cs" />
+    <Compile Include="Achievements\Classes\CreateBaseConstructorInitAchievement.cs" />
+    <Compile Include="Achievements\Classes\CreateThisConstructorInitAchievement.cs" />
+    <Compile Include="Achievements\Classes\CreateDefaultConstructorAchievement.cs" />
+    <Compile Include="Achievements\Classes\CreateConstructorAchievement.cs" />
+    <Compile Include="Achievements\Classes\DestructorAchievement.cs" />
+    <Compile Include="Achievements\Basic\ConstKeywordAchievement.cs" />
+    <Compile Include="Achievements\Basic\BlockCommentAchievement.cs" />
+    <Compile Include="Achievements\Classes\ExtensionMethod.cs" />
+    <Compile Include="Achievements\Error handling\CatchManyExceptions.cs" />
+    <Compile Include="Achievements\Error handling\TryCatchRethrowStatementAchievement.cs" />
+    <Compile Include="Achievements\Error handling\TryCatchIgnoreStatementAchievement.cs" />
+    <Compile Include="Achievements\Funny\BeastNumberAchievement.cs" />
+    <Compile Include="Achievements\Funny\SpeechlessAchievement.cs" />
+    <Compile Include="Achievements\Funny\CurseALotAchievement.cs" />
+    <Compile Include="Achievements\Funny\TooManyModifiersDeclarationAchievement.cs" />
+    <Compile Include="Achievements\Funny\SomeFunnyAchievement.cs" />
+    <Compile Include="Achievements\Funny\TooManyDimensionArrayDeclarationAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\Console\HelloWorldAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\Console\PrintWithEscapeCharactersAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\Console\FormatSpecifier.cs" />
+    <Compile Include="Achievements\MethodCalls\Console\PrintWithPlaceholdersFieldSizeAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\ArrayClassMethodsAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\ConvertToAchievements.cs" />
+    <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\StringMethodsAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\MethodBasics\SingleLineMethod.cs" />
+    <Compile Include="Achievements\MethodCalls\MethodBasics\CreateMethodReturnTypeX.cs" />
+    <Compile Include="Achievements\MethodCalls\MethodBasics\DeclareStaticMethod.cs" />
+    <Compile Include="Achievements\MethodCalls\MethodBasics\DeclareMethodMultipleParams.cs" />
+    <Compile Include="Achievements\MethodCalls\MethodBasics\DeclareMethod.cs" />
+    <Compile Include="Achievements\MethodCalls\MethodBasics\OutParameterAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\MethodBasics\ParamsParameterAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\MethodBasics\RefParameterAchievement.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Char\AssignBoundaryValueChar.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Char\AssignChar.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareEscapeChar.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareHexShorthandChar.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareInitializeChar.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Char\DeclareChar.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Char\MultipleDeclareChar.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\AssignUpperBoundaryValue.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\AssignLowerBoundaryValue.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Double\AssignBoundaryValueDouble.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Integer\AssignBoundaryValueInt.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Float\AssignBoundaryValueFloat.cs" />
+    <Compile Include="Achievements\ProgramFlow\DangerousEqualityCheckAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\NestedIfStatementAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\EnumSwitchAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\IfShorthandAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\ForEachWithEnumAchievement.cs" />
+    <Compile Include="Achievements\Classes\CreateAutoPropertyAchievement.cs" />
+    <Compile Include="Achievements\Classes\CreatePropertyAchievement.cs" />
+    <Compile Include="Achievements\Expressions\NotOperatorAchievement.cs" />
+    <Compile Include="Achievements\Funny\GotoAchievement.cs" />
+    <Compile Include="Achievements\Expressions\OperatorAndAchievement.cs" />
+    <Compile Include="Achievements\Expressions\OperatorOrAchievement.cs" />
+    <Compile Include="Achievements\Expressions\IfCompoundExpressionAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\Console\PrintToConsoleAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\DefaultCaseInSwitchAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\SwitchAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\ElseIfStatementAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\IfElseStatementAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\IfStatementAchievement.cs" />
+    <Compile Include="Achievements\Funny\InfiniteWhileLoopAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\AbstractMethodCall.cs" />
+    <Compile Include="Achievements\MethodCalls\Console\PrintWithPlaceholdersAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\Console\UseConsoleReadLineAchievement.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\AssignValueToPrimitiveType.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Double\AssignDouble.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Double\DeclareInitializeDouble.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Double\MultipleDeclareInt.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Float\AssignFloat.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Float\DeclareFloat.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Float\DeclareInitializeInt.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Float\MultipleDeclareFloat.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Integer\AssignInt.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Integer\DeclareInitializeInt.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Integer\MultipleDeclareInt.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Double\DeclareDouble.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\Integer\DeclareInt.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\DeclarePrimitiveType.cs" />
+    <Compile Include="Achievements\Basic\TypeOfAchievement.cs" />
+    <Compile Include="Achievements\Basic\UsingStatementAchievement.cs" />
+    <Compile Include="Achievements\Basic\EnumInitializerAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\DoWhileLoopAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\ForAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\ForEachAchievement.cs" />
+    <Compile Include="Achievements\Basic\InlineCommentAchievement.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\DeclareInitializePrimitiveType.cs" />
+    <Compile Include="Achievements\PrimitiveTypeUsage\MultipleDeclarePrimitiveType.cs" />
+    <Compile Include="Achievements\Expressions\LambdaExpressionAchievement.cs" />
+    <Compile Include="Achievements\Classes\PrivateSetterAchievement.cs" />
+    <Compile Include="Achievements\Expressions\QueryExpressionAchievement.cs" />
+    <Compile Include="Achievements\Error handling\TryCatchFinallyStatementAchievement.cs" />
+    <Compile Include="Achievements\Error handling\TryCatchStatementAchievement.cs" />
+    <Compile Include="Achievements\Error handling\TryFinallyStatementAchievement.cs" />
+    <Compile Include="Achievements\ProgramFlow\WhileLoopAchievement.cs" />
+    <Compile Include="Challenges\CalculatorChallenge.cs" />
+    <Compile Include="Challenges\Challenge.cs" />
+    <Compile Include="Challenges\CaesarChallenge.cs" />
+    <Compile Include="NRefactory\NRefactoryAchievement.cs" />
+    <Compile Include="NRefactory\NRefactorySession.cs" />
+    <Compile Include="NRefactory\NRefactoryTools.cs" />
+    <Compile Include="Properties\AchievementCategoryResources.da-DK.Designer.cs">
+      <DependentUpon>AchievementCategoryResources.da-DK.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AchievementCategoryResources.Designer.cs">
+      <DependentUpon>AchievementCategoryResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AchievementCategoryResources.ru-RU.Designer.cs">
+      <DependentUpon>AchievementCategoryResources.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AchievementResources.da-DK.Designer.cs">
+      <DependentUpon>AchievementResources.da-DK.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AchievementResources.Designer.cs">
+      <DependentUpon>AchievementResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AchievementResources.ru-RU.Designer.cs">
+      <DependentUpon>AchievementResources.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AchievementResources.nl.Designer.cs">
+      <DependentUpon>AchievementResources.nl.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AchievementCategoryResources.nl.Designer.cs">
+      <DependentUpon>AchievementCategoryResources.nl.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\AchievementCategoryResources.da-DK.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementCategoryResources.da-DK.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\AchievementCategoryResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementCategoryResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\AchievementCategoryResources.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementCategoryResources.ru-RU.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\AchievementResources.da-DK.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementResources.da-DK.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\AchievementResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\AchievementResources.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementResources.ru-RU.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\AchievementResources.nl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementResources.nl.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\AchievementCategoryResources.nl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementCategoryResources.nl.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Achievements\Icons\Basic\AnonObject.png" />
+    <Resource Include="Achievements\Icons\Basic\BlockComment.png" />
+    <Resource Include="Achievements\Icons\Basic\LambdaExpr.png" />
+    <Resource Include="Achievements\Icons\Basic\OrOperator.png" />
+    <Resource Include="Achievements\Icons\Basic\AndOperator.png" />
+    <Resource Include="Achievements\Icons\Empty.png" />
+    <Resource Include="Achievements\Icons\Basic\NotOperator.png" />
+    <Resource Include="Achievements\Icons\Basic\Cast.png" />
+    <Content Include="lib\ICSharpCode.NRefactory.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Strokes.ChallengeRunner\Strokes.ChallengeRunner.csproj">
+      <Project>{830D128B-8D1C-4151-A2E7-3054DBF34126}</Project>
+      <Name>Strokes.ChallengeRunner</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
+      <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>
+      <Name>Strokes.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <UseCodebase>true</UseCodebase>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

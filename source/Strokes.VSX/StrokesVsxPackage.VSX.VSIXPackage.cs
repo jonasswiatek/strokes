@@ -9,6 +9,7 @@ using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Strokes.BasicAchievements;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 using Strokes.Core.Integration;
 using Strokes.Data;
@@ -122,7 +123,7 @@ namespace Strokes.VSX
             AddService<IAchevementLibraryService>(this, true);
             AddService<AchievementDescriptorRepository>(new AchievementDescriptorRepository(), true);
 
-            RegisterAchievementAssembly(typeof(Strokes_BasicAchievements_VSXPackage).Assembly);
+            RegisterAchievementAssembly(typeof(NRefactoryAchievement).Assembly);
 
             GuiInitializer.Initialize();
 
