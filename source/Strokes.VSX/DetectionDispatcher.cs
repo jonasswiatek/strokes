@@ -99,7 +99,7 @@ namespace Strokes.VSX
 
             if (unlockedAchievements.Count() > 0)
             {
-                foreach (var completedAchievement in unlockedAchievements)
+                foreach (var completedAchievement in unlockedAchievements.Where(a => a != null)) //I've seen a case where this has been populated with nulls - I'm NOT sure why - but this at least tests for it.
                 {
                     achievementDescriptorRepository.MarkAchievementAsCompleted(completedAchievement);
                 }

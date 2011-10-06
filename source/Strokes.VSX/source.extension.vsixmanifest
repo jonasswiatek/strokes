@@ -23,7 +23,7 @@
   </References>
   <Content>
     <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
-    <MefComponent>|Strokes.VsAdornments|</MefComponent>
+    <MefComponent>|Strokes.GUI|</MefComponent>
     <ProjectTemplate>ProjectTemplates</ProjectTemplate>
   </Content>
 </Vsix>
