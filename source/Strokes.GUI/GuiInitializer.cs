@@ -33,10 +33,13 @@ namespace Strokes.GUI
         /// </param>
         private static void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)
         {
-            Debug.WriteLine("Achievements unlocked: {0}",
-                string.Join(", ", args.Achievements.Select(a => a.Name)));
+            if (args.Achievements.Any())
+            {
+                Debug.WriteLine(string.Format("Achievements unlocked: {0}",
+                    string.Join(", ", args.Achievements.Select(a => a.Name))));
 
-            AchievementNotificationBox.ShowAchievements(args.Achievements);
+                AchievementNotificationBox.ShowAchievements(args.Achievements);
+            }
         }
     }
 }

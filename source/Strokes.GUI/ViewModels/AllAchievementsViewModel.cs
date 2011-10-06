@@ -98,14 +98,9 @@ namespace Strokes.GUI
         {
             foreach (var achievement in args.Achievements)
             {
-                foreach (var category in AchievementsOrdered)
-                {
-                    if (achievement.Category == category.CategoryName)
-                    {
-                        category.Update(achievement);
-                        break;
-                    }
-                }
+                var category = AchievementsOrdered.FirstOrDefault(c => c.CategoryName == achievement.Category);
+                if (category != null)
+                    category.Update(achievement);
             }
 
             RaisePropertyChanged(OrderedAchievementsFieldName);

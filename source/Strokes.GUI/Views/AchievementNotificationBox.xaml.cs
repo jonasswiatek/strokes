@@ -25,7 +25,7 @@ namespace Strokes.GUI.Views
             if (DesignerProperties.GetIsInDesignMode(this) == false)
                 UnlockedAchievementsList.LayoutUpdated += UnlockedAchievementsList_LayoutUpdated;
 
-            //Close this window again if another detection session is launched by the Achievement context.
+            // Closes the window again if another detection session is launched by the Achievement context.
             AchievementContext.AchievementDetectionStarting += (sender, args) => Close();
         }
 
