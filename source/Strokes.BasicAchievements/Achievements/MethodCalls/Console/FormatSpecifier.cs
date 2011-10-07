@@ -7,7 +7,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("@FormatSpecifierAchievementName",
+    [AchievementDescription("{7050FB47-A763-46EF-B241-8E9521E19B1A}", "@FormatSpecifierAchievementName",
         AchievementDescription = "@FormatSpecifierAchievementDescription",
         AchievementCategory = "@Console")]
     public class FormatSpecifierAchievement : AbstractMethodCall

@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.NRefactory
     /// <summary>
     /// Base class for achievements that use a straight-forward NRefactory method to detect achievements
     /// </summary>
-    public abstract class NRefactoryAchievement : Achievement
+    public abstract class NRefactoryAchievement : AchievementBase
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
         {

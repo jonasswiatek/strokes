@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@NestedIfStatementAchievementName",
+    [AchievementDescription("{A050D53A-F434-48EB-8A22-3F44F6D5F1DF}", "@NestedIfStatementAchievementName",
         AchievementDescription = "@NestedIfStatementAchievementDescription",
         AchievementCategory = "@ProgramFlow")]
     public class NestedIfStatementAchievement : NRefactoryAchievement

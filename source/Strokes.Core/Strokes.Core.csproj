@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Achievement.cs" />
+    <Compile Include="AchievementBase.cs" />
     <Compile Include="AchievementCodeLocation.cs" />
     <Compile Include="AchievementContext.cs" />
     <Compile Include="AchievementDescriptionAttribute.cs" />

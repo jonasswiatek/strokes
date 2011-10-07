@@ -8,7 +8,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Challenges
 {
-    public abstract class Challenge : Achievement
+    public abstract class Challenge : AchievementBase
     {
         protected string ChallengeRunner;
         public Challenge(string challengeRunner)

@@ -12,7 +12,7 @@ namespace Strokes.Data
 {
     public static class AchievementHelper
     {
-        public static AchievementDescriptionAttribute GetDescriptionAttribute(this Achievement achievement)
+        public static AchievementDescriptionAttribute GetDescriptionAttribute(this AchievementBase achievement)
         {
             var descriptionAttributes = achievement.GetType().GetCustomAttributes(typeof(AchievementDescriptionAttribute), true);
             
@@ -29,7 +29,7 @@ namespace Strokes.Data
             throw new ArgumentException("Achievement class does not define an AchievementDescriptionAttribute", "achievement");
         }
 
-        public static AchievementDescriptor GetAchievementDescriptor(this Achievement achievement)
+        public static AchievementDescriptor GetAchievementDescriptor(this AchievementBase achievement)
         {
             var descriptionAttribute = GetDescriptionAttribute(achievement);
             var assembly = achievement.GetType().Assembly;

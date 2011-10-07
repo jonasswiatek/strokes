@@ -66,7 +66,7 @@ namespace Strokes.Data
             var achievementsInAssembly = assembly.GetTypes().Where(a => IsAchievementDescendant(a.UnderlyingSystemType) && !a.IsAbstract);
             foreach (var achievement in achievementsInAssembly)
             {
-                var achievementInstance = (Achievement) Activator.CreateInstance(achievement);
+                var achievementInstance = (AchievementBase) Activator.CreateInstance(achievement);
                 var descriptor = achievementInstance.GetAchievementDescriptor();
 
                 if (!Achievements.Contains(descriptor))
@@ -80,12 +80,12 @@ namespace Strokes.Data
                 return false;
 
             var baseType = type;
-            while (baseType.BaseType != null && baseType.BaseType != typeof(Achievement))
+            while (baseType.BaseType != null && baseType.BaseType != typeof(AchievementBase))
             {
                 baseType = baseType.BaseType;
             }
 
-            return baseType.BaseType == typeof(Achievement);
+            return baseType.BaseType == typeof(AchievementBase);
         }
 
         private static List<CompletedAchievement> GetCompletedAchievements()

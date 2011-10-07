@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@TryCatchRethrowStatementAchievementName",
+    [AchievementDescription("{319C800D-EA11-4381-BD61-3F9B1A246C6F}", "@TryCatchRethrowStatementAchievementName",
         AchievementDescription = "@TryCatchRethrowStatementAchievementDescription",
         AchievementCategory = "@ErrorHandling")]
     public class TryCatchRethrowStatementAchievement : NRefactoryAchievement

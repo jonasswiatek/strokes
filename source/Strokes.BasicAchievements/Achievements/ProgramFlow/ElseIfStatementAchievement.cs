@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@ElseIfStatementAchievementName",
+    [AchievementDescription("{DAF1BF14-32CB-43C8-9163-521EBE2C23DD}", "@ElseIfStatementAchievementName",
         AchievementDescription = "@ElseIfStatementAchievementDescription",
         AchievementCategory = "@ProgramFlow")]
     public class ElseIfStatementAchievement : NRefactoryAchievement

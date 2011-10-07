@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@InstantiateObjectAchievementName",
+    [AchievementDescription("{16E54EE2-BFC4-4350-97F3-F98E92B1C8D3}", "@InstantiateObjectAchievementName",
         AchievementDescription = "@InstantiateObjectAchievementDescription",
         AchievementCategory = "@Class")]
     public class InstantiateObjectAchievement : NRefactoryAchievement

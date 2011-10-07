@@ -8,7 +8,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@UsingStatementAchievementName",
+    [AchievementDescription("{92A3A4FC-DDDF-4C85-A015-F1592C9B658F}", "@UsingStatementAchievementName",
         AchievementDescription = "@UsingStatementAchievementDescription",
         AchievementCategory = "@Fundamentals")]
     public class UsingStatementAchievement : NRefactoryAchievement

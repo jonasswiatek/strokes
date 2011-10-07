@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@QueryExpressionAchievementName",
+    [AchievementDescription("{5DFEED98-ED56-433C-8E06-D71AC7ED2E1E}", "@QueryExpressionAchievementName",
         AchievementDescription = "@QueryExpressionAchievementDescription",
         AchievementCategory = "@Expressions")]
     public class QueryExpressionAchievement : NRefactoryAchievement

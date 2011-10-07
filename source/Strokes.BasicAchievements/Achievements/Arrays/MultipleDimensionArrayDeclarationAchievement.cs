@@ -7,7 +7,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@DeclareMultipleDimArrayAchievementName", 
+    [AchievementDescription("{579E6C20-29FE-4D54-A2F0-4D80DAD93F8E}", "@DeclareMultipleDimArrayAchievementName", 
         AchievementDescription = "@DeclareMultipleDimArrayAchievementDescription", 
         AchievementCategory = "@Arrays")]
     public class DeclareMultipleDimArrayAchievement : NRefactoryAchievement

@@ -7,7 +7,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@JaggedArrayAchievementName",
+    [AchievementDescription("{3CB25EA4-3DE4-4ADC-A5F4-183ACF4E1820}", "@JaggedArrayAchievementName",
         AchievementDescription = "@JaggedArrayAchievementDescription",
         AchievementCategory = "@Arrays")]
     public class JaggedArrayAchievement : NRefactoryAchievement

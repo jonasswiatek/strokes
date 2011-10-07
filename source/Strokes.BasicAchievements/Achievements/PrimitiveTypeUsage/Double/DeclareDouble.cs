@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@MultipleDeclareDoubleName",
+    [AchievementDescription("{6A7F44EB-F96E-4702-9406-286853C08A37}", "@MultipleDeclareDoubleName",
         AchievementDescription = "@MultipleDeclareDoubleDescription",
         AchievementCategory = "@PrimitiveType")]
     public class DeclareDouble : DeclarePrimitiveType<double>

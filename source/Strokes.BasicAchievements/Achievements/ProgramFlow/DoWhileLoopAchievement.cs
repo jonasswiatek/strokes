@@ -7,7 +7,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@DoWhileLoopAchievementName",
+    [AchievementDescription("{C18FCAA9-454D-4A71-9CD4-19D6508EFF42}", "@DoWhileLoopAchievementName",
         AchievementDescription = "@DoWhileLoopAchievementDescription",
         AchievementCategory = "@ProgramFlow")]
     public class DoWhileLoopAchievement : NRefactoryAchievement

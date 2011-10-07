@@ -2,7 +2,7 @@
 
 namespace Strokes.Core
 {
-    public abstract class Achievement
+    public abstract class AchievementBase
     {
         public AchievementCodeLocation AchievementCodeLocation;
 

@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("@PrintToConsoleAchievementName",
+    [AchievementDescription("{EED2F567-0305-4543-8A36-847A5D4176A9}", "@PrintToConsoleAchievementName",
         AchievementDescription = "@PrintToConsoleAchievementDescription",
         AchievementCategory = "@Console")]
     public class PrintToConsoleAchievement : AbstractMethodCall

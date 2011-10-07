@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@SpeechlessAchievementName",
+    [AchievementDescription("{05958BCA-8039-4ABD-A6F8-87573D977E6B}", "@SpeechlessAchievementName",
         AchievementDescription = "@SpeechlessAchievementDescription",
         AchievementCategory = "@Funny")]
     public class SpeechlessAchievement : NRefactoryAchievement

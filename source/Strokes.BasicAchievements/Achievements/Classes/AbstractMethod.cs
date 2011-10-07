@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@AbstractMethodAchievementName",
+    [AchievementDescription("{80034460-25A1-4BAB-9C23-B6C0C6CACE71}", "@AbstractMethodAchievementName",
         AchievementDescription = "@AbstractMethodAchievementDescription",
         AchievementCategory = "@Class")]
     public class AbstractMethodAchievement : NRefactoryAchievement

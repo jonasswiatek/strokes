@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Challenges
 {
-    [AchievementDescription("@CaesarChallengeName", 
+    [AchievementDescription("{698F100C-F6DB-48AB-B7DA-8AAC22F76A84}", "@CaesarChallengeName", 
         AchievementDescription = "@CaesarChallengeDescription", 
         AchievementCategory = "@Challenges")]
     public class CaesarChallenge : Challenge

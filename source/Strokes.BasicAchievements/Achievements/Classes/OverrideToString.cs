@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@OverrideToStringAchievementName",
+    [AchievementDescription("{ECCCFA7F-EAC7-41DD-B924-896326A4074D}", "@OverrideToStringAchievementName",
         AchievementDescription = "@OverrideToStringAchievementDescription",
         AchievementCategory = "@Class")]
     public class OverrideToStringAchievement : NRefactoryAchievement

@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@InfiniteWhileLoopAchievementName",
+    [AchievementDescription("{19F147D7-63B7-40B2-8863-A8CEF0E162F8}", "@InfiniteWhileLoopAchievementName",
         AchievementDescription = "@InfiniteWhileLoopAchievementDescription",
         AchievementCategory = "@Funny")]
     public class InfiniteWhileLoopAchievement : NRefactoryAchievement

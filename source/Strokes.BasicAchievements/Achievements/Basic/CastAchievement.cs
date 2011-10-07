@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@CastAchievementName",
+    [AchievementDescription("{B557EE57-2514-4224-9DD3-555555AA778B}", "@CastAchievementName",
         AchievementDescription = "@CastAchievementDescription",
         AchievementCategory = "@Fundamentals",
         Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/Cast.png")]

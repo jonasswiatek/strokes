@@ -10,10 +10,10 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@InlineCommentAchievementName",
+    [AchievementDescription("{B3049AD8-51B0-40D9-A01F-DA7DDBF868BF}", "@InlineCommentAchievementName",
         AchievementDescription = "@InlineCommentAchievementDescription",
         AchievementCategory = "@Fundamentals")]
-    public class InlineCommentAchievement : Achievement
+    public class InlineCommentAchievement : AchievementBase
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
         {

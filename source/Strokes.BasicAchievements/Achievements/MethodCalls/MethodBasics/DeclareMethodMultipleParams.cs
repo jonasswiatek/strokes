@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@CreateMethodMultipleParametersAchievementName",
+    [AchievementDescription("{936D7FC3-8548-40C9-8035-599BF3A0B594}", "@CreateMethodMultipleParametersAchievementName",
         AchievementDescription = "@CreateMethodMultipleParametersAchievementDescription",
         AchievementCategory = "@Method")]
     public class CreateMethodMultipleParametersAchievement : NRefactoryAchievement
@@ -33,7 +33,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("Method man and a friend", 
+    [AchievementDescription("{07E52DB7-CAD7-4177-A413-3C9C5E5D17D2}", "Method man and a friend", 
         AchievementDescription = "Create a method with 1 parameter", 
         AchievementCategory = "@Method")]
     public class CreateMethodOneParameterAchievement : NRefactoryAchievement

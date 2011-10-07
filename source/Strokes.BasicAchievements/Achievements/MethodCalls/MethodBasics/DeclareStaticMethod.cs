@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@CreateStaticMethodAchievementName",
+    [AchievementDescription("{0414EFDB-0865-4E3C-9809-B779EA1F6CCF}", "@CreateStaticMethodAchievementName",
         AchievementDescription = "@CreateStaticMethodAchievementDescription",
         AchievementCategory = "@Method")]
     public class CreateStaticMethodAchievement : NRefactoryAchievement

@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@PlusOperatorAchievementName",
+    [AchievementDescription("{AF6E17D7-9A43-4BF4-B47E-92E46E3B6865}", "@PlusOperatorAchievementName",
         AchievementDescription = "@PlusOperatorAchievementDescription",
         AchievementCategory = "@Fundamentals")]
     public class PlusOperatorAchievement : NRefactoryAchievement
@@ -28,7 +28,7 @@ namespace Strokes.BasicAchievements.Achievements
     }
 
 
-    [AchievementDescription("@MinusOperatorAchievementName",
+    [AchievementDescription("{A45081C6-66AB-49FA-A388-54EBB850E8A9}", "@MinusOperatorAchievementName",
         AchievementDescription = "@MinusOperatorAchievementDescription",
         AchievementCategory = "@Fundamentals")]
     public class MinusOperatorAchievement : NRefactoryAchievement
@@ -49,7 +49,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("@MultiplyOperatorAchievementName",
+    [AchievementDescription("{C506DD84-FB53-4AB9-836E-62E410697DFB}", "@MultiplyOperatorAchievementName",
         AchievementDescription = "@MultiplyOperatorAchievementDescription",
         AchievementCategory = "@Fundamentals")]
     public class MultiplyOperatorAchievement : NRefactoryAchievement
@@ -70,7 +70,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("@DivideOperatorAchievementName",
+    [AchievementDescription("{A1847340-4EF3-4B8F-816E-53138836864E}", "@DivideOperatorAchievementName",
         AchievementDescription = "@DivideOperatorAchievementDescription",
         AchievementCategory = "@Fundamentals")]
     public class DivideOperatorAchievement : NRefactoryAchievement
@@ -91,7 +91,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("@ModuloOperatorAchievementName",
+    [AchievementDescription("{0CB8F81A-A95B-4DA3-95A4-F23AFAB4764D}", "@ModuloOperatorAchievementName",
         AchievementDescription = "@ModuloOperatorAchievementDescription",
         AchievementCategory = "@Fundamentals")]
     public class ModuloOperatorAchievement : NRefactoryAchievement

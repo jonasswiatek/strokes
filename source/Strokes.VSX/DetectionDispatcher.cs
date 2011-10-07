@@ -73,7 +73,7 @@ namespace Strokes.VSX
 
                     tasks[i++] = Task.Factory.StartNew(() =>
                     {
-                        var achievement = (Achievement)Activator.CreateInstance(a.AchievementType);
+                        var achievement = (AchievementBase)Activator.CreateInstance(a.AchievementType);
 
                         var achievementUnlocked = achievement.DetectAchievement(detectionSession);
 

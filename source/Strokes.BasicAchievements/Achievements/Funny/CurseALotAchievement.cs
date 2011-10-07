@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@CurseAlotAchievementName",
+    [AchievementDescription("{284CC74E-F51C-4B33-8A10-5583AE8FE232}", "@CurseAlotAchievementName",
         AchievementDescription = "@CurseAlotAchievementDescription",
         AchievementCategory = "@Funny")]
     public class CurseAlotAchievement : NRefactoryAchievement

@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@IfShorthandAchievementName",
+    [AchievementDescription("{9A45754C-CA06-4AFA-8489-D091427296CB}", "@IfShorthandAchievementName",
         AchievementDescription = "@IfShorthandAchievementDescription",
         AchievementCategory = "@ProgramFlow")]
     public class IfShorthandAchievement : NRefactoryAchievement

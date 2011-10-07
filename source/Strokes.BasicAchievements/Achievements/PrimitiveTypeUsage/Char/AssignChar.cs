@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@AssignCharName",
+    [AchievementDescription("{E206C7DC-71C5-416A-B14A-B5196BBBD4D0}", "@AssignCharName",
         AchievementDescription = "@AssignCharDescription",
         AchievementCategory = "@PrimitiveType")]
     public class AssignChar : AssignValueToPrimitiveType<char>

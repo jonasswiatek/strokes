@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@IComparableAchievementName",
+    [AchievementDescription("{193657CA-35AC-44C3-89CB-E376C97F0B2C}", "@IComparableAchievementName",
         AchievementDescription = "@IComparableAchievementDescription",
         AchievementCategory = "@Class")]
     public class IComparableAchievement : NRefactoryAchievement

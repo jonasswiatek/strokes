@@ -9,6 +9,12 @@ namespace Strokes.Core
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class AchievementDescriptionAttribute : Attribute
     {
+        public string Guid
+        {
+            get; 
+            private set;
+        }
+
         /// <summary>
         /// Point to an achievement type that must be completed prior to this unlocking
         /// </summary>
@@ -64,8 +70,9 @@ namespace Strokes.Core
         /// Initializes a new instance of the <see cref="AchievementDescriptionAttribute"/> class.
         /// </summary>
         /// <param name="achievementTitle">The achievement title.</param>
-        public AchievementDescriptionAttribute(string achievementTitle)
+        public AchievementDescriptionAttribute(string guid, string achievementTitle)
         {
+            Guid = guid;
             AchievementTitle = achievementTitle;
         }
     }

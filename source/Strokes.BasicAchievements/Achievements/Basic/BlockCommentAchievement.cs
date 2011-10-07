@@ -10,12 +10,12 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("@BlockCommentAchievementName",
+    [AchievementDescription("{ADEDE81C-9350-40AB-882F-30856B2C6E5C}", "@BlockCommentAchievementName",
         AchievementDescription = "@BlockCommentAchievementDescription",
         AchievementCategory = "@Fundamentals",
         Image="/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/BlockComment.png")]
 
-    public class BlockCommentAchievement : Achievement
+    public class BlockCommentAchievement : AchievementBase
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
