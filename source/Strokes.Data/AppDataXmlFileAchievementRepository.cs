@@ -85,7 +85,7 @@ namespace Strokes.Data
                     currentAchievement.DateCompleted = completedAchievement.DateCompleted;
                     currentAchievement.IsCompleted = completedAchievement.IsCompleted;
                 }
-                var dependsOnGuids = achievementDescriptors.Where(a => a.Guid == currentAchievement.Guid).SelectMany(a => a.DependsOn);
+                var dependsOnGuids = achievementDescriptors.Where(a => a.Guid == currentAchievement.Guid).SelectMany(a => a.DependsOn ?? new string[]{});
                 var unlocksGuids = achievementDescriptors.Where(a => a.DependsOn.Contains(currentAchievement.Guid)).Select(a => a.Guid);
                 
                 currentAchievement.DependsOn = Achievements.Where(a => dependsOnGuids.Contains(a.Guid));

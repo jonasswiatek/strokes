@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-
+using System.Linq;
 namespace Strokes.Core.Data.Model
 {
     public class Achievement : INotifyPropertyChanged
@@ -10,6 +10,11 @@ namespace Strokes.Core.Data.Model
 
         public IEnumerable<Achievement> DependsOn { get; set; }
         public IEnumerable<Achievement> Unlocks { get; set; }
+
+        public string DependsOnStr
+        {
+            get { return string.Join(", ", DependsOn.Select(a => a.Name)); }
+        }
 
         public string Name
         {
