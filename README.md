@@ -11,7 +11,7 @@ This project is currently in a beta stage, and you can download a copy from the 
 **Highlighting of which code completed a specific achievement**
 ![Achievement Statistics](/jonasswiatek/strokes/raw/master/docs/achievement_viewport.png)
 
-**Notifications of which achievements where completed when you compile**
+**Notifications of which achievements were completed when you compile**
 ![Achievement Statistics](/jonasswiatek/strokes/raw/master/docs/achievements_notification.png)
 
 **The Achievement Statistics Page**
