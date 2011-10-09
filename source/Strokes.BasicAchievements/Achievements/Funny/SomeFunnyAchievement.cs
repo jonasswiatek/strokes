@@ -60,11 +60,18 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
+                /*Dang; ignoring whitespaces in this count will mean that I'll need to recursively go in the methodbody,
+                 * count all children, all blockstatements, all true/falsestatements etc. ... To do...some day...
+                 * 
+                 */
+                
                 if (methodDeclaration.Body.EndLocation.Line - methodDeclaration.Body.StartLocation.Line >= 100)
                     UnlockWith(methodDeclaration);
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
+
+
         }
     }
 

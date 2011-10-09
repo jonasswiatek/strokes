@@ -90,6 +90,8 @@
     <Compile Include="Achievements\Error handling\CatchManyExceptions.cs" />
     <Compile Include="Achievements\Error handling\TryCatchRethrowStatementAchievement.cs" />
     <Compile Include="Achievements\Error handling\TryCatchIgnoreStatementAchievement.cs" />
+    <Compile Include="Achievements\Events\CreateDelegateAchievement.cs" />
+    <Compile Include="Achievements\Events\CreateEventAchievement.cs" />
     <Compile Include="Achievements\Funny\BeastNumberAchievement.cs" />
     <Compile Include="Achievements\Funny\SpeechlessAchievement.cs" />
     <Compile Include="Achievements\Funny\CurseALotAchievement.cs" />

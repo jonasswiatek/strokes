@@ -1041,4 +1041,16 @@
   <data name="DangerousEqualityCheckAchievementDescription" xml:space="preserve">
     <value>Check for equality between floating point numbers (hint: this could fail)</value>
   </data>
+  <data name="CreateDelegateAchievementDescription" xml:space="preserve">
+    <value>Declare a delegate</value>
+  </data>
+  <data name="CreateDelegateAchievementName" xml:space="preserve">
+    <value>Nothing is impossible if you can delegate</value>
+  </data>
+  <data name="CreateEventAchievementDescription" xml:space="preserve">
+    <value>Create an event.</value>
+  </data>
+  <data name="CreateEventAchievementName" xml:space="preserve">
+    <value>Event of the year?!</value>
+  </data>
 </root>

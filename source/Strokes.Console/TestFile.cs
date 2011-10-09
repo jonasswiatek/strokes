@@ -10,11 +10,19 @@ namespace Strokes.Console
 {
     public class TestFile
     {
-        public void Method()
-        {
-            int[] foo = new int[] { 1, 2, 3 };
+        public delegate void ChangedEventHandler(object sender, EventArgs e);
+        public event ChangedEventHandler Changed;
 
-            System.Array.Clear(foo, 0, 1);
+        public TestFile()
+        {
+            this.Changed += new ChangedEventHandler(TestFile_Changed);
+
+            Changed(this, EventArgs.Empty);
+        }
+
+        void TestFile_Changed(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

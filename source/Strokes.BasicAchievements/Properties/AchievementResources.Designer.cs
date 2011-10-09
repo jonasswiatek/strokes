@@ -565,6 +565,42 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Declare a delegate.
+        /// </summary>
+        public static string CreateDelegateAchievementDescription {
+            get {
+                return ResourceManager.GetString("CreateDelegateAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nothing is impossible if you can delegate.
+        /// </summary>
+        public static string CreateDelegateAchievementName {
+            get {
+                return ResourceManager.GetString("CreateDelegateAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create an event..
+        /// </summary>
+        public static string CreateEventAchievementDescription {
+            get {
+                return ResourceManager.GetString("CreateEventAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Event of the year?!.
+        /// </summary>
+        public static string CreateEventAchievementName {
+            get {
+                return ResourceManager.GetString("CreateEventAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create an interface.
         /// </summary>
         public static string CreateInterfaceAchievementDescription {
