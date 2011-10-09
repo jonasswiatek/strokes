@@ -1053,4 +1053,34 @@
   <data name="CreateEventAchievementName" xml:space="preserve">
     <value>Event of the year?!</value>
   </data>
+  <data name="AbortThreadAchievementDescription" xml:space="preserve">
+    <value>Abort a thread using Abort()</value>
+  </data>
+  <data name="AbortThreadAchievementName" xml:space="preserve">
+    <value>Abort, abort, abort!</value>
+  </data>
+  <data name="CreateThreadAchievementDescription" xml:space="preserve">
+    <value>Create a thread</value>
+  </data>
+  <data name="CreateThreadAchievementName" xml:space="preserve">
+    <value>Weaver</value>
+  </data>
+  <data name="JoinThreadAchievementDescription" xml:space="preserve">
+    <value>Block a running thread using Join()</value>
+  </data>
+  <data name="JoinThreadAchievementName" xml:space="preserve">
+    <value>Block that thread!</value>
+  </data>
+  <data name="SleepThreadAchievementDescription" xml:space="preserve">
+    <value>Suspends a thread for a specified time.</value>
+  </data>
+  <data name="SleepThreadAchievementName" xml:space="preserve">
+    <value>Nighty night.</value>
+  </data>
+  <data name="StartThreadAchievementDescription" xml:space="preserve">
+    <value>Start a thread</value>
+  </data>
+  <data name="StartThreadAchievementName" xml:space="preserve">
+    <value>Ready, thread...start!</value>
+  </data>
 </root>

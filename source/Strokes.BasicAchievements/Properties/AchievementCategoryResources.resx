@@ -135,6 +135,9 @@
   <data name="ErrorHandling" xml:space="preserve">
     <value>Error handling</value>
   </data>
+  <data name="EventsThreads" xml:space="preserve">
+    <value>Events andThreads</value>
+  </data>
   <data name="Expressions" xml:space="preserve">
     <value>Expressions</value>
   </data>
