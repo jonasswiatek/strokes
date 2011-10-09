@@ -44,7 +44,7 @@
   <ItemGroup>
     <Reference Include="ICSharpCode.NRefactory, Version=4.0.0.7070, Culture=neutral, PublicKeyToken=efe927acf176eea2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\ICSharpCode.NRefactory.dll</HintPath>
+      <HintPath>..\ExternalReferences\ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -285,7 +285,6 @@
     <Resource Include="Achievements\Icons\Empty.png" />
     <Resource Include="Achievements\Icons\Basic\NotOperator.png" />
     <Resource Include="Achievements\Icons\Basic\Cast.png" />
-    <Content Include="lib\ICSharpCode.NRefactory.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Strokes.ChallengeRunner\Strokes.ChallengeRunner.csproj">

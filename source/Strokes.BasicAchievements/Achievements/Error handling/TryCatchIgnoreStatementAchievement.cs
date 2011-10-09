@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{09FA8C6F-26DC-4361-8AFD-EB979BEB50D8}", "@TryCatchIgnoreStatementAchievementName",
+    [AchievementDescriptor("{09FA8C6F-26DC-4361-8AFD-EB979BEB50D8}", "@TryCatchIgnoreStatementAchievementName",
         AchievementDescription = "@TryCatchIgnoreStatementAchievementDescription",
         AchievementCategory = "@ErrorHandling")]
     public class TryCatchIgnoreStatementAchievement : NRefactoryAchievement

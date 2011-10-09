@@ -7,7 +7,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{463CA967-E431-4479-AE4C-2F318C00DD09}", "@DangerousEqualityCheckAchievementName",
+    [AchievementDescriptor("{463CA967-E431-4479-AE4C-2F318C00DD09}", "@DangerousEqualityCheckAchievementName",
         AchievementDescription = "@DangerousEqualityCheckAchievementDescription",
         AchievementCategory = "@ProgramFlow")]
     public class DangerousEqualityCheckAchievement : NRefactoryAchievement

@@ -7,7 +7,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{B012CA29-340C-47D0-8D39-E2F83FB59D1A}", "@DeclareArrayAchievementName",
+    [AchievementDescriptor("{B012CA29-340C-47D0-8D39-E2F83FB59D1A}", "@DeclareArrayAchievementName",
         AchievementDescription = "@DeclareArrayAchievementDescription",
         AchievementCategory = "@Arrays")]
     public class DeclareArrayAchievement : NRefactoryAchievement

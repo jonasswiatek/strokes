@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{B4FDFDE4-C955-4667-8FA6-6E7E368C3CA5}", "@ForAchievementName",
+    [AchievementDescriptor("{B4FDFDE4-C955-4667-8FA6-6E7E368C3CA5}", "@ForAchievementName",
         AchievementDescription = "@ForAchievementDescription",
         AchievementCategory = "@ProgramFlow")]
     public class ForAchievement : NRefactoryAchievement

@@ -11,10 +11,12 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Strokes.BasicAchievements;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using Strokes.Core.Data;
 using Strokes.Core.Integration;
 using Strokes.Data;
 using Strokes.GUI;
 using Strokes.VSX.Trackers;
+using StructureMap;
 
 namespace Strokes.VSX
 {
@@ -46,7 +48,8 @@ namespace Strokes.VSX
         /// <param name="assembly">The assembly to register.</param>
         public void RegisterAchievementAssembly(Assembly assembly)
         {
-            GetService<AchievementDescriptorRepository>().LoadFromAssembly(assembly);
+            var repository = ObjectFactory.GetInstance<IAchievementRepository>();
+            repository.LoadFromAssembly(assembly);
         }
 
         /// <summary>
@@ -98,9 +101,13 @@ namespace Strokes.VSX
         /// </summary>
         protected override void Initialize()
         {
-            Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
-
             base.Initialize();
+
+            //Initialize IoC
+            ObjectFactory.Configure(a =>
+                                        {
+                                            a.For<IAchievementRepository>().Singleton().Use<AppDataXmlFileAchievementRepository>();
+                                        });
 
             if (MenuService != null)
             {
@@ -121,7 +128,6 @@ namespace Strokes.VSX
             }
 
             AddService<IAchevementLibraryService>(this, true);
-            AddService<AchievementDescriptorRepository>(new AchievementDescriptorRepository(), true);
 
             RegisterAchievementAssembly(typeof(NRefactoryAchievement).Assembly);
 

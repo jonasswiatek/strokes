@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Strokes.Core.Model
+namespace Strokes.Core.Data.Model
 {
-    public class AchievementDescriptor : INotifyPropertyChanged
+    public class Achievement : INotifyPropertyChanged
     {
+        public string Guid { get; set; }
+
         public string Name
         {
             get;
@@ -53,10 +55,8 @@ namespace Strokes.Core.Model
             set;
         }
 
-#pragma warning disable 67
-        
+        #pragma warning disable 67
         public event PropertyChangedEventHandler PropertyChanged;
-        
-#pragma warning restore 67
+        #pragma warning restore 67
     }
 }

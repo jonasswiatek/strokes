@@ -10,7 +10,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{B3049AD8-51B0-40D9-A01F-DA7DDBF868BF}", "@InlineCommentAchievementName",
+    [AchievementDescriptor("{B3049AD8-51B0-40D9-A01F-DA7DDBF868BF}", "@InlineCommentAchievementName",
         AchievementDescription = "@InlineCommentAchievementDescription",
         AchievementCategory = "@Fundamentals")]
     public class InlineCommentAchievement : AchievementBase

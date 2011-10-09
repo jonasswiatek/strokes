@@ -7,7 +7,7 @@ using System.Reflection;
 namespace Strokes.Core
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public class AchievementDescriptionAttribute : Attribute
+    public class AchievementDescriptorAttribute : Attribute
     {
         public string Guid
         {
@@ -67,10 +67,10 @@ namespace Strokes.Core
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AchievementDescriptionAttribute"/> class.
+        /// Initializes a new instance of the <see cref="AchievementDescriptorAttribute"/> class.
         /// </summary>
         /// <param name="achievementTitle">The achievement title.</param>
-        public AchievementDescriptionAttribute(string guid, string achievementTitle)
+        public AchievementDescriptorAttribute(string guid, string achievementTitle)
         {
             Guid = guid;
             AchievementTitle = achievementTitle;

@@ -6,29 +6,30 @@ using System.Reflection;
 using System.Text;
 using System.Xml.Serialization;
 using Strokes.Core;
-using Strokes.Core.Contracts;
-using Strokes.Core.Model;
+using Strokes.Core.Data;
+using Strokes.Core.Data.Model;
 
 namespace Strokes.Data
 {
-    public class AchievementDescriptorRepository : IAchievementDescriptorRepository
+    public class AppDataXmlFileAchievementRepository : IAchievementRepository
     {
-        private static readonly List<AchievementDescriptor> Achievements = new List<AchievementDescriptor>();
+        private static readonly List<Achievement> Achievements = new List<Achievement>();
         private const string AchievementStorageDirectory = "Strokes for Visual Studio";
         private const string AchievementStorageFile = "AchievementStorage.xml";
 
         private static readonly List<CompletedAchievement> CompletedAchievements; 
 
-        static AchievementDescriptorRepository()
+        static AppDataXmlFileAchievementRepository()
         {
             CompletedAchievements = GetCompletedAchievements();
         }
 
-        public IEnumerable<AchievementDescriptor> GetAll()
+        public IEnumerable<Achievement> GetAll()
         {
             foreach(var achievement in Achievements)
             {
-                var completedAchievement = CompletedAchievements.FirstOrDefault(a => a.Name == achievement.Name);
+                var achievementInstance = achievement;
+                var completedAchievement = CompletedAchievements.FirstOrDefault(a => a.Guid == achievementInstance.Guid);
                 if(completedAchievement != null)
                 {
                     achievement.DateCompleted = completedAchievement.DateCompleted;
@@ -39,7 +40,7 @@ namespace Strokes.Data
             }
         }
 
-        public void MarkAchievementAsCompleted(AchievementDescriptor achievementDescriptor)
+        public void MarkAchievementAsCompleted(Achievement achievementDescriptor)
         {
             // Used to update the GUI
             achievementDescriptor.DateCompleted = DateTime.Now;
@@ -72,6 +73,11 @@ namespace Strokes.Data
                 if (!Achievements.Contains(descriptor))
                     Achievements.Add(descriptor);
             }
+        }
+
+        public void ResetAchievements()
+        {
+            ResetCompletedAchievements();
         }
 
         private static bool IsAchievementDescendant(Type type)
@@ -123,6 +129,13 @@ namespace Strokes.Data
 
         public void ResetCompletedAchievements()
         {
+            CompletedAchievements.Clear();
+            foreach(var achievement in Achievements) //Reset all cached completion data
+            {
+                achievement.IsCompleted = false;
+                achievement.DateCompleted = default(DateTime);
+            }
+
             var filename = GetAchievementStorageFile();
 
             if (File.Exists(filename))

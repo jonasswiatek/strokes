@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{A4A094CB-57AC-41FF-8562-29A5ACCC9076}", "@NotOperatorAchievementName",
+    [AchievementDescriptor("{A4A094CB-57AC-41FF-8562-29A5ACCC9076}", "@NotOperatorAchievementName",
         AchievementDescription = "@NotOperatorAchievementDescription",
         AchievementCategory = "@Expressions",
         Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/NotOperator.png")]

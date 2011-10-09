@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("{4EEB0846-9F8C-486A-A712-F1D93B02E9E7}", "@HelloWorldAchievementName",
+    [AchievementDescriptor("{4EEB0846-9F8C-486A-A712-F1D93B02E9E7}", "@HelloWorldAchievementName",
         AchievementDescription = "@HelloWorldAchievementDescription",
         AchievementCategory = "@Console")]
     public class HelloWorldAchievement : AbstractMethodCall

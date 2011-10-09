@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Challenges
 {
-    [AchievementDescription("{31A0B042-488A-47F0-84DC-627DDC4524B5}", "@CalculatorChallengeName",
+    [AchievementDescriptor("{31A0B042-488A-47F0-84DC-627DDC4524B5}", "@CalculatorChallengeName",
         AchievementDescription = "@CalculatorChallengeDescription", 
         AchievementCategory = "@Challenges")]
     public class CalculatorChallenge : Challenge

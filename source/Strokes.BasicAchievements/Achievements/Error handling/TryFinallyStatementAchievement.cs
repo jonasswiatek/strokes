@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{54B78C8F-270F-49EB-B205-ABB66E7A6FB9}", "@TryFinallyStatementAchievementName",
+    [AchievementDescriptor("{54B78C8F-270F-49EB-B205-ABB66E7A6FB9}", "@TryFinallyStatementAchievementName",
         AchievementDescription = "@TryFinallyStatementAchievementDescription",
         AchievementCategory = "@ErrorHandling")]
     public class TryFinallyStatementAchievement : NRefactoryAchievement

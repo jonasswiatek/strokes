@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{FD2A318D-ECDD-42DD-897F-F2E22E45F2A2}", "@RefParameterAchievementName",
+    [AchievementDescriptor("{FD2A318D-ECDD-42DD-897F-F2E22E45F2A2}", "@RefParameterAchievementName",
         AchievementDescription = "@RefParameterAchievementDescription",
         AchievementCategory = "@Method")]
     public class RefParameterAchievement : NRefactoryAchievement

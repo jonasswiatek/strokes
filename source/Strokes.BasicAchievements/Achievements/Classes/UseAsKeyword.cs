@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{A7B577B2-6ACE-4A43-94FF-33483053FCF2}", "@UseAsKeywordAchievementName",
+    [AchievementDescriptor("{A7B577B2-6ACE-4A43-94FF-33483053FCF2}", "@UseAsKeywordAchievementName",
         AchievementDescription = "@UseAsKeywordAchievementDescription",
         AchievementCategory = "@Class")]
     public class UseAsKeywordAchievement : NRefactoryAchievement

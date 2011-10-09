@@ -54,6 +54,7 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml" />
@@ -75,7 +76,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Strokes.BasicAchievements\Strokes.BasicAchievements.csproj">
       <Project>{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}</Project>
-      <Name>Strokes.BasicAchievements.VSX</Name>
+      <Name>Strokes.BasicAchievements</Name>
     </ProjectReference>
     <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
       <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>

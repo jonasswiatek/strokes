@@ -10,9 +10,11 @@ using ICSharpCode.NRefactory.Ast;
 using Strokes.BasicAchievements.Achievements;
 using Strokes.Core;
 using System.Linq;
+using Strokes.Core.Data;
 using Strokes.Data;
 using Strokes.GUI;
 using Strokes.VSX;
+using StructureMap;
 
 namespace Strokes.Console
 {
@@ -21,6 +23,10 @@ namespace Strokes.Console
         [STAThread]
         static void Main(string[] args)
         {
+            ObjectFactory.Configure(a =>
+                                        {
+                                            a.For<IAchievementRepository>().Singleton().Use<AppDataXmlFileAchievementRepository>();
+                                        });
             var fullChain = true;
 
             var cultureToTest = "ru-RU"; // Set to "ru-RU" to enable russian. Set to "nl" for dutch
@@ -55,7 +61,7 @@ namespace Strokes.Console
                 AchievementContext.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
                 GuiInitializer.Initialize();
 
-                var achievementDescriptorRepository = new AchievementDescriptorRepository();
+                var achievementDescriptorRepository = ObjectFactory.GetInstance<IAchievementRepository>();
                 achievementDescriptorRepository.LoadFromAssembly(typeof(AnonymousObjectAchievement).Assembly);
 
                 DetectionDispatcher.DetectionCompleted += DetectionDispatcher_DetectionCompleted;

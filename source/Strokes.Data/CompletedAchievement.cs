@@ -1,20 +1,21 @@
 ﻿using System;
+using Strokes.Core.Data.Model;
 
-namespace Strokes.Core.Model
+namespace Strokes.Data
 {
     public class CompletedAchievement
     {
         public CompletedAchievement()
         {
-            Name = string.Empty;
+            Guid = string.Empty;
         }
 
-        public CompletedAchievement(AchievementDescriptor achievementDescriptor)
+        public CompletedAchievement(Achievement achievementDescriptor)
         {
-            Name = achievementDescriptor.Name;
+            Guid = achievementDescriptor.Guid;
         }
 
-        public string Name
+        public string Guid
         {
             get;
             set;
@@ -54,16 +55,14 @@ namespace Strokes.Core.Model
             if (ReferenceEquals(this, other))
                 return true;
 
-            return other.Name.Equals(Name);
+            return other.Guid.Equals(Guid);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                int result = (Name != null ? Name.GetHashCode() : 0);
-                result = (result * 397) ^ IsCompleted.GetHashCode();
-                result = (result * 397) ^ DateCompleted.GetHashCode();
+                int result = (Guid != null ? Guid.GetHashCode() : 0);
                 
                 return result;
             }

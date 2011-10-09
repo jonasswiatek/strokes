@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
-using Strokes.Core.Model;
+using Strokes.Core.Data.Model;
 
 namespace Strokes.GUI
 {
@@ -11,10 +11,10 @@ namespace Strokes.GUI
     {
         public AchievementNotificationViewModel()
         {
-            this.CurrentAchievements = new ObservableCollection<AchievementDescriptor>();
+            this.CurrentAchievements = new ObservableCollection<Achievement>();
         }
 
-        public ObservableCollection<AchievementDescriptor> CurrentAchievements
+        public ObservableCollection<Achievement> CurrentAchievements
         {
             get;
             set;

@@ -8,7 +8,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{5FAA2B73-5963-48D2-B382-2B46690EC4BF}", "@EnumSwitchAchievementName",
+    [AchievementDescriptor("{5FAA2B73-5963-48D2-B382-2B46690EC4BF}", "@EnumSwitchAchievementName",
         AchievementDescription = "@EnumSwitchAchievementDescription",
         AchievementCategory = "@ProgramFlow")]
     public class EnumSwitchAchievement : NRefactoryAchievement

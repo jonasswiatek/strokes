@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}", "@EnumInitializerAchievementName",
+    [AchievementDescriptor("{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}", "@EnumInitializerAchievementName",
         AchievementDescription = "@EnumInitializerAchievementDescription",
         AchievementCategory = "@Fundamentals")]
     public class EnumInitializerAchievement : NRefactoryAchievement

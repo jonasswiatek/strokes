@@ -7,7 +7,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{07D39703-8F4A-4340-959E-A7E6CE5D70F0}", "@ConstKeywordAchievementName",
+    [AchievementDescriptor("{07D39703-8F4A-4340-959E-A7E6CE5D70F0}", "@ConstKeywordAchievementName",
         AchievementDescription = "@ConstKeywordAchievementDescription",
         AchievementCategory = "@Fundamentals")]
     public class ConstKeywordAchievement : NRefactoryAchievement

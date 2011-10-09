@@ -8,9 +8,11 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Strokes.Core;
-using Strokes.Core.Model;
+using Strokes.Core.Data;
+using Strokes.Core.Data.Model;
 using Strokes.Data;
 using System.Collections.Specialized;
+using StructureMap;
 
 namespace Strokes.GUI
 {
@@ -20,9 +22,11 @@ namespace Strokes.GUI
         private const string TotalAchievementsFieldName = "TotalAchievements";
         private const string TotalCompletedFieldName = "TotalCompleted";
         private const string PercentageCompletedFieldName = "PercentageCompleted";
+        private readonly IAchievementRepository _repository;
 
         public AllAchievementsViewModel()
         {
+            _repository = ObjectFactory.GetInstance<IAchievementRepository>();
             this.AchievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
             this.ResetCommand = new RelayCommand(ResetExecute);
 
@@ -70,15 +74,14 @@ namespace Strokes.GUI
 
         private void ResetExecute()
         {
-            new AchievementDescriptorRepository().ResetCompletedAchievements();
+            _repository.ResetAchievements();
         }
 
         private void ReloadViewModel()
         {
             AchievementsOrdered.Clear();
 
-            var repository = new AchievementDescriptorRepository();
-            var achievements = repository.GetAll();
+            var achievements = _repository.GetAll();
 
             foreach (var category in achievements.AsCategories())
             {
@@ -109,14 +112,14 @@ namespace Strokes.GUI
         }
     }
 
-    public class AchievementsPerCategory : ObservableCollection<AchievementDescriptor>, INotifyPropertyChanged
+    public class AchievementsPerCategory : ObservableCollection<Achievement>, INotifyPropertyChanged
     {
         public AchievementsPerCategory()
         {
             CategoryName = "Unknown";
         }
 
-        public AchievementsPerCategory(IEnumerable<AchievementDescriptor> collection)
+        public AchievementsPerCategory(IEnumerable<Achievement> collection)
             : base(collection)
         {
             CategoryName = "Unknown";
@@ -144,7 +147,7 @@ namespace Strokes.GUI
             }
         }
 
-        internal void Update(AchievementDescriptor descriptor)
+        internal void Update(Achievement descriptor)
         {
             var achievementDescriptor = this.SingleOrDefault(a => a.Name == descriptor.Name);
 

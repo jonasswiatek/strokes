@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Strokes.Core;
-using Strokes.Core.Model;
+using Strokes.Core.Data.Model;
 using System.ComponentModel;
 using System.Windows.Shapes;
 
@@ -49,7 +49,7 @@ namespace Strokes.GUI.Views
 
             isEventsBound = true;
 
-            foreach (AchievementDescriptor item in UnlockedAchievementsList.Items)
+            foreach (Achievement item in UnlockedAchievementsList.Items)
             {
                 var dataItem = item;
                 var gotoCodebutton = FindItemControl(UnlockedAchievementsList, "PART_MagnifierGlassPath", item) as FrameworkElement;
@@ -95,7 +95,7 @@ namespace Strokes.GUI.Views
             Close();
         }
 
-        protected void AddAchievements(IEnumerable<AchievementDescriptor> achievementDescriptors)
+        protected void AddAchievements(IEnumerable<Achievement> achievementDescriptors)
         {
             foreach (var achevementDescriptor in achievementDescriptors)
             {
@@ -103,7 +103,7 @@ namespace Strokes.GUI.Views
             }
         }
 
-        public static void ShowAchievements(IEnumerable<AchievementDescriptor> achievementDescriptors)
+        public static void ShowAchievements(IEnumerable<Achievement> achievementDescriptors)
         {
             if (achievementDescriptors.Any() == false)
             {

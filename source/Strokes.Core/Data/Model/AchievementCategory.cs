@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace Strokes.Core.Model
+namespace Strokes.Core.Data.Model
 {
     public class AchievementCategory
     {
@@ -13,7 +11,7 @@ namespace Strokes.Core.Model
             set;
         }
 
-        public IEnumerable<AchievementDescriptor> Achievements
+        public IEnumerable<Achievement> Achievements
         {
             get;
             set;
@@ -22,7 +20,7 @@ namespace Strokes.Core.Model
 
     public static class AchievementDescriptorHelper
     {
-        public static IEnumerable<AchievementCategory> AsCategories(this IEnumerable<AchievementDescriptor> achievementDescriptors)
+        public static IEnumerable<AchievementCategory> AsCategories(this IEnumerable<Achievement> achievementDescriptors)
         {
             var categories = achievementDescriptors
                     .Select(a => a.Category)

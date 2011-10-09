@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{EAEDD6AB-B8DE-4D90-BD62-DD3C00FDA6C1}", "@VirtualMethodAchievementName",
+    [AchievementDescriptor("{EAEDD6AB-B8DE-4D90-BD62-DD3C00FDA6C1}", "@VirtualMethodAchievementName",
         AchievementDescription = "@VirtualMethodAchievementDescription",
         AchievementCategory = "@Class")]
     public class VirtualMethodAchievement : NRefactoryAchievement
@@ -27,7 +27,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("{56BCD937-CF59-4993-8A69-0A4E13842745}", "Override!", AchievementDescription = "Override a method", AchievementCategory = "@Class")]
+    [AchievementDescriptor("{56BCD937-CF59-4993-8A69-0A4E13842745}", "Override!", AchievementDescription = "Override a method", AchievementCategory = "@Class")]
     public class OVerrideMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("{614E5F45-BE9C-4202-8A19-568E5A7D9467}", "@PrintNewLineAchievementName",
+    [AchievementDescriptor("{614E5F45-BE9C-4202-8A19-568E5A7D9467}", "@PrintNewLineAchievementName",
         AchievementDescription = "@PrintNewLineAchievementDescription",
         AchievementCategory = "@Console")]
     public class PrintNewLineAchievement : AbstractMethodCall
@@ -31,7 +31,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("{411ABF94-05A8-44F4-8219-D5B6D1E1F439}", "@PrintHorizontalTabAchievementName",
+    [AchievementDescriptor("{411ABF94-05A8-44F4-8219-D5B6D1E1F439}", "@PrintHorizontalTabAchievementName",
         AchievementDescription = "@PrintHorizontalTabAchievementDescription",
         AchievementCategory = "Console")]
     public class PrintHorizontalTabAchievement : AbstractMethodCall
@@ -56,7 +56,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("{96E443E6-C6A3-4A04-95F5-F72A2FCCC07C}", "@PrintQuoteCharAchievementName",
+    [AchievementDescriptor("{96E443E6-C6A3-4A04-95F5-F72A2FCCC07C}", "@PrintQuoteCharAchievementName",
         AchievementDescription = "@PrintQuoteCharAchievementDescription",
         AchievementCategory = "Console")]
     public class PrintQuoteCharAchievement : AbstractMethodCall
@@ -81,7 +81,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("{48513581-C29E-4298-92B2-A20AD8BCC01C}", "@PrintSingleQuoteCharAchievementName",
+    [AchievementDescriptor("{48513581-C29E-4298-92B2-A20AD8BCC01C}", "@PrintSingleQuoteCharAchievementName",
         AchievementDescription = "@PrintSingleQuoteCharAchievementDescription",
         AchievementCategory = "Console")]
     public class PrintSingleQuoteCharAchievement : AbstractMethodCall
@@ -106,7 +106,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         }
     }
 
-    [AchievementDescription("{815C33AD-41E9-43F8-B204-F9A157DD8AB6}", "@PrintBackSlashCharAchievementName",
+    [AchievementDescriptor("{815C33AD-41E9-43F8-B204-F9A157DD8AB6}", "@PrintBackSlashCharAchievementName",
         AchievementDescription = "@PrintBackSlashCharAchievementDescription",
         AchievementCategory = "Console")]
     public class PrintBackSlashCharAchievement : AbstractMethodCall

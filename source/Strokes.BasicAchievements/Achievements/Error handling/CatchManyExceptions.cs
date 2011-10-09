@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{504D9E72-098E-4E81-A87A-BA198C714EDA}", "@CatchManyExceptionsAchievementName",
+    [AchievementDescriptor("{504D9E72-098E-4E81-A87A-BA198C714EDA}", "@CatchManyExceptionsAchievementName",
         AchievementDescription = "@CatchManyExceptionsAchievementDescription",
         AchievementCategory = "@ErrorHandling")]
     public class CatchManyExceptionsAchievement : NRefactoryAchievement
