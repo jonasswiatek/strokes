@@ -9,7 +9,10 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{2EF5C718-C944-40A0-AFDD-8142B6E15A42}", "@DeclareInitArrayAchievementName",
         AchievementDescription = "@DeclareInitArrayAchievementDescription",
-        AchievementCategory = "@Arrays")]
+        AchievementCategory = "@Arrays",
+        DependsOn = new[] {
+            "{2EF5C718-C944-40A0-AFDD-8142B6E15A42}"
+        })]
     public class DeclareInitArrayAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

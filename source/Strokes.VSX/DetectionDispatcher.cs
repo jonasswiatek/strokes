@@ -54,16 +54,15 @@ namespace Strokes.VSX
 
             using (var detectionSession = new DetectionSession(buildInformation))
             {
-                var achievementDescriptors = achievementDescriptorRepository.GetAll();
-                var uncompletedAchievements = achievementDescriptors.Where(a => !a.IsCompleted || AchievementContext.DisablePersist);
+                var unlockableAchievements = achievementDescriptorRepository.GetUnlockableAchievements();
 
                 var stopWatch = new Stopwatch();
                 stopWatch.Start();
 
-                var tasks = new Task[uncompletedAchievements.Count()];
+                var tasks = new Task[unlockableAchievements.Count()];
                 var i = 0;
 
-                foreach (var uncompletedAchievement in uncompletedAchievements)
+                foreach (var uncompletedAchievement in unlockableAchievements)
                 {
                     var a = uncompletedAchievement;
 
@@ -88,7 +87,7 @@ namespace Strokes.VSX
 
                 OnDetectionCompleted(null, new DetectionCompletedEventArgs()
                 {
-                    AchievementsTested = uncompletedAchievements.Count(),
+                    AchievementsTested = unlockableAchievements.Count(),
                     ElapsedMilliseconds = (int)stopWatch.ElapsedMilliseconds
                 });
             }

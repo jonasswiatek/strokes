@@ -24,7 +24,7 @@ namespace Strokes.Core
             throw new ArgumentException("Achievement class does not define an AchievementDescriptionAttribute", "achievement");
         }
 
-        public static Achievement GetAchievementDescriptor(this AchievementBase achievement)
+        public static Achievement GetAchievementDto(this AchievementBase achievement)
         {
             var descriptionAttribute = GetDescriptionAttribute(achievement);
             var assembly = achievement.GetType().Assembly;

@@ -9,7 +9,7 @@ namespace Strokes.BasicAchievements.Achievements
     [AchievementDescriptor("{53FAAC04-576E-4029-8138-E645D3B704C8}", "@LambdaExpressionAchievementName",
         AchievementDescription = "@LambdaExpressionAchievementDescription",
         AchievementCategory = "@Expressions",
-        Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/LambdaExpr.png")]
+        Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/LambdaExpr.png")]
     public class LambdaExpressionAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

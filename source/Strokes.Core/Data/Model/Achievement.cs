@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Strokes.Core.Data.Model
@@ -6,6 +7,9 @@ namespace Strokes.Core.Data.Model
     public class Achievement : INotifyPropertyChanged
     {
         public string Guid { get; set; }
+
+        public IEnumerable<Achievement> DependsOn { get; set; }
+        public IEnumerable<Achievement> Unlocks { get; set; }
 
         public string Name
         {

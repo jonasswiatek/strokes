@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{85023aba-17a3-42dc-8a8d-4423a53dbe83}", "@CreateEventAchievementName",
+    [AchievementDescriptor("{85023aba-17a3-42dc-8a8d-4423a53dbe83}", "@CreateEventAchievementName",
         AchievementDescription = "@CreateEventAchievementDescription",
         AchievementCategory = "@EventsThreads")]
     public class CreateEventAchievement : NRefactoryAchievement

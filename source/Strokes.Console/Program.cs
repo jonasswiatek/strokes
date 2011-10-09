@@ -63,6 +63,7 @@ namespace Strokes.Console
 
                 var achievementDescriptorRepository = ObjectFactory.GetInstance<IAchievementRepository>();
                 achievementDescriptorRepository.LoadFromAssembly(typeof(AnonymousObjectAchievement).Assembly);
+                achievementDescriptorRepository.ResetAchievements();
 
                 DetectionDispatcher.DetectionCompleted += DetectionDispatcher_DetectionCompleted;
                 DetectionDispatcher.Dispatch(new BuildInformation()

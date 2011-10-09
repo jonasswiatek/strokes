@@ -15,6 +15,8 @@ namespace Strokes.Core
             private set;
         }
 
+        public string[] DependsOn { get; set; }
+
         /// <summary>
         /// Point to an achievement type that must be completed prior to this unlocking
         /// </summary>

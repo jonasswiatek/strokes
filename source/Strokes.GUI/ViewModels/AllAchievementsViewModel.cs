@@ -81,7 +81,7 @@ namespace Strokes.GUI
         {
             AchievementsOrdered.Clear();
 
-            var achievements = _repository.GetAll();
+            var achievements = _repository.GetAchievements();
 
             foreach (var category in achievements.AsCategories())
             {

@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{cf9be271-1adb-4d4a-beaa-a5a83c6c9393}", "@StartThreadAchievementName",
+    [AchievementDescriptor("{cf9be271-1adb-4d4a-beaa-a5a83c6c9393}", "@StartThreadAchievementName",
         AchievementDescription = "@StartThreadAchievementDescription",
         AchievementCategory = "@EventsThreads")]
     public class StartThreadAchievement : NRefactoryAchievement
@@ -54,7 +54,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("{5dc86ab1-b723-4504-bd97-3473ab3ec149}", "@JoinThreadAchievementName",
+    [AchievementDescriptor("{5dc86ab1-b723-4504-bd97-3473ab3ec149}", "@JoinThreadAchievementName",
     AchievementDescription = "@JoinThreadAchievementDescription",
     AchievementCategory = "@EventsThreads")]
     public class JoinThreadAchievement : NRefactoryAchievement
@@ -103,7 +103,7 @@ namespace Strokes.BasicAchievements.Achievements
     }
 
 
-    [AchievementDescription("{4c5a6472-0a60-46d9-979b-c72746b76b7e}", "@AbortThreadAchievementName",
+    [AchievementDescriptor("{4c5a6472-0a60-46d9-979b-c72746b76b7e}", "@AbortThreadAchievementName",
 AchievementDescription = "@AbortThreadAchievementDescription",
 AchievementCategory = "@EventsThreads")]
     public class AbortThreadAchievement : NRefactoryAchievement
@@ -151,7 +151,7 @@ AchievementCategory = "@EventsThreads")]
         }
     }
 
-    [AchievementDescription("{4c5a6472-0a60-46d9-979b-c72746b76b7e}", "@SleepThreadAchievementName",
+    [AchievementDescriptor("{4c5a6472-0a60-46d9-979b-c72746b76b7e}", "@SleepThreadAchievementName",
 AchievementDescription = "@SleepThreadAchievementDescription",
 AchievementCategory = "@EventsThreads")]
     public class SleepThreadAchievement : NRefactoryAchievement
