@@ -32,12 +32,9 @@ namespace Strokes.GUI
 
             AchievementContext.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
 
-            if (IsInDesignMode == false)
-            {
-                achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
+            achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
 
-                ReloadViewModel();
-            }
+            ReloadViewModel();
         }
 
         public ObservableCollection<AchievementsPerCategory> AchievementsOrdered
@@ -78,18 +75,21 @@ namespace Strokes.GUI
 
         private void ResetExecute()
         {
-            achievementRepository.ResetAchievements();
-
-            ReloadViewModel();
-
-            Messenger.Default.Send(new ResetAchievementsMessage());
+            if (achievementRepository != null)
+            {
+                achievementRepository.ResetAchievements();
+                ReloadViewModel();
+                Messenger.Default.Send(new ResetAchievementsMessage());
+            }
         }
 
         private void ReloadViewModel()
         {
             AchievementsOrdered.Clear();
 
-            var achievements = achievementRepository.GetAchievements();
+            var achievements = Enumerable.Empty<Achievement>();
+            if (achievementRepository != null)
+                achievements = achievementRepository.GetAchievements();
 
             foreach (var category in achievements.AsCategories())
             {
