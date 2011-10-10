@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Achievements\Arrays\ArrayDeclarationAchievement.cs" />
+    <Compile Include="Achievements\Arrays\DeclareArrayAchievement.cs" />
     <Compile Include="Achievements\Arrays\ArrayDeclarateInitAchievement.cs" />
     <Compile Include="Achievements\Arrays\ArrayLengthPropertyAchievement.cs" />
     <Compile Include="Achievements\Arrays\JaggedArrayDeclarationAchievement.cs" />
