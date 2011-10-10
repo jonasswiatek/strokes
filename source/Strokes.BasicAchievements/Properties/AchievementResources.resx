@@ -802,7 +802,7 @@
     <value>Assign the maximal allowed value to a char (beware the overflow!)</value>
   </data>
   <data name="LowerBoundaryValueCharName" xml:space="preserve">
-    <value>Living on the negative double edge</value>
+    <value>Living on the negative char edge</value>
   </data>
   <data name="LowerBoundaryValueCharDescription" xml:space="preserve">
     <value>Assign the minimal allowed value to a char (beware the overflow!)</value>
@@ -910,7 +910,7 @@
     <value>Write a method that uses the ref keyword in its arguments</value>
   </data>
   <data name="ArrayClearMethodAchievementName" xml:space="preserve">
-    <value>Clear an array</value>
+    <value>Clear an Augean array</value>
   </data>
   <data name="ArrayClearMethodAchievementDescription" xml:space="preserve">
     <value>Use the Array.Clear method to Clear an array</value>
@@ -1048,7 +1048,7 @@
     <value>Nothing is impossible if you can delegate</value>
   </data>
   <data name="CreateEventAchievementDescription" xml:space="preserve">
-    <value>Create an event.</value>
+    <value>Create an event</value>
   </data>
   <data name="CreateEventAchievementName" xml:space="preserve">
     <value>Event of the year?!</value>
