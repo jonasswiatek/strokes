@@ -28,7 +28,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EBDE272F-2328-4A75-AD2C-23147F27F73E}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
-		Strokes1.vsmdi = Strokes1.vsmdi
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
@@ -91,6 +90,5 @@ Global
 		{830D128B-8D1C-4151-A2E7-3054DBF34126} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
 		{456819E0-122D-4BA0-BDC8-ED8C7B713DF0} = {2B7159F2-6552-4902-BE15-C295BC3DF242}
 		{B12BBE97-BA65-443A-9FE5-512988367D90} = {F6A2C653-4A03-4353-A1C4-AF0CDDB6D554}
-		{EBDE272F-2328-4A75-AD2C-23147F27F73E} = {F6A2C653-4A03-4353-A1C4-AF0CDDB6D554}
 	EndGlobalSection
 EndGlobal
