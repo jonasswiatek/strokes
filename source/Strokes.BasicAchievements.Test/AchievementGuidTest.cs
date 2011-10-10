@@ -37,7 +37,7 @@ namespace Strokes.BasicAchievements.Test
                 usedGuids.Add(guid);
 
                 //Test for circular dependencies
-                var dependencies = currentAchievementDescriptor.DependsOn ?? new string[0];
+                var dependencies = currentAchievementDescriptor.DependsOn;
                 foreach(var dependency in dependencies)
                 {
                     var currentDependency = dependency;

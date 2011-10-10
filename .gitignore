@@ -34,8 +34,6 @@ obj/
 [Tt]estResults*/
 TDD*/
 Ankh.NoLoad
-*.testsettings
-*.vsmdi
 
 #Tooling
 _ReSharper*/
