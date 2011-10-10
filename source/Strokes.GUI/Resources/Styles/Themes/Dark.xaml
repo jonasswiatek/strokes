@@ -455,7 +455,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{StaticResource ButtonBackgroundBrush}"
+                    <Border x:Name="PART_Border"
+                            Background="{StaticResource ButtonBackgroundBrush}"
                             BorderBrush="{StaticResource ButtonBorderBrush}"
                             BorderThickness="1"
                             CornerRadius="1"
@@ -466,6 +467,13 @@
                                           RecognizesAccessKey="True"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_Border" 
+                                    Property="Background" 
+                                    Value="{StaticResource AchievementTabItemSelectedBackground}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
