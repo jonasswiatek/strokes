@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+
 namespace Strokes.BasicAchievements.Test
 {
     [TestClass]
@@ -14,13 +15,14 @@ namespace Strokes.BasicAchievements.Test
         public void TestGuids()
         {
             var achievementAssembly = typeof(NRefactoryAchievement).Assembly;
-            var achievementImplementations = achievementAssembly.GetTypes().Where(a => typeof (AchievementBase).IsAssignableFrom(a) && !a.IsAbstract);
+            var achievementImplementations = achievementAssembly.GetTypes()
+                    .Where(a => typeof(AchievementBase).IsAssignableFrom(a) && !a.IsAbstract);
 
             var usedGuids = new List<Guid>();
-            foreach(var achievementType in achievementImplementations)
+            foreach (var achievementType in achievementImplementations)
             {
-                var attributes = achievementType.GetCustomAttributes(typeof (AchievementDescriptorAttribute), true);
-                if(attributes.Length <= 0)
+                var attributes = achievementType.GetCustomAttributes(typeof(AchievementDescriptorAttribute), true);
+                if (attributes.Length <= 0)
                     continue;
 
                 var descriptorAttribute = (AchievementDescriptorAttribute)attributes[0];
@@ -30,7 +32,8 @@ namespace Strokes.BasicAchievements.Test
                 usedGuids.Add(guid);
             }
 
-            Assert.IsTrue(usedGuids.Count > 0 && usedGuids.Count == achievementImplementations.Count(), "Number of achievements implemented does not match number of guids tested");
+            Assert.IsTrue(usedGuids.Count > 0 && usedGuids.Count == achievementImplementations.Count(), 
+                "Number of achievements implemented does not match number of guids tested");
         }
     }
 }

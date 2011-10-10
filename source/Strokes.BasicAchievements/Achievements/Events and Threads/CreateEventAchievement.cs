@@ -21,6 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitEventDeclaration(EventDeclaration eventDeclaration, object data)
             {
                 UnlockWith(eventDeclaration);
+
                 return base.VisitEventDeclaration(eventDeclaration, data);
             }
         }

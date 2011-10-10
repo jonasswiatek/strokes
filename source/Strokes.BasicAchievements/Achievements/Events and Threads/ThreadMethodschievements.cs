@@ -16,47 +16,47 @@ namespace Strokes.BasicAchievements.Achievements
             return new Visitor();
         }
 
-
-       
-
         private class Visitor : AbstractAchievementVisitor
         {
-
-
+            private List<string> threadVars = new List<string>();
 
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
-                if(memberReferenceExpression.MemberName== "Start")
-                    if(memberReferenceExpression.TargetObject is IdentifierExpression)
+                if (memberReferenceExpression.MemberName == "Start")
+                {
+                    if (memberReferenceExpression.TargetObject is IdentifierExpression)
                     {
-                        IdentifierExpression id = (IdentifierExpression) memberReferenceExpression.TargetObject;
-                        if(threadvars.Contains(id.Identifier))
+                        var id = (IdentifierExpression)memberReferenceExpression.TargetObject;
+                        if (threadVars.Contains(id.Identifier))
+                        {
                             UnlockWith(memberReferenceExpression);
+                        }
                     }
+                }
+
                 return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
             }
 
-            private List<string> threadvars = new List<string>();
-
             public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
-                if (localVariableDeclaration.TypeReference.Type.Equals("Thread")||
-                    localVariableDeclaration.TypeReference.Type.Equals("Threading.Thread")||
+                if (localVariableDeclaration.TypeReference.Type.Equals("Thread") ||
+                    localVariableDeclaration.TypeReference.Type.Equals("Threading.Thread") ||
                     localVariableDeclaration.TypeReference.Type.Equals("System.Threading.Thread"))
                 {
-                    foreach (VariableDeclaration variableDeclaration in localVariableDeclaration.Variables)
+                    foreach (var variableDeclaration in localVariableDeclaration.Variables)
                     {
-                        threadvars.Add(variableDeclaration.Name);
+                        threadVars.Add(variableDeclaration.Name);
                     }
                 }
+
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
         }
     }
 
     [AchievementDescriptor("{5dc86ab1-b723-4504-bd97-3473ab3ec149}", "@JoinThreadAchievementName",
-    AchievementDescription = "@JoinThreadAchievementDescription",
-    AchievementCategory = "@EventsThreads")]
+        AchievementDescription = "@JoinThreadAchievementDescription",
+        AchievementCategory = "@EventsThreads")]
     public class JoinThreadAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -64,27 +64,26 @@ namespace Strokes.BasicAchievements.Achievements
             return new Visitor();
         }
 
-
-
-
         private class Visitor : AbstractAchievementVisitor
         {
-
-
+            private List<string> threadVars = new List<string>();
 
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
                 if (memberReferenceExpression.MemberName == "Join")
+                {
                     if (memberReferenceExpression.TargetObject is IdentifierExpression)
                     {
-                        IdentifierExpression id = (IdentifierExpression)memberReferenceExpression.TargetObject;
-                        if (threadvars.Contains(id.Identifier))
+                        var id = (IdentifierExpression)memberReferenceExpression.TargetObject;
+                        if (threadVars.Contains(id.Identifier))
+                        {
                             UnlockWith(memberReferenceExpression);
+                        }
                     }
+                }
+
                 return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
             }
-
-            private List<string> threadvars = new List<string>();
 
             public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
@@ -94,9 +93,10 @@ namespace Strokes.BasicAchievements.Achievements
                 {
                     foreach (VariableDeclaration variableDeclaration in localVariableDeclaration.Variables)
                     {
-                        threadvars.Add(variableDeclaration.Name);
+                        threadVars.Add(variableDeclaration.Name);
                     }
                 }
+
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
         }
@@ -104,8 +104,8 @@ namespace Strokes.BasicAchievements.Achievements
 
 
     [AchievementDescriptor("{4c5a6472-0a60-46d9-979b-c72746b76b7e}", "@AbortThreadAchievementName",
-AchievementDescription = "@AbortThreadAchievementDescription",
-AchievementCategory = "@EventsThreads")]
+        AchievementDescription = "@AbortThreadAchievementDescription",
+        AchievementCategory = "@EventsThreads")]
     public class AbortThreadAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -113,27 +113,26 @@ AchievementCategory = "@EventsThreads")]
             return new Visitor();
         }
 
-
-
-
         private class Visitor : AbstractAchievementVisitor
         {
-
-
+            private List<string> threadVars = new List<string>();
 
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
                 if (memberReferenceExpression.MemberName == "Abort")
+                {
                     if (memberReferenceExpression.TargetObject is IdentifierExpression)
                     {
-                        IdentifierExpression id = (IdentifierExpression)memberReferenceExpression.TargetObject;
-                        if (threadvars.Contains(id.Identifier))
+                        var id = (IdentifierExpression)memberReferenceExpression.TargetObject;
+                        if (threadVars.Contains(id.Identifier))
+                        {
                             UnlockWith(memberReferenceExpression);
+                        }
                     }
+                }
+
                 return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
             }
-
-            private List<string> threadvars = new List<string>();
 
             public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
@@ -143,17 +142,18 @@ AchievementCategory = "@EventsThreads")]
                 {
                     foreach (VariableDeclaration variableDeclaration in localVariableDeclaration.Variables)
                     {
-                        threadvars.Add(variableDeclaration.Name);
+                        threadVars.Add(variableDeclaration.Name);
                     }
                 }
+
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
         }
     }
 
-    [AchievementDescriptor("{4c5a6472-0a60-46d9-979b-c72746b76b7e}", "@SleepThreadAchievementName",
-AchievementDescription = "@SleepThreadAchievementDescription",
-AchievementCategory = "@EventsThreads")]
+    [AchievementDescriptor("{B45780D7-0112-403D-9076-3DFB1E462D3C}", "@SleepThreadAchievementName",
+        AchievementDescription = "@SleepThreadAchievementDescription",
+        AchievementCategory = "@EventsThreads")]
     public class SleepThreadAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -161,27 +161,26 @@ AchievementCategory = "@EventsThreads")]
             return new Visitor();
         }
 
-
-
-
         private class Visitor : AbstractAchievementVisitor
         {
-
-
+            private List<string> threadVars = new List<string>();
 
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
                 if (memberReferenceExpression.MemberName == "Sleep")
+                {
                     if (memberReferenceExpression.TargetObject is IdentifierExpression)
                     {
                         IdentifierExpression id = (IdentifierExpression)memberReferenceExpression.TargetObject;
-                        if (threadvars.Contains(id.Identifier))
+                        if (threadVars.Contains(id.Identifier))
+                        {
                             UnlockWith(memberReferenceExpression);
+                        }
                     }
+                }
+
                 return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
             }
-
-            private List<string> threadvars = new List<string>();
 
             public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
@@ -191,9 +190,10 @@ AchievementCategory = "@EventsThreads")]
                 {
                     foreach (VariableDeclaration variableDeclaration in localVariableDeclaration.Variables)
                     {
-                        threadvars.Add(variableDeclaration.Name);
+                        threadVars.Add(variableDeclaration.Name);
                     }
                 }
+
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
         }

@@ -18,34 +18,37 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            List<string> eventVars = new List<string>();
+
             public override object VisitAssignmentExpression(AssignmentExpression assignmentExpression, object data)
             {
-                if(assignmentExpression.Left is MemberReferenceExpression)
+                if (assignmentExpression.Left is MemberReferenceExpression)
                 {
-                    MemberReferenceExpression left = (MemberReferenceExpression) assignmentExpression.Left;
-                    if (eventvars.Contains(left.MemberName)) //I doin't check against correct type yet
+                    var left = (MemberReferenceExpression)assignmentExpression.Left;
+
+                    // I don't check against correct type yet
+                    if (eventVars.Contains(left.MemberName))
                     {
-                        if(assignmentExpression.Right is ObjectCreateExpression)
+                        if (assignmentExpression.Right is ObjectCreateExpression)
                         {
-                            ObjectCreateExpression right = (ObjectCreateExpression) assignmentExpression.Right;
-                            if(right.CreateType.Type.Contains("EventHandler") && assignmentExpression.Op== AssignmentOperatorType.Subtract)
-                                UnlockWith(assignmentExpression); //Only works when using the implicit += new SomeEventHandler() syntax
+                            ObjectCreateExpression right = (ObjectCreateExpression)assignmentExpression.Right;
+                            if (right.CreateType.Type.Contains("EventHandler") &&
+                                assignmentExpression.Op == AssignmentOperatorType.Subtract)
+                            {
+                                // Only works when using the implicit += new SomeEventHandler() syntax
+                                UnlockWith(assignmentExpression);
+                            }
                         }
                     }
-                    
-
                 }
+
                 return base.VisitAssignmentExpression(assignmentExpression, data);
             }
 
-           
-        
-
-        List<string> eventvars= new List<string>();
-
             public override object VisitEventDeclaration(EventDeclaration eventDeclaration, object data)
             {
-                eventvars.Add(eventDeclaration.Name);
+                eventVars.Add(eventDeclaration.Name);
+
                 return base.VisitEventDeclaration(eventDeclaration, data);
             }
         }

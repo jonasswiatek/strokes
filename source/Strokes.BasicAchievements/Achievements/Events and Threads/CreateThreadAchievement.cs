@@ -21,8 +21,11 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
                 if (localVariableDeclaration.TypeReference.ToString().Equals("Thread") ||
-                    localVariableDeclaration.TypeReference.ToString().Equals("Threading.Thread") )
+                    localVariableDeclaration.TypeReference.ToString().Equals("Threading.Thread"))
+                {
                     UnlockWith(localVariableDeclaration);
+                }
+
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
         }

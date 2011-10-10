@@ -21,6 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitDelegateDeclaration(DelegateDeclaration delegateDeclaration, object data)
             {
                 UnlockWith(delegateDeclaration);
+
                 return base.VisitDelegateDeclaration(delegateDeclaration, data);
             }
         }
