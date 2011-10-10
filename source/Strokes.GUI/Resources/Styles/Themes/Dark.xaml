@@ -11,6 +11,8 @@
     <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
     <local:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
+    <local:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
+    
     <!--  Brushes  -->
     <SolidColorBrush x:Key="AchievementDarkBackground"
                      Color="#FF262626" />

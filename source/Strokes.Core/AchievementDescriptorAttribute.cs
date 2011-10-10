@@ -9,13 +9,34 @@ namespace Strokes.Core
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class AchievementDescriptorAttribute : Attribute
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AchievementDescriptorAttribute"/> class.
+        /// </summary>
+        /// <param name="achievementTitle">The achievement title.</param>
+        public AchievementDescriptorAttribute(string guid, string achievementTitle)
+        {
+            Guid = guid;
+            AchievementTitle = achievementTitle;
+            DependsOn = new string[] {};            
+        }
+
+        /// <summary>
+        /// Gets or sets the GUID.
+        /// </summary>
         public string Guid
         {
             get; 
             private set;
         }
 
-        public string[] DependsOn { get; set; }
+        /// <summary>
+        /// Gets or sets the GUID dependencies.
+        /// </summary>
+        public string[] DependsOn
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Point to an achievement type that must be completed prior to this unlocking
@@ -66,16 +87,6 @@ namespace Strokes.Core
         {
             get;
             set;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AchievementDescriptorAttribute"/> class.
-        /// </summary>
-        /// <param name="achievementTitle">The achievement title.</param>
-        public AchievementDescriptorAttribute(string guid, string achievementTitle)
-        {
-            Guid = guid;
-            AchievementTitle = achievementTitle;
         }
     }
 }

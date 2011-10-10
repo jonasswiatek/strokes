@@ -33,18 +33,40 @@
                    Source="{Binding Image,
                                     Converter={StaticResource StringToImageSourceConverter}}" />
         </Border>
-        <StackPanel Grid.Column="1"
-                    Margin="10,5,5,5"
-                    Orientation="Vertical">
-            <TextBlock FontFamily="Segoe UI Semibold"
-                       FontSize="16"
-                       Foreground="{DynamicResource AchievementForeground}"
-                       Text="{Binding Name, Mode=OneWay}"
-                       TextWrapping="Wrap" />
-            <TextBlock FontSize="16"
-                       Foreground="{DynamicResource AchievementSubtleFontColor}"
-                       Text="{Binding Description, Mode=OneWay}"
-                       TextWrapping="Wrap" />
-        </StackPanel>
+        <Grid Grid.Column="1">
+            <StackPanel Margin="10,5,5,17"
+                        Orientation="Vertical">
+                <TextBlock FontFamily="Segoe UI Semibold"
+                           FontSize="16"
+                           Foreground="{DynamicResource AchievementForeground}"
+                           Text="{Binding Name,
+                                          Mode=OneWay}"
+                           TextWrapping="Wrap" />
+                <TextBlock FontSize="16"
+                           Foreground="{DynamicResource AchievementSubtleFontColor}"
+                           Text="{Binding Description,
+                                          Mode=OneWay}"
+                           TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel Height="17"
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Bottom"
+                        Orientation="Horizontal"
+                        Visibility="{Binding UnlocksStr,
+                                             Converter={StaticResource EmptyToVisibilityConverter}}">
+                <TextBlock VerticalAlignment="Bottom"
+                           FontSize="10.667"
+                           Foreground="{DynamicResource AchievementSubtleFontColor}"
+                           Text="Unlocks:"
+                           TextWrapping="Wrap" />
+                <TextBlock Margin="5,0,0,0"
+                           VerticalAlignment="Bottom"
+                           FontSize="10.667"
+                           Foreground="{DynamicResource AchievementSubtleFontColor}"
+                           Text="{Binding UnlocksStr,
+                                          Mode=OneWay}"
+                           TextWrapping="Wrap" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

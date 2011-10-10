@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BoolToOpacityConverter.cs" />
+    <Compile Include="Assets\EmptyToVisibilityConverter.cs" />
     <Compile Include="Assets\NullToVisibilityConverter.cs" />
     <Compile Include="Assets\StringToImageSourceConverter.cs" />
     <Compile Include="Properties\AppResources.cs" />

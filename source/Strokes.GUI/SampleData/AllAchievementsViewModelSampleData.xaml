@@ -8,10 +8,10 @@
         <Strokes_GUI:AchievementsPerCategory CategoryName="Basic Achievements"
                                              PercentageCompleted="0"
                                              TotalCompleted="0">
-            <Model:Achievement Name="Very Long Achievement Name With Boobs!"
+            <Model:Achievement Name="Achievement Name"
                                Category="Basic Achievements"
                                DateCompleted="07/12/2011 11:12:58"
-                               Description="And a even longer achievement description here, with boobs of course, and whiskey!."
+                               Description="Achievement description here."
                                Image="/Strokes.GUI;component/Resources/Icons/default.png"
                                IsCompleted="True" />
             <Model:Achievement Name="Achievement Name"
