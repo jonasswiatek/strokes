@@ -1040,5 +1040,47 @@
   </data>
   <data name="DangerousEqualityCheckAchievementDescription" xml:space="preserve">
     <value>Проверьте равенство двух чисел с плавающей точкой (хинт: это может не сработать)</value>
-  </data>  
+  </data>
+  <data name="CreateDelegateAchievementDescription" xml:space="preserve">
+    <value>Объявите делегат delegate</value>
+  </data>
+  <data name="CreateDelegateAchievementName" xml:space="preserve">
+    <value>Нет ничего невозможного, если поручить это другому</value>
+  </data>
+  <data name="CreateEventAchievementDescription" xml:space="preserve">
+    <value>Создайте событие</value>
+  </data>
+  <data name="CreateEventAchievementName" xml:space="preserve">
+    <value>Событие года?!</value>
+  </data>
+  <data name="AbortThreadAchievementDescription" xml:space="preserve">
+    <value>Прервите поток с помощью метода Abort()</value>
+  </data>
+  <data name="AbortThreadAchievementName" xml:space="preserve">
+    <value>Отмена, отмена, отмена!</value>
+  </data>
+  <data name="CreateThreadAchievementDescription" xml:space="preserve">
+    <value>Создайте поток</value>
+  </data>
+  <data name="CreateThreadAchievementName" xml:space="preserve">
+    <value>Паук</value>
+  </data>
+  <data name="JoinThreadAchievementDescription" xml:space="preserve">
+    <value>Заблокируйте текущий поток с помощью метода Join()</value>
+  </data>
+  <data name="JoinThreadAchievementName" xml:space="preserve">
+    <value>Остановить этот поток!</value>
+  </data>
+  <data name="SleepThreadAchievementDescription" xml:space="preserve">
+    <value>Приостановите поток на какое-то явно указанное время.</value>
+  </data>
+  <data name="SleepThreadAchievementName" xml:space="preserve">
+    <value>Спокойной ночи.</value>
+  </data>
+  <data name="StartThreadAchievementDescription" xml:space="preserve">
+    <value>Запустите поток</value>
+  </data>
+  <data name="StartThreadAchievementName" xml:space="preserve">
+    <value>Внимание, поток... старт!</value>
+  </data>
 </root>

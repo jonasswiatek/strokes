@@ -601,7 +601,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create an event..
+        ///   Looks up a localized string similar to Create an event.
         /// </summary>
         public static string CreateEventAchievementDescription {
             get {
