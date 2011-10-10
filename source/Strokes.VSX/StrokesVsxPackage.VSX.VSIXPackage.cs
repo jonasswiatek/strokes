@@ -20,10 +20,14 @@ using StructureMap;
 
 namespace Strokes.VSX
 {
+    /// <summary>
+    /// This is UICONTEXT_NoSolution package - meaning Strokes will start together 
+    /// with Visual Studio regardless of which type of project is loaded.
+    /// </summary>
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideAutoLoad("{adfc4e64-0397-11d1-9f4e-00a0c911004f}")] //This is UICONTEXT_NoSolution - meaning Strokes will start together with Visual Studio regardless of which type of project is loaded.
+    [ProvideAutoLoad("{adfc4e64-0397-11d1-9f4e-00a0c911004f}")] 
     [ProvideToolWindow(typeof(AchievementStatisticsToolWindow), Style = VsDockStyle.MDI)]
     [ProvideService(typeof(IAchevementLibraryService))]
     [Guid(GuidList.guidCSharpAchiever_Achiever_VSIXPkgString)]
@@ -103,11 +107,10 @@ namespace Strokes.VSX
         {
             base.Initialize();
 
-            //Initialize IoC
             ObjectFactory.Configure(a =>
-                                        {
-                                            a.For<IAchievementRepository>().Singleton().Use<AppDataXmlFileAchievementRepository>();
-                                        });
+            {
+                a.For<IAchievementRepository>().Singleton().Use<AppDataXmlFileAchievementRepository>();                
+            });
 
             if (MenuService != null)
             {
