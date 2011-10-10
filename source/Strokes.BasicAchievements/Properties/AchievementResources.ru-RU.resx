@@ -121,13 +121,13 @@
     <value>Жизнь на грани</value>
 </data>
   <data name="UpperBoundaryValueIntDescription" xml:space="preserve">
-    <value>Присвойте максимально допустимое значение переменной целого типа (бойтесь переполнения!)</value>
+    <value>Присвойте максимальное допустимое значение переменной целого типа (бойтесь переполнения!)</value>
 </data>
   <data name="LowerBoundaryValueIntName" xml:space="preserve">
     <value>Жизнь на отрицательной грани</value>
 </data>
   <data name="LowerBoundaryValueIntDescription" xml:space="preserve">
-    <value>Присвойте минимально допустимое значение переменной целого типа (бойтесь переполнения!)</value>
+    <value>Присвойте минимальное допустимое значение переменной целого типа (бойтесь переполнения!)</value>
 </data>
   <data name="MultipleDeclareCharName" xml:space="preserve">
     <value>Объявление нескольких символьных переменных в одном операторе</value>
@@ -172,10 +172,10 @@
     <value>Создайте объект, используя синтаксис инициализаторов объектов</value>
 </data>
   <data name="TryCatchFinallyStatementAchievementName" xml:space="preserve">
-    <value>Оператор Try-Catch-Finally</value>
+    <value>Блок Try-Catch-Finally</value>
 </data>
   <data name="TryCatchFinallyStatementAchievementDescription" xml:space="preserve">
-    <value>Используйте оператор try-catch-finally</value>
+    <value>Используйте блок try-catch-finally</value>
 </data>
   <data name="CreateAutoPropertyAchievementName" xml:space="preserve">
     <value>Prop [Tab][Tab]</value>
@@ -598,430 +598,447 @@
     <value>Напишите выражение, использующее оператор -</value>
 </data>
   <data name="MultiplyOperatorAchievementName" xml:space="preserve">
-    <value>Use the * operator</value>
+    <value>Использование оператора *</value>
 </data>
   <data name="MultiplyOperatorAchievementDescription" xml:space="preserve">
-    <value>Write an expression that uses the * operator</value>
+    <value>Напишите выражение, использующее оператор *</value>
 </data>
   <data name="DivideOperatorAchievementName" xml:space="preserve">
-    <value>Use the / operator</value>
+    <value>Использование оператора /</value>
 </data>
   <data name="DivideOperatorAchievementDescription" xml:space="preserve">
-    <value>Write an expression that uses the / operator</value>
+    <value>Напишите выражение, использующее оператор /</value>
 </data>
   <data name="ModuloOperatorAchievementName" xml:space="preserve">
-    <value>Use the modulo operator</value>
+    <value>Использование оператора %</value>
 </data>
   <data name="ModuloOperatorAchievementDescription" xml:space="preserve">
-    <value>Write an expression that uses the % operator</value>
+    <value>Напишите выражение, использующее оператор %</value>
 </data>
   <data name="DeclareArrayAchievementName" xml:space="preserve">
-    <value>Declare an array</value>
+    <value>Объявление массива</value>
 </data>
   <data name="DeclareArrayAchievementDescription" xml:space="preserve">
-    <value>Declare an array</value>
+    <value>Объявите массив</value>
 </data>
   <data name="CreateStaticMethodAchievementName" xml:space="preserve">
-    <value>Create a static method</value>
+    <value>Создание статического метода</value>
 </data>
   <data name="CreateStaticMethodAchievementDescription" xml:space="preserve">
-    <value>Create a static method</value>
+    <value>Создайте статический метод</value>
 </data>
   <data name="CatchManyExceptionsAchievementName" xml:space="preserve">
-    <value>Sir Catch-a-lot</value>
+    <value>Сэр-поймай-всё</value>
 </data>
   <data name="CatchManyExceptionsAchievementDescription" xml:space="preserve">
-    <value>Catch more than 5 exception explicitely</value>
+    <value>Явно поймайте 5 или более исключений</value>
 </data>
   <data name="CreateConstructorAchievementName" xml:space="preserve">
-    <value>Bob the Constructor</value>
+    <value>Боб, конструктор</value>
 </data>
   <data name="CreateConstructorAchievementDescription" xml:space="preserve">
-    <value>Write a class constructor</value>
+    <value>Напишите конструктор класса</value>
 </data>
   <data name="CreateInterfaceAchievementName" xml:space="preserve">
-    <value>Interface</value>
+    <value>Интерфейс</value>
 </data>
   <data name="CreateInterfaceAchievementDescription" xml:space="preserve">
-    <value>Create an interface</value>
+    <value>Создайте интерфейс</value>
 </data>
   <data name="UseAsKeywordAchievementName" xml:space="preserve">
     <value>As</value>
 </data>
   <data name="UseAsKeywordAchievementDescription" xml:space="preserve">
-    <value>Try explicit cast with AS keyword</value>
+    <value>Напишите явное преобразование типа с использованием ключевого слова AS</value>
 </data>
   <data name="ProgramWithStartupParamsAchievementName" xml:space="preserve">
-    <value>Write a program that accepts and uses parameters to startup</value>
+    <value>Параметры запуска</value>
 </data>
   <data name="ProgramWithStartupParamsAchievementDescription" xml:space="preserve">
-    <value>Write a program that accepts and uses parameters to startup</value>
+    <value>Напишите программу, принимающую и использующую параметры запуска</value>
 </data>
   <data name="PrivateSetterAchievementName" xml:space="preserve">
-    <value>Private Setter</value>
+    <value>Приватный сеттер</value>
 </data>
   <data name="PrivateSetterAchievementDescription" xml:space="preserve">
-    <value>Write a property of any type with a private setter</value>
+    <value>Создайте свойство с приватным сеттером</value>
 </data>
   <data name="EnumInitializerAchievementName" xml:space="preserve">
-    <value>Create enumeration</value>
+    <value>Создание перечисления</value>
 </data>
   <data name="EnumInitializerAchievementDescription" xml:space="preserve">
-    <value>Create an enum type.</value>
+    <value>Создайте тип-перечисление</value>
 </data>
   <data name="IfElseStatementAchievementName" xml:space="preserve">
-    <value>Or else what?!</value>
+    <value>И что тогда?!</value>
 </data>
   <data name="IfElseStatementAchievementDescription" xml:space="preserve">
-    <value>Make use of an if/else statement</value>
+    <value>Используйте оператор if/else</value>
 </data>
   <data name="EnumSwitchAchievementName" xml:space="preserve">
     <value>Enumswitch</value>
 </data>
   <data name="EnumSwitchAchievementDescription" xml:space="preserve">
-    <value>Switch over an enum</value>
+    <value>Используйте оператор switch по всем значениям какого-либо перечисления</value>
 </data>
   <data name="UpperBoundaryValueFDoubleName" xml:space="preserve">
-    <value>Living on the double edge</value>
+    <value>Жизнь на двойной грани</value>
 </data>
   <data name="UpperBoundaryValueFDoubleDescription" xml:space="preserve">
-    <value>Assign the maximal allowed value to a double (beware the overflow!)</value>
+    <value>Присвойте максимальное допустимое значение переменной типа double (бойтесь переполнения!)</value>
 </data>
   <data name="LowerBoundaryValuedoubleName" xml:space="preserve">
-    <value>Living on the negative double edge</value>
+    <value>Жизнь на отрицательной двойной грани</value>
 </data>
   <data name="LowerBoundaryValuedoubleDescription" xml:space="preserve">
-    <value>Assign the minimal allowed value to a double (beware the overflow!)</value>
+    <value>Присвойте минимальное допустимое значение переменной типа double (бойтесь переполнения!)</value>
 </data>
   <data name="DeclareCharName" xml:space="preserve">
-    <value>Declare a char</value>
+    <value>Объявите переменную типа char</value>
 </data>
   <data name="DeclareCharDescription" xml:space="preserve">
-    <value>Declare, but do not initialize, a char in one statement</value>
+    <value>Одним оператором объявите, но не инициализируйте переменную типа char</value>
 </data>
   <data name="JobSecurityAchievementName" xml:space="preserve">
-    <value>Job Security</value>
+    <value>Гарантия занятости</value>
 </data>
   <data name="JobSecurityAchievementDescription" xml:space="preserve">
-    <value>Written a LINQ query with over 10 lines of code</value>
+    <value>Напишите LINQ-запрос, длиной более 10 строк</value>
 </data>
   <data name="TellingAStoryAchievementName" xml:space="preserve">
-    <value>Telling a story</value>
+    <value>Расскажи мне историю</value>
 </data>
   <data name="TellingAStoryAchievementDescription" xml:space="preserve">
-    <value>Created a method longer than 100 lines</value>
+    <value>Создайте метод длиной более 100 строк</value>
 </data>
   <data name="EpicTaleAchievementName" xml:space="preserve">
-    <value>Epic Tale</value>
+    <value>Эпичная история</value>
 </data>
   <data name="EpicTaleAchievementDescription" xml:space="preserve">
-    <value>Created a method longer than 300 lines</value>
+    <value>Создайте метод длиной более 300 строк</value>
 </data>
   <data name="ParametizerAchievementName" xml:space="preserve">
-    <value>The Parametizer</value>
+    <value>Параметризатор</value>
 </data>
   <data name="ParametizerAchievementDescription" xml:space="preserve">
-    <value>Created a method with more than 10 non optional parameters</value>
+    <value>Создайте метод с более чем десятью обязательными параметрами</value>
 </data>
   <data name="GUTAchievementName" xml:space="preserve">
-    <value>Grand Unified Theory</value>
+    <value>Теория великого объединения</value>
 </data>
   <data name="GUTAchievementDescription" xml:space="preserve">
-    <value>Design a class that implements at least 5 interfaces</value>
+    <value>Спроектируйте класс, реализующий как минимум 5 интерфейсов</value>
 </data>
   <data name="EveryOptionEnumAchievementName" xml:space="preserve">
-    <value>Every Option Considered</value>
+    <value>Подумал о каждой мелочи</value>
 </data>
   <data name="EveryOptionEnumAchievementDescription" xml:space="preserve">
-    <value>Created an enum with more than 10 values</value>
+    <value>Создайте перечисление с более чем 10 значениями</value>
 </data>
   <data name="ProceduralProgrammerAchievementName" xml:space="preserve">
-    <value>Procedural Programmer</value>
+    <value>Процедурный программист</value>
 </data>
   <data name="ProceduralProgrammerAchievementDescription" xml:space="preserve">
-    <value>Created a method with more than 10 out parameters</value>
+    <value>Создайте метод с более чем 10 out-параметрами</value>
 </data>
   <data name="TooManyModifiersMethodDeclarationAchievementName" xml:space="preserve">
-    <value>Modifier addict</value>
+    <value>Любитель модификаторов</value>
 </data>
   <data name="TooManyModifiersMethodDeclarationAchievementDescription" xml:space="preserve">
-    <value>Declare a method with lots of modifiers</value>
+    <value>Объявите метод с большим количеством модификаторов</value>
 </data>
   <data name="InstantiateObjectAchievementName" xml:space="preserve">
-    <value>Objectify!</value>
+    <value>Воплотись!</value>
 </data>
   <data name="InstantiateObjectAchievementDescription" xml:space="preserve">
-    <value>Create an object</value>
+    <value>Создайте объект</value>
 </data>
   <data name="IComparableAchievementName" xml:space="preserve">
     <value>IComparable</value>
 </data>
   <data name="IComparableAchievementDescription" xml:space="preserve">
-    <value>Write a class that implements IComparable</value>
+    <value>Напишите класс, реализующий интерфейс IComparable</value>
 </data>
   <data name="IfStatementAchievementName" xml:space="preserve">
-    <value>What if...</value>
+    <value>А что если...</value>
 </data>
   <data name="IfStatementAchievementDescription" xml:space="preserve">
-    <value>Make use of an if statement</value>
+    <value>Используйте оператор if</value>
 </data>
   <data name="HelloWorldAchievementName" xml:space="preserve">
     <value>Hello world</value>
 </data>
   <data name="HelloWorldAchievementDescription" xml:space="preserve">
-    <value>Write the most-writen program ever</value>
+    <value>Напишите саму часто создаваемую программу</value>
 </data>
   <data name="TryCatchRethrowStatementAchievementName" xml:space="preserve">
-    <value>Operation:Activate umbrella</value>
+    <value>Операция:Открывание зонтика</value>
 </data>
   <data name="TryCatchRethrowStatementAchievementDescription" xml:space="preserve">
-    <value>Write a catch statement that simply rethrows the exception</value>
+    <value>Напишите оператор catch которй просто пробрасывает исключение</value>
 </data>
   <data name="ArrayLengthPropertyAchievementName" xml:space="preserve">
-    <value>Array length</value>
+    <value>Длина массива</value>
 </data>
   <data name="ArrayLengthPropertyAchievementDescription" xml:space="preserve">
-    <value>Use the Length property of an array</value>
+    <value>Используйте свойство Length у массива</value>
 </data>
   <data name="LambdaExpressionAchievementName" xml:space="preserve">
-    <value>Lambda Expression</value>
+    <value>Lambda-выражение</value>
 </data>
   <data name="LambdaExpressionAchievementDescription" xml:space="preserve">
-    <value>Use a lambda expression</value>
+    <value>Используйте lambda-выражение</value>
 </data>
   <data name="DeclareInitializeCharName" xml:space="preserve">
-    <value>Declare and initialize a char</value>
+    <value>Объявление и инициализация переменной типа char</value>
 </data>
   <data name="DeclareInitializeCharDescription" xml:space="preserve">
-    <value>Declare and initialize a char in one statement</value>
+    <value>Одним оператором объявите и проинициализируйте переменную типа char </value>
 </data>
   <data name="UpperBoundaryValueCharName" xml:space="preserve">
-    <value>Living on the char edge</value>
+    <value>Жизнь на символической грани</value>
 </data>
   <data name="UpperBoundaryValueCharDescription" xml:space="preserve">
-    <value>Assign the maximal allowed value to a char (beware the overflow!)</value>
+    <value>Присвойте максимальное допустимое значение переменной типа char (бойтесь переполнения!)</value>
 </data>
   <data name="LowerBoundaryValueCharName" xml:space="preserve">
-    <value>Living on the negative double edge</value>
+    <value>Жизнь на отрицательной символической грани</value>
 </data>
   <data name="LowerBoundaryValueCharDescription" xml:space="preserve">
-    <value>Assign the minimal allowed value to a char (beware the overflow!)</value>
+    <value>Присвойте минимальное допустимое значение переменной типа char (бойтесь переполнения!)</value>
 </data>
   <data name="CreateMethodMultipleParametersAchievementName" xml:space="preserve">
-    <value>Method man and the Wu-Tang Clan</value>
+    <value>Method Man и Wu-Tang Clan</value>
 </data>
   <data name="CreateMethodMultipleParametersAchievementDescription" xml:space="preserve">
-    <value>Create a method with 2 or more parameters</value>
+    <value>Создайте метод с двумя или более параметрами</value>
 </data>
   <data name="CreateMethodOneParameterAchievementName" xml:space="preserve">
-    <value>Method man and a friend</value>
+    <value>Method man с другом</value>
 </data>
   <data name="CreateMethodOneParameterAchievementDescription" xml:space="preserve">
-    <value>Create a method with 1 parameter</value>
+    <value>Создайте метод с одним параметром</value>
 </data>
   <data name="BlockCommentAchievementName" xml:space="preserve">
-    <value>Block comment</value>
+    <value>Блочный комментарий</value>
 </data>
   <data name="BlockCommentAchievementDescription" xml:space="preserve">
-    <value>Write a block comment</value>
+    <value>Напишите блочный комментарий</value>
 </data>
   <data name="OverrideEqualsAchievementName" xml:space="preserve">
-    <value>Define equality</value>
+    <value>Что такое равенство</value>
 </data>
   <data name="OverrideEqualsAchievementDescription" xml:space="preserve">
-    <value>Override System.Object.Equals</value>
+    <value>Переопределите метод System.Object.Equals</value>
 </data>
   <data name="CaesarChallengeName" xml:space="preserve">
-    <value>Caesar</value>
+    <value>Цезарь</value>
 </data>
   <data name="CaesarChallengeDescription" xml:space="preserve">
-    <value>Write a Caesar encryption/decryption module</value>
+    <value>Напишите модуль, реализующий шифр Цезаря</value>
 </data>
   <data name="TryFinallyStatementAchievementName" xml:space="preserve">
-    <value>Try-Finally Statement</value>
+    <value>Ключевые слова Try-Finally</value>
 </data>
   <data name="TryFinallyStatementAchievementDescription" xml:space="preserve">
-    <value>Use the a try-finally without a catch statement.</value>
+    <value>Используйте ключевые слова try-finally без ключевого слова catch.</value>
 </data>
   <data name="ForAchievementName" xml:space="preserve">
-    <value>For loop</value>
+    <value>Цикл for</value>
 </data>
   <data name="ForAchievementDescription" xml:space="preserve">
-    <value>Use a for loop</value>
+    <value>Используйте цикл for</value>
 </data>
   <data name="UseConsoleReadlineAchievementName" xml:space="preserve">
-    <value>Use Console.ReadLine()</value>
+    <value>Использование Console.ReadLine()</value>
 </data>
   <data name="UseConsoleReadlineAchievementDescription" xml:space="preserve">
-    <value>Get input from the user</value>
+    <value>Получите ввод от пользователя</value>
 </data>
   <data name="IfCompoundExpressionAchievementName" xml:space="preserve">
-    <value>Use compound expression in if statement</value>
+    <value>Используйте составное выражение в операторе if</value>
 </data>
   <data name="IfCompoundExpressionAchievementDescription" xml:space="preserve">
-    <value>Make use of multiple expression in one if statement (usage of &amp;&amp;,||, etc. operators)</value>
+    <value>Используйте несколько выражений в одном операторе if (используйте операторы &amp;&amp;, ||, и т.д.)</value>
 </data>
   <data name="UpperBoundaryValueFloatName" xml:space="preserve">
-    <value>Living on the floating edge</value>
+    <value>Жизнь на плавающей грани</value>
 </data>
   <data name="UpperBoundaryValueFloatDescription" xml:space="preserve">
-    <value>Assign the maximal allowed value to a float (beware the overflow!)</value>
+    <value>Присвойте максимальное допустимое значение переменной типа float (бойтесь переполнения!)</value>
 </data>
   <data name="LowerBoundaryValueFloatName" xml:space="preserve">
-    <value>Living on the negative floating edge</value>
+    <value>Жизнь на отрицательной плавающей грани</value>
 </data>
   <data name="LowerBoundaryValueFloatDescription" xml:space="preserve">
-    <value>Assign the minimal allowed value to a float (beware the overflow!)</value>
+    <value>Присвойте минимальное допустимое значение переменной типа float (бойтесь переполнения!)</value>
 </data>
   <data name="UseIsKeywordAchievementName" xml:space="preserve">
-    <value>Is</value>
+    <value>Есть</value>
 </data>
   <data name="UseIsKeywordAchievementDescription" xml:space="preserve">
-    <value>Create an expression with the IS keyword</value>
+    <value>Создайте выражение с использованием ключевого слова IS</value>
 </data>
   <data name="AbstractClassAchievementName" xml:space="preserve">
-    <value>Abstract class</value>
+    <value>Абстрактный класс</value>
 </data>
   <data name="AbstractClassAchievementDescription" xml:space="preserve">
-    <value>Create an abstract class</value>
+    <value>Создайте абстрактный класс</value>
 </data>
   <data name="AbstractMethodAchievementName" xml:space="preserve">
-    <value>Abstract method</value>
+    <value>Абстрактный метод</value>
 </data>
   <data name="AbstractMethodAchievementDescription" xml:space="preserve">
-    <value>Create an abstract method</value>
+    <value>Создайте абстрактный метод</value>
 </data>
   <data name="UsingStatementAchievementName" xml:space="preserve">
-    <value>Using statement</value>
+    <value>Оператор using</value>
 </data>
   <data name="UsingStatementAchievementDescription" xml:space="preserve">
-    <value>Use the using-statement</value>
+    <value>Используйте оператор using</value>
 </data>
   <data name="MultipleDeclareIntName" xml:space="preserve">
-    <value>Declare multiple integers in one statement</value>
+    <value>Объявите несколько целых переменных в одном операторе</value>
 </data>
   <data name="MultipleDeclareIntDescription" xml:space="preserve">
-    <value>Declare multiple integers in one go</value>
+    <value>Объявите несколько целых переменных за раз</value>
 </data>
   <data name="RefParameterAchievementName" xml:space="preserve">
-    <value>Ref Parameter</value>
+    <value>Параметр ref</value>
 </data>
   <data name="RefParameterAchievementDescription" xml:space="preserve">
-    <value>Write a method that uses the ref keyword in its arguments</value>
+    <value>Напишите метод, использующий в одном из своих аргументов ключевое слово ref</value>
 </data>
   <data name="ArrayClearMethodAchievementName" xml:space="preserve">
-    <value>Clear an array</value>
+    <value>Очистка авгиевых массивов</value>
 </data>
   <data name="ArrayClearMethodAchievementDescription" xml:space="preserve">
-    <value>Use the Array.Clear method to Clear an array</value>
+    <value>Используйте метод Array.Clear чтобы очистить массив</value>
 </data>
   <data name="ArrayIndexOfMethodAchievementName" xml:space="preserve">
-    <value>IndexOf an array</value>
+    <value>Поиск индекса</value>
 </data>
   <data name="ArrayIndexOfMethodAchievementDescription" xml:space="preserve">
-    <value>Use the Array.IndexOf method to IndexOf an array</value>
+    <value>Используйте метод массива Array.IndexOf</value>
 </data>
   <data name="ArrayReverseMethodAchievementName" xml:space="preserve">
-    <value>Reverse an array</value>
+    <value>Переворот массива</value>
 </data>
   <data name="ArrayReverseMethodAchievementDescription" xml:space="preserve">
-    <value>Use the Array.Reverse method to Reverse an array</value>
+    <value>Используйте метод Array.Reverse чтобы перевернуть содержимое массива</value>
 </data>
   <data name="ArraySortMethodAchievementName" xml:space="preserve">
-    <value>Sort an array</value>
+    <value>Сортировка массива</value>
 </data>
   <data name="ArraySortMethodAchievementDescription" xml:space="preserve">
-    <value>Use the Array.Sort method to sort an array</value>
+    <value>Используйте метод Array.Sort чтобы отсортировать массив</value>
 </data>
   <data name="PrintWithPlaceholdersFieldSizeAchievementName" xml:space="preserve">
-    <value>Use placeholders and field size when writing to the screen</value>
+    <value>При выводе текста на экран используйте заполнители и указание размера выводимого поля</value>
 </data>
   <data name="PrintWithPlaceholdersFieldSizeAchievementDescription" xml:space="preserve">
-    <value>Print something to the console using placeholders and explicit field sizes</value>
+    <value>Выведите что-нибудь на консоль с использованием заполнителей и явных указаний размеров полей</value>
 </data>
   <data name="VirtualMethodAchievementName" xml:space="preserve">
-    <value>Virtual Reality</value>
+    <value>Виртуальная реальность</value>
 </data>
   <data name="VirtualMethodAchievementDescription" xml:space="preserve">
-    <value>Create a virtual method</value>
+    <value>Создайте виртуальный метод</value>
 </data>
   <data name="OVerrideMethodAchievementName" xml:space="preserve">
-    <value>Override!</value>
+    <value>Перекрыть!</value>
 </data>
   <data name="OVerrideMethodAchievementDescription" xml:space="preserve">
-    <value>Override a method</value>
+    <value>Переопределите метод</value>
 </data>
   <data name="QueryExpressionAchievementName" xml:space="preserve">
-    <value>Query Expression</value>
+    <value>Запросное выражение</value>
 </data>
   <data name="QueryExpressionAchievementDescription" xml:space="preserve">
-    <value>Use a query expression</value>
+    <value>Используйте запросное выражение</value>
 </data>
   <data name="ForEachAchievementName" xml:space="preserve">
-    <value>Foreach loop</value>
+    <value>Цикл foreach</value>
 </data>
   <data name="ForEachAchievementDescription" xml:space="preserve">
-    <value>Use a foreach loop</value>
+    <value>Используйте цикл foreach</value>
 </data>
   <data name="DeclareInitializeDoubleName" xml:space="preserve">
-    <value>Declare and initialize a double</value>
+    <value>Объявление и инициализация переменной типа double</value>
 </data>
   <data name="DeclareInitializeDoubleDescription" xml:space="preserve">
-    <value>Declare and initialize a double in one statement</value>
+    <value>В одном операторе объявите и проинициализируйте переменную типа double</value>
 </data>
   <data name="PrintWithPlaceholdersAchievementName" xml:space="preserve">
-    <value>Print with placeholders</value>
+    <value>Печать с заполнителями</value>
 </data>
   <data name="PrintWithPlaceholdersAchievementDescription" xml:space="preserve">
-    <value>Print something to the console using placeholders</value>
+    <value>Выведите что-нибудь на консоль, используя заполнители</value>
 </data>
   <data name="ElseIfStatementAchievementName" xml:space="preserve">
-    <value>Use else if statement</value>
+    <value>Использование оператора else if</value>
 </data>
   <data name="ElseIfStatementAchievementDescription" xml:space="preserve">
-    <value>Make use of an else if statement</value>
+    <value>Найдите применение оператору else if</value>
 </data>
   <data name="CreateSingleLineMethodAchievementName" xml:space="preserve">
-    <value>That's tiny</value>
+    <value>Какой маленький</value>
 </data>
   <data name="CreateSingleLineMethodAchievementDescription" xml:space="preserve">
-    <value>Create a method that only contains one single return expression</value>
+    <value>Создайте метод, содержащий только одно единственное return-выражение</value>
 </data>
   <data name="AnonymousObjectAchievementName" xml:space="preserve">
-    <value>Anonymous Object</value>
+    <value>Анонимный объект</value>
 </data>
   <data name="AnonymousObjectAchievementDescription" xml:space="preserve">
-    <value>Create an anonymous object</value>
+    <value>Создайте анонимный объект</value>
 </data>
   <data name="TryCatchStatementAchievementName" xml:space="preserve">
-    <value>Try-Catch Statement</value>
+    <value>Блок Try-Catch</value>
 </data>
   <data name="TryCatchStatementAchievementDescription" xml:space="preserve">
-    <value>Use a try-catch statement</value>
+    <value>Используйте блок try-catch</value>
 </data>
   <data name="SwitchAchievementName" xml:space="preserve">
-    <value>Multiplexing</value>
+    <value>Мультиплексирование</value>
 </data>
   <data name="SwitchAchievementDescription" xml:space="preserve">
-    <value>Create a switch statement</value>
+    <value>Создайте оператор switch</value>
 </data>
   <data name="CreateBaseConstructorInitAchievementName" xml:space="preserve">
-    <value>Call base</value>
+    <value>Звонок на базу</value>
 </data>
   <data name="CreateBaseConstructorInitAchievementDescription" xml:space="preserve">
-    <value>Call another base constructor using the base() keyword from a constructor</value>
+    <value>Из конструктора вызовите конструктор базового класса с помощью ключевого слова base()</value>
 </data>
   <data name="CastAchievementName" xml:space="preserve">
-    <value>Swords to plowshares</value>
+    <value>Мечи на орала</value>
 </data>
   <data name="CastAchievementDescription" xml:space="preserve">
-    <value>Cast a variable explicitely</value>
+    <value>Явно приведите переменную</value>
 </data>
   <data name="DeclareMultipleDimArrayAchievementName" xml:space="preserve">
-    <value>Declare a multidimensional array</value>
+    <value>Объявление многомерного массива</value>
 </data>
   <data name="DeclareMultipleDimArrayAchievementDescription" xml:space="preserve">
-    <value>Declare a multidimensional array</value>
+    <value>Объявите многомерный массив</value>
 </data>
-
+  <data name="CurseAlotAchievementDescription" xml:space="preserve">
+    <value>Объявите более пяти переменных, имена которых содержат 'нехорошие слова' (английские)</value>
+  </data>
+  <data name="CurseAlotAchievementName" xml:space="preserve">
+    <value>Как некультурно!</value>
+  </data>
+  <data name="SpeechlessAchievementDescription" xml:space="preserve">
+    <value>Объявите более пяти переменных, имена которых очень скучны и ничего не обозначают, например 'meh', 'bla', и т.д.</value>
+  </data>
+  <data name="SpeechlessAchievementName" xml:space="preserve">
+    <value>Как оригинально...</value>
+  </data>
+  <data name="DangerousEqualityCheckAchievementName" xml:space="preserve">
+    <value>Двойная проблема</value>
+  </data>
+  <data name="DangerousEqualityCheckAchievementDescription" xml:space="preserve">
+    <value>Проверьте равенство двух чисел с плавающей точкой (хинт: это может не сработать)</value>
+  </data>  
 </root>
