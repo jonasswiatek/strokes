@@ -2,22 +2,30 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+
 namespace Strokes.Core.Data.Model
 {
     public class Achievement : INotifyPropertyChanged
     {
+        public Achievement()
+        {
+            DependsOn = new List<Achievement>();
+            Unlocks = new List<Achievement>();
+        }
+
         public string Guid
         {
             get;
             set;
         }
 
-        public IEnumerable<Achievement> DependsOn
+        public List<Achievement> DependsOn
         {
             get;
             set;
         }
-        public IEnumerable<Achievement> Unlocks
+
+        public List<Achievement> Unlocks
         {
             get;
             set;
@@ -27,7 +35,21 @@ namespace Strokes.Core.Data.Model
         {
             get
             {
-                return string.Join(", ", DependsOn.Select(a => a.Name));
+                if (DependsOn.Any())
+                    return string.Join(", ", DependsOn.Select(a => a.Name));
+                else
+                    return string.Empty;
+            }
+        }
+
+        public string UnlocksStr
+        {
+            get
+            {
+                if (Unlocks.Any())
+                    return string.Join(", ", Unlocks.Select(a => a.Name));  
+                else
+                    return string.Empty;
             }
         }
 

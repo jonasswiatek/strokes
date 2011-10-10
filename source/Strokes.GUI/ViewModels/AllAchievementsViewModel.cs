@@ -13,6 +13,7 @@ using Strokes.Core.Data.Model;
 using Strokes.Data;
 using System.Collections.Specialized;
 using StructureMap;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Strokes.GUI
 {
@@ -26,17 +27,17 @@ namespace Strokes.GUI
 
         public AllAchievementsViewModel()
         {
-            if (IsInDesignMode)
-                achievementRepository = new AppDataXmlFileAchievementRepository();
-            else
-                achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
-
             this.AchievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
             this.ResetCommand = new RelayCommand(ResetExecute);
 
-            ReloadViewModel();
-
             AchievementContext.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
+
+            if (IsInDesignMode == false)
+            {
+                achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
+
+                ReloadViewModel();
+            }
         }
 
         public ObservableCollection<AchievementsPerCategory> AchievementsOrdered
@@ -73,12 +74,15 @@ namespace Strokes.GUI
             {
                 return TotalAchievements != 0 ? (int)(((double)TotalCompleted / (double)TotalAchievements) * 100) : 0;
             }
-
         }
 
         private void ResetExecute()
         {
             achievementRepository.ResetAchievements();
+
+            ReloadViewModel();
+
+            Messenger.Default.Send(new ResetAchievementsMessage());
         }
 
         private void ReloadViewModel()
@@ -90,6 +94,7 @@ namespace Strokes.GUI
             foreach (var category in achievements.AsCategories())
             {
                 var sortedAchievements = category.Achievements
+                        .Where(a => IsUnlocked(achievements, a))
                         .OrderByDescending(a => a.IsCompleted)
                         .ThenByDescending(a => a.DateCompleted)
                         .ThenBy(a => a.Name);
@@ -99,6 +104,16 @@ namespace Strokes.GUI
                     CategoryName = category.CategoryName,
                 });
             }
+        }
+
+        private bool IsUnlocked(IEnumerable<Achievement> achievements, Achievement achievement)
+        {
+            if (achievement.DependsOn.Any() == false)
+                return true;
+            else if (achievement.DependsOn.All(a => a.IsCompleted == true && IsUnlocked(achievements, a)))
+                return true;
+            else
+                return false;
         }
 
         private void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)
@@ -159,6 +174,9 @@ namespace Strokes.GUI
             {
                 achievementDescriptor = descriptor;
                 
+                foreach (var unlocked in achievementDescriptor.Unlocks)
+                    this.Add(unlocked);
+
                 ApplySort();
 
                 RaisePropertyChanged("TotalCompleted");

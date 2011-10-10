@@ -17,7 +17,7 @@ namespace Strokes.Data
         private const string AchievementStorageDirectory = "Strokes for Visual Studio";
         private const string AchievementStorageFile = "AchievementStorage.xml";
 
-        private static readonly List<CompletedAchievement> CompletedAchievements; 
+        private static readonly List<CompletedAchievement> CompletedAchievements;
 
         static AppDataXmlFileAchievementRepository()
         {
@@ -26,11 +26,12 @@ namespace Strokes.Data
 
         public IEnumerable<Achievement> GetAchievements()
         {
-            foreach(var achievement in Achievements)
+            foreach (var achievement in Achievements)
             {
                 var achievementInstance = achievement;
                 var completedAchievement = CompletedAchievements.FirstOrDefault(a => a.Guid == achievementInstance.Guid);
-                if(completedAchievement != null)
+
+                if (completedAchievement != null)
                 {
                     achievement.DateCompleted = completedAchievement.DateCompleted;
                     achievement.IsCompleted = completedAchievement.IsCompleted;
@@ -48,7 +49,6 @@ namespace Strokes.Data
 
         public void MarkAchievementAsCompleted(Achievement achievementDescriptor)
         {
-            // Used to update the GUI
             achievementDescriptor.DateCompleted = DateTime.Now;
             achievementDescriptor.IsCompleted = true;
 
@@ -58,10 +58,10 @@ namespace Strokes.Data
                 IsCompleted = true
             };
 
-            if(!CompletedAchievements.Contains(completedAchievement))
+            if (!CompletedAchievements.Contains(completedAchievement))
             {
                 CompletedAchievements.Add(completedAchievement);
-                PersistCompletedAchievements(); //Thread safety?
+                PersistCompletedAchievements();
             }
         }
 
@@ -70,26 +70,42 @@ namespace Strokes.Data
             if (assembly == null)
                 throw new ArgumentNullException("assembly");
 
-            var achievementsInAssembly = assembly.GetTypes().Where(a => IsAchievementDescendant(a.UnderlyingSystemType) && !a.IsAbstract);
-            var achievementTypes = achievementsInAssembly.Select(achievement => (AchievementBase) Activator.CreateInstance(achievement)).ToList();
-            var achievementDescriptors = achievementTypes.Select(achievement => achievement.GetDescriptionAttribute()).ToList();
+            var achievementsInAssembly = assembly.GetTypes()
+                    .Where(a => IsAchievementDescendant(a.UnderlyingSystemType) && !a.IsAbstract);
+
+            var achievementTypes = achievementsInAssembly
+                    .Select(achievement => (AchievementBase)Activator.CreateInstance(achievement))
+                    .ToList();
+
+            var achievementDescriptors = achievementTypes
+                    .Select(achievement => achievement.GetDescriptionAttribute())
+                    .ToList();
 
             Achievements.AddRange(achievementTypes.Select(a => a.GetAchievementDto()));
 
-            foreach(var achievement in Achievements)
+            foreach (var achievement in Achievements)
             {
                 var currentAchievement = achievement;
                 var completedAchievement = CompletedAchievements.FirstOrDefault(a => a.Guid == currentAchievement.Guid);
+
                 if (completedAchievement != null)
                 {
                     currentAchievement.DateCompleted = completedAchievement.DateCompleted;
                     currentAchievement.IsCompleted = completedAchievement.IsCompleted;
                 }
-                var dependsOnGuids = achievementDescriptors.Where(a => a.Guid == currentAchievement.Guid).SelectMany(a => a.DependsOn ?? new string[]{});
-                var unlocksGuids = achievementDescriptors.Where(a => a.DependsOn.Contains(currentAchievement.Guid)).Select(a => a.Guid);
-                
-                currentAchievement.DependsOn = Achievements.Where(a => dependsOnGuids.Contains(a.Guid));
-                currentAchievement.Unlocks = Achievements.Where(a => unlocksGuids.Contains(a.Guid));
+
+                var dependsOnGuids = achievementDescriptors
+                        .Where(a => a.Guid == currentAchievement.Guid)
+                        .SelectMany(a => a.DependsOn ?? new string[] { })
+                        .ToList();
+
+                var unlocksGuids = achievementDescriptors
+                        .Where(a => a.DependsOn.Contains(currentAchievement.Guid))
+                        .Select(a => a.Guid)
+                        .ToList();
+
+                currentAchievement.DependsOn = Achievements.Where(a => dependsOnGuids.Contains(a.Guid)).ToList();
+                currentAchievement.Unlocks = Achievements.Where(a => unlocksGuids.Contains(a.Guid)).ToList();
             }
         }
 
@@ -116,12 +132,12 @@ namespace Strokes.Data
         {
             var filename = GetAchievementStorageFile();
 
-            if(!File.Exists(filename))
+            if (!File.Exists(filename))
                 return new List<CompletedAchievement>();
 
-            using(var file = File.Open(filename, FileMode.OpenOrCreate)) //Ensure disposal of file handle
+            using (var file = File.Open(filename, FileMode.OpenOrCreate))
             {
-                if(file.Length <= 0)
+                if (file.Length <= 0)
                     return new List<CompletedAchievement>();
 
                 var serializer = new XmlSerializer(typeof(List<CompletedAchievement>));
@@ -138,7 +154,7 @@ namespace Strokes.Data
 
             var filename = GetAchievementStorageFile();
 
-            using (var file = File.Open(filename, FileMode.Create)) //Ensure disposal of file handle
+            using (var file = File.Open(filename, FileMode.Create))
             {
                 var serializer = new XmlSerializer(typeof(List<CompletedAchievement>));
                 serializer.Serialize(file, CompletedAchievements);
@@ -148,7 +164,8 @@ namespace Strokes.Data
         public void ResetCompletedAchievements()
         {
             CompletedAchievements.Clear();
-            foreach(var achievement in Achievements) //Reset all cached completion data
+
+            foreach (var achievement in Achievements)
             {
                 achievement.IsCompleted = false;
                 achievement.DateCompleted = default(DateTime);
@@ -164,11 +181,11 @@ namespace Strokes.Data
         {
             var userDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var appDir = Path.Combine(userDataDir, AchievementStorageDirectory);
+
             if (!Directory.Exists(appDir))
                 Directory.CreateDirectory(appDir);
 
-            var appDataFile = Path.Combine(appDir, AchievementStorageFile);
-            return appDataFile;
+            return Path.Combine(appDir, AchievementStorageFile);
         }
     }
 }

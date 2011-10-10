@@ -28,26 +28,25 @@ namespace Strokes.BasicAchievements.Achievements
                 {
                     if (localVariableDeclaration.Variables.Count > 0)
                     {
-
-                        VariableDeclaration decl = localVariableDeclaration.Variables[0] as VariableDeclaration;
+                        var decl = localVariableDeclaration.Variables[0] as VariableDeclaration;
                         if (decl != null)
                         {
-                            if(decl.Initializer is CollectionInitializerExpression)
+                            if (decl.Initializer is CollectionInitializerExpression)
+                            {
                                 UnlockWith(localVariableDeclaration);
+                            }
                             else if (decl.Initializer is ArrayCreateExpression)
                             {
                                 ArrayCreateExpression decl2 = decl.Initializer as ArrayCreateExpression;
-                                if (decl2.ArrayInitializer is CollectionInitializerExpression && decl2.ArrayInitializer.CreateExpressions.Count>0)
+                                if (decl2.ArrayInitializer is CollectionInitializerExpression && decl2.ArrayInitializer.CreateExpressions.Count > 0)
                                 {
-                                    
                                     UnlockWith(decl2.ArrayInitializer);
                                 }
-                                  
                             }
                         }
                     }
-                    
                 }
+
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
         }
