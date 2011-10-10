@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{04021209-8B79-4E45-A2FE-8A0D0E02CB3B}", "@BeastNumberAchievementName",
+    [AchievementDescriptor("{04021209-8B79-4E45-A2FE-8A0D0E02CB3B}", "@BeastNumberAchievementName",
         AchievementDescription = "@BeastNumberAchievementDescription",
         AchievementCategory = "@Funny")]
     public class BeastNumberAchievement : NRefactoryAchievement

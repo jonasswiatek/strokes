@@ -25,7 +25,7 @@ namespace Strokes.BasicAchievements.Achievements
      * 
      * */
 
-    [AchievementDescription("{92F021CA-9F71-4FCB-A698-36948B6E8527}", "@JobSecurityAchievementName",
+    [AchievementDescriptor("{92F021CA-9F71-4FCB-A698-36948B6E8527}", "@JobSecurityAchievementName",
         AchievementDescription = "@JobSecurityAchievementDescription",
         AchievementCategory = "@Funny")]
     public class JobSecurityAchievement : NRefactoryAchievement
@@ -46,7 +46,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("{BF1C5DD9-3C0E-466B-9640-1F30F68FE960}", "@TellingAStoryAchievementName",
+    [AchievementDescriptor("{BF1C5DD9-3C0E-466B-9640-1F30F68FE960}", "@TellingAStoryAchievementName",
         AchievementDescription = "@TellingAStoryAchievementDescription",
         AchievementCategory = "@Funny")]
     public class TellingAStoryAchievement : NRefactoryAchievement
@@ -60,15 +60,22 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
+                /*Dang; ignoring whitespaces in this count will mean that I'll need to recursively go in the methodbody,
+                 * count all children, all blockstatements, all true/falsestatements etc. ... To do...some day...
+                 * 
+                 */
+                
                 if (methodDeclaration.Body.EndLocation.Line - methodDeclaration.Body.StartLocation.Line >= 100)
                     UnlockWith(methodDeclaration);
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
+
+
         }
     }
 
-    [AchievementDescription("{B82A5527-2F5A-4781-93C5-D5D0FEE22A0A}", "@EpicTaleAchievementName",
+    [AchievementDescriptor("{B82A5527-2F5A-4781-93C5-D5D0FEE22A0A}", "@EpicTaleAchievementName",
         AchievementDescription = "@EpicTaleAchievementDescription",
         AchievementCategory = "@Funny")]
     public class EpicTaleAchievement : NRefactoryAchievement
@@ -90,7 +97,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("{A93A63A8-30DC-45A8-BCFE-DFADF6BDDF38}", "@ParametizerAchievementName",
+    [AchievementDescriptor("{A93A63A8-30DC-45A8-BCFE-DFADF6BDDF38}", "@ParametizerAchievementName",
         AchievementDescription = "@ParametizerAchievementDescription",
         AchievementCategory = "@Funny")]
     public class ParametizerAchievement : NRefactoryAchievement
@@ -121,7 +128,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("{3C053533-04EC-4D18-B1F1-36AC3F2F1A5F}", "@GUTAchievementName",
+    [AchievementDescriptor("{3C053533-04EC-4D18-B1F1-36AC3F2F1A5F}", "@GUTAchievementName",
         AchievementDescription = "@GUTAchievementDescription",
         AchievementCategory = "@Funny")]
     public class GUTAchievement : NRefactoryAchievement
@@ -154,7 +161,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("{1C241CE0-0CF4-4A51-B0EB-F0157848A3D3}", "@EveryOptionEnumAchievementName",
+    [AchievementDescriptor("{1C241CE0-0CF4-4A51-B0EB-F0157848A3D3}", "@EveryOptionEnumAchievementName",
         AchievementDescription = "@EveryOptionEnumAchievementDescription",
         AchievementCategory = "@Funny")]
     public class EveryOptionEnumAchievement : NRefactoryAchievement
@@ -182,7 +189,7 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescription("{AB9E0BC9-7CC1-431D-BA91-4A2FCB50B43E}", "@ProceduralProgrammerAchievementName",
+    [AchievementDescriptor("{AB9E0BC9-7CC1-431D-BA91-4A2FCB50B43E}", "@ProceduralProgrammerAchievementName",
         AchievementDescription = "@ProceduralProgrammerAchievementDescription",
         AchievementCategory = "@Funny")]
     public class ProceduralProgrammerAchievement : NRefactoryAchievement

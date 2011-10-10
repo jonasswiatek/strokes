@@ -1,24 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Strokes.Core;
-using Strokes.Core.Model;
+using Strokes.Core.Data.Model;
 using System.Resources;
-using System.Runtime.Serialization;
 using System.Reflection;
 
-namespace Strokes.Data
+namespace Strokes.Core
 {
-    public static class AchievementHelper
+    public static class AchievementDescriptorAttributeHelper
     {
-        public static AchievementDescriptionAttribute GetDescriptionAttribute(this AchievementBase achievement)
+        public static AchievementDescriptorAttribute GetDescriptionAttribute(this AchievementBase achievement)
         {
-            var descriptionAttributes = achievement.GetType().GetCustomAttributes(typeof(AchievementDescriptionAttribute), true);
+            var descriptionAttributes = achievement.GetType().GetCustomAttributes(typeof(AchievementDescriptorAttribute), true);
             
             if (descriptionAttributes.Length == 1)
             {
-                return (AchievementDescriptionAttribute)descriptionAttributes[0];
+                return (AchievementDescriptorAttribute)descriptionAttributes[0];
             }
 
             if (descriptionAttributes.Length > 1)
@@ -29,7 +24,7 @@ namespace Strokes.Data
             throw new ArgumentException("Achievement class does not define an AchievementDescriptionAttribute", "achievement");
         }
 
-        public static AchievementDescriptor GetAchievementDescriptor(this AchievementBase achievement)
+        public static Achievement GetAchievementDto(this AchievementBase achievement)
         {
             var descriptionAttribute = GetDescriptionAttribute(achievement);
             var assembly = achievement.GetType().Assembly;
@@ -55,8 +50,9 @@ namespace Strokes.Data
             if (description.StartsWith("@") && description.Length > 1)
                 description = AchievementResources.GetString(description.Substring(1));
 
-            var descriptor = new AchievementDescriptor
+            var descriptor = new Achievement
             {
+                Guid = descriptionAttribute.Guid,
                 AchievementType = achievement.GetType(),
                 Category = category,
                 Description = description,

@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
-    [AchievementDescription("{295A339C-1ED6-41CF-951E-7E13632B01BD}", "@PrintWithPlaceholdersAchievementName",
+    [AchievementDescriptor("{295A339C-1ED6-41CF-951E-7E13632B01BD}", "@PrintWithPlaceholdersAchievementName",
         AchievementDescription = "@PrintWithPlaceholdersAchievementDescription",
         AchievementCategory = "@Console")]
     public class PrintWithPlaceholdersAchievement : AbstractMethodCall

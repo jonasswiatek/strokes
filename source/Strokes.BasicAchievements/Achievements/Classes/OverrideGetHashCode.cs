@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{58E7FA3B-E4D3-4F34-8205-F3F9FAF00E90}", "@OverrideGetHashCodeAchievementName",
+    [AchievementDescriptor("{58E7FA3B-E4D3-4F34-8205-F3F9FAF00E90}", "@OverrideGetHashCodeAchievementName",
         AchievementDescription = "@OverrideGetHashCodeAchievementDescription",
         AchievementCategory = "@Class")]
     public class OverrideGetHashCodeAchievement : NRefactoryAchievement

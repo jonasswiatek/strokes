@@ -190,15 +190,11 @@
                 BorderBrush="{StaticResource AchievementBorder}"
                 BorderThickness="1">
             <Grid Background="{StaticResource AchievementDarkBackground}" Opacity="{Binding IsCompleted, Converter={StaticResource BoolToOpacityConverter}}" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
                 <local:AchievementTemplateBare Grid.Column="0"
-                                               Margin="5"
+                                               Margin="5,5,40,5"
                                                Foreground="{DynamicResource AchievementForeground}" />
                 <StackPanel Grid.Column="1"
-                            Margin="15,10,10,10">
+                            Margin="300,10,10,10" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <TextBlock HorizontalAlignment="Left"
                                VerticalAlignment="Top"
                                Foreground="{StaticResource AchievementSubtleFontColor}"
@@ -207,21 +203,18 @@
                         <Run Text="Unlocked:" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text="{Binding DateCompleted, FallbackValue=''}" />
                     </TextBlock>
                 </StackPanel>
-                <Path Grid.Column="1"
-                      Width="23.552"
-                      Height="Auto"
+                <Path Width="23"
+                      Height="20"
                       Margin="0,34.364,10,21.197"
                       HorizontalAlignment="Right"
-                      VerticalAlignment="Stretch"
+                      VerticalAlignment="Bottom"
                       Data="F1M519.168,149.8125L518.391,148.9655C518.184,148.7405,518.195,148.3865,518.421,148.1795L520.684,146.0785C520.784,145.9825,520.919,145.9295,521.059,145.9295C521.219,145.9295,521.361,145.9925,521.468,146.1055L527.679,152.7925L538.359,139.0465C538.466,138.9155,538.626,138.8365,538.8,138.8365C538.927,138.8365,539.044,138.8765,539.143,138.9545L541.581,140.8475C541.697,140.9375,541.772,141.0685,541.79,141.2185C541.811,141.3675,541.77,141.5135,541.679,141.6275L527.953,159.2755z"
                       Fill="Lime"
                       Stretch="Fill"
                       Visibility="{Binding IsCompleted,
                                            Converter={StaticResource BoolToVisibilityConverter},
                                            ConverterParameter=True}" />
-                <Path Grid.Column="1"
-                      Width="20.493"
-                      Height="Auto"
+                <Path Width="20"
                       Margin="0,34.364,10,21.197"
                       HorizontalAlignment="Right"
                       VerticalAlignment="Stretch"
@@ -230,7 +223,7 @@
                       Stretch="Fill"
                       Visibility="{Binding IsCompleted,
                                            Converter={StaticResource BoolToVisibilityConverter},
-                                           ConverterParameter=False}" />
+                                           ConverterParameter=False}" Height="20" />
             </Grid>
         </Border>
     </DataTemplate>
@@ -462,7 +455,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{StaticResource ButtonBackgroundBrush}"
+                    <Border x:Name="PART_Border"
+                            Background="{StaticResource ButtonBackgroundBrush}"
                             BorderBrush="{StaticResource ButtonBorderBrush}"
                             BorderThickness="1"
                             CornerRadius="1"
@@ -473,6 +467,13 @@
                                           RecognizesAccessKey="True"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_Border" 
+                                    Property="Background" 
+                                    Value="{StaticResource AchievementTabItemSelectedBackground}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -698,8 +699,7 @@
                                     <ColumnDefinition MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" />
                                 </Grid.ColumnDefinitions>
                                 <RepeatButton Command="{x:Static ScrollBar.LineLeftCommand}"
-                                              IsEnabled="{TemplateBinding IsMouseOver}"
-                                              Style="{StaticResource ScrollBarButton}" />
+                                              IsEnabled="{TemplateBinding IsMouseOver}" />
                                 <Track x:Name="PART_Track"
                                        Grid.Column="1"
                                        IsEnabled="{TemplateBinding IsMouseOver}">
@@ -717,8 +717,7 @@
                                 </Track>
                                 <RepeatButton Grid.Column="2"
                                               Command="{x:Static ScrollBar.LineRightCommand}"
-                                              IsEnabled="{TemplateBinding IsMouseOver}"
-                                              Style="{StaticResource ScrollBarButton}" />
+                                              IsEnabled="{TemplateBinding IsMouseOver}" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>

@@ -44,7 +44,7 @@
   <ItemGroup>
     <Reference Include="ICSharpCode.NRefactory, Version=4.0.0.7070, Culture=neutral, PublicKeyToken=efe927acf176eea2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\ICSharpCode.NRefactory.dll</HintPath>
+      <HintPath>..\ExternalReferences\ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -90,6 +90,12 @@
     <Compile Include="Achievements\Error handling\CatchManyExceptions.cs" />
     <Compile Include="Achievements\Error handling\TryCatchRethrowStatementAchievement.cs" />
     <Compile Include="Achievements\Error handling\TryCatchIgnoreStatementAchievement.cs" />
+    <Compile Include="Achievements\Events and Threads\SubscribeToEventAchievement.cs" />
+    <Compile Include="Achievements\Events and Threads\ThreadMethodschievements.cs" />
+    <Compile Include="Achievements\Events and Threads\CreateThreadAchievement.cs" />
+    <Compile Include="Achievements\Events and Threads\CreateDelegateAchievement.cs" />
+    <Compile Include="Achievements\Events and Threads\CreateEventAchievement.cs" />
+    <Compile Include="Achievements\Events and Threads\UnSubscribeToEventAchievement.cs" />
     <Compile Include="Achievements\Funny\BeastNumberAchievement.cs" />
     <Compile Include="Achievements\Funny\SpeechlessAchievement.cs" />
     <Compile Include="Achievements\Funny\CurseALotAchievement.cs" />
@@ -285,7 +291,6 @@
     <Resource Include="Achievements\Icons\Empty.png" />
     <Resource Include="Achievements\Icons\Basic\NotOperator.png" />
     <Resource Include="Achievements\Icons\Basic\Cast.png" />
-    <Content Include="lib\ICSharpCode.NRefactory.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Strokes.ChallengeRunner\Strokes.ChallengeRunner.csproj">
@@ -297,7 +302,6 @@
       <Name>Strokes.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>

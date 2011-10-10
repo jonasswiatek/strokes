@@ -6,7 +6,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{E883467B-9B20-429F-B091-9B31F37B7D0F}", "@PrivateSetterAchievementName",
+    [AchievementDescriptor("{E883467B-9B20-429F-B091-9B31F37B7D0F}", "@PrivateSetterAchievementName",
         AchievementDescription = "@PrivateSetterAchievementDescription",
         AchievementCategory = "@Class")]
     public class PrivateSetterAchievement : NRefactoryAchievement

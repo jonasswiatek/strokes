@@ -37,6 +37,9 @@
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="StructureMap">
+      <HintPath>..\ExternalReferences\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,14 +52,14 @@
     <Compile Include="AchievementBase.cs" />
     <Compile Include="AchievementCodeLocation.cs" />
     <Compile Include="AchievementContext.cs" />
-    <Compile Include="AchievementDescriptionAttribute.cs" />
+    <Compile Include="AchievementDescriptorAttribute.cs" />
+    <Compile Include="AchievementDescriptorAttributeHelper.cs" />
     <Compile Include="BuildInformation.cs" />
-    <Compile Include="Contracts\IAchievementDescriptorRepository.cs" />
+    <Compile Include="Data\IAchievementRepository.cs" />
     <Compile Include="DetectionSession.cs" />
     <Compile Include="Integration\IAchevementLibraryService.cs" />
-    <Compile Include="Model\AchievementCategory.cs" />
-    <Compile Include="Model\AchievementDescriptor.cs" />
-    <Compile Include="Model\CompletedAchievement.cs" />
+    <Compile Include="Data\Model\AchievementCategory.cs" />
+    <Compile Include="Data\Model\Achievement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +73,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask" AssemblyFile="$(SolutionDir)Tools\NotifyPropertyWeaverMsBuildTask.dll" />
+  <UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask" AssemblyFile="$(SolutionDir)ExternalReferences\NotifyPropertyWeaverMsBuildTask.dll" />
   <Target Name="AfterCompile">
     <NotifyPropertyWeaverMsBuildTask.WeavingTask />
   </Target>

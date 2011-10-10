@@ -6,10 +6,10 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{B557EE57-2514-4224-9DD3-555555AA778B}", "@CastAchievementName",
+    [AchievementDescriptor("{B557EE57-2514-4224-9DD3-555555AA778B}", "@CastAchievementName",
         AchievementDescription = "@CastAchievementDescription",
         AchievementCategory = "@Fundamentals",
-        Image = "/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/Cast.png")]
+        Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/Cast.png")]
     public class CastAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

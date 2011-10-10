@@ -1,28 +1,54 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-
-namespace Strokes.Core.Model
+using System.Linq;
+namespace Strokes.Core.Data.Model
 {
-    public class AchievementDescriptor : INotifyPropertyChanged
+    public class Achievement : INotifyPropertyChanged
     {
+        public string Guid
+        {
+            get;
+            set;
+        }
+
+        public IEnumerable<Achievement> DependsOn
+        {
+            get;
+            set;
+        }
+        public IEnumerable<Achievement> Unlocks
+        {
+            get;
+            set;
+        }
+
+        public string DependsOnStr
+        {
+            get
+            {
+                return string.Join(", ", DependsOn.Select(a => a.Name));
+            }
+        }
+
         public string Name
         {
             get;
             set;
         }
-        
+
         public string Description
         {
             get;
             set;
         }
-        
+
         public string Category
         {
             get;
             set;
         }
-        
+
         public string Image
         {
             get;
@@ -54,9 +80,7 @@ namespace Strokes.Core.Model
         }
 
 #pragma warning disable 67
-        
         public event PropertyChangedEventHandler PropertyChanged;
-        
 #pragma warning restore 67
     }
 }

@@ -7,7 +7,7 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{1D2171F4-9D57-4EA7-8B61-C493FC1F8DFC}", "@TooManyDimensionArrayDeclarationAchievementName",
+    [AchievementDescriptor("{1D2171F4-9D57-4EA7-8B61-C493FC1F8DFC}", "@TooManyDimensionArrayDeclarationAchievementName",
         AchievementDescription = "@TooManyDimensionArrayDeclarationAchievementDescription",
         AchievementCategory = "@Funny")]
     public class TooManyDimensionArrayDeclarationAchievement : NRefactoryAchievement

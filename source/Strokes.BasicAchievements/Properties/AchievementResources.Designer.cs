@@ -61,6 +61,24 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Abort a thread using Abort().
+        /// </summary>
+        public static string AbortThreadAchievementDescription {
+            get {
+                return ResourceManager.GetString("AbortThreadAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abort, abort, abort!.
+        /// </summary>
+        public static string AbortThreadAchievementName {
+            get {
+                return ResourceManager.GetString("AbortThreadAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create an abstract class.
         /// </summary>
         public static string AbstractClassAchievementDescription {
@@ -565,6 +583,42 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Declare a delegate.
+        /// </summary>
+        public static string CreateDelegateAchievementDescription {
+            get {
+                return ResourceManager.GetString("CreateDelegateAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nothing is impossible if you can delegate.
+        /// </summary>
+        public static string CreateDelegateAchievementName {
+            get {
+                return ResourceManager.GetString("CreateDelegateAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create an event..
+        /// </summary>
+        public static string CreateEventAchievementDescription {
+            get {
+                return ResourceManager.GetString("CreateEventAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Event of the year?!.
+        /// </summary>
+        public static string CreateEventAchievementName {
+            get {
+                return ResourceManager.GetString("CreateEventAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create an interface.
         /// </summary>
         public static string CreateInterfaceAchievementDescription {
@@ -849,6 +903,24 @@ namespace Strokes.Resources {
         public static string CreateThisConstructorInitAchievementName {
             get {
                 return ResourceManager.GetString("CreateThisConstructorInitAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a thread.
+        /// </summary>
+        public static string CreateThreadAchievementDescription {
+            get {
+                return ResourceManager.GetString("CreateThreadAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weaver.
+        /// </summary>
+        public static string CreateThreadAchievementName {
+            get {
+                return ResourceManager.GetString("CreateThreadAchievementName", resourceCulture);
             }
         }
         
@@ -1645,6 +1717,24 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Block a running thread using Join().
+        /// </summary>
+        public static string JoinThreadAchievementDescription {
+            get {
+                return ResourceManager.GetString("JoinThreadAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Block that thread!.
+        /// </summary>
+        public static string JoinThreadAchievementName {
+            get {
+                return ResourceManager.GetString("JoinThreadAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use a lambda expression.
         /// </summary>
         public static string LambdaExpressionAchievementDescription {
@@ -2365,6 +2455,24 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Suspends a thread for a specified time..
+        /// </summary>
+        public static string SleepThreadAchievementDescription {
+            get {
+                return ResourceManager.GetString("SleepThreadAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nighty night..
+        /// </summary>
+        public static string SleepThreadAchievementName {
+            get {
+                return ResourceManager.GetString("SleepThreadAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Declare more than 5 variables that have very boring identifiers like &apos;meh&apos;, &apos;bla&apos;, etc..
         /// </summary>
         public static string SpeechlessAchievementDescription {
@@ -2379,6 +2487,24 @@ namespace Strokes.Resources {
         public static string SpeechlessAchievementName {
             get {
                 return ResourceManager.GetString("SpeechlessAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start a thread.
+        /// </summary>
+        public static string StartThreadAchievementDescription {
+            get {
+                return ResourceManager.GetString("StartThreadAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready, thread...start!.
+        /// </summary>
+        public static string StartThreadAchievementName {
+            get {
+                return ResourceManager.GetString("StartThreadAchievementName", resourceCulture);
             }
         }
         

@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{EC805EF5-BAB8-43DB-B014-6A1ED350A9B9}", "@DeclareHexShorthandCharAchievementName",
+    [AchievementDescriptor("{EC805EF5-BAB8-43DB-B014-6A1ED350A9B9}", "@DeclareHexShorthandCharAchievementName",
         AchievementDescription = "@DeclareHexShorthandCharAchievementDescription",
         AchievementCategory = "@PrimitiveType")]
     public class DeclareHexShorthandCharAchievement : NRefactoryAchievement

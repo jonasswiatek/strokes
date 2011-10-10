@@ -4,15 +4,17 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Strokes.Core;
-using Strokes.Core.Contracts;
-using Strokes.Core.Model;
+using Strokes.Core.Data;
+using Strokes.Core.Data.Model;
 using Strokes.Data;
 using Strokes.GUI;
+using StructureMap;
 
 namespace Strokes.VSX
 {
     public class DetectionDispatcher
     {
+        
         /// <summary>
         /// Occours when the achievement detection have completed.
         /// </summary>
@@ -47,27 +49,20 @@ namespace Strokes.VSX
         {
             AchievementContext.OnAchievementDetectionStarting(null, new EventArgs());
 
-            var unlockedAchievements = new List<AchievementDescriptor>();
-            var achievementDescriptorRepository =
-                StrokesVsxPackageEx.GetGlobalService<AchievementDescriptorRepository>();
-
-            // For non VSX projects, the GlobalService won't be initialized, 
-            // and as such, it will return null.
-            if (achievementDescriptorRepository == null)
-                achievementDescriptorRepository = new AchievementDescriptorRepository();
+            var unlockedAchievements = new List<Achievement>();
+            var achievementDescriptorRepository = ObjectFactory.GetInstance<IAchievementRepository>();
 
             using (var detectionSession = new DetectionSession(buildInformation))
             {
-                var achievementDescriptors = achievementDescriptorRepository.GetAll();
-                var uncompletedAchievements = achievementDescriptors.Where(a => !a.IsCompleted || AchievementContext.DisablePersist);
+                var unlockableAchievements = achievementDescriptorRepository.GetUnlockableAchievements();
 
                 var stopWatch = new Stopwatch();
                 stopWatch.Start();
 
-                var tasks = new Task[uncompletedAchievements.Count()];
+                var tasks = new Task[unlockableAchievements.Count()];
                 var i = 0;
 
-                foreach (var uncompletedAchievement in uncompletedAchievements)
+                foreach (var uncompletedAchievement in unlockableAchievements)
                 {
                     var a = uncompletedAchievement;
 
@@ -92,7 +87,7 @@ namespace Strokes.VSX
 
                 OnDetectionCompleted(null, new DetectionCompletedEventArgs()
                 {
-                    AchievementsTested = uncompletedAchievements.Count(),
+                    AchievementsTested = unlockableAchievements.Count(),
                     ElapsedMilliseconds = (int)stopWatch.ElapsedMilliseconds
                 });
             }

@@ -6,10 +6,10 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescription("{76E9BDF0-FBB6-48AB-868F-6DC068416BF2}", "@OperatorOrAchievementName",
+    [AchievementDescriptor("{76E9BDF0-FBB6-48AB-868F-6DC068416BF2}", "@OperatorOrAchievementName",
         AchievementDescription = "@OperatorOrAchievementDescription",
         AchievementCategory = "@Expressions",
-        Image="/Strokes.BasicAchievements.VSX;component/Achievements/Icons/Basic/OrOperator.png")]
+        Image="/Strokes.BasicAchievements;component/Achievements/Icons/Basic/OrOperator.png")]
     public class OperatorOrAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
