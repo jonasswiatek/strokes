@@ -22,11 +22,15 @@ namespace Strokes.GUI
         private const string TotalAchievementsFieldName = "TotalAchievements";
         private const string TotalCompletedFieldName = "TotalCompleted";
         private const string PercentageCompletedFieldName = "PercentageCompleted";
-        private readonly IAchievementRepository _repository;
+        private readonly IAchievementRepository achievementRepository;
 
         public AllAchievementsViewModel()
         {
-            _repository = ObjectFactory.GetInstance<IAchievementRepository>();
+            if (IsInDesignMode)
+                achievementRepository = new AppDataXmlFileAchievementRepository();
+            else
+                achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
+
             this.AchievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
             this.ResetCommand = new RelayCommand(ResetExecute);
 
@@ -74,14 +78,14 @@ namespace Strokes.GUI
 
         private void ResetExecute()
         {
-            _repository.ResetAchievements();
+            achievementRepository.ResetAchievements();
         }
 
         private void ReloadViewModel()
         {
             AchievementsOrdered.Clear();
 
-            var achievements = _repository.GetAchievements();
+            var achievements = achievementRepository.GetAchievements();
 
             foreach (var category in achievements.AsCategories())
             {

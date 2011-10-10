@@ -7,7 +7,7 @@
              xmlns:viewmodels="clr-namespace:Strokes.GUI"
              d:DataContext="{d:DesignData Source=/SampleData/AllAchievementsViewModelSampleData.xaml}"
              d:DesignHeight="800"
-             d:DesignWidth="1024"
+             d:DesignWidth="600"
              mc:Ignorable="d">
     <UserControl.DataContext>
         <viewmodels:AllAchievementsViewModel />
@@ -25,11 +25,15 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Margin="{DynamicResource AchievementControlMargin}">
-            <Border BorderBrush="{DynamicResource AchievementBorder}" BorderThickness="2">
+        <StackPanel Grid.Row="0"
+                    Margin="{DynamicResource AchievementControlMargin}">
+            <Border BorderBrush="{DynamicResource AchievementBorder}"
+                    BorderThickness="2">
                 <StackPanel Orientation="Vertical">
-                    <StackPanel Background="{DynamicResource AchievementLightBackground}" Orientation="Vertical">
-                        <TextBlock Margin="15" Foreground="{DynamicResource AchievementForeground}">
+                    <StackPanel Background="{DynamicResource AchievementLightBackground}"
+                                Orientation="Vertical">
+                        <TextBlock Margin="15"
+                                   Foreground="{DynamicResource AchievementForeground}">
                             <TextBlock.Inlines>
                                 <Run Text="{Binding Resources.TotalAchievementsEarned, Source={StaticResource AppResources}, Mode=OneWay}" />
                                 <Run Text="{Binding TotalCompleted, Mode=OneWay}" />
@@ -60,7 +64,10 @@
                     BorderThickness="2"
                     Padding="0"
                     Style="{DynamicResource AchievementTabControlStyle}">
-            <TabItem Header="{Binding Resources.MyAchievementsHeader, Source={StaticResource AppResources}, Mode=OneWay}" Style="{DynamicResource AchievementTabItemStyle}">
+            <TabItem Header="{Binding Resources.MyAchievementsHeader,
+                                      Source={StaticResource AppResources},
+                                      Mode=OneWay}"
+                     Style="{DynamicResource AchievementTabItemStyle}">
                 <TabItem.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Offset="0" Color="#FFF3F3F3" />
@@ -69,28 +76,30 @@
                         <GradientStop Offset="1" Color="#FFCDCDCD" />
                     </LinearGradientBrush>
                 </TabItem.Background>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0">
-                        <ListBox x:Name="AchievementsCategoryListBox"
-                                 Width="210"
-                                 Margin="{DynamicResource AchievementControlMargin}"
-                                 BorderThickness="0"
-                                 ItemsSource="{Binding AchievementsOrdered}"
-                                 ItemTemplate="{DynamicResource CategoryTemplate}"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                 SelectedIndex="0"
-                                 Template="{DynamicResource AchievementListBoxControlTemplate}" />
-                    </StackPanel>
-                    <ScrollViewer Grid.Column="1"
-                                  HorizontalScrollBarVisibility="Hidden"
-                                  Template="{DynamicResource AchievementScrollViewerControlTemplate}"
-                                  VerticalScrollBarVisibility="Auto">
-                        <ItemsControl Margin="0"
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                              Template="{DynamicResource AchievementScrollViewerControlTemplate}"
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top">
+                            <ListBox x:Name="AchievementsCategoryListBox"
+                                     Width="210"
+                                     Margin="{DynamicResource AchievementControlMargin}"
+                                     BorderThickness="0"
+                                     ItemsSource="{Binding AchievementsOrdered}"
+                                     ItemTemplate="{DynamicResource CategoryTemplate}"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                     SelectedIndex="0"
+                                     Template="{DynamicResource AchievementListBoxControlTemplate}" />
+                        </StackPanel>
+                        <ItemsControl Grid.Column="1"
+                                      Margin="0"
                                       Background="{x:Null}"
                                       BorderBrush="{x:Null}"
                                       Foreground="{DynamicResource AchievementForeground}"
@@ -100,17 +109,25 @@
                                       Padding="{DynamicResource AchievementsListBoxMargin}"
                                       VirtualizingStackPanel.IsVirtualizing="True"
                                       VirtualizingStackPanel.VirtualizationMode="Standard" />
-                    </ScrollViewer>
-                </Grid>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
-            <TabItem Header="{Binding Resources.LeaderboardHeader, Source={StaticResource AppResources}, Mode=OneWay}" Style="{DynamicResource AchievementTabItemStyle}">
+            <TabItem Header="{Binding Resources.LeaderboardHeader,
+                                      Source={StaticResource AppResources},
+                                      Mode=OneWay}"
+                     Style="{DynamicResource AchievementTabItemStyle}">
                 <Grid>
                     <StackPanel Margin="10,10,10,10">
-                        <TextBlock Text="{Binding Resources.LeaderboardHelpText, Source={StaticResource AppResources}}" TextWrapping="Wrap" />
+                        <TextBlock Text="{Binding Resources.LeaderboardHelpText,
+                                                  Source={StaticResource AppResources}}"
+                                   TextWrapping="Wrap" />
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="{Binding Resources.SettingsHeader, Source={StaticResource AppResources}, Mode=OneWay}" Style="{DynamicResource AchievementTabItemStyle}">
+            <TabItem Header="{Binding Resources.SettingsHeader,
+                                      Source={StaticResource AppResources},
+                                      Mode=OneWay}"
+                     Style="{DynamicResource AchievementTabItemStyle}">
                 <Grid>
                     <StackPanel Margin="10,10,10,10"
                                 HorizontalAlignment="Left"

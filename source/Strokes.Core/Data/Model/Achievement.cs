@@ -6,14 +6,29 @@ namespace Strokes.Core.Data.Model
 {
     public class Achievement : INotifyPropertyChanged
     {
-        public string Guid { get; set; }
+        public string Guid
+        {
+            get;
+            set;
+        }
 
-        public IEnumerable<Achievement> DependsOn { get; set; }
-        public IEnumerable<Achievement> Unlocks { get; set; }
+        public IEnumerable<Achievement> DependsOn
+        {
+            get;
+            set;
+        }
+        public IEnumerable<Achievement> Unlocks
+        {
+            get;
+            set;
+        }
 
         public string DependsOnStr
         {
-            get { return string.Join(", ", DependsOn.Select(a => a.Name)); }
+            get
+            {
+                return string.Join(", ", DependsOn.Select(a => a.Name));
+            }
         }
 
         public string Name
@@ -21,19 +36,19 @@ namespace Strokes.Core.Data.Model
             get;
             set;
         }
-        
+
         public string Description
         {
             get;
             set;
         }
-        
+
         public string Category
         {
             get;
             set;
         }
-        
+
         public string Image
         {
             get;
@@ -64,8 +79,8 @@ namespace Strokes.Core.Data.Model
             set;
         }
 
-        #pragma warning disable 67
+#pragma warning disable 67
         public event PropertyChangedEventHandler PropertyChanged;
-        #pragma warning restore 67
+#pragma warning restore 67
     }
 }
