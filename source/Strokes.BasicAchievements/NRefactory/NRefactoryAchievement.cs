@@ -5,6 +5,7 @@ using System.Text;
 using ICSharpCode.NRefactory.Ast;
 using ICSharpCode.NRefactory.Visitors;
 using Strokes.Core;
+using ICSharpCode.NRefactory;
 
 namespace Strokes.BasicAchievements.NRefactory
 {
@@ -13,6 +14,8 @@ namespace Strokes.BasicAchievements.NRefactory
     /// </summary>
     public abstract class NRefactoryAchievement : AchievementBase
     {
+        private static Dictionary<string, IParser> parsers = new Dictionary<string,IParser>();
+
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
             var nRefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
@@ -45,10 +48,20 @@ namespace Strokes.BasicAchievements.NRefactory
             //    }
             //}
 
-            if(string.IsNullOrEmpty(detectionSession.BuildInformation.ActiveFile))
+            if (string.IsNullOrEmpty(detectionSession.BuildInformation.ActiveFile))
             {
                 return false;
             }
+
+            //var parser = ParserFactory.CreateParser(detectionSession.BuildInformation.ActiveFile);
+            //if (parsers.ContainsKey(detectionSession.BuildInformation.ActiveFile) == false)
+            //    parsers.Add(detectionSession.BuildInformation.ActiveFile,
+            //        ParserFactory.CreateParser(detectionSession.BuildInformation.ActiveFile));
+
+            //var parser = parsers[detectionSession.BuildInformation.ActiveFile];
+
+            //if (parser == null)
+            //    System.Diagnostics.Debugger.Break();
 
             var parser = nRefactorySession.GetParser(detectionSession.BuildInformation.ActiveFile);
             parser.Parse();

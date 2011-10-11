@@ -9,124 +9,56 @@ using System.Linq;
 
 namespace Strokes.Console
 {
-    public class TestFile
+    public class TestFile : IEquatable<int>, IEquatable<double>, IEquatable<byte>, IEquatable<decimal>, IEquatable<string>
     {
         public TestFile()
         {
-            int[] array = new int[0];
         }
 
-        public static void VeryLongMethod()
+        #region IEquatable<int> Members
+
+        public bool Equals(int other)
         {
-            int a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;
-            a = 1;    
+            throw new NotImplementedException();
         }
+
+        #endregion
+
+        #region IEquatable<double> Members
+
+        public bool Equals(double other)
+        {
+            return false;
+        }
+
+        #endregion
+
+        #region IEquatable<byte> Members
+
+        public bool Equals(byte other)
+        {
+            return false;
+        }
+
+        #endregion
+
+        #region IEquatable<decimal> Members
+
+        public bool Equals(decimal other)
+        {
+            return false;
+        }
+
+        #endregion
+
+        #region IEquatable<string> Members
+
+        public bool Equals(string other)
+        {
+            return false;
+        }
+
+        #endregion
     }
 }
 
