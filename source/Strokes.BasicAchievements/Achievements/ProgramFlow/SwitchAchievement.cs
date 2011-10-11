@@ -7,8 +7,8 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescriptor("{779C753E-CBD6-4386-A22A-9A722BB39AA1}", "@DefaultCaseInSwitchSwitchAchievementName",
-        AchievementDescription = "@DefaultCaseInSwitchSwitchAchievementDescription",
+    [AchievementDescriptor("{779C753E-CBD6-4386-A22A-9A722BB39AA1}", "@SwitchAchievementName",
+        AchievementDescription = "@SwitchAchievementDescription",
         AchievementCategory = "@PrimitiveType")]
     public class SwitchAchievement : NRefactoryAchievement
     {

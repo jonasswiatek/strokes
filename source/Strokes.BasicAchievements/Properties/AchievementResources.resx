@@ -370,7 +370,7 @@
     <value>Use the Convert.ToDecimal method</value>
   </data>
   <data name="ConvertToDoubleAchievementName" xml:space="preserve">
-    <value>Convert to double</value>
+    <value>Convert to Double</value>
   </data>
   <data name="ConvertToDoubleAchievementDescription" xml:space="preserve">
     <value>Use the Convert.ToDouble method</value>
@@ -911,6 +911,7 @@
   </data>
   <data name="ArrayClearMethodAchievementName" xml:space="preserve">
     <value>Clear an Augean array</value>
+    <comment>Wtf is an Augean Array? (Tim D)</comment>
   </data>
   <data name="ArrayClearMethodAchievementDescription" xml:space="preserve">
     <value>Use the Array.Clear method to Clear an array</value>
@@ -1075,12 +1076,24 @@
     <value>Suspends a thread for a specified time.</value>
   </data>
   <data name="SleepThreadAchievementName" xml:space="preserve">
-    <value>Nighty night.</value>
+    <value>Nighty night, sweet little thread</value>
   </data>
   <data name="StartThreadAchievementDescription" xml:space="preserve">
     <value>Start a thread</value>
   </data>
   <data name="StartThreadAchievementName" xml:space="preserve">
     <value>Ready, thread...start!</value>
+  </data>
+  <data name="SubscribeToEventAchievementDescription" xml:space="preserve">
+    <value>Subscribe to an event</value>
+  </data>
+  <data name="SubscribeToEventAchievementName" xml:space="preserve">
+    <value>Subscription started</value>
+  </data>
+  <data name="UnSubscribeToEventAchievementDescription" xml:space="preserve">
+    <value>Unsubscribe from an event</value>
+  </data>
+  <data name="UnSubscribeToEventAchievementName" xml:space="preserve">
+    <value>Stop subscription</value>
   </data>
 </root>
