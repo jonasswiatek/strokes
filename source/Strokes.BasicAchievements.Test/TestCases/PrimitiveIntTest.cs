@@ -7,7 +7,7 @@ namespace Strokes.BasicAchievements.Test.TestCases
     [ExpectUnlock(typeof(DeclareInitializeInt))]
     public class PrimitiveIntTest
     {
-        public PrimitiveIntTest()
+        public void bla()
         {
             int i = 0;
 

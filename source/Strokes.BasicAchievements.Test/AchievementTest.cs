@@ -19,12 +19,12 @@ namespace Strokes.BasicAchievements.Test
     [TestClass]
     public class AchievementTest
     {
-        private readonly Type[] _globallyExpectedAchievements = new []
+        private readonly Type[] _globallyIgnoredAchievements = new []
                                                                 {
-                                                                    typeof(CreateDefaultConstructorAchievement),
                                                                     typeof(TypeOfAchievement),
                                                                     typeof(CreateClassAchievement),
-                                                                    typeof(CreateConstructorAchievement)
+                                                                    typeof(CreateMethodReturnVoidAchievement),
+                                                                    typeof(CreateMethodAchievement)
                                                                 };
 
         [DeploymentItem(@"TestCases", "TestCases")]
@@ -48,7 +48,6 @@ namespace Strokes.BasicAchievements.Test
                                            };
 
                 var expectedAchievements = test.GetCustomAttributes(typeof(ExpectUnlockAttribute), true).Select(a => ((ExpectUnlockAttribute)a).ExpectedAchievementType).ToList();
-                expectedAchievements.AddRange(_globallyExpectedAchievements.Except(expectedAchievements));
 
                 using (var detectionSession = new DetectionSession(buildInformation))
                 {
@@ -87,7 +86,7 @@ namespace Strokes.BasicAchievements.Test
                     }
 
                     //Test that only expected achievements unlocked
-                    var unexpectedAchievements = unlockedAchievements.Except(expectedAchievements).ToList();
+                    var unexpectedAchievements = unlockedAchievements.Except(expectedAchievements).Except(_globallyIgnoredAchievements).ToList();
                     Assert.IsTrue(unexpectedAchievements.Count() == 0, Path.GetFileName(sourceFile) + " unlocks unexpected achievements: " + string.Join(", ", unexpectedAchievements.Select(a => a.Name)));
                 }
             }
