@@ -64,11 +64,12 @@ namespace Strokes.VSX.Trackers
             {
                 try
                 {
-                    //Take a look in the csproj file, and see if it's an achievement project. There is some cache here so we don't have to do it ALL the time.
                     ProjectTypeDef projectTypeDef = null;
+
                     if (dte.ActiveDocument != null && dte.ActiveDocument.ProjectItem != null && dte.ActiveDocument.ProjectItem.ContainingProject != null)
                     {
                         var containingProject = dte.ActiveDocument.ProjectItem.ContainingProject;
+
                         var projectFile = containingProject.FileName;
                         if (!string.IsNullOrEmpty(projectFile) && !projectTypeDefCache.TryGetValue(projectFile, out projectTypeDef))
                         {
@@ -76,13 +77,13 @@ namespace Strokes.VSX.Trackers
                             var csProj = XDocument.Load(containingProject.FileName);
                             var strokesAchievementTypeNodes = csProj.Descendants(ns + "StrokesProjectType");
                             var strokesAchievementTypeNode = strokesAchievementTypeNodes.FirstOrDefault();
-                            if(strokesAchievementTypeNode != null && strokesAchievementTypeNode.HasElements)
+                            if (strokesAchievementTypeNode != null && strokesAchievementTypeNode.HasElements)
                             {
                                 projectTypeDef = new ProjectTypeDef()
-                                                     {
-                                                         IsAchievementProject = strokesAchievementTypeNode.Elements().Any(a => a.Name == ns + "Achievements" && a.Value == "true"),
-                                                         IsChallengeProject = strokesAchievementTypeNode.Elements().Any(a => a.Name == ns + "Challenges" && a.Value == "true")
-                                                     };
+                                {
+                                    IsAchievementProject = strokesAchievementTypeNode.Elements().Any(a => a.Name == ns + "Achievements" && a.Value == "true"),
+                                    IsChallengeProject = strokesAchievementTypeNode.Elements().Any(a => a.Name == ns + "Challenges" && a.Value == "true")
+                                };
 
                                 projectTypeDefCache.Add(projectFile, projectTypeDef);
                             }
@@ -91,19 +92,19 @@ namespace Strokes.VSX.Trackers
 
                     if (projectTypeDef == null)
                     {
-                        projectTypeDef = new ProjectTypeDef(); //Assume default values (false, false);
+                        projectTypeDef = new ProjectTypeDef(); // Assume default values (false, false);
                     }
 
-                    //Return out if we're not compiling an achievement project.
+                    // Return out if we're not compiling an achievement project.
                     if (!projectTypeDef.IsAchievementProject && !projectTypeDef.IsChallengeProject)
                     {
                         return VSConstants.S_OK;
                     }
 
-                    // Get all .cs files in solution projects, that has changed since _lastAchievementCheck
+                    // Get all .cs files in solution projects, that has changed since lastAchievementCheck
                     var changedFiles = FileTracker.GetChangedFiles(dte.Solution, lastAchievementCheck);
 
-                    // Update _lastAchievementCheck
+                    // Update lastAchievementCheck
                     lastAchievementCheck = DateTime.Now;
 
                     // Construct build information

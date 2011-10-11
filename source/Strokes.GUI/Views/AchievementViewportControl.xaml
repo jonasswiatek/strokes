@@ -44,7 +44,7 @@
                       Stroke="Black" />
             </Grid>
             <TextBlock Grid.Row="0"
-                       Margin="15,0,0,0"
+                       Margin="15,0,25,0"
                        HorizontalAlignment="Left"
                        FontFamily="Segoe UI Semibold"
                        FontSize="16"
@@ -52,7 +52,7 @@
                        Text="{Binding Resources.AchievementUnlocked,
                                       Source={StaticResource AppResources},
                                       Mode=OneWay}" />
-            <template:AchievementTemplateBare Grid.Row="1" Margin="15,0,15,5" />
+            <template:AchievementTemplateBare Grid.Row="1" Margin="15,0,25,0" />
         </Grid>
     </Border>
 </UserControl>

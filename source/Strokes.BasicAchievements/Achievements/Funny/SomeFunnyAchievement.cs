@@ -6,24 +6,21 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    /* Fun achievements from: http://blog.whiletrue.com/2011/01/what-if-visual-studio-had-achievements/
-    TO Do:
-     * 
-     
-     * Spaghetti Monster – Written a single line with more than 300 characters
-     * Pasta Chef – Created a class with more than 100 fields, properties or methods
-     * The Poet – Written a source file with more than 10,000 lines
-     * The Explainer – Written a comment with more than 100 words 
-     * Paula – Define a firstname field with value Brillant
-     * The Numerologist: Name all your controls: control1, control2, control3, etc
-     * The Compound Sentence – created a method name containing one or more of the words: for, and, nor, but, or, yet, so.
-     * Overloaded – Create a method with more that 10 overloads
-     * Magic-maker – 5 or more magic numbers in a method
-     * "Over-qualified": "using System;" is your only using directive.
-     * "Under-qualified": Write a using directive for every conceivable namespace used by your program.
-     * e.e. cummings":  Write so many nested classes, functions, and control structures, that the first character of a line is on or after column 73. 
-     * 
-     * */
+    // TODO: Implement achievements below.
+    // Fun achievements from: http://blog.whiletrue.com/2011/01/what-if-visual-studio-had-achievements/
+    //
+    // Spaghetti Monster – Written a single line with more than 300 characters
+    // Pasta Chef – Created a class with more than 100 fields, properties or methods
+    // The Poet – Written a source file with more than 10,000 lines
+    // The Explainer – Written a comment with more than 100 words 
+    // Paula – Define a firstname field with value Brillant
+    // The Numerologist: Name all your controls: control1, control2, control3, etc
+    // The Compound Sentence – created a method name containing one or more of the words: for, and, nor, but, or, yet, so.
+    // Overloaded – Create a method with more that 10 overloads
+    // Magic-maker – 5 or more magic numbers in a method
+    // "Over-qualified": "using System;" is your only using directive.
+    // "Under-qualified": Write a using directive for every conceivable namespace used by your program.
+    // "e.e. cummings": Write so many nested classes, functions, and control structures, that the first character of a line is on or after column 73. 
 
     [AchievementDescriptor("{92F021CA-9F71-4FCB-A698-36948B6E8527}", "@JobSecurityAchievementName",
         AchievementDescription = "@JobSecurityAchievementDescription",
@@ -60,18 +57,13 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                /*Dang; ignoring whitespaces in this count will mean that I'll need to recursively go in the methodbody,
-                 * count all children, all blockstatements, all true/falsestatements etc. ... To do...some day...
-                 * 
-                 */
-                
+                // TODO: Filter whitespace.
+
                 if (methodDeclaration.Body.EndLocation.Line - methodDeclaration.Body.StartLocation.Line >= 100)
                     UnlockWith(methodDeclaration);
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-
-
         }
     }
 
@@ -89,6 +81,8 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
+                // TODO: Filter whitespace.
+
                 if (methodDeclaration.Body.EndLocation.Line - methodDeclaration.Body.StartLocation.Line >= 300)
                     UnlockWith(methodDeclaration);
 
@@ -178,7 +172,7 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if (typeDeclaration.Type == ClassType.Enum)
                 {
-                    if(typeDeclaration.Children.Count>10)
+                    if (typeDeclaration.Children.Count > 10)
                     {
                         UnlockWith(typeDeclaration);
                     }

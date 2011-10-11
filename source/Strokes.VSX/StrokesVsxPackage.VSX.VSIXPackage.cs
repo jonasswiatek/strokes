@@ -177,8 +177,6 @@ namespace Strokes.VSX
         /// </param>
         private void AchievementContext_AchievementClicked(object sender, AchievementClickedEventArgs args)
         {
-            // TODO: Make this also ensure that the lines that unlocks the achievement 
-            // becomes visible within the ActiveDocument (scroll to it).
             DTE.ItemOperations.OpenFile(args.AchievementDescriptor.CodeLocation.FileName, EnvDTE.Constants.vsViewKindCode);
         }
 
