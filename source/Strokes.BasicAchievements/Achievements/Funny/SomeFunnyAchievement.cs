@@ -134,20 +134,13 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                int count = 0;
                 if (typeDeclaration.Type == ClassType.Class)
                 {
-                    foreach (var basetype in typeDeclaration.BaseTypes)
-                    {
-                        if (basetype.Type.StartsWith("I")) //Tim: isn't there a way to infer if the basetypes are interfaces (like 3 lines above )?
-                            count++;
-                    }
+                    var count = typeDeclaration.BaseTypes.Count(i => i.Type.StartsWith("I"));
                     if (count >= 5)
                         UnlockWith(typeDeclaration);
-
                 }
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);
