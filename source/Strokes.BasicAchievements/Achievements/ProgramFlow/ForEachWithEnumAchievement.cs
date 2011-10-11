@@ -8,7 +8,9 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{CC0BA7AC-444E-4888-8631-864DF7D404B8}", "@ForEachWithEnumAchievementName",
         AchievementDescription = "@ForEachWithEnumAchievementDescription",
-        AchievementCategory = "@ProgramFlow")]
+        AchievementCategory = "@ProgramFlow",
+    DependsOn = new[]{"{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}","{F328611E-562D-4D8B-B1AE-48830DB00C7E}"})]
+    
     public class ForEachWithEnumAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

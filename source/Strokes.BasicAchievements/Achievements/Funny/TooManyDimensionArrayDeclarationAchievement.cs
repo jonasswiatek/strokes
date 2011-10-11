@@ -9,7 +9,11 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{1D2171F4-9D57-4EA7-8B61-C493FC1F8DFC}", "@TooManyDimensionArrayDeclarationAchievementName",
         AchievementDescription = "@TooManyDimensionArrayDeclarationAchievementDescription",
-        AchievementCategory = "@Funny")]
+        AchievementCategory = "@Funny",
+        DependsOn = new[]
+        {
+            "{579E6C20-29FE-4D54-A2F0-4D80DAD93F8E}"
+        })]
     public class TooManyDimensionArrayDeclarationAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

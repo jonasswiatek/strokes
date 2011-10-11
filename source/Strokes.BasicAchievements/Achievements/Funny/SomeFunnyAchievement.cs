@@ -45,7 +45,11 @@ namespace Strokes.BasicAchievements.Achievements
 
     [AchievementDescriptor("{BF1C5DD9-3C0E-466B-9640-1F30F68FE960}", "@TellingAStoryAchievementName",
         AchievementDescription = "@TellingAStoryAchievementDescription",
-        AchievementCategory = "@Funny")]
+        AchievementCategory = "@Funny",
+        DependsOn = new[]
+                {
+                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+                })]
     public class TellingAStoryAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -69,7 +73,11 @@ namespace Strokes.BasicAchievements.Achievements
 
     [AchievementDescriptor("{B82A5527-2F5A-4781-93C5-D5D0FEE22A0A}", "@EpicTaleAchievementName",
         AchievementDescription = "@EpicTaleAchievementDescription",
-        AchievementCategory = "@Funny")]
+        AchievementCategory = "@Funny",
+        DependsOn = new[]
+                {
+                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+                })]
     public class EpicTaleAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -93,7 +101,11 @@ namespace Strokes.BasicAchievements.Achievements
 
     [AchievementDescriptor("{A93A63A8-30DC-45A8-BCFE-DFADF6BDDF38}", "@ParametizerAchievementName",
         AchievementDescription = "@ParametizerAchievementDescription",
-        AchievementCategory = "@Funny")]
+        AchievementCategory = "@Funny",
+        DependsOn = new[]
+                {
+                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+                })]
     public class ParametizerAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -157,7 +169,8 @@ namespace Strokes.BasicAchievements.Achievements
 
     [AchievementDescriptor("{1C241CE0-0CF4-4A51-B0EB-F0157848A3D3}", "@EveryOptionEnumAchievementName",
         AchievementDescription = "@EveryOptionEnumAchievementDescription",
-        AchievementCategory = "@Funny")]
+        AchievementCategory = "@Funny",
+        DependsOn = new []{ "{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}"})]
     public class EveryOptionEnumAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
@@ -185,7 +198,11 @@ namespace Strokes.BasicAchievements.Achievements
 
     [AchievementDescriptor("{AB9E0BC9-7CC1-431D-BA91-4A2FCB50B43E}", "@ProceduralProgrammerAchievementName",
         AchievementDescription = "@ProceduralProgrammerAchievementDescription",
-        AchievementCategory = "@Funny")]
+        AchievementCategory = "@Funny",
+        DependsOn = new[]
+                {
+                    "{8A5F199C-B171-42D4-A12E-69BFB8A9F547}"
+                })]
     public class ProceduralProgrammerAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

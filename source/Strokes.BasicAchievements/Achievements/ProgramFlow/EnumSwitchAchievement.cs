@@ -10,7 +10,12 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{5FAA2B73-5963-48D2-B382-2B46690EC4BF}", "@EnumSwitchAchievementName",
         AchievementDescription = "@EnumSwitchAchievementDescription",
-        AchievementCategory = "@ProgramFlow")]
+        AchievementCategory = "@ProgramFlow",
+        DependsOn = new[]
+                            {
+                                "{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}"
+                            })]
+    
     public class EnumSwitchAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

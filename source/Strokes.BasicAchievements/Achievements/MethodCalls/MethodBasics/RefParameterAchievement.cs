@@ -8,7 +8,11 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{FD2A318D-ECDD-42DD-897F-F2E22E45F2A2}", "@RefParameterAchievementName",
         AchievementDescription = "@RefParameterAchievementDescription",
-        AchievementCategory = "@Method")]
+        AchievementCategory = "@Method",
+        DependsOn = new[]
+                {
+                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+                })]
     public class RefParameterAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

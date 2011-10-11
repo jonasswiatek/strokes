@@ -9,7 +9,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{779C753E-CBD6-4386-A22A-9A722BB39AA1}", "@SwitchAchievementName",
         AchievementDescription = "@SwitchAchievementDescription",
-        AchievementCategory = "@PrimitiveType")]
+        AchievementCategory = "@ProgramFlow")]
     public class SwitchAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
