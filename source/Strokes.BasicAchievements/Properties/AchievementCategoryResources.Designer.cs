@@ -115,7 +115,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Events andThreads.
+        ///   Looks up a localized string similar to Events and Threads.
         /// </summary>
         public static string EventsThreads {
             get {
@@ -147,6 +147,15 @@ namespace Strokes.Resources {
         public static string Funny {
             get {
                 return ResourceManager.GetString("Funny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generics.
+        /// </summary>
+        public static string Generics {
+            get {
+                return ResourceManager.GetString("Generics", resourceCulture);
             }
         }
         

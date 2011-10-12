@@ -619,6 +619,42 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a generic class.
+        /// </summary>
+        public static string CreateGenericClassAchievementDescription {
+            get {
+                return ResourceManager.GetString("CreateGenericClassAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generic class.
+        /// </summary>
+        public static string CreateGenericClassAchievementName {
+            get {
+                return ResourceManager.GetString("CreateGenericClassAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instantiate a generic object.
+        /// </summary>
+        public static string CreateGenericObjectAchievementDescription {
+            get {
+                return ResourceManager.GetString("CreateGenericObjectAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a generic object.
+        /// </summary>
+        public static string CreateGenericObjectAchievementName {
+            get {
+                return ResourceManager.GetString("CreateGenericObjectAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create an interface.
         /// </summary>
         public static string CreateInterfaceAchievementDescription {
