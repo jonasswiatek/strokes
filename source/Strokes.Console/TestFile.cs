@@ -15,6 +15,9 @@ namespace Strokes.Console
     }
     public class TestFile : IComparable
     {
+        public string Test { get; set; }
+        public int bla = 2;
+
         public TestFile()
         {
             GenericList<int> list1 = new GenericList<int>();

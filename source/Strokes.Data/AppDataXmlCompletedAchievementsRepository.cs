@@ -18,7 +18,7 @@ namespace Strokes.Data
 
         public AppDataXmlCompletedAchievementsRepository() : base("AchievementStorage.xml")
         {
-            _completedAchievements = Load();
+            _completedAchievements = Load() ?? new List<CompletedAchievement>();
         }
 
         public IEnumerable<Achievement> GetAchievements()

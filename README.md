@@ -3,7 +3,7 @@
 
 **Important information:** In order to run the project from code, please read the [Wiki Page] (https://github.com/jonasswiatek/strokes/wiki).
 
-**MORE IMPORTANT INFORMATION:** If you want to try the current alpha-quality releases, remember to use the "**Strokes Achievement Project**"-template (located in the Visual C# Category in the New Project Dialog of Visual Studio)
+**MORE IMPORTANT INFORMATION:** If you want to try the current alpha-quality releases, remember to use the "**Strokes Achievement Project**"-template (located in the Visual C# Category in the New Project Dialog of Visual Studio), since we ONLY check for achievements within projects of this type!
 
 This Visual Studio Extension strives to provide a tool for teaching C# to beginners and give experienced programmers an opportunity to catch up with all the features of the C# programming language.
 

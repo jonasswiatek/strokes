@@ -35,12 +35,6 @@ namespace Strokes.BasicAchievements.Achievements
                     _enumMembers.Add(typeDeclaration.Name);
                 }
 
-                var intersectingSwitchStatement = GetIntersection();
-                if (intersectingSwitchStatement != null)
-                {
-                    UnlockWith(intersectingSwitchStatement);
-                }
-
                 return base.VisitTypeDeclaration(typeDeclaration, data);
             }
 
@@ -62,12 +56,6 @@ namespace Strokes.BasicAchievements.Achievements
                     }
                 }
 
-                var intersectingSwitchStatement = GetIntersection();
-                if (intersectingSwitchStatement != null)
-                {
-                    UnlockWith(intersectingSwitchStatement);
-                }
-
                 return base.VisitSwitchStatement(switchStatement, data);
             }
 
@@ -80,6 +68,18 @@ namespace Strokes.BasicAchievements.Achievements
                     return sw;
                 }
                 return null;
+            }
+
+            /// <summary>
+            /// This method is called after all visiting has completed. Use this method to do more complicated testing - like in this case where the order of declarations cannot be ensured.
+            /// </summary>
+            public override void OnParsingCompleted()
+            {
+                var intersectingSwitchStatement = GetIntersection();
+                if (intersectingSwitchStatement != null)
+                {
+                    UnlockWith(intersectingSwitchStatement);
+                }
             }
         }
     }
