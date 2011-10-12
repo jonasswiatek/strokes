@@ -946,10 +946,10 @@
   <data name="VirtualMethodAchievementDescription" xml:space="preserve">
     <value>Create a virtual method</value>
   </data>
-  <data name="OVerrideMethodAchievementName" xml:space="preserve">
+  <data name="OverrideMethodAchievementName" xml:space="preserve">
     <value>Override!</value>
   </data>
-  <data name="OVerrideMethodAchievementDescription" xml:space="preserve">
+  <data name="OverrideMethodAchievementDescription" xml:space="preserve">
     <value>Override a method</value>
   </data>
   <data name="QueryExpressionAchievementName" xml:space="preserve">

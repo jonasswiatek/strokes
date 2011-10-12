@@ -156,4 +156,7 @@
   <data name="ProgramFlow" xml:space="preserve">
     <value>Program flow</value>
   </data>
+  <data name="Strings" xml:space="preserve">
+    <value>Strings</value>
+  </data>
 </root>

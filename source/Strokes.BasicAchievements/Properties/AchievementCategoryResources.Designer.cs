@@ -176,5 +176,14 @@ namespace Strokes.Resources {
                 return ResourceManager.GetString("ProgramFlow", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strings.
+        /// </summary>
+        public static string Strings {
+            get {
+                return ResourceManager.GetString("Strings", resourceCulture);
+            }
+        }
     }
 }

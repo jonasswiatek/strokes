@@ -1,5 +1,4 @@
-﻿// Ignore warnings in the test file.
-#pragma warning disable
+﻿#pragma warning disable
 using Strokes.BasicAchievements.Achievements;
 
 namespace Strokes.BasicAchievements.Test.TestCases

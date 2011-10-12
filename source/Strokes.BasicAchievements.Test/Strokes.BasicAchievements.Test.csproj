@@ -48,6 +48,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AchievementLocaizationTest.cs" />
     <Compile Include="TestCases\ArrayTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>

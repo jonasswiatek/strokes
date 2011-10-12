@@ -32,8 +32,8 @@ namespace Strokes.BasicAchievements.Test
         public void TestAchievements()
         {
             ObjectFactory.Configure(a => a.For<IAchievementRepository>().Singleton().Use<AppDataXmlFileAchievementRepository>());
-            var achievementDescriptorRepository = ObjectFactory.GetInstance<IAchievementRepository>();
-            achievementDescriptorRepository.LoadFromAssembly(typeof(NRefactoryAchievement).Assembly);
+            var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
+            achievementRepository.LoadFromAssembly(typeof(NRefactoryAchievement).Assembly);
 
             var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Length > 0);
             foreach(var test in achievementTests)
@@ -51,7 +51,7 @@ namespace Strokes.BasicAchievements.Test
 
                 using (var detectionSession = new DetectionSession(buildInformation))
                 {
-                    var achievements = achievementDescriptorRepository.GetAchievements().ToList();
+                    var achievements = achievementRepository.GetAchievements().ToList();
 
                     var tasks = new Task[achievements.Count()];
                     var i = 0;

@@ -27,8 +27,10 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescriptor("{56BCD937-CF59-4993-8A69-0A4E13842745}", "Override!", AchievementDescription = "Override a method", AchievementCategory = "@Class")]
-    public class OVerrideMethodAchievement : NRefactoryAchievement
+    [AchievementDescriptor("{56BCD937-CF59-4993-8A69-0A4E13842745}", "@OverrideMethodAchievementName",
+        AchievementDescription = "@OverrideMethodAchievementDescription",
+        AchievementCategory = "@Class")]
+    public class OverrideMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
         {

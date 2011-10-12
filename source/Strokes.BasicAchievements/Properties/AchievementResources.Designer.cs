@@ -2115,18 +2115,18 @@ namespace Strokes.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Override a method.
         /// </summary>
-        public static string OVerrideMethodAchievementDescription {
+        public static string OverrideMethodAchievementDescription {
             get {
-                return ResourceManager.GetString("OVerrideMethodAchievementDescription", resourceCulture);
+                return ResourceManager.GetString("OverrideMethodAchievementDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Override!.
         /// </summary>
-        public static string OVerrideMethodAchievementName {
+        public static string OverrideMethodAchievementName {
             get {
-                return ResourceManager.GetString("OVerrideMethodAchievementName", resourceCulture);
+                return ResourceManager.GetString("OverrideMethodAchievementName", resourceCulture);
             }
         }
         

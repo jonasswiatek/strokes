@@ -33,8 +33,8 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-    [AchievementDescriptor("{07E52DB7-CAD7-4177-A413-3C9C5E5D17D2}", "Method man and a friend", 
-        AchievementDescription = "Create a method with 1 parameter", 
+    [AchievementDescriptor("{07E52DB7-CAD7-4177-A413-3C9C5E5D17D2}", "@CreateMethodOneParameterAchievementName",
+        AchievementDescription = "@CreateMethodOneParameterAchievementDescription", 
         AchievementCategory = "@Method")]
     public class CreateMethodOneParameterAchievement : NRefactoryAchievement
     {

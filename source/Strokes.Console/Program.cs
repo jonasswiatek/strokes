@@ -21,7 +21,7 @@ namespace Strokes.Console
     class Program
     {
         [STAThread]
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             ObjectFactory.Configure(a =>
                                         {
