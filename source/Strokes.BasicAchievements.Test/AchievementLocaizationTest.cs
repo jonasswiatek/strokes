@@ -76,11 +76,16 @@ namespace Strokes.BasicAchievements.Test
                                                                                                                                                      Descriptor = a.GetDescriptionAttribute(),
                                                                                                                                                      AchievementType = a.GetType()
                                                                                                                                                  }).ToList();
-            
+
+
+            var missingLocalizations = new Dictionary<string, List<string>>();
+
             foreach (var achievementDescriptor in achievementDescriptors)
             {
                 var descriptor = achievementDescriptor.Descriptor;
-                var achievementClassName = achievementDescriptor.AchievementType.Name;
+                var achievementClassName = achievementDescriptor.AchievementType.FullName;
+                
+                var missingKeys = new List<string>();
 
                 Assert.IsTrue(descriptor.AchievementTitle.StartsWith("@"), achievementClassName + ": AchievementTitle is not prefixed with @");
                 Assert.IsTrue(descriptor.AchievementDescription.StartsWith("@"), achievementClassName + ": AchievementDescription is not prefixed with @");
@@ -89,14 +94,34 @@ namespace Strokes.BasicAchievements.Test
                 var achievementTitle = achievementResourceSet.GetString(descriptor.AchievementTitle.Substring(1));
                 var achievementDescription = achievementResourceSet.GetString(descriptor.AchievementDescription.Substring(1));
                 var achievementCategory = categoryResourceSet.GetString(descriptor.AchievementCategory.Substring(1));
-                
-                Assert.IsNotNull(achievementTitle, achievementClassName + ": The key [" + descriptor.AchievementTitle + "] is not defined in RESX file");
-                Assert.IsNotNull(achievementDescription, achievementClassName + ": The key [" + descriptor.AchievementDescription + "] is not defined in RESX file");
-                Assert.IsNotNull(achievementCategory, achievementClassName + ": The key [" + descriptor.AchievementCategory + "] is not defined in RESX file");
 
-                Assert.IsFalse(string.IsNullOrEmpty(achievementTitle), achievementClassName + ": The key [" + descriptor.AchievementTitle + "] is defined in RESX file, but it appears to be empty");
-                Assert.IsFalse(string.IsNullOrEmpty(achievementDescription), achievementClassName + ": The key [" + descriptor.AchievementDescription + "] is defined in RESX file, but it appears to be empty");
-                Assert.IsFalse(string.IsNullOrEmpty(achievementCategory), achievementClassName + ": The key [" + descriptor.AchievementCategory + "] is defined in RESX file, but it appears to be empty");
+                if (string.IsNullOrEmpty(achievementTitle))
+                {
+                    missingKeys.Add("AchievementTitle: " + descriptor.AchievementTitle);
+                }
+                if (string.IsNullOrEmpty(achievementDescription))
+                {
+                    missingKeys.Add("AchievementDescription: " + descriptor.AchievementDescription);
+                }
+                if (string.IsNullOrEmpty(achievementCategory))
+                {
+                    missingKeys.Add("AchievementCategory: " + descriptor.AchievementCategory);
+                }
+
+                if(missingKeys.Count > 0)
+                {
+                    missingLocalizations.Add(achievementClassName, missingKeys);
+                }
+            }
+
+            if(missingLocalizations.Count > 0)
+            {
+                var logString = "";
+                foreach(var missingLocalization in missingLocalizations)
+                {
+                    logString += missingLocalization.Key + ":\r\n\t" + string.Join("\r\n\t", missingLocalization.Value) + "\r\n\r\n";
+                }
+                Assert.Fail("The following keys are not defined in the RESX file(s) for \"" + cultureInfo.Name + "\":\r\n\r\n" + logString);
             }
 
             foreach(System.Collections.DictionaryEntry entry in achievementResourceSet)
@@ -108,5 +133,11 @@ namespace Strokes.BasicAchievements.Test
                 Assert.IsTrue(isAchievementTitle || isAchievementDescription, "Resource file defines unused key: [" + key + "]");
             }
         }
+    }
+
+    public class MissingLocalization
+    {
+        public string Achievement { get; set; }
+        public List<string> Keys { get; set; }
     }
 }
