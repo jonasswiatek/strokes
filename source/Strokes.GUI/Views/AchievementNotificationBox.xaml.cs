@@ -8,6 +8,7 @@ using Strokes.Core;
 using Strokes.Core.Data.Model;
 using System.ComponentModel;
 using System.Windows.Shapes;
+using Application = System.Windows.Application;
 
 namespace Strokes.GUI.Views
 {
@@ -116,26 +117,33 @@ namespace Strokes.GUI.Views
             // This is only to support the Strokes.Console-project
             if (Application.Current != null)
             {
-                // During a real Visual Studio integrated run, this is called.
+                const int rightMargin = 5;
+                const int bottomMargin = 5;
+
+                instance.Owner = Application.Current.MainWindow != instance ? Application.Current.MainWindow : instance.Owner;
                 instance.Show();
-
-                const int rightMargin = 1;
-                const int bottomMargin = 8;
-
-                if (Application.Current.MainWindow.WindowState == WindowState.Normal &&
-                    Application.Current.MainWindow != instance)
+                if(instance.Owner != null)
                 {
-                    instance.Left = Application.Current.MainWindow.Left +
-                                    Application.Current.MainWindow.Width - instance.Width - rightMargin;
+                    System.Drawing.Rectangle windowRectangle;
 
-                    instance.Top = Application.Current.MainWindow.Top +
-                                   Application.Current.MainWindow.Height - instance.Height - bottomMargin;
-                }
-                else
-                {
-                    instance.Left = SystemParameters.PrimaryScreenWidth - instance.Width - rightMargin;
-                    instance.Top = SystemParameters.MaximizedPrimaryScreenHeight -
-                                   SystemParameters.ResizeFrameHorizontalBorderHeight - instance.Height - bottomMargin;
+                    if (instance.Owner.WindowState == System.Windows.WindowState.Maximized)
+                    {
+                        /* Here is the magic:
+                         * Use Winforms code to find the Available space on the
+                         * screen that contained the window 
+                         * just before it was maximized
+                         * (Left, Top have their values from Normal WindowState)
+                         */
+                        windowRectangle = System.Windows.Forms.Screen.GetWorkingArea(
+                            new System.Drawing.Point((int)instance.Owner.Left, (int)instance.Owner.Top));
+                    }
+                    else
+                    {
+                        windowRectangle = new System.Drawing.Rectangle((int)instance.Owner.Left, (int)instance.Owner.Top, (int)instance.Owner.ActualWidth, (int)instance.Owner.ActualHeight);
+                    }
+
+                    instance.Left = windowRectangle.Left + windowRectangle.Width - instance.Width - rightMargin;
+                    instance.Top = windowRectangle.Top + windowRectangle.Height - instance.Height - bottomMargin;
                 }
             }
             else
