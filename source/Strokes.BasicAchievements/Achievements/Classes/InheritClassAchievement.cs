@@ -6,14 +6,14 @@ using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescriptor("{193657CA-35AC-44C3-89CB-E376C97F0B2C}", "@IComparableAchievementName",
-        AchievementDescription = "@IComparableAchievementDescription",
+    [AchievementDescriptor("{0ec683c7-8005-4da1-abf9-7d027ec1256f}", "@InheritClassAchievementName",
+        AchievementDescription = "@InheritClassAchievementDescription",
         AchievementCategory = "@Class",
         DependsOn = new[]
                 {
-                    "{0ec683c7-8005-4da1-abf9-7d027ec1256f}"
+                    "{106AA91A-C351-41F7-9F19-1EC599320306}"
                 })]
-    public class IComparableAchievement : NRefactoryAchievement
+    public class InheritClassAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
         {
@@ -24,18 +24,21 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if (typeDeclaration.Type == ClassType.Class)
+                //TODO: Also unlocks when only implementing an interface (so we will need a way to 
+                // know if BaseType is a class or not. Now I simply detect of basetype doens't start with I
+                if (typeDeclaration.Type == ClassType.Class && typeDeclaration.BaseTypes.Count > 0)
                 {
-                    foreach (var basetype in typeDeclaration.BaseTypes)
+                    foreach (var typeReference in typeDeclaration.BaseTypes)
                     {
-                        if (basetype.Type == "System.IComparable" || basetype.Type == "IComparable")
+                        if(!typeReference.Type.StartsWith("I"))
                         {
                             UnlockWith(typeDeclaration);
                             break;
                         }
                     }
-                    
+                    UnlockWith(typeDeclaration);
                 }
+                
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);
             }

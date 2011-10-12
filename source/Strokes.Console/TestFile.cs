@@ -9,7 +9,9 @@ using System.Linq;
 
 namespace Strokes.Console
 {
-    public class TestFile : IEquatable<int>, IEquatable<double>, IEquatable<byte>, IEquatable<decimal>, IEquatable<string>
+   public class T
+    {}
+    public class TestFile : IComparable
     {
         public TestFile()
         {
@@ -59,6 +61,11 @@ namespace Strokes.Console
         }
 
         #endregion
+
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

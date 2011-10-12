@@ -8,7 +8,11 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{EAEDD6AB-B8DE-4D90-BD62-DD3C00FDA6C1}", "@VirtualMethodAchievementName",
         AchievementDescription = "@VirtualMethodAchievementDescription",
-        AchievementCategory = "@Class")]
+        AchievementCategory = "@Class",
+        DependsOn = new[]
+                {
+                    "{0ec683c7-8005-4da1-abf9-7d027ec1256f}"
+                })]
     public class VirtualMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

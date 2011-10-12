@@ -66,6 +66,7 @@
     <Compile Include="Achievements\Classes\AnonymousObjectAchievement.cs" />
     <Compile Include="Achievements\Basic\CastAchievement.cs" />
     <Compile Include="Achievements\Classes\AbstractClass.cs" />
+    <Compile Include="Achievements\Classes\InheritClassAchievement.cs" />
     <Compile Include="Achievements\Classes\VirtualOverrideMethodAchievements.cs" />
     <Compile Include="Achievements\Classes\IComparableInterface.cs" />
     <Compile Include="Achievements\Classes\UseAsKeyword.cs" />

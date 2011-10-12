@@ -1096,4 +1096,10 @@
   <data name="UnSubscribeToEventAchievementName" xml:space="preserve">
     <value>Stop subscription</value>
   </data>
+  <data name="InheritClassAchievementDescription" xml:space="preserve">
+    <value>Write a class that inherits explicitely from another</value>
+  </data>
+  <data name="InheritClassAchievementName" xml:space="preserve">
+    <value>Luke, I am your father!</value>
+  </data>
 </root>

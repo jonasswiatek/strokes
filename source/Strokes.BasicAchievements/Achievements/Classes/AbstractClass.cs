@@ -8,7 +8,11 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{520A7282-CF0E-40C7-9E3B-C02E37675AEB}", "@AbstractClassAchievementName",
         AchievementDescription = "@AbstractClassAchievementDescription",
-        AchievementCategory = "@Class")]
+        AchievementCategory = "@Class",
+        DependsOn = new[]
+                {
+                    "{0ec683c7-8005-4da1-abf9-7d027ec1256f}"
+                })]
     public class AbstractClassAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

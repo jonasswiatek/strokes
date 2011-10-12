@@ -1627,6 +1627,24 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Write a class that inherits explicitely from another.
+        /// </summary>
+        public static string InheritClassAchievementDescription {
+            get {
+                return ResourceManager.GetString("InheritClassAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Luke, I am your father!.
+        /// </summary>
+        public static string InheritClassAchievementName {
+            get {
+                return ResourceManager.GetString("InheritClassAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Write an inline comment.
         /// </summary>
         public static string InlineCommentAchievementDescription {
