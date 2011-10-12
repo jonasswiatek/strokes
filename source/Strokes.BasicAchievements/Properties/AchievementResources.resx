@@ -1102,4 +1102,16 @@
   <data name="InheritClassAchievementName" xml:space="preserve">
     <value>Luke, I am your father!</value>
   </data>
+  <data name="CreateGenericClassAchievementDescription" xml:space="preserve">
+    <value>Create a generic class</value>
+  </data>
+  <data name="CreateGenericClassAchievementName" xml:space="preserve">
+    <value>Generic class</value>
+  </data>
+  <data name="CreateGenericObjectAchievementDescription" xml:space="preserve">
+    <value>Instantiate a generic object</value>
+  </data>
+  <data name="CreateGenericObjectAchievementName" xml:space="preserve">
+    <value>Create a generic object</value>
+  </data>
 </root>

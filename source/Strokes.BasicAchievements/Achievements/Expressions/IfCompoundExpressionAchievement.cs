@@ -8,7 +8,11 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{A777AB0D-130B-44F0-86DE-40AB509F01CA}", "@IfCompoundExpressionAchievementName",
         AchievementDescription = "@IfCompoundExpressionAchievementDescription",
-        AchievementCategory = "@Expressions")]
+        AchievementCategory = "@Expressions",
+        DependsOn = new[]
+        {
+            "{299F7258-CFB2-4FAE-B5A2-949E1B8AB53B}"
+        })]
     public class IfCompoundExpressionAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

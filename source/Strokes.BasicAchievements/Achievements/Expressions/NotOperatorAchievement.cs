@@ -8,8 +8,13 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{A4A094CB-57AC-41FF-8562-29A5ACCC9076}", "@NotOperatorAchievementName",
         AchievementDescription = "@NotOperatorAchievementDescription",
+        
+        Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/NotOperator.png",
         AchievementCategory = "@Expressions",
-        Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/NotOperator.png")]
+        DependsOn = new[]
+        {
+            "{299F7258-CFB2-4FAE-B5A2-949E1B8AB53B}"
+        })]
     public class NotOperatorAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()

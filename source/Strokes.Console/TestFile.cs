@@ -9,12 +9,15 @@ using System.Linq;
 
 namespace Strokes.Console
 {
-   public class T
-    {}
+    public class GenericList<T>
+    {
+        void Add(T input) { }
+    }
     public class TestFile : IComparable
     {
         public TestFile()
         {
+            GenericList<int> list1 = new GenericList<int>();
         }
 
         #region IEquatable<int> Members

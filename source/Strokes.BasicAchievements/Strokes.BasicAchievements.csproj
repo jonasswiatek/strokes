@@ -103,6 +103,8 @@
     <Compile Include="Achievements\Funny\TooManyModifiersDeclarationAchievement.cs" />
     <Compile Include="Achievements\Funny\SomeFunnyAchievement.cs" />
     <Compile Include="Achievements\Funny\TooManyDimensionArrayDeclarationAchievement.cs" />
+    <Compile Include="Achievements\Generics\CreateGenericObject.cs" />
+    <Compile Include="Achievements\Generics\CreateGenericClass.cs" />
     <Compile Include="Achievements\MethodCalls\Console\HelloWorldAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\PrintWithEscapeCharactersAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\FormatSpecifier.cs" />

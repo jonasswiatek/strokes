@@ -24,7 +24,11 @@ namespace Strokes.BasicAchievements.Achievements
 
     [AchievementDescriptor("{92F021CA-9F71-4FCB-A698-36948B6E8527}", "@JobSecurityAchievementName",
         AchievementDescription = "@JobSecurityAchievementDescription",
-        AchievementCategory = "@Funny")]
+        AchievementCategory = "@Funny",
+        DependsOn = new[]
+        {
+            "{5DFEED98-ED56-433C-8E06-D71AC7ED2E1E}"
+        })]
     public class JobSecurityAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor()
