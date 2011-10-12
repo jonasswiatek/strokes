@@ -53,7 +53,7 @@ namespace Strokes.BasicAchievements.Test
 
         private void TestLocalizations(CultureInfo cultureInfo)
         {
-            ObjectFactory.Configure(a => a.For<IAchievementRepository>().Singleton().Use<AppDataXmlFileAchievementRepository>());
+            ObjectFactory.Configure(a => a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>());
             var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
 
             var assembly = typeof(ArrayLengthPropertyAchievement).Assembly;

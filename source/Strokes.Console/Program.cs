@@ -25,7 +25,7 @@ namespace Strokes.Console
         {
             ObjectFactory.Configure(a =>
                                         {
-                                            a.For<IAchievementRepository>().Singleton().Use<AppDataXmlFileAchievementRepository>();
+                                            a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
                                         });
             var fullChain = true;
 

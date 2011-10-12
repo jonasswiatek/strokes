@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppDataXmlFileAchievementRepository.cs" />
+    <Compile Include="AppDataXmlCompletedAchievementsRepository.cs" />
+    <Compile Include="AppDataXmlSettingsRepository.cs" />
+    <Compile Include="AppDataXmlFileRepositoryBase.cs" />
     <Compile Include="CompletedAchievement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

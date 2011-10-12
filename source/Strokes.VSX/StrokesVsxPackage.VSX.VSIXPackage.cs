@@ -109,7 +109,8 @@ namespace Strokes.VSX
 
             ObjectFactory.Configure(a =>
             {
-                a.For<IAchievementRepository>().Singleton().Use<AppDataXmlFileAchievementRepository>();                
+                a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
+                a.For<ISettingsRepository>().Singleton().Use<AppDataXmlSettingsRepository>();
             });
 
             if (MenuService != null)

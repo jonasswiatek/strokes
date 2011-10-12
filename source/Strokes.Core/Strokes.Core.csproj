@@ -56,6 +56,8 @@
     <Compile Include="AchievementDescriptorAttributeHelper.cs" />
     <Compile Include="BuildInformation.cs" />
     <Compile Include="Data\IAchievementRepository.cs" />
+    <Compile Include="Data\ISettingsRepository.cs" />
+    <Compile Include="Data\Model\Settings.cs" />
     <Compile Include="DetectionSession.cs" />
     <Compile Include="Integration\IAchevementLibraryService.cs" />
     <Compile Include="Data\Model\AchievementCategory.cs" />

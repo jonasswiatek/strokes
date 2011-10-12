@@ -31,7 +31,7 @@ namespace Strokes.BasicAchievements.Test
         [TestMethod]
         public void TestAchievements()
         {
-            ObjectFactory.Configure(a => a.For<IAchievementRepository>().Singleton().Use<AppDataXmlFileAchievementRepository>());
+            ObjectFactory.Configure(a => a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>());
             var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
             achievementRepository.LoadFromAssembly(typeof(NRefactoryAchievement).Assembly);
 
