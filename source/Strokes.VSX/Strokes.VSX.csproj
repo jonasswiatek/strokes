@@ -171,6 +171,7 @@
     <ProjectReference Include="..\Strokes.BasicAchievements\Strokes.BasicAchievements.csproj">
       <Project>{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}</Project>
       <Name>Strokes.BasicAchievements</Name>
+      <IncludeOutputGroupsInVSIX>SatelliteDllsProjectOutputGroup</IncludeOutputGroupsInVSIX>
     </ProjectReference>
     <ProjectReference Include="..\Strokes.ChallengeRunner\Strokes.ChallengeRunner.csproj">
       <Project>{830D128B-8D1C-4151-A2E7-3054DBF34126}</Project>
@@ -199,7 +200,7 @@
     <ProjectReference Include="..\Strokes.GUI\Strokes.GUI.csproj">
       <Project>{CCA3165B-3D87-45AB-AD18-168CF04A1417}</Project>
       <Name>Strokes.GUI</Name>
-      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIX>SatelliteDllsProjectOutputGroup%3bBuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3b</IncludeOutputGroupsInVSIX>
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
   </ItemGroup>

@@ -107,6 +107,9 @@ namespace Strokes.VSX
         {
             base.Initialize();
 
+            //Set a uiculture
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru-RU");
+
             ObjectFactory.Configure(a =>
             {
                 a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
