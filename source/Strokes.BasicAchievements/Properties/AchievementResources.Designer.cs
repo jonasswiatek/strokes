@@ -88,7 +88,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abstract class.
+        ///   Looks up a localized string similar to The longer you look at an object, the more abstract it becomes, and, ironically, the more real (Freud).
         /// </summary>
         public static string AbstractClassAchievementName {
             get {
@@ -124,7 +124,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Anonymous Object.
+        ///   Looks up a localized string similar to Incognito.
         /// </summary>
         public static string AnonymousObjectAchievementName {
             get {
@@ -151,7 +151,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use the Array.IndexOf method to IndexOf an array.
+        ///   Looks up a localized string similar to Use the Array.IndexOf method to know the index of an item in an array.
         /// </summary>
         public static string ArrayIndexOfMethodAchievementDescription {
             get {
@@ -178,7 +178,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Array length.
+        ///   Looks up a localized string similar to It&apos;s not the size that matters.
         /// </summary>
         public static string ArrayLengthPropertyAchievementName {
             get {
@@ -214,7 +214,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sort an array.
+        ///   Looks up a localized string similar to There is only one sort of discipline, perfect discipline (Patton).
         /// </summary>
         public static string ArraySortMethodAchievementName {
             get {
@@ -268,7 +268,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Assign a float value.
+        ///   Looks up a localized string similar to Floating assignment.
         /// </summary>
         public static string AssignFloatName {
             get {
@@ -412,7 +412,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a constant.
+        ///   Looks up a localized string similar to Beauty is variable, ugliness is constant (Horton).
         /// </summary>
         public static string ConstKeywordAchievementName {
             get {
@@ -520,7 +520,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Call base.
+        ///   Looks up a localized string similar to All your base are belong to us.
         /// </summary>
         public static string CreateBaseConstructorInitAchievementName {
             get {
@@ -664,7 +664,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Interface.
+        ///   Looks up a localized string similar to A picture is worth a thousand words. An interface is worth a thousand pictures (Shneiderman).
         /// </summary>
         public static string CreateInterfaceAchievementName {
             get {
@@ -736,7 +736,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Return a bool.
+        ///   Looks up a localized string similar to Truth or dare.
         /// </summary>
         public static string CreateMethodReturnBoolAchievementName {
             get {
@@ -916,7 +916,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a static method.
+        ///   Looks up a localized string similar to STATIC... it&apos;s on a different wavelength.
         /// </summary>
         public static string CreateStaticMethodAchievementName {
             get {
@@ -1204,7 +1204,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Declare an int.
+        ///   Looks up a localized string similar to &quot;Elementary, my dear Watson.&quot; (Holmes).
         /// </summary>
         public static string DeclareIntName {
             get {
@@ -1213,7 +1213,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Declare a multidimensional array.
+        ///   Looks up a localized string similar to Create a multiverse.
         /// </summary>
         public static string DeclareMultipleDimArrayAchievementDescription {
             get {
@@ -1258,7 +1258,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My name is Destructor!.
+        ///   Looks up a localized string similar to &quot;Hasta la vista baby&quot; (Terminator).
         /// </summary>
         public static string DestructorAchievementName {
             get {
@@ -1276,7 +1276,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use the / operator.
+        ///   Looks up a localized string similar to Let&apos;s divide.
         /// </summary>
         public static string DivideOperatorAchievementName {
             get {
@@ -1591,7 +1591,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Write the most-writen program ever.
+        ///   Looks up a localized string similar to Write the most-writen program ever: print &quot;Hello world&quot; to the console.
         /// </summary>
         public static string HelloWorldAchievementDescription {
             get {
@@ -1600,7 +1600,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hello world.
+        ///   Looks up a localized string similar to &quot;You had me at &apos;hello&apos;&quot; .
         /// </summary>
         public static string HelloWorldAchievementName {
             get {
@@ -2302,7 +2302,7 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use the + operator.
+        ///   Looks up a localized string similar to It can be argued that a human is ultimately the sum of his experiences.
         /// </summary>
         public static string PlusOperatorAchievementName {
             get {
