@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Calculator Challenge</Name>
+    <Description>A scaffold for a Strokes Challenge</Description>
+    <Icon>Challenge.ico</Icon>
+    <TemplateID>36f3af38-50b5-4752-bb5b-e5ea589cd28d</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>CalculatorChallenge.cs</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+		</References>
+    <ProjectItem ReplaceParameters="true">CalculatorChallenge.cs</ProjectItem>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Strokes.VsTemplate.Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e3ed0cdcdc278c08</Assembly>
+    <FullClassName>Strokes.VsTemplate.Wizard.ChallengeWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

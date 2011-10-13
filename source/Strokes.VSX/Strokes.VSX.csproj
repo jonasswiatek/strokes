@@ -182,6 +182,21 @@
       <Project>{281244B6-DD45-45C1-850C-031EEEE50F0F}</Project>
       <Name>Strokes.Challenges</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Strokes.VsTemplate.Challenges\Strokes.VsTemplate.Challenges.csproj">
+      <Project>{82328D53-3070-4F22-8E43-A8EAA5FFD4EB}</Project>
+      <Name>Strokes.VsTemplate.Challenges</Name>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <TemplateType>Item</TemplateType>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <VSIXSubPath>ItemTemplates</VSIXSubPath>
+    </ProjectReference>
+    <ProjectReference Include="..\Strokes.VsTemplate.Wizard\Strokes.VsTemplate.Wizard.csproj">
+      <Project>{29E78F40-5EA8-421A-907A-F215997A4169}</Project>
+      <Name>Strokes.VsTemplate.Wizard</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+    </ProjectReference>
     <ProjectReference Include="..\Strokes.VsTemplate\Strokes.VsTemplate.csproj">
       <Project>{456819E0-122D-4BA0-BDC8-ED8C7B713DF0}</Project>
       <Name>Strokes.VsTemplate</Name>

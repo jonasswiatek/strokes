@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Caesar Challenge</Name>
+    <Description>A scaffold for a Strokes Challenge</Description>
+    <Icon>Challenge.ico</Icon>
+    <TemplateID>C846802C-3F9E-4F7B-8595-840544F0CF56</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>CaesarChallenge.cs</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+		</References>
+    <ProjectItem ReplaceParameters="true">CaesarChallenge.cs</ProjectItem>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Strokes.VsTemplate.Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e3ed0cdcdc278c08</Assembly>
+    <FullClassName>Strokes.VsTemplate.Wizard.ChallengeWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

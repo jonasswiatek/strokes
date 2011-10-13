@@ -24,6 +24,8 @@
   <Content>
     <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
     <MefComponent>|Strokes.GUI|</MefComponent>
+    <Assembly AssemblyName="|Strokes.VsTemplate.Wizard;AssemblyName|">|Strokes.VsTemplate.Wizard|</Assembly>
     <ProjectTemplate>ProjectTemplates</ProjectTemplate>
+    <ItemTemplate>ItemTemplates</ItemTemplate>
   </Content>
 </Vsix>
