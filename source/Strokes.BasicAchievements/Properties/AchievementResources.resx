@@ -160,7 +160,7 @@
     <value>Create a method</value>
   </data>
   <data name="ConstKeywordAchievementName" xml:space="preserve">
-    <value>Create a constant</value>
+    <value>Beauty is variable, ugliness is constant (Horton)</value>
   </data>
   <data name="ConstKeywordAchievementDescription" xml:space="preserve">
     <value>Use the const keyword</value>
@@ -202,7 +202,7 @@
     <value>Create a method that returns a string</value>
   </data>
   <data name="CreateMethodReturnBoolAchievementName" xml:space="preserve">
-    <value>Return a bool</value>
+    <value>Truth or dare</value>
   </data>
   <data name="CreateMethodReturnBoolAchievementDescription" xml:space="preserve">
     <value>Create a method that returns a boolean</value>
@@ -232,7 +232,7 @@
     <value>Declare a jagged multidimensional array ([][] instead of [,])</value>
   </data>
   <data name="DeclareIntName" xml:space="preserve">
-    <value>Declare an int</value>
+    <value>"Elementary, my dear Watson." (Holmes)</value>
   </data>
   <data name="DeclareIntDescription" xml:space="preserve">
     <value>Declare, but do not initialize, an int in one statement</value>
@@ -454,7 +454,7 @@
     <value>Use hexadecimal shorthand to create a char</value>
   </data>
   <data name="DestructorAchievementName" xml:space="preserve">
-    <value>My name is Destructor!</value>
+    <value>"Hasta la vista baby" (Terminator)</value>
   </data>
   <data name="DestructorAchievementDescription" xml:space="preserve">
     <value>Define a destructor for your class</value>
@@ -508,7 +508,7 @@
     <value>Write a default class constructor</value>
   </data>
   <data name="AssignFloatName" xml:space="preserve">
-    <value>Assign a float value</value>
+    <value>Floating assignment</value>
   </data>
   <data name="AssignFloatDescription" xml:space="preserve">
     <value>Assign a value to an existing float variable</value>
@@ -586,7 +586,7 @@
     <value>Create an enum with explicit value(s)</value>
   </data>
   <data name="PlusOperatorAchievementName" xml:space="preserve">
-    <value>Use the + operator</value>
+    <value>It can be argued that a human is ultimately the sum of his experiences</value>
   </data>
   <data name="PlusOperatorAchievementDescription" xml:space="preserve">
     <value>Write an expression that uses the + operator</value>
@@ -604,7 +604,7 @@
     <value>Write an expression that uses the * operator</value>
   </data>
   <data name="DivideOperatorAchievementName" xml:space="preserve">
-    <value>Use the / operator</value>
+    <value>Let's divide</value>
   </data>
   <data name="DivideOperatorAchievementDescription" xml:space="preserve">
     <value>Write an expression that uses the / operator</value>
@@ -622,7 +622,7 @@
     <value>Declare an array</value>
   </data>
   <data name="CreateStaticMethodAchievementName" xml:space="preserve">
-    <value>Create a static method</value>
+    <value>STATIC... it's on a different wavelength</value>
   </data>
   <data name="CreateStaticMethodAchievementDescription" xml:space="preserve">
     <value>Create a static method</value>
@@ -640,7 +640,7 @@
     <value>Write a class constructor</value>
   </data>
   <data name="CreateInterfaceAchievementName" xml:space="preserve">
-    <value>Interface</value>
+    <value>A picture is worth a thousand words. An interface is worth a thousand pictures (Shneiderman)</value>
   </data>
   <data name="CreateInterfaceAchievementDescription" xml:space="preserve">
     <value>Create an interface</value>
@@ -766,10 +766,10 @@
     <value>Make use of an if statement</value>
   </data>
   <data name="HelloWorldAchievementName" xml:space="preserve">
-    <value>Hello world</value>
+    <value>"You had me at 'hello'" </value>
   </data>
   <data name="HelloWorldAchievementDescription" xml:space="preserve">
-    <value>Write the most-writen program ever</value>
+    <value>Write the most-writen program ever: print "Hello world" to the console</value>
   </data>
   <data name="TryCatchRethrowStatementAchievementName" xml:space="preserve">
     <value>Operation:Activate umbrella</value>
@@ -778,7 +778,7 @@
     <value>Write a catch statement that simply rethrows the exception</value>
   </data>
   <data name="ArrayLengthPropertyAchievementName" xml:space="preserve">
-    <value>Array length</value>
+    <value>It's not the size that matters</value>
   </data>
   <data name="ArrayLengthPropertyAchievementDescription" xml:space="preserve">
     <value>Use the Length property of an array</value>
@@ -880,7 +880,7 @@
     <value>Create an expression with the IS keyword</value>
   </data>
   <data name="AbstractClassAchievementName" xml:space="preserve">
-    <value>Abstract class</value>
+    <value>The longer you look at an object, the more abstract it becomes, and, ironically, the more real (Freud)</value>
   </data>
   <data name="AbstractClassAchievementDescription" xml:space="preserve">
     <value>Create an abstract class</value>
@@ -920,7 +920,7 @@
     <value>IndexOf an array</value>
   </data>
   <data name="ArrayIndexOfMethodAchievementDescription" xml:space="preserve">
-    <value>Use the Array.IndexOf method to IndexOf an array</value>
+    <value>Use the Array.IndexOf method to know the index of an item in an array</value>
   </data>
   <data name="ArrayReverseMethodAchievementName" xml:space="preserve">
     <value>Reverse an array</value>
@@ -929,7 +929,7 @@
     <value>Use the Array.Reverse method to Reverse an array</value>
   </data>
   <data name="ArraySortMethodAchievementName" xml:space="preserve">
-    <value>Sort an array</value>
+    <value>There is only one sort of discipline, perfect discipline (Patton)</value>
   </data>
   <data name="ArraySortMethodAchievementDescription" xml:space="preserve">
     <value>Use the Array.Sort method to sort an array</value>
@@ -989,7 +989,7 @@
     <value>Create a method that only contains one single return expression</value>
   </data>
   <data name="AnonymousObjectAchievementName" xml:space="preserve">
-    <value>Anonymous Object</value>
+    <value>Incognito</value>
   </data>
   <data name="AnonymousObjectAchievementDescription" xml:space="preserve">
     <value>Create an anonymous object</value>
@@ -1007,7 +1007,7 @@
     <value>Create a switch statement</value>
   </data>
   <data name="CreateBaseConstructorInitAchievementName" xml:space="preserve">
-    <value>Call base</value>
+    <value>All your base are belong to us</value>
   </data>
   <data name="CreateBaseConstructorInitAchievementDescription" xml:space="preserve">
     <value>Call another base constructor using the base() keyword from a constructor</value>
@@ -1022,7 +1022,7 @@
     <value>Declare a multidimensional array</value>
   </data>
   <data name="DeclareMultipleDimArrayAchievementDescription" xml:space="preserve">
-    <value>Declare a multidimensional array</value>
+    <value>Create a multiverse</value>
   </data>
   <data name="CurseAlotAchievementDescription" xml:space="preserve">
     <value>Declare more than 5 variables that have a 'bad word' identifier</value>
