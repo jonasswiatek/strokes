@@ -880,7 +880,7 @@
     <value>Создайте выражение с использованием ключевого слова IS</value>
   </data>
   <data name="AbstractClassAchievementName" xml:space="preserve">
-    <value>Абстрактный класс</value>
+    <value>Чем дольше смотришь на объект, тем абстрактнее он становится, и, по иронии, тем более реальным (Фрейд)</value>
   </data>
   <data name="AbstractClassAchievementDescription" xml:space="preserve">
     <value>Создайте абстрактный класс</value>
@@ -945,10 +945,10 @@
   <data name="VirtualMethodAchievementDescription" xml:space="preserve">
     <value>Создайте виртуальный метод</value>
   </data>
-  <data name="OVerrideMethodAchievementName" xml:space="preserve">
+  <data name="OverrideMethodAchievementName" xml:space="preserve">
     <value>Перекрыть!</value>
   </data>
-  <data name="OVerrideMethodAchievementDescription" xml:space="preserve">
+  <data name="OverrideMethodAchievementDescription" xml:space="preserve">
     <value>Переопределите метод</value>
   </data>
   <data name="QueryExpressionAchievementName" xml:space="preserve">
@@ -1082,5 +1082,59 @@
   </data>
   <data name="StartThreadAchievementName" xml:space="preserve">
     <value>Внимание, поток... старт!</value>
+  </data>
+  <data name="SubscribeToEventAchievementDescription" xml:space="preserve">
+    <value>Подпишитесь на событие</value>
+  </data>
+  <data name="SubscribeToEventAchievementName" xml:space="preserve">
+    <value>Вы активировали свою подписку</value>
+  </data>
+  <data name="UnSubscribeToEventAchievementDescription" xml:space="preserve">
+    <value>Отпишитесь от события</value>
+  </data>
+  <data name="UnSubscribeToEventAchievementName" xml:space="preserve">
+    <value>Отписаться!</value>
+  </data>
+  <data name="InheritClassAchievementDescription" xml:space="preserve">
+    <value>Напишите класс, который явно наследуюется от другого класса</value>
+  </data>
+  <data name="InheritClassAchievementName" xml:space="preserve">
+    <value>Люк, я твой отец!</value>
+  </data>
+  <data name="CreateGenericClassAchievementDescription" xml:space="preserve">
+    <value>Создайте дженерик класс</value>
+  </data>
+  <data name="CreateGenericClassAchievementName" xml:space="preserve">
+    <value>Универсальный класс</value>
+  </data>
+  <data name="CreateGenericObjectAchievementDescription" xml:space="preserve">
+    <value>Создайте экземпляр дженерик типа</value>
+  </data>
+  <data name="CreateGenericObjectAchievementName" xml:space="preserve">
+    <value>Создание дженерик объекта</value>
+  </data>
+  <data name="EmptyMainAchievementDescription" xml:space="preserve">
+    <value>Поздравляем, вы только что написали пустой метод Main. Ваша продуктивность выросла в два раза.</value>
+  </data>
+  <data name="EmptyMainAchievementName" xml:space="preserve">
+    <value>Ох, как же пусто</value>
+  </data>
+  <data name="EmptyMethodAchievementDescription" xml:space="preserve">
+    <value>Вы написали ну очень пустой метод. Будьте лаской и напишите в нём throw new NotImplementedException();</value>
+  </data>
+  <data name="EmptyMethodAchievementName" xml:space="preserve">
+    <value>Бесполезный метод</value>
+  </data>
+  <data name="EmptyVoidMethodAchievementDescription" xml:space="preserve">
+    <value>Вы создали пустой, ничего не возвращающий метод</value>
+  </data>
+  <data name="EmptyVoidMethodAchievementName" xml:space="preserve">
+    <value>Черная дыра</value>
+  </data>
+  <data name="ThrownNotImplementedAchievementDescription" xml:space="preserve">
+    <value>Сгенерируйте исключение "NotImplementedException"</value>
+  </data>
+  <data name="ThrownNotImplementedAchievementName" xml:space="preserve">
+    <value>Ленись вежливо</value>
   </data>
 </root>

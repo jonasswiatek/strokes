@@ -124,16 +124,19 @@
     <value>Задачи</value>
   </data>
   <data name="Class" xml:space="preserve">
-    <value>Класс</value>
+    <value>Классы</value>
   </data>
   <data name="Console" xml:space="preserve">
     <value>Консоль</value>
   </data>
   <data name="Converting" xml:space="preserve">
-    <value>Преобразование</value>
+    <value>Преобразования</value>
   </data>
   <data name="ErrorHandling" xml:space="preserve">
     <value>Обработка ошибок</value>
+  </data>
+  <data name="EventsThreads" xml:space="preserve">
+    <value>События и потоки</value>
   </data>
   <data name="Expressions" xml:space="preserve">
     <value>Выражения</value>
@@ -142,15 +145,21 @@
     <value>Основы</value>
   </data>
   <data name="Funny" xml:space="preserve">
-    <value>Забавное</value>
+    <value>Забавные</value>
+  </data>
+  <data name="Generics" xml:space="preserve">
+    <value>Дженерики</value>
   </data>
   <data name="Method" xml:space="preserve">
-    <value>Метод</value>
+    <value>Методы</value>
   </data>
   <data name="PrimitiveType" xml:space="preserve">
     <value>Базовые типы</value>
   </data>
   <data name="ProgramFlow" xml:space="preserve">
     <value>Логика исполнения</value>
+  </data>
+  <data name="Strings" xml:space="preserve">
+    <value>Строки</value>
   </data>
 </root>
