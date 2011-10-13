@@ -64,12 +64,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AssemblyInfo.cs" />
-    <None Include="CalculatorChallenge.cs" />
+    <None Include="Program.cs" />
     <None Include="ProjectTemplate.csproj" />
     <None Include="Strokes.VsTemplate.ico" />
   </ItemGroup>
   <ItemGroup>
-    <VSTemplate Include="Strokes.VsTemplate.vstemplate" />
+    <VSTemplate Include="Strokes.VsTemplate.vstemplate">
+      <SubType>Designer</SubType>
+    </VSTemplate>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
