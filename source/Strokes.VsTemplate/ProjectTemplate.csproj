@@ -6,7 +6,7 @@
 		<ProductVersion>8.0.30703</ProductVersion>
 		<SchemaVersion>2.0</SchemaVersion>
 		<ProjectGuid>$guid1$</ProjectGuid>
-		<OutputType>Library</OutputType>
+		<OutputType>Exe</OutputType>
 		<AppDesignerFolder>Properties</AppDesignerFolder>
 		<RootNamespace>$safeprojectname$</RootNamespace>
 		<AssemblyName>$safeprojectname$</AssemblyName>
@@ -53,7 +53,7 @@
     </Reference>
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Include="CalculatorChallenge.cs" />
+		<Compile Include="Program.cs" />
 		<Compile Include="Properties\AssemblyInfo.cs" />
 	</ItemGroup>
   <ItemGroup>
