@@ -8,14 +8,12 @@ using CSharpAchiever.VSX;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using Strokes.BasicAchievements;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 using Strokes.Core.Data;
 using Strokes.Core.Integration;
 using Strokes.Data;
 using Strokes.GUI;
-using Strokes.VsTemplate.Wizard;
 using Strokes.VSX.Trackers;
 using StructureMap;
 
