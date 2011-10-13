@@ -55,7 +55,7 @@ namespace Strokes.ChallengeRunner
             }
             catch(Exception e)
             {
-                result = e.Message;
+                result = e.Message + e.StackTrace;
             }
 
             Console.Write(result);

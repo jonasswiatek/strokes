@@ -18,7 +18,7 @@ namespace Strokes.Challenges
 
             Type implType = null;
 
-            foreach (var file in assemblies.Where(c => !c.Contains("Strokes.Challenges.Student")))
+            foreach (var file in assemblies.Where(c => !c.Contains("Strokes.Challenges")))
             {
                 var assembly = Assembly.LoadFrom(file);
                 var types = assembly.GetTypes();

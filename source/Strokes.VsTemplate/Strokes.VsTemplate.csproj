@@ -73,7 +73,6 @@
       <SubType>Designer</SubType>
     </VSTemplate>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="strokes_lib\Strokes.Challenges.dll" />
   </ItemGroup>
