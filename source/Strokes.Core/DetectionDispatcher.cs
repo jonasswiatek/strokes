@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Strokes.Core;
 using Strokes.Core.Data;
 using Strokes.Core.Data.Model;
-using Strokes.Data;
-using Strokes.GUI;
 using StructureMap;
 
-namespace Strokes.VSX
+namespace Strokes.Core
 {
     public class DetectionDispatcher
     {
@@ -24,7 +21,7 @@ namespace Strokes.VSX
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="args">
-        ///     The <see cref="Strokes.VSX.DetectionCompletedEventArgs"/> instance containing the event data.
+        ///     The <see cref="DetectionCompletedEventArgs"/> instance containing the event data.
         /// </param>
         protected static void OnDetectionCompleted(object sender, DetectionCompletedEventArgs args)
         {

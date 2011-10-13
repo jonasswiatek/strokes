@@ -15,6 +15,7 @@ using Strokes.Core.Data;
 using Strokes.Core.Integration;
 using Strokes.Data;
 using Strokes.GUI;
+using Strokes.VsTemplate.Wizard;
 using Strokes.VSX.Trackers;
 using StructureMap;
 
@@ -164,7 +165,7 @@ namespace Strokes.VSX
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">
-        ///     The <see cref="Strokes.VSX.DetectionCompletedEventArgs"/> instance containing the event data.
+        ///     The <see cref="DetectionCompletedEventArgs"/> instance containing the event data.
         /// </param>
         private void DetectionDispatcher_DetectionCompleted(object sender, DetectionCompletedEventArgs e)
         {
