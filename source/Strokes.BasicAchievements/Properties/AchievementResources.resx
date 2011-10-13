@@ -1114,4 +1114,28 @@
   <data name="CreateGenericObjectAchievementName" xml:space="preserve">
     <value>Create a generic object</value>
   </data>
+  <data name="EmptyMainAchievementDescription" xml:space="preserve">
+    <value>Congratulations, you've just written an empty Main method. Your productivity has doubled.</value>
+  </data>
+  <data name="EmptyMainAchievementName" xml:space="preserve">
+    <value>My, that's empty</value>
+  </data>
+  <data name="EmptyMethodAchievementDescription" xml:space="preserve">
+    <value>You've written a very empty method. Perhaps be nice and put a throw new NotImplementedException(); in there</value>
+  </data>
+  <data name="EmptyMethodAchievementName" xml:space="preserve">
+    <value>Useless method</value>
+  </data>
+  <data name="EmptyVoidMethodAchievementDescription" xml:space="preserve">
+    <value>You've created an empty method that return void. </value>
+  </data>
+  <data name="EmptyVoidMethodAchievementName" xml:space="preserve">
+    <value>Black hole</value>
+  </data>
+  <data name="ThrownNotImplementedAchievementDescription" xml:space="preserve">
+    <value>Throw a "NotImplementedException"</value>
+  </data>
+  <data name="ThrownNotImplementedAchievementName" xml:space="preserve">
+    <value>Be kind when you're lazy</value>
+  </data>
 </root>

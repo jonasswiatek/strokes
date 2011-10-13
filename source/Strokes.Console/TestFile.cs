@@ -11,6 +11,12 @@ namespace Strokes.Console
 {
     public class GenericList<T>
     {
+        static void Main()
+        {
+            throw new NotImplementedException();
+
+        }
+
         void Add(T input) { }
     }
     public class TestFile : IComparable

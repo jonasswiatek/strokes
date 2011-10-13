@@ -1321,6 +1321,60 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Congratulations, you&apos;ve just written an empty Main method. Your productivity has doubled..
+        /// </summary>
+        public static string EmptyMainAchievementDescription {
+            get {
+                return ResourceManager.GetString("EmptyMainAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My, that&apos;s empty.
+        /// </summary>
+        public static string EmptyMainAchievementName {
+            get {
+                return ResourceManager.GetString("EmptyMainAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;ve written a very empty method. Perhaps be nice and put a throw new NotImplementedException(); in there.
+        /// </summary>
+        public static string EmptyMethodAchievementDescription {
+            get {
+                return ResourceManager.GetString("EmptyMethodAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Useless method.
+        /// </summary>
+        public static string EmptyMethodAchievementName {
+            get {
+                return ResourceManager.GetString("EmptyMethodAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;ve created an empty method that return void. .
+        /// </summary>
+        public static string EmptyVoidMethodAchievementDescription {
+            get {
+                return ResourceManager.GetString("EmptyVoidMethodAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Black hole.
+        /// </summary>
+        public static string EmptyVoidMethodAchievementName {
+            get {
+                return ResourceManager.GetString("EmptyVoidMethodAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create an enum type..
         /// </summary>
         public static string EnumInitializerAchievementDescription {
@@ -2703,6 +2757,24 @@ namespace Strokes.Resources {
         public static string TellingAStoryAchievementName {
             get {
                 return ResourceManager.GetString("TellingAStoryAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Throw a &quot;NotImplementedException&quot;.
+        /// </summary>
+        public static string ThrownNotImplementedAchievementDescription {
+            get {
+                return ResourceManager.GetString("ThrownNotImplementedAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Be kind when you&apos;re lazy.
+        /// </summary>
+        public static string ThrownNotImplementedAchievementName {
+            get {
+                return ResourceManager.GetString("ThrownNotImplementedAchievementName", resourceCulture);
             }
         }
         
