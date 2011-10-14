@@ -89,6 +89,7 @@
     <Compile Include="Achievements\Basic\BlockCommentAchievement.cs" />
     <Compile Include="Achievements\Classes\ExtensionMethod.cs" />
     <Compile Include="Achievements\Error handling\CatchManyExceptions.cs" />
+    <Compile Include="Achievements\Error handling\ThrowExceptionAchievement.cs" />
     <Compile Include="Achievements\Error handling\ThrownNotImplementedAchievement.cs" />
     <Compile Include="Achievements\Error handling\TryCatchRethrowStatementAchievement.cs" />
     <Compile Include="Achievements\Error handling\TryCatchIgnoreStatementAchievement.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Achievements\Funny\EmptyFunAchievement.cs" />
     <Compile Include="Achievements\Funny\SpeechlessAchievement.cs" />
     <Compile Include="Achievements\Funny\CurseALotAchievement.cs" />
+    <Compile Include="Achievements\Funny\ThrowExceptionLongMessageAchievement.cs" />
     <Compile Include="Achievements\Funny\TooManyModifiersDeclarationAchievement.cs" />
     <Compile Include="Achievements\Funny\SomeFunnyAchievement.cs" />
     <Compile Include="Achievements\Funny\TooManyDimensionArrayDeclarationAchievement.cs" />

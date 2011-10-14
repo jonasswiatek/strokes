@@ -1138,4 +1138,16 @@
   <data name="ThrownNotImplementedAchievementName" xml:space="preserve">
     <value>Be kind when you're lazy</value>
   </data>
+  <data name="ThrowExceptionAchievementDescription" xml:space="preserve">
+    <value>Throw an Exception</value>
+  </data>
+  <data name="ThrowExceptionAchievementName" xml:space="preserve">
+    <value>"Houston, we have a problem"</value>
+  </data>
+  <data name="ThrowExceptionLongMessageAchievementDescription" xml:space="preserve">
+    <value>Throw an Exception with a very long error-message</value>
+  </data>
+  <data name="ThrowExceptionLongMessageAchievementName" xml:space="preserve">
+    <value>Very explicit error</value>
+  </data>
 </root>

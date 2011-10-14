@@ -13,7 +13,8 @@ namespace Strokes.Console
     {
         static void Main()
         {
-            throw new NotImplementedException();
+            throw new Exception(
+                "abcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghi");
 
         }
 

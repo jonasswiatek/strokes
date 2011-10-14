@@ -2761,6 +2761,42 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Throw an Exception.
+        /// </summary>
+        public static string ThrowExceptionAchievementDescription {
+            get {
+                return ResourceManager.GetString("ThrowExceptionAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Houston, we have a problem&quot;.
+        /// </summary>
+        public static string ThrowExceptionAchievementName {
+            get {
+                return ResourceManager.GetString("ThrowExceptionAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Throw an Exception with a very long error-message.
+        /// </summary>
+        public static string ThrowExceptionLongMessageAchievementDescription {
+            get {
+                return ResourceManager.GetString("ThrowExceptionLongMessageAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Very explicit error.
+        /// </summary>
+        public static string ThrowExceptionLongMessageAchievementName {
+            get {
+                return ResourceManager.GetString("ThrowExceptionLongMessageAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Throw a &quot;NotImplementedException&quot;.
         /// </summary>
         public static string ThrownNotImplementedAchievementDescription {
