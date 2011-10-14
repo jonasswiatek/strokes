@@ -70,6 +70,7 @@
   <ItemGroup>
     <VSTemplate Include="Strokes.VsTemplate.vstemplate">
       <SubType>Designer</SubType>
+      <OutputSubPath>Achievements (Strokes)</OutputSubPath>
     </VSTemplate>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

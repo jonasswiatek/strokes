@@ -57,10 +57,14 @@
     <None Include="Challenge.ico" />
   </ItemGroup>
   <ItemGroup>
-    <VSTemplate Include="CalculatorChallenge.vstemplate" />
+    <VSTemplate Include="CalculatorChallenge.vstemplate">
+      <OutputSubPath>Achievements (Strokes)</OutputSubPath>
+    </VSTemplate>
   </ItemGroup>
   <ItemGroup>
-    <VSTemplate Include="CaesarChallenge.vstemplate" />
+    <VSTemplate Include="CaesarChallenge.vstemplate">
+      <OutputSubPath>Achievements (Strokes)</OutputSubPath>
+    </VSTemplate>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.targets" />
