@@ -99,6 +99,7 @@
               VerticalAlignment="Top"
               Background="{DynamicResource AchievementLightBackground}"
               IsHitTestVisible="True"
+              Cursor="Hand"
               MouseDown="CloseWindowImage_MouseDown">
             <Path Width="16"
                   Height="16"

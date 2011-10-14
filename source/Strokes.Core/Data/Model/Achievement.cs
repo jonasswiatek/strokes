@@ -36,7 +36,7 @@ namespace Strokes.Core.Data.Model
             get
             {
                 if (DependsOn.Any())
-                    return string.Join(", ", DependsOn.Select(a => a.Name));
+                    return string.Join(", ", DependsOn.Select(a => "[" + a.Name + "]"));
                 else
                     return string.Empty;
             }
@@ -47,7 +47,7 @@ namespace Strokes.Core.Data.Model
             get
             {
                 if (Unlocks.Any())
-                    return string.Join(", ", Unlocks.Select(a => a.Name));  
+                    return string.Join(", ", Unlocks.Select(a => "[" + a.Name + "]"));  
                 else
                     return string.Empty;
             }

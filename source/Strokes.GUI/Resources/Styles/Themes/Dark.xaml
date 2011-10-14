@@ -163,6 +163,7 @@
                                                HorizontalAlignment="Left" />
                 <Grid x:Name="PART_MagnifierGlassPath"
                       Grid.Column="1"
+                      Cursor="Hand"
                       Width="Auto"
                       Height="21.312"
                       Margin="0,15,15,0"
