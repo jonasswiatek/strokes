@@ -12,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
     public class SpeechlessAchievement : NRefactoryAchievement
     {
         private static int cursecount = 0;
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

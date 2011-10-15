@@ -12,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Funny")]
     public class ThrowExceptionLongMessageAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

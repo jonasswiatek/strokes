@@ -66,9 +66,12 @@ namespace Strokes.Console
                 achievementDescriptorRepository.ResetAchievements();
 
                 DetectionDispatcher.DetectionCompleted += DetectionDispatcher_DetectionCompleted;
+                var file = System.IO.Path.GetFullPath("TestFile.cs");
                 DetectionDispatcher.Dispatch(new BuildInformation()
                 {
-                    ActiveFile = System.IO.Path.GetFullPath("TestFile.cs")
+                    ActiveFile = file,
+                    ChangedFiles = new string[] { file },
+                    CodeFiles = new string[] { file }
                 });
 
                 System.Console.Read();

@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Class")]
     public class CreatePropertyAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

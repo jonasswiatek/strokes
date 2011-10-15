@@ -16,7 +16,7 @@ namespace Strokes.BasicAchievements.Achievements
             )]
     public class EmptyMainAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -49,7 +49,7 @@ namespace Strokes.BasicAchievements.Achievements
                 })]
     public class EmptyMethodAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -83,7 +83,7 @@ namespace Strokes.BasicAchievements.Achievements
                 )]
     public class EmptyVoidMethodAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

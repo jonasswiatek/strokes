@@ -8,6 +8,12 @@
             set;
         }
 
+        public string[] CodeFiles
+        {
+            get;
+            set;
+        }
+
         public string[] ChangedFiles
         {
             get;

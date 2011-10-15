@@ -52,7 +52,7 @@ namespace Strokes.VSX.Trackers
 
                 foreach (ProjectItem item in project.ProjectItems)
                 {
-                    if (item.Name.EndsWith(".cs"))
+                    if (item.Name.EndsWith(".cs") && !item.Name.EndsWith("AssemblyInfo.cs"))
                     {
                         allFiles.Add(Path.Combine(rootPath, item.Name));
                     }
@@ -64,6 +64,11 @@ namespace Strokes.VSX.Trackers
             }
 
             return allFiles.Where(a => File.GetLastWriteTime(a) > since).ToList();
+        }
+
+        public static List<string> GetFiles(Solution solution)
+        {
+            return GetChangedFiles(solution, DateTime.MinValue);
         }
 
         /// <summary>
@@ -78,7 +83,7 @@ namespace Strokes.VSX.Trackers
 
             foreach (ProjectItem itm in item.ProjectItems)
             {
-                if (itm.Name.EndsWith(".cs"))
+                if (itm.Name.EndsWith(".cs") && !itm.Name.EndsWith("AssemblyInfo.cs"))
                 {
                     result.Add(Path.Combine(path, itm.Name));
                 }

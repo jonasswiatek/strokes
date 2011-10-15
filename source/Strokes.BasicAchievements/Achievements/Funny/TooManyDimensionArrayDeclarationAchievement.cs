@@ -16,7 +16,7 @@ namespace Strokes.BasicAchievements.Achievements
         })]
     public class TooManyDimensionArrayDeclarationAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

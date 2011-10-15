@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Funny")]
     public class GotoAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

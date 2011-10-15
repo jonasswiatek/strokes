@@ -12,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
         Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/LambdaExpr.png")]
     public class LambdaExpressionAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

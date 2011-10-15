@@ -14,7 +14,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@PrimitiveType")]
     public class DeclareEscapeCharAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

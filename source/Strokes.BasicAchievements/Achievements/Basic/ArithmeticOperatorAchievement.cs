@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Fundamentals")]
     public class PlusOperatorAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -33,7 +33,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Fundamentals")]
     public class MinusOperatorAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -54,7 +54,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Fundamentals")]
     public class MultiplyOperatorAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -75,7 +75,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Fundamentals")]
     public class DivideOperatorAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -96,7 +96,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Fundamentals")]
     public class ModuloOperatorAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

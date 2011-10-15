@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Method")]
     public class CreateMethodMultipleParametersAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -38,7 +38,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Method")]
     public class CreateMethodOneParameterAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

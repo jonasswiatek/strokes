@@ -12,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Fundamentals")]
     public class ConstKeywordAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

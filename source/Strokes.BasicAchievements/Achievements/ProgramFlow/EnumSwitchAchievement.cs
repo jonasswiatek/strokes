@@ -4,6 +4,7 @@ using System.Linq;
 using ICSharpCode.NRefactory.Ast;
 using ICSharpCode.NRefactory.Visitors;
 using Strokes.BasicAchievements.NRefactory;
+using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
@@ -18,68 +19,42 @@ namespace Strokes.BasicAchievements.Achievements
     
     public class EnumSwitchAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
-            return new Visitor();
+            //Pass typeDeclarations into the constructor
+            return new Visitor(CodebaseTypeDeclarations);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            readonly List<string> _enumMembers = new List<string>();
-            readonly Dictionary<string, SwitchStatement> _switchLabelMembers = new Dictionary<string, SwitchStatement>();
-            
-            public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
-            {
-                if(typeDeclaration.Type == ClassType.Enum)
-                {
-                    _enumMembers.Add(typeDeclaration.Name);
-                }
+            private readonly IEnumerable<TypeDeclarationInfo> _typeDeclarationInfos;
 
-                return base.VisitTypeDeclaration(typeDeclaration, data);
+            // Get the typeDeclarations from the constructor
+            public Visitor(IEnumerable<TypeDeclarationInfo> typeDeclarationInfos)
+            {
+                _typeDeclarationInfos = typeDeclarationInfos;
             }
 
             public override object VisitSwitchStatement(SwitchStatement switchStatement, object data)
             {
-                foreach(var secton in switchStatement.SwitchSections)
+                foreach (var secton in switchStatement.SwitchSections)
                 {
-                    foreach(var label in secton.SwitchLabels)
+                    foreach (var label in secton.SwitchLabels)
                     {
                         var memberRef = label.Label as MemberReferenceExpression;
                         var targetObject = memberRef != null ? memberRef.TargetObject as IdentifierExpression : null;
-                        if(targetObject != null)
+                        if (targetObject != null)
                         {
-                            if (!_switchLabelMembers.ContainsKey(targetObject.Identifier))
+                            if(_typeDeclarationInfos.Any(a => a.TypeName == targetObject.Identifier && a.DetinitionTypeDeclarationKind == TypeDeclarationKind.Enum))
                             {
-                                _switchLabelMembers.Add(targetObject.Identifier, switchStatement);
+                                UnlockWith(switchStatement);
+                                break;
                             }
                         }
                     }
                 }
 
                 return base.VisitSwitchStatement(switchStatement, data);
-            }
-
-            private SwitchStatement GetIntersection()
-            {
-                var intersection = _enumMembers.Intersect(_switchLabelMembers.Keys);
-                if(intersection.Any())
-                {
-                    var sw = _switchLabelMembers[intersection.First()];
-                    return sw;
-                }
-                return null;
-            }
-
-            /// <summary>
-            /// This method is called after all visiting has completed. Use this method to do more complicated testing - like in this case where the order of declarations cannot be ensured.
-            /// </summary>
-            public override void OnParsingCompleted()
-            {
-                var intersectingSwitchStatement = GetIntersection();
-                if (intersectingSwitchStatement != null)
-                {
-                    UnlockWith(intersectingSwitchStatement);
-                }
             }
         }
     }

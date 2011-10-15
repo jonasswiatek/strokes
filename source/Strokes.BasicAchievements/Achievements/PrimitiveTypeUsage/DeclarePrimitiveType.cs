@@ -6,13 +6,14 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ICSharpCode.NRefactory.Ast;
 using Strokes.BasicAchievements.NRefactory;
+using Strokes.BasicAchievements.NRefactory.Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
 {
     public abstract class DeclarePrimitiveType<T> : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

@@ -3,6 +3,7 @@ using System.Linq;
 using ICSharpCode.NRefactory.Ast;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using TypeDeclaration = ICSharpCode.NRefactory.Ast.TypeDeclaration;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -15,7 +16,7 @@ namespace Strokes.BasicAchievements.Achievements
                 })]
     public class AbstractClassAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

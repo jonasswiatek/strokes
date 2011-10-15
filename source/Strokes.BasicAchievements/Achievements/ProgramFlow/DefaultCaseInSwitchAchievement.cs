@@ -12,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@PrimitiveType")]
     public class DefaultCaseInSwitchSwitchAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -21,11 +21,15 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitSwitchSection(SwitchSection switchSection, object data)
             {
-                //Slightly improved, so only the actual default label will highlight, and not the entire switch statement.
                 var defaultLabel = switchSection.SwitchLabels.FirstOrDefault(a => a.IsDefault);
                 if(defaultLabel != null)
-                    UnlockWith(defaultLabel);
+                {
+                    //Bug: For some reason this the defaultLabel here doesn't have it's lines in the source document set. Bug in NRefactory?
+                    //UnlockWith(defaultLabel);
 
+                    IsAchievementUnlocked = true;
+                }
+                
                 return base.VisitSwitchSection(switchSection, data);
             }
         }

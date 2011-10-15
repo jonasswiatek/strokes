@@ -20,6 +20,11 @@ namespace Strokes.Console
 
         void Add(T input) { }
     }
+
+    public enum SomeEnum
+    {
+        a, b, c
+    }
     public class TestFile : IComparable
     {
         public string Test { get; set; }
@@ -28,6 +33,22 @@ namespace Strokes.Console
         public TestFile()
         {
             GenericList<int> list1 = new GenericList<int>();
+
+            var bla = "";
+            var enm = SomeEnum.a;
+
+            switch(enm)
+            {
+                case SomeEnum.a:
+                    bla = "a";
+                    break;
+                case SomeEnum.b:
+                    bla = "b";
+                    break;
+                default:
+                    bla = "c";
+                    break;
+            }
         }
 
         #region IEquatable<int> Members

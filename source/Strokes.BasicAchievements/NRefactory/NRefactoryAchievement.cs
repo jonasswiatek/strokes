@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ICSharpCode.NRefactory.Ast;
 using ICSharpCode.NRefactory.Visitors;
+using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.BasicAchievements.NRefactory.Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 using ICSharpCode.NRefactory;
@@ -14,38 +16,52 @@ namespace Strokes.BasicAchievements.NRefactory
     /// </summary>
     public abstract class NRefactoryAchievement : AchievementBase
     {
+        protected IEnumerable<TypeDeclarationInfo> CodebaseTypeDeclarations;
+
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
-            var unlocked = false;
-         
-            if (string.IsNullOrEmpty(detectionSession.BuildInformation.ActiveFile))
+            //Return out if there are no files to check achievements in.
+            if (!detectionSession.BuildInformation.ChangedFiles.Any())
             {
                 return false;
             }
 
-            var visitor = CreateVisitor();
+            //Obtain a session object and the codebase type declarations
             var nrefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
-            var filename = detectionSession.BuildInformation.ActiveFile;
+            CodebaseTypeDeclarations = nrefactorySession.GetCodebaseTypeDeclarations(detectionSession.BuildInformation);
 
-            var parser = nrefactorySession.GetParser(filename);
-            parser.CompilationUnit.AcceptVisitor(visitor, null);
-            visitor.OnParsingCompleted();
+            //Have the concrete implementation create it's visitor
+            var visitor = CreateVisitor(detectionSession);
 
-            if (visitor.IsAchievementUnlocked)
+            //Parse all files in the changed files collection for achievements
+            foreach(var filename in detectionSession.BuildInformation.ChangedFiles)
             {
-                AchievementCodeLocation = visitor.CodeLocation;
-                if (AchievementCodeLocation != null)
-                {
-                    AchievementCodeLocation.FileName = detectionSession.BuildInformation.ActiveFile;
-                }
+                //Obtain a parser from the nrefactorySession. This parser is shared context between all concrete achievement implementations.
+                var parser = nrefactorySession.GetParser(filename);
 
-                unlocked = true;
+                //Pass concrete visitor into the AST created by the parser
+                parser.CompilationUnit.AcceptVisitor(visitor, null);
+
+                //Call OnParsingCompleted on the visitor to give it a last chance to unlock achievements.
+                visitor.OnParsingCompleted();
+
+                //Check if the visitor declared the concrete achievement as unlocked.
+                if (visitor.IsAchievementUnlocked)
+                {
+                    AchievementCodeLocation = visitor.CodeLocation;
+                    if (AchievementCodeLocation != null)
+                    {
+                        AchievementCodeLocation.FileName = filename;
+                    }
+
+                    return true;
+                }
             }
 
-            return unlocked;
+            return false;
         }
 
-        protected abstract AbstractAchievementVisitor CreateVisitor();
+        protected abstract AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession);
 
         protected abstract class AbstractAchievementVisitor : AbstractAstVisitor
         {
