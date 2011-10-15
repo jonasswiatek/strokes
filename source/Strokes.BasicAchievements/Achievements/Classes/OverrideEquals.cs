@@ -15,7 +15,7 @@ namespace Strokes.BasicAchievements.Achievements
                 })]
     public class OverrideEqualsAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

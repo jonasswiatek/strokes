@@ -12,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Arrays")]
     public class DeclareArrayAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

@@ -21,7 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
             this.methodName = methodName;
         }
 
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor()
             {

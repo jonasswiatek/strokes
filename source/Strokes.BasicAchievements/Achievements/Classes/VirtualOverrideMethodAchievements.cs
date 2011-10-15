@@ -15,7 +15,7 @@ namespace Strokes.BasicAchievements.Achievements
                 })]
     public class VirtualMethodAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -36,7 +36,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Class")]
     public class OverrideMethodAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

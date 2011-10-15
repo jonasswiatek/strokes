@@ -102,13 +102,14 @@ namespace Strokes.VSX.Trackers
                     }
 
                     // Get all .cs files in solution projects, that has changed since lastAchievementCheck
-                    var changedFiles = FileTracker.GetChangedFiles(dte.Solution, lastAchievementCheck);
+                    var changedFiles = FileTracker.GetFiles(dte.Solution);
 
                     // Update lastAchievementCheck
                     lastAchievementCheck = DateTime.Now;
 
                     // Construct build information
                     var buildInformation = new BuildInformation();
+                    buildInformation.CodeFiles = FileTracker.GetFiles(dte.Solution).ToArray();
 
                     var activeDocument = dte.ActiveDocument;
                     if (activeDocument != null)

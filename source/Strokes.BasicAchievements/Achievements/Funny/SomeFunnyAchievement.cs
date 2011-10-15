@@ -31,7 +31,7 @@ namespace Strokes.BasicAchievements.Achievements
         })]
     public class JobSecurityAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -56,7 +56,7 @@ namespace Strokes.BasicAchievements.Achievements
                 })]
     public class TellingAStoryAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -84,7 +84,7 @@ namespace Strokes.BasicAchievements.Achievements
                 })]
     public class EpicTaleAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -112,7 +112,7 @@ namespace Strokes.BasicAchievements.Achievements
                 })]
     public class ParametizerAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -143,7 +143,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Funny")]
     public class GUTAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -170,7 +170,7 @@ namespace Strokes.BasicAchievements.Achievements
         DependsOn = new []{ "{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}"})]
     public class EveryOptionEnumAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -202,7 +202,7 @@ namespace Strokes.BasicAchievements.Achievements
                 })]
     public class ProceduralProgrammerAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

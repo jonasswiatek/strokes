@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@EventsThreads")]
     public class StartThreadAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -59,7 +59,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@EventsThreads")]
     public class JoinThreadAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -108,7 +108,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@EventsThreads")]
     public class AbortThreadAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }
@@ -156,7 +156,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@EventsThreads")]
     public class SleepThreadAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

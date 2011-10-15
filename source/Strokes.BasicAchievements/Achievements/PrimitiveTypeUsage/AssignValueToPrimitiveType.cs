@@ -12,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     public abstract class AssignValueToPrimitiveType<T> : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

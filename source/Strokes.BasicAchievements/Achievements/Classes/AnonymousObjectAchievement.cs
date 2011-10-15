@@ -14,7 +14,7 @@ namespace Strokes.BasicAchievements.Achievements
         Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/AnonObject.png")]
     public class AnonymousObjectAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor()
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
         }

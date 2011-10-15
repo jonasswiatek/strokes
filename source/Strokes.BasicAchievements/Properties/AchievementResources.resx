@@ -481,7 +481,7 @@
     <value>Define a default switch case</value>
   </data>
   <data name="DefaultCaseInSwitchSwitchAchievementDescription" xml:space="preserve">
-    <value>Create a default case in a  switch statement</value>
+    <value>Create a default case in a switch statement</value>
   </data>
   <data name="DeclareEscapeCharAchievementName" xml:space="preserve">
     <value>Escape char</value>

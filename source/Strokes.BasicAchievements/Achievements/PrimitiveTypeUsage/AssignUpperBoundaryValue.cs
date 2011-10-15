@@ -12,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
     public abstract class AssignUpperBoundaryValue<T> : NRefactoryAchievement
     {
 
-            protected override AbstractAchievementVisitor CreateVisitor()
+            protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
             {
                 return new Visitor();
             }
