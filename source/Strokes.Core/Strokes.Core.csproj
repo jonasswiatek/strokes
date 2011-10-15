@@ -37,9 +37,6 @@
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>..\ExternalReferences\ICSharpCode.NRefactory.dll</HintPath>
-    </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\ExternalReferences\StructureMap.dll</HintPath>
     </Reference>

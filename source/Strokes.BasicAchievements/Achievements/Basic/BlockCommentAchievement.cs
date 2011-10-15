@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ICSharpCode.NRefactory;
 using Strokes.BasicAchievements.NRefactory;
+using Strokes.BasicAchievements.NRefactory.Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
@@ -18,7 +19,10 @@ namespace Strokes.BasicAchievements.Achievements
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
-            var specials = detectionSession.Parser.Lexer.SpecialTracker.RetrieveSpecials();
+            var nrefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
+            var filename = detectionSession.BuildInformation.ActiveFile;
+            var parser = nrefactorySession.GetParser(filename);
+            var specials = parser.Lexer.SpecialTracker.RetrieveSpecials();
 
             return specials.OfType<Comment>().Any(a => a.CommentType == CommentType.Block);
         }

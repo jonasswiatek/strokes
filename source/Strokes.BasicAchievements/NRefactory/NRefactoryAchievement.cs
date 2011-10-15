@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using ICSharpCode.NRefactory.Ast;
 using ICSharpCode.NRefactory.Visitors;
+using Strokes.BasicAchievements.NRefactory.Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 using ICSharpCode.NRefactory;
 
@@ -23,9 +24,11 @@ namespace Strokes.BasicAchievements.NRefactory
             }
 
             var visitor = CreateVisitor();
+            var nrefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
+            var filename = detectionSession.BuildInformation.ActiveFile;
 
-            detectionSession.Parser.CompilationUnit.AcceptVisitor(visitor, null);
-
+            var parser = nrefactorySession.GetParser(filename);
+            parser.CompilationUnit.AcceptVisitor(visitor, null);
             visitor.OnParsingCompleted();
 
             if (visitor.IsAchievementUnlocked)
