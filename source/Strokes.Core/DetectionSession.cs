@@ -24,12 +24,13 @@ namespace Strokes.Core
         public IParser Parser
         {
             get;
-            set;
+            private set;
         }
 
         public void Dispose()
         {
-            Parser.Dispose();
+            if (Parser != null)
+                Parser.Dispose();
         }
     }
 }
