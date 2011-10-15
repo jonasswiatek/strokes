@@ -2,9 +2,28 @@
 {
     public class BuildInformation
     {
-        public string ActiveFile;
-        public string[] ChangedFiles;
-        public string ActiveProject;
-        public string ActiveProjectOutputDirectory;
+        public string ActiveFile
+        {
+            get;
+            set;
+        }
+
+        public string[] ChangedFiles
+        {
+            get;
+            set;
+        }
+
+        public string ActiveProject
+        {
+            get;
+            set;
+        }
+
+        public string ActiveProjectOutputDirectory
+        {
+            get;
+            set;
+        }
     }
 }

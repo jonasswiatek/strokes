@@ -1,36 +1,35 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using ICSharpCode.NRefactory;
 
 namespace Strokes.Core
 {
     public class DetectionSession : IDisposable
     {
-        public BuildInformation BuildInformation { get; private set; }
-        private readonly IDictionary<Type, object> _sessionObjects = new Dictionary<Type, object>();
-
         public DetectionSession(BuildInformation buildInformation)
         {
             BuildInformation = buildInformation;
+
+            Parser = ParserFactory.CreateParser(buildInformation.ActiveFile);
+            Parser.Parse();
         }
 
-        public T GetSessionObjectOfType<T>()
+        public BuildInformation BuildInformation
         {
-            if (!_sessionObjects.ContainsKey(typeof(T)))
-            {
-                _sessionObjects[typeof(T)] = Activator.CreateInstance<T>();
-            }
+            get;
+            private set;
+        }
 
-            return (T)_sessionObjects[typeof(T)];
+        public IParser Parser
+        {
+            get;
+            set;
         }
 
         public void Dispose()
         {
-            //Dispose all disposable children
-            foreach(var disposable in _sessionObjects.Values.OfType<IDisposable>())
-            {
-                disposable.Dispose();
-            }
+            Parser.Dispose();
         }
     }
 }

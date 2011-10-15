@@ -9,6 +9,7 @@ namespace Strokes.Core.Data
     public interface ISettingsRepository
     {
         Settings GetSettings();
+
         void SaveSettings(Settings settings);
     }
 }

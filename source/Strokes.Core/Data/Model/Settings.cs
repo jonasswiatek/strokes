@@ -7,14 +7,22 @@ namespace Strokes.Core.Data.Model
 {
     public class Settings
     {
-        public bool EnableInAllProjects { get; set; }
-        public string PreferredLocale { get; set; }
+        public bool EnableInAllProjects
+        {
+            get;
+            set;
+        }
+
+        public string PreferredLocale
+        {
+            get;
+            set;
+        }
 
         public Settings()
         {
-            //Defaults
             EnableInAllProjects = false;
-            PreferredLocale = "en"; //Default locale is english.
+            PreferredLocale = "en"; // Default locale is English.
         }
     }
 }

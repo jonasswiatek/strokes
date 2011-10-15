@@ -7,10 +7,13 @@ namespace Strokes.Core.Data
     public interface IAchievementRepository
     {
         IEnumerable<Achievement> GetAchievements();
+
         IEnumerable<Achievement> GetUnlockableAchievements();
 
         void MarkAchievementAsCompleted(Achievement achievement);
+
         void LoadFromAssembly(Assembly assembly);
+
         void ResetAchievements();
     }
 }

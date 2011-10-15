@@ -36,7 +36,7 @@ namespace Strokes.GUI
             if (args.Achievements.Any())
             {
                 Debug.WriteLine(string.Format("Achievements unlocked: {0}",
-                    string.Join(", ", args.Achievements.Select(a => a.Name))));
+                    string.Join(", ", args.Achievements.Select(a => "[" + a.Name + "]"))));
 
                 AchievementNotificationBox.ShowAchievements(args.Achievements);
             }

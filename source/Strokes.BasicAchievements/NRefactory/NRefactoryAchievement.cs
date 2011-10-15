@@ -4,6 +4,7 @@ using System.Text;
 using ICSharpCode.NRefactory.Ast;
 using ICSharpCode.NRefactory.Visitors;
 using Strokes.Core;
+using ICSharpCode.NRefactory;
 
 namespace Strokes.BasicAchievements.NRefactory
 {
@@ -14,8 +15,6 @@ namespace Strokes.BasicAchievements.NRefactory
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
-            var nRefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
-
             var unlocked = false;
          
             if (string.IsNullOrEmpty(detectionSession.BuildInformation.ActiveFile))
@@ -25,11 +24,8 @@ namespace Strokes.BasicAchievements.NRefactory
 
             var visitor = CreateVisitor();
 
-            var parser = nRefactorySession.GetParser(detectionSession.BuildInformation.ActiveFile);
-            parser.Parse();
-            parser.CompilationUnit.AcceptVisitor(visitor, null);
+            detectionSession.Parser.CompilationUnit.AcceptVisitor(visitor, null);
 
-            //Call OnParsingCompleted on the visitor to allow it to do last-change achievement testing
             visitor.OnParsingCompleted();
 
             if (visitor.IsAchievementUnlocked)
@@ -50,8 +46,17 @@ namespace Strokes.BasicAchievements.NRefactory
 
         protected abstract class AbstractAchievementVisitor : AbstractAstVisitor
         {
-            public AchievementCodeLocation CodeLocation;
-            public bool IsAchievementUnlocked;
+            public AchievementCodeLocation CodeLocation
+            {
+                get;
+                set;
+            }
+
+            public bool IsAchievementUnlocked
+            {
+                get;
+                set;
+            }
 
             protected void UnlockWith(AbstractNode location)
             {

@@ -10,7 +10,7 @@ namespace Strokes.Core
         public static AchievementDescriptorAttribute GetDescriptionAttribute(this AchievementBase achievement)
         {
             var descriptionAttributes = achievement.GetType().GetCustomAttributes(typeof(AchievementDescriptorAttribute), true);
-            
+
             if (descriptionAttributes.Length == 1)
             {
                 return (AchievementDescriptorAttribute)descriptionAttributes[0];
@@ -32,10 +32,10 @@ namespace Strokes.Core
             var AchievementResourcesType = assembly.GetType("Strokes.Resources.AchievementResources");
             var categoryResourcesType = assembly.GetType("Strokes.Resources.AchievementCategoryResources");
 
-            var AchievementResources = (ResourceManager)AchievementResourcesType.GetProperty("ResourceManager", 
+            var AchievementResources = (ResourceManager)AchievementResourcesType.GetProperty("ResourceManager",
                 BindingFlags.Static | BindingFlags.Public).GetValue(null, null);
 
-            var categoryResources = (ResourceManager)categoryResourcesType.GetProperty("ResourceManager", 
+            var categoryResources = (ResourceManager)categoryResourcesType.GetProperty("ResourceManager",
                 BindingFlags.Static | BindingFlags.Public).GetValue(null, null);
 
             var category = descriptionAttribute.AchievementCategory;

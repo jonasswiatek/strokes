@@ -49,7 +49,7 @@
                            TextWrapping="Wrap" />
             </StackPanel>
             <StackPanel Height="17"
-                        Margin="10,0,0,0"
+                        Margin="30,0,0,0"
                         VerticalAlignment="Bottom"
                         Orientation="Horizontal"
                         Visibility="{Binding UnlocksStr,

@@ -192,7 +192,6 @@
     <Compile Include="Challenges\Challenge.cs" />
     <Compile Include="Challenges\CaesarChallenge.cs" />
     <Compile Include="NRefactory\NRefactoryAchievement.cs" />
-    <Compile Include="NRefactory\NRefactorySession.cs" />
     <Compile Include="NRefactory\NRefactoryTools.cs" />
     <Compile Include="Properties\AchievementCategoryResources.da-DK.Designer.cs">
       <DependentUpon>AchievementCategoryResources.da-DK.resx</DependentUpon>

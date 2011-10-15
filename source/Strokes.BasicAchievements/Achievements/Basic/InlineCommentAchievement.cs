@@ -17,18 +17,9 @@ namespace Strokes.BasicAchievements.Achievements
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
-            var nRefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
+            var specials = detectionSession.Parser.Lexer.SpecialTracker.RetrieveSpecials();
 
-            var unlocked = false;
-
-            var parser = nRefactorySession.GetParser(detectionSession.BuildInformation.ActiveFile);
-            parser.Parse();
-            var specials = parser.Lexer.SpecialTracker.RetrieveSpecials();
-
-            unlocked = specials.OfType<Comment>().Any(a => a.CommentType == CommentType.SingleLine);
-
-
-            return unlocked;
+            return specials.OfType<Comment>().Any(a => a.CommentType == CommentType.SingleLine);
         }
     }
 }
