@@ -51,7 +51,7 @@ namespace Strokes.BasicAchievements.Achievements
                 get;
                 set;
             }
-
+            /* THIS INFINITE LOOPS SOME WHERE. Nasty nasty nasty
             public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
             {
                 var memberReferenceExpression = invocationExpression.Target as MemberReferenceExpression;
@@ -118,6 +118,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitInvocationExpression(invocationExpression, data);
             }
+             * */
         }
 
         protected class TypeAndValueRequirementSet

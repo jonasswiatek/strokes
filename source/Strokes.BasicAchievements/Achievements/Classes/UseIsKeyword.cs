@@ -17,12 +17,11 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
-            public override object VisitTypeOfIsExpression(TypeOfIsExpression typeOfIsExpression, object data)
+            public override object VisitIsExpression(ICSharpCode.NRefactory.CSharp.IsExpression isExpression, object data)
             {
-                UnlockWith(typeOfIsExpression);
-                return base.VisitTypeOfIsExpression(typeOfIsExpression, data);
-            }*/
+                UnlockWith(isExpression);
+                return base.VisitIsExpression(isExpression, data);
+            }
         }
     }
 }

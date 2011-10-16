@@ -18,25 +18,14 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
-            public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
+            public override object VisitEnumMemberDeclaration(EnumMemberDeclaration enumMemberDeclaration, object data)
             {
-                if (typeDeclaration.Type == ClassType.Enum)
+                if(!enumMemberDeclaration.Initializer.IsNull)
                 {
-                    foreach (var child in typeDeclaration.Children)
-                    {
-                        FieldDeclaration variablef = child as FieldDeclaration;
-                        foreach (var field in variablef.Fields)
-                        {
-                            if (!field.Initializer.IsNull)
-                                UnlockWith(typeDeclaration);
-                        }
-                    }
+                    UnlockWith(enumMemberDeclaration.Initializer);
                 }
-
-                return base.VisitTypeDeclaration(typeDeclaration, data);
+                return base.VisitEnumMemberDeclaration(enumMemberDeclaration, data);
             }
-             */
         }
     }
 }

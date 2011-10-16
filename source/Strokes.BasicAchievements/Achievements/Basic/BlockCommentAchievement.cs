@@ -15,19 +15,25 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@BlockCommentAchievementDescription",
         AchievementCategory = "@Fundamentals",
         Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/BlockComment.png")]
-    public class BlockCommentAchievement : AchievementBase
-    {
-        public override bool DetectAchievement(DetectionSession detectionSession)
-        {
-            /* REFACTOR: How to do this with NRefactory5
-            var nrefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
-            var filename = detectionSession.BuildInformation.ActiveFile;
-            var parser = nrefactorySession.GetCompilationUnit(filename);
-            var specials = parser.Lexer.SpecialTracker.RetrieveSpecials();
 
-            return specials.OfType<Comment>().Any(a => a.CommentType == CommentType.Block);
-             */
-            return false;
+    public class BlockCommentAchievement : NRefactoryAchievement
+    {
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        {
+            return new Visitor();
+        }
+
+        private class Visitor : AbstractAchievementVisitor
+        {
+            public override object VisitComment(Comment comment, object data)
+            {
+                if(comment.CommentType == CommentType.MultiLine)
+                {
+                    UnlockWith(comment);
+                }
+
+                return base.VisitComment(comment, data);
+            }
         }
     }
 }

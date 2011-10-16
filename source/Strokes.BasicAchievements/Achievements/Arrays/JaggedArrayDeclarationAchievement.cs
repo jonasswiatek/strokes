@@ -21,13 +21,20 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
+            private int lastArraySpecifierLine = 0;
+            private int lastArraySpecifierColumn = 0;
+
+            public override object VisitArraySpecifier(ICSharpCode.NRefactory.CSharp.ArraySpecifier arraySpecifier, object data)
             {
-                if (localVariableDeclaration.TypeReference.IsArrayType && localVariableDeclaration.TypeReference.RankSpecifier.Length >1) //Tim= not so happy about hardocing this RankSpecifier, not sure when this specifier contains more than 1 element
-                    UnlockWith(localVariableDeclaration);
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }*/
+                if(lastArraySpecifierLine == arraySpecifier.StartLocation.Line && lastArraySpecifierColumn == arraySpecifier.StartLocation.Column-2)
+                {
+                    UnlockWith(arraySpecifier);
+                }
+
+                lastArraySpecifierLine = arraySpecifier.StartLocation.Line;
+                lastArraySpecifierColumn = arraySpecifier.StartLocation.Column;
+                return base.VisitArraySpecifier(arraySpecifier, data);
+            }
         }
     }
 }

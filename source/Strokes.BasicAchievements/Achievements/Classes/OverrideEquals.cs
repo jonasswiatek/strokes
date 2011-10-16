@@ -22,21 +22,19 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (methodDeclaration.Name == "Equals" && methodDeclaration.Modifier.HasFlag(Modifiers.Override) && methodDeclaration.TypeReference.Type == "System.Boolean" )
+                if(methodDeclaration.Name == "Equals" && methodDeclaration.Modifiers.HasFlag(Modifiers.Override))
                 {
-                    if (methodDeclaration.Parameters.Count == 1) //Just to be certain
+                    var returnType = methodDeclaration.ReturnType as PrimitiveType;
+                    if(returnType != null && returnType.Keyword == "bool")
                     {
-                        if(methodDeclaration.Parameters[0].TypeReference.Type=="System.Object" && methodDeclaration.Parameters[0].ParameterName=="obj")
-                            UnlockWith(methodDeclaration);
+                        UnlockWith(methodDeclaration);
                     }
-                    
                 }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-            */
         }
     }
 }

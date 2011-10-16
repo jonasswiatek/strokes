@@ -20,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitPropertyDeclaration(PropertyDeclaration propertyDeclaration, object data)
             {
-                if ((propertyDeclaration.Setter.Modifiers & Modifiers.Private) == Modifiers.Private)
+                if (propertyDeclaration.Setter.Modifiers.HasFlag(Modifiers.Private))
                 {
                     UnlockWith(propertyDeclaration.Setter);
                 }

@@ -24,10 +24,11 @@ namespace Strokes.BasicAchievements.Achievements
                 {
                     foreach (CatchClause catchClause in tryCatchStatement.CatchClauses)
                     {
-                        /* //REFACTOR
-                        if (catchClause.StatementBlock.Children.Count == 1 && catchClause.StatementBlock.Children[0] is ThrowStatement) 
-                            UnlockWith(tryCatchStatement);
-                         */
+                        var throwStatement = catchClause.Body.Statements.FirstOrDefault(a => a is ThrowStatement);
+                        if(throwStatement != null)
+                        {
+                            UnlockWith(throwStatement);
+                        }
                     }
                 }
                 return base.VisitTryCatchStatement(tryCatchStatement, data);
