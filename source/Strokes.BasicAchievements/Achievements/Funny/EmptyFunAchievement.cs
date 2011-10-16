@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -30,7 +30,7 @@ namespace Strokes.BasicAchievements.Achievements
                 {
                     if(methodDeclaration.Body is BlockStatement)
                     {
-                        if(((BlockStatement)(methodDeclaration.Body)).Children.Count==0)
+                        if(((BlockStatement)(methodDeclaration.Body)).Children.Count() == 0)
                             UnlockWith(methodDeclaration);
                     }
                         
@@ -62,7 +62,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                     if (methodDeclaration.Body is BlockStatement)
                     {
-                        if (((BlockStatement)(methodDeclaration.Body)).Children.Count == 0)
+                        if (((BlockStatement)(methodDeclaration.Body)).Children.Count() == 0)
                             UnlockWith(methodDeclaration);
                     }
 
@@ -91,6 +91,7 @@ namespace Strokes.BasicAchievements.Achievements
         private class Visitor : AbstractAchievementVisitor
         {
 
+            /* REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
 
@@ -102,6 +103,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
+             */
         }
     }
 }

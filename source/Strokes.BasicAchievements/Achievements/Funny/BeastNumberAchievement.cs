@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -30,7 +30,7 @@ namespace Strokes.BasicAchievements.Achievements
                     PrimitiveExpression prim = (PrimitiveExpression) assignmentExpression.Right;
 
                     int number;
-                    if (int.TryParse(prim.StringValue, out number))
+                    if (int.TryParse(prim.LiteralValue, out number))
                     {
                         if (number == 666)
                             UnlockWith(assignmentExpression);

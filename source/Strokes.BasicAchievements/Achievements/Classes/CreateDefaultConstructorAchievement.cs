@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -20,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitConstructorDeclaration(ConstructorDeclaration constructorDeclaration, object data)
             {
-                if (constructorDeclaration.Parameters.Count==0)
+                if (constructorDeclaration.Parameters.Count == 0)
                     UnlockWith(constructorDeclaration);
                 return base.VisitConstructorDeclaration(constructorDeclaration, data);
             }

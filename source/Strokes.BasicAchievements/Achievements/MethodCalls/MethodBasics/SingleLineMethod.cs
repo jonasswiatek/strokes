@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -18,6 +18,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* //REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
                 if (!methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifier.HasFlag(Modifiers.Constructors))
@@ -30,6 +31,7 @@ namespace Strokes.BasicAchievements.Achievements
                 }
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
+             */
         }
     }
 }

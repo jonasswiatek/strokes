@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -126,8 +126,9 @@ namespace Strokes.BasicAchievements.Achievements
                 {
                     foreach (var param in methodDeclaration.Parameters)
                     {
-                        if (param.ParamModifier.HasFlag(ParameterModifiers.Optional))
-                            count++;
+                        /* REFACTOR: .Optional no longer available
+                         * if (param.ParameterModifier.HasFlag(ParameterModifier.Optional))
+                            count++;*/
 
                     }
                     if (count > 10)
@@ -152,11 +153,13 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if (typeDeclaration.Type == ClassType.Class)
+                if (typeDeclaration.ClassType == ClassType.Class)
                 {
+                    /* //REFACTOR .Type
                     var count = typeDeclaration.BaseTypes.Count(i => i.Type.StartsWith("I"));
                     if (count >= 5)
                         UnlockWith(typeDeclaration);
+                     * */
                 }
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);
@@ -180,9 +183,9 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if (typeDeclaration.Type == ClassType.Enum)
+                if (typeDeclaration.ClassType == ClassType.Enum)
                 {
-                    if (typeDeclaration.Children.Count > 10)
+                    if (typeDeclaration.Children.Count() > 10)
                     {
                         UnlockWith(typeDeclaration);
                     }
@@ -216,7 +219,7 @@ namespace Strokes.BasicAchievements.Achievements
                 {
                     foreach (var param in methodDeclaration.Parameters)
                     {
-                        if (param.ParamModifier.HasFlag(ParameterModifiers.Out))
+                        if (param.ParameterModifier.HasFlag(ParameterModifier.Out))
                             count++;
 
                     }

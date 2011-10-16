@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ICSharpCode.NRefactory.Ast;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -23,7 +22,7 @@ namespace Strokes.BasicAchievements.Achievements
                 private string TypeToFind = typeof (T).ToString();
                 private readonly List<string> _intvariables = new List<string>();
 
-
+                /* REFACTOR
 
                 public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration,
                                                                      object data)
@@ -93,7 +92,7 @@ namespace Strokes.BasicAchievements.Achievements
                     }
                     return base.VisitAssignmentExpression(assignmentExpression, data);
                 }
-
+                */
             }
         
     }

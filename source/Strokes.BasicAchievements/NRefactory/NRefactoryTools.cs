@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ICSharpCode.NRefactory.Ast;
 using ICSharpCode.NRefactory.CSharp;
 
 namespace Strokes.BasicAchievements.NRefactory
@@ -16,7 +15,7 @@ namespace Strokes.BasicAchievements.NRefactory
                 memberReferenceExpression.MemberName
             };
 
-            Expression reference = memberReferenceExpression.TargetObject;
+            Expression reference = memberReferenceExpression.Target;
 
             while (reference != null)
             {
@@ -24,7 +23,7 @@ namespace Strokes.BasicAchievements.NRefactory
                 {
                     callChain.Add((reference as MemberReferenceExpression).MemberName);
 
-                    reference = memberReferenceExpression.TargetObject as IdentifierExpression;
+                    reference = memberReferenceExpression.Target as IdentifierExpression;
                 }
                 else if (reference is IdentifierExpression)
                 {

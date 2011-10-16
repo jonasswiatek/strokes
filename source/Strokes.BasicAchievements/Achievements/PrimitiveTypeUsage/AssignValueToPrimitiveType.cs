@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -23,7 +23,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitAssignmentExpression(AssignmentExpression assignmentExpression, object data)
             {
                 var primitiveExpression = assignmentExpression.Right as PrimitiveExpression;
-                if(primitiveExpression != null && assignmentExpression.Op == AssignmentOperatorType.Assign)
+                if(primitiveExpression != null && assignmentExpression.Operator == AssignmentOperatorType.Assign)
                 {
                     if(primitiveExpression.Value.GetType().ToString() == TypeToFind)
                     {

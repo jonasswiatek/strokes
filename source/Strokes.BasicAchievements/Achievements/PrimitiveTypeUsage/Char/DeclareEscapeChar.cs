@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ICSharpCode.NRefactory.Ast;
 using Strokes.Core;
 using Strokes.BasicAchievements.NRefactory;
 using System.Text.RegularExpressions;
@@ -21,9 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
-            
-
+            /* REFACTOR
             public override object VisitLocalVariableDeclaration(ICSharpCode.NRefactory.Ast.LocalVariableDeclaration localVariableDeclaration, object data)
             {
 
@@ -47,7 +44,7 @@ namespace Strokes.BasicAchievements.Achievements
                 
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
-
+            */
         }
     }
 }

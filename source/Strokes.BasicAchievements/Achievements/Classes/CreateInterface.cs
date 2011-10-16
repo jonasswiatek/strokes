@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
-using TypeDeclaration = ICSharpCode.NRefactory.Ast.TypeDeclaration;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -26,7 +25,7 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if(typeDeclaration.Type == ClassType.Interface)
+                if(typeDeclaration.ClassType == ClassType.Interface)
                     UnlockWith(typeDeclaration);
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);

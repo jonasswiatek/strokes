@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
-using TypeDeclaration = ICSharpCode.NRefactory.Ast.TypeDeclaration;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -23,13 +22,15 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* REFACTOR
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if (typeDeclaration.Type == ClassType.Class && typeDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                if (typeDeclaration.ClassType == ClassType.Class && typeDeclaration.Modifier.HasFlag(Modifiers.Abstract))
                     UnlockWith(typeDeclaration);
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);
             }
+             */
         }
     }
 }

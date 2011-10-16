@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -20,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitBinaryOperatorExpression(BinaryOperatorExpression binaryOperatorExpression, object data)
             {
-                if (binaryOperatorExpression.Op == BinaryOperatorType.Add)
+                if (binaryOperatorExpression.Operator == BinaryOperatorType.Add)
                     UnlockWith(binaryOperatorExpression);
                 return base.VisitBinaryOperatorExpression(binaryOperatorExpression, data);
             }
@@ -42,7 +42,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitBinaryOperatorExpression(BinaryOperatorExpression binaryOperatorExpression, object data)
             {
-                if (binaryOperatorExpression.Op == BinaryOperatorType.Subtract)
+                if (binaryOperatorExpression.Operator == BinaryOperatorType.Subtract)
                     UnlockWith(binaryOperatorExpression);
                 return base.VisitBinaryOperatorExpression(binaryOperatorExpression, data);
             }
@@ -63,7 +63,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitBinaryOperatorExpression(BinaryOperatorExpression binaryOperatorExpression, object data)
             {
-                if (binaryOperatorExpression.Op == BinaryOperatorType.Multiply)
+                if (binaryOperatorExpression.Operator == BinaryOperatorType.Multiply)
                     UnlockWith(binaryOperatorExpression);
                 return base.VisitBinaryOperatorExpression(binaryOperatorExpression, data);
             }
@@ -84,7 +84,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitBinaryOperatorExpression(BinaryOperatorExpression binaryOperatorExpression, object data)
             {
-                if (binaryOperatorExpression.Op == BinaryOperatorType.Divide)
+                if (binaryOperatorExpression.Operator == BinaryOperatorType.Divide)
                     UnlockWith(binaryOperatorExpression);
                 return base.VisitBinaryOperatorExpression(binaryOperatorExpression, data);
             }
@@ -105,7 +105,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitBinaryOperatorExpression(BinaryOperatorExpression binaryOperatorExpression, object data)
             {
-                if (binaryOperatorExpression.Op == BinaryOperatorType.Modulus)
+                if (binaryOperatorExpression.Operator == BinaryOperatorType.Modulus)
                     UnlockWith(binaryOperatorExpression);
                 return base.VisitBinaryOperatorExpression(binaryOperatorExpression, data);
             }

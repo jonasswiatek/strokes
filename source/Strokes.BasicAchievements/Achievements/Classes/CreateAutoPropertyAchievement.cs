@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -21,7 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitPropertyDeclaration(PropertyDeclaration propertyDeclaration, object data)
             {
 
-                if (propertyDeclaration.GetRegion.Block.IsNull && propertyDeclaration.SetRegion.Block.IsNull)
+                if (propertyDeclaration.Getter.Body.IsNull && propertyDeclaration.Setter.Body.IsNull)
                     UnlockWith(propertyDeclaration);
 
                 return base.VisitPropertyDeclaration(propertyDeclaration, data);

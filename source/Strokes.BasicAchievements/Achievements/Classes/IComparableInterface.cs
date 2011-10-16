@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -24,15 +24,16 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if (typeDeclaration.Type == ClassType.Class)
+                if (typeDeclaration.ClassType == ClassType.Class)
                 {
                     foreach (var basetype in typeDeclaration.BaseTypes)
                     {
+                        /* //REFACTOR: Basetype.Type doesn't exist anymore
                         if (basetype.Type == "System.IComparable" || basetype.Type == "IComparable")
                         {
                             UnlockWith(typeDeclaration);
                             break;
-                        }
+                        }*/
                     }
                     
                 }

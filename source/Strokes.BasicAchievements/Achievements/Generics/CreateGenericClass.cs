@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -25,12 +25,12 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if(typeDeclaration.Type== ClassType.Class && typeDeclaration.Name!="Program")
-                    if(typeDeclaration.Templates.Count>0)
-                    {
-                        //Info for future achievements on this: http://www.codeproject.com/Articles/72467/C-4-0-Covariance-And-Contravariance-In-Generics
-                        UnlockWith(typeDeclaration);
-                    }
+                if(typeDeclaration.ClassType == ClassType.Class && typeDeclaration.Name != "Program")
+                if(typeDeclaration.TypeParameters.Count > 0) //REFACTOR: Templates was changed to TypeParameters. Please confirm.
+                {
+                    //Info for future achievements on this: http://www.codeproject.com/Articles/72467/C-4-0-Covariance-And-Contravariance-In-Generics
+                    UnlockWith(typeDeclaration);
+                }
                     
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);

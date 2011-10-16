@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -18,6 +17,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* REFACTOR
             public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
                 if (localVariableDeclaration.TypeReference.ToString().Equals("Thread") ||
@@ -28,6 +28,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
+             */
         }
     }
 }

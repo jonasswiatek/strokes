@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -22,6 +22,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* //REFACTOR
             public override object VisitDoLoopStatement(DoLoopStatement doLoopStatement, object data)
             {
                 if (doLoopStatement.ConditionPosition == ConditionPosition.Start)
@@ -35,6 +36,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitDoLoopStatement(doLoopStatement, data);
             }
+             */
         }
     }
 }

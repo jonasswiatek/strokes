@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -20,6 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             private List<string> threadVars = new List<string>();
 
+            /* REFACTOR
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
                 if (memberReferenceExpression.MemberName == "Start")
@@ -51,6 +52,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
+             */
         }
     }
 
@@ -67,7 +69,7 @@ namespace Strokes.BasicAchievements.Achievements
         private class Visitor : AbstractAchievementVisitor
         {
             private List<string> threadVars = new List<string>();
-
+            /* REFACTOR
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
                 if (memberReferenceExpression.MemberName == "Join")
@@ -99,6 +101,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
+             * */
         }
     }
 
@@ -116,7 +119,7 @@ namespace Strokes.BasicAchievements.Achievements
         private class Visitor : AbstractAchievementVisitor
         {
             private List<string> threadVars = new List<string>();
-
+            /* REFACTOR
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
                 if (memberReferenceExpression.MemberName == "Abort")
@@ -148,6 +151,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
+             */
         }
     }
 
@@ -164,7 +168,7 @@ namespace Strokes.BasicAchievements.Achievements
         private class Visitor : AbstractAchievementVisitor
         {
             private List<string> threadVars = new List<string>();
-
+            /* REFACTOR
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
                 if (memberReferenceExpression.MemberName == "Sleep")
@@ -196,6 +200,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
+             */
         }
     }
 }

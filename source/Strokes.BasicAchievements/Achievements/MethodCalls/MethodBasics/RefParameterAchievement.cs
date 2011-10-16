@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -22,6 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* //REFACTOR
             public override object VisitParameterDeclarationExpression(ParameterDeclarationExpression parameterDeclarationExpression, object data)
             {
                 if (parameterDeclarationExpression.ParamModifier == ParameterModifiers.Ref)
@@ -30,6 +30,7 @@ namespace Strokes.BasicAchievements.Achievements
                 }
                 return base.VisitParameterDeclarationExpression(parameterDeclarationExpression, data);
             }
+             */
         }
     }
 }

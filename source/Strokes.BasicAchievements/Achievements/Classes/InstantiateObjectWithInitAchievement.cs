@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -18,6 +18,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* REFACTOR
             public override object VisitObjectCreateExpression(ObjectCreateExpression objectCreateExpression, object data)
             {
                 var expr = objectCreateExpression.ObjectInitializer;
@@ -26,7 +27,7 @@ namespace Strokes.BasicAchievements.Achievements
                     UnlockWith(objectCreateExpression.ObjectInitializer); //Handing over the ObjectInitializer will make it highlight that code region only.
 
                 return base.VisitObjectCreateExpression(objectCreateExpression, data);
-            }
+            }*/
         }
     }
 }

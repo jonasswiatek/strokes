@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -19,6 +19,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* REFACTOR
             private string TypeToFind = typeof (T).ToString();
             public override object VisitFieldDeclaration(FieldDeclaration fieldDeclaration, object data)
             {
@@ -51,6 +52,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
             }
+             */
         }
     }
 }

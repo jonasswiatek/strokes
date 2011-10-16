@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -18,6 +18,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* //REFACTOR
             public override object VisitThrowStatement(ThrowStatement throwStatement, object data)
             {
                 if(throwStatement.Expression is ObjectCreateExpression)
@@ -28,6 +29,7 @@ namespace Strokes.BasicAchievements.Achievements
                 }
                 return base.VisitThrowStatement(throwStatement, data);
             }
+             */
         }
     }
 }

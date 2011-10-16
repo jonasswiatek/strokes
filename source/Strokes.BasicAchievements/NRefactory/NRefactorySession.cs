@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using ICSharpCode.NRefactory;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.Core;
 
@@ -12,7 +14,7 @@ namespace Strokes.BasicAchievements.NRefactory
     {
         private readonly object parserAccessPadLock = new object();
         private readonly object codebaseTypeDefinitionPadLock = new object();
-        private readonly IDictionary<string, IParser> parsers = new Dictionary<string, IParser>();
+        private readonly IDictionary<string, CompilationUnit> parsers = new Dictionary<string, CompilationUnit>();
         private List<TypeDeclarationInfo> codebaseTypeDefinitions;
 
         /// <summary>
@@ -21,16 +23,16 @@ namespace Strokes.BasicAchievements.NRefactory
         /// </summary>
         /// <param name="filename">The path and name of the file to create a parser for.</param>
         /// <returns>A <c>IParser</c> for the given file.</returns>
-        public IParser GetParser(string filename)
+        public CompilationUnit GetCompilationUnit(string filename)
         {
             lock (parserAccessPadLock) // Synchronize
             {
                 if (!parsers.ContainsKey(filename))
                 {
-                    var parser = ParserFactory.CreateParser(filename);
-                    parser.Parse();
+                    var parser = new CSharpParser();
+                    var compilationUnit = parser.Parse(File.OpenRead(filename));
 
-                    parsers.Add(filename, parser);
+                    parsers.Add(filename, compilationUnit);
                 }
 
                 return parsers[filename];
@@ -54,9 +56,9 @@ namespace Strokes.BasicAchievements.NRefactory
 
                     foreach (var filename in buildInformation.CodeFiles)
                     {
-                        var parser = GetParser(filename);
+                        var compilationUnit = GetCompilationUnit(filename);
                         var typeDeclarationInfoVisitor = new TypeDeclarationVisitor();
-                        parser.CompilationUnit.AcceptVisitor(typeDeclarationInfoVisitor, null);
+                        compilationUnit.AcceptVisitor(typeDeclarationInfoVisitor, null);
 
                         codebaseTypeDefinitions.AddRange(typeDeclarationInfoVisitor.TypeDeclarations);
                     }
@@ -71,10 +73,6 @@ namespace Strokes.BasicAchievements.NRefactory
         /// </summary>
         public void Dispose()
         {
-            foreach (var parser in parsers.Values)
-            {
-                parser.Dispose();
-            }
         }
     }
 }

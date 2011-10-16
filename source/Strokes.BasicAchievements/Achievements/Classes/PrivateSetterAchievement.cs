@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -20,9 +20,9 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitPropertyDeclaration(PropertyDeclaration propertyDeclaration, object data)
             {
-                if ((propertyDeclaration.SetRegion.Modifier & Modifiers.Private) == Modifiers.Private)
+                if ((propertyDeclaration.Setter.Modifiers & Modifiers.Private) == Modifiers.Private)
                 {
-                    UnlockWith(propertyDeclaration.SetRegion);
+                    UnlockWith(propertyDeclaration.Setter);
                 }
 
                 return base.VisitPropertyDeclaration(propertyDeclaration, data);

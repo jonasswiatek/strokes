@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -20,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
+            /* //REFACTOR
             public override object VisitForeachStatement(ForeachStatement foreachStatement, object data)
             {
                 //Looks convoluted solution not sure this is correct way to detect something of form (foreach(var t in Enum.GetValue/GetNames(...))
@@ -40,7 +40,7 @@ namespace Strokes.BasicAchievements.Achievements
                 }
                 return base.VisitForeachStatement(foreachStatement, data);
             }
-
+            */
         }
     }
 }

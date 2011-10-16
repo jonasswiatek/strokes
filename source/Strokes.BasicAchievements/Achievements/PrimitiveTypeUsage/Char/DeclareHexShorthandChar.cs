@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.Core;
 using Strokes.BasicAchievements.NRefactory;
 using System.Text.RegularExpressions;
@@ -20,8 +21,8 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
-            public override object VisitPrimitiveExpression(ICSharpCode.NRefactory.Ast.PrimitiveExpression primitiveExpression, object data)
+            /* REFACTOR
+            public override object VisitPrimitiveExpression(PrimitiveExpression primitiveExpression, object data)
             {
                 //Tim: perhaps this is too low in the tree? Resulting in having this run almost all the time?
                 if (primitiveExpression.LiteralFormat == ICSharpCode.NRefactory.Parser.LiteralFormat.CharLiteral)
@@ -34,7 +35,7 @@ namespace Strokes.BasicAchievements.Achievements
                 }
                 return base.VisitPrimitiveExpression(primitiveExpression, data);
             }
-
+            */
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
-using ICSharpCode.NRefactory.Parser;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -19,11 +18,12 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* REFACTOR
             public override object VisitBinaryOperatorExpression(BinaryOperatorExpression binaryOperatorExpression, object data)
             {
                 bool leftdangerous = false;
                 bool rightdangerous = false;
-                if(binaryOperatorExpression.Op== BinaryOperatorType.Equality)
+                if(binaryOperatorExpression.Operator == BinaryOperatorType.Equality)
                 {
                     if(binaryOperatorExpression.Left is PrimitiveExpression)
                     {
@@ -66,12 +66,12 @@ namespace Strokes.BasicAchievements.Achievements
                 }
                 return base.VisitBinaryOperatorExpression(binaryOperatorExpression, data);
             }
-
+            */
 
             private readonly List<string> _doublefloatvariables = new List<string>();
 
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration,
-                                                                 object data)
+            /* //REFACTOR
+            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
 
                 if (localVariableDeclaration.TypeReference.Type.Contains("System.Double")
@@ -84,7 +84,7 @@ namespace Strokes.BasicAchievements.Achievements
                     }
                 }
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }
+            }*/
 
         }
     }

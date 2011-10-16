@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -19,7 +19,7 @@ namespace Strokes.BasicAchievements.Achievements
         private class Visitor : AbstractAchievementVisitor
         {
             List<string> eventVars = new List<string>();
-
+            /* REFACTOR
             public override object VisitAssignmentExpression(AssignmentExpression assignmentExpression, object data)
             {
                 if (assignmentExpression.Left is MemberReferenceExpression)
@@ -51,6 +51,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitEventDeclaration(eventDeclaration, data);
             }
+             */
         }
     }
 }

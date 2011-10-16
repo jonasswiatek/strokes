@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
-using ICSharpCode.NRefactory.Visitors;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -21,6 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* //REFACTOR: This doesn't exist in NRefactory5
             public override object VisitVariableDeclaration(VariableDeclaration variableDeclaration, object data)
             {
                 var objectCreateExpression = variableDeclaration.Initializer as ObjectCreateExpression;
@@ -30,7 +30,7 @@ namespace Strokes.BasicAchievements.Achievements
                 }
 
                 return base.VisitVariableDeclaration(variableDeclaration, data);
-            }
+            }*/
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -26,15 +26,16 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 //TODO: Also unlocks when only implementing an interface (so we will need a way to 
                 // know if BaseType is a class or not. Now I simply detect of basetype doens't start with I
-                if (typeDeclaration.Type == ClassType.Class && typeDeclaration.BaseTypes.Count > 0)
+                if (typeDeclaration.ClassType == ClassType.Class && typeDeclaration.BaseTypes.Count > 0)
                 {
                     foreach (var typeReference in typeDeclaration.BaseTypes)
                     {
+                        /* REFACTOR: .Type doesn't exist anymore
                         if(!typeReference.Type.StartsWith("I"))
                         {
                             UnlockWith(typeDeclaration);
                             break;
-                        }
+                        }*/
                     }
                     UnlockWith(typeDeclaration);
                 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -19,7 +18,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
+            /* //REFACTOR...
             public override object VisitVariableDeclaration(VariableDeclaration variableDeclaration, object data)
             {
                 string[] foulwords= new string[]
@@ -38,7 +37,7 @@ namespace Strokes.BasicAchievements.Achievements
                     UnlockWith(variableDeclaration);
 
                 return base.VisitVariableDeclaration(variableDeclaration, data);
-            }
+            }*/
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -25,7 +25,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitIfElseStatement(IfElseStatement ifElseStatement, object data)
             {
                 var condition = ifElseStatement.Condition as BinaryOperatorExpression;
-                if(condition!=null && condition.Op!= BinaryOperatorType.Equality) //Tim: mmm, this achievements needs more testing because this doens't work right 
+                if(condition!=null && condition.Operator != BinaryOperatorType.Equality) //Tim: mmm, this achievements needs more testing because this doens't work right 
                     UnlockWith(ifElseStatement);
 
                 return base.VisitIfElseStatement(ifElseStatement, data);

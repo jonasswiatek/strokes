@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using ICSharpCode.NRefactory.Ast;
-using ICSharpCode.NRefactory.Visitors;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -55,7 +54,8 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
             {
-                var memberReferenceExpression = invocationExpression.TargetObject as MemberReferenceExpression;
+                //REFACTOR: invocationExpression.Target changed from invocationExpression.TargetObject - no idea if this is correct. Please verify.
+                var memberReferenceExpression = invocationExpression.Target as MemberReferenceExpression;
                 if (memberReferenceExpression != null)
                 {
                     var methodName = memberReferenceExpression.GetCallChainAsString();
@@ -79,7 +79,7 @@ namespace Strokes.BasicAchievements.Achievements
                                         break;
                                     }
 
-                                    var primitiveArgumentExpression = invocationExpression.Arguments[i] as PrimitiveExpression;
+                                    var primitiveArgumentExpression = invocationExpression.Arguments.ElementAt(i) as PrimitiveExpression;
                                     if (primitiveArgumentExpression == null)
                                     {
                                         break;

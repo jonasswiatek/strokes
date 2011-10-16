@@ -17,13 +17,16 @@ namespace Strokes.BasicAchievements.Achievements
     {
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
+            /* REFACTOR: How to do this with NRefactory5
             var nrefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
             var filename = detectionSession.BuildInformation.ActiveFile;
             var parser = nrefactorySession.GetCompilationUnit(filename);
 
             var specials = parser.Lexer.SpecialTracker.RetrieveSpecials();
 
-            return specials.OfType<Comment>().Any(a => a.CommentType == CommentType.SingleLine);
+            return specials.OfType<Comment>().Any(a => a.CommentType == CommentType.SingleLine);*/
+
+            return false;
         }
     }
 }

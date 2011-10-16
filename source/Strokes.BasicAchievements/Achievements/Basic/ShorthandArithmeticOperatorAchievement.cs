@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -20,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitUnaryOperatorExpression(UnaryOperatorExpression unaryOperatorExpression, object data)
             {
-                if (unaryOperatorExpression.Op == UnaryOperatorType.PostIncrement || unaryOperatorExpression.Op == UnaryOperatorType.Increment)
+                if (unaryOperatorExpression.Operator == UnaryOperatorType.PostIncrement || unaryOperatorExpression.Operator == UnaryOperatorType.Increment)
                     UnlockWith(unaryOperatorExpression);
                 return base.VisitUnaryOperatorExpression(unaryOperatorExpression, data);
             }
@@ -41,7 +41,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitUnaryOperatorExpression(UnaryOperatorExpression unaryOperatorExpression, object data)
             {
-                if (unaryOperatorExpression.Op == UnaryOperatorType.PostDecrement || unaryOperatorExpression.Op == UnaryOperatorType.Decrement)
+                if (unaryOperatorExpression.Operator == UnaryOperatorType.PostDecrement || unaryOperatorExpression.Operator == UnaryOperatorType.Decrement)
                     UnlockWith(unaryOperatorExpression);
                 return base.VisitUnaryOperatorExpression(unaryOperatorExpression, data);
             }

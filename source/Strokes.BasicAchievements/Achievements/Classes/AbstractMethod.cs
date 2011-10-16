@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -25,7 +25,7 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (methodDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                if (methodDeclaration.Modifiers.HasFlag(Modifiers.Abstract))
                     UnlockWith(methodDeclaration);
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
