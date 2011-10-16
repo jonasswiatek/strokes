@@ -12,8 +12,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class PrintWithPlaceholdersFieldSizeAchievement : AbstractMethodCall
     {
-        public PrintWithPlaceholdersFieldSizeAchievement()
-            : base("Console.WriteLine")
+        public PrintWithPlaceholdersFieldSizeAchievement() : base("System.Console.WriteLine")
         {
             RequiredOverloads.Add(new TypeAndValueRequirementSet
             {

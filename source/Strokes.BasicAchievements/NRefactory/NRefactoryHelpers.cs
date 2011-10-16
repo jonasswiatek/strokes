@@ -8,9 +8,17 @@ namespace Strokes.BasicAchievements.NRefactory
 {
     public static class NRefactoryHelpers
     {
-        public static bool IsReferenceOfType(this MemberReferenceExpression memberReferenceExpression, string fullTypeName)
+        public static bool IsCallToType(this Expression expression, string fullTypeName)
         {
-            var current = memberReferenceExpression.Parent;
+            var methodName = expression.GetIdentifier();
+            var usings = expression.GetUsings();
+
+            return usings.Any(a => (a + "." + methodName) == fullTypeName) || methodName == fullTypeName;
+        }
+
+        public static bool IsReferenceOfTypeFromScope(this Expression expression, string fullTypeName)
+        {
+            var current = expression.Parent;
             while(current != null)
             {
                 var variableDeclarations = current.Descendants.OfType<VariableDeclarationStatement>();
@@ -61,13 +69,25 @@ namespace Strokes.BasicAchievements.NRefactory
 
         public static string GetIdentifier(this Expression expression)
         {
-            if(expression is IdentifierExpression)
+            var bla = expression.ToString();
+            var result = new List<string>();
+
+            var currentExpression = expression;
+            while(currentExpression is MemberReferenceExpression)
             {
-                var identifier = expression as IdentifierExpression;
-                return identifier.Identifier;
+                var memberRef = currentExpression as MemberReferenceExpression;
+                result.Add(memberRef.MemberName);
+
+                currentExpression = memberRef.Target;
             }
 
-            return string.Empty;
+            var identifier = currentExpression as IdentifierExpression;
+            if(identifier != null)
+            {
+                result.Add(identifier.Identifier);
+            }
+            result.Reverse();
+            return string.Join(".", result);
         }
 
         public static string GetCurrentNamespace(this AstNode astNode)

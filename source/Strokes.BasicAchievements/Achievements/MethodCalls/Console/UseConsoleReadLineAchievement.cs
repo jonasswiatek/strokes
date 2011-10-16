@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class UseConsoleReadlineAchievement : AbstractMethodCall
     {
-        public UseConsoleReadlineAchievement() : base("Console.ReadLine")
+        public UseConsoleReadlineAchievement() : base("System.Console.ReadLine")
         {
         }
     }

@@ -31,7 +31,7 @@ namespace Strokes.BasicAchievements.Achievements
                 const string typeToUse = "System.Threading.Thread";
                 const string methodToFind = "Start";
 
-                if(_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfType(typeToUse))
+                if(_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfTypeFromScope(typeToUse))
                 {
                     if (memberReferenceExpression.MemberName == methodToFind)
                     {
@@ -68,7 +68,7 @@ namespace Strokes.BasicAchievements.Achievements
                 const string typeToUse = "System.Threading.Thread";
                 const string methodToFind = "Join";
 
-                if (_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfType(typeToUse))
+                if (_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfTypeFromScope(typeToUse))
                 {
                     if (memberReferenceExpression.MemberName == methodToFind)
                     {
@@ -106,7 +106,7 @@ namespace Strokes.BasicAchievements.Achievements
                 const string typeToUse = "System.Threading.Thread";
                 const string methodToFind = "Abort";
 
-                if (_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfType(typeToUse))
+                if (_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfTypeFromScope(typeToUse))
                 {
                     if (memberReferenceExpression.MemberName == methodToFind)
                     {
@@ -142,13 +142,9 @@ namespace Strokes.BasicAchievements.Achievements
                 const string typeToUse = "System.Threading.Thread";
                 const string methodToFind = "Sleep";
 
-                if(memberReferenceExpression.Target.GetIdentifier() == "Thread" && memberReferenceExpression.MemberName == methodToFind)
+                if(memberReferenceExpression.Target.IsCallToType(typeToUse) && memberReferenceExpression.MemberName == methodToFind)
                 {
-                    var usings = memberReferenceExpression.Target.GetUsings();
-                    if (usings.Any(a => (a + "." + "Thread") == typeToUse))
-                    {
-                        UnlockWith(memberReferenceExpression);
-                    }
+                    UnlockWith(memberReferenceExpression);
                 }
 
 

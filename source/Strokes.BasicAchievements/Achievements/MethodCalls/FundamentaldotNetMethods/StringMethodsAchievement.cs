@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Strings")]
     public class StringCompareAchievement : AbstractMethodCall
     {
-        public StringCompareAchievement() : base("String.Compare")
+        public StringCompareAchievement() : base("System.String.Compare")
         {
         }
     }
@@ -21,8 +21,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Strings")]
     public class StringConcatAchievement : AbstractMethodCall
     {
-        public StringConcatAchievement()
-            : base("String.Concat")
+        public StringConcatAchievement() : base("System.String.Concat")
         {
         }
     }
@@ -32,8 +31,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Strings")]
     public class StringCopyAchievement : AbstractMethodCall
     {
-        public StringCopyAchievement()
-            : base("String.Copy")
+        public StringCopyAchievement() : base("System.String.Copy")
         {
         }
     }
@@ -43,8 +41,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Strings")]
     public class StringEqualsAchievement : AbstractMethodCall
     {
-        public StringEqualsAchievement()
-            : base("String.Equals")
+        public StringEqualsAchievement() : base("System.String.Equals")
         {
         }
     }
@@ -54,8 +51,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Strings")]
     public class StringJoinAchievement : AbstractMethodCall
     {
-        public StringJoinAchievement()
-            : base("String.Join")
+        public StringJoinAchievement() : base("System.String.Join")
         {
         }
     }

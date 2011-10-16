@@ -51,6 +51,74 @@ namespace Strokes.BasicAchievements.Achievements
                 get;
                 set;
             }
+
+            public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
+            {
+                var seperator = MethodToFind.LastIndexOf(".");
+                var typeToUse = MethodToFind.Substring(0, seperator);
+                var methodName = MethodToFind.Substring(seperator + 1);
+
+                var memberReference = invocationExpression.Target as MemberReferenceExpression;
+                if (memberReference.Target.IsCallToType(typeToUse) && memberReference.MemberName == methodName)
+                {
+                    if(Requirements.Count > 0)
+                    {
+                        foreach (var reqSet in Requirements)
+                        {
+                            if (!reqSet.Repeating && invocationExpression.Arguments.Count != reqSet.Requirements.Count)
+                            {
+                                continue;
+                            }
+
+                            int i = 0;
+                            foreach (var requirement in reqSet.Requirements)
+                            {
+                                if (invocationExpression.Arguments.Count - 1 < i)
+                                {
+                                    break;
+                                }
+
+                                var primitiveArgumentExpression = invocationExpression.Arguments.ElementAt(i) as PrimitiveExpression;
+                                if (primitiveArgumentExpression == null)
+                                {
+                                    break;
+                                }
+
+                                var valueType = primitiveArgumentExpression.Value.GetType();
+                                if (valueType == requirement.Type || valueType.IsSubclassOf(requirement.Type))
+                                {
+                                    if (requirement.Type == typeof(string) && requirement.Regex != null)
+                                    {
+                                        var regex = new Regex(requirement.Regex, requirement.RegexOptions);
+                                        var match = regex.IsMatch(primitiveArgumentExpression.Value.ToString());
+                                        if (match == false)
+                                        {
+                                            break;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    break;
+                                }
+
+                                if (i++ == reqSet.Requirements.Count - 1)
+                                {
+                                    UnlockWith(invocationExpression);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        UnlockWith(invocationExpression);
+                    }
+                }
+
+                return base.VisitInvocationExpression(invocationExpression, data);
+            }
+
+
             /* THIS INFINITE LOOPS SOME WHERE. Nasty nasty nasty
             public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
             {

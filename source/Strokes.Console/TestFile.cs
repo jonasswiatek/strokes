@@ -7,13 +7,13 @@ using System.Windows;
 using Strokes.Core;
 using System.Linq;
 
-namespace Strokes.Console
+namespace Strokes.Testing
 {
     public class TestFile
     {
         public void Main()
         {
-            Thread.Sleep(4);
+            System.Console.WriteLine("hello world: {0}", 1);
         }
     }
 }
