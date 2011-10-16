@@ -15,6 +15,9 @@ namespace Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis
             TypeDeclarations = new List<TypeDeclarationInfo>();
         }
 
+        /// <summary>
+        /// Gets or sets the type declarations.
+        /// </summary>
         public IList<TypeDeclarationInfo> TypeDeclarations
         {
             get;
