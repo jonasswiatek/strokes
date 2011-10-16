@@ -14,7 +14,17 @@ namespace Strokes.Console
         public Test()
         {
             System.Console.WriteLine("Hello World!");
+
+            G<A> g = new G<A>();
         }
+    }
+
+    public class A
+    {
+    }
+
+    public class G<T>
+    {
     }
 }
 

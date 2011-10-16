@@ -10,10 +10,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@CreateGenericObjectAchievementDescription",
         AchievementCategory = "@Generics",
         DependsOn = new[]
-                {
-                    "{0ec683c7-8005-4da1-abf9-7d027ec1256f}"
-                }
-                )]
+        {
+            "{0ec683c7-8005-4da1-abf9-7d027ec1256f}"
+        })]
     public class CreateGenericObjectAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -23,16 +22,14 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitObjectCreateExpression(ObjectCreateExpression objectCreateExpression, object data)
             {
-                if(objectCreateExpression.CreateType.GenericTypes.Count>0)
-                {
+                var type = objectCreateExpression.Type as SimpleType;
+                if (type != null && type.TypeArguments.Count > 0)
                     UnlockWith(objectCreateExpression);
-                }
+
                 return base.VisitObjectCreateExpression(objectCreateExpression, data);
             }
-             */
         }
     }
 }

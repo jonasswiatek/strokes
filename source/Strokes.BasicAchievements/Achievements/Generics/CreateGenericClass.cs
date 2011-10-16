@@ -10,9 +10,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@CreateGenericClassAchievementDescription",
         AchievementCategory = "@Generics",
         DependsOn = new[]
-                {
-                    "{0ec683c7-8005-4da1-abf9-7d027ec1256f}"
-                })]
+        {
+            "{0ec683c7-8005-4da1-abf9-7d027ec1256f}"
+        })]
     public class CreateGenericClassAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -22,16 +22,17 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if(typeDeclaration.ClassType == ClassType.Class && typeDeclaration.Name != "Program")
-                if(typeDeclaration.TypeParameters.Count > 0) //REFACTOR: Templates was changed to TypeParameters. Please confirm.
+                // Info for future achievements on this: 
+                //     http://www.codeproject.com/Articles/72467/C-4-0-Covariance-And-Contravariance-In-Generics
+                if (typeDeclaration.ClassType == ClassType.Class && typeDeclaration.Name != "Program")
                 {
-                    //Info for future achievements on this: http://www.codeproject.com/Articles/72467/C-4-0-Covariance-And-Contravariance-In-Generics
-                    UnlockWith(typeDeclaration);
+                    if (typeDeclaration.TypeParameters.Count > 0)
+                    {
+                        UnlockWith(typeDeclaration);
+                    }
                 }
-                    
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);
             }
