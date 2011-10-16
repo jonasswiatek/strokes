@@ -17,13 +17,11 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
+            public override object VisitArraySpecifier(ICSharpCode.NRefactory.CSharp.ArraySpecifier arraySpecifier, object data)
             {
-                if (localVariableDeclaration.TypeReference.IsArrayType)
-                    UnlockWith(localVariableDeclaration);
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }*/
+                UnlockWith(arraySpecifier);
+                return base.VisitArraySpecifier(arraySpecifier, data);
+            }
         }
     }
 }

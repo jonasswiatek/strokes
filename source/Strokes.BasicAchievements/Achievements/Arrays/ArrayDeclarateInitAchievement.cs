@@ -21,34 +21,11 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* TODREFACTOR: Doesn't exist in nrefactory 5
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
+            public override object VisitArrayInitializerExpression(ICSharpCode.NRefactory.CSharp.ArrayInitializerExpression arrayInitializerExpression, object data)
             {
-                if (localVariableDeclaration.TypeReference.IsArrayType)
-                {
-                    if (localVariableDeclaration.Variables.Count > 0)
-                    {
-                        var decl = localVariableDeclaration.Variables[0] as VariableDeclaration;
-                        if (decl != null)
-                        {
-                            if (decl.Initializer is CollectionInitializerExpression)
-                            {
-                                UnlockWith(localVariableDeclaration);
-                            }
-                            else if (decl.Initializer is ArrayCreateExpression)
-                            {
-                                ArrayCreateExpression decl2 = decl.Initializer as ArrayCreateExpression;
-                                if (decl2.ArrayInitializer is CollectionInitializerExpression && decl2.ArrayInitializer.CreateExpressions.Count > 0)
-                                {
-                                    UnlockWith(decl2.ArrayInitializer);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }*/
+                UnlockWith(arrayInitializerExpression);
+                return base.VisitArrayInitializerExpression(arrayInitializerExpression, data);
+            }
         }
     }
 }

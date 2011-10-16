@@ -54,7 +54,7 @@
     </Compile>
     <Compile Include="AchievementTest.cs" />
     <Compile Include="ExpectUnlockAttribute.cs" />
-    <Compile Include="TestCases\PrimitiveIntTest.cs">
+    <Compile Include="TestCases\JaggedArrayTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

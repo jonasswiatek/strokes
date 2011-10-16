@@ -22,6 +22,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* TODO: Make more advanced. Just testing if the member is called array isn't really enough.
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
                 if (memberReferenceExpression.Target is IdentifierExpression)
@@ -34,7 +35,7 @@ namespace Strokes.BasicAchievements.Achievements
                 }
                 return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
             }
-
+            */
         }
     }
 }

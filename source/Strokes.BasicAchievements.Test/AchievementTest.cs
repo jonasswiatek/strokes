@@ -44,7 +44,8 @@ namespace Strokes.BasicAchievements.Test
                                                ActiveFile = sourceFile,
                                                ActiveProject = null,
                                                ActiveProjectOutputDirectory = Path.GetDirectoryName(sourceFile),
-                                               ChangedFiles = new []{sourceFile}
+                                               ChangedFiles = new []{sourceFile},
+                                               CodeFiles = new[] { sourceFile }
                                            };
 
                 var expectedAchievements = test.GetCustomAttributes(typeof(ExpectUnlockAttribute), true).Select(a => ((ExpectUnlockAttribute)a).ExpectedAchievementType).ToList();
