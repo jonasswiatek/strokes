@@ -11,6 +11,7 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements
 {
     public abstract class MultipleDeclarePrimitiveType<T> : NRefactoryAchievement
+        where T : struct
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
@@ -19,34 +20,23 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private string TypeToFind = typeof(T).ToString();
-            /* REFACTOR
             public override object VisitFieldDeclaration(FieldDeclaration fieldDeclaration, object data)
             {
-                if (fieldDeclaration.TypeReference.Type == TypeToFind)
-                {
-                    if (fieldDeclaration.Fields.Count >= 2)
-                    {
+                if (fieldDeclaration.ReturnType.Is<T>())
+                    if (fieldDeclaration.Variables.Count >= 2)
                         UnlockWith(fieldDeclaration);
-                    }
-                }
 
                 return base.VisitFieldDeclaration(fieldDeclaration, data);
             }
 
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
+            public override object VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement, object data)
             {
-                if (localVariableDeclaration.TypeReference.Type == TypeToFind)
-                {
-                    if (localVariableDeclaration.Variables.Count >= 2)
-                    {
-                        UnlockWith(localVariableDeclaration);
-                    }
-                }
+                if (variableDeclarationStatement.Type.Is<T>())
+                    if (variableDeclarationStatement.Variables.Count >= 2)
+                        UnlockWith(variableDeclarationStatement);
 
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
+                return base.VisitVariableDeclarationStatement(variableDeclarationStatement, data);
             }
-             * */
         }
     }
 }
