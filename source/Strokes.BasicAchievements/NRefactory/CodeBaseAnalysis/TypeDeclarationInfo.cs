@@ -2,10 +2,29 @@
 {
     public class TypeDeclarationInfo
     {
-        public string TypeName;
-        public string Namespace;
-        public TypeDeclarationKind DetinitionTypeDeclarationKind;
-        public string Accessibility;
+        public string TypeName
+        {
+            get;
+            set;
+        }
+
+        public string Namespace
+        {
+            get;
+            set;
+        }
+
+        public TypeDeclarationKind DetinitionTypeDeclarationKind
+        {
+            get;
+            set;
+        }
+
+        public string Accessibility
+        {
+            get;
+            set;
+        }
     }
 
     public enum TypeDeclarationKind

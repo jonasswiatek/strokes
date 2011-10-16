@@ -15,7 +15,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         public FormatSpecifierAchievement()
             : base("Console.WriteLine")
         {
-            var requirementSet = new TypeAndValueRequirementSet
+            RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
@@ -31,11 +31,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                         Type = typeof (object)
                     }
                 }
-            };
-
-            requiredOverloads.Add(requirementSet);
+            });
         }
-
-
     }
 }

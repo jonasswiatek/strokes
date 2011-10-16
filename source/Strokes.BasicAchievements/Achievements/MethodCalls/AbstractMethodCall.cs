@@ -13,12 +13,21 @@ namespace Strokes.BasicAchievements.Achievements
     {
         private readonly string methodName;
 
-        protected List<TypeAndValueRequirementSet> requiredOverloads
-            = new List<TypeAndValueRequirementSet>();
+        protected AbstractMethodCall()
+        {
+            this.RequiredOverloads = new List<TypeAndValueRequirementSet>();
+        }
 
         protected AbstractMethodCall(string methodName)
+            : this()
         {
             this.methodName = methodName;
+        }
+
+        protected List<TypeAndValueRequirementSet> RequiredOverloads
+        {
+            get;
+            set;
         }
 
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -26,7 +35,7 @@ namespace Strokes.BasicAchievements.Achievements
             return new Visitor()
             {
                 MethodToFind = methodName,
-                Requirements = requiredOverloads
+                Requirements = RequiredOverloads
             };
         }
 
@@ -50,7 +59,7 @@ namespace Strokes.BasicAchievements.Achievements
                 if (memberReferenceExpression != null)
                 {
                     var methodName = memberReferenceExpression.GetCallChainAsString();
-                    
+
                     if (MethodToFind == methodName)
                     {
                         if (Requirements.Count > 0)
@@ -58,8 +67,9 @@ namespace Strokes.BasicAchievements.Achievements
                             foreach (var reqSet in Requirements)
                             {
                                 if (!reqSet.Repeating && invocationExpression.Arguments.Count != reqSet.Requirements.Count)
+                                {
                                     continue;
-                                ;
+                                }
 
                                 int i = 0;
                                 foreach (var requirement in reqSet.Requirements)
@@ -71,7 +81,9 @@ namespace Strokes.BasicAchievements.Achievements
 
                                     var primitiveArgumentExpression = invocationExpression.Arguments[i] as PrimitiveExpression;
                                     if (primitiveArgumentExpression == null)
+                                    {
                                         break;
+                                    }
 
                                     var valueType = primitiveArgumentExpression.Value.GetType();
                                     if (valueType == requirement.Type || valueType.IsSubclassOf(requirement.Type))
@@ -79,7 +91,8 @@ namespace Strokes.BasicAchievements.Achievements
                                         if (requirement.Type == typeof(string) && requirement.Regex != null)
                                         {
                                             var regex = new Regex(requirement.Regex, requirement.RegexOptions);
-                                            if (!regex.IsMatch(primitiveArgumentExpression.Value.ToString()))
+                                            var match = regex.IsMatch(primitiveArgumentExpression.Value.ToString());
+                                            if (match == false)
                                             {
                                                 break;
                                             }
@@ -132,21 +145,21 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public TypeAndValueRequirement()
             {
-                 RegexOptions = RegexOptions.None;
+                RegexOptions = RegexOptions.None;
             }
-            
+
             public Type Type
             {
                 get;
                 set;
             }
-            
+
             public string Regex
             {
                 get;
                 set;
             }
-            
+
             public RegexOptions RegexOptions
             {
                 get;

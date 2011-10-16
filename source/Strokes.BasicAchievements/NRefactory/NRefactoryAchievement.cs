@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using ICSharpCode.NRefactory.Ast;
 using ICSharpCode.NRefactory.Visitors;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
-using Strokes.BasicAchievements.NRefactory.Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 using ICSharpCode.NRefactory;
 
@@ -16,36 +16,41 @@ namespace Strokes.BasicAchievements.NRefactory
     /// </summary>
     public abstract class NRefactoryAchievement : AchievementBase
     {
-        protected IEnumerable<TypeDeclarationInfo> CodebaseTypeDeclarations;
+        protected IEnumerable<TypeDeclarationInfo> CodebaseTypeDeclarations
+        {
+            get;
+            set;
+        }
 
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
-            //Return out if there are no files to check achievements in.
+            // Return out if there are no files to check achievements in.
             if (!detectionSession.BuildInformation.ChangedFiles.Any())
             {
                 return false;
             }
 
-            //Obtain a session object and the codebase type declarations
+            // Obtain a session object and the codebase type declarations
             var nrefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
             CodebaseTypeDeclarations = nrefactorySession.GetCodebaseTypeDeclarations(detectionSession.BuildInformation);
 
-            //Have the concrete implementation create it's visitor
+            // Have the concrete implementation create it's visitor
             var visitor = CreateVisitor(detectionSession);
 
-            //Parse all files in the changed files collection for achievements
-            foreach(var filename in detectionSession.BuildInformation.ChangedFiles)
+            // Parse all files in the changed files collection for achievements
+            foreach (var filename in detectionSession.BuildInformation.ChangedFiles)
             {
-                //Obtain a parser from the nrefactorySession. This parser is shared context between all concrete achievement implementations.
+                // Obtain a parser from the nrefactorySession. 
+                // This parser is shared context between all concrete achievement implementations.
                 var parser = nrefactorySession.GetParser(filename);
 
-                //Pass concrete visitor into the AST created by the parser
+                // Pass concrete visitor into the AST created by the parser
                 parser.CompilationUnit.AcceptVisitor(visitor, null);
 
-                //Call OnParsingCompleted on the visitor to give it a last chance to unlock achievements.
+                // Call OnParsingCompleted on the visitor to give it a last chance to unlock achievements.
                 visitor.OnParsingCompleted();
 
-                //Check if the visitor declared the concrete achievement as unlocked.
+                // Check if the visitor declared the concrete achievement as unlocked.
                 if (visitor.IsAchievementUnlocked)
                 {
                     AchievementCodeLocation = visitor.CodeLocation;

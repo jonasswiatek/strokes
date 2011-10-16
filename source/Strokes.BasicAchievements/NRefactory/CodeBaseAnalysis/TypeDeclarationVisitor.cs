@@ -7,12 +7,25 @@ namespace Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis
 {
     public class TypeDeclarationVisitor : AbstractAstVisitor
     {
-        public IList<TypeDeclarationInfo> TypeDeclarations = new List<TypeDeclarationInfo>();
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:TypeDeclarationVisitor"/> class.
+        /// </summary>
+        public TypeDeclarationVisitor()
+        {
+            TypeDeclarations = new List<TypeDeclarationInfo>();
+        }
+
+        public IList<TypeDeclarationInfo> TypeDeclarations
+        {
+            get;
+            set;
+        }
+
         public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
         {
             var typeName = typeDeclaration.Name;
             TypeDeclarationKind typeDeclarationKind;
-            switch(typeDeclaration.Type)
+            switch (typeDeclaration.Type)
             {
                 case ClassType.Class:
                     typeDeclarationKind = TypeDeclarationKind.Class;
@@ -32,19 +45,19 @@ namespace Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis
             }
 
             var typeDeclarationNamespace = "";
-            if(typeDeclaration.Parent != null && typeDeclaration.Parent is NamespaceDeclaration)
+            if (typeDeclaration.Parent != null && typeDeclaration.Parent is NamespaceDeclaration)
             {
                 var namespaceDeclaration = (NamespaceDeclaration)typeDeclaration.Parent;
                 typeDeclarationNamespace = namespaceDeclaration.Name;
             }
 
             TypeDeclarations.Add(new TypeDeclarationInfo
-                                     {
-                                         Accessibility = typeDeclaration.Modifier.ToString(),
-                                         TypeName = typeName,
-                                         Namespace = typeDeclarationNamespace,
-                                         DetinitionTypeDeclarationKind = typeDeclarationKind
-                                     });
+            {
+                Accessibility = typeDeclaration.Modifier.ToString(),
+                TypeName = typeName,
+                Namespace = typeDeclarationNamespace,
+                DetinitionTypeDeclarationKind = typeDeclarationKind
+            });
 
             return base.VisitTypeDeclaration(typeDeclaration, data);
         }

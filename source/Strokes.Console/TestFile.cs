@@ -9,98 +9,107 @@ using System.Linq;
 
 namespace Strokes.Console
 {
-    public class GenericList<T>
+    public class Test
     {
-        static void Main()
+        public Test()
         {
-            throw new Exception(
-                "abcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghi");
-
+            System.Console.WriteLine("Hello World");
         }
-
-        void Add(T input) { }
     }
 
-    public enum SomeEnum
-    {
-        a, b, c
-    }
-    public class TestFile : IComparable
-    {
-        public string Test { get; set; }
-        public int bla = 2;
+    //public class GenericList<T>
+    //{
+    //    static void Main()
+    //    {
+    //        throw new Exception(
+    //            "abcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghiabcdefghi");
 
-        public TestFile()
-        {
-            GenericList<int> list1 = new GenericList<int>();
 
-            var bla = "";
-            var enm = SomeEnum.a;
+    //    }
 
-            switch(enm)
-            {
-                case SomeEnum.a:
-                    bla = "a";
-                    break;
-                case SomeEnum.b:
-                    bla = "b";
-                    break;
-                default:
-                    bla = "c";
-                    break;
-            }
-        }
+    //    void Add(T input) { }
+    //}
 
-        #region IEquatable<int> Members
+    //public enum SomeEnum
+    //{
+    //    a, b, c
+    //}
+    //public class TestFile : IComparable
+    //{
+    //    public string Test { get; set; }
+    //    public int bla = 2;
 
-        public bool Equals(int other)
-        {
-            throw new NotImplementedException();
-        }
+    //    public TestFile()
+    //    {
+    //        GenericList<int> list1 = new GenericList<int>();
 
-        #endregion
+    //        var bla = "";
+    //        var enm = SomeEnum.a;
 
-        #region IEquatable<double> Members
+    //        switch(enm)
+    //        {
+    //            case SomeEnum.a:
+    //                bla = "a";
+    //                break;
+    //            case SomeEnum.b:
+    //                bla = "b";
+    //                break;
+    //            default:
+    //                bla = "c";
+    //                break;
+    //        }
+    //    }
 
-        public bool Equals(double other)
-        {
-            return false;
-        }
+    //    #region IEquatable<int> Members
 
-        #endregion
+    //    public bool Equals(int other)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        #region IEquatable<byte> Members
+    //    #endregion
 
-        public bool Equals(byte other)
-        {
-            return false;
-        }
+    //    #region IEquatable<double> Members
 
-        #endregion
+    //    public bool Equals(double other)
+    //    {
+    //        return false;
+    //    }
 
-        #region IEquatable<decimal> Members
+    //    #endregion
 
-        public bool Equals(decimal other)
-        {
-            return false;
-        }
+    //    #region IEquatable<byte> Members
 
-        #endregion
+    //    public bool Equals(byte other)
+    //    {
+    //        return false;
+    //    }
 
-        #region IEquatable<string> Members
+    //    #endregion
 
-        public bool Equals(string other)
-        {
-            return false;
-        }
+    //    #region IEquatable<decimal> Members
 
-        #endregion
+    //    public bool Equals(decimal other)
+    //    {
+    //        return false;
+    //    }
 
-        public int CompareTo(object obj)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    //    #endregion
+
+    //    #region IEquatable<string> Members
+
+    //    public bool Equals(string other)
+    //    {
+    //        return false;
+    //    }
+
+    //    #endregion
+
+    //    public int CompareTo(object obj)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }
 
 #pragma warning restore

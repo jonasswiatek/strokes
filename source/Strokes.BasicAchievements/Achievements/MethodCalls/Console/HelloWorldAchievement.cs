@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
@@ -11,9 +12,10 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class HelloWorldAchievement : AbstractMethodCall
     {
-        public HelloWorldAchievement(): base("Console.WriteLine")
+        public HelloWorldAchievement()
+            : base("Console.WriteLine")
         {
-            var requirementSet = new TypeAndValueRequirementSet
+            RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
@@ -21,16 +23,11 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                     new TypeAndValueRequirement
                     {
                         Type = typeof (string),
-                        Regex = @"hello world"
+                        Regex = @"hello world",
+                        RegexOptions = RegexOptions.IgnoreCase
                     },
-                    new TypeAndValueRequirement
-                    {
-                        Type = typeof (object)
-                    }
                 }
-            };
-
-            requiredOverloads.Add(requirementSet);
+            });
         }
     }
 }

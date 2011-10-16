@@ -14,7 +14,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         public PrintNewLineAchievement()
             : base("Console.WriteLine")
         {
-            var requirementSet = new TypeAndValueRequirementSet
+            RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
@@ -25,9 +25,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                         Regex = @"\n"
                     }
                 }
-            };
-
-            requiredOverloads.Add(requirementSet);
+            });
         }
     }
 
@@ -39,7 +37,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         public PrintHorizontalTabAchievement()
             : base("Console.WriteLine")
         {
-            var requirementSet = new TypeAndValueRequirementSet
+            RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
@@ -50,9 +48,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                         Regex = @"\t"
                     }
                 }
-            };
-
-            requiredOverloads.Add(requirementSet);
+            });
         }
     }
 
@@ -64,7 +60,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         public PrintQuoteCharAchievement()
             : base("Console.WriteLine")
         {
-            var requirementSet = new TypeAndValueRequirementSet
+            RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
@@ -75,9 +71,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                         Regex = "\\\""
                     }
                 }
-            };
-
-            requiredOverloads.Add(requirementSet);
+            });
         }
     }
 
@@ -89,7 +83,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         public PrintSingleQuoteCharAchievement()
             : base("Console.WriteLine")
         {
-            var requirementSet = new TypeAndValueRequirementSet
+            RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
@@ -100,9 +94,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                         Regex = "\\\'"
                     }
                 }
-            };
-
-            requiredOverloads.Add(requirementSet);
+            });
         }
     }
 
@@ -114,7 +106,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         public PrintBackSlashCharAchievement()
             : base("Console.WriteLine")
         {
-            var requirementSet = new TypeAndValueRequirementSet
+            RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
@@ -125,10 +117,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                         Regex = "\\\\"
                     }
                 }
-            };
-
-            requiredOverloads.Add(requirementSet);
+            });
         }
     }
-
 }

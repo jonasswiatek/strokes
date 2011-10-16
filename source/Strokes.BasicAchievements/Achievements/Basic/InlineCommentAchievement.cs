@@ -6,7 +6,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ICSharpCode.NRefactory;
 using Strokes.BasicAchievements.NRefactory;
-using Strokes.BasicAchievements.NRefactory.Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
