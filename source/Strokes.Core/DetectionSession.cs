@@ -6,38 +6,61 @@ namespace Strokes.Core
 {
     public class DetectionSession : IDisposable
     {
-        private readonly object _padLock = new object();
-        public BuildInformation BuildInformation { get; private set; }
-        private readonly IDictionary<Type, object> _sessionObjects = new Dictionary<Type, object>();
+        /// <summary>
+        /// Lock for syncronizing achievement tests.
+        /// </summary>
+        private readonly object padLock = new object();
 
+        /// <summary>
+        /// Dictionary of the session objects (each representing a <c>IParser</c>).
+        /// </summary>
+        private readonly IDictionary<Type, object> sessionObjects = new Dictionary<Type, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DetectionSession"/> class.
+        /// </summary>
+        /// <param name="buildInformation">The build information.</param>
         public DetectionSession(BuildInformation buildInformation)
         {
             BuildInformation = buildInformation;
         }
 
         /// <summary>
-        /// This method is used by achievement implementations to share some type.
-        /// In the BasicAchievements library, this is used to share a collection of parsers (one parser per file the achievement is looking in).
+        /// Gets or sets the build information.
         /// </summary>
-        /// <typeparam name="T">Type of the object shared</typeparam>
-        /// <returns>A shared or new instance of the defined type</returns>
+        public BuildInformation BuildInformation
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// This method is used by achievement implementations to share some type.
+        /// In the BasicAchievements library, this is used to share a collection of parsers 
+        /// (one parser per file the achievement is looking in).
+        /// </summary>
+        /// <typeparam name="T"><c>Type</c> of the object shared.</typeparam>
+        /// <returns>A shared or new instance of the defined type.</returns>
         public T GetSessionObjectOfType<T>()
         {
-            lock (_padLock) //Synchronize access to this collection.
+            lock (padLock) // Synchronize access to this collection.
             {
-                if (!_sessionObjects.ContainsKey(typeof(T)))
+                if (!sessionObjects.ContainsKey(typeof(T)))
                 {
-                    _sessionObjects[typeof(T)] = Activator.CreateInstance<T>();
+                    sessionObjects[typeof(T)] = Activator.CreateInstance<T>();
                 }
 
-                return (T)_sessionObjects[typeof(T)];                
+                return (T)sessionObjects[typeof(T)];
             }
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             //Dispose all disposable children
-            foreach(var disposable in _sessionObjects.Values.OfType<IDisposable>())
+            foreach (var disposable in sessionObjects.Values.OfType<IDisposable>())
             {
                 disposable.Dispose();
             }
