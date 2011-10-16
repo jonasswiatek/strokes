@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
-using ICSharpCode.NRefactory.Visitors;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -25,7 +24,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                string modifiers= methodDeclaration.Modifier.ToString();
+                string modifiers= methodDeclaration.Modifiers.ToString();
 
                 //A silly little trick to prevent having to count each modifier independently
                 if(System.Text.RegularExpressions.Regex.Matches(modifiers,",").Count > 2)

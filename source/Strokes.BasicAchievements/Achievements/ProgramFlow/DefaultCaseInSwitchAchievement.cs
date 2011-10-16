@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
-using ICSharpCode.NRefactory.Visitors;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -19,8 +18,10 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            
             public override object VisitSwitchSection(SwitchSection switchSection, object data)
             {
+                /* REFACTOR: the SwitchLabels collection doesn't exist on this in NRefactory 5
                 var defaultLabel = switchSection.SwitchLabels.FirstOrDefault(a => a.IsDefault);
                 if(defaultLabel != null)
                 {
@@ -29,7 +30,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                     IsAchievementUnlocked = true;
                 }
-                
+                */
                 return base.VisitSwitchSection(switchSection, data);
             }
         }

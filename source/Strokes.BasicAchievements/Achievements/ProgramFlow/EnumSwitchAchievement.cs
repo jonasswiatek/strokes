@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
-using ICSharpCode.NRefactory.Visitors;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.Core;
@@ -37,6 +36,7 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitSwitchStatement(SwitchStatement switchStatement, object data)
             {
+                /* //REFACTOR: SwitchLabels doesn't exist in NRefactory5
                 foreach (var secton in switchStatement.SwitchSections)
                 {
                     foreach (var label in secton.SwitchLabels)
@@ -52,7 +52,7 @@ namespace Strokes.BasicAchievements.Achievements
                             }
                         }
                     }
-                }
+                }*/
 
                 return base.VisitSwitchStatement(switchStatement, data);
             }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
-using ICSharpCode.NRefactory.Visitors;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -21,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitFieldDeclaration(FieldDeclaration fieldDeclaration, object data)
             {
-                if ((fieldDeclaration.Modifier & Modifiers.Const) == Modifiers.Const)
+                if ((fieldDeclaration.Modifiers & Modifiers.Const) == Modifiers.Const)
                 {
                     UnlockWith(fieldDeclaration);
                 }
@@ -29,13 +28,14 @@ namespace Strokes.BasicAchievements.Achievements
                 return base.VisitFieldDeclaration(fieldDeclaration, data);
             }
 
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
+            public override object VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement, object data)
             {
-                if ((localVariableDeclaration.Modifier & Modifiers.Const) == Modifiers.Const)
+                if ((variableDeclarationStatement.Modifiers & Modifiers.Const) == Modifiers.Const)
                 {
-                    UnlockWith(localVariableDeclaration);
+                    UnlockWith(variableDeclarationStatement);
                 }
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
+
+                return base.VisitVariableDeclarationStatement(variableDeclarationStatement, data);
             }
         }
     }

@@ -44,9 +44,15 @@
   <ItemGroup>
     <Reference Include="ICSharpCode.NRefactory, Version=4.0.0.7070, Culture=neutral, PublicKeyToken=efe927acf176eea2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ExternalReferences\ICSharpCode.NRefactory.dll</HintPath>
+      <HintPath>..\ExternalReferences\NRefactory5\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory.CSharp">
+      <HintPath>..\ExternalReferences\NRefactory5\ICSharpCode.NRefactory.CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\ExternalReferences\NRefactory5\Mono.Cecil.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />

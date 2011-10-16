@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using ICSharpCode.NRefactory.Ast;
-using ICSharpCode.NRefactory.Visitors;
+using ICSharpCode.NRefactory.CSharp;
 
 namespace Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis
 {
-    public class TypeDeclarationVisitor : AbstractAstVisitor
+    public class TypeDeclarationVisitor : DepthFirstAstVisitor<object, object>
     {
         public IList<TypeDeclarationInfo> TypeDeclarations = new List<TypeDeclarationInfo>();
         public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
         {
             var typeName = typeDeclaration.Name;
             TypeDeclarationKind typeDeclarationKind;
-            switch(typeDeclaration.Type)
+            switch(typeDeclaration.ClassType)
             {
                 case ClassType.Class:
                     typeDeclarationKind = TypeDeclarationKind.Class;
@@ -40,7 +39,7 @@ namespace Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis
 
             TypeDeclarations.Add(new TypeDeclarationInfo
                                      {
-                                         Accessibility = typeDeclaration.Modifier.ToString(),
+                                         Accessibility = typeDeclaration.Modifiers.ToString(),
                                          TypeName = typeName,
                                          Namespace = typeDeclarationNamespace,
                                          DetinitionTypeDeclarationKind = typeDeclarationKind

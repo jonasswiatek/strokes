@@ -21,7 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             var nrefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
             var filename = detectionSession.BuildInformation.ActiveFile;
-            var parser = nrefactorySession.GetParser(filename);
+            var parser = nrefactorySession.GetCompilationUnit(filename);
             var specials = parser.Lexer.SpecialTracker.RetrieveSpecials();
 
             return specials.OfType<Comment>().Any(a => a.CommentType == CommentType.Block);

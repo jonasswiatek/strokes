@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
-using ICSharpCode.NRefactory.Visitors;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -23,6 +21,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            /* REFACTOR: This visitor method doesn't exist in NRefactory 5
             public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
             {
                 //Tim= not so happy about hardocing this RankSpecifier, not sure when this specifier contains more than 1 element
@@ -30,7 +29,7 @@ namespace Strokes.BasicAchievements.Achievements
                     UnlockWith(localVariableDeclaration);
 
                 return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }
+            }*/
         }
     }
 }

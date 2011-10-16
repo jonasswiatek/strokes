@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ICSharpCode.NRefactory.Ast;
-using ICSharpCode.NRefactory.Visitors;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.BasicAchievements.NRefactory.Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
-using ICSharpCode.NRefactory;
 
 namespace Strokes.BasicAchievements.NRefactory
 {
@@ -37,10 +35,10 @@ namespace Strokes.BasicAchievements.NRefactory
             foreach(var filename in detectionSession.BuildInformation.ChangedFiles)
             {
                 //Obtain a parser from the nrefactorySession. This parser is shared context between all concrete achievement implementations.
-                var parser = nrefactorySession.GetParser(filename);
+                var compilationUnit = nrefactorySession.GetCompilationUnit(filename);
 
                 //Pass concrete visitor into the AST created by the parser
-                parser.CompilationUnit.AcceptVisitor(visitor, null);
+                compilationUnit.AcceptVisitor(visitor, null);
 
                 //Call OnParsingCompleted on the visitor to give it a last chance to unlock achievements.
                 visitor.OnParsingCompleted();
@@ -63,7 +61,7 @@ namespace Strokes.BasicAchievements.NRefactory
 
         protected abstract AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession);
 
-        protected abstract class AbstractAchievementVisitor : AbstractAstVisitor
+        protected abstract class AbstractAchievementVisitor : DepthFirstAstVisitor<object, object> 
         {
             public AchievementCodeLocation CodeLocation
             {
@@ -77,7 +75,7 @@ namespace Strokes.BasicAchievements.NRefactory
                 set;
             }
 
-            protected void UnlockWith(AbstractNode location)
+            protected void UnlockWith(AstNode location)
             {
                 CodeLocation = new AchievementCodeLocation();
 

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ICSharpCode.NRefactory.Ast;
-using ICSharpCode.NRefactory.Visitors;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -25,9 +24,9 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
-                if (memberReferenceExpression.TargetObject is IdentifierExpression)
+                if (memberReferenceExpression.Target is IdentifierExpression)
                 {
-                    var identifier = (IdentifierExpression) memberReferenceExpression.TargetObject;
+                    var identifier = (IdentifierExpression)memberReferenceExpression.Target;
 
                     if (identifier.Identifier == "array" && memberReferenceExpression.MemberName == "Length")
                         UnlockWith(memberReferenceExpression);
