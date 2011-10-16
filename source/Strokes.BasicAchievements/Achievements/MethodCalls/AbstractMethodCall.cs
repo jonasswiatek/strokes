@@ -54,7 +54,6 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
             {
-                //REFACTOR: invocationExpression.Target changed from invocationExpression.TargetObject - no idea if this is correct. Please verify.
                 var memberReferenceExpression = invocationExpression.Target as MemberReferenceExpression;
                 if (memberReferenceExpression != null)
                 {

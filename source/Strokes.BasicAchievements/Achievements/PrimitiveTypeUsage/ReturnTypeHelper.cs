@@ -27,6 +27,29 @@ namespace Strokes.BasicAchievements.Achievements
                 return false;
         }
 
+        public static bool IsBoolean(this AstType astType)
+        {
+            string typeName = astType.GetTypeName();
+            return typeName == "bool" ||
+                   typeName == "Boolean";
+        }
+
+        public static bool IsByte(this AstType astType)
+        {
+            string typeName = astType.GetTypeName();
+            return typeName == "byte" ||
+                   typeName == "sbyte" ||
+                   typeName == "Byte" ||
+                   typeName == "SByte";
+        }
+
+        public static bool IsString(this AstType astType)
+        {
+            string typeName = astType.GetTypeName();
+            return typeName == "string" ||
+                   typeName == "String";
+        }
+
         public static bool IsShort(this AstType astType)
         {
             string typeName = astType.GetTypeName();

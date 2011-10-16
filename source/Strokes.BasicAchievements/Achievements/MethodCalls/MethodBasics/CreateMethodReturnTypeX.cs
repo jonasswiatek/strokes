@@ -18,20 +18,21 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (!methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifier.HasFlag(Modifiers.Constructors))
+                if (methodDeclaration.Name.ToLower().Equals("main") == false)
                 {
-                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                    if (methodDeclaration.IsExtensionMethod == false &&
+                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
                     {
-                        if (methodDeclaration.TypeReference.ToString().Equals("System.Void"))
+                        var returnType = methodDeclaration.ReturnType as PrimitiveType;
+                        if (returnType != null && returnType.Keyword == "void")
                             UnlockWith(methodDeclaration);
                     }
                 }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             * */
         }
     }
 
@@ -47,20 +48,20 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (!methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifier.HasFlag(Modifiers.Constructors))
+                if (methodDeclaration.Name.ToLower().Equals("main") == false)
                 {
-                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                    if (methodDeclaration.IsExtensionMethod == false &&
+                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
                     {
-                        if (methodDeclaration.TypeReference.ToString().Equals("System.Int32"))
+                        if (methodDeclaration.ReturnType.IsInteger())
                             UnlockWith(methodDeclaration);
                     }
                 }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             * */
         }
     }
 
@@ -76,20 +77,20 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (!methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifier.HasFlag(Modifiers.Constructors))
+                if (methodDeclaration.Name.ToLower().Equals("main") == false)
                 {
-                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                    if (methodDeclaration.IsExtensionMethod == false &&
+                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
                     {
-                        if (methodDeclaration.TypeReference.ToString().Equals("System.String"))
+                        if (methodDeclaration.ReturnType.IsString())
                             UnlockWith(methodDeclaration);
                     }
                 }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             */
         }
     }
 
@@ -105,20 +106,20 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (!methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifier.HasFlag(Modifiers.Constructors))
+                if (methodDeclaration.Name.ToLower().Equals("main") == false)
                 {
-                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                    if (methodDeclaration.IsExtensionMethod == false &&
+                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
                     {
-                        if (methodDeclaration.TypeReference.ToString().Equals("System.Boolean"))
+                        if (methodDeclaration.ReturnType.IsBoolean())
                             UnlockWith(methodDeclaration);
                     }
                 }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             */
         }
     }
 
@@ -134,20 +135,20 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (!methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifier.HasFlag(Modifiers.Constructors))
+                if (methodDeclaration.Name.ToLower().Equals("main") == false)
                 {
-                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                    if (methodDeclaration.IsExtensionMethod == false &&
+                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
                     {
-                        if (methodDeclaration.TypeReference.ToString().Equals("System.Char"))
+                        if (methodDeclaration.ReturnType.IsChar())
                             UnlockWith(methodDeclaration);
                     }
                 }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             */
         }
     }
 
@@ -164,20 +165,20 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (!methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifier.HasFlag(Modifiers.Constructors))
+                if (methodDeclaration.Name.ToLower().Equals("main") == false)
                 {
-                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                    if (methodDeclaration.IsExtensionMethod == false &&
+                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
                     {
-                        if (methodDeclaration.TypeReference.ToString().Equals("System.Double"))
+                        if (methodDeclaration.ReturnType.IsDouble())
                             UnlockWith(methodDeclaration);
                     }
                 }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             */
         }
     }
 
@@ -193,20 +194,20 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (!methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifier.HasFlag(Modifiers.Constructors))
+                if (methodDeclaration.Name.ToLower().Equals("main") == false)
                 {
-                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                    if (methodDeclaration.IsExtensionMethod == false &&
+                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
                     {
-                        if (methodDeclaration.TypeReference.ToString().Equals("System.Single"))
+                        if (methodDeclaration.ReturnType.IsFloat())
                             UnlockWith(methodDeclaration);
                     }
                 }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             */
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using ICSharpCode.NRefactory.CSharp;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -9,9 +10,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@ParamsParameterAchievementDescription",
         AchievementCategory = "@Method",
         DependsOn = new[]
-                {
-                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
-                })]
+        {
+            "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+        })]
     public class ParamsParameterAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -21,16 +22,15 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
-            public override object VisitParameterDeclarationExpression(ParameterDeclarationExpression parameterDeclarationExpression, object data)
+            public override object VisitParameterDeclaration(ParameterDeclaration parameterDeclaration, object data)
             {
-                if (parameterDeclarationExpression.ParamModifier == ParameterModifiers.Params)
+                if (parameterDeclaration.ParameterModifier == ParameterModifier.Params)
                 {
-                    UnlockWith(parameterDeclarationExpression);
+                    UnlockWith(parameterDeclaration);
                 }
-                return base.VisitParameterDeclarationExpression(parameterDeclarationExpression, data);
+
+                return base.VisitParameterDeclaration(parameterDeclaration, data);
             }
-             */
         }
     }
 }

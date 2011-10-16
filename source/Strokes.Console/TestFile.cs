@@ -13,8 +13,7 @@ namespace Strokes.Console
     {
         public Test()
         {
-            int a = Int32.MaxValue;
-            int b = Int32.MinValue;
+            System.Console.WriteLine("Hello World!");
         }
     }
 }
