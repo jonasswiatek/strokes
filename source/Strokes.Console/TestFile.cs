@@ -9,6 +9,15 @@ using System.Linq;
 
 namespace Strokes.Console
 {
+    public class Test
+    {
+        public Test()
+        {
+            if ("foo" == "bar" || "bar" == "foo")
+            {
+            }
+        }
+    }
 }
 
 #pragma warning restore
