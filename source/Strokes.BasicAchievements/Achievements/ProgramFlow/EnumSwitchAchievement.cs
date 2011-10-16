@@ -12,47 +12,47 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@EnumSwitchAchievementDescription",
         AchievementCategory = "@ProgramFlow",
         DependsOn = new[]
-                            {
-                                "{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}"
-                            })]
-    
+        {
+            "{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}"
+        })]
     public class EnumSwitchAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
-            //Pass typeDeclarations into the constructor
             return new Visitor(CodebaseTypeDeclarations);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private readonly IEnumerable<TypeDeclarationInfo> _typeDeclarationInfos;
+            private readonly IEnumerable<TypeDeclarationInfo> typeDeclarationInfos;
 
-            // Get the typeDeclarations from the constructor
             public Visitor(IEnumerable<TypeDeclarationInfo> typeDeclarationInfos)
             {
-                _typeDeclarationInfos = typeDeclarationInfos;
+                this.typeDeclarationInfos = typeDeclarationInfos;
             }
 
             public override object VisitSwitchStatement(SwitchStatement switchStatement, object data)
             {
-                /* //REFACTOR: SwitchLabels doesn't exist in NRefactory5
-                foreach (var secton in switchStatement.SwitchSections)
+                foreach (var section in switchStatement.SwitchSections)
                 {
-                    foreach (var label in secton.SwitchLabels)
+                    foreach (var label in section.CaseLabels)
                     {
-                        var memberRef = label.Label as MemberReferenceExpression;
-                        var targetObject = memberRef != null ? memberRef.TargetObject as IdentifierExpression : null;
+                        var memberRef = label.Expression as MemberReferenceExpression;
+                        var targetObject = memberRef != null ? memberRef.Target as IdentifierExpression : null;
                         if (targetObject != null)
                         {
-                            if(_typeDeclarationInfos.Any(a => a.TypeName == targetObject.Identifier && a.DetinitionTypeDeclarationKind == TypeDeclarationKind.Enum))
+                            var hasEnums = typeDeclarationInfos.Any(a =>
+                                     a.TypeName == targetObject.Identifier &&
+                                     a.DetinitionTypeDeclarationKind == TypeDeclarationKind.Enum);
+
+                            if (hasEnums)
                             {
                                 UnlockWith(switchStatement);
                                 break;
                             }
                         }
                     }
-                }*/
+                }
 
                 return base.VisitSwitchStatement(switchStatement, data);
             }

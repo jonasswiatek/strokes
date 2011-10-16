@@ -18,74 +18,60 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
+            private readonly List<string> doublefloatvariables = new List<string>();
+
             public override object VisitBinaryOperatorExpression(BinaryOperatorExpression binaryOperatorExpression, object data)
             {
                 bool leftdangerous = false;
                 bool rightdangerous = false;
-                if(binaryOperatorExpression.Operator == BinaryOperatorType.Equality)
-                {
-                    if(binaryOperatorExpression.Left is PrimitiveExpression)
-                    {
-                        PrimitiveExpression prim = (PrimitiveExpression) binaryOperatorExpression.Left;
-                        if (prim.LiteralFormat == LiteralFormat.DecimalNumber)
-                            leftdangerous = true;
-                    }
-                    
-                     else if (binaryOperatorExpression.Left is IdentifierExpression)
-                     {
-                         IdentifierExpression idexpr = (IdentifierExpression) binaryOperatorExpression.Left;
-                         if (_doublefloatvariables.Contains(idexpr.Identifier))
-                         {
-                             leftdangerous = true;
-                         }
-                     }
 
+                if (binaryOperatorExpression.Operator == BinaryOperatorType.Equality)
+                {
+                    if (binaryOperatorExpression.Left is PrimitiveExpression)
+                    {
+                        PrimitiveExpression prim = (PrimitiveExpression)binaryOperatorExpression.Left;
+                        if (prim.Value.GetType() == typeof(double) ||
+                            prim.Value.GetType() == typeof(float) ||
+                            prim.Value.GetType() == typeof(decimal))
+                        {
+                            leftdangerous = true;
+                        }
+                    }
+                    else if (binaryOperatorExpression.Left is IdentifierExpression)
+                    {
+                        IdentifierExpression idexpr = (IdentifierExpression)binaryOperatorExpression.Left;
+                        if (doublefloatvariables.Contains(idexpr.Identifier))
+                        {
+                            leftdangerous = true;
+                        }
+                    }
 
                     if (binaryOperatorExpression.Right is PrimitiveExpression)
                     {
                         PrimitiveExpression prim = (PrimitiveExpression)binaryOperatorExpression.Right;
-                        if (prim.LiteralFormat == LiteralFormat.DecimalNumber)
+                        if (prim.Value.GetType() == typeof(double) ||
+                            prim.Value.GetType() == typeof(float) ||
+                            prim.Value.GetType() == typeof(decimal))
+                        {
                             rightdangerous = true;
+                        }
                     }
-
-
                     else if (binaryOperatorExpression.Right is IdentifierExpression)
                     {
                         IdentifierExpression idexpr = (IdentifierExpression)binaryOperatorExpression.Right;
-                        if (_doublefloatvariables.Contains(idexpr.Identifier))
+                        if (doublefloatvariables.Contains(idexpr.Identifier))
                         {
                             rightdangerous = true;
                         }
                     }
 
-                    if(leftdangerous || rightdangerous)
+                    if (leftdangerous || rightdangerous)
                     {
                         UnlockWith(binaryOperatorExpression);
                     }
                 }
                 return base.VisitBinaryOperatorExpression(binaryOperatorExpression, data);
             }
-            */
-
-            private readonly List<string> _doublefloatvariables = new List<string>();
-
-            /* //REFACTOR
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
-            {
-
-                if (localVariableDeclaration.TypeReference.Type.Contains("System.Double")
-                    || localVariableDeclaration.TypeReference.Type.Contains("System.Float")
-                    || localVariableDeclaration.TypeReference.Type.Contains("System.Decimal"))
-                {
-                    foreach (VariableDeclaration variableDeclaration in localVariableDeclaration.Variables)
-                    {
-                        _doublefloatvariables.Add(variableDeclaration.Name);
-                    }
-                }
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }*/
-
         }
     }
 }

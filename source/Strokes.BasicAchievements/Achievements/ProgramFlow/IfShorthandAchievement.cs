@@ -18,10 +18,10 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
             public override object VisitConditionalExpression(ConditionalExpression conditionalExpression, object data)
             {
                 UnlockWith(conditionalExpression);
+
                 return base.VisitConditionalExpression(conditionalExpression, data);
             }
         }

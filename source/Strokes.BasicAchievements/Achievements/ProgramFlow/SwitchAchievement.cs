@@ -3,6 +3,7 @@ using System.Linq;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using ICSharpCode.NRefactory.CSharp;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -21,6 +22,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitSwitchStatement(SwitchStatement switchStatement, object data)
             {
                 UnlockWith(switchStatement);
+
                 return base.VisitSwitchStatement(switchStatement, data);
             }
         }

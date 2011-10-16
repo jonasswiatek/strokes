@@ -21,16 +21,18 @@ namespace Strokes.BasicAchievements.Achievements
             
             public override object VisitSwitchSection(SwitchSection switchSection, object data)
             {
-                /* REFACTOR: the SwitchLabels collection doesn't exist on this in NRefactory 5
-                var defaultLabel = switchSection.SwitchLabels.FirstOrDefault(a => a.IsDefault);
-                if(defaultLabel != null)
-                {
-                    //Bug: For some reason this the defaultLabel here doesn't have it's lines in the source document set. Bug in NRefactory?
-                    //UnlockWith(defaultLabel);
+                // REFACTOR
+                // TODO: Missing a way to detect the 'default' statement.
 
-                    IsAchievementUnlocked = true;
-                }
-                */
+                //var defaultLabel = switchSection.CaseLabels.FirstOrDefault(a => a.Role == );
+                //if(defaultLabel != null)
+                //{
+                //    // Bug: For some reason this the defaultLabel here doesn't have it's lines in the source document set. Bug in NRefactory?
+                //    UnlockWith(defaultLabel);
+
+                //    IsAchievementUnlocked = true;
+                //}
+                
                 return base.VisitSwitchSection(switchSection, data);
             }
         }

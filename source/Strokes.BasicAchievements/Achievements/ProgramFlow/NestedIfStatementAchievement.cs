@@ -18,22 +18,22 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
             public override object VisitIfElseStatement(IfElseStatement ifElseStatement, object data)
             {
-                foreach (Statement statement in ifElseStatement.TrueStatement)
+                foreach (var statement in (ifElseStatement.TrueStatement as BlockStatement).Statements)
                 {
                     if (statement is IfElseStatement)
                         UnlockWith(ifElseStatement);
                 }
-                foreach (Statement statement in ifElseStatement.FalseStatement)
+
+                foreach (var statement in (ifElseStatement.FalseStatement as BlockStatement).Statements)
                 {
                     if (statement is IfElseStatement)
                         UnlockWith(ifElseStatement);
                 }
+
                 return base.VisitIfElseStatement(ifElseStatement, data);
             }
-             * */
         }
     }
 }
