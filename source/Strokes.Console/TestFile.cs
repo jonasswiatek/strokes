@@ -13,7 +13,7 @@ namespace Strokes.Testing
     {
         public void Main()
         {
-            System.Console.WriteLine("hello world: {0}", 1);
+            var bla = "vvv\r\n";
         }
     }
 }

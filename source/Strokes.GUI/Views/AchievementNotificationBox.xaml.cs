@@ -128,12 +128,6 @@ namespace Strokes.GUI.Views
 
                     if (instance.Owner.WindowState == System.Windows.WindowState.Maximized)
                     {
-                        /* Here is the magic:
-                         * Use Winforms code to find the Available space on the
-                         * screen that contained the window 
-                         * just before it was maximized
-                         * (Left, Top have their values from Normal WindowState)
-                         */
                         windowRectangle = System.Windows.Forms.Screen.GetWorkingArea(
                             new System.Drawing.Point((int)instance.Owner.Left, (int)instance.Owner.Top));
                     }

@@ -21,21 +21,14 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
             public override object VisitPrimitiveExpression(PrimitiveExpression primitiveExpression, object data)
             {
-                //Tim: perhaps this is too low in the tree? Resulting in having this run almost all the time?
-                if (primitiveExpression.LiteralFormat == ICSharpCode.NRefactory.Parser.LiteralFormat.CharLiteral)
+                if(primitiveExpression.LiteralValue.StartsWith("'\\x"))
                 {
-                    var regex = new Regex("\\\\u");
-                    if (regex.IsMatch(primitiveExpression.StringValue))
-                    {
-                        UnlockWith(primitiveExpression);
-                    }
+                    UnlockWith(primitiveExpression);
                 }
                 return base.VisitPrimitiveExpression(primitiveExpression, data);
             }
-            */
         }
     }
 }

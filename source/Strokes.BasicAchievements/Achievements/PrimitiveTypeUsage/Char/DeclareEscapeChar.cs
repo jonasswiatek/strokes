@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.Core;
 using Strokes.BasicAchievements.NRefactory;
 using System.Text.RegularExpressions;
@@ -20,31 +21,14 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
-            public override object VisitLocalVariableDeclaration(ICSharpCode.NRefactory.Ast.LocalVariableDeclaration localVariableDeclaration, object data)
+            public override object VisitPrimitiveExpression(PrimitiveExpression primitiveExpression, object data)
             {
-
-                if (localVariableDeclaration.TypeReference.ToString().Equals("System.Char"))
+                if (primitiveExpression.LiteralValue.Contains("\\"))
                 {
-                    foreach (VariableDeclaration declaration in localVariableDeclaration.Variables)
-                    {
-                        if(declaration.Initializer is PrimitiveExpression)
-                        {
-                            PrimitiveExpression prim = (PrimitiveExpression)declaration.Initializer;
-
-                            var regex = new Regex("\\\\.{1}");
-                            if (regex.IsMatch(prim.StringValue))
-                            {
-                                UnlockWith(localVariableDeclaration);
-                            }
-
-                        }
-                    }
+                    UnlockWith(primitiveExpression);
                 }
-                
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
+                return base.VisitPrimitiveExpression(primitiveExpression, data);
             }
-            */
         }
     }
 }

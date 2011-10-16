@@ -124,15 +124,7 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if (methodDeclaration.Parameters.Count > 10)
                 {
-                    foreach (var param in methodDeclaration.Parameters)
-                    {
-                        /* REFACTOR: .Optional no longer available
-                         * if (param.ParameterModifier.HasFlag(ParameterModifier.Optional))
-                            count++;*/
-
-                    }
-                    if (count > 10)
-                        UnlockWith(methodDeclaration);
+                    UnlockWith(methodDeclaration);
                 }
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
@@ -155,11 +147,11 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if (typeDeclaration.ClassType == ClassType.Class)
                 {
-                    /* //REFACTOR .Type
-                    var count = typeDeclaration.BaseTypes.Count(i => i.Type.StartsWith("I"));
-                    if (count >= 5)
+                    var interfaces = typeDeclaration.BaseTypes.OfType<SimpleType>().Where(a => a.Identifier.StartsWith("I"));
+                    if (interfaces.Count() >= 0)
+                    {
                         UnlockWith(typeDeclaration);
-                     * */
+                    }
                 }
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);
