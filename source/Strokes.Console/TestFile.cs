@@ -12,20 +12,12 @@ namespace Strokes.Console
     /* bla */
     public class JaggedArrayTest
     {
-        public int Val;
-
         public void Main()
         {
-            try
-            {
-            }
-            catch(ArgumentException e)
-            {
-                throw;
-            }
-            catch
-            {
-            }
+            var thread = new System.Threading.Thread(() =>
+                                           {
+                                               var bla = "";
+                                           });
         }
     }
 }

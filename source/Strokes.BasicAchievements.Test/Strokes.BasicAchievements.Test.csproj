@@ -69,6 +69,9 @@
     <Compile Include="TestCases\AsKeywordTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="TestCases\CreateThreadTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="TestCases\TryCatchIgnoreTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>

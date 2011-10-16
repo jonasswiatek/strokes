@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -17,18 +18,30 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
+            public override object VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement, object data)
             {
-                if (localVariableDeclaration.TypeReference.ToString().Equals("Thread") ||
-                    localVariableDeclaration.TypeReference.ToString().Equals("Threading.Thread"))
+                foreach(var variable in variableDeclarationStatement.Variables)
                 {
-                    UnlockWith(localVariableDeclaration);
-                }
+                    var objectCreation = variable.Initializer as ObjectCreateExpression;
+                    if(objectCreation != null)
+                    {
+                        var simpleType = objectCreation.Type as SimpleType;
+                        if(simpleType != null && simpleType.Identifier == "Thread")
+                        {
+                            UnlockWith(simpleType);
+                            break;
+                        }
 
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
+                        var memberType = objectCreation.Type as MemberType;
+                        var fullNamespace = memberType.GetFullName();
+                        if(fullNamespace == "System.Threading.Thread")
+                        {
+                            UnlockWith(memberType);
+                        }
+                    }
+                }
+                return base.VisitVariableDeclarationStatement(variableDeclarationStatement, data);
             }
-             */
         }
     }
 }

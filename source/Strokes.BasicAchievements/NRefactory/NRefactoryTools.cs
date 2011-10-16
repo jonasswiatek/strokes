@@ -8,6 +8,29 @@ namespace Strokes.BasicAchievements.NRefactory
 {
     public static class NRefactoryTools
     {
+        public static string GetFullName(this MemberType memberType)
+        {
+            var result = new List<string>();
+
+            AstType current = memberType;
+            while(current is SimpleType || current is MemberType)
+            {
+                var simple = current as SimpleType;
+                if(simple != null)
+                {
+                    result.Add(simple.Identifier);
+                    break; //This is the end of the line
+                }
+
+                var member = current as MemberType;
+                result.Add(member.MemberName);
+                current = member.Target;
+            }
+            result.Reverse();
+
+            return string.Join(".", result);
+        }
+
         public static string GetCallChainAsString(this MemberReferenceExpression memberReferenceExpression)
         {
             var callChain = new List<string>()
