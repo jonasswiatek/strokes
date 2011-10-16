@@ -2,6 +2,7 @@
 using System.Linq;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using ICSharpCode.NRefactory.CSharp;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -17,17 +18,19 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
-            public override object VisitDoLoopStatement(DoLoopStatement doLoopStatement, object data)
+            public override object VisitDoWhileStatement(DoWhileStatement doWhileStatement, object data)
             {
-                if (doLoopStatement.ConditionPosition == ConditionPosition.Start) //DoWhile loops has their condition at ConditionPosition.End, while has it at ConditionPosition.Start.
-                {
-                    UnlockWith(doLoopStatement);
-                }
+                UnlockWith(doWhileStatement);
 
-                return base.VisitDoLoopStatement(doLoopStatement, data);
+                return base.VisitDoWhileStatement(doWhileStatement, data);
             }
-             */
+
+            public override object VisitWhileStatement(WhileStatement whileStatement, object data)
+            {
+                UnlockWith(whileStatement);
+
+                return base.VisitWhileStatement(whileStatement, data);
+            }
         }
     }
 }

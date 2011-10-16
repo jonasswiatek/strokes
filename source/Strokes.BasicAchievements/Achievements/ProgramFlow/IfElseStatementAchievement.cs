@@ -18,15 +18,13 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
             public override object VisitIfElseStatement(IfElseStatement ifElseStatement, object data)
             {
-                if(ifElseStatement.HasElseStatements)
+                if (ifElseStatement.FalseStatement != null)
                     UnlockWith(ifElseStatement);
 
                 return base.VisitIfElseStatement(ifElseStatement, data);
             }
-             */
         }
     }
 }

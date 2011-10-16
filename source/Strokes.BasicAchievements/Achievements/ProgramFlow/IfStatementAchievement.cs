@@ -25,16 +25,6 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitIfElseStatement(ifElseStatement, data);
             } 
-
-            //public override object VisitDoLoopStatement(DoLoopStatement doLoopStatement, object data)
-            //{
-            //    if (doLoopStatement.ConditionPosition == ConditionPosition.Start) //DoWhile loops has their condition at ConditionPosition.End, while has it at ConditionPosition.Start.
-            //    {
-            //        IsAchievementUnlocked = true;
-            //    }
-
-            //    return base.VisitDoLoopStatement(doLoopStatement, data);
-            //}
         }
     }
 }

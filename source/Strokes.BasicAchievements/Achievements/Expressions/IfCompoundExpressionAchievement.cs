@@ -24,8 +24,9 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitIfElseStatement(IfElseStatement ifElseStatement, object data)
             {
+                // TODO: Verify the IfCompoundExpression Achievement.
                 var condition = ifElseStatement.Condition as BinaryOperatorExpression;
-                if(condition!=null && condition.Operator != BinaryOperatorType.Equality) //Tim: mmm, this achievements needs more testing because this doens't work right 
+                if (condition != null && condition.Operator != BinaryOperatorType.Equality) 
                     UnlockWith(ifElseStatement);
 
                 return base.VisitIfElseStatement(ifElseStatement, data);

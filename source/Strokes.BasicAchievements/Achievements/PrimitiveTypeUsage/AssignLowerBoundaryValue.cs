@@ -4,94 +4,89 @@ using System.Linq;
 using System.Text;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using ICSharpCode.NRefactory.CSharp;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-
     public abstract class AssignLowerBoundaryValue<T> : NRefactoryAchievement
+        where T : struct
     {
+        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        {
+            return new Visitor();
+        }
 
-            protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        private class Visitor : AbstractAchievementVisitor
+        {
+            private readonly string TypeToFind = typeof(T).ToString();
+            private readonly List<string> intVariables = new List<string>();
+
+            public override object VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement, object data)
             {
-                return new Visitor();
+                if (variableDeclarationStatement.Type.Is<T>())
+                {
+                    foreach (var variableDeclaration in variableDeclarationStatement.Variables)
+                    {
+                        intVariables.Add(variableDeclaration.Name);
+
+                        var memberExpression = variableDeclaration.Initializer as MemberReferenceExpression;
+                        if (memberExpression != null)
+                        {
+                            if (IsMaxValue(memberExpression))
+                                UnlockWith(variableDeclarationStatement);
+                        }
+                    }
+                }
+
+                return base.VisitVariableDeclarationStatement(variableDeclarationStatement, data);
             }
 
-            private class Visitor : AbstractAchievementVisitor
+            private bool IsMaxValue(MemberReferenceExpression memberExpression)
             {
-
-                private string TypeToFind = typeof (T).ToString();
-                private readonly List<string> _intvariables = new List<string>();
-
-
-                /* REFACTOR
-                public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration,
-                                                                     object data)
+                if (memberExpression.MemberName.Equals("MinValue"))
                 {
-
-                    if (localVariableDeclaration.TypeReference.Type.Contains(TypeToFind))
+                    if (memberExpression.Target is IdentifierExpression)
                     {
-                        foreach (VariableDeclaration variableDeclaration in localVariableDeclaration.Variables)
-                        {
-                            _intvariables.Add(variableDeclaration.Name);
-
-                            if (variableDeclaration.Initializer is MemberReferenceExpression)
-                            {
-                                MemberReferenceExpression memb =
-                                    (MemberReferenceExpression) variableDeclaration.Initializer;
-                                if (IsMinValue(memb))
-                                    UnlockWith(localVariableDeclaration);
-                            }
-                        }
+                        var ident = (IdentifierExpression)memberExpression.Target;
+                        if (TypeToFind.Contains(ident.Identifier))
+                            return true;
                     }
-                    return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
+                    else if (memberExpression.Target is TypeReferenceExpression)
+                    {
+                        var typeRef = (TypeReferenceExpression)memberExpression.Target;
+                        if (TypeToFind.Contains(typeRef.Type.ToString()))
+                            return true;
+                    }
                 }
 
-                private bool IsMinValue(MemberReferenceExpression memb)
-                {
-                    if (memb.MemberName.Equals("MinValue"))
-                    {
-                        if (memb.TargetObject is IdentifierExpression)
-                        {
-                            IdentifierExpression ident = (IdentifierExpression) memb.TargetObject;
-                            if (TypeToFind.Contains(ident.Identifier))
-                                return true;
-                        }
-                        else if (memb.TargetObject is TypeReferenceExpression)
-                        {
-                            TypeReferenceExpression typeref = (TypeReferenceExpression)memb.TargetObject;
-                            if (TypeToFind.Contains(typeref.TypeReference.ToString()))
-                                return true;
-                        }
-                    }
-                    return false;
-                }
-
-                public override object VisitAssignmentExpression(
-                    ICSharpCode.NRefactory.Ast.AssignmentExpression assignmentExpression, object data)
-                {
-
-                    if (assignmentExpression.Left is IdentifierExpression)
-                    {
-                        IdentifierExpression idexpr = (IdentifierExpression) assignmentExpression.Left;
-                        if (_intvariables.Contains(idexpr.Identifier))
-                        {
-                            if (assignmentExpression.Right is PrimitiveExpression)
-                            {
-                                PrimitiveExpression prim = (PrimitiveExpression) assignmentExpression.Right;
-                                if (prim.Value.Equals("MinValue"))
-                                    UnlockWith(assignmentExpression);
-                            }
-                            else if (assignmentExpression.Right is MemberReferenceExpression)
-                            {
-                                MemberReferenceExpression memb = (MemberReferenceExpression) assignmentExpression.Right;
-                                if (IsMinValue(memb))
-                                    UnlockWith(assignmentExpression);
-                            }
-                        }
-                    }
-                    return base.VisitAssignmentExpression(assignmentExpression, data);
-                }
-                */
+                return false;
             }
+
+            public override object VisitAssignmentExpression(AssignmentExpression assignmentExpression, object data)
+            {
+                if (assignmentExpression.Left is IdentifierExpression)
+                {
+                    var identifier = (IdentifierExpression)assignmentExpression.Left;
+
+                    if (intVariables.Contains(identifier.Identifier))
+                    {
+                        if (assignmentExpression.Right is PrimitiveExpression)
+                        {
+                            var primitiveExpression = (PrimitiveExpression)assignmentExpression.Right;
+                            if (primitiveExpression.Value.Equals("MaxValue"))
+                                UnlockWith(assignmentExpression);
+                        }
+                        else if (assignmentExpression.Right is MemberReferenceExpression)
+                        {
+                            var memberExpression = (MemberReferenceExpression)assignmentExpression.Right;
+                            if (IsMaxValue(memberExpression))
+                                UnlockWith(assignmentExpression);
+                        }
+                    }
+                }
+
+                return base.VisitAssignmentExpression(assignmentExpression, data);
+            }
+        }
     }
 }

@@ -8,7 +8,6 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{A4A094CB-57AC-41FF-8562-29A5ACCC9076}", "@NotOperatorAchievementName",
         AchievementDescription = "@NotOperatorAchievementDescription",
-        
         Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/NotOperator.png",
         AchievementCategory = "@Expressions",
         DependsOn = new[]
@@ -27,15 +26,13 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitIfElseStatement(IfElseStatement ifElseStatement, object data)
             {
-                UnaryOperatorExpression expr= ifElseStatement.Condition as UnaryOperatorExpression;
-                if (expr != null)
-                {
-                    if (expr.Operator == UnaryOperatorType.Not)
-                        UnlockWith(ifElseStatement);
-                }
+                var expression = ifElseStatement.Condition as UnaryOperatorExpression;
+                if (expression != null && expression.Operator == UnaryOperatorType.Not)
+                    UnlockWith(ifElseStatement);
+
                 return base.VisitIfElseStatement(ifElseStatement, data);
             }
-            
+
         }
     }
 }

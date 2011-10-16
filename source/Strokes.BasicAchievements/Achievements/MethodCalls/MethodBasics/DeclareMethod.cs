@@ -18,20 +18,19 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (!methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifier.HasFlag(Modifiers.Constructors))
+                if (methodDeclaration.Name.ToLower().Equals("main") == false)
                 {
-                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                    if (methodDeclaration.IsExtensionMethod == false &&
+                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
                     {
-
                         UnlockWith(methodDeclaration);
                     }
                 }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             */
         }
     }
 }

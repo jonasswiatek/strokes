@@ -18,25 +18,25 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (!methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifiers.HasFlag(Modifiers.Constructors))
+                if (methodDeclaration.Name.ToLower().Equals("main") == false)
                 {
-                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.Modifiers.HasFlag(Modifiers.Abstract))
+                    if (methodDeclaration.IsExtensionMethod == false &&
+                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
                     {
-                        if(methodDeclaration.Parameters.Count>=2)
+                        if (methodDeclaration.Parameters.Count >= 2)
                             UnlockWith(methodDeclaration);
                     }
                 }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             */
         }
     }
 
     [AchievementDescriptor("{07E52DB7-CAD7-4177-A413-3C9C5E5D17D2}", "@CreateMethodOneParameterAchievementName",
-        AchievementDescription = "@CreateMethodOneParameterAchievementDescription", 
+        AchievementDescription = "@CreateMethodOneParameterAchievementDescription",
         AchievementCategory = "@Method")]
     public class CreateMethodOneParameterAchievement : NRefactoryAchievement
     {
@@ -47,20 +47,20 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (!methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifiers.HasFlag(Modifiers.Constructors))
+                if (methodDeclaration.Name.ToLower().Equals("main") == false)
                 {
-                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.Modifiers.HasFlag(Modifiers.Abstract))
+                    if (methodDeclaration.IsExtensionMethod == false &&
+                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
                     {
                         if (methodDeclaration.Parameters.Count == 1)
                             UnlockWith(methodDeclaration);
                     }
                 }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             */
         }
     }
 }

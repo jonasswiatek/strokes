@@ -11,6 +11,7 @@ using Strokes.Core;
 namespace Strokes.BasicAchievements.Achievements
 {
     public abstract class DeclareInitializePrimitiveType<T> : NRefactoryAchievement
+        where T : struct
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
@@ -19,41 +20,16 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private string TypeToFind = typeof(T).ToString();
-            /* REFACTOR
-            public override object VisitFieldDeclaration(FieldDeclaration fieldDeclaration, object data)
+            public override object VisitVariableInitializer(VariableInitializer variableInitializer, object data)
             {
-                if (fieldDeclaration.TypeReference.Type == TypeToFind)
-                {
-                    if(fieldDeclaration.Fields.Count > 0)
-                    {
-                        if(fieldDeclaration.Fields[0].Initializer is PrimitiveExpression)
-                        {
-                            UnlockWith(fieldDeclaration);
-                        }
-                    }
-                }
+                var expression = variableInitializer.Initializer as ArrayCreateExpression;
 
-                return base.VisitFieldDeclaration(fieldDeclaration, data);
+                if (expression != null && expression.Type.Is<T>())
+                    if (expression.Type.Is<T>())
+                        UnlockWith(variableInitializer);
+
+                return base.VisitVariableInitializer(variableInitializer, data);
             }
-
-            
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
-            {
-                if (localVariableDeclaration.TypeReference.Type == TypeToFind)
-                {
-                    if (localVariableDeclaration.Variables.Count > 0)
-                    {
-                        if (localVariableDeclaration.Variables[0].Initializer is PrimitiveExpression)
-                        {
-                            UnlockWith(localVariableDeclaration);
-                        }
-                    }
-                }
-
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }
-             */
         }
     }
 }
