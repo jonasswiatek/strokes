@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace Strokes.Console
 {
+    /* bla */
     public class JaggedArrayTest
     {
         public int[][] jaggedArray;

@@ -21,15 +21,15 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR: This visitor method doesn't exist in NRefactory 5
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
+            public override object VisitArraySpecifier(ICSharpCode.NRefactory.CSharp.ArraySpecifier arraySpecifier, object data)
             {
-                //Tim= not so happy about hardocing this RankSpecifier, not sure when this specifier contains more than 1 element
-                if (localVariableDeclaration.TypeReference.IsArrayType && localVariableDeclaration.TypeReference.RankSpecifier[0]>=1) 
-                    UnlockWith(localVariableDeclaration);
+                if(arraySpecifier.Dimensions > 1)
+                {
+                    UnlockWith(arraySpecifier);
+                }
 
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }*/
+                return base.VisitArraySpecifier(arraySpecifier, data);
+            }
         }
     }
 }

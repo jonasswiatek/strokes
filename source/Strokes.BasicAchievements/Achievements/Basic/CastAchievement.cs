@@ -27,7 +27,6 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitCastExpression(castExpression, data);
             }
-            
         }
     }
 }

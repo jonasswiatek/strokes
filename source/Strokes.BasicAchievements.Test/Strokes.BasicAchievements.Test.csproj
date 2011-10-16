@@ -54,6 +54,15 @@
     </Compile>
     <Compile Include="AchievementTest.cs" />
     <Compile Include="ExpectUnlockAttribute.cs" />
+    <Compile Include="TestCases\BlockCommentTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\InlineCommentTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\MultiDimArrayTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="TestCases\JaggedArrayTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>

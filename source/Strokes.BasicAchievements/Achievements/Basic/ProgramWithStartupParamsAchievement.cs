@@ -18,7 +18,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
+            /* TODO: Needs to be much more awesome than this
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
                 if (methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifier.HasFlag(Modifiers.Constructors))
