@@ -13,6 +13,7 @@ namespace Strokes.BasicAchievements.Achievements
                 {
                     "{0ec683c7-8005-4da1-abf9-7d027ec1256f}","{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
                 })]
+
     public class AbstractMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)

@@ -24,23 +24,16 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                //TODO: Also unlocks when only implementing an interface (so we will need a way to 
-                // know if BaseType is a class or not. Now I simply detect of basetype doens't start with I
-                if (typeDeclaration.ClassType == ClassType.Class && typeDeclaration.BaseTypes.Count > 0)
+                //TODO: This needs to be more advanced. There is no guarantee that a user will prefix interfaces with I.
+                if (typeDeclaration.ClassType == ClassType.Class)
                 {
-                    foreach (var typeReference in typeDeclaration.BaseTypes)
+                    var interfaceMarker = typeDeclaration.BaseTypes.OfType<MemberType>().FirstOrDefault();
+                    if (interfaceMarker != null)
                     {
-                        /* REFACTOR: .Type doesn't exist anymore
-                        if(!typeReference.Type.StartsWith("I"))
-                        {
-                            UnlockWith(typeDeclaration);
-                            break;
-                        }*/
+                        UnlockWith(interfaceMarker);
                     }
-                    UnlockWith(typeDeclaration);
                 }
                 
-
                 return base.VisitTypeDeclaration(typeDeclaration, data);
             }
         }

@@ -21,9 +21,21 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            private int lastSpecifierLine = 0;
+            public override object VisitArraySpecifier(ICSharpCode.NRefactory.CSharp.ArraySpecifier arraySpecifier, object data)
+            {
+                lastSpecifierLine = arraySpecifier.StartLocation.Line;
+
+                return base.VisitArraySpecifier(arraySpecifier, data);
+            }
             public override object VisitArrayInitializerExpression(ICSharpCode.NRefactory.CSharp.ArrayInitializerExpression arrayInitializerExpression, object data)
             {
-                UnlockWith(arrayInitializerExpression);
+                //TODO: This ain't pretty - there is no C# requirement that the specifier and initializer must be on the same line.
+                if(arrayInitializerExpression.StartLocation.Line == lastSpecifierLine)
+                {
+                    UnlockWith(arrayInitializerExpression);
+                }
+                
                 return base.VisitArrayInitializerExpression(arrayInitializerExpression, data);
             }
         }

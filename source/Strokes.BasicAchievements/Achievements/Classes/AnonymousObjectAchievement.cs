@@ -20,17 +20,16 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR: This doesn't exist in NRefactory5
-            public override object VisitVariableDeclaration(VariableDeclaration variableDeclaration, object data)
+            public override object VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement, object data)
             {
-                var objectCreateExpression = variableDeclaration.Initializer as ObjectCreateExpression;
-                if (objectCreateExpression != null && objectCreateExpression.IsAnonymousType)
+                var anonInitializer = variableDeclarationStatement.Variables.FirstOrDefault(a => a.Initializer is AnonymousTypeCreateExpression);
+                if (anonInitializer != null)
                 {
-                    UnlockWith(variableDeclaration);
+                    UnlockWith(anonInitializer.Initializer);
                 }
 
-                return base.VisitVariableDeclaration(variableDeclaration, data);
-            }*/
+                return base.VisitVariableDeclarationStatement(variableDeclarationStatement, data);
+            }
         }
     }
 }

@@ -22,15 +22,13 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if (typeDeclaration.ClassType == ClassType.Class && typeDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                if (typeDeclaration.ClassType == ClassType.Class && typeDeclaration.Modifiers.HasFlag(Modifiers.Abstract))
                     UnlockWith(typeDeclaration);
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);
             }
-             */
         }
     }
 }

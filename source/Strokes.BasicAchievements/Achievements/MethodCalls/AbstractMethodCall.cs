@@ -51,7 +51,7 @@ namespace Strokes.BasicAchievements.Achievements
                 get;
                 set;
             }
-
+            /* THIS INFINITE LOOPS SOME WHERE. Nasty nasty nasty
             public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
             {
                 //REFACTOR: invocationExpression.Target changed from invocationExpression.TargetObject - no idea if this is correct. Please verify.
@@ -119,6 +119,7 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitInvocationExpression(invocationExpression, data);
             }
+             * */
         }
 
         protected class TypeAndValueRequirementSet

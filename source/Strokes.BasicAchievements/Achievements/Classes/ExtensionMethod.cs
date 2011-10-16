@@ -22,7 +22,6 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
                 if (methodDeclaration.IsExtensionMethod)
@@ -30,7 +29,6 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-
         }
     }
 }

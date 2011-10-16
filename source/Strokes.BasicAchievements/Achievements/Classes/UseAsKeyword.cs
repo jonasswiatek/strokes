@@ -18,14 +18,11 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
-            public override object VisitCastExpression(CastExpression castExpression, object data)
+            public override object VisitAsExpression(AsExpression asExpression, object data)
             {
-                if (castExpression.CastType == CastType.TryCast)
-                    UnlockWith(castExpression);
-                return base.VisitCastExpression(castExpression, data);
+                UnlockWith(asExpression);
+                return base.VisitAsExpression(asExpression, data);
             }
-             */
         }
     }
 }

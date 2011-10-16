@@ -12,7 +12,13 @@ namespace Strokes.Console
     /* bla */
     public class JaggedArrayTest
     {
-        public int[][] jaggedArray;
+        public int Val;
+
+        public void Main()
+        {
+            var s = "";
+            var b = s as object;
+        }
     }
 }
 

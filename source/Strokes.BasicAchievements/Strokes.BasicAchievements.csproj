@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Achievements\Arrays\DeclareArrayAchievement.cs" />
-    <Compile Include="Achievements\Arrays\ArrayDeclarateInitAchievement.cs" />
+    <Compile Include="Achievements\Arrays\DeclareInitArrayAchievement.cs" />
     <Compile Include="Achievements\Arrays\ArrayLengthPropertyAchievement.cs" />
     <Compile Include="Achievements\Arrays\JaggedArrayDeclarationAchievement.cs" />
     <Compile Include="Achievements\Arrays\MultipleDimensionArrayDeclarationAchievement.cs" />
@@ -74,7 +74,7 @@
     <Compile Include="Achievements\Classes\AbstractClass.cs" />
     <Compile Include="Achievements\Classes\InheritClassAchievement.cs" />
     <Compile Include="Achievements\Classes\VirtualOverrideMethodAchievements.cs" />
-    <Compile Include="Achievements\Classes\IComparableInterface.cs" />
+    <Compile Include="Achievements\Classes\IComparableAchievement.cs" />
     <Compile Include="Achievements\Classes\UseAsKeyword.cs" />
     <Compile Include="Achievements\Classes\UseIsKeyword.cs" />
     <Compile Include="Achievements\Classes\OverloadOperator.cs" />

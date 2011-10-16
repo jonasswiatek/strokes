@@ -26,6 +26,7 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if(constructorDeclaration.Parameters.Count>0)
                     UnlockWith(constructorDeclaration);
+
                 return base.VisitConstructorDeclaration(constructorDeclaration, data);
             }
         }

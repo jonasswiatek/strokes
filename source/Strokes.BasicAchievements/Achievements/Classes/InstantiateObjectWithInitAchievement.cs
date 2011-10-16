@@ -18,16 +18,15 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
             public override object VisitObjectCreateExpression(ObjectCreateExpression objectCreateExpression, object data)
             {
-                var expr = objectCreateExpression.ObjectInitializer;
-
-                if (expr.CreateExpressions.Count > 0 && !objectCreateExpression.IsAnonymousType)
-                    UnlockWith(objectCreateExpression.ObjectInitializer); //Handing over the ObjectInitializer will make it highlight that code region only.
+                if(objectCreateExpression.Initializer.Elements.Count > 0)
+                {
+                    UnlockWith(objectCreateExpression.Initializer);
+                }
 
                 return base.VisitObjectCreateExpression(objectCreateExpression, data);
-            }*/
+            }
         }
     }
 }

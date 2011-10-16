@@ -88,7 +88,7 @@ namespace Strokes.BasicAchievements.Test
 
                     //Test that only expected achievements unlocked
                     var unexpectedAchievements = unlockedAchievements.Except(expectedAchievements).Except(_globallyIgnoredAchievements).ToList();
-                    Assert.IsTrue(unexpectedAchievements.Count() == 0, Path.GetFileName(sourceFile) + " unlocks unexpected achievements: " + string.Join(", ", unexpectedAchievements.Select(a => a.Name)));
+                    Assert.IsTrue(unexpectedAchievements.Count() == 0, Path.GetFileName(sourceFile) + " unlocks unexpected achievements: " + string.Join(", ", unexpectedAchievements.Select(a => a.FullName)));
                 }
             }
         }

@@ -59,12 +59,11 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-
-                    if (methodDeclaration.Body is BlockStatement)
-                    {
-                        if (((BlockStatement)(methodDeclaration.Body)).Children.Count() == 0)
-                            UnlockWith(methodDeclaration);
-                    }
+                if (methodDeclaration.Body != null)
+                {
+                    if (methodDeclaration.Body.Children.Count() == 0)
+                        UnlockWith(methodDeclaration);
+                }
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }

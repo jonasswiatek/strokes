@@ -18,13 +18,11 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
             public override object VisitDestructorDeclaration(DestructorDeclaration destructorDeclaration, object data)
             {
                 UnlockWith(destructorDeclaration);
                 return base.VisitDestructorDeclaration(destructorDeclaration, data);
             }
-
         }
     }
 }

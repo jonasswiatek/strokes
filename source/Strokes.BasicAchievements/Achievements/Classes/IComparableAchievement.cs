@@ -26,16 +26,11 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 if (typeDeclaration.ClassType == ClassType.Class)
                 {
-                    foreach (var basetype in typeDeclaration.BaseTypes)
+                    var iComparableMarker = typeDeclaration.BaseTypes.OfType<SimpleType>().FirstOrDefault(a => a.Identifier.EndsWith("IComparable"));
+                    if (iComparableMarker != null)
                     {
-                        /* //REFACTOR: Basetype.Type doesn't exist anymore
-                        if (basetype.Type == "System.IComparable" || basetype.Type == "IComparable")
-                        {
-                            UnlockWith(typeDeclaration);
-                            break;
-                        }*/
+                        UnlockWith(iComparableMarker);
                     }
-                    
                 }
 
                 return base.VisitTypeDeclaration(typeDeclaration, data);
