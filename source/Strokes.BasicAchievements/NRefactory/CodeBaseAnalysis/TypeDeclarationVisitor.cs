@@ -6,7 +6,23 @@ namespace Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis
 {
     public class TypeDeclarationVisitor : DepthFirstAstVisitor<object, object>
     {
-        public IList<TypeDeclarationInfo> TypeDeclarations = new List<TypeDeclarationInfo>();
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:TypeDeclarationVisitor"/> class.
+        /// </summary>
+        public TypeDeclarationVisitor()
+        {
+            TypeDeclarations = new List<TypeDeclarationInfo>();
+        }
+
+        /// <summary>
+        /// Gets or sets the type declarations.
+        /// </summary>
+        public IList<TypeDeclarationInfo> TypeDeclarations
+        {
+            get;
+            set;
+        }
+
         public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
         {
             var typeName = typeDeclaration.Name;
@@ -31,7 +47,7 @@ namespace Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis
             }
 
             var typeDeclarationNamespace = "";
-            if(typeDeclaration.Parent != null && typeDeclaration.Parent is NamespaceDeclaration)
+            if (typeDeclaration.Parent != null && typeDeclaration.Parent is NamespaceDeclaration)
             {
                 var namespaceDeclaration = (NamespaceDeclaration)typeDeclaration.Parent;
                 typeDeclarationNamespace = namespaceDeclaration.Name;

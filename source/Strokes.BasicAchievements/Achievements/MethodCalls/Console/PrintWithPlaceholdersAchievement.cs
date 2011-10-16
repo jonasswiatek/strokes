@@ -12,9 +12,10 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class PrintWithPlaceholdersAchievement : AbstractMethodCall
     {
-        public PrintWithPlaceholdersAchievement() : base("Console.WriteLine")
+        public PrintWithPlaceholdersAchievement()
+            : base("Console.WriteLine")
         {
-            var requirementSet = new TypeAndValueRequirementSet
+            RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
                 Repeating = true,
                 Requirements = new List<TypeAndValueRequirement>
@@ -25,14 +26,8 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
                         RegexOptions = RegexOptions.IgnorePatternWhitespace,
                         Regex = @"\{ *\d *\}"
                     },
-                    new TypeAndValueRequirement
-                    {
-                        Type = typeof (object)
-                    }
                 }
-            };
-
-            requiredOverloads.Add(requirementSet);
+            });
         }
     }
 }
