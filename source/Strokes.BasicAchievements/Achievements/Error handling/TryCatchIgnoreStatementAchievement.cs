@@ -18,19 +18,16 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* REFACTOR
             public override object VisitTryCatchStatement(TryCatchStatement tryCatchStatement, object data)
             {
-                if (tryCatchStatement.CatchClauses.Count > 0)
+                var defaultCatchClause = tryCatchStatement.CatchClauses.FirstOrDefault(a => a.Type.IsNull);
+                if(defaultCatchClause != null)
                 {
-                    foreach (CatchClause catchClause in tryCatchStatement.CatchClauses)
-                    {
-                        if (catchClause.StatementBlock.Children.Count == 0) 
-                            UnlockWith(tryCatchStatement);
-                    }
+                    UnlockWith(defaultCatchClause);
                 }
+
                 return base.VisitTryCatchStatement(tryCatchStatement, data);
-            }*/
+            }
         }
     }
 }

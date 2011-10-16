@@ -16,8 +16,16 @@ namespace Strokes.Console
 
         public void Main()
         {
-            var s = "";
-            var b = s as object;
+            try
+            {
+            }
+            catch(ArgumentException e)
+            {
+                throw;
+            }
+            catch
+            {
+            }
         }
     }
 }
