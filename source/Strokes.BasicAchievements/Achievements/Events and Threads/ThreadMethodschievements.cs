@@ -2,6 +2,7 @@
 using System.Linq;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
+using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
@@ -13,46 +14,33 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
-            return new Visitor();
+            return new Visitor(CodebaseDeclarations);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private List<string> threadVars = new List<string>();
+            private readonly IEnumerable<DeclarationInfo> _codebaseDeclarations;
 
-            /* REFACTOR
+            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarations)
+            {
+                _codebaseDeclarations = codebaseDeclarations;
+            }
+
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
-                if (memberReferenceExpression.MemberName == "Start")
+                const string typeToUse = "System.Threading.Thread";
+                const string methodToFind = "Start";
+
+                if(_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfType(typeToUse))
                 {
-                    if (memberReferenceExpression.TargetObject is IdentifierExpression)
+                    if (memberReferenceExpression.MemberName == methodToFind)
                     {
-                        var id = (IdentifierExpression)memberReferenceExpression.TargetObject;
-                        if (threadVars.Contains(id.Identifier))
-                        {
-                            UnlockWith(memberReferenceExpression);
-                        }
+                        UnlockWith(memberReferenceExpression);
                     }
                 }
 
                 return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
             }
-
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
-            {
-                if (localVariableDeclaration.TypeReference.Type.Equals("Thread") ||
-                    localVariableDeclaration.TypeReference.Type.Equals("Threading.Thread") ||
-                    localVariableDeclaration.TypeReference.Type.Equals("System.Threading.Thread"))
-                {
-                    foreach (var variableDeclaration in localVariableDeclaration.Variables)
-                    {
-                        threadVars.Add(variableDeclaration.Name);
-                    }
-                }
-
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }
-             */
         }
     }
 
@@ -63,45 +51,33 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
-            return new Visitor();
+            return new Visitor(CodebaseDeclarations);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private List<string> threadVars = new List<string>();
-            /* REFACTOR
+            private readonly IEnumerable<DeclarationInfo> _codebaseDeclarations;
+
+            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarations)
+            {
+                _codebaseDeclarations = codebaseDeclarations;
+            }
+
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
-                if (memberReferenceExpression.MemberName == "Join")
+                const string typeToUse = "System.Threading.Thread";
+                const string methodToFind = "Join";
+
+                if (_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfType(typeToUse))
                 {
-                    if (memberReferenceExpression.TargetObject is IdentifierExpression)
+                    if (memberReferenceExpression.MemberName == methodToFind)
                     {
-                        var id = (IdentifierExpression)memberReferenceExpression.TargetObject;
-                        if (threadVars.Contains(id.Identifier))
-                        {
-                            UnlockWith(memberReferenceExpression);
-                        }
+                        UnlockWith(memberReferenceExpression);
                     }
                 }
 
                 return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
             }
-
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
-            {
-                if (localVariableDeclaration.TypeReference.Type.Equals("Thread") ||
-                    localVariableDeclaration.TypeReference.Type.Equals("Threading.Thread") ||
-                    localVariableDeclaration.TypeReference.Type.Equals("System.Threading.Thread"))
-                {
-                    foreach (VariableDeclaration variableDeclaration in localVariableDeclaration.Variables)
-                    {
-                        threadVars.Add(variableDeclaration.Name);
-                    }
-                }
-
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }
-             * */
         }
     }
 
@@ -113,45 +89,33 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
-            return new Visitor();
+            return new Visitor(CodebaseDeclarations);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private List<string> threadVars = new List<string>();
-            /* REFACTOR
+            private readonly IEnumerable<DeclarationInfo> _codebaseDeclarations;
+
+            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarations)
+            {
+                _codebaseDeclarations = codebaseDeclarations;
+            }
+
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
-                if (memberReferenceExpression.MemberName == "Abort")
+                const string typeToUse = "System.Threading.Thread";
+                const string methodToFind = "Abort";
+
+                if (_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfType(typeToUse))
                 {
-                    if (memberReferenceExpression.TargetObject is IdentifierExpression)
+                    if (memberReferenceExpression.MemberName == methodToFind)
                     {
-                        var id = (IdentifierExpression)memberReferenceExpression.TargetObject;
-                        if (threadVars.Contains(id.Identifier))
-                        {
-                            UnlockWith(memberReferenceExpression);
-                        }
+                        UnlockWith(memberReferenceExpression);
                     }
                 }
 
                 return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
             }
-
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
-            {
-                if (localVariableDeclaration.TypeReference.Type.Equals("Thread") ||
-                    localVariableDeclaration.TypeReference.Type.Equals("Threading.Thread") ||
-                    localVariableDeclaration.TypeReference.Type.Equals("System.Threading.Thread"))
-                {
-                    foreach (VariableDeclaration variableDeclaration in localVariableDeclaration.Variables)
-                    {
-                        threadVars.Add(variableDeclaration.Name);
-                    }
-                }
-
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }
-             */
         }
     }
 
@@ -162,45 +126,34 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
-            return new Visitor();
+            return new Visitor(CodebaseDeclarations);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private List<string> threadVars = new List<string>();
-            /* REFACTOR
+            private readonly IEnumerable<DeclarationInfo> _codebaseDeclarations;
+
+            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarations)
+            {
+                _codebaseDeclarations = codebaseDeclarations;
+            }
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
-                if (memberReferenceExpression.MemberName == "Sleep")
+                const string typeToUse = "System.Threading.Thread";
+                const string methodToFind = "Sleep";
+
+                if(memberReferenceExpression.Target.GetIdentifier() == "Thread" && memberReferenceExpression.MemberName == methodToFind)
                 {
-                    if (memberReferenceExpression.TargetObject is IdentifierExpression)
+                    var usings = memberReferenceExpression.Target.GetUsings();
+                    if (usings.Any(a => (a + "." + "Thread") == typeToUse))
                     {
-                        IdentifierExpression id = (IdentifierExpression)memberReferenceExpression.TargetObject;
-                        if (threadVars.Contains(id.Identifier))
-                        {
-                            UnlockWith(memberReferenceExpression);
-                        }
+                        UnlockWith(memberReferenceExpression);
                     }
                 }
+
 
                 return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
             }
-
-            public override object VisitLocalVariableDeclaration(LocalVariableDeclaration localVariableDeclaration, object data)
-            {
-                if (localVariableDeclaration.TypeReference.Type.Equals("Thread") ||
-                    localVariableDeclaration.TypeReference.Type.Equals("Threading.Thread") ||
-                    localVariableDeclaration.TypeReference.Type.Equals("System.Threading.Thread"))
-                {
-                    foreach (VariableDeclaration variableDeclaration in localVariableDeclaration.Variables)
-                    {
-                        threadVars.Add(variableDeclaration.Name);
-                    }
-                }
-
-                return base.VisitLocalVariableDeclaration(localVariableDeclaration, data);
-            }
-             */
         }
     }
 }

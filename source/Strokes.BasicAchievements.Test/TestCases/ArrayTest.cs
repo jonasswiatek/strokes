@@ -4,6 +4,7 @@ namespace Strokes.BasicAchievements.Test.TestCases
 {
     [ExpectUnlock(typeof(DeclareArrayAchievement))]
     [ExpectUnlock(typeof(DeclareInitArrayAchievement))]
+    [ExpectUnlock(typeof(DeclareInitializeInt))]
     public class ArrayTest
     {
         public void bla()

@@ -6,8 +6,99 @@ using ICSharpCode.NRefactory.CSharp;
 
 namespace Strokes.BasicAchievements.NRefactory
 {
-    public static class NRefactoryTools
+    public static class NRefactoryHelpers
     {
+        public static bool IsReferenceOfType(this MemberReferenceExpression memberReferenceExpression, string fullTypeName)
+        {
+            var current = memberReferenceExpression.Parent;
+            while(current != null)
+            {
+                var variableDeclarations = current.Descendants.OfType<VariableDeclarationStatement>();
+                if(variableDeclarations.Any())
+                {
+                    foreach(var variableDeclaration in variableDeclarations)
+                    {
+                        foreach(var variable in variableDeclaration.Variables)
+                        {
+                            var objectCreation = variable.Initializer as ObjectCreateExpression;
+                            if(objectCreation != null)
+                            {
+                                var typeName = objectCreation.Type.ToString();
+                                var usings = objectCreation.GetUsings();
+
+                                if (usings.Any(a => (a + "." + typeName) == fullTypeName))
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                current = current.Parent;
+            }
+            return false;
+        }
+
+        public static IEnumerable<string> GetUsings(this AstNode astNode)
+        {
+            var result = new List<string>();
+
+            var current = astNode.Parent;
+            while(current != null)
+            {
+                var usings = current.Descendants.OfType<UsingDeclaration>();
+                if(usings.Any())
+                {
+                    result.AddRange(usings.Select(a => a.Namespace));
+                }
+
+                current = current.Parent;
+            }
+
+            return result;
+        }
+
+        public static string GetIdentifier(this Expression expression)
+        {
+            if(expression is IdentifierExpression)
+            {
+                var identifier = expression as IdentifierExpression;
+                return identifier.Identifier;
+            }
+
+            return string.Empty;
+        }
+
+        public static string GetCurrentNamespace(this AstNode astNode)
+        {
+            var result = new List<string>();
+
+            var current = astNode;
+            while (current != null)
+            {
+                var typeDeclaration = current as TypeDeclaration;
+                if(typeDeclaration != null)
+                {
+                    result.Add(typeDeclaration.Name);
+                }
+                else
+                {
+                    var namespaceDeclaration = current as NamespaceDeclaration;
+                    if(namespaceDeclaration != null)
+                    {
+                        result.AddRange(namespaceDeclaration.FullName.Split(".".ToCharArray()).Reverse());
+                    }
+                }
+
+                current = current.Parent;
+            }
+
+            result.Reverse();
+
+            return string.Join(".", result);
+        }
+
         public static string GetFullName(this MemberType memberType)
         {
             var result = new List<string>();

@@ -13,7 +13,7 @@ namespace Strokes.BasicAchievements.NRefactory
     /// </summary>
     public abstract class NRefactoryAchievement : AchievementBase
     {
-        protected IEnumerable<TypeDeclarationInfo> CodebaseTypeDeclarations
+        protected IEnumerable<DeclarationInfo> CodebaseDeclarations
         {
             get;
             set;
@@ -29,7 +29,7 @@ namespace Strokes.BasicAchievements.NRefactory
 
             // Obtain a session object and the codebase type declarations
             var nrefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
-            CodebaseTypeDeclarations = nrefactorySession.GetCodebaseTypeDeclarations(detectionSession.BuildInformation);
+            CodebaseDeclarations = nrefactorySession.GetCodebaseDeclarations(detectionSession.BuildInformation);
 
             // Have the concrete implementation create it's visitor
             var visitor = CreateVisitor(detectionSession);

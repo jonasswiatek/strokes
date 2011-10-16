@@ -197,11 +197,11 @@
     <Compile Include="Challenges\CalculatorChallenge.cs" />
     <Compile Include="Challenges\Challenge.cs" />
     <Compile Include="Challenges\CaesarChallenge.cs" />
-    <Compile Include="NRefactory\CodeBaseAnalysis\TypeDeclarationVisitor.cs" />
+    <Compile Include="NRefactory\CodeBaseAnalysis\CodebaseAnalysisVisitor.cs" />
     <Compile Include="NRefactory\NRefactoryAchievement.cs" />
     <Compile Include="NRefactory\NRefactorySession.cs" />
-    <Compile Include="NRefactory\NRefactoryTools.cs" />
-    <Compile Include="NRefactory\CodeBaseAnalysis\TypeDeclarationInfo.cs" />
+    <Compile Include="NRefactory\NRefactoryHelpers.cs" />
+    <Compile Include="NRefactory\CodeBaseAnalysis\DeclarationInfo.cs" />
     <Compile Include="Properties\AchievementCategoryResources.da-DK.Designer.cs">
       <DependentUpon>AchievementCategoryResources.da-DK.resx</DependentUpon>
       <AutoGen>True</AutoGen>

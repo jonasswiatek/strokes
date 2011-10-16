@@ -13,10 +13,7 @@ namespace Strokes.Console
     {
         public void Main()
         {
-            var thread = new System.Threading.Thread(() =>
-                                           {
-                                               var bla = "";
-                                           });
+            Thread.Sleep(4);
         }
     }
 }

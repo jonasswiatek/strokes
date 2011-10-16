@@ -6,6 +6,10 @@ namespace Strokes.BasicAchievements.Test.TestCases
     [ExpectUnlock(typeof(OverrideMethodAchievement))]
     [ExpectUnlock(typeof(OverrideGetHashCodeAchievement))]
     [ExpectUnlock(typeof(OverrideToStringAchievement))]
+    [ExpectUnlock(typeof(CreateMethodOneParameterAchievement))]
+    [ExpectUnlock(typeof(CreateMethodReturnIntAchievement))]
+    [ExpectUnlock(typeof(CreateMethodReturnBoolAchievement))]
+    [ExpectUnlock(typeof(CreateMethodReturnStringAchievement))]
     public class OverrideBasicsTest
     {
         public override bool Equals(object obj)
