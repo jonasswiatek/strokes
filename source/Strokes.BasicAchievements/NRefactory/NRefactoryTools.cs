@@ -44,6 +44,12 @@ namespace Strokes.BasicAchievements.NRefactory
                 return IsLong(astType);
             else if (type == typeof(float))
                 return IsFloat(astType);
+            else if (type == typeof(bool))
+                return IsBoolean(astType);
+            else if (type == typeof(string))
+                return IsString(astType);
+            else if (type == typeof(byte))
+                return IsByte(astType);
             else if (type == typeof(double))
                 return IsDouble(astType);
             else
