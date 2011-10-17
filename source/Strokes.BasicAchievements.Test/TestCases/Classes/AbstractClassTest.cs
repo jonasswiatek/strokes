@@ -1,6 +1,6 @@
 ﻿using Strokes.BasicAchievements.Achievements;
 
-namespace Strokes.BasicAchievements.Test.TestCases
+namespace Strokes.BasicAchievements.Test.TestCases.Classes
 {
     [ExpectUnlock(typeof(AbstractClassAchievement))]
     [ExpectUnlock(typeof(AbstractMethodAchievement))]

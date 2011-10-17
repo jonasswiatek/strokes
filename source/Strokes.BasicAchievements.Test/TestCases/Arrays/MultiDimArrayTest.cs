@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Strokes.BasicAchievements.Achievements;
+﻿using Strokes.BasicAchievements.Achievements;
 
-namespace Strokes.BasicAchievements.Test.TestCases
+namespace Strokes.BasicAchievements.Test.TestCases.Arrays
 {
     [ExpectUnlock(typeof(DeclareArrayAchievement))]
     [ExpectUnlock(typeof(DeclareMultipleDimArrayAchievement))]

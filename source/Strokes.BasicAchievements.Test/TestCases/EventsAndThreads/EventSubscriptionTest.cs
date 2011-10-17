@@ -1,7 +1,7 @@
 ﻿using System;
 using Strokes.BasicAchievements.Achievements;
 
-namespace Strokes.BasicAchievements.Test.TestCases
+namespace Strokes.BasicAchievements.Test.TestCases.EventsAndThreads
 {
     [ExpectUnlock(typeof(SubscribeToEventAchievement))]
     [ExpectUnlock(typeof(CreateEventAchievement))]

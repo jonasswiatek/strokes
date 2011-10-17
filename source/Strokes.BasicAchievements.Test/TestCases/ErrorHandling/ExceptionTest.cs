@@ -1,17 +1,14 @@
 ﻿using System;
 using Strokes.BasicAchievements.Achievements;
 
-namespace Strokes.BasicAchievements.Test.TestCases
+namespace Strokes.BasicAchievements.Test.TestCases.ErrorHandling
 {
-    [ExpectUnlock(typeof(IComparableAchievement))]
     [ExpectUnlock(typeof(InstantiateObjectAchievement))]
     [ExpectUnlock(typeof(ThrownExceptionAchievement))]
     [ExpectUnlock(typeof(ThrownNotImplementedAchievement))]
-    [ExpectUnlock(typeof(CreateMethodOneParameterAchievement))]
-    [ExpectUnlock(typeof(CreateMethodReturnIntAchievement))]
-    public class ComparableTest : IComparable
+    public class ExceptionTest
     {
-        public int CompareTo(object obj)
+        public void Main()
         {
             throw new NotImplementedException();
         }

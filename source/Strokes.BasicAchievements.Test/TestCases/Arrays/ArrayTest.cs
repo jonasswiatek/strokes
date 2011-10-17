@@ -1,6 +1,6 @@
 ﻿using Strokes.BasicAchievements.Achievements;
 
-namespace Strokes.BasicAchievements.Test.TestCases
+namespace Strokes.BasicAchievements.Test.TestCases.Arrays
 {
     [ExpectUnlock(typeof(DeclareArrayAchievement))]
     [ExpectUnlock(typeof(DeclareInitArrayAchievement))]

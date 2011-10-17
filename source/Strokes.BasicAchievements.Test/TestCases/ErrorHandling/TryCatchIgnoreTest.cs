@@ -1,7 +1,7 @@
 ﻿using System;
 using Strokes.BasicAchievements.Achievements;
 
-namespace Strokes.BasicAchievements.Test.TestCases
+namespace Strokes.BasicAchievements.Test.TestCases.ErrorHandling
 {
     [ExpectUnlock(typeof(TryCatchIgnoreStatementAchievement))]
     [ExpectUnlock(typeof(TryCatchStatementAchievement))]

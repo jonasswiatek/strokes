@@ -31,6 +31,8 @@ namespace Strokes.BasicAchievements.Test
         [TestMethod]
         public void TestAchievements()
         {
+            const string achievementBaseNamespace = "Strokes.BasicAchievements.Test.";
+
             ObjectFactory.Configure(a => a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>());
             var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
             achievementRepository.LoadFromAssembly(typeof(NRefactoryAchievement).Assembly);
@@ -38,7 +40,8 @@ namespace Strokes.BasicAchievements.Test
             var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Length > 0);
             foreach(var test in achievementTests)
             {
-                var sourceFile = Path.GetFullPath("TestCases/" + test.Name + ".cs");
+                var testCasePath = test.FullName.Replace(achievementBaseNamespace, "").Replace(".", "/") + ".cs";
+                var sourceFile = Path.GetFullPath(testCasePath);
                 var buildInformation = new BuildInformation()
                                            {
                                                ActiveFile = sourceFile,

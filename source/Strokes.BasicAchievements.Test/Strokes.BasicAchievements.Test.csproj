@@ -49,60 +49,60 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AchievementLocaizationTest.cs" />
-    <Compile Include="TestCases\ArrayTest.cs">
+    <Compile Include="TestCases\Arrays\ArrayTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="AchievementTest.cs" />
     <Compile Include="ExpectUnlockAttribute.cs" />
-    <Compile Include="TestCases\BlockCommentTest.cs">
+    <Compile Include="TestCases\Basic\BlockCommentTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\AbstractClassTest.cs">
+    <Compile Include="TestCases\Classes\AbstractClassTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\AnonymousObjectInitializerTest.cs">
+    <Compile Include="TestCases\Classes\AnonymousObjectInitializerTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\ComparableTest.cs">
+    <Compile Include="TestCases\Classes\ComparableTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\AsKeywordTest.cs">
+    <Compile Include="TestCases\Classes\AsKeywordTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\EventUnsubscriptionTest.cs">
+    <Compile Include="TestCases\EventsAndThreads\EventUnsubscriptionTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\EventSubscriptionTest.cs">
+    <Compile Include="TestCases\EventsAndThreads\EventSubscriptionTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\ThreadTest.cs">
+    <Compile Include="TestCases\EventsAndThreads\ThreadTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\TryCatchIgnoreTest.cs">
+    <Compile Include="TestCases\ErrorHandling\TryCatchIgnoreTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\ExceptionTest.cs">
+    <Compile Include="TestCases\ErrorHandling\ExceptionTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\IsKeywordTest.cs">
+    <Compile Include="TestCases\Classes\IsKeywordTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\OverrideBasicsTest.cs">
+    <Compile Include="TestCases\Classes\OverrideBasicsTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\ObjectInitializerTest.cs">
+    <Compile Include="TestCases\Classes\ObjectInitializerTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\InheritClassTest.cs">
+    <Compile Include="TestCases\Classes\InheritClassTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\InlineCommentTest.cs">
+    <Compile Include="TestCases\Basic\InlineCommentTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\MultiDimArrayTest.cs">
+    <Compile Include="TestCases\Arrays\MultiDimArrayTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="TestCases\JaggedArrayTest.cs">
+    <Compile Include="TestCases\Arrays\JaggedArrayTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
