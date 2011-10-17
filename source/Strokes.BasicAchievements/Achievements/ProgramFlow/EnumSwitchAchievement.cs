@@ -19,7 +19,7 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
-            return new Visitor(CodebaseDeclarations);
+            return new Visitor(NRefactoryContext.CodebaseDeclarations);
         }
 
         private class Visitor : AbstractAchievementVisitor

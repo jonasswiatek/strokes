@@ -199,6 +199,7 @@
     <Compile Include="Challenges\CaesarChallenge.cs" />
     <Compile Include="NRefactory\CodeBaseAnalysis\CodebaseAnalysisVisitor.cs" />
     <Compile Include="NRefactory\NRefactoryAchievement.cs" />
+    <Compile Include="NRefactory\NRefactoryContext.cs" />
     <Compile Include="NRefactory\NRefactorySession.cs" />
     <Compile Include="NRefactory\NRefactoryHelpers.cs" />
     <Compile Include="NRefactory\CodeBaseAnalysis\DeclarationInfo.cs" />
