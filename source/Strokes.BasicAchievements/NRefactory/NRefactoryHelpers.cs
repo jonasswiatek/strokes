@@ -86,6 +86,11 @@ namespace Strokes.BasicAchievements.NRefactory
             {
                 result.Add(identifier.Identifier);
             }
+
+            if (currentExpression is TypeReferenceExpression)
+            {
+                result.Add(currentExpression.ToString());
+            }
             result.Reverse();
             return string.Join(".", result);
         }
@@ -157,6 +162,8 @@ namespace Strokes.BasicAchievements.NRefactory
                 return IsFloat(astType);
             else if (type == typeof(double))
                 return IsDouble(astType);
+            else if (type == typeof(char))
+                return IsChar(astType);
             else
                 return false;
         }

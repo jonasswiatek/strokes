@@ -4,6 +4,7 @@ namespace Strokes.BasicAchievements.Test.TestCases.Classes
 {
     [ExpectUnlock(typeof(InstantiateObjectWithInitAchievement))]
     [ExpectUnlock(typeof(InstantiateObjectAchievement))]
+    [ExpectUnlock(typeof(DeclareInt))]
     public class ObjectInitializerTest
     {
         public int Val;

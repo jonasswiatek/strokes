@@ -107,6 +107,33 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AchievementGuidTest.cs" />
+    <Compile Include="TestCases\PrimitiveTypeUsage\AssignValueToPrimitiveType.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\PrimitiveTypeUsage\LowerBoundAssignValueToPrimitiveType.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\PrimitiveTypeUsage\UpperBoundAssignValueToPrimitiveType.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\PrimitiveTypeUsage\MultipleDeclarePrimitiveTypeAsFieldTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\PrimitiveTypeUsage\MultipleDeclarePrimitiveTypeAsMethodVariableTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\PrimitiveTypeUsage\DeclareInitializePrimitiveTypeAsFieldTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\PrimitiveTypeUsage\DeclareInitializePrimitiveTypeAsMethodVariableTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\PrimitiveTypeUsage\DeclarePrimitiveTypeAsMethodVariableTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\PrimitiveTypeUsage\DeclarePrimitiveTypeAsFieldTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Strokes.BasicAchievements\Strokes.BasicAchievements.csproj">

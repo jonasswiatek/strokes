@@ -13,7 +13,8 @@ namespace Strokes.Testing
     {
         public void Main()
         {
-            var bla = "vvv\r\n";
+            char bla;
+            bla = char.MinValue;
         }
     }
 }
