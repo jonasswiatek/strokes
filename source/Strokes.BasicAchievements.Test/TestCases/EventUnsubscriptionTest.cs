@@ -5,7 +5,8 @@ namespace Strokes.BasicAchievements.Test.TestCases
 {
     [ExpectUnlock(typeof(UnSubscribeToEventAchievement))]
     [ExpectUnlock(typeof(CreateEventAchievement))]
-    [ExpectUnlock(typeof(LambdaExpressionAchievement))]
+    [ExpectUnlock(typeof(EmptyVoidMethodAchievement))]
+    [ExpectUnlock(typeof(CreateMethodMultipleParametersAchievement))]
     public class EventUnsubscriptionTest
     {
         public event EventHandler<EventArgs> SomeEvent;
@@ -17,7 +18,6 @@ namespace Strokes.BasicAchievements.Test.TestCases
 
         private void EventHandler(object sender, EventArgs e)
         {
-            
         }
     }
 }

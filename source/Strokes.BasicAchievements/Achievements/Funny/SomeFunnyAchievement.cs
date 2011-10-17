@@ -148,7 +148,7 @@ namespace Strokes.BasicAchievements.Achievements
                 if (typeDeclaration.ClassType == ClassType.Class)
                 {
                     var interfaces = typeDeclaration.BaseTypes.OfType<SimpleType>().Where(a => a.Identifier.StartsWith("I"));
-                    if (interfaces.Count() >= 0)
+                    if (interfaces.Count() >= 5)
                     {
                         UnlockWith(typeDeclaration);
                     }
