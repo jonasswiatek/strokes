@@ -39,23 +39,23 @@ namespace Strokes.BasicAchievements.Achievements
                 return base.VisitAssignmentExpression(assignmentExpression, data);
             }
 
-            //Not exactly pretty
-            private static bool IsMemberReferenceOfType<T>(MemberReferenceExpression expression)
+            // TODO: Refactor into using NRefactoryHelpers
+            private static bool IsMemberReferenceOfType<TMemberType>(MemberReferenceExpression expression)
             {
                 var variations = new List<string>();
-                if(typeof(T) == typeof(System.Int32))
+                if(typeof(TMemberType) == typeof(System.Int32))
                 {
                     variations = new List<string>() {"System.Int32", "Int32", "int"};
                 }
-                else if(typeof(T) == typeof(System.Double))
+                else if(typeof(TMemberType) == typeof(System.Double))
                 {
                     variations = new List<string>() { "System.Double", "Double", "double" };
                 }
-                else if (typeof(T) == typeof(System.Single))
+                else if (typeof(TMemberType) == typeof(System.Single))
                 {
                     variations = new List<string>() { "System.Single", "Single", "float" };
                 }
-                else if (typeof(T) == typeof(System.Char))
+                else if (typeof(TMemberType) == typeof(System.Char))
                 {
                     variations = new List<string>() { "System.Char", "Char", "char" };
                 }

@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ICSharpCode.NRefactory.CSharp;
+﻿using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
-using ICSharpCode.NRefactory.CSharp;
 
 namespace Strokes.BasicAchievements.Achievements
 {

@@ -185,6 +185,12 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AchievementGuidTest.cs" />
+    <Compile Include="TestCases\Expressions\QueryExpressionTest.cs" />
+    <Compile Include="TestCases\Expressions\OperatorOrTest.cs" />
+    <Compile Include="TestCases\Expressions\OperatorAndTest.cs" />
+    <Compile Include="TestCases\Expressions\NotOperatorExpressionTest.cs" />
+    <Compile Include="TestCases\Expressions\LambdaExpressionTest.cs" />
+    <Compile Include="TestCases\Expressions\IfCompoundExpressionTest.cs" />
     <Compile Include="TestCases\Generic\CreateGenericObjectTest.cs" />
     <Compile Include="TestCases\Generic\CreateGenericClassTest.cs" />
     <Compile Include="TestCases\PrimitiveTypeUsage\AssignValueToPrimitiveType.cs">
