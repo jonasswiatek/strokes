@@ -20,16 +20,22 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitIfElseStatement(IfElseStatement ifElseStatement, object data)
             {
-                foreach (var statement in (ifElseStatement.TrueStatement as BlockStatement).Statements)
+                if (ifElseStatement.TrueStatement is BlockStatement)
                 {
-                    if (statement is IfElseStatement)
-                        UnlockWith(ifElseStatement);
+                    foreach (var statement in (ifElseStatement.TrueStatement as BlockStatement).Statements)
+                    {
+                        if (statement is IfElseStatement)
+                            UnlockWith(ifElseStatement);
+                    }
                 }
 
-                foreach (var statement in (ifElseStatement.FalseStatement as BlockStatement).Statements)
+                if (ifElseStatement.FalseStatement is BlockStatement)
                 {
-                    if (statement is IfElseStatement)
-                        UnlockWith(ifElseStatement);
+                    foreach (var statement in (ifElseStatement.FalseStatement as BlockStatement).Statements)
+                    {
+                        if (statement is IfElseStatement)
+                            UnlockWith(ifElseStatement);
+                    }
                 }
 
                 return base.VisitIfElseStatement(ifElseStatement, data);

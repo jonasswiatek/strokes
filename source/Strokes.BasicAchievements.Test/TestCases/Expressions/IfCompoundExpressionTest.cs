@@ -3,6 +3,11 @@
 namespace Strokes.BasicAchievements.Test.TestCases.Expressions
 {
     [ExpectUnlock(typeof(IfCompoundExpressionAchievement))]
+    [ExpectUnlock(typeof(DeclareInitializeInt))]
+    [ExpectUnlock(typeof(IfStatementAchievement))]
+    [ExpectUnlock(typeof(IfElseStatementAchievement))]
+    [ExpectUnlock(typeof(OperatorAndAchievement))]
+    [ExpectUnlock(typeof(OperatorOrAchievement))]
     public class IfCompoundExpressionTest
     {
         public void Test()
@@ -13,6 +18,10 @@ namespace Strokes.BasicAchievements.Test.TestCases.Expressions
 
             if (a == 1 && b == 2 || c == 3)
             {
+            }
+            else
+            {
+                
             }
         }
     }

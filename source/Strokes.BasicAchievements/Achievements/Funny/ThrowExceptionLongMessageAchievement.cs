@@ -20,8 +20,8 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitThrowStatement(ThrowStatement throwStatement, object data)
             {
-                var createExpression = (ObjectCreateExpression)throwStatement.Expression;
-                if (createExpression.Type.GetTypeName().Contains("Exception"))
+                var createExpression = throwStatement.Expression as ObjectCreateExpression;
+                if (createExpression != null && createExpression.Type.GetTypeName().Contains("Exception"))
                 {
                     foreach (var expression in createExpression.Arguments)
                     {
@@ -32,7 +32,6 @@ namespace Strokes.BasicAchievements.Achievements
                                 UnlockWith(throwStatement);
                         }
                     }
-                    UnlockWith(throwStatement);
                 }
 
                 return base.VisitThrowStatement(throwStatement, data);

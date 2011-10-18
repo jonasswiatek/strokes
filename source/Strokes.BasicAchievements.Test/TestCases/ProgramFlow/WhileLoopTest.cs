@@ -3,6 +3,8 @@
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
     [ExpectUnlock(typeof(WhileLoopAchievement))]
+    [ExpectUnlock(typeof(DeclareInitializeInt))]
+    [ExpectUnlock(typeof(PlusPlusOperatorAchievement))]
     public class WhileLoopTest
     {
         public void Test()

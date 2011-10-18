@@ -20,7 +20,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitIfElseStatement(IfElseStatement ifElseStatement, object data)
             {
-                if (ifElseStatement.FalseStatement != null)
+                if (!ifElseStatement.FalseStatement.IsNull)
                     UnlockWith(ifElseStatement);
 
                 return base.VisitIfElseStatement(ifElseStatement, data);

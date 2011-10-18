@@ -3,6 +3,7 @@
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
     [ExpectUnlock(typeof(IfShorthandAchievement))]
+    [ExpectUnlock(typeof(DeclareInitializeInt))]
     public class IfShorthandTest
     {
         public void Test()

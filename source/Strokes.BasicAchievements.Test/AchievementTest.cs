@@ -93,12 +93,12 @@ namespace Strokes.BasicAchievements.Test
                     //Test that expected achievements unlocked
                     foreach(var expectedAchievement in expectedAchievements)
                     {
-                        Assert.IsTrue(unlockedAchievements.Contains(expectedAchievement), Path.GetFileName(sourceFile) + " did not unlock expected achievement: " + expectedAchievement.FullName);
+                        Assert.IsTrue(unlockedAchievements.Contains(expectedAchievement), Path.GetFileName(sourceFile) + " did not unlock expected achievement: " + expectedAchievement.Name);
                     }
 
                     //Test that only expected achievements unlocked
                     var unexpectedAchievements = unlockedAchievements.Except(expectedAchievements).Except(_globallyIgnoredAchievements).ToList();
-                    Assert.IsTrue(unexpectedAchievements.Count() == 0, Path.GetFileName(sourceFile) + " unlocks unexpected achievements: " + string.Join(", ", unexpectedAchievements.Select(a => a.FullName)));
+                    Assert.IsTrue(unexpectedAchievements.Count() == 0, Path.GetFileName(sourceFile) + " unlocks unexpected achievements: " + string.Join(", ", unexpectedAchievements.Select(a => a.Name)));
                 }
             }
         }

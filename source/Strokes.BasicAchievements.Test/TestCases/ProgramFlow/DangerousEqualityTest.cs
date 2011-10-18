@@ -3,6 +3,9 @@
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
     [ExpectUnlock(typeof(DangerousEqualityCheckAchievement))]
+    [ExpectUnlock(typeof(IfStatementAchievement))]
+    [ExpectUnlock(typeof(DeclareInitializeFloat))]
+    [ExpectUnlock(typeof(DeclareInitializeDouble))]
     public class DangerousEqualityTest
     {
         public void Test()

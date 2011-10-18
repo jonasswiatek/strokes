@@ -3,6 +3,9 @@
 namespace Strokes.BasicAchievements.Test.TestCases.Expressions
 {
     [ExpectUnlock(typeof(OperatorOrAchievement))]
+    [ExpectUnlock(typeof(DeclareInitializeInt))]
+    [ExpectUnlock(typeof(IfStatementAchievement))]
+    [ExpectUnlock(typeof(IfCompoundExpressionAchievement))]
     public class OperatorOrTest
     {
         public void Test()

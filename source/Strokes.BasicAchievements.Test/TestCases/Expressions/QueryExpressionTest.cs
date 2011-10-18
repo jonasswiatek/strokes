@@ -6,6 +6,9 @@ using Strokes.BasicAchievements.Achievements;
 namespace Strokes.BasicAchievements.Test.TestCases.Expressions
 {
     [ExpectUnlock(typeof(QueryExpressionAchievement))]
+    [ExpectUnlock(typeof(InstantiateObjectAchievement))]
+    [ExpectUnlock(typeof(CreateGenericObjectAchievement))]
+    [ExpectUnlock(typeof(InstantiateObjectWithInitAchievement))]
     public class QueryExpressionTest
     {
         public void Test()

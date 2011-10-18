@@ -3,6 +3,8 @@
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
     [ExpectUnlock(typeof(EnumSwitchAchievement))]
+    [ExpectUnlock(typeof(SwitchAchievement))]
+    [ExpectUnlock(typeof(EnumInitializerAchievement))]
     public class EnumSwitchTest
     {
         public enum FooBarBaz

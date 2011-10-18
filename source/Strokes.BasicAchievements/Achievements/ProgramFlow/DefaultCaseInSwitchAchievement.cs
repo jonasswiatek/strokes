@@ -18,23 +18,16 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            
             public override object VisitSwitchSection(SwitchSection switchSection, object data)
             {
-                // REFACTOR
-                // TODO: Missing a way to detect the 'default' statement.
+                if(switchSection.CaseLabels.Any(a => a.Expression.IsNull))
+                {
+                    UnlockWith(switchSection);
+                }
 
-                //var defaultLabel = switchSection.CaseLabels.FirstOrDefault(a => a.Role == );
-                //if(defaultLabel != null)
-                //{
-                //    // Bug: For some reason this the defaultLabel here doesn't have it's lines in the source document set. Bug in NRefactory?
-                //    UnlockWith(defaultLabel);
-
-                //    IsAchievementUnlocked = true;
-                //}
-                
                 return base.VisitSwitchSection(switchSection, data);
             }
+
         }
     }
 }

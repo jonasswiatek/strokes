@@ -18,11 +18,11 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+
             public override object VisitIfElseStatement(IfElseStatement ifElseStatement, object data)
             {
-                // TODO: Pass the 'ElseToken' to give more detailed unlock info.
-                if (ifElseStatement.ElseToken.IsNull == false)
-                    UnlockWith(ifElseStatement);
+                if (ifElseStatement.FalseStatement is IfElseStatement)
+                    UnlockWith(ifElseStatement.ElseToken);
 
                 return base.VisitIfElseStatement(ifElseStatement, data);
             }

@@ -3,6 +3,8 @@
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
     [ExpectUnlock(typeof(ForEachWithEnumAchievement))]
+    [ExpectUnlock(typeof(EnumInitializerAchievement))]
+    [ExpectUnlock(typeof(ForEachAchievement))]
     public class ForeachWithEnumTest
     {
         public enum FooBarBaz

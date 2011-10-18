@@ -3,6 +3,8 @@
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
     [ExpectUnlock(typeof(DefaultCaseInSwitchSwitchAchievement))]
+    [ExpectUnlock(typeof(DeclareInitializeInt))]
+    [ExpectUnlock(typeof(SwitchAchievement))]
     public class DefaultCaseInSwitchTest
     {
         public void Test()

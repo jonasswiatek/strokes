@@ -11,9 +11,18 @@ namespace Strokes.Testing
 {
     public class TestFile
     {
-        public static void main(string[] argssss)
+        public enum FooBarBaz
         {
-            throw new Exception("very long exception message, oh yeah, hey there!");
+            Foo,
+            Bar,
+            Baz
+        }
+
+        public void Test()
+        {
+            foreach (FooBarBaz item in System.Enum.GetValues(typeof(FooBarBaz)))
+            {
+            }
         }
     }
 }
