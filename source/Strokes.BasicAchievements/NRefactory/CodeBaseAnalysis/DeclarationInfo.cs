@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ICSharpCode.NRefactory.CSharp;
 
 namespace Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis
 {
@@ -19,6 +20,8 @@ namespace Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis
 
         public string TypeName { get; set; }
         public List<string> PossibleTypeNamespaces { get; set; }
+
+        public Expression Initializer { get; set; }
 
         public TypeDeclarationKind DeclarationClassType
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace Strokes.Core
         {
             AchievementContext.OnAchievementDetectionStarting(null, new EventArgs());
 
-            var unlockedAchievements = new List<Achievement>();
+            var unlockedAchievements = new ConcurrentBag<Achievement>();
             var achievementDescriptorRepository = ObjectFactory.GetInstance<IAchievementRepository>();
 
             using (var detectionSession = new DetectionSession(buildInformation))

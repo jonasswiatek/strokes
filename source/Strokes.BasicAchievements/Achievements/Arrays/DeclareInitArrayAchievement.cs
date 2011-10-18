@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 
@@ -21,17 +22,9 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private int lastSpecifierLine = 0;
-            public override object VisitArraySpecifier(ICSharpCode.NRefactory.CSharp.ArraySpecifier arraySpecifier, object data)
+            public override object VisitArrayInitializerExpression(ArrayInitializerExpression arrayInitializerExpression, object data)
             {
-                lastSpecifierLine = arraySpecifier.StartLocation.Line;
-
-                return base.VisitArraySpecifier(arraySpecifier, data);
-            }
-            public override object VisitArrayInitializerExpression(ICSharpCode.NRefactory.CSharp.ArrayInitializerExpression arrayInitializerExpression, object data)
-            {
-                //TODO: This ain't pretty - there is no C# requirement that the specifier and initializer must be on the same line.
-                if(arrayInitializerExpression.StartLocation.Line == lastSpecifierLine)
+                if(arrayInitializerExpression.Parent is ArrayCreateExpression)
                 {
                     UnlockWith(arrayInitializerExpression);
                 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
@@ -18,26 +19,21 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* TODO: Needs to be much more awesome than this
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (methodDeclaration.Name.ToLower().Equals("main") && !methodDeclaration.Modifier.HasFlag(Modifiers.Constructors))
+                if (methodDeclaration.Name.ToLower().Equals("main"))
                 {
-                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.Modifier.HasFlag(Modifiers.Abstract))
+                    if (!methodDeclaration.IsExtensionMethod && methodDeclaration.Modifiers.HasFlag(Modifiers.Static) && methodDeclaration.ReturnType.ToString() == "void")
                     {
-                        if (methodDeclaration.Parameters.Count==1)
+                        var firstParam = methodDeclaration.Parameters.FirstOrDefault();
+
+                        if(firstParam != null && firstParam.Type.ToString().ToLower() == "string[]")
                         {
-                            ParameterDeclarationExpression param = methodDeclaration.Parameters[0];
-
-                            if(param.ParameterName.Equals("args") && param.TypeReference.ToString().Equals("System.String[]"))
+                            var argsName = firstParam.Name;
+                            var bodyCode = methodDeclaration.Body.ToString();
+                            if(Regex.IsMatch(bodyCode, argsName + @"\s\[\d+\]"))
                             {
-                                //now check if body uses argsparam
-                                //This is waaaaay to naive....
-                                if(methodDeclaration.Body.ToString().Contains("args"))
-                                {
-                                    UnlockWith(methodDeclaration);
-                                }
-
+                                UnlockWith(firstParam);
                             }
                         }
                     }
@@ -45,7 +41,6 @@ namespace Strokes.BasicAchievements.Achievements
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             */
         }
     }
 }

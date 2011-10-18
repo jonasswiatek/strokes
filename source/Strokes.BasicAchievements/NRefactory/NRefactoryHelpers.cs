@@ -16,6 +16,33 @@ namespace Strokes.BasicAchievements.NRefactory
             return usings.Any(a => (a + "." + methodName) == fullTypeName) || methodName == fullTypeName;
         }
 
+        public static IEnumerable<VariableInitializer> GetVariablesOfInitializer<T>(this AstNode astNode)
+        {
+            var root = astNode.Parent;
+            while (root != null)
+            {
+                if (root.Parent == null)
+                    break;
+
+                root = root.Parent;
+            }
+
+            var variableDeclarations = root.Descendants.OfType<VariableDeclarationStatement>();
+            if (variableDeclarations.Any())
+            {
+                foreach (var variableDeclaration in variableDeclarations)
+                {
+                    foreach (var variable in variableDeclaration.Variables)
+                    {
+                        if (variable.Initializer is T)
+                        {
+                            yield return variable;
+                        }
+                    }
+                }
+            }
+        }
+
         public static bool IsReferenceOfTypeFromScope(this Expression expression, string fullTypeName)
         {
             var current = expression.Parent;

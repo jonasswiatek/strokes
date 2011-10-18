@@ -54,7 +54,43 @@
     </Compile>
     <Compile Include="AchievementTest.cs" />
     <Compile Include="ExpectUnlockAttribute.cs" />
+    <Compile Include="TestCases\Arrays\ArrayLengthFieldTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Arrays\ArrayLengthVariableTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="TestCases\Basic\BlockCommentTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Basic\ArithmeticOperatorTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Basic\CastTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Basic\ConstKeywordFieldTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Basic\ConstKeywordVariableTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Basic\UsingStatementTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Basic\TypeOfTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Basic\ShorthandArithmeticTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Basic\ProgramWithStartupParamsTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Basic\EnumExplicitDeclarationTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Basic\EnumDeclarationTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="TestCases\Classes\AbstractClassTest.cs">

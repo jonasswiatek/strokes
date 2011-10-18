@@ -18,13 +18,11 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
             public override object VisitTypeOfExpression(TypeOfExpression typeOfExpression, object data)
             {
                 UnlockWith(typeOfExpression);
                 return base.VisitTypeOfExpression(typeOfExpression, data);
             }
-
         }
     }
 }

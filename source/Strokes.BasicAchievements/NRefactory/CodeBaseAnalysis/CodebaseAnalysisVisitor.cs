@@ -44,13 +44,15 @@ namespace Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis
             var declarations = fieldDeclaration.Variables.Select(a => a.Name);
             var usings = fieldDeclaration.GetUsings();
 
+            var initializer = fieldDeclaration.Variables.FirstOrDefault();
             var declarationInfos = declarations.Select(a => new DeclarationInfo()
                                                                 {
                                                                     DeclarationClassType = TypeDeclarationKind.Field,
                                                                     Name = a,
                                                                     TypeName = fieldDeclaration.ReturnType.ToString(),
                                                                     PossibleTypeNamespaces = usings.ToList(),
-                                                                    Namespace = fieldDeclaration.GetCurrentNamespace()
+                                                                    Namespace = fieldDeclaration.GetCurrentNamespace(),
+                                                                    Initializer = initializer != null ? initializer.Initializer : null
                                                                 });
             TypeDeclarations.AddRange(declarationInfos);
 

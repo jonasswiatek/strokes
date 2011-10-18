@@ -11,10 +11,9 @@ namespace Strokes.Testing
 {
     public class TestFile
     {
-        public void Main()
+        public static void main(string[] args)
         {
-            char bla;
-            bla = char.MinValue;
+            var bla = args[0];
         }
     }
 }

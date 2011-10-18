@@ -19,10 +19,8 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
             public override object VisitCastExpression(CastExpression castExpression, object data)
             {
-                //This was the hardest achievement to write ever :p
                 UnlockWith(castExpression);
 
                 return base.VisitCastExpression(castExpression, data);
