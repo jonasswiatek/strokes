@@ -31,7 +31,7 @@ namespace Strokes.BasicAchievements.NRefactory
                 {
                     var parser = new CSharpParser();
                     var compilationUnit = parser.Parse(File.OpenRead(filename));
-                    
+
                     parsers.Add(filename, compilationUnit);
                 }
 
