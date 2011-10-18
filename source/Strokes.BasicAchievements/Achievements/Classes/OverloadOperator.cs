@@ -22,7 +22,6 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
             public override object VisitOperatorDeclaration(OperatorDeclaration operatorDeclaration, object data)
             {
                 UnlockWith(operatorDeclaration);

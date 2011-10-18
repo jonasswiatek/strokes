@@ -42,7 +42,7 @@ namespace Strokes.BasicAchievements.Test
             const string achievementBaseNamespace = "Strokes.BasicAchievements.Test.";
             var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
 
-            var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Length > 0);
+            var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), false).Length > 0);
             foreach(var test in achievementTests)
             {
                 var testCasePath = test.FullName.Replace(achievementBaseNamespace, "").Replace(".", "/") + ".cs";
@@ -56,7 +56,7 @@ namespace Strokes.BasicAchievements.Test
                                                CodeFiles = new[] { sourceFile }
                                            };
 
-                var expectedAchievements = test.GetCustomAttributes(typeof(ExpectUnlockAttribute), true).Select(a => ((ExpectUnlockAttribute)a).ExpectedAchievementType).ToList();
+                var expectedAchievements = test.GetCustomAttributes(typeof(ExpectUnlockAttribute), false).Select(a => ((ExpectUnlockAttribute)a).ExpectedAchievementType).ToList();
 
                 using (var detectionSession = new DetectionSession(buildInformation))
                 {

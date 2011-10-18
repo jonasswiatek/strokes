@@ -2,10 +2,9 @@
 
 namespace Strokes.BasicAchievements.Test.TestCases.Classes
 {
-    [ExpectUnlock(typeof(CreateAutoPropertyAchievement))]
     [ExpectUnlock(typeof(CreatePropertyAchievement))]
-    public class CreateAutoPropertyTest
+    public class CreatePropertyTest
     {
-        public string SomeString { get; set; }
+        public string SomeString { get { return ""; } }
     }
 }

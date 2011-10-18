@@ -9,23 +9,14 @@ using System.Linq;
 
 namespace Strokes.Testing
 {
-    public class TestFile : Bla
+    public class TestFile
     {
-        public TestFile() : base()
+        public TestFile() : this("text")
         {
-            
         }
-        public static void main(string[] args)
-        {
-            var bla = args[0];
-        }
-    }
 
-    public class Bla
-    {
-        public Bla()
+        public TestFile(string bla)
         {
-            
         }
     }
 }
