@@ -21,17 +21,17 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (methodDeclaration.Name.ToLower().Equals("main"))
+                if (methodDeclaration.Name.ToLower().Equals("main")) //This should be fine
                 {
                     if (!methodDeclaration.IsExtensionMethod && methodDeclaration.Modifiers.HasFlag(Modifiers.Static) && methodDeclaration.ReturnType.ToString() == "void")
                     {
                         var firstParam = methodDeclaration.Parameters.FirstOrDefault();
 
-                        if(firstParam != null && firstParam.Type.ToString().ToLower() == "string[]")
+                        if(firstParam != null && firstParam.Type.ToString().ToLower() == "string[]") //This should be fine
                         {
-                            var argsName = firstParam.Name;
-                            var bodyCode = methodDeclaration.Body.ToString();
-                            if(Regex.IsMatch(bodyCode, argsName + @"\s\[\d+\]"))
+                            //The following is a lesson in awesomeness: Get all decendants of the method declaration that are IndexerExpressions, which points to an identifier with the name [of our args variable]
+                            var indexerIdentifierExpressions = methodDeclaration.Descendants.OfType<IndexerExpression>().Select(a => a.Target).OfType<IdentifierExpression>();
+                            if(indexerIdentifierExpressions.Any(a => a.Identifier == firstParam.Name))
                             {
                                 UnlockWith(firstParam);
                             }

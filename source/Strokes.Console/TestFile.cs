@@ -11,12 +11,10 @@ namespace Strokes.Testing
 {
     public class TestFile
     {
-        public TestFile() : this("text")
+        public static void main(string[] argssss)
         {
-        }
-
-        public TestFile(string bla)
-        {
+            var bla = argssss;
+            System.Console.WriteLine(argssss[0]);
         }
     }
 }
