@@ -105,6 +105,21 @@
     <Compile Include="TestCases\Classes\AsKeywordTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="TestCases\Classes\CreateOverloadedConstructorTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Classes\CreateInterfaceTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Classes\CreateClassTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Classes\CreateBaseConstructorInitTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Classes\CreateAutoPropertyTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="TestCases\EventsAndThreads\EventUnsubscriptionTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
