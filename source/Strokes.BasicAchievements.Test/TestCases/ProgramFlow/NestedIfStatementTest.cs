@@ -2,6 +2,7 @@
 
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
+    [ExpectUnlock(typeof(NestedIfStatementAchievement))]
     public class NestedIfStatementTest
     {
         public void Test()

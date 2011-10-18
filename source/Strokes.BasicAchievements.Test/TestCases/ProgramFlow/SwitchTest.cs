@@ -2,6 +2,7 @@
 
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
+    [ExpectUnlock(typeof(SwitchAchievement))]
     public class SwitchTest
     {
         public void Test()

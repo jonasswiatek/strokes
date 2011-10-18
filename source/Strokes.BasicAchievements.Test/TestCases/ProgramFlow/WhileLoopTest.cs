@@ -2,6 +2,7 @@
 
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
+    [ExpectUnlock(typeof(WhileLoopAchievement))]
     public class WhileLoopTest
     {
         public void Test()

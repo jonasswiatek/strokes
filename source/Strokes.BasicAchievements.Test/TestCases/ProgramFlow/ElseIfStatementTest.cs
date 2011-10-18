@@ -2,6 +2,7 @@
 
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
+    [ExpectUnlock(typeof(ElseIfStatementAchievement))]
     public class ElseIfStatementTest
     {
         public void Test()

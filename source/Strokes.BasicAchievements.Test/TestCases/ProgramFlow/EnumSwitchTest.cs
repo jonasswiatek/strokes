@@ -2,6 +2,7 @@
 
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
+    [ExpectUnlock(typeof(EnumSwitchAchievement))]
     public class EnumSwitchTest
     {
         public enum FooBarBaz

@@ -2,7 +2,8 @@
 
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
-    public class ForTest
+    [ExpectUnlock(typeof(ForEachAchievement))]
+    public class ForeachTest
     {
         public void Test()
         {

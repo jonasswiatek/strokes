@@ -2,7 +2,8 @@
 
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
-    public class DangerousEqualityTest
+    [ExpectUnlock(typeof(IfShorthandAchievement))]
+    public class IfShorthandTest
     {
         public void Test()
         {

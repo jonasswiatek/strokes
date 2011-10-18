@@ -2,6 +2,7 @@
 
 namespace Strokes.BasicAchievements.Test.TestCases.ProgramFlow
 {
+    [ExpectUnlock(typeof(DangerousEqualityCheckAchievement))]
     public class DangerousEqualityTest
     {
         public void Test()
