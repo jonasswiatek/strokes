@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
+using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
@@ -17,25 +19,34 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
-            return new Visitor();
+            return new Visitor(NRefactoryContext.CodebaseDeclarations);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* TODO: Make more advanced. Just testing if the member is called array isn't really enough.
+            private readonly IEnumerable<DeclarationInfo> _codebaseDeclarations;
+
+            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarations)
+            {
+                _codebaseDeclarations = codebaseDeclarations;
+            }
+
             public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
             {
-                if (memberReferenceExpression.Target is IdentifierExpression)
+                if(memberReferenceExpression.MemberName == "Length")
                 {
-                    var identifier = (IdentifierExpression)memberReferenceExpression.Target;
-
-                    if (identifier.Identifier == "array" && memberReferenceExpression.MemberName == "Length")
+                    var variableName = memberReferenceExpression.Target.GetIdentifier();
+                    if(memberReferenceExpression.GetVariablesOfInitializer<ArrayCreateExpression>().Any(a => a.Name == variableName))
+                    {
                         UnlockWith(memberReferenceExpression);
-
+                    }
+                    else if(_codebaseDeclarations.Any(a => a.Name == variableName && a.Initializer is ArrayCreateExpression))
+                    {
+                        UnlockWith(memberReferenceExpression);
+                    }
                 }
                 return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
             }
-            */
         }
     }
 }

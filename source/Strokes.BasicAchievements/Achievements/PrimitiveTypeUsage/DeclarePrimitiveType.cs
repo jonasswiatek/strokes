@@ -22,18 +22,20 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitFieldDeclaration(FieldDeclaration fieldDeclaration, object data)
             {
-                if (fieldDeclaration.ReturnType.Is<T>())
-                    if (fieldDeclaration.Variables.Count == 2)
-                        UnlockWith(fieldDeclaration);
+                if (fieldDeclaration.ReturnType.Is<T>() && fieldDeclaration.Variables.Any(a => a.Initializer.IsNull))
+                {
+                    UnlockWith(fieldDeclaration);
+                }
 
                 return base.VisitFieldDeclaration(fieldDeclaration, data);
             }
 
             public override object VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement, object data)
             {
-                if (variableDeclarationStatement.Type.Is<T>())
-                    if (variableDeclarationStatement.Variables.Count == 2)
-                        UnlockWith(variableDeclarationStatement);
+                if (variableDeclarationStatement.Type.Is<T>() && variableDeclarationStatement.Variables.Any(a => a.Initializer.IsNull))
+                {
+                    UnlockWith(variableDeclarationStatement);
+                }
 
                 return base.VisitVariableDeclarationStatement(variableDeclarationStatement, data);
             }

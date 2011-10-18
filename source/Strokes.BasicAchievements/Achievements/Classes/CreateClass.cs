@@ -18,7 +18,6 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
                 if(typeDeclaration.ClassType == ClassType.Class && typeDeclaration.Name != "Program")

@@ -22,21 +22,15 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
-            public override object VisitDoLoopStatement(DoLoopStatement doLoopStatement, object data)
+            public override object VisitWhileStatement(WhileStatement whileStatement, object data)
             {
-                if (doLoopStatement.ConditionPosition == ConditionPosition.Start)
+                var condition = whileStatement.Condition as PrimitiveExpression;
+                if (condition != null && condition.LiteralValue == "true")
                 {
-                    var condition = doLoopStatement.Condition as PrimitiveExpression;
-                    if (condition != null && condition.StringValue == "true")
-                    {
-                        UnlockWith(doLoopStatement);
-                    }
+                    UnlockWith(whileStatement);
                 }
-
-                return base.VisitDoLoopStatement(doLoopStatement, data);
+                return base.VisitWhileStatement(whileStatement, data);
             }
-             */
         }
     }
 }

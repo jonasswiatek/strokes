@@ -20,15 +20,24 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            public override object VisitVariableInitializer(VariableInitializer variableInitializer, object data)
+            public override object VisitFieldDeclaration(FieldDeclaration fieldDeclaration, object data)
             {
-                var expression = variableInitializer.Initializer as ArrayCreateExpression;
+                if (fieldDeclaration.ReturnType.Is<T>() && fieldDeclaration.Variables.Any(a => a.Initializer is PrimitiveExpression))
+                {
+                    UnlockWith(fieldDeclaration);
+                }
 
-                if (expression != null && expression.Type.Is<T>())
-                    if (expression.Type.Is<T>())
-                        UnlockWith(variableInitializer);
+                return base.VisitFieldDeclaration(fieldDeclaration, data);
+            }
 
-                return base.VisitVariableInitializer(variableInitializer, data);
+            public override object VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement, object data)
+            {
+                if (variableDeclarationStatement.Type.Is<T>() && variableDeclarationStatement.Variables.Any(a => a.Initializer is PrimitiveExpression))
+                {
+                    UnlockWith(variableDeclarationStatement);
+                }
+
+                return base.VisitVariableDeclarationStatement(variableDeclarationStatement, data);
             }
         }
     }

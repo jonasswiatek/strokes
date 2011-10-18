@@ -38,19 +38,6 @@ namespace Strokes.BasicAchievements.Test
             TestLocalizations(new CultureInfo("ru-RU"));
         }
 
-        //Comment in any of these to enable testing of these specific cultures
-        /*[TestMethod]
-        public void TestDutchCulture()
-        {
-            TestLocalizations(new CultureInfo("da-DK"));
-        }
-
-        [TestMethod]
-        public void TestDanishCulture()
-        {
-            TestLocalizations(new CultureInfo("nl"));
-        }*/
-
         private void TestLocalizations(CultureInfo cultureInfo)
         {
             ObjectFactory.Configure(a => a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>());

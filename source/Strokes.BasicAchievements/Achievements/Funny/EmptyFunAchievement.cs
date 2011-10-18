@@ -73,13 +73,11 @@ namespace Strokes.BasicAchievements.Achievements
 
     [AchievementDescriptor("{b752b0bd-9942-4602-ae02-8c78ad2b76bb}", "@EmptyVoidMethodAchievementName",
     AchievementDescription = "@EmptyVoidMethodAchievementDescription",
-    AchievementCategory = "@Funny"
-    ,
+    AchievementCategory = "@Funny",
     DependsOn = new[]
                 {
                     "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
-                }
-                )]
+                })]
     public class EmptyVoidMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -89,20 +87,16 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
-            /* REFACTOR
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-
-                if (methodDeclaration.Body is BlockStatement && methodDeclaration.TypeReference.ToString().Equals("System.Void"))
+                if (methodDeclaration.Body != null && methodDeclaration.ReturnType.ToString() == "void")
                 {
-                    if (((BlockStatement)(methodDeclaration.Body)).Children.Count == 0)
+                    if (methodDeclaration.Body.Statements.Count == 0)
                         UnlockWith(methodDeclaration);
                 }
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
-             */
         }
     }
 }

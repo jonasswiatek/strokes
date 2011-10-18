@@ -24,7 +24,7 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitConstructorDeclaration(ConstructorDeclaration constructorDeclaration, object data)
             {
-                if (constructorDeclaration.Initializer.ConstructorInitializerType == ConstructorInitializerType.Base)
+                if (!constructorDeclaration.Initializer.IsNull && constructorDeclaration.Initializer.ConstructorInitializerType == ConstructorInitializerType.Base)
                     UnlockWith(constructorDeclaration);
 
                 return base.VisitConstructorDeclaration(constructorDeclaration, data);

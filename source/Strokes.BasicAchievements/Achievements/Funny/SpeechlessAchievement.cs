@@ -18,26 +18,27 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR: Doesn't exist in nrefactory5
-            public override object VisitVariableDeclaration(VariableDeclaration variableDeclaration, object data)
+            public override object VisitVariableDeclarationStatement(ICSharpCode.NRefactory.CSharp.VariableDeclarationStatement variableDeclarationStatement, object data)
             {
-                string[] foulwords= new string[]
+                var foulwords = new[]
                 {
                     "meh","blah", "pft", "rrrr","blib","blab", "blub","lol","uhu","aaah"
                 };//if anyone wants to go nuts: feel free to add more :)
 
                 foreach (var foulword in foulwords)
                 {
-                    if (System.Text.RegularExpressions.Regex.Matches(variableDeclaration.Name, foulword).Count > 0)
-                        cursecount++;
+                    foreach (var variable in variableDeclarationStatement.Variables)
+                    {
+                        if (System.Text.RegularExpressions.Regex.Matches(variable.Name, foulword).Count > 0)
+                            cursecount++;
+                    }
                 }
-                
 
-                if (cursecount>5)
-                    UnlockWith(variableDeclaration);
+                if (cursecount > 5)
+                    UnlockWith(variableDeclarationStatement);
 
-                return base.VisitVariableDeclaration(variableDeclaration, data);
-            }*/
+                return base.VisitVariableDeclarationStatement(variableDeclarationStatement, data);
+            }
         }
     }
 }

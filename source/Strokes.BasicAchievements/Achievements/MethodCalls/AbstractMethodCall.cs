@@ -51,74 +51,72 @@ namespace Strokes.BasicAchievements.Achievements
                 get;
                 set;
             }
-            /* THIS INFINITE LOOPS SOME WHERE. Nasty nasty nasty
+
             public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
             {
-                var memberReferenceExpression = invocationExpression.Target as MemberReferenceExpression;
-                if (memberReferenceExpression != null)
-                {
-                    var methodName = memberReferenceExpression.GetCallChainAsString();
+                var seperator = MethodToFind.LastIndexOf(".");
+                var typeToUse = MethodToFind.Substring(0, seperator);
+                var methodName = MethodToFind.Substring(seperator + 1);
 
-                    if (MethodToFind == methodName)
+                var memberReference = invocationExpression.Target as MemberReferenceExpression;
+                if (memberReference != null && memberReference.Target.IsCallToType(typeToUse) && memberReference.MemberName == methodName)
+                {
+                    if(Requirements.Count > 0)
                     {
-                        if (Requirements.Count > 0)
+                        foreach (var reqSet in Requirements)
                         {
-                            foreach (var reqSet in Requirements)
+                            if (!reqSet.Repeating && invocationExpression.Arguments.Count != reqSet.Requirements.Count)
                             {
-                                if (!reqSet.Repeating && invocationExpression.Arguments.Count != reqSet.Requirements.Count)
+                                continue;
+                            }
+
+                            int i = 0;
+                            foreach (var requirement in reqSet.Requirements)
+                            {
+                                if (invocationExpression.Arguments.Count - 1 < i)
                                 {
-                                    continue;
+                                    break;
                                 }
 
-                                int i = 0;
-                                foreach (var requirement in reqSet.Requirements)
+                                var primitiveArgumentExpression = invocationExpression.Arguments.ElementAt(i) as PrimitiveExpression;
+                                if (primitiveArgumentExpression == null)
                                 {
-                                    if (invocationExpression.Arguments.Count - 1 < i)
-                                    {
-                                        break;
-                                    }
+                                    break;
+                                }
 
-                                    var primitiveArgumentExpression = invocationExpression.Arguments.ElementAt(i) as PrimitiveExpression;
-                                    if (primitiveArgumentExpression == null)
+                                var valueType = primitiveArgumentExpression.Value.GetType();
+                                if (valueType == requirement.Type || valueType.IsSubclassOf(requirement.Type))
+                                {
+                                    if (requirement.Type == typeof(string) && requirement.Regex != null)
                                     {
-                                        break;
-                                    }
-
-                                    var valueType = primitiveArgumentExpression.Value.GetType();
-                                    if (valueType == requirement.Type || valueType.IsSubclassOf(requirement.Type))
-                                    {
-                                        if (requirement.Type == typeof(string) && requirement.Regex != null)
+                                        var regex = new Regex(requirement.Regex, requirement.RegexOptions);
+                                        var match = regex.IsMatch(primitiveArgumentExpression.Value.ToString());
+                                        if (match == false)
                                         {
-                                            var regex = new Regex(requirement.Regex, requirement.RegexOptions);
-                                            var match = regex.IsMatch(primitiveArgumentExpression.Value.ToString());
-                                            if (match == false)
-                                            {
-                                                break;
-                                            }
+                                            break;
                                         }
                                     }
-                                    else
-                                    {
-                                        break;
-                                    }
+                                }
+                                else
+                                {
+                                    break;
+                                }
 
-                                    if (i++ == reqSet.Requirements.Count - 1)
-                                    {
-                                        UnlockWith(invocationExpression);
-                                    }
+                                if (i++ == reqSet.Requirements.Count - 1)
+                                {
+                                    UnlockWith(invocationExpression);
                                 }
                             }
                         }
-                        else
-                        {
-                            UnlockWith(invocationExpression);
-                        }
+                    }
+                    else
+                    {
+                        UnlockWith(invocationExpression);
                     }
                 }
 
                 return base.VisitInvocationExpression(invocationExpression, data);
             }
-             * */
         }
 
         protected class TypeAndValueRequirementSet

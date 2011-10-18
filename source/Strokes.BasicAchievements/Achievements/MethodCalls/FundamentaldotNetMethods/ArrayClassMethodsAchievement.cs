@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Arrays")]
     public class ArrayClearMethodAchievement : AbstractMethodCall
     {
-        public ArrayClearMethodAchievement() : base("Array.Clear")
+        public ArrayClearMethodAchievement() : base("System.Array.Clear")
         {
         }
     }
@@ -21,8 +21,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Arrays")]
     public class ArrayIndexOfMethodAchievement : AbstractMethodCall
     {
-        public ArrayIndexOfMethodAchievement()
-            : base("Array.IndexOf")
+        public ArrayIndexOfMethodAchievement() : base("System.Array.IndexOf")
         {
         }
     }
@@ -32,8 +31,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Arrays")]
     public class ArrayReverseMethodAchievement : AbstractMethodCall
     {
-        public ArrayReverseMethodAchievement()
-            : base("Array.Reverse")
+        public ArrayReverseMethodAchievement() : base("System.Array.Reverse")
         {
         }
     }
@@ -43,8 +41,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Arrays")]
     public class ArraySortMethodAchievement : AbstractMethodCall
     {
-        public ArraySortMethodAchievement()
-            : base("Array.Sort")
+        public ArraySortMethodAchievement() : base("System.Array.Sort")
         {
         }
     }

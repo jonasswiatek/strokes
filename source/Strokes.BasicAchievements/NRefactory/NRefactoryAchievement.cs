@@ -13,11 +13,7 @@ namespace Strokes.BasicAchievements.NRefactory
     /// </summary>
     public abstract class NRefactoryAchievement : AchievementBase
     {
-        protected IEnumerable<TypeDeclarationInfo> CodebaseTypeDeclarations
-        {
-            get;
-            set;
-        }
+        protected NRefactoryContext NRefactoryContext { get; private set; }
 
         public override bool DetectAchievement(DetectionSession detectionSession)
         {
@@ -29,7 +25,10 @@ namespace Strokes.BasicAchievements.NRefactory
 
             // Obtain a session object and the codebase type declarations
             var nrefactorySession = detectionSession.GetSessionObjectOfType<NRefactorySession>();
-            CodebaseTypeDeclarations = nrefactorySession.GetCodebaseTypeDeclarations(detectionSession.BuildInformation);
+            NRefactoryContext = new NRefactoryContext()
+                                    {
+                                        CodebaseDeclarations = nrefactorySession.GetCodebaseDeclarations(detectionSession.BuildInformation)
+                                    };
 
             // Have the concrete implementation create it's visitor
             var visitor = CreateVisitor(detectionSession);

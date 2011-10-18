@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -26,19 +27,26 @@ namespace Strokes.BasicAchievements.Test
                                                                     typeof(CreateMethodReturnVoidAchievement),
                                                                     typeof(CreateMethodAchievement)
                                                                 };
+        [TestInitialize]
+        public void Initialize()
+        {
+            ObjectFactory.Configure(a => a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>());
+            var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
+            achievementRepository.LoadFromAssembly(typeof(NRefactoryAchievement).Assembly);
+        }
 
         [DeploymentItem(@"TestCases", "TestCases")]
         [TestMethod]
         public void TestAchievements()
         {
-            ObjectFactory.Configure(a => a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>());
+            const string achievementBaseNamespace = "Strokes.BasicAchievements.Test.";
             var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
-            achievementRepository.LoadFromAssembly(typeof(NRefactoryAchievement).Assembly);
 
-            var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Length > 0);
+            var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), false).Length > 0);
             foreach(var test in achievementTests)
             {
-                var sourceFile = Path.GetFullPath("TestCases/" + test.Name + ".cs");
+                var testCasePath = test.FullName.Replace(achievementBaseNamespace, "").Replace(".", "/") + ".cs";
+                var sourceFile = Path.GetFullPath(testCasePath);
                 var buildInformation = new BuildInformation()
                                            {
                                                ActiveFile = sourceFile,
@@ -48,7 +56,7 @@ namespace Strokes.BasicAchievements.Test
                                                CodeFiles = new[] { sourceFile }
                                            };
 
-                var expectedAchievements = test.GetCustomAttributes(typeof(ExpectUnlockAttribute), true).Select(a => ((ExpectUnlockAttribute)a).ExpectedAchievementType).ToList();
+                var expectedAchievements = test.GetCustomAttributes(typeof(ExpectUnlockAttribute), false).Select(a => ((ExpectUnlockAttribute)a).ExpectedAchievementType).ToList();
 
                 using (var detectionSession = new DetectionSession(buildInformation))
                 {
@@ -57,7 +65,9 @@ namespace Strokes.BasicAchievements.Test
                     var tasks = new Task[achievements.Count()];
                     var i = 0;
 
-                    var unlockedAchievements = new List<Type>();
+                    var padLock = new object();
+                    var unlockedAchievements = new ConcurrentBag<Type>();
+                    
                     foreach (var uncompletedAchievement in achievements)
                     {
                         var a = uncompletedAchievement;
@@ -91,6 +101,19 @@ namespace Strokes.BasicAchievements.Test
                     Assert.IsTrue(unexpectedAchievements.Count() == 0, Path.GetFileName(sourceFile) + " unlocks unexpected achievements: " + string.Join(", ", unexpectedAchievements.Select(a => a.FullName)));
                 }
             }
+        }
+
+        [TestMethod]
+        public void TestCoverage()
+        {
+            var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
+            var achievementImplementations = achievementRepository.GetAchievements().Select(a => a.AchievementType);
+
+            var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Length > 0);
+            var testedAchievementImplementations = achievementTests.SelectMany(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Select(b => (ExpectUnlockAttribute)b).Select(c => c.ExpectedAchievementType)).Distinct();
+            var untestedAchievements = achievementImplementations.Except(testedAchievementImplementations);
+
+            Assert.IsFalse(untestedAchievements.Any(), "The following achievements (" + untestedAchievements.Count() + ") are untested:\r\n" + string.Join("\r\n", untestedAchievements.Select(a => a.Name)));
         }
     }
 }

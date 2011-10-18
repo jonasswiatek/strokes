@@ -11,8 +11,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class PrintNewLineAchievement : AbstractMethodCall
     {
-        public PrintNewLineAchievement()
-            : base("Console.WriteLine")
+        public PrintNewLineAchievement() : base("System.Console.WriteLine")
         {
             RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
@@ -34,8 +33,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class PrintHorizontalTabAchievement : AbstractMethodCall
     {
-        public PrintHorizontalTabAchievement()
-            : base("Console.WriteLine")
+        public PrintHorizontalTabAchievement() : base("System.Console.WriteLine")
         {
             RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
@@ -57,8 +55,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class PrintQuoteCharAchievement : AbstractMethodCall
     {
-        public PrintQuoteCharAchievement()
-            : base("Console.WriteLine")
+        public PrintQuoteCharAchievement() : base("System.Console.WriteLine")
         {
             RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
@@ -80,8 +77,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class PrintSingleQuoteCharAchievement : AbstractMethodCall
     {
-        public PrintSingleQuoteCharAchievement()
-            : base("Console.WriteLine")
+        public PrintSingleQuoteCharAchievement() : base("System.Console.WriteLine")
         {
             RequiredOverloads.Add(new TypeAndValueRequirementSet
             {
@@ -103,8 +99,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class PrintBackSlashCharAchievement : AbstractMethodCall
     {
-        public PrintBackSlashCharAchievement()
-            : base("Console.WriteLine")
+        public PrintBackSlashCharAchievement() : base("System.Console.WriteLine")
         {
             RequiredOverloads.Add(new TypeAndValueRequirementSet
             {

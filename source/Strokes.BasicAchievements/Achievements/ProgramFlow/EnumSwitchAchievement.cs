@@ -19,16 +19,16 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
-            return new Visitor(CodebaseTypeDeclarations);
+            return new Visitor(NRefactoryContext.CodebaseDeclarations);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private readonly IEnumerable<TypeDeclarationInfo> typeDeclarationInfos;
+            private readonly IEnumerable<DeclarationInfo> codebaseDeclarationInfos;
 
-            public Visitor(IEnumerable<TypeDeclarationInfo> typeDeclarationInfos)
+            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarationInfos)
             {
-                this.typeDeclarationInfos = typeDeclarationInfos;
+                this.codebaseDeclarationInfos = codebaseDeclarationInfos;
             }
 
             public override object VisitSwitchStatement(SwitchStatement switchStatement, object data)
@@ -41,9 +41,9 @@ namespace Strokes.BasicAchievements.Achievements
                         var targetObject = memberRef != null ? memberRef.Target as IdentifierExpression : null;
                         if (targetObject != null)
                         {
-                            var hasEnums = typeDeclarationInfos.Any(a =>
-                                     a.TypeName == targetObject.Identifier &&
-                                     a.DetinitionTypeDeclarationKind == TypeDeclarationKind.Enum);
+                            var hasEnums = codebaseDeclarationInfos.Any(a =>
+                                     a.Name == targetObject.Identifier &&
+                                     a.DeclarationClassType == TypeDeclarationKind.Enum);
 
                             if (hasEnums)
                             {

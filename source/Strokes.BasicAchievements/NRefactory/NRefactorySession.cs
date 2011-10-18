@@ -15,7 +15,7 @@ namespace Strokes.BasicAchievements.NRefactory
         private readonly object parserAccessPadLock = new object();
         private readonly object codebaseTypeDefinitionPadLock = new object();
         private readonly IDictionary<string, CompilationUnit> parsers = new Dictionary<string, CompilationUnit>();
-        private List<TypeDeclarationInfo> codebaseTypeDefinitions;
+        private List<DeclarationInfo> codebaseDeclarations;
 
         /// <summary>
         /// Creates a parser for the specified file. This parser is cached for this (one) detection session.
@@ -45,26 +45,26 @@ namespace Strokes.BasicAchievements.NRefactory
         /// This method is caching and can be called without discretion, and is thread safe.
         /// </summary>
         /// <param name="buildInformation">BuildInformation object used to locate the codebase</param>
-        /// <returns>Cached collection of TypeDeclarationInfo</returns>
-        public IEnumerable<TypeDeclarationInfo> GetCodebaseTypeDeclarations(BuildInformation buildInformation)
+        /// <returns>Cached collection of DeclarationInfo</returns>
+        public IEnumerable<DeclarationInfo> GetCodebaseDeclarations(BuildInformation buildInformation)
         {
             lock (codebaseTypeDefinitionPadLock)
             {
-                if (codebaseTypeDefinitions == null)
+                if (codebaseDeclarations == null)
                 {
-                    codebaseTypeDefinitions = new List<TypeDeclarationInfo>();
+                    codebaseDeclarations = new List<DeclarationInfo>();
 
                     foreach (var filename in buildInformation.CodeFiles)
                     {
                         var compilationUnit = GetCompilationUnit(filename);
-                        var typeDeclarationInfoVisitor = new TypeDeclarationVisitor();
+                        var typeDeclarationInfoVisitor = new CodebaseAnalysisVisitor();
                         compilationUnit.AcceptVisitor(typeDeclarationInfoVisitor, null);
 
-                        codebaseTypeDefinitions.AddRange(typeDeclarationInfoVisitor.TypeDeclarations);
+                        codebaseDeclarations.AddRange(typeDeclarationInfoVisitor.TypeDeclarations);
                     }
                 }
 
-                return codebaseTypeDefinitions;
+                return codebaseDeclarations;
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
+using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements
@@ -13,38 +14,31 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
-            return new Visitor();
+            return new Visitor(NRefactoryContext.CodebaseDeclarations);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private List<string> eventVars = new List<string>();
-            /* //REFACTOR
+            private readonly IEnumerable<DeclarationInfo> _codebaseDeclarations;
+
+            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarations)
+            {
+                _codebaseDeclarations = codebaseDeclarations;
+            }
+
             public override object VisitAssignmentExpression(AssignmentExpression assignmentExpression, object data)
             {
-                if (assignmentExpression.Left is MemberReferenceExpression)
+                var ns = assignmentExpression.GetCurrentNamespace();
+                var variable = assignmentExpression.Left.GetIdentifier();
+                var fullVariableName = ns + "." + variable;
+
+                if(_codebaseDeclarations.Any(a => a.FullName == fullVariableName && a.DeclarationClassType == TypeDeclarationKind.Event) && assignmentExpression.Operator == AssignmentOperatorType.Add)
                 {
-                    MemberReferenceExpression left = (MemberReferenceExpression)assignmentExpression.Left;
-                    if (eventVars.Contains(left.MemberName)) // I don't check against correct type yet
-                    {
-                        if (assignmentExpression.Right is ObjectCreateExpression)
-                        {
-                            ObjectCreateExpression right = (ObjectCreateExpression)assignmentExpression.Right;
-                            if (right.CreateType.Type.Contains("EventHandler") && assignmentExpression.Op == AssignmentOperatorType.Add)
-                                UnlockWith(assignmentExpression); // Only works when using the implicit += new SomeEventHandler() syntax
-                        }
-                    }
+                    UnlockWith(assignmentExpression);
                 }
 
                 return base.VisitAssignmentExpression(assignmentExpression, data);
             }
-
-            public override object VisitEventDeclaration(EventDeclaration eventDeclaration, object data)
-            {
-                eventVars.Add(eventDeclaration.Name);
-
-                return base.VisitEventDeclaration(eventDeclaration, data);
-            }*/
         }
     }
 }

@@ -12,8 +12,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementCategory = "@Console")]
     public class FormatSpecifierAchievement : AbstractMethodCall
     {
-        public FormatSpecifierAchievement()
-            : base("Console.WriteLine")
+        public FormatSpecifierAchievement() : base("System.Console.WriteLine")
         {
             RequiredOverloads.Add(new TypeAndValueRequirementSet
             {

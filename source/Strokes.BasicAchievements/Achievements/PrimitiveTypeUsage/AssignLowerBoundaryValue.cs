@@ -18,74 +18,49 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private readonly string TypeToFind = typeof(T).ToString();
-            private readonly List<string> intVariables = new List<string>();
-
             public override object VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement, object data)
             {
-                if (variableDeclarationStatement.Type.Is<T>())
+                var memberReferenceInitializers = variableDeclarationStatement.Variables.Select(a => a.Initializer).OfType<MemberReferenceExpression>();
+                if(memberReferenceInitializers.Any(a => IsMemberReferenceOfType<T>(a) && a.MemberName == "MinValue"))
                 {
-                    foreach (var variableDeclaration in variableDeclarationStatement.Variables)
-                    {
-                        intVariables.Add(variableDeclaration.Name);
-
-                        var memberExpression = variableDeclaration.Initializer as MemberReferenceExpression;
-                        if (memberExpression != null)
-                        {
-                            if (IsMaxValue(memberExpression))
-                                UnlockWith(variableDeclarationStatement);
-                        }
-                    }
+                    UnlockWith(variableDeclarationStatement);
                 }
-
                 return base.VisitVariableDeclarationStatement(variableDeclarationStatement, data);
-            }
-
-            private bool IsMaxValue(MemberReferenceExpression memberExpression)
-            {
-                if (memberExpression.MemberName.Equals("MinValue"))
-                {
-                    if (memberExpression.Target is IdentifierExpression)
-                    {
-                        var ident = (IdentifierExpression)memberExpression.Target;
-                        if (TypeToFind.Contains(ident.Identifier))
-                            return true;
-                    }
-                    else if (memberExpression.Target is TypeReferenceExpression)
-                    {
-                        var typeRef = (TypeReferenceExpression)memberExpression.Target;
-                        if (TypeToFind.Contains(typeRef.Type.ToString()))
-                            return true;
-                    }
-                }
-
-                return false;
             }
 
             public override object VisitAssignmentExpression(AssignmentExpression assignmentExpression, object data)
             {
-                if (assignmentExpression.Left is IdentifierExpression)
+                var mre = assignmentExpression.Right as MemberReferenceExpression;
+                if (mre != null && assignmentExpression.Operator == AssignmentOperatorType.Assign && IsMemberReferenceOfType<T>(mre) && mre.MemberName == "MinValue")
                 {
-                    var identifier = (IdentifierExpression)assignmentExpression.Left;
-
-                    if (intVariables.Contains(identifier.Identifier))
-                    {
-                        if (assignmentExpression.Right is PrimitiveExpression)
-                        {
-                            var primitiveExpression = (PrimitiveExpression)assignmentExpression.Right;
-                            if (primitiveExpression.Value.Equals("MaxValue"))
-                                UnlockWith(assignmentExpression);
-                        }
-                        else if (assignmentExpression.Right is MemberReferenceExpression)
-                        {
-                            var memberExpression = (MemberReferenceExpression)assignmentExpression.Right;
-                            if (IsMaxValue(memberExpression))
-                                UnlockWith(assignmentExpression);
-                        }
-                    }
+                    UnlockWith(assignmentExpression);
                 }
 
                 return base.VisitAssignmentExpression(assignmentExpression, data);
+            }
+
+            //Not exactly pretty
+            private static bool IsMemberReferenceOfType<T>(MemberReferenceExpression expression)
+            {
+                var variations = new List<string>();
+                if(typeof(T) == typeof(System.Int32))
+                {
+                    variations = new List<string>() {"System.Int32", "Int32", "int"};
+                }
+                else if(typeof(T) == typeof(System.Double))
+                {
+                    variations = new List<string>() { "System.Double", "Double", "double" };
+                }
+                else if (typeof(T) == typeof(System.Single))
+                {
+                    variations = new List<string>() { "System.Single", "Single", "float" };
+                }
+                else if (typeof(T) == typeof(System.Char))
+                {
+                    variations = new List<string>() { "System.Char", "Char", "char" };
+                }
+
+                return variations.Any(a => a == expression.Target.ToString());
             }
         }
     }
