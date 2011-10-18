@@ -119,13 +119,11 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            int count = 0;
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
                 if (methodDeclaration.Parameters.Count > 10)
-                {
                     UnlockWith(methodDeclaration);
-                }
+
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
         }
@@ -162,7 +160,7 @@ namespace Strokes.BasicAchievements.Achievements
     [AchievementDescriptor("{1C241CE0-0CF4-4A51-B0EB-F0157848A3D3}", "@EveryOptionEnumAchievementName",
         AchievementDescription = "@EveryOptionEnumAchievementDescription",
         AchievementCategory = "@Funny",
-        DependsOn = new []{ "{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}"})]
+        DependsOn = new[] { "{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}" })]
     public class EveryOptionEnumAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)

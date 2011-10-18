@@ -2,6 +2,7 @@
 using System.Linq;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using ICSharpCode.NRefactory.CSharp;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -21,7 +22,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            public override object VisitArraySpecifier(ICSharpCode.NRefactory.CSharp.ArraySpecifier arraySpecifier, object data)
+            public override object VisitArraySpecifier(ArraySpecifier arraySpecifier, object data)
             {
                 if (arraySpecifier.Dimensions >= 10)
                 {
