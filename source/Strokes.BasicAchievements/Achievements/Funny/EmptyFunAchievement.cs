@@ -10,10 +10,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@EmptyMainAchievementDescription",
         AchievementCategory = "@Funny",
         DependsOn = new[]
-            {
-                "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
-            }
-            )]
+        {
+            "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+        })]
     public class EmptyMainAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -26,14 +25,14 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if(methodDeclaration.Name.Equals("Main"))
+                if (methodDeclaration.Name.Equals("Main"))
                 {
-                    if(methodDeclaration.Body is BlockStatement)
+                    if (methodDeclaration.Body is BlockStatement)
                     {
-                        if(((BlockStatement)(methodDeclaration.Body)).Children.Count() == 0)
+                        if (((BlockStatement)(methodDeclaration.Body)).Children.Count() == 0)
                             UnlockWith(methodDeclaration);
                     }
-                        
+
                 }
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }
@@ -41,12 +40,12 @@ namespace Strokes.BasicAchievements.Achievements
     }
 
     [AchievementDescriptor("{00dcc080-76e8-4953-a036-f35ea2b3c77d}", "@EmptyMethodAchievementName",
-    AchievementDescription = "@EmptyMethodAchievementDescription",
-    AchievementCategory = "@Funny",
-    DependsOn = new[]
-                {
-                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
-                })]
+        AchievementDescription = "@EmptyMethodAchievementDescription",
+        AchievementCategory = "@Funny",
+        DependsOn = new[]
+        {
+            "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+        })]
     public class EmptyMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -72,12 +71,12 @@ namespace Strokes.BasicAchievements.Achievements
 
 
     [AchievementDescriptor("{b752b0bd-9942-4602-ae02-8c78ad2b76bb}", "@EmptyVoidMethodAchievementName",
-    AchievementDescription = "@EmptyVoidMethodAchievementDescription",
-    AchievementCategory = "@Funny",
-    DependsOn = new[]
-                {
-                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
-                })]
+        AchievementDescription = "@EmptyVoidMethodAchievementDescription",
+        AchievementCategory = "@Funny",
+        DependsOn = new[]
+        {
+            "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+        })]
     public class EmptyVoidMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)

@@ -10,9 +10,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@BeastNumberAchievementDescription",
         AchievementCategory = "@Funny",
         DependsOn = new[]
-                {
-                    "{D01B5C8C-04E8-47D6-81CE-66AA860E4367}"
-                })]
+        {
+            "{D01B5C8C-04E8-47D6-81CE-66AA860E4367}"
+        })]
     public class BeastNumberAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -25,9 +25,9 @@ namespace Strokes.BasicAchievements.Achievements
 
             public override object VisitAssignmentExpression(AssignmentExpression assignmentExpression, object data)
             {
-                if(assignmentExpression.Right is PrimitiveExpression)
+                if (assignmentExpression.Right is PrimitiveExpression)
                 {
-                    PrimitiveExpression prim = (PrimitiveExpression) assignmentExpression.Right;
+                    PrimitiveExpression prim = (PrimitiveExpression)assignmentExpression.Right;
 
                     int number;
                     if (int.TryParse(prim.LiteralValue, out number))

@@ -191,6 +191,14 @@
     <Compile Include="TestCases\Expressions\NotOperatorExpressionTest.cs" />
     <Compile Include="TestCases\Expressions\LambdaExpressionTest.cs" />
     <Compile Include="TestCases\Expressions\IfCompoundExpressionTest.cs" />
+    <Compile Include="TestCases\Funny\BeastNumberTest.cs" />
+    <Compile Include="TestCases\Funny\TooManyDimensionArrayDeclarationTest.cs" />
+    <Compile Include="TestCases\Funny\CurseALotTest.cs" />
+    <Compile Include="TestCases\Funny\InfiniteWhileLoopTest.cs" />
+    <Compile Include="TestCases\Funny\GotoTest.cs" />
+    <Compile Include="TestCases\Funny\SpeechlessTest.cs" />
+    <Compile Include="TestCases\Funny\ThrowExceptionLongMessageTest.cs" />
+    <Compile Include="TestCases\Funny\TooManyModifiersDeclarationTest.cs" />
     <Compile Include="TestCases\Generic\CreateGenericObjectTest.cs" />
     <Compile Include="TestCases\Generic\CreateGenericClassTest.cs" />
     <Compile Include="TestCases\PrimitiveTypeUsage\AssignValueToPrimitiveType.cs">
