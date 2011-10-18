@@ -13,8 +13,7 @@ namespace Strokes.Testing
     {
         public static void main(string[] argssss)
         {
-            var bla = argssss;
-            System.Console.WriteLine(argssss[0]);
+            throw new Exception("very long exception message, oh yeah, hey there!");
         }
     }
 }

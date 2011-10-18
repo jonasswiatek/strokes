@@ -18,29 +18,25 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* //REFACTOR
             public override object VisitThrowStatement(ThrowStatement throwStatement, object data)
             {
-                if(throwStatement.Expression is ObjectCreateExpression)
+                var createExpression = (ObjectCreateExpression)throwStatement.Expression;
+                if (createExpression.Type.GetTypeName().Contains("Exception"))
                 {
-                    ObjectCreateExpression expr = (ObjectCreateExpression) throwStatement.Expression;
-                    if (expr.CreateType.Type.Contains("Exception"))
+                    foreach (var expression in createExpression.Arguments)
                     {
-                        foreach (var expression in expr.Parameters)
+                        if (expression is PrimitiveExpression)
                         {
-                            if(expression is PrimitiveExpression)
-                            {
-                                PrimitiveExpression prim = (PrimitiveExpression) expression;
-                                if (prim.LiteralFormat == LiteralFormat.StringLiteral && prim.Value.ToString().Length > 60)
-                                    UnlockWith(throwStatement);
-                            }
+                            var primitiveExpression = (PrimitiveExpression)expression;
+                            if (primitiveExpression.Value.ToString().Length > 60)
+                                UnlockWith(throwStatement);
                         }
-                        UnlockWith(throwStatement);
                     }
+                    UnlockWith(throwStatement);
                 }
+
                 return base.VisitThrowStatement(throwStatement, data);
             }
-             */
         }
     }
 }
