@@ -144,6 +144,9 @@
     <Compile Include="TestCases\Classes\CreateAutoPropertyTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="TestCases\ErrorHandling\CatchManyExceptionsTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="TestCases\EventsAndThreads\EventUnsubscriptionTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
