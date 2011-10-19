@@ -8,6 +8,31 @@ namespace Strokes.BasicAchievements.NRefactory
 {
     public static class NRefactoryHelpers
     {
+        public static string GetShorthandOfType(this Type type)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if(type == typeof(string))
+            {
+                return "string";
+            }
+            if (type == typeof(int))
+            {
+                return "int";
+            }
+            if (type == typeof(double))
+            {
+                return "double";
+            }
+            if (type == typeof(float))
+            {
+                return "float";
+            }
+
+            return string.Empty;
+        }
+
         public static bool IsCallToType(this Expression expression, string fullTypeName)
         {
             var methodName = expression.GetIdentifier();

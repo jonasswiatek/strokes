@@ -12,8 +12,8 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Funny")]
     public class CurseAlotAchievement : NRefactoryAchievement
     {
-        private static int curseCount = 0;
-
+        //private static int curseCount = 0; //WHO MADE THIS STATIC (and placed it here)?! WHOEM EVER YOU ARE: ACHIEVEMENT UNLOCKED [MAKE JONAS SPEND 1½ HOUR DEBUGGING :D]
+        
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
@@ -21,6 +21,8 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            private int _curseCount = 0; //This is where it should be
+
             public override object VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement, object data)
             {
                 var foulwords = new[]
@@ -33,11 +35,11 @@ namespace Strokes.BasicAchievements.Achievements
                     foreach (var variable in variableDeclarationStatement.Variables)
                     {
                         if (Regex.Matches(variable.Name, foulword).Count > 0)
-                            curseCount++;
+                            _curseCount++;
                     }
                 }
 
-                if (curseCount > 5)
+                if (_curseCount > 5)
                     UnlockWith(variableDeclarationStatement);
 
                 return base.VisitVariableDeclarationStatement(variableDeclarationStatement, data);

@@ -4,6 +4,8 @@ namespace Strokes.BasicAchievements.Test.TestCases.Classes
 {
     [ExpectUnlock(typeof(OverrideMethodAchievement))]
     [ExpectUnlock(typeof(CreateMethodReturnStringAchievement))]
+    [ExpectUnlock(typeof(TooManyModifiersMethodDeclarationAchievement))]
+    [ExpectUnlock(typeof(CreateSingleLineMethodAchievement))]
     public class OverrideMethodTest : VirtualMethodTest
     {
         public override string SomeMethod()

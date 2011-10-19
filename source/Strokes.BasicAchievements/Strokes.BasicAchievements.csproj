@@ -117,7 +117,7 @@
     <Compile Include="Achievements\Generics\CreateGenericClass.cs" />
     <Compile Include="Achievements\MethodCalls\Console\HelloWorldAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\PrintWithEscapeCharactersAchievement.cs" />
-    <Compile Include="Achievements\MethodCalls\Console\FormatSpecifier.cs" />
+    <Compile Include="Achievements\MethodCalls\Console\FormatSpecifierAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\PrintWithPlaceholdersFieldSizeAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\ArrayClassMethodsAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\ConvertToAchievements.cs" />

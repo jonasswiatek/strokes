@@ -8,7 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Strokes.BasicAchievements.Achievements;
+using Strokes.BasicAchievements.Challenges;
 using Strokes.BasicAchievements.NRefactory;
+using Strokes.BasicAchievements.Test.TestCases.MethodCalls.FundamentaldotNetMethods;
 using Strokes.Core;
 using Strokes.Core.Data;
 using Strokes.Core.Data.Model;
@@ -42,7 +44,7 @@ namespace Strokes.BasicAchievements.Test
             const string achievementBaseNamespace = "Strokes.BasicAchievements.Test.";
             var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
 
-            var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), false).Length > 0);
+            var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof(ExpectUnlockAttribute), false).Length > 0);
             foreach(var test in achievementTests)
             {
                 var testCasePath = test.FullName.Replace(achievementBaseNamespace, "").Replace(".", "/") + ".cs";
@@ -65,9 +67,7 @@ namespace Strokes.BasicAchievements.Test
                     var tasks = new Task[achievements.Count()];
                     var i = 0;
 
-                    var padLock = new object();
                     var unlockedAchievements = new ConcurrentBag<Type>();
-                    
                     foreach (var uncompletedAchievement in achievements)
                     {
                         var a = uncompletedAchievement;
@@ -107,7 +107,7 @@ namespace Strokes.BasicAchievements.Test
         public void TestCoverage()
         {
             var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
-            var achievementImplementations = achievementRepository.GetAchievements().Select(a => a.AchievementType);
+            var achievementImplementations = achievementRepository.GetAchievements().Select(a => a.AchievementType).Where(a => !typeof(Challenge).IsAssignableFrom(a)); //Ignore Challenges in this context - those are not unit testable from this project
 
             var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Length > 0);
             var testedAchievementImplementations = achievementTests.SelectMany(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Select(b => (ExpectUnlockAttribute)b).Select(c => c.ExpectedAchievementType)).Distinct();

@@ -58,8 +58,10 @@ namespace Strokes.BasicAchievements.Achievements
                 var typeToUse = MethodToFind.Substring(0, seperator);
                 var methodName = MethodToFind.Substring(seperator + 1);
 
+                var systemType = Type.GetType(typeToUse);
+
                 var memberReference = invocationExpression.Target as MemberReferenceExpression;
-                if (memberReference != null && memberReference.Target.IsCallToType(typeToUse) && memberReference.MemberName == methodName)
+                if (memberReference != null && (memberReference.Target.IsCallToType(typeToUse) || memberReference.Target.ToString() == systemType.GetShorthandOfType()) && memberReference.MemberName == methodName)
                 {
                     if(Requirements.Count > 0)
                     {

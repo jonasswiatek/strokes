@@ -20,13 +20,13 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (methodDeclaration.Name.ToLower().Equals("main") == false)
+                if (!methodDeclaration.Name.ToLower().Equals("main"))
                 {
-                    if (methodDeclaration.IsExtensionMethod == false &&
-                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
+                    if (!methodDeclaration.IsExtensionMethod &&
+                        !methodDeclaration.HasModifier(Modifiers.Abstract))
                     {
-                        if (methodDeclaration.Body.Children.Count() == 1 &&
-                            methodDeclaration.Body.Children.First() is ReturnStatement)
+                        if (methodDeclaration.Body.Statements.Count() == 1 &&
+                            methodDeclaration.Body.Statements.First() is ReturnStatement)
                         {
                             UnlockWith(methodDeclaration);
                         }

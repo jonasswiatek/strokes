@@ -10,6 +10,8 @@ namespace Strokes.BasicAchievements.Test.TestCases.PrimitiveTypeUsage
     [ExpectUnlock(typeof(DeclareDouble))]
     [ExpectUnlock(typeof(DeclareFloat))]
     [ExpectUnlock(typeof(DeclareChar))]
+    [ExpectUnlock(typeof(InstantiateObjectAchievement))]
+    [ExpectUnlock(typeof(InlineCommentAchievement))]
     public class AssignValueToPrimitiveType
     {
         int intVar;
@@ -19,6 +21,9 @@ namespace Strokes.BasicAchievements.Test.TestCases.PrimitiveTypeUsage
 
         public void Main()
         {
+            var bla = new object();
+            bla.Equals(""); //To try and provoke a response for AbstractMethodCall
+
             intVar = 5;
             floatVar = 5f;
             doubleVar = 4d;

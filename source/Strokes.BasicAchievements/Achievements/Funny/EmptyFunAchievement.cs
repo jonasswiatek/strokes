@@ -22,17 +22,12 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
                 if (methodDeclaration.Name.Equals("Main"))
                 {
-                    if (methodDeclaration.Body is BlockStatement)
-                    {
-                        if (((BlockStatement)(methodDeclaration.Body)).Children.Count() == 0)
-                            UnlockWith(methodDeclaration);
-                    }
-
+                    if (!methodDeclaration.Body.Statements.Any())
+                        UnlockWith(methodDeclaration);
                 }
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }

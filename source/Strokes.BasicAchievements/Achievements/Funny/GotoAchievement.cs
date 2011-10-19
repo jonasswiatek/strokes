@@ -18,7 +18,6 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-
             public override object VisitGotoStatement(GotoStatement gotoStatement, object data)
             {
                 UnlockWith(gotoStatement);

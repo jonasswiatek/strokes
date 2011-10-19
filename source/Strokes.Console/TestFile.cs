@@ -9,20 +9,11 @@ using System.Linq;
 
 namespace Strokes.Testing
 {
-    public class TestFile
+    public class StringCompareAchievementTest
     {
-        public enum FooBarBaz
+        public void Main()
         {
-            Foo,
-            Bar,
-            Baz
-        }
-
-        public void Test()
-        {
-            foreach (FooBarBaz item in System.Enum.GetValues(typeof(FooBarBaz)))
-            {
-            }
+            var arr = new int[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 9, 8, 6];
         }
     }
 }

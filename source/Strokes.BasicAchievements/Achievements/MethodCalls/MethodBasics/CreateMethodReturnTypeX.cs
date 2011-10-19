@@ -20,13 +20,15 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if (methodDeclaration.Name.ToLower().Equals("main") == false)
+                if(IsAchievementUnlocked) //Actually, all achievements should do this - it would improve performance and heaping a bit
+                    return base.VisitMethodDeclaration(methodDeclaration, data);
+
+                if (!methodDeclaration.Name.ToLower().Equals("main"))
                 {
-                    if (methodDeclaration.IsExtensionMethod == false &&
-                        methodDeclaration.HasModifier(Modifiers.Abstract) == false)
+                    if (!methodDeclaration.IsExtensionMethod && !methodDeclaration.HasModifier(Modifiers.Abstract))
                     {
                         var returnType = methodDeclaration.ReturnType as PrimitiveType;
-                        if (returnType != null && returnType.Keyword == "void")
+                        if (returnType != null && returnType.ToString() == "void")
                             UnlockWith(methodDeclaration);
                     }
                 }

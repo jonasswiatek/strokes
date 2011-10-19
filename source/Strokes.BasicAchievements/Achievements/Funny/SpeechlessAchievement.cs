@@ -12,8 +12,6 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Funny")]
     public class SpeechlessAchievement : NRefactoryAchievement
     {
-        private static int curseCount = 0;
-
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
         {
             return new Visitor();
@@ -21,6 +19,7 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+            private int _curseCount = 0;
             public override object VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement, object data)
             {
                 var foulwords = new[]
@@ -33,11 +32,11 @@ namespace Strokes.BasicAchievements.Achievements
                     foreach (var variable in variableDeclarationStatement.Variables)
                     {
                         if (Regex.Matches(variable.Name, foulword).Count > 0)
-                            curseCount++;
+                            _curseCount++;
                     }
                 }
 
-                if (curseCount > 5)
+                if (_curseCount > 5)
                     UnlockWith(variableDeclarationStatement);
 
                 return base.VisitVariableDeclarationStatement(variableDeclarationStatement, data);
