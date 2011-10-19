@@ -145,6 +145,12 @@
   <ItemGroup>
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
+      <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>
+      <Name>Strokes.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>
