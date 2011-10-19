@@ -25,6 +25,7 @@
     <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
     <MefComponent>|Strokes.GUI|</MefComponent>
     <Assembly AssemblyName="|Strokes.VsTemplate.Wizard;AssemblyName|">|Strokes.VsTemplate.Wizard|</Assembly>
+    <VsPackage>|Strokes.FeatureAchievements;PkgdefProjectOutputGroup|</VsPackage>
     <ProjectTemplate>ProjectTemplates</ProjectTemplate>
     <ItemTemplate>ItemTemplates</ItemTemplate>
   </Content>
