@@ -101,8 +101,8 @@ namespace Strokes.Core.Data.Model
             set;
         }
 
-#pragma warning disable 67
+        #pragma warning disable 67
         public event PropertyChangedEventHandler PropertyChanged;
-#pragma warning restore 67
+        #pragma warning restore 67
     }
 }
