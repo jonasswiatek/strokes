@@ -13,9 +13,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Strokes.BasicAchievements.Achievements;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
-using Strokes.Core.Data;
-using Strokes.Core.Data.Model;
+using Strokes.Core.Service;
 using Strokes.Data;
+using Strokes.Service;
+using Strokes.Service.Data;
 using StructureMap;
 
 namespace Strokes.BasicAchievements.Test
@@ -26,6 +27,19 @@ namespace Strokes.BasicAchievements.Test
     [TestClass]
     public class AchievementLocaizationTest
     {
+        [TestInitialize]
+        public void Initialize()
+        {
+            ObjectFactory.Configure(a =>
+            {
+                a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
+                a.For<IAchievementService>().Singleton().Use<ParallelStrokesAchievementService>();
+            });
+
+            var achievementService = ObjectFactory.GetInstance<IAchievementService>();
+            achievementService.LoadAchievementsFrom(typeof(ArrayLengthPropertyAchievement).Assembly);
+        }
+
         [TestMethod]
         public void TestDefaultCulture()
         {
@@ -38,15 +52,11 @@ namespace Strokes.BasicAchievements.Test
             TestLocalizations(new CultureInfo("ru-RU"));
         }
 
-        private void TestLocalizations(CultureInfo cultureInfo)
+        private static void TestLocalizations(CultureInfo cultureInfo)
         {
-            ObjectFactory.Configure(a => a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>());
-            var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
+            var achievementService = ObjectFactory.GetInstance<IAchievementService>();
 
-            var assembly = typeof(ArrayLengthPropertyAchievement).Assembly;
-
-            achievementRepository.LoadFromAssembly(assembly);
-
+            var assembly = typeof (ArrayLengthPropertyAchievement).Assembly;
             var achievementResourcesType = assembly.GetType("Strokes.Resources.AchievementResources");
             var categoryResourcesType = assembly.GetType("Strokes.Resources.AchievementCategoryResources");
 
@@ -57,7 +67,7 @@ namespace Strokes.BasicAchievements.Test
             var achievementResourceSet = achievementResources.GetResourceSet(cultureInfo, true, true);
             var categoryResourceSet = categoryResources.GetResourceSet(cultureInfo, true, true);
 
-            var achievements = achievementRepository.GetAchievements();
+            var achievements = achievementService.GetAllAchievements();
             var achievementDescriptors = achievements.Select(a => (StaticAnalysisAchievementBase) Activator.CreateInstance(a.AchievementType)).Select(a => new
                                                                                                                                                  {
                                                                                                                                                      Descriptor = a.GetDescriptionAttribute(),

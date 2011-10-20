@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Strokes.Core.Data.Model
+﻿namespace Strokes.Service.Data.Model
 {
     public class Settings
     {

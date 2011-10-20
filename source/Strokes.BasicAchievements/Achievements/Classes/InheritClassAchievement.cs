@@ -26,7 +26,6 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                //TODO: This needs to be more advanced. There is no guarantee that a user will prefix interfaces with I.
                 if (typeDeclaration.ClassType == ClassType.Class)
                 {
                     var interfaceMarker = typeDeclaration.BaseTypes.OfType<MemberType>().FirstOrDefault();

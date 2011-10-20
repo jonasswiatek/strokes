@@ -6,9 +6,8 @@ using System.Reflection;
 using System.Text;
 using System.Xml.Serialization;
 using Strokes.Core;
-using Strokes.Core.Data;
-using Strokes.Core.Data.Model;
 using Strokes.Core.Service.Model;
+using Strokes.Service.Data;
 
 namespace Strokes.Data
 {
@@ -72,9 +71,9 @@ namespace Strokes.Data
             var achievementTypes = achievementsInAssembly.Select(achievement => (StaticAnalysisAchievementBase)Activator.CreateInstance(achievement)).ToList();
             var achievementDescriptors = achievementTypes.Select(achievement => achievement.GetDescriptionAttribute()).ToList();
 
-            _achievements.AddRange(achievementTypes.Select(a => a.GetAchievementDto()));
+            var assemblyAchievements = achievementTypes.Select(a => a.GetAchievementDto()).ToList();
 
-            foreach (var achievement in _achievements)
+            foreach (var achievement in assemblyAchievements)
             {
                 var currentAchievement = achievement;
                 var completedAchievement = _completedAchievements.FirstOrDefault(a => a.Guid == currentAchievement.Guid);
@@ -87,7 +86,7 @@ namespace Strokes.Data
 
                 var dependsOnGuids = achievementDescriptors
                         .Where(a => a.Guid == currentAchievement.Guid)
-                        .SelectMany(a => a.DependsOn ?? new string[] { })
+                        .SelectMany(a => a.DependsOn)
                         .ToList();
 
                 var unlocksGuids = achievementDescriptors
@@ -95,8 +94,10 @@ namespace Strokes.Data
                         .Select(a => a.Guid)
                         .ToList();
 
-                currentAchievement.DependsOn = _achievements.Where(a => dependsOnGuids.Contains(a.Guid)).ToList();
-                currentAchievement.Unlocks = _achievements.Where(a => unlocksGuids.Contains(a.Guid)).ToList();
+                currentAchievement.DependsOn = assemblyAchievements.Where(a => dependsOnGuids.Contains(a.Guid)).ToList();
+                currentAchievement.Unlocks = assemblyAchievements.Where(a => unlocksGuids.Contains(a.Guid)).ToList();
+
+                _achievements.Add(currentAchievement);
             }
         }
 
@@ -114,9 +115,6 @@ namespace Strokes.Data
 
         private void PersistCompletedAchievements()
         {
-            if (AchievementContext.DisablePersist)
-                return;
-
             Save(_completedAchievements);
         }
     }

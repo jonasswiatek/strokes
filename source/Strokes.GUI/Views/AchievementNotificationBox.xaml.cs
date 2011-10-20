@@ -5,10 +5,11 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Strokes.Core;
-using Strokes.Core.Data.Model;
 using System.ComponentModel;
 using System.Windows.Shapes;
+using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
+using StructureMap;
 using Application = System.Windows.Application;
 
 namespace Strokes.GUI.Views
@@ -19,16 +20,19 @@ namespace Strokes.GUI.Views
     public partial class AchievementNotificationBox : Window
     {
         private bool isEventsBound;
+        private IAchievementService _achievementService;
 
         public AchievementNotificationBox()
         {
+            _achievementService = ObjectFactory.GetInstance<IAchievementService>();
+
             InitializeComponent();
 
             if (DesignerProperties.GetIsInDesignMode(this) == false)
                 UnlockedAchievementsList.LayoutUpdated += UnlockedAchievementsList_LayoutUpdated;
 
             // Closes the window again if another detection session is launched by the Achievement context.
-            AchievementContext.AchievementDetectionStarting += (sender, args) => Close();
+            _achievementService.StaticAnalysisStarted += (sender, args) => Close();
         }
 
         private AchievementNotificationViewModel ViewModel
@@ -71,10 +75,10 @@ namespace Strokes.GUI.Views
                     {
                         var achevementDescriptor = dataItem;
 
-                        AchievementContext.OnAchievementClicked(gotoCodebutton, new AchievementClickedEventArgs
+                        GuiInitializer.OnAchievementClicked(gotoCodebutton, new AchievementClickedEventArgs
                         {
                             AchievementDescriptor = achevementDescriptor,
-                            UIElement = new AchievementViewportControl()
+                            UIElement = new AchievementViewportControl
                             {
                                 DataContext = achevementDescriptor
                             }

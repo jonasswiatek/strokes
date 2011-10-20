@@ -8,12 +8,12 @@ using System.Windows;
 using Strokes.BasicAchievements.Achievements;
 using Strokes.Core;
 using System.Linq;
-using Strokes.Core.Data;
 using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
 using Strokes.Data;
 using Strokes.GUI;
 using Strokes.Service;
+using Strokes.Service.Data;
 using Strokes.VSX;
 using StructureMap;
 
@@ -27,21 +27,21 @@ namespace Strokes.Console
             ObjectFactory.Configure(a =>
                                         {
                                             a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
-                                            a.For<IAchievementService>().Singleton().Use<StrokesAchievementService>();
+                                            a.For<IAchievementService>().Singleton().Use<ParallelStrokesAchievementService>();
                                         });
+
+            var achievementService = ObjectFactory.GetInstance<IAchievementService>();
+            achievementService.LoadAchievementsFrom(typeof(ArrayLengthPropertyAchievement).Assembly);
 
             var cultureToTest = "ru-RU"; // Set to "ru-RU" to enable russian. Set to "nl" for dutch
 
             // Comment the following line to use operating system default culture.
             //Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureToTest);
 
-            AchievementContext.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
+            achievementService.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
             GuiInitializer.Initialize();
 
-            var achievementService = ObjectFactory.GetInstance<IAchievementService>();
-            var achievementDescriptorRepository = ObjectFactory.GetInstance<IAchievementRepository>();
-            achievementDescriptorRepository.LoadFromAssembly(typeof(AnonymousObjectAchievement).Assembly);
-            achievementDescriptorRepository.ResetAchievements();
+            achievementService.ResetAchievementProgress();
 
             achievementService.StaticAnalysisCompleted += DetectionDispatcher_DetectionCompleted;
             var file = System.IO.Path.GetFullPath("TestFile.cs");
@@ -61,9 +61,9 @@ namespace Strokes.Console
                 e.AchievementsTested, e.ElapsedMilliseconds));
         }
 
-        private static void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)
+        private static void AchievementContext_AchievementsUnlocked(object sender, AchievementEventArgs args)
         {
-            System.Console.WriteLine("Unlocked: " + string.Join(", ", args.Achievements.Select(a => a.Name)));
+            System.Console.WriteLine("Unlocked: " + string.Join(", ", args.UnlockedAchievements.Select(a => a.Name)));
         }
     }
 }

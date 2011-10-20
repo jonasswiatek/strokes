@@ -3,63 +3,39 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Strokes.Core;
-using Strokes.Core.Data;
-using Strokes.Core.Data.Model;
 using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
+using Strokes.Service.Data;
 
 namespace Strokes.Service
 {
-    public class StrokesAchievementService : IAchievementService
+    public abstract class StrokesAchievementServiceBase : IAchievementService
     {
-        private readonly IAchievementRepository _achievementRepository;
+        protected readonly IAchievementRepository AchievementRepository;
         public event EventHandler<AchievementEventArgs> AchievementsUnlocked;
         public event EventHandler<EventArgs> StaticAnalysisStarted;
         public event EventHandler<StaticAnalysisEventArgs> StaticAnalysisCompleted;
 
-        public StrokesAchievementService(IAchievementRepository achievementRepository)
+        protected StrokesAchievementServiceBase(IAchievementRepository achievementRepository)
         {
-            _achievementRepository = achievementRepository;
+            AchievementRepository = achievementRepository;
         }
 
         public void PerformStaticAnalysis(StaticAnalysisManifest staticAnalysisManifest)
         {
-            var unlockedAchievements = new ConcurrentBag<Achievement>();
-            using (var detectionSession = new StatisAnalysisSession(staticAnalysisManifest))
+            IEnumerable<Achievement> unlockedAchievements;
+            using (var statisAnalysisSession = new StatisAnalysisSession(staticAnalysisManifest))
             {
                 OnStaticAnalysisStarted(this, new EventArgs());
                 var stopwatch = new Stopwatch();
                 stopwatch.Start();
 
-                var availableAchievements = _achievementRepository.GetUnlockableAchievements();
-
-                var tasks = new Task[availableAchievements.Count()];
-                var i = 0;
-
-                foreach (var uncompletedAchievement in availableAchievements)
-                {
-                    var a = uncompletedAchievement;
-
-                    tasks[i++] = Task.Factory.StartNew(() =>
-                                                           {
-                                                               /*   Technically we create a lot of objects all the time.
-                                                                *   It's possible that these objects could have a lifespan longer than just a session.
-                                                                *   However maintaining state is always a PITA */
-                                                               var achievement = (StaticAnalysisAchievementBase) Activator.CreateInstance(a.AchievementType); 
-
-                                                               if (achievement.IsAchievementUnlocked(detectionSession))
-                                                               {
-                                                                   a.CodeOrigin = achievement.AchievementCodeOrigin;
-                                                                   a.IsCompleted = true;
-                                                                   unlockedAchievements.Add(a);
-                                                               }
-                                                           });
-                }
-
-                Task.WaitAll(tasks);
+                var availableAchievements = AchievementRepository.GetUnlockableAchievements();
+                unlockedAchievements = GetUnlockedAchievements(statisAnalysisSession, availableAchievements);
 
                 stopwatch.Stop();
                 OnStaticAnalysisCompleted(this, new StaticAnalysisEventArgs
@@ -73,7 +49,7 @@ namespace Strokes.Service
             {
                 foreach (var completedAchievement in unlockedAchievements)
                 {
-                    _achievementRepository.MarkAchievementAsCompleted(completedAchievement);
+                    AchievementRepository.MarkAchievementAsCompleted(completedAchievement);
                 }
 
                 OnAchievementsUnlocked(this, new AchievementEventArgs
@@ -81,6 +57,28 @@ namespace Strokes.Service
                                                      UnlockedAchievements = unlockedAchievements
                                                  });
             }
+        }
+
+        protected abstract IEnumerable<Achievement> GetUnlockedAchievements(StatisAnalysisSession statisAnalysisSession, IEnumerable<Achievement> availableAchievements);
+
+        public void ResetAchievementProgress()
+        {
+            AchievementRepository.ResetAchievements();
+        }
+
+        public void LoadAchievementsFrom(Assembly assembly)
+        {
+            AchievementRepository.LoadFromAssembly(assembly);
+        }
+
+        public IEnumerable<Achievement> GetAllAchievements()
+        {
+            return AchievementRepository.GetAchievements();
+        }
+
+        public IEnumerable<Achievement> GetUnlockableAchievements()
+        {
+            return AchievementRepository.GetUnlockableAchievements();
         }
 
         #region Event Dispatchers

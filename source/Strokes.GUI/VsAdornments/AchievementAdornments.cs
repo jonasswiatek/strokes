@@ -44,7 +44,7 @@ namespace Strokes.GUI.VsAdornments
             this.brush = brush;
             this.pen = pen;
 
-            AchievementContext.AchievementClicked += (sender, args) =>
+            GuiInitializer.AchievementClicked += (sender, args) =>
                                                          {
                                                              Reset();
 

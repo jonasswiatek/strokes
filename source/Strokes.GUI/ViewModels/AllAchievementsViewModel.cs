@@ -8,11 +8,10 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Strokes.Core;
-using Strokes.Core.Data;
-using Strokes.Core.Data.Model;
+using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
-using Strokes.Data;
 using System.Collections.Specialized;
+using Strokes.Service.Data.Model;
 using StructureMap;
 using GalaSoft.MvvmLight.Messaging;
 
@@ -24,16 +23,15 @@ namespace Strokes.GUI
         private const string TotalAchievementsFieldName = "TotalAchievements";
         private const string TotalCompletedFieldName = "TotalCompleted";
         private const string PercentageCompletedFieldName = "PercentageCompleted";
-        private readonly IAchievementRepository achievementRepository;
+        private readonly IAchievementService achievementService;
 
         public AllAchievementsViewModel()
         {
-            this.AchievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
-            this.ResetCommand = new RelayCommand(ResetExecute);
+            AchievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
+            ResetCommand = new RelayCommand(ResetExecute);
 
-            AchievementContext.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
-
-            achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
+            achievementService = ObjectFactory.GetInstance<IAchievementService>();
+            achievementService.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
 
             ReloadViewModel();
         }
@@ -76,12 +74,12 @@ namespace Strokes.GUI
 
         private void ResetExecute()
         {
-            if (achievementRepository != null)
+            if (achievementService != null)
             {
-                achievementRepository.ResetAchievements();
+                achievementService.ResetAchievementProgress();
                 ReloadViewModel();
                 Messenger.Default.Send(new ResetAchievementsMessage());
-            }
+            }   
         }
 
         private void ReloadViewModel()
@@ -89,8 +87,8 @@ namespace Strokes.GUI
             AchievementsOrdered.Clear();
 
             var achievements = Enumerable.Empty<Achievement>();
-            if (achievementRepository != null)
-                achievements = achievementRepository.GetAchievements();
+            if (achievementService != null)
+                achievements = achievementService.GetAllAchievements();
 
             foreach (var category in achievements.AsCategories())
             {
@@ -117,11 +115,12 @@ namespace Strokes.GUI
                 return false;
         }
 
-        private void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)
+        private void AchievementContext_AchievementsUnlocked(object sender, AchievementEventArgs args)
         {
-            foreach (var achievement in args.Achievements)
+            foreach (var achievement in args.UnlockedAchievements)
             {
-                var category = AchievementsOrdered.FirstOrDefault(c => c.CategoryName == achievement.Category);
+                var currentAchievement = achievement;
+                var category = AchievementsOrdered.FirstOrDefault(c => c.CategoryName == currentAchievement.Category);
                 if (category != null)
                     category.Update(achievement);
             }

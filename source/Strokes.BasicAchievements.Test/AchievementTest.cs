@@ -10,13 +10,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Strokes.BasicAchievements.Achievements;
 using Strokes.BasicAchievements.Challenges;
 using Strokes.BasicAchievements.NRefactory;
-using Strokes.BasicAchievements.Test.TestCases.MethodCalls.FundamentaldotNetMethods;
 using Strokes.Core;
-using Strokes.Core.Data;
-using Strokes.Core.Data.Model;
 using Strokes.Core.Service;
-using Strokes.Core.Service.Model;
 using Strokes.Data;
+using Strokes.Service;
+using Strokes.Service.Data;
 using StructureMap;
 
 namespace Strokes.BasicAchievements.Test
@@ -34,9 +32,14 @@ namespace Strokes.BasicAchievements.Test
         [TestInitialize]
         public void Initialize()
         {
-            ObjectFactory.Configure(a => a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>());
-            var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
-            achievementRepository.LoadFromAssembly(typeof(NRefactoryAchievement).Assembly);
+            ObjectFactory.Configure(a =>
+                                        {
+                                            a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
+                                            a.For<IAchievementService>().Singleton().Use<ParallelStrokesAchievementService>();
+                                        });
+
+            var achievementService = ObjectFactory.GetInstance<IAchievementService>();
+            achievementService.LoadAchievementsFrom(typeof(ArrayLengthPropertyAchievement).Assembly);
         }
 
         [DeploymentItem(@"TestCases", "TestCases")]
@@ -44,7 +47,7 @@ namespace Strokes.BasicAchievements.Test
         public void TestAchievements()
         {
             const string achievementBaseNamespace = "Strokes.BasicAchievements.Test.";
-            var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
+            var achievementService = ObjectFactory.GetInstance<IAchievementService>();
 
             var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof(ExpectUnlockAttribute), false).Length > 0);
             foreach(var test in achievementTests)
@@ -64,7 +67,7 @@ namespace Strokes.BasicAchievements.Test
 
                 using (var detectionSession = new StatisAnalysisSession(buildInformation))
                 {
-                    var achievements = achievementRepository.GetAchievements().ToList();
+                    var achievements = achievementService.GetAllAchievements().ToList();
 
                     var tasks = new Task[achievements.Count()];
                     var i = 0;
@@ -108,8 +111,8 @@ namespace Strokes.BasicAchievements.Test
         [TestMethod]
         public void TestCoverage()
         {
-            var achievementRepository = ObjectFactory.GetInstance<IAchievementRepository>();
-            var achievementImplementations = achievementRepository.GetAchievements().Select(a => a.AchievementType).Where(a => !typeof(Challenge).IsAssignableFrom(a)); //Ignore Challenges in this context - those are not unit testable from this project
+            var achievementService = ObjectFactory.GetInstance<IAchievementService>();
+            var achievementImplementations = achievementService.GetAllAchievements().Select(a => a.AchievementType).Where(a => !typeof(Challenge).IsAssignableFrom(a)); //Ignore Challenges in this context - those are not unit testable from this project
 
             var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Length > 0);
             var testedAchievementImplementations = achievementTests.SelectMany(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Select(b => (ExpectUnlockAttribute)b).Select(c => c.ExpectedAchievementType)).Distinct();

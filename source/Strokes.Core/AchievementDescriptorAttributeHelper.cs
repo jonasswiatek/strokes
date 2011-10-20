@@ -1,5 +1,4 @@
 ﻿using System;
-using Strokes.Core.Data.Model;
 using System.Resources;
 using System.Reflection;
 using Strokes.Core.Service.Model;
@@ -58,7 +57,7 @@ namespace Strokes.Core
                 Category = category,
                 Description = description,
                 Name = title,
-                Image = descriptionAttribute.Image,
+                Image = descriptionAttribute.Image
             };
 
             return descriptor;

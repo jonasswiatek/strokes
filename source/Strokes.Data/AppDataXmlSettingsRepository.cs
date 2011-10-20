@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Strokes.Core.Data;
-using Strokes.Core.Data.Model;
+using Strokes.Service.Data;
+using Strokes.Service.Data.Model;
 
 namespace Strokes.Data
 {

@@ -2,7 +2,7 @@
 using System.Linq;
 using Strokes.Core.Service.Model;
 
-namespace Strokes.Core.Data.Model
+namespace Strokes.Service.Data.Model
 {
     public class AchievementCategory
     {

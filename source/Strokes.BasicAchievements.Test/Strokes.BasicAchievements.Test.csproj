@@ -427,6 +427,10 @@
       <Project>{798B2FC9-2538-4F93-9AF4-D7EA102C1CE7}</Project>
       <Name>Strokes.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Strokes.Service\Strokes.Service.csproj">
+      <Project>{6AC1A6EF-D271-46D2-803D-E9B149DE3816}</Project>
+      <Name>Strokes.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

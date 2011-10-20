@@ -4,7 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Strokes.Core;
+using Strokes.Core.Service;
+using Strokes.Core.Service.Model;
 using Strokes.GUI.Views;
+using StructureMap;
 
 namespace Strokes.GUI
 {
@@ -21,7 +24,19 @@ namespace Strokes.GUI
         /// </summary>
         public static void Initialize()
         {
-            AchievementContext.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
+            var achievementService = ObjectFactory.GetInstance<IAchievementService>();
+            achievementService.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
+        }
+
+        public delegate void AchievementClickedHandler(object sender, AchievementClickedEventArgs args);
+        public static event AchievementClickedHandler AchievementClicked;
+
+        public static void OnAchievementClicked(object sender, AchievementClickedEventArgs args)
+        {
+            if (AchievementClicked != null)
+            {
+                AchievementClicked(sender, args);
+            }
         }
 
         /// <summary>
@@ -31,15 +46,30 @@ namespace Strokes.GUI
         /// <param name="args">
         ///     The <see cref="Strokes.Core.AchievementsUnlockedEventArgs"/> instance containing the event data.
         /// </param>
-        private static void AchievementContext_AchievementsUnlocked(object sender, AchievementsUnlockedEventArgs args)
+        private static void AchievementContext_AchievementsUnlocked(object sender, AchievementEventArgs args)
         {
-            if (args.Achievements.Any())
+            if (args.UnlockedAchievements.Any())
             {
                 Debug.WriteLine(string.Format("Achievements unlocked: {0}",
-                    string.Join(", ", args.Achievements.Select(a => "[" + a.Name + "]"))));
+                    string.Join(", ", args.UnlockedAchievements.Select(a => "[" + a.Name + "]"))));
 
-                AchievementNotificationBox.ShowAchievements(args.Achievements);
+                AchievementNotificationBox.ShowAchievements(args.UnlockedAchievements);
             }
+        }
+    }
+
+    public class AchievementClickedEventArgs
+    {
+        public Achievement AchievementDescriptor
+        {
+            get;
+            set;
+        }
+
+        public object UIElement
+        {
+            get;
+            set;
         }
     }
 }

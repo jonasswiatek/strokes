@@ -10,13 +10,13 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
-using Strokes.Core.Data;
 using Strokes.Core.Integration;
 using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
 using Strokes.Data;
 using Strokes.GUI;
 using Strokes.Service;
+using Strokes.Service.Data;
 using Strokes.VSX.Trackers;
 using StructureMap;
 
@@ -40,7 +40,7 @@ namespace Strokes.VSX
         /// </summary>
         private uint updateSolutionEventsCookie = 0;
 
-        private IAchievementService _achievementService;
+        private readonly IAchievementService _achievementService;
         /// <summary>
         /// Initializes a new instance of the <see cref="StrokesVsxPackage"/> class.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Strokes.VSX
             {
                 a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
                 a.For<ISettingsRepository>().Singleton().Use<AppDataXmlSettingsRepository>();
-                a.For<IAchievementService>().Singleton().Use<StrokesAchievementService>();
+                a.For<IAchievementService>().Singleton().Use<ParallelStrokesAchievementService>();
             });
 
             _achievementService = ObjectFactory.GetInstance<IAchievementService>();
@@ -62,8 +62,7 @@ namespace Strokes.VSX
         /// <param name="assembly">The assembly to register.</param>
         public void RegisterAchievementAssembly(Assembly assembly)
         {
-            var repository = ObjectFactory.GetInstance<IAchievementRepository>();
-            repository.LoadFromAssembly(assembly);
+            _achievementService.LoadAchievementsFrom(assembly);
         }
 
         /// <summary>
@@ -143,8 +142,7 @@ namespace Strokes.VSX
             RegisterAchievementAssembly(typeof(NRefactoryAchievement).Assembly);
 
             GuiInitializer.Initialize();
-
-            AchievementContext.AchievementClicked += AchievementContext_AchievementClicked;
+            GuiInitializer.AchievementClicked += AchievementContext_AchievementClicked;
             _achievementService.StaticAnalysisCompleted += DetectionDispatcher_DetectionCompleted;
         }
 
@@ -181,7 +179,7 @@ namespace Strokes.VSX
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="args">
-        ///     The <see cref="Strokes.Core.AchievementClickedEventArgs"/> instance containing the event data.
+        ///     The <see cref="AchievementClickedEventArgs"/> instance containing the event data.
         /// </param>
         private void AchievementContext_AchievementClicked(object sender, AchievementClickedEventArgs args)
         {

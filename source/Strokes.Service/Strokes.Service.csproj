@@ -46,7 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StrokesAchievementService.cs" />
+    <Compile Include="Data\IAchievementRepository.cs" />
+    <Compile Include="Data\ISettingsRepository.cs" />
+    <Compile Include="Data\Model\AchievementCategory.cs" />
+    <Compile Include="Data\Model\Settings.cs" />
+    <Compile Include="ParallelStrokesAchievementService.cs" />
+    <Compile Include="StrokesAchievementServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
