@@ -5,10 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Strokes.Core;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Challenges
 {
-    public abstract class Challenge : AchievementBase
+    public abstract class Challenge : StaticAnalysisAchievementBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Challenge"/> class.
@@ -31,11 +32,11 @@ namespace Strokes.BasicAchievements.Challenges
         /// <summary>
         /// Detects the achievement.
         /// </summary>
-        /// <param name="detectionSession">The detection session.</param>
+        /// <param name="statisAnalysisSession">The detection session.</param>
         /// <returns><c>true</c> if the ChallengeRunner returned 'OK'; otherwise <c>false</c>.</returns>
-        public override bool DetectAchievement(DetectionSession detectionSession)
+        public override bool IsAchievementUnlocked(StatisAnalysisSession statisAnalysisSession)
         {
-            if (string.IsNullOrEmpty(detectionSession.BuildInformation.ActiveProjectOutputDirectory))
+            if (string.IsNullOrEmpty(statisAnalysisSession.StaticAnalysisManifest.ActiveProjectOutputDirectory))
             {
                 return false;
             }
@@ -43,8 +44,8 @@ namespace Strokes.BasicAchievements.Challenges
             var dlls = new List<string>();
 
             // Some directory listing hackery
-            dlls.AddRange(GetOutputFiles(detectionSession, "*.dll"));
-            dlls.AddRange(GetOutputFiles(detectionSession, "*.exe"));
+            dlls.AddRange(GetOutputFiles(statisAnalysisSession, "*.dll"));
+            dlls.AddRange(GetOutputFiles(statisAnalysisSession, "*.exe"));
 
             // If the Strokes.Challenges.Student-dll isn't in the build output, 
             // this project can with certainty be said to not be a challenge-solve attempt.
@@ -59,7 +60,7 @@ namespace Strokes.BasicAchievements.Challenges
             processStartInfo.RedirectStandardOutput = true;
             processStartInfo.RedirectStandardError = true;
             processStartInfo.Arguments = string.Join(" ",
-                detectionSession.BuildInformation.ActiveProjectOutputDirectory.Replace(" ", "*"), ChallengeRunner);
+                statisAnalysisSession.StaticAnalysisManifest.ActiveProjectOutputDirectory.Replace(" ", "*"), ChallengeRunner);
 
             var process = Process.Start(processStartInfo);
 
@@ -72,12 +73,12 @@ namespace Strokes.BasicAchievements.Challenges
         /// <summary>
         /// Gets the output files for a given session, filtered by the given search pattern.
         /// </summary>
-        /// <param name="detectionSession">The detection session.</param>
+        /// <param name="statisAnalysisSession">The detection session.</param>
         /// <param name="searchPattern">The search pattern.</param>
         /// <returns>A list of file paths.</returns>
-        private static IEnumerable<string> GetOutputFiles(DetectionSession detectionSession, string searchPattern)
+        private static IEnumerable<string> GetOutputFiles(StatisAnalysisSession statisAnalysisSession, string searchPattern)
         {
-            var directory = detectionSession.BuildInformation.ActiveProjectOutputDirectory;
+            var directory = statisAnalysisSession.StaticAnalysisManifest.ActiveProjectOutputDirectory;
 
             return Directory.GetFiles(directory, searchPattern, SearchOption.AllDirectories)
                             .Where(file => file.IndexOf("vshost") < 0);

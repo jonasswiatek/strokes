@@ -7,7 +7,7 @@ namespace Strokes.Core
 {
     public static class AchievementDescriptorAttributeHelper
     {
-        public static AchievementDescriptorAttribute GetDescriptionAttribute(this AchievementBase achievement)
+        public static AchievementDescriptorAttribute GetDescriptionAttribute(this StaticAnalysisAchievementBase achievement)
         {
             var descriptionAttributes = achievement.GetType().GetCustomAttributes(typeof(AchievementDescriptorAttribute), true);
 
@@ -24,7 +24,7 @@ namespace Strokes.Core
             throw new ArgumentException("Achievement class does not define an AchievementDescriptionAttribute", "achievement");
         }
 
-        public static Achievement GetAchievementDto(this AchievementBase achievement)
+        public static Achievement GetAchievementDto(this StaticAnalysisAchievementBase achievement)
         {
             var descriptionAttribute = GetDescriptionAttribute(achievement);
             var assembly = achievement.GetType().Assembly;

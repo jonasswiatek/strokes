@@ -14,6 +14,7 @@ using Strokes.BasicAchievements.Test.TestCases.MethodCalls.FundamentaldotNetMeth
 using Strokes.Core;
 using Strokes.Core.Data;
 using Strokes.Core.Data.Model;
+using Strokes.Core.Service.Model;
 using Strokes.Data;
 using StructureMap;
 
@@ -49,7 +50,7 @@ namespace Strokes.BasicAchievements.Test
             {
                 var testCasePath = test.FullName.Replace(achievementBaseNamespace, "").Replace(".", "/") + ".cs";
                 var sourceFile = Path.GetFullPath(testCasePath);
-                var buildInformation = new BuildInformation()
+                var buildInformation = new StaticAnalysisManifest()
                                            {
                                                ActiveFile = sourceFile,
                                                ActiveProject = null,
@@ -60,7 +61,7 @@ namespace Strokes.BasicAchievements.Test
 
                 var expectedAchievements = test.GetCustomAttributes(typeof(ExpectUnlockAttribute), false).Select(a => ((ExpectUnlockAttribute)a).ExpectedAchievementType).ToList();
 
-                using (var detectionSession = new DetectionSession(buildInformation))
+                using (var detectionSession = new StatisAnalysisSession(buildInformation))
                 {
                     var achievements = achievementRepository.GetAchievements().ToList();
 
@@ -75,13 +76,13 @@ namespace Strokes.BasicAchievements.Test
                         tasks[i++] = Task.Factory.StartNew(() =>
                                                                {
                                                                     var achievementType = a.AchievementType;
-                                                                    var achievement = (AchievementBase)Activator.CreateInstance(achievementType);
+                                                                    var achievement = (StaticAnalysisAchievementBase)Activator.CreateInstance(achievementType);
 
-                                                                    var achievementUnlocked = achievement.DetectAchievement(detectionSession);
+                                                                    var achievementUnlocked = achievement.IsAchievementUnlocked(detectionSession);
 
                                                                     if (achievementUnlocked)
                                                                     {
-                                                                        a.CodeLocation = achievement.AchievementCodeLocation;
+                                                                        a.CodeOrigin = achievement.AchievementCodeOrigin;
                                                                         a.IsCompleted = true;
                                                                         unlockedAchievements.Add(achievementType);
                                                                     }

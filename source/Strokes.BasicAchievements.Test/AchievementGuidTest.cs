@@ -15,7 +15,7 @@ namespace Strokes.BasicAchievements.Test
         public void TestGuids()
         {
             var achievementAssembly = typeof(NRefactoryAchievement).Assembly;
-            var achievementImplementations = achievementAssembly.GetTypes().Where(a => typeof(AchievementBase).IsAssignableFrom(a) && !a.IsAbstract).Select(b => (AchievementBase)Activator.CreateInstance(b));
+            var achievementImplementations = achievementAssembly.GetTypes().Where(a => typeof(StaticAnalysisAchievementBase).IsAssignableFrom(a) && !a.IsAbstract).Select(b => (StaticAnalysisAchievementBase)Activator.CreateInstance(b));
             var achievementDescriptors = achievementImplementations.Select(a => new
                                                                                     {
                                                                                         Descriptor = a.GetDescriptionAttribute(),

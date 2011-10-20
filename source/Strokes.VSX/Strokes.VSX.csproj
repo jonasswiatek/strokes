@@ -135,6 +135,10 @@
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bPkgdefProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
+    <ProjectReference Include="..\Strokes.Service\Strokes.Service.csproj">
+      <Project>{6AC1A6EF-D271-46D2-803D-E9B149DE3816}</Project>
+      <Name>Strokes.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Strokes.VsTemplate.Challenges\Strokes.VsTemplate.Challenges.csproj">
       <Project>{82328D53-3070-4F22-8E43-A8EAA5FFD4EB}</Project>
       <Name>Strokes.VsTemplate.Challenges</Name>

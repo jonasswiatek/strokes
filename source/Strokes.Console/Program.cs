@@ -9,8 +9,11 @@ using Strokes.BasicAchievements.Achievements;
 using Strokes.Core;
 using System.Linq;
 using Strokes.Core.Data;
+using Strokes.Core.Service;
+using Strokes.Core.Service.Model;
 using Strokes.Data;
 using Strokes.GUI;
+using Strokes.Service;
 using Strokes.VSX;
 using StructureMap;
 
@@ -24,6 +27,7 @@ namespace Strokes.Console
             ObjectFactory.Configure(a =>
                                         {
                                             a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
+                                            a.For<IAchievementService>().Singleton().Use<StrokesAchievementService>();
                                         });
 
             var cultureToTest = "ru-RU"; // Set to "ru-RU" to enable russian. Set to "nl" for dutch
@@ -34,13 +38,14 @@ namespace Strokes.Console
             AchievementContext.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
             GuiInitializer.Initialize();
 
+            var achievementService = ObjectFactory.GetInstance<IAchievementService>();
             var achievementDescriptorRepository = ObjectFactory.GetInstance<IAchievementRepository>();
             achievementDescriptorRepository.LoadFromAssembly(typeof(AnonymousObjectAchievement).Assembly);
             achievementDescriptorRepository.ResetAchievements();
 
-            DetectionDispatcher.DetectionCompleted += DetectionDispatcher_DetectionCompleted;
+            achievementService.StaticAnalysisCompleted += DetectionDispatcher_DetectionCompleted;
             var file = System.IO.Path.GetFullPath("TestFile.cs");
-            DetectionDispatcher.Dispatch(new BuildInformation()
+            achievementService.PerformStaticAnalysis(new StaticAnalysisManifest()
             {
                 ActiveFile = file,
                 ChangedFiles = new string[] { file },
@@ -50,7 +55,7 @@ namespace Strokes.Console
             System.Console.Read();
         }
 
-        private static void DetectionDispatcher_DetectionCompleted(object sender, DetectionCompletedEventArgs e)
+        private static void DetectionDispatcher_DetectionCompleted(object sender, StaticAnalysisEventArgs e)
         {
             System.Console.WriteLine(string.Format("{0} achievements tested in {1} milliseconds",
                 e.AchievementsTested, e.ElapsedMilliseconds));

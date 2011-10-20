@@ -49,17 +49,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AchievementBase.cs" />
-    <Compile Include="AchievementCodeLocation.cs" />
+    <Compile Include="Service\IAchievementService.cs" />
+    <Compile Include="Service\Model\AchievementEventArgs.cs" />
+    <Compile Include="Service\Model\AchievementOriginEventArgs.cs" />
+    <Compile Include="Service\Model\StaticAnalysisEventArgs.cs" />
+    <Compile Include="StaticAnalysisAchievementBase.cs" />
+    <Compile Include="AchievementCodeOrigin.cs" />
     <Compile Include="AchievementContext.cs" />
     <Compile Include="AchievementDescriptorAttribute.cs" />
     <Compile Include="AchievementDescriptorAttributeHelper.cs" />
-    <Compile Include="BuildInformation.cs" />
+    <Compile Include="Service\Model\StaticAnalysisManifest.cs" />
     <Compile Include="Data\IAchievementRepository.cs" />
     <Compile Include="Data\ISettingsRepository.cs" />
     <Compile Include="Data\Model\Settings.cs" />
-    <Compile Include="DetectionDispatcher.cs" />
-    <Compile Include="DetectionSession.cs" />
+    <Compile Include="Service\Model\StatisAnalysisSession.cs" />
     <Compile Include="Integration\IAchevementLibraryService.cs" />
     <Compile Include="Data\Model\AchievementCategory.cs" />
     <Compile Include="Data\Model\Achievement.cs" />

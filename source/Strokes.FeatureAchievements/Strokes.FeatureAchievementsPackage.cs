@@ -13,6 +13,7 @@ using Strokes.Core.Integration;
 namespace Codecube.Strokes_FeatureAchievements
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
+    [ProvideAutoLoad("{adfc4e64-0397-11d1-9f4e-00a0c911004f}")]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [Guid(GuidList.guidStrokes_FeatureAchievementsPkgString)]
     public sealed class FeatureAchievementsPackage : Package

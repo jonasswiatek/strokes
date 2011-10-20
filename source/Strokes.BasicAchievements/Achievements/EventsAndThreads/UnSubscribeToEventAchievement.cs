@@ -4,6 +4,7 @@ using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.Core;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -12,7 +13,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@EventsThreads")]
     public class UnSubscribeToEventAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor(NRefactoryContext.CodebaseDeclarations);
         }

@@ -7,6 +7,8 @@ using EnvDTE;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
 using Strokes.Core;
+using Strokes.Core.Service;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.VSX.Trackers
 {
@@ -17,6 +19,7 @@ namespace Strokes.VSX.Trackers
     {
         private static Dictionary<string, ProjectTypeDef> projectTypeDefCache = new Dictionary<string, ProjectTypeDef>();
         private DTE dte;
+        private readonly IAchievementService _achievementService;
         private DateTime lastAchievementCheck = DateTime.Now;
         private bool isAchievementDetectionRunning;
 
@@ -24,9 +27,11 @@ namespace Strokes.VSX.Trackers
         /// Initializes a new instance of the <see cref="BuildTracker"/> class.
         /// </summary>
         /// <param name="dte">The DTE.</param>
-        public BuildTracker(DTE dte)
+        /// <param name="achievementService"></param>
+        public BuildTracker(DTE dte, IAchievementService achievementService)
         {
             this.dte = dte;
+            _achievementService = achievementService;
         }
 
         /// <summary>
@@ -108,7 +113,7 @@ namespace Strokes.VSX.Trackers
                     lastAchievementCheck = DateTime.Now;
 
                     // Construct build information
-                    var buildInformation = new BuildInformation();
+                    var buildInformation = new StaticAnalysisManifest();
                     buildInformation.CodeFiles = FileTracker.GetFiles(dte.Solution).ToArray();
 
                     var activeDocument = dte.ActiveDocument;
@@ -126,7 +131,7 @@ namespace Strokes.VSX.Trackers
                                 changedFiles.Add(documentFile);
                             }
 
-                            // Fill relevant values on buildInformation
+                            // Fill relevant values on StaticAnalysisManifest
                             var projectItem = activeDocument.ProjectItem.ContainingProject;
                             buildInformation.ActiveProject = projectItem.FileName;
                             buildInformation.ActiveProjectOutputDirectory = FileTracker.GetProjectOutputDirectory(projectItem);
@@ -144,8 +149,7 @@ namespace Strokes.VSX.Trackers
 
                     // Lock builds while detection is occuring - this prevents parallel detection
                     isAchievementDetectionRunning = true;
-
-                    DetectionDispatcher.Dispatch(buildInformation);
+                    _achievementService.PerformStaticAnalysis(buildInformation);
                 }
                 finally
                 {

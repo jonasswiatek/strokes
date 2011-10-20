@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Strokes.Core
+namespace Strokes.Core.Service.Model
 {
-    public class DetectionSession : IDisposable
+    public class StatisAnalysisSession : IDisposable
     {
         /// <summary>
         /// Lock for syncronizing achievement tests.
@@ -17,18 +17,18 @@ namespace Strokes.Core
         private readonly IDictionary<Type, object> sessionObjects = new Dictionary<Type, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DetectionSession"/> class.
+        /// Initializes a new instance of the <see cref="StatisAnalysisSession"/> class.
         /// </summary>
-        /// <param name="buildInformation">The build information.</param>
-        public DetectionSession(BuildInformation buildInformation)
+        /// <param name="staticAnalysisManifest">The build information.</param>
+        public StatisAnalysisSession(StaticAnalysisManifest staticAnalysisManifest)
         {
-            BuildInformation = buildInformation;
+            StaticAnalysisManifest = staticAnalysisManifest;
         }
 
         /// <summary>
         /// Gets or sets the build information.
         /// </summary>
-        public BuildInformation BuildInformation
+        public StaticAnalysisManifest StaticAnalysisManifest
         {
             get;
             private set;

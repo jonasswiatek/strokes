@@ -3,6 +3,7 @@ using System.Linq;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -15,7 +16,7 @@ namespace Strokes.BasicAchievements.Achievements
         })]
     public class EmptyMainAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -43,7 +44,7 @@ namespace Strokes.BasicAchievements.Achievements
         })]
     public class EmptyMethodAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -74,7 +75,7 @@ namespace Strokes.BasicAchievements.Achievements
         })]
     public class EmptyVoidMethodAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }

@@ -12,8 +12,11 @@ using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 using Strokes.Core.Data;
 using Strokes.Core.Integration;
+using Strokes.Core.Service;
+using Strokes.Core.Service.Model;
 using Strokes.Data;
 using Strokes.GUI;
+using Strokes.Service;
 using Strokes.VSX.Trackers;
 using StructureMap;
 
@@ -26,7 +29,7 @@ namespace Strokes.VSX
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideAutoLoad("{adfc4e64-0397-11d1-9f4e-00a0c911004f}")] 
+    [ProvideAutoLoad("{adfc4e64-0397-11d1-9f4e-00a0c911004f}")]
     [ProvideToolWindow(typeof(AchievementStatisticsToolWindow), Style = VsDockStyle.MDI)]
     [ProvideService(typeof(IAchevementLibraryService))]
     [Guid(GuidList.guidCSharpAchiever_Achiever_VSIXPkgString)]
@@ -37,12 +40,20 @@ namespace Strokes.VSX
         /// </summary>
         private uint updateSolutionEventsCookie = 0;
 
+        private IAchievementService _achievementService;
         /// <summary>
         /// Initializes a new instance of the <see cref="StrokesVsxPackage"/> class.
         /// </summary>
         public StrokesVsxPackage()
         {
-            Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", this.ToString()));
+            ObjectFactory.Configure(a =>
+            {
+                a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
+                a.For<ISettingsRepository>().Singleton().Use<AppDataXmlSettingsRepository>();
+                a.For<IAchievementService>().Singleton().Use<StrokesAchievementService>();
+            });
+
+            _achievementService = ObjectFactory.GetInstance<IAchievementService>();
         }
 
         /// <summary>
@@ -109,12 +120,6 @@ namespace Strokes.VSX
             //Set a uiculture
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru-RU");
 
-            ObjectFactory.Configure(a =>
-            {
-                a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
-                a.For<ISettingsRepository>().Singleton().Use<AppDataXmlSettingsRepository>();
-            });
-
             if (MenuService != null)
             {
                 var menuCommandID = new CommandID(
@@ -128,7 +133,7 @@ namespace Strokes.VSX
 
             if (SolutionBuildManager != null)
             {
-                var buildTracker = new BuildTracker(DTE);
+                var buildTracker = new BuildTracker(DTE, _achievementService);
 
                 SolutionBuildManager.AdviseUpdateSolutionEvents(buildTracker, out updateSolutionEventsCookie);
             }
@@ -140,7 +145,7 @@ namespace Strokes.VSX
             GuiInitializer.Initialize();
 
             AchievementContext.AchievementClicked += AchievementContext_AchievementClicked;
-            DetectionDispatcher.DetectionCompleted += DetectionDispatcher_DetectionCompleted;
+            _achievementService.StaticAnalysisCompleted += DetectionDispatcher_DetectionCompleted;
         }
 
         /// <summary>
@@ -165,7 +170,7 @@ namespace Strokes.VSX
         /// <param name="e">
         ///     The <see cref="DetectionCompletedEventArgs"/> instance containing the event data.
         /// </param>
-        private void DetectionDispatcher_DetectionCompleted(object sender, DetectionCompletedEventArgs e)
+        private void DetectionDispatcher_DetectionCompleted(object sender, StaticAnalysisEventArgs e)
         {
             StatusBar.SetText(string.Format("{0} achievements tested in {1} milliseconds",
                 e.AchievementsTested, e.ElapsedMilliseconds));
@@ -180,7 +185,7 @@ namespace Strokes.VSX
         /// </param>
         private void AchievementContext_AchievementClicked(object sender, AchievementClickedEventArgs args)
         {
-            DTE.ItemOperations.OpenFile(args.AchievementDescriptor.CodeLocation.FileName, EnvDTE.Constants.vsViewKindCode);
+            DTE.ItemOperations.OpenFile(args.AchievementDescriptor.CodeOrigin.FileName, EnvDTE.Constants.vsViewKindCode);
         }
 
         /// <summary>

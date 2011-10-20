@@ -3,6 +3,7 @@ using System.Linq;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 using ICSharpCode.NRefactory.CSharp;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -11,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@ProgramFlow")]
     public class WhileLoopAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }

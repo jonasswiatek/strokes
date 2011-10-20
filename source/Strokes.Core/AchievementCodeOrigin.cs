@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Strokes.Core
 {
-    public class AchievementCodeLocation
+    public class AchievementCodeOrigin
     {
-        public AchievementCodeLocation()
+        public AchievementCodeOrigin()
         {
-            From = new CodeLocation();
-            To = new CodeLocation();            
+            From = new CodeAnchor();
+            To = new CodeAnchor();            
         }
         
         public string FileName
@@ -19,20 +19,20 @@ namespace Strokes.Core
             set;
         }
 
-        public CodeLocation From
+        public CodeAnchor From
         {
             get;
             set;
         }
 
-        public CodeLocation To
+        public CodeAnchor To
         {
             get;
             set;
         }
     }
 
-    public class CodeLocation
+    public class CodeAnchor
     {
         public int Line
         {

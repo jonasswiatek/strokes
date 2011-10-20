@@ -3,6 +3,7 @@ using System.Linq;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -11,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Fundamentals")]
     public class PlusOperatorAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -33,7 +34,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Fundamentals")]
     public class MinusOperatorAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -54,7 +55,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Fundamentals")]
     public class MultiplyOperatorAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -75,7 +76,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Fundamentals")]
     public class DivideOperatorAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -96,7 +97,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Fundamentals")]
     public class ModuloOperatorAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }

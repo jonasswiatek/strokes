@@ -5,13 +5,14 @@ using System.Text;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 using ICSharpCode.NRefactory.CSharp;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements
 {
     public abstract class AssignUpperBoundaryValue<T> : NRefactoryAchievement
         where T : struct
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }

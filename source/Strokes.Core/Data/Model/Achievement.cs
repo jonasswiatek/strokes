@@ -83,7 +83,7 @@ namespace Strokes.Core.Data.Model
             set;
         }
 
-        public AchievementCodeLocation CodeLocation
+        public AchievementCodeOrigin CodeOrigin
         {
             get;
             set;

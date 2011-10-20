@@ -20,7 +20,7 @@ namespace Strokes.GUI.VsAdornments
         private readonly Brush brush;
         private readonly Pen pen;
 
-        private AchievementCodeLocation codeLocation;
+        private AchievementCodeOrigin _codeOrigin;
         private UIElement achievementUiElement;
         private bool adornmentVisible = false;
 
@@ -49,10 +49,10 @@ namespace Strokes.GUI.VsAdornments
                                                              Reset();
 
                                                              var filePath = GetFilePath(view);
-                                                             if (args.AchievementDescriptor.CodeLocation.FileName != filePath)
+                                                             if (args.AchievementDescriptor.CodeOrigin.FileName != filePath)
                                                                  return;
 
-                                                             codeLocation = args.AchievementDescriptor.CodeLocation;
+                                                             _codeOrigin = args.AchievementDescriptor.CodeOrigin;
                                                              achievementUiElement = (UIElement)args.UIElement;
 
                                                              CreateAdornment();
@@ -75,7 +75,7 @@ namespace Strokes.GUI.VsAdornments
 
         private void Reset()
         {
-            codeLocation = null;
+            _codeOrigin = null;
             achievementUiElement = null;
             adornmentVisible = false;            
             layer.RemoveAllAdornments();
@@ -86,17 +86,17 @@ namespace Strokes.GUI.VsAdornments
         {
             var lines = view.VisualSnapshot.Lines;
 
-            if (codeLocation == null)
+            if (_codeOrigin == null)
                 return;
 
-            var startLine = lines.FirstOrDefault(a => a.LineNumber == codeLocation.From.Line - 1);
-            var endLine = lines.FirstOrDefault(a => a.LineNumber == codeLocation.To.Line - 1);
+            var startLine = lines.FirstOrDefault(a => a.LineNumber == _codeOrigin.From.Line - 1);
+            var endLine = lines.FirstOrDefault(a => a.LineNumber == _codeOrigin.To.Line - 1);
 
             if (startLine == null || endLine == null)
                 return;
 
-            var startPosition = startLine.Start + codeLocation.From.Column - 1;
-            var endPosition = endLine.Start + codeLocation.To.Column - 1;
+            var startPosition = startLine.Start + _codeOrigin.From.Column - 1;
+            var endPosition = endLine.Start + _codeOrigin.To.Column - 1;
 
             var span = new SnapshotSpan(view.TextSnapshot, Span.FromBounds(startPosition, endPosition));
 
@@ -155,8 +155,8 @@ namespace Strokes.GUI.VsAdornments
         /// </summary>
         private void OnLayoutChanged(object sender, TextViewLayoutChangedEventArgs e)
         {
-            // Save some time - if there isn't an active codeLocation, then just bail.
-            if (codeLocation == null)
+            // Save some time - if there isn't an active CodeOrigin, then just bail.
+            if (_codeOrigin == null)
                 return;
 
             if (e.OldSnapshot != e.NewSnapshot)

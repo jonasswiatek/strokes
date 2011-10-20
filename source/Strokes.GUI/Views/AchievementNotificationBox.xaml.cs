@@ -60,7 +60,7 @@ namespace Strokes.GUI.Views
                     continue;
                 }
 
-                if (dataItem.CodeLocation == null)
+                if (dataItem.CodeOrigin == null)
                 {
                     gotoCodebutton.IsEnabled = false;
                 }

@@ -58,7 +58,7 @@ namespace Strokes.BasicAchievements.Test
             var categoryResourceSet = categoryResources.GetResourceSet(cultureInfo, true, true);
 
             var achievements = achievementRepository.GetAchievements();
-            var achievementDescriptors = achievements.Select(a => (AchievementBase) Activator.CreateInstance(a.AchievementType)).Select(a => new
+            var achievementDescriptors = achievements.Select(a => (StaticAnalysisAchievementBase) Activator.CreateInstance(a.AchievementType)).Select(a => new
                                                                                                                                                  {
                                                                                                                                                      Descriptor = a.GetDescriptionAttribute(),
                                                                                                                                                      AchievementType = a.GetType()

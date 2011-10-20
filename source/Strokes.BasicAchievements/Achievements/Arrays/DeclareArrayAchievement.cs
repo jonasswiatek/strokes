@@ -2,6 +2,7 @@
 using System.Linq;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -10,7 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Arrays")]
     public class DeclareArrayAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }

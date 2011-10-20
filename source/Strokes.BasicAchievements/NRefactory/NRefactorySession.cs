@@ -7,6 +7,7 @@ using ICSharpCode.NRefactory;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.Core;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.NRefactory
 {
@@ -44,9 +45,9 @@ namespace Strokes.BasicAchievements.NRefactory
         /// This is a tool method to be used in more complex achievements.
         /// This method is caching and can be called without discretion, and is thread safe.
         /// </summary>
-        /// <param name="buildInformation">BuildInformation object used to locate the codebase</param>
+        /// <param name="staticAnalysisManifest">StaticAnalysisManifest object used to locate the codebase</param>
         /// <returns>Cached collection of DeclarationInfo</returns>
-        public IEnumerable<DeclarationInfo> GetCodebaseDeclarations(BuildInformation buildInformation)
+        public IEnumerable<DeclarationInfo> GetCodebaseDeclarations(StaticAnalysisManifest staticAnalysisManifest)
         {
             lock (codebaseTypeDefinitionPadLock)
             {
@@ -54,7 +55,7 @@ namespace Strokes.BasicAchievements.NRefactory
                 {
                     codebaseDeclarations = new List<DeclarationInfo>();
 
-                    foreach (var filename in buildInformation.CodeFiles)
+                    foreach (var filename in staticAnalysisManifest.CodeFiles)
                     {
                         var compilationUnit = GetCompilationUnit(filename);
                         var typeDeclarationInfoVisitor = new CodebaseAnalysisVisitor();

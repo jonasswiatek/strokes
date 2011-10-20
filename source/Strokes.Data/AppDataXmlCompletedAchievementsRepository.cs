@@ -67,8 +67,8 @@ namespace Strokes.Data
             if (assembly == null)
                 throw new ArgumentNullException("assembly");
 
-            var achievementsInAssembly = assembly.GetTypes().Where(a => typeof(AchievementBase).IsAssignableFrom(a) && !a.IsAbstract);
-            var achievementTypes = achievementsInAssembly.Select(achievement => (AchievementBase)Activator.CreateInstance(achievement)).ToList();
+            var achievementsInAssembly = assembly.GetTypes().Where(a => typeof(StaticAnalysisAchievementBase).IsAssignableFrom(a) && !a.IsAbstract);
+            var achievementTypes = achievementsInAssembly.Select(achievement => (StaticAnalysisAchievementBase)Activator.CreateInstance(achievement)).ToList();
             var achievementDescriptors = achievementTypes.Select(achievement => achievement.GetDescriptionAttribute()).ToList();
 
             _achievements.AddRange(achievementTypes.Select(a => a.GetAchievementDto()));

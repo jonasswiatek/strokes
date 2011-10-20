@@ -85,6 +85,10 @@
       <Project>{CCA3165B-3D87-45AB-AD18-168CF04A1417}</Project>
       <Name>Strokes.GUI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Strokes.Service\Strokes.Service.csproj">
+      <Project>{6AC1A6EF-D271-46D2-803D-E9B149DE3816}</Project>
+      <Name>Strokes.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Strokes.VSX\Strokes.VSX.csproj">
       <Project>{4AE216B7-8FCC-446A-8A58-8705C1DB844E}</Project>
       <Name>Strokes.VSX</Name>

@@ -1,6 +1,6 @@
 ﻿namespace Strokes.Core
 {
-    public class BuildInformation
+    public class StaticAnalysisManifest
     {
         public string ActiveFile
         {

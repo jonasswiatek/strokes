@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -14,7 +15,7 @@ namespace Strokes.BasicAchievements.Achievements
     {
         //private static int curseCount = 0; //WHO MADE THIS STATIC (and placed it here)?! WHOEM EVER YOU ARE: ACHIEVEMENT UNLOCKED [MAKE JONAS SPEND 1½ HOUR DEBUGGING :D]
         
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }

@@ -3,6 +3,7 @@ using System.Linq;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements
 {
@@ -11,7 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Method")]
     public class CreateMethodReturnVoidAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -43,7 +44,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Method")]
     public class CreateMethodReturnIntAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -72,7 +73,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Method")]
     public class CreateMethodReturnStringAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -101,7 +102,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Method")]
     public class CreateMethodReturnBoolAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -130,7 +131,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Method")]
     public class CreateMethodReturnCharAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -160,7 +161,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Method")]
     public class CreateMethodReturnDoubleAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }
@@ -189,7 +190,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementCategory = "@Method")]
     public class CreateMethodReturnFloatAchievement : NRefactoryAchievement
     {
-        protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
             return new Visitor();
         }

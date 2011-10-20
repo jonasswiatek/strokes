@@ -5,7 +5,7 @@
     <Strokes_GUI:AchievementNotificationViewModel.CurrentAchievements>
         <Model:Achievement Name="Nunc parturient"
                            Category="Maecenas vestibulum aliquam nam"
-                           CodeLocation="{x:Null}"
+                           CodeOrigin="{x:Null}"
                            DateCompleted="07/16/2011 13:47:10"
                            Description="Sed curabitur class cras aenean"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
@@ -16,9 +16,9 @@
                            Description="Curae vestibulum hac praesent donec"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="False">
-            <Model:Achievement.CodeLocation>
-                <Strokes_Core:AchievementCodeLocation />
-            </Model:Achievement.CodeLocation>
+            <Model:Achievement.CodeOrigin>
+                <Strokes_Core:AchievementCodeOrigin />
+            </Model:Achievement.CodeOrigin>
         </Model:Achievement>
         <Model:Achievement Name="Aptent ante"
                            Category="Parturient vestibulum aliquam"
@@ -26,9 +26,9 @@
                            Description="Amet consequat"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="True">
-            <Model:Achievement.CodeLocation>
-                <Strokes_Core:AchievementCodeLocation />
-            </Model:Achievement.CodeLocation>
+            <Model:Achievement.CodeOrigin>
+                <Strokes_Core:AchievementCodeOrigin />
+            </Model:Achievement.CodeOrigin>
         </Model:Achievement>
         <Model:Achievement Name="Bibendum congue"
                            Category="Nec non etiam adipiscing"
@@ -36,9 +36,9 @@
                            Description="Per accumsan"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="False">
-            <Model:Achievement.CodeLocation>
-                <Strokes_Core:AchievementCodeLocation />
-            </Model:Achievement.CodeLocation>
+            <Model:Achievement.CodeOrigin>
+                <Strokes_Core:AchievementCodeOrigin />
+            </Model:Achievement.CodeOrigin>
         </Model:Achievement>
         <Model:Achievement Name="Arcu commodo"
                            Category="Dictumst cursus eleifend dictum fusce"
@@ -46,9 +46,9 @@
                            Description="Facilisi vestibulum blandit"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="True">
-            <Model:Achievement.CodeLocation>
-                <Strokes_Core:AchievementCodeLocation />
-            </Model:Achievement.CodeLocation>
+            <Model:Achievement.CodeOrigin>
+                <Strokes_Core:AchievementCodeOrigin />
+            </Model:Achievement.CodeOrigin>
         </Model:Achievement>
         <Model:Achievement Name="Diam nam facilisis sed litora"
                            Category="Faucibus habitant nulla parturient"
@@ -56,9 +56,9 @@
                            Description="Lectus sit elementum"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="False">
-            <Model:Achievement.CodeLocation>
-                <Strokes_Core:AchievementCodeLocation />
-            </Model:Achievement.CodeLocation>
+            <Model:Achievement.CodeOrigin>
+                <Strokes_Core:AchievementCodeOrigin />
+            </Model:Achievement.CodeOrigin>
         </Model:Achievement>
         <Model:Achievement Name="Dolor lobortis hac leo mus"
                            Category="Vestibulum fermentum"
@@ -66,9 +66,9 @@
                            Description="Inceptos dis vestibulum augue"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="True">
-            <Model:Achievement.CodeLocation>
-                <Strokes_Core:AchievementCodeLocation />
-            </Model:Achievement.CodeLocation>
+            <Model:Achievement.CodeOrigin>
+                <Strokes_Core:AchievementCodeOrigin />
+            </Model:Achievement.CodeOrigin>
         </Model:Achievement>
         <Model:Achievement Name="Vestibulum fringilla mollis vestibulum habitasse"
                            Category="Conubia mattis nec elit enim"
@@ -76,9 +76,9 @@
                            Description="Adipiscing erat fames parturient"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="False">
-            <Model:Achievement.CodeLocation>
-                <Strokes_Core:AchievementCodeLocation />
-            </Model:Achievement.CodeLocation>
+            <Model:Achievement.CodeOrigin>
+                <Strokes_Core:AchievementCodeOrigin />
+            </Model:Achievement.CodeOrigin>
         </Model:Achievement>
         <Model:Achievement Name="Sem montes egestas lorem"
                            Category="Hendrerit himenaeos ipsum"
@@ -86,9 +86,9 @@
                            Description="Non justo per nascetur lacus"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="True">
-            <Model:Achievement.CodeLocation>
-                <Strokes_Core:AchievementCodeLocation />
-            </Model:Achievement.CodeLocation>
+            <Model:Achievement.CodeOrigin>
+                <Strokes_Core:AchievementCodeOrigin />
+            </Model:Achievement.CodeOrigin>
         </Model:Achievement>
         <Model:Achievement Name="Metus adipiscing"
                            Category="Magna massa"
@@ -96,9 +96,9 @@
                            Description="Nostra pharetra euismod"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="False">
-            <Model:Achievement.CodeLocation>
-                <Strokes_Core:AchievementCodeLocation />
-            </Model:Achievement.CodeLocation>
+            <Model:Achievement.CodeOrigin>
+                <Strokes_Core:AchievementCodeOrigin />
+            </Model:Achievement.CodeOrigin>
         </Model:Achievement>
     </Strokes_GUI:AchievementNotificationViewModel.CurrentAchievements>
 </Strokes_GUI:AchievementNotificationViewModel>
