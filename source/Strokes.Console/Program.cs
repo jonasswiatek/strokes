@@ -27,7 +27,7 @@ namespace Strokes.Console
             ObjectFactory.Configure(a =>
                                         {
                                             a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
-                                            a.For<IAchievementService>().Singleton().Use<ParallelStrokesAchievementService>();
+                                            a.For<IAchievementService>().Singleton().Use<SerialStrokesAchievementService>();
                                         });
 
             var achievementService = ObjectFactory.GetInstance<IAchievementService>();
