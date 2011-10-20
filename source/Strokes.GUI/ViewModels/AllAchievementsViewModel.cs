@@ -10,6 +10,7 @@ using GalaSoft.MvvmLight.Command;
 using Strokes.Core;
 using Strokes.Core.Data;
 using Strokes.Core.Data.Model;
+using Strokes.Core.Service.Model;
 using Strokes.Data;
 using System.Collections.Specialized;
 using StructureMap;

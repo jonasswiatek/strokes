@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Strokes.Core;
+using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Challenges

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
 using Strokes.Core.Data.Model;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.GUI
 {

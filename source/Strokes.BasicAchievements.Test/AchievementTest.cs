@@ -14,6 +14,7 @@ using Strokes.BasicAchievements.Test.TestCases.MethodCalls.FundamentaldotNetMeth
 using Strokes.Core;
 using Strokes.Core.Data;
 using Strokes.Core.Data.Model;
+using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
 using Strokes.Data;
 using StructureMap;

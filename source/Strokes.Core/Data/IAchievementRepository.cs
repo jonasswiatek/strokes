@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using Strokes.Core.Data.Model;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.Core.Data
 {

@@ -1,104 +1,105 @@
 <Strokes_GUI:AchievementNotificationViewModel xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                               xmlns:Model="clr-namespace:Strokes.Core.Data.Model;assembly=Strokes.Core"
                                               xmlns:Strokes_Core="clr-namespace:Strokes.Core;assembly=Strokes.Core"
-                                              xmlns:Strokes_GUI="clr-namespace:Strokes.GUI">
+                                              xmlns:Strokes_GUI="clr-namespace:Strokes.GUI"
+                                              xmlns:Model1="clr-namespace:Strokes.Core.Service.Model;assembly=Strokes.Core">
     <Strokes_GUI:AchievementNotificationViewModel.CurrentAchievements>
-        <Model:Achievement Name="Nunc parturient"
+        <Model1:Achievement Name="Nunc parturient"
                            Category="Maecenas vestibulum aliquam nam"
                            CodeOrigin="{x:Null}"
                            DateCompleted="07/16/2011 13:47:10"
                            Description="Sed curabitur class cras aenean"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="True" />
-        <Model:Achievement Name="Vivamus adipiscing"
+        <Model1:Achievement Name="Vivamus adipiscing"
                            Category="Est phasellus"
                            DateCompleted="07/16/2011 13:47:10"
                            Description="Curae vestibulum hac praesent donec"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="False">
-            <Model:Achievement.CodeOrigin>
+            <Model1:Achievement.CodeOrigin>
                 <Strokes_Core:AchievementCodeOrigin />
-            </Model:Achievement.CodeOrigin>
-        </Model:Achievement>
-        <Model:Achievement Name="Aptent ante"
+            </Model1:Achievement.CodeOrigin>
+        </Model1:Achievement>
+        <Model1:Achievement Name="Aptent ante"
                            Category="Parturient vestibulum aliquam"
                            DateCompleted="07/16/2011 13:47:10"
                            Description="Amet consequat"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="True">
-            <Model:Achievement.CodeOrigin>
+            <Model1:Achievement.CodeOrigin>
                 <Strokes_Core:AchievementCodeOrigin />
-            </Model:Achievement.CodeOrigin>
-        </Model:Achievement>
-        <Model:Achievement Name="Bibendum congue"
+            </Model1:Achievement.CodeOrigin>
+        </Model1:Achievement>
+        <Model1:Achievement Name="Bibendum congue"
                            Category="Nec non etiam adipiscing"
                            DateCompleted="07/16/2011 13:47:10"
                            Description="Per accumsan"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="False">
-            <Model:Achievement.CodeOrigin>
+            <Model1:Achievement.CodeOrigin>
                 <Strokes_Core:AchievementCodeOrigin />
-            </Model:Achievement.CodeOrigin>
-        </Model:Achievement>
-        <Model:Achievement Name="Arcu commodo"
+            </Model1:Achievement.CodeOrigin>
+        </Model1:Achievement>
+        <Model1:Achievement Name="Arcu commodo"
                            Category="Dictumst cursus eleifend dictum fusce"
                            DateCompleted="07/16/2011 13:47:10"
                            Description="Facilisi vestibulum blandit"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="True">
-            <Model:Achievement.CodeOrigin>
+            <Model1:Achievement.CodeOrigin>
                 <Strokes_Core:AchievementCodeOrigin />
-            </Model:Achievement.CodeOrigin>
-        </Model:Achievement>
-        <Model:Achievement Name="Diam nam facilisis sed litora"
+            </Model1:Achievement.CodeOrigin>
+        </Model1:Achievement>
+        <Model1:Achievement Name="Diam nam facilisis sed litora"
                            Category="Faucibus habitant nulla parturient"
                            DateCompleted="07/16/2011 13:47:10"
                            Description="Lectus sit elementum"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="False">
-            <Model:Achievement.CodeOrigin>
+            <Model1:Achievement.CodeOrigin>
                 <Strokes_Core:AchievementCodeOrigin />
-            </Model:Achievement.CodeOrigin>
-        </Model:Achievement>
-        <Model:Achievement Name="Dolor lobortis hac leo mus"
+            </Model1:Achievement.CodeOrigin>
+        </Model1:Achievement>
+        <Model1:Achievement Name="Dolor lobortis hac leo mus"
                            Category="Vestibulum fermentum"
                            DateCompleted="07/16/2011 13:47:10"
                            Description="Inceptos dis vestibulum augue"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="True">
-            <Model:Achievement.CodeOrigin>
+            <Model1:Achievement.CodeOrigin>
                 <Strokes_Core:AchievementCodeOrigin />
-            </Model:Achievement.CodeOrigin>
-        </Model:Achievement>
-        <Model:Achievement Name="Vestibulum fringilla mollis vestibulum habitasse"
+            </Model1:Achievement.CodeOrigin>
+        </Model1:Achievement>
+        <Model1:Achievement Name="Vestibulum fringilla mollis vestibulum habitasse"
                            Category="Conubia mattis nec elit enim"
                            DateCompleted="07/16/2011 13:47:10"
                            Description="Adipiscing erat fames parturient"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="False">
-            <Model:Achievement.CodeOrigin>
+            <Model1:Achievement.CodeOrigin>
                 <Strokes_Core:AchievementCodeOrigin />
-            </Model:Achievement.CodeOrigin>
-        </Model:Achievement>
-        <Model:Achievement Name="Sem montes egestas lorem"
+            </Model1:Achievement.CodeOrigin>
+        </Model1:Achievement>
+        <Model1:Achievement Name="Sem montes egestas lorem"
                            Category="Hendrerit himenaeos ipsum"
                            DateCompleted="07/16/2011 13:47:10"
                            Description="Non justo per nascetur lacus"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="True">
-            <Model:Achievement.CodeOrigin>
+            <Model1:Achievement.CodeOrigin>
                 <Strokes_Core:AchievementCodeOrigin />
-            </Model:Achievement.CodeOrigin>
-        </Model:Achievement>
-        <Model:Achievement Name="Metus adipiscing"
+            </Model1:Achievement.CodeOrigin>
+        </Model1:Achievement>
+        <Model1:Achievement Name="Metus adipiscing"
                            Category="Magna massa"
                            DateCompleted="07/16/2011 13:47:10"
                            Description="Nostra pharetra euismod"
                            Image="/Strokes.GUI;component/Resources/Icons/default.png"
                            IsCompleted="False">
-            <Model:Achievement.CodeOrigin>
+            <Model1:Achievement.CodeOrigin>
                 <Strokes_Core:AchievementCodeOrigin />
-            </Model:Achievement.CodeOrigin>
-        </Model:Achievement>
+            </Model1:Achievement.CodeOrigin>
+        </Model1:Achievement>
     </Strokes_GUI:AchievementNotificationViewModel.CurrentAchievements>
 </Strokes_GUI:AchievementNotificationViewModel>

@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using Strokes.Core;
 using Strokes.Core.Data;
 using Strokes.Core.Data.Model;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.Data
 {

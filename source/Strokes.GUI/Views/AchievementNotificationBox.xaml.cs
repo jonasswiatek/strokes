@@ -8,6 +8,7 @@ using Strokes.Core;
 using Strokes.Core.Data.Model;
 using System.ComponentModel;
 using System.Windows.Shapes;
+using Strokes.Core.Service.Model;
 using Application = System.Windows.Application;
 
 namespace Strokes.GUI.Views

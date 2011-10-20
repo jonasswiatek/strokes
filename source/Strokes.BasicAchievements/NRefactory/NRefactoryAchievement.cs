@@ -5,6 +5,7 @@ using System.Text;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.Core;
+using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.NRefactory

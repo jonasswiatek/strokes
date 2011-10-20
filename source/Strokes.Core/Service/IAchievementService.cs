@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Strokes.Core.Service.Model;
 
 namespace Strokes.Core.Service
@@ -10,5 +11,7 @@ namespace Strokes.Core.Service
         event EventHandler<StaticAnalysisEventArgs> StaticAnalysisCompleted;
 
         void PerformStaticAnalysis(StaticAnalysisManifest staticAnalysisManifest);
+        IEnumerable<Achievement> GetAllAchievements();
+        IEnumerable<Achievement> GetUnlockableAchievements();
     }
 }

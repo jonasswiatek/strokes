@@ -1,4 +1,5 @@
 ﻿using System;
+using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
 
 namespace Strokes.Core

@@ -4,6 +4,7 @@ using System.Linq;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements

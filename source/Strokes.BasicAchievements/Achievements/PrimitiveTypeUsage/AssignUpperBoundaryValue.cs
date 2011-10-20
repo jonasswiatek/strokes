@@ -5,6 +5,7 @@ using System.Text;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 using ICSharpCode.NRefactory.CSharp;
+using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements

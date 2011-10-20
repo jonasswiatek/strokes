@@ -1,5 +1,6 @@
 ﻿using System;
 using Strokes.Core.Data.Model;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.Data
 {

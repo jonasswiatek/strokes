@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Strokes.Core.Service.Model
+namespace Strokes.Core.Service
 {
     public class StaticAnalysisEventArgs : EventArgs
     {

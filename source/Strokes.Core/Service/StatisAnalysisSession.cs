@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Strokes.Core.Service.Model
+namespace Strokes.Core.Service
 {
     public class StatisAnalysisSession : IDisposable
     {

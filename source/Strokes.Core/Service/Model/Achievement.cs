@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace Strokes.Core.Data.Model
+namespace Strokes.Core.Service.Model
 {
     public class Achievement : INotifyPropertyChanged
     {

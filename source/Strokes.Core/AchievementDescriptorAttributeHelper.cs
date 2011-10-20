@@ -2,6 +2,7 @@
 using Strokes.Core.Data.Model;
 using System.Resources;
 using System.Reflection;
+using Strokes.Core.Service.Model;
 
 namespace Strokes.Core
 {
