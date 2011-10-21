@@ -59,6 +59,16 @@ namespace Strokes.Service
             return unlockedAchievements;
         }
 
+        public void UnlockAchievement(AchievementBase achievement)
+        {
+            var achievementDto = AchievementRepository.GetAchievements().Single(a => a.AchievementType == achievement.GetType());
+
+            OnAchievementsUnlocked(this, new AchievementEventArgs
+            {
+                UnlockedAchievements = new []{achievementDto}
+            });
+        }
+
         protected abstract IEnumerable<Achievement> GetUnlockedAchievements(StatisAnalysisSession statisAnalysisSession, IEnumerable<Achievement> availableAchievements);
 
         public void ResetAchievementProgress()

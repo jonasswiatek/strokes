@@ -12,6 +12,7 @@ namespace Strokes.Core.Service
         event EventHandler<StaticAnalysisEventArgs> StaticAnalysisCompleted;
 
         IEnumerable<Achievement> PerformStaticAnalysis(StaticAnalysisManifest staticAnalysisManifest, bool onlyUnlockable);
+        void UnlockAchievement(AchievementBase achievement);
         void ResetAchievementProgress();
         void LoadAchievementsFrom(Assembly assembly);
         IEnumerable<Achievement> GetAllAchievements();
