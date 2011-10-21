@@ -26,7 +26,7 @@ namespace Strokes.Console
         {
             ObjectFactory.Configure(a =>
                                         {
-                                            a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
+                                            a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>().Ctor<string>("storageFile").Is("AchievementStorage_ConsoleTest.xml");
                                             a.For<IAchievementService>().Singleton().Use<SerialStrokesAchievementService>();
                                         });
 
@@ -50,7 +50,7 @@ namespace Strokes.Console
                 ActiveFile = file,
                 ChangedFiles = new string[] { file },
                 CodeFiles = new string[] { file }
-            });
+            }, true);
 
             System.Console.Read();
         }

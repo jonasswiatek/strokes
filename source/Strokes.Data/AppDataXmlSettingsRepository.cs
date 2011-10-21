@@ -9,7 +9,7 @@ namespace Strokes.Data
 {
     public class AppDataXmlSettingsRepository : AppDataXmlFileRepositoryBase<Settings>, ISettingsRepository
     {
-        public AppDataXmlSettingsRepository(string storageFile) : base("Settings.xml")
+        public AppDataXmlSettingsRepository(string storageFile) : base(storageFile)
         {
         }
 

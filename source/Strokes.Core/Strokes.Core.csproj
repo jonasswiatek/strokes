@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AchievementBase.cs" />
     <Compile Include="Service\IAchievementService.cs" />
     <Compile Include="Service\AchievementEventArgs.cs" />
     <Compile Include="Service\AchievementOriginEventArgs.cs" />

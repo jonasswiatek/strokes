@@ -4,7 +4,7 @@ using Strokes.Core.Service.Model;
 
 namespace Strokes.Core
 {
-    public abstract class StaticAnalysisAchievementBase
+    public abstract class StaticAnalysisAchievementBase : AchievementBase
     {
         public AchievementCodeOrigin AchievementCodeOrigin;
 

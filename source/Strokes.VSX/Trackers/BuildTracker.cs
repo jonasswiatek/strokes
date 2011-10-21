@@ -149,7 +149,7 @@ namespace Strokes.VSX.Trackers
 
                     // Lock builds while detection is occuring - this prevents parallel detection
                     isAchievementDetectionRunning = true;
-                    _achievementService.PerformStaticAnalysis(buildInformation);
+                    _achievementService.PerformStaticAnalysis(buildInformation, true);
                 }
                 finally
                 {

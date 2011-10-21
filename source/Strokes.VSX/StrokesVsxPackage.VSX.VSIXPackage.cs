@@ -48,8 +48,8 @@ namespace Strokes.VSX
         {
             ObjectFactory.Configure(a =>
             {
-                a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
-                a.For<ISettingsRepository>().Singleton().Use<AppDataXmlSettingsRepository>();
+                a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>().Ctor<string>("storageFile").Is("AchievementStorage.xml");
+                a.For<ISettingsRepository>().Singleton().Use<AppDataXmlSettingsRepository>().Ctor<string>("storageFile").Is("SettingsStorage.xml");
                 a.For<IAchievementService>().Singleton().Use<ParallelStrokesAchievementService>();
             });
 

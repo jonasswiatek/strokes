@@ -34,7 +34,7 @@ namespace Strokes.BasicAchievements.Test
         {
             ObjectFactory.Configure(a =>
                                         {
-                                            a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
+                                            a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>().Ctor<string>("storageFile").Is("AchievementStorage_UnitTest_AchievementTest.xml");
                                             a.For<IAchievementService>().Singleton().Use<ParallelStrokesAchievementService>();
                                         });
 
@@ -48,13 +48,14 @@ namespace Strokes.BasicAchievements.Test
         {
             const string achievementBaseNamespace = "Strokes.BasicAchievements.Test.";
             var achievementService = ObjectFactory.GetInstance<IAchievementService>();
+            achievementService.ResetAchievementProgress();
 
             var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof(ExpectUnlockAttribute), false).Length > 0);
             foreach(var test in achievementTests)
             {
                 var testCasePath = test.FullName.Replace(achievementBaseNamespace, "").Replace(".", "/") + ".cs";
                 var sourceFile = Path.GetFullPath(testCasePath);
-                var buildInformation = new StaticAnalysisManifest()
+                var staticAnalysisManifest = new StaticAnalysisManifest()
                                            {
                                                ActiveFile = sourceFile,
                                                ActiveProject = null,
@@ -63,48 +64,17 @@ namespace Strokes.BasicAchievements.Test
                                                CodeFiles = new[] { sourceFile }
                                            };
 
+                var unlockedAchievementTypes = achievementService.PerformStaticAnalysis(staticAnalysisManifest, false).Select(a => a.AchievementType).ToList();
                 var expectedAchievements = test.GetCustomAttributes(typeof(ExpectUnlockAttribute), false).Select(a => ((ExpectUnlockAttribute)a).ExpectedAchievementType).ToList();
 
-                using (var detectionSession = new StatisAnalysisSession(buildInformation))
+                foreach(var expectedAchievement in expectedAchievements)
                 {
-                    var achievements = achievementService.GetAllAchievements().ToList();
-
-                    var tasks = new Task[achievements.Count()];
-                    var i = 0;
-
-                    var unlockedAchievements = new ConcurrentBag<Type>();
-                    foreach (var uncompletedAchievement in achievements)
-                    {
-                        var a = uncompletedAchievement;
-
-                        tasks[i++] = Task.Factory.StartNew(() =>
-                                                               {
-                                                                    var achievementType = a.AchievementType;
-                                                                    var achievement = (StaticAnalysisAchievementBase)Activator.CreateInstance(achievementType);
-
-                                                                    var achievementUnlocked = achievement.IsAchievementUnlocked(detectionSession);
-
-                                                                    if (achievementUnlocked)
-                                                                    {
-                                                                        a.CodeOrigin = achievement.AchievementCodeOrigin;
-                                                                        a.IsCompleted = true;
-                                                                        unlockedAchievements.Add(achievementType);
-                                                                    }
-                                                                });
-                    }
-
-                    Task.WaitAll(tasks);
-
-                    //Test that expected achievements unlocked
-                    foreach(var expectedAchievement in expectedAchievements)
-                    {
-                        Assert.IsTrue(unlockedAchievements.Contains(expectedAchievement), Path.GetFileName(sourceFile) + " did not unlock expected achievement: " + expectedAchievement.Name);
-                    }
-
-                    //Test that only expected achievements unlocked
-                    var unexpectedAchievements = unlockedAchievements.Except(expectedAchievements).Except(_globallyIgnoredAchievements).ToList();
-                    Assert.IsTrue(unexpectedAchievements.Count() == 0, Path.GetFileName(sourceFile) + " unlocks unexpected achievements: " + string.Join(", ", unexpectedAchievements.Select(a => a.Name)));
+                    Assert.IsTrue(unlockedAchievementTypes.Contains(expectedAchievement), Path.GetFileName(sourceFile) + " did not unlock expected achievement: " + expectedAchievement.Name);
                 }
+
+                //Test that only expected achievements unlocked
+                var unexpectedAchievements = unlockedAchievementTypes.Except(expectedAchievements).Except(_globallyIgnoredAchievements).ToList();
+                Assert.IsTrue(unexpectedAchievements.Count() == 0, Path.GetFileName(sourceFile) + " unlocks unexpected achievements: " + string.Join(", ", unexpectedAchievements.Select(a => a.Name)));
             }
         }
 

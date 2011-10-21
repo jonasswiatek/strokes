@@ -16,7 +16,7 @@ namespace Strokes.Data
         private readonly List<Achievement> _achievements = new List<Achievement>();
         private readonly List<CompletedAchievement> _completedAchievements;
 
-        public AppDataXmlCompletedAchievementsRepository() : base("AchievementStorage.xml")
+        public AppDataXmlCompletedAchievementsRepository(string storageFile) : base(storageFile)
         {
             _completedAchievements = Load() ?? new List<CompletedAchievement>();
         }
@@ -67,8 +67,8 @@ namespace Strokes.Data
             if (assembly == null)
                 throw new ArgumentNullException("assembly");
 
-            var achievementsInAssembly = assembly.GetTypes().Where(a => typeof(StaticAnalysisAchievementBase).IsAssignableFrom(a) && !a.IsAbstract);
-            var achievementTypes = achievementsInAssembly.Select(achievement => (StaticAnalysisAchievementBase)Activator.CreateInstance(achievement)).ToList();
+            var achievementsInAssembly = assembly.GetTypes().Where(a => typeof(AchievementBase).IsAssignableFrom(a) && !a.IsAbstract);
+            var achievementTypes = achievementsInAssembly.Select(achievement => (AchievementBase)Activator.CreateInstance(achievement)).ToList();
             var achievementDescriptors = achievementTypes.Select(achievement => achievement.GetDescriptionAttribute()).ToList();
 
             var assemblyAchievements = achievementTypes.Select(a => a.GetAchievementDto()).ToList();

@@ -32,7 +32,7 @@ namespace Strokes.BasicAchievements.Test
         {
             ObjectFactory.Configure(a =>
             {
-                a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>();
+                a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>().Ctor<string>("storageFile").Is("AchievementStorage_UnitTest_LocalizationTest.xml");
                 a.For<IAchievementService>().Singleton().Use<ParallelStrokesAchievementService>();
             });
 

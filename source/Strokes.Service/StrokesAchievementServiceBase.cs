@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Strokes.Core;
 using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
@@ -25,7 +22,7 @@ namespace Strokes.Service
             AchievementRepository = achievementRepository;
         }
 
-        public void PerformStaticAnalysis(StaticAnalysisManifest staticAnalysisManifest)
+        public IEnumerable<Achievement> PerformStaticAnalysis(StaticAnalysisManifest staticAnalysisManifest, bool onlyUnlockable)
         {
             IEnumerable<Achievement> unlockedAchievements;
             using (var statisAnalysisSession = new StatisAnalysisSession(staticAnalysisManifest))
@@ -34,13 +31,15 @@ namespace Strokes.Service
                 var stopwatch = new Stopwatch();
                 stopwatch.Start();
 
-                var availableAchievements = AchievementRepository.GetUnlockableAchievements();
-                unlockedAchievements = GetUnlockedAchievements(statisAnalysisSession, availableAchievements);
+                var allAchievements = onlyUnlockable ? AchievementRepository.GetUnlockableAchievements() : AchievementRepository.GetAchievements();
+                var availableStaticAnalysisAchievements = allAchievements.Where(a => typeof(StaticAnalysisAchievementBase).IsAssignableFrom(a.AchievementType)).ToList();
+                
+                unlockedAchievements = GetUnlockedAchievements(statisAnalysisSession, availableStaticAnalysisAchievements).ToList();
 
                 stopwatch.Stop();
                 OnStaticAnalysisCompleted(this, new StaticAnalysisEventArgs
                 {
-                    AchievementsTested = availableAchievements.Count(),
+                    AchievementsTested = availableStaticAnalysisAchievements.Count(),
                     ElapsedMilliseconds = (int)stopwatch.ElapsedMilliseconds
                 });
             }
@@ -57,6 +56,7 @@ namespace Strokes.Service
                                                      UnlockedAchievements = unlockedAchievements
                                                  });
             }
+            return unlockedAchievements;
         }
 
         protected abstract IEnumerable<Achievement> GetUnlockedAchievements(StatisAnalysisSession statisAnalysisSession, IEnumerable<Achievement> availableAchievements);
