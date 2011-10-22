@@ -2,7 +2,7 @@
 // MUST match guids.h
 using System;
 
-namespace Codecube.Strokes_FeatureAchievements
+namespace Strokes.FeatureAchievements
 {
     static class GuidList
     {

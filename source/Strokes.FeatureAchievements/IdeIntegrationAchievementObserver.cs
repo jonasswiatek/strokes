@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Codecube.Strokes_FeatureAchievements.IdeIntegration;
 using Microsoft.VisualStudio.Shell;
 using Strokes.Core.Service;
-using StructureMap;
+using Strokes.FeatureAchievements.IdeIntegration;
 
-namespace Codecube.Strokes_FeatureAchievements
+namespace Strokes.FeatureAchievements
 {
     public class IdeIntegrationAchievementObserver
     {

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.VisualStudio.Shell;
 using Strokes.Core;
 
-namespace Codecube.Strokes_FeatureAchievements.IdeIntegration
+namespace Strokes.FeatureAchievements.IdeIntegration
 {
     public abstract class IdeIntegrationAchievement : AchievementBase, IDisposable
     {

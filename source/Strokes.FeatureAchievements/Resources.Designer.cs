@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Codecube.Strokes_FeatureAchievements {
+namespace Strokes.FeatureAchievements {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Codecube.Strokes_FeatureAchievements {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Codecube.Strokes_FeatureAchievements.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Strokes.FeatureAchievements.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

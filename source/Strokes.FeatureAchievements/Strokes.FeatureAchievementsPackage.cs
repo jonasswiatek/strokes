@@ -1,16 +1,8 @@
-﻿using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.Runtime.InteropServices;
-using System.ComponentModel.Design;
-using Microsoft.Win32;
-using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.OLE.Interop;
+﻿using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.Shell;
 using Strokes.Core.Integration;
 
-namespace Codecube.Strokes_FeatureAchievements
+namespace Strokes.FeatureAchievements
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [ProvideAutoLoad("{adfc4e64-0397-11d1-9f4e-00a0c911004f}")]
