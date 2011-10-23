@@ -53,9 +53,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@TellingAStoryAchievementDescription",
         AchievementCategory = "@Funny",
         DependsOn = new[]
-                {
-                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
-                })]
+        {
+            "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+        })]
     public class TellingAStoryAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
@@ -67,9 +67,8 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                // TODO: Filter whitespace.
-
-                if (methodDeclaration.Body.EndLocation.Line - methodDeclaration.Body.StartLocation.Line >= 100)
+                var lines = methodDeclaration.Body.Sum(x => (x.EndLocation.Line - x.StartLocation.Line) + 1);
+                if (lines >= 100)
                     UnlockWith(methodDeclaration);
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
@@ -81,9 +80,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@EpicTaleAchievementDescription",
         AchievementCategory = "@Funny",
         DependsOn = new[]
-                {
-                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
-                })]
+        {
+            "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+        })]
     public class EpicTaleAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
@@ -95,9 +94,8 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                // TODO: Filter whitespace.
-
-                if (methodDeclaration.Body.EndLocation.Line - methodDeclaration.Body.StartLocation.Line >= 300)
+                var lines = methodDeclaration.Body.Sum(x => (x.EndLocation.Line - x.StartLocation.Line) + 1);
+                if (lines >= 300)
                     UnlockWith(methodDeclaration);
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);

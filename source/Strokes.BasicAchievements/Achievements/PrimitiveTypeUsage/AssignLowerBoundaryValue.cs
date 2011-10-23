@@ -23,7 +23,7 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement, object data)
             {
                 var memberReferenceInitializers = variableDeclarationStatement.Variables.Select(a => a.Initializer).OfType<MemberReferenceExpression>();
-                if(memberReferenceInitializers.Any(a => IsMemberReferenceOfType<T>(a) && a.MemberName == "MinValue"))
+                if(memberReferenceInitializers.Any(a => a.IsMemberReferenceOfType<T>() && a.MemberName == "MinValue"))
                 {
                     UnlockWith(variableDeclarationStatement);
                 }
@@ -33,36 +33,15 @@ namespace Strokes.BasicAchievements.Achievements
             public override object VisitAssignmentExpression(AssignmentExpression assignmentExpression, object data)
             {
                 var mre = assignmentExpression.Right as MemberReferenceExpression;
-                if (mre != null && assignmentExpression.Operator == AssignmentOperatorType.Assign && IsMemberReferenceOfType<T>(mre) && mre.MemberName == "MinValue")
+                if (mre != null && 
+                    assignmentExpression.Operator == AssignmentOperatorType.Assign && 
+                    mre.IsMemberReferenceOfType<T>() && 
+                    mre.MemberName == "MinValue")
                 {
                     UnlockWith(assignmentExpression);
                 }
 
                 return base.VisitAssignmentExpression(assignmentExpression, data);
-            }
-
-            // TODO: Refactor into using NRefactoryHelpers
-            private static bool IsMemberReferenceOfType<TMemberType>(MemberReferenceExpression expression)
-            {
-                var variations = new List<string>();
-                if(typeof(TMemberType) == typeof(System.Int32))
-                {
-                    variations = new List<string>() {"System.Int32", "Int32", "int"};
-                }
-                else if(typeof(TMemberType) == typeof(System.Double))
-                {
-                    variations = new List<string>() { "System.Double", "Double", "double" };
-                }
-                else if (typeof(TMemberType) == typeof(System.Single))
-                {
-                    variations = new List<string>() { "System.Single", "Single", "float" };
-                }
-                else if (typeof(TMemberType) == typeof(System.Char))
-                {
-                    variations = new List<string>() { "System.Char", "Char", "char" };
-                }
-
-                return variations.Any(a => a == expression.Target.ToString());
             }
         }
     }
