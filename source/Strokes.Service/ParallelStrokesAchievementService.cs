@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace Strokes.Service
 
         protected override IEnumerable<Achievement> GetUnlockedAchievements(StatisAnalysisSession statisAnalysisSession, IEnumerable<Achievement> availableAchievements)
         {
-            var unlockedAchievements = new List<Achievement>();
+            var unlockedAchievements = new ConcurrentBag<Achievement>();
             var tasks = new Task[availableAchievements.Count()];
             var i = 0;
 
