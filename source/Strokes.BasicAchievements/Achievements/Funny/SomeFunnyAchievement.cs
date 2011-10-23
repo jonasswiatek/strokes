@@ -51,9 +51,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@TellingAStoryAchievementDescription",
         AchievementCategory = "@Funny",
         DependsOn = new[]
-                {
-                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
-                })]
+        {
+            "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+        })]
     public class TellingAStoryAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -65,9 +65,9 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                // TODO: Filter whitespace.
+                var lines = methodDeclaration.Body.Sum(n => (n.EndLocation.Line - n.StartLocation.Line) + 1);
 
-                if (methodDeclaration.Body.EndLocation.Line - methodDeclaration.Body.StartLocation.Line >= 100)
+                if (lines >= 100)
                     UnlockWith(methodDeclaration);
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
@@ -79,9 +79,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@EpicTaleAchievementDescription",
         AchievementCategory = "@Funny",
         DependsOn = new[]
-                {
-                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
-                })]
+        {
+            "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+        })]
     public class EpicTaleAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -93,9 +93,9 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                // TODO: Filter whitespace.
+                var lines = methodDeclaration.Body.Sum(n => (n.EndLocation.Line - n.StartLocation.Line) + 1);
 
-                if (methodDeclaration.Body.EndLocation.Line - methodDeclaration.Body.StartLocation.Line >= 300)
+                if (lines >= 300)
                     UnlockWith(methodDeclaration);
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
@@ -107,9 +107,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@ParametizerAchievementDescription",
         AchievementCategory = "@Funny",
         DependsOn = new[]
-                {
-                    "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
-                })]
+        {
+            "{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
+        })]
     public class ParametizerAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -160,7 +160,10 @@ namespace Strokes.BasicAchievements.Achievements
     [AchievementDescriptor("{1C241CE0-0CF4-4A51-B0EB-F0157848A3D3}", "@EveryOptionEnumAchievementName",
         AchievementDescription = "@EveryOptionEnumAchievementDescription",
         AchievementCategory = "@Funny",
-        DependsOn = new[] { "{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}" })]
+        DependsOn = new[] 
+        { 
+            "{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}" 
+        })]
     public class EveryOptionEnumAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -190,9 +193,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@ProceduralProgrammerAchievementDescription",
         AchievementCategory = "@Funny",
         DependsOn = new[]
-                {
-                    "{8A5F199C-B171-42D4-A12E-69BFB8A9F547}"
-                })]
+        {
+            "{8A5F199C-B171-42D4-A12E-69BFB8A9F547}"
+        })]
     public class ProceduralProgrammerAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
