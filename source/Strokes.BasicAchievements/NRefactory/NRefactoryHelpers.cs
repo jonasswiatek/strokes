@@ -303,5 +303,28 @@ namespace Strokes.BasicAchievements.NRefactory
 
             return string.Empty;
         }
+
+        public static bool IsMemberReferenceOfType<TMemberType>(this MemberReferenceExpression expression)
+        {
+            var variations = new List<string>();
+            if (typeof(TMemberType) == typeof(System.Int32))
+            {
+                variations = new List<string>() { "System.Int32", "Int32", "int" };
+            }
+            else if (typeof(TMemberType) == typeof(System.Double))
+            {
+                variations = new List<string>() { "System.Double", "Double", "double" };
+            }
+            else if (typeof(TMemberType) == typeof(System.Single))
+            {
+                variations = new List<string>() { "System.Single", "Single", "float" };
+            }
+            else if (typeof(TMemberType) == typeof(System.Char))
+            {
+                variations = new List<string>() { "System.Char", "Char", "char" };
+            }
+
+            return variations.Any(a => a == expression.Target.ToString());
+        }
     }
 }

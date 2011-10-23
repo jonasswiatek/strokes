@@ -10,9 +10,9 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@InheritClassAchievementDescription",
         AchievementCategory = "@Class",
         DependsOn = new[]
-                {
-                    "{106AA91A-C351-41F7-9F19-1EC599320306}"
-                })]
+        {
+            "{106AA91A-C351-41F7-9F19-1EC599320306}"
+        })]
     public class InheritClassAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(DetectionSession detectionSession)
@@ -24,7 +24,6 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                //TODO: This needs to be more advanced. There is no guarantee that a user will prefix interfaces with I.
                 if (typeDeclaration.ClassType == ClassType.Class)
                 {
                     var interfaceMarker = typeDeclaration.BaseTypes.OfType<MemberType>().FirstOrDefault();
