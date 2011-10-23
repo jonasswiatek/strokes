@@ -19,21 +19,18 @@ namespace Strokes.GUI.Views
     /// </summary>
     public partial class AchievementNotificationBox : Window
     {
-        private bool isEventsBound;
-        private IAchievementService _achievementService;
+        private bool isEventsBound = false;
 
-        public AchievementNotificationBox()
+        public AchievementNotificationBox(IAchievementService achievementService)
         {
-            _achievementService = ObjectFactory.GetInstance<IAchievementService>();
-
             InitializeComponent();
 
             if (DesignerProperties.GetIsInDesignMode(this) == false)
             {
                 UnlockedAchievementsList.LayoutUpdated += UnlockedAchievementsList_LayoutUpdated;
             }
-            // Closes the window again if another detection session is launched by the Achievement context.
-            _achievementService.StaticAnalysisStarted += (sender, args) => Close();
+
+            //achievementService.StaticAnalysisStarted += (sender, args) => Close();
         }
 
         private AchievementNotificationViewModel ViewModel
@@ -76,7 +73,7 @@ namespace Strokes.GUI.Views
                     {
                         var achevementDescriptor = dataItem;
 
-                        GuiInitializer.OnAchievementClicked(gotoCodebutton, new AchievementClickedEventArgs
+                        AchievementUIContext.OnAchievementClicked(gotoCodebutton, new AchievementClickedEventArgs
                         {
                             AchievementDescriptor = achevementDescriptor,
                             UIElement = new AchievementViewportControl
@@ -110,57 +107,49 @@ namespace Strokes.GUI.Views
             }
         }
 
-        public static void ShowAchievements(IEnumerable<Achievement> achievementDescriptors)
+        public void ShowAchievements(IEnumerable<Achievement> achievementDescriptors)
         {
             if (achievementDescriptors == null || !achievementDescriptors.Any())
             {
                 return;
             }
 
-            AchievementNotificationBox instance = null;
-            try
-            {
-                instance = new AchievementNotificationBox();
-                instance.AddAchievements(achievementDescriptors);
-            }
-            catch(Exception e)
-            {
-                var bla = ""; //CLAUS: SET BREAK POINT HERE
-            }
+            AddAchievements(achievementDescriptors);
 
-            if (instance == null)
-                return;
-
-            // This is only to support the Strokes.Console-project
             if (Application.Current != null)
             {
                 const int rightMargin = 5;
                 const int bottomMargin = 5;
 
-                instance.Owner = Application.Current.MainWindow != instance ? Application.Current.MainWindow : instance.Owner;
-                instance.Show();
-                if(instance.Owner != null)
+                Owner = Application.Current.MainWindow != this ? Application.Current.MainWindow : Owner;
+                Show();
+
+                if (Owner != null)
                 {
                     System.Drawing.Rectangle windowRectangle;
 
-                    if (instance.Owner.WindowState == System.Windows.WindowState.Maximized)
+                    if (Owner.WindowState == System.Windows.WindowState.Maximized)
                     {
                         windowRectangle = System.Windows.Forms.Screen.GetWorkingArea(
-                            new System.Drawing.Point((int)instance.Owner.Left, (int)instance.Owner.Top));
+                            new System.Drawing.Point((int)Owner.Left, (int)Owner.Top));
                     }
                     else
                     {
-                        windowRectangle = new System.Drawing.Rectangle((int)instance.Owner.Left, (int)instance.Owner.Top, (int)instance.Owner.ActualWidth, (int)instance.Owner.ActualHeight);
+                        windowRectangle = new System.Drawing.Rectangle(
+                            (int)Owner.Left, 
+                            (int)Owner.Top, 
+                            (int)Owner.ActualWidth, 
+                            (int)Owner.ActualHeight);
                     }
 
-                    instance.Left = windowRectangle.Left + windowRectangle.Width - instance.Width - rightMargin;
-                    instance.Top = windowRectangle.Top + windowRectangle.Height - instance.Height - bottomMargin;
+                    Left = windowRectangle.Left + windowRectangle.Width - Width - rightMargin;
+                    Top = windowRectangle.Top + windowRectangle.Height - Height - bottomMargin;
                 }
             }
             else
             {
                 // When activated from a console-app, this is called.
-                new Application().Run(instance);
+                new Application().Run(this);
             }
         }
     }

@@ -14,6 +14,8 @@ using System.Collections.Specialized;
 using Strokes.Service.Data.Model;
 using StructureMap;
 using GalaSoft.MvvmLight.Messaging;
+using Strokes.GUI.Views;
+using System.Windows;
 
 namespace Strokes.GUI
 {
@@ -24,6 +26,7 @@ namespace Strokes.GUI
         private const string TotalCompletedFieldName = "TotalCompleted";
         private const string PercentageCompletedFieldName = "PercentageCompleted";
         private readonly IAchievementService achievementService;
+        private readonly AchievementNotificationBox notificationBox; 
 
         public AllAchievementsViewModel()
         {
@@ -31,6 +34,9 @@ namespace Strokes.GUI
             ResetCommand = new RelayCommand(ResetExecute);
 
             achievementService = ObjectFactory.GetInstance<IAchievementService>();
+
+            notificationBox = new AchievementNotificationBox(achievementService);
+
             achievementService.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
 
             ReloadViewModel();
@@ -117,6 +123,11 @@ namespace Strokes.GUI
 
         private void AchievementContext_AchievementsUnlocked(object sender, AchievementEventArgs args)
         {
+            Application.Current.Dispatcher.BeginInvoke(new Action(() => 
+            {
+                notificationBox.ShowAchievements(args.UnlockedAchievements);
+            }));
+
             foreach (var achievement in args.UnlockedAchievements)
             {
                 var currentAchievement = achievement;

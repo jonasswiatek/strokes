@@ -143,8 +143,7 @@ namespace Strokes.VSX
 
             RegisterAchievementAssembly(typeof(NRefactoryAchievement).Assembly);
 
-            GuiInitializer.Initialize();
-            GuiInitializer.AchievementClicked += AchievementContext_AchievementClicked;
+            AchievementUIContext.AchievementClicked += AchievementContext_AchievementClicked;
             _achievementService.StaticAnalysisCompleted += DetectionDispatcher_DetectionCompleted;
         }
 

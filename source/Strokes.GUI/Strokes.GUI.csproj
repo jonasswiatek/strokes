@@ -163,7 +163,7 @@
     <Compile Include="Views\AchievementPane.xaml.cs">
       <DependentUpon>AchievementPane.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GuiInitializer.cs" />
+    <Compile Include="AchievementUIContext.cs" />
     <Page Include="Resources\Styles\Themes\Dark.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

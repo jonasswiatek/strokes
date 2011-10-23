@@ -21,12 +21,11 @@ namespace Strokes.FeatureAchievements.Achievements
         private Timer timer;
         public CircularReferenceAchievement(IServiceContainer shell) : base(shell)
         {
-            //CLAUS: UNCOMMENT THIS BLOCK
-            /*timer = new Timer(obj =>
-                                  {
-                                      Unlock();
-                                  }, null, 20000, Timeout.Infinite);
-             */
+            // TODO: Your turn Jonas.
+            //timer = new Timer(obj =>
+            //{
+            //    Unlock();
+            //}, null, 5000, Timeout.Infinite);
         }
 
         public override void DisposeAchievement()

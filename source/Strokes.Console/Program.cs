@@ -16,22 +16,34 @@ using Strokes.Service;
 using Strokes.Service.Data;
 using Strokes.VSX;
 using StructureMap;
+using Strokes.GUI.Views;
 
 namespace Strokes.Console
 {
     class Program
     {
+        private static AchievementNotificationBox notificationBox;
+        
         [STAThread]
         static void Main(string[] args) 
         {
             ObjectFactory.Configure(a =>
-                                        {
-                                            a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>().Ctor<string>("storageFile").Is("AchievementStorage_ConsoleTest.xml");
-                                            a.For<IAchievementService>().Singleton().Use<SerialStrokesAchievementService>();
-                                        });
+            {
+                a.For<IAchievementRepository>()
+                 .Singleton()
+                 .Use<AppDataXmlCompletedAchievementsRepository>()
+                 .Ctor<string>("storageFile")
+                 .Is("AchievementStorage_ConsoleTest.xml");
+                
+                a.For<IAchievementService>()
+                 .Singleton()
+                 .Use<SerialStrokesAchievementService>();
+            });
 
             var achievementService = ObjectFactory.GetInstance<IAchievementService>();
             achievementService.LoadAchievementsFrom(typeof(ArrayLengthPropertyAchievement).Assembly);
+
+            notificationBox = new AchievementNotificationBox(achievementService);
 
             var cultureToTest = "ru-RU"; // Set to "ru-RU" to enable russian. Set to "nl" for dutch
 
@@ -39,8 +51,6 @@ namespace Strokes.Console
             //Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureToTest);
 
             achievementService.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
-            GuiInitializer.Initialize();
-
             achievementService.ResetAchievementProgress();
 
             achievementService.StaticAnalysisCompleted += DetectionDispatcher_DetectionCompleted;
@@ -64,6 +74,8 @@ namespace Strokes.Console
         private static void AchievementContext_AchievementsUnlocked(object sender, AchievementEventArgs args)
         {
             System.Console.WriteLine("Unlocked: " + string.Join(", ", args.UnlockedAchievements.Select(a => a.Name)));
+
+            notificationBox.ShowAchievements(args.UnlockedAchievements);
         }
     }
 }
