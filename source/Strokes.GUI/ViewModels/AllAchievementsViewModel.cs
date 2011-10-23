@@ -109,6 +109,10 @@ namespace Strokes.GUI
                     CategoryName = category.CategoryName,
                 });
             }
+
+            RaisePropertyChanged(OrderedAchievementsFieldName);
+            RaisePropertyChanged(TotalCompletedFieldName);
+            RaisePropertyChanged(PercentageCompletedFieldName);
         }
 
         private bool IsUnlocked(IEnumerable<Achievement> achievements, Achievement achievement)
@@ -123,17 +127,14 @@ namespace Strokes.GUI
 
         private void AchievementContext_AchievementsUnlocked(object sender, AchievementEventArgs args)
         {
-            Application.Current.Dispatcher.BeginInvoke(new Action(() => 
-            {
-                notificationBox.ShowAchievements(args.UnlockedAchievements);
-            }));
+            Application.Current.Dispatcher.BeginInvoke(new Action(() => notificationBox.ShowAchievements(args.UnlockedAchievements)));
 
             foreach (var achievement in args.UnlockedAchievements)
             {
                 var currentAchievement = achievement;
                 var category = AchievementsOrdered.FirstOrDefault(c => c.CategoryName == currentAchievement.Category);
                 if (category != null)
-                    category.Update(achievement);
+                    category.Update(currentAchievement);
             }
 
             RaisePropertyChanged(OrderedAchievementsFieldName);

@@ -18,7 +18,7 @@ namespace Strokes.FeatureAchievements
         {
             _achievementService = achievementService;
 
-            IdeIntegrationAchievements = _achievementService.GetAllAchievements().Where(a => typeof(IdeIntegrationAchievement).IsAssignableFrom(a.AchievementType))
+            IdeIntegrationAchievements = _achievementService.GetUnlockableAchievements().Where(a => typeof(IdeIntegrationAchievement).IsAssignableFrom(a.AchievementType))
                                                                                 .Select(a => (IdeIntegrationAchievement)Activator.CreateInstance(a.AchievementType, serviceContainer))
                                                                                 .ToList();
 

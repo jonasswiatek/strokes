@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Strokes.Core;
 using System.ComponentModel;
 using System.Windows.Shapes;
@@ -25,12 +26,13 @@ namespace Strokes.GUI.Views
         {
             InitializeComponent();
 
-            if (DesignerProperties.GetIsInDesignMode(this) == false)
+            if (!DesignerProperties.GetIsInDesignMode(this))
             {
                 UnlockedAchievementsList.LayoutUpdated += UnlockedAchievementsList_LayoutUpdated;
             }
 
-            //achievementService.StaticAnalysisStarted += (sender, args) => Close();
+            //Hides the notificationbox when the user has finished a successful compile.
+            achievementService.StaticAnalysisStarted += (sender, args) => DismissNotifications();
         }
 
         private AchievementNotificationViewModel ViewModel
@@ -48,6 +50,9 @@ namespace Strokes.GUI.Views
         /// <param name="e"></param>
         private void UnlockedAchievementsList_LayoutUpdated(object sender, EventArgs e)
         {
+            CorrectPlacement();
+
+            //REFACTORING: The below code seems to be pretty cra. The .IsEnabled = false does not even seem to hide the magnifier. And attaching the events like this - surely there is a better way.
             if (isEventsBound)
                 return;
 
@@ -65,7 +70,7 @@ namespace Strokes.GUI.Views
 
                 if (dataItem.CodeOrigin == null)
                 {
-                    gotoCodebutton.IsEnabled = false;
+                    gotoCodebutton.Visibility = Visibility.Hidden;
                 }
                 else
                 {
@@ -96,7 +101,13 @@ namespace Strokes.GUI.Views
 
         private void CloseWindowImage_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Close();
+            DismissNotifications();
+        }
+
+        private void DismissNotifications()
+        {
+            Hide();
+            ViewModel.CurrentAchievements.Clear();
         }
 
         protected void AddAchievements(IEnumerable<Achievement> achievementDescriptors)
@@ -107,6 +118,36 @@ namespace Strokes.GUI.Views
             }
         }
 
+        private void CorrectPlacement()
+        {
+            const int rightMargin = 5;
+            const int bottomMargin = 5;
+
+            Owner = Application.Current.MainWindow != this ? Application.Current.MainWindow : Owner;
+                
+            if (Owner != null)
+            {
+                System.Drawing.Rectangle windowRectangle;
+
+                if (Owner.WindowState == WindowState.Maximized)
+                {
+                    windowRectangle = System.Windows.Forms.Screen.GetWorkingArea(
+                        new System.Drawing.Point((int)Owner.Left, (int)Owner.Top));
+                }
+                else
+                {
+                    windowRectangle = new System.Drawing.Rectangle(
+                        (int)Owner.Left,
+                        (int)Owner.Top,
+                        (int)Owner.ActualWidth,
+                        (int)Owner.ActualHeight);
+                }
+
+                Left = windowRectangle.Left + windowRectangle.Width - Width - rightMargin;
+                Top = windowRectangle.Top + windowRectangle.Height - Height - bottomMargin;
+            }
+        }
+
         public void ShowAchievements(IEnumerable<Achievement> achievementDescriptors)
         {
             if (achievementDescriptors == null || !achievementDescriptors.Any())
@@ -114,37 +155,12 @@ namespace Strokes.GUI.Views
                 return;
             }
 
+            isEventsBound = false;
             AddAchievements(achievementDescriptors);
-
+            
             if (Application.Current != null)
             {
-                const int rightMargin = 5;
-                const int bottomMargin = 5;
-
-                Owner = Application.Current.MainWindow != this ? Application.Current.MainWindow : Owner;
                 Show();
-
-                if (Owner != null)
-                {
-                    System.Drawing.Rectangle windowRectangle;
-
-                    if (Owner.WindowState == System.Windows.WindowState.Maximized)
-                    {
-                        windowRectangle = System.Windows.Forms.Screen.GetWorkingArea(
-                            new System.Drawing.Point((int)Owner.Left, (int)Owner.Top));
-                    }
-                    else
-                    {
-                        windowRectangle = new System.Drawing.Rectangle(
-                            (int)Owner.Left, 
-                            (int)Owner.Top, 
-                            (int)Owner.ActualWidth, 
-                            (int)Owner.ActualHeight);
-                    }
-
-                    Left = windowRectangle.Left + windowRectangle.Width - Width - rightMargin;
-                    Top = windowRectangle.Top + windowRectangle.Height - Height - bottomMargin;
-                }
             }
             else
             {

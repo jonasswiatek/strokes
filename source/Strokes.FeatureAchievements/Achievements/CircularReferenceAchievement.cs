@@ -22,10 +22,10 @@ namespace Strokes.FeatureAchievements.Achievements
         public CircularReferenceAchievement(IServiceContainer shell) : base(shell)
         {
             // TODO: Your turn Jonas.
-            //timer = new Timer(obj =>
-            //{
-            //    Unlock();
-            //}, null, 5000, Timeout.Infinite);
+            timer = new Timer(obj =>
+            {
+                Unlock();
+            }, null, 20000, Timeout.Infinite);
         }
 
         public override void DisposeAchievement()

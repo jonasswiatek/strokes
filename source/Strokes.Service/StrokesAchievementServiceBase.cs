@@ -62,6 +62,15 @@ namespace Strokes.Service
         public void UnlockAchievement(AchievementBase achievement)
         {
             var achievementDto = AchievementRepository.GetAchievements().Single(a => a.AchievementType == achievement.GetType());
+            achievementDto.IsCompleted = true;
+
+            var staticAnalysisAchievement = achievement as StaticAnalysisAchievementBase;
+            if(staticAnalysisAchievement != null)
+            {
+                achievementDto.CodeOrigin = staticAnalysisAchievement.AchievementCodeOrigin;
+            }
+
+            AchievementRepository.MarkAchievementAsCompleted(achievementDto);
 
             OnAchievementsUnlocked(this, new AchievementEventArgs
             {
