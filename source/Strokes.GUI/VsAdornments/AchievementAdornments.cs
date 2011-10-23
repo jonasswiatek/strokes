@@ -44,19 +44,19 @@ namespace Strokes.GUI.VsAdornments
             this.brush = brush;
             this.pen = pen;
 
-            AchievementContext.AchievementClicked += (sender, args) =>
-                                                         {
-                                                             Reset();
+            AchievementUIContext.AchievementClicked += (sender, args) =>
+            {
+                Reset();
 
-                                                             var filePath = GetFilePath(view);
-                                                             if (args.AchievementDescriptor.CodeLocation.FileName != filePath)
-                                                                 return;
+                var filePath = GetFilePath(view);
+                if (args.AchievementDescriptor.CodeLocation.FileName != filePath)
+                    return;
 
-                                                             codeLocation = args.AchievementDescriptor.CodeLocation;
-                                                             achievementUiElement = (UIElement)args.UIElement;
+                codeLocation = args.AchievementDescriptor.CodeLocation;
+                achievementUiElement = (UIElement)args.UIElement;
 
-                                                             CreateAdornment();
-                                                         };
+                CreateAdornment();
+            };
         }
 
         public static string GetFilePath(IWpfTextView wpfTextView)
@@ -77,7 +77,7 @@ namespace Strokes.GUI.VsAdornments
         {
             codeLocation = null;
             achievementUiElement = null;
-            adornmentVisible = false;            
+            adornmentVisible = false;
             layer.RemoveAllAdornments();
             descriptionLayer.RemoveAllAdornments();
         }
@@ -103,7 +103,7 @@ namespace Strokes.GUI.VsAdornments
             try
             {
                 layer.TextView.ViewScroller.EnsureSpanVisible(span, EnsureSpanVisibleOptions.AlwaysCenter);
-            } 
+            }
             catch (InvalidOperationException)
             {
                 // Intentionally ignored. 
@@ -133,7 +133,7 @@ namespace Strokes.GUI.VsAdornments
                 achievementUiElement.MouseDown += (sender, args) => Reset();
 
                 adornmentVisible = true;
-                
+
                 try
                 {
 

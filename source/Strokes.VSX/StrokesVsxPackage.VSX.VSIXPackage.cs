@@ -139,7 +139,7 @@ namespace Strokes.VSX
 
             GuiInitializer.Initialize();
 
-            AchievementContext.AchievementClicked += AchievementContext_AchievementClicked;
+            AchievementUIContext.AchievementClicked += AchievementContext_AchievementClicked;
             DetectionDispatcher.DetectionCompleted += DetectionDispatcher_DetectionCompleted;
         }
 

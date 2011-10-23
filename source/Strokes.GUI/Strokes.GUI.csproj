@@ -109,6 +109,7 @@
     <Compile Include="Assets\EmptyToVisibilityConverter.cs" />
     <Compile Include="Assets\NullToVisibilityConverter.cs" />
     <Compile Include="Assets\StringToImageSourceConverter.cs" />
+    <Compile Include="AchievementUIContext.cs" />
     <Compile Include="Properties\AppResources.cs" />
     <Compile Include="Properties\Resources.da-DK.Designer.cs">
       <DependentUpon>Resources.da-DK.resx</DependentUpon>

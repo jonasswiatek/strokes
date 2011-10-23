@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Shapes;
+using GalaSoft.MvvmLight.Messaging;
 using Strokes.Core;
 using Strokes.Core.Data.Model;
-using System.ComponentModel;
-using System.Windows.Shapes;
 using Application = System.Windows.Application;
 
 namespace Strokes.GUI.Views
@@ -68,16 +69,14 @@ namespace Strokes.GUI.Views
                 {
                     gotoCodebutton.MouseDown += (se, args) =>
                     {
-                        var achevementDescriptor = dataItem;
+                        var achievementDescriptor = dataItem;
 
-                        AchievementContext.OnAchievementClicked(gotoCodebutton, new AchievementClickedEventArgs
-                        {
-                            AchievementDescriptor = achevementDescriptor,
-                            UIElement = new AchievementViewportControl()
+                        AchievementUIContext.OnAchievementsUnlocked(achievementDescriptor, 
+                            new AchievementViewportControl()
                             {
-                                DataContext = achevementDescriptor
+                                DataContext = achievementDescriptor
                             }
-                        });
+                        );
                     };
                 }
             }

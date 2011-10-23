@@ -13,20 +13,21 @@ namespace Strokes.Data
 {
     public class AppDataXmlCompletedAchievementsRepository : AppDataXmlFileRepositoryBase<List<CompletedAchievement>>, IAchievementRepository
     {
-        private readonly List<Achievement> _achievements = new List<Achievement>();
-        private readonly List<CompletedAchievement> _completedAchievements;
+        private readonly List<Achievement> achievements = new List<Achievement>();
+        private readonly List<CompletedAchievement> completedAchievements;
 
-        public AppDataXmlCompletedAchievementsRepository() : base("AchievementStorage.xml")
+        public AppDataXmlCompletedAchievementsRepository()
+            : base("AchievementStorage.xml")
         {
-            _completedAchievements = Load() ?? new List<CompletedAchievement>();
+            completedAchievements = Load() ?? new List<CompletedAchievement>();
         }
 
         public IEnumerable<Achievement> GetAchievements()
         {
-            foreach (var achievement in _achievements)
+            return achievements.Select(achievement =>
             {
                 var achievementInstance = achievement;
-                var completedAchievement = _completedAchievements.FirstOrDefault(a => a.Guid == achievementInstance.Guid);
+                var completedAchievement = completedAchievements.FirstOrDefault(a => a.Guid == achievementInstance.Guid);
 
                 if (completedAchievement != null)
                 {
@@ -34,14 +35,15 @@ namespace Strokes.Data
                     achievement.IsCompleted = completedAchievement.IsCompleted;
                 }
 
-                yield return achievement;
-            }
+                return achievement;
+            });
         }
 
         public IEnumerable<Achievement> GetUnlockableAchievements()
         {
-            var unlockedGuids = _completedAchievements.Select(a => a.Guid);
-            return _achievements.Where(a => !a.IsCompleted && a.DependsOn.All(b => unlockedGuids.Contains(b.Guid)));
+            var unlockedGuids = completedAchievements.Select(a => a.Guid);
+
+            return achievements.Where(a => !a.IsCompleted && a.DependsOn.All(b => unlockedGuids.Contains(b.Guid)));
         }
 
         public void MarkAchievementAsCompleted(Achievement achievementDescriptor)
@@ -55,9 +57,9 @@ namespace Strokes.Data
                 IsCompleted = true
             };
 
-            if (!_completedAchievements.Contains(completedAchievement))
+            if (!completedAchievements.Contains(completedAchievement))
             {
-                _completedAchievements.Add(completedAchievement);
+                completedAchievements.Add(completedAchievement);
                 PersistCompletedAchievements();
             }
         }
@@ -68,15 +70,15 @@ namespace Strokes.Data
                 throw new ArgumentNullException("assembly");
 
             var achievementsInAssembly = assembly.GetTypes().Where(a => typeof(AchievementBase).IsAssignableFrom(a) && !a.IsAbstract);
-            var achievementTypes = achievementsInAssembly.Select(achievement => (AchievementBase)Activator.CreateInstance(achievement)).ToList();
-            var achievementDescriptors = achievementTypes.Select(achievement => achievement.GetDescriptionAttribute()).ToList();
+            var achievementTypes = achievementsInAssembly.Select(a => (AchievementBase)Activator.CreateInstance(a)).ToList();
+            var achievementDescriptors = achievementTypes.Select(a => a.GetDescriptionAttribute()).ToList();
 
-            _achievements.AddRange(achievementTypes.Select(a => a.GetAchievementDto()));
+            achievements.AddRange(achievementTypes.Select(a => a.GetAchievementDto()));
 
-            foreach (var achievement in _achievements)
+            foreach (var achievement in achievements)
             {
                 var currentAchievement = achievement;
-                var completedAchievement = _completedAchievements.FirstOrDefault(a => a.Guid == currentAchievement.Guid);
+                var completedAchievement = completedAchievements.FirstOrDefault(a => a.Guid == currentAchievement.Guid);
 
                 if (completedAchievement != null)
                 {
@@ -94,15 +96,16 @@ namespace Strokes.Data
                         .Select(a => a.Guid)
                         .ToList();
 
-                currentAchievement.DependsOn = _achievements.Where(a => dependsOnGuids.Contains(a.Guid)).ToList();
-                currentAchievement.Unlocks = _achievements.Where(a => unlocksGuids.Contains(a.Guid)).ToList();
+                currentAchievement.DependsOn = achievements.Where(a => dependsOnGuids.Contains(a.Guid)).ToList();
+                currentAchievement.Unlocks = achievements.Where(a => unlocksGuids.Contains(a.Guid)).ToList();
             }
         }
 
         public void ResetAchievements()
         {
-            _completedAchievements.Clear();
-            foreach (var achievement in _achievements)
+            completedAchievements.Clear();
+
+            foreach (var achievement in achievements)
             {
                 achievement.IsCompleted = false;
                 achievement.DateCompleted = default(DateTime);
@@ -116,7 +119,7 @@ namespace Strokes.Data
             if (AchievementContext.DisablePersist)
                 return;
 
-            Save(_completedAchievements);
+            Save(completedAchievements);
         }
     }
 }
