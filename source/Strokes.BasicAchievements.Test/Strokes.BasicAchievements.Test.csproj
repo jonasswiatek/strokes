@@ -48,7 +48,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AchievementLocaizationTest.cs" />
+    <None Include="AchievementLocaizationTest.cs" />
     <Compile Include="TestCases\Arrays\ArrayTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -196,7 +196,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AchievementGuidTest.cs" />
+    <None Include="AchievementGuidTest.cs" />
     <Compile Include="TestCases\Expressions\QueryExpressionTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>

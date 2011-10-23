@@ -29,8 +29,9 @@ namespace Strokes.GUI.Views
             InitializeComponent();
 
             if (DesignerProperties.GetIsInDesignMode(this) == false)
+            {
                 UnlockedAchievementsList.LayoutUpdated += UnlockedAchievementsList_LayoutUpdated;
-
+            }
             // Closes the window again if another detection session is launched by the Achievement context.
             _achievementService.StaticAnalysisStarted += (sender, args) => Close();
         }
@@ -111,13 +112,24 @@ namespace Strokes.GUI.Views
 
         public static void ShowAchievements(IEnumerable<Achievement> achievementDescriptors)
         {
-            if (achievementDescriptors.Any() == false)
+            if (achievementDescriptors == null || !achievementDescriptors.Any())
             {
                 return;
             }
 
-            var instance = new AchievementNotificationBox();
-            instance.AddAchievements(achievementDescriptors);
+            AchievementNotificationBox instance = null;
+            try
+            {
+                instance = new AchievementNotificationBox();
+                instance.AddAchievements(achievementDescriptors);
+            }
+            catch(Exception e)
+            {
+                var bla = ""; //CLAUS: SET BREAK POINT HERE
+            }
+
+            if (instance == null)
+                return;
 
             // This is only to support the Strokes.Console-project
             if (Application.Current != null)

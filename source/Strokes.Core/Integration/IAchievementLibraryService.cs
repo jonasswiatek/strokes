@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 namespace Strokes.Core.Integration
 {
     [Guid("fafafdfb-60f3-47e4-b38c-1bae05b44240")]
-    public interface IAchevementLibraryService
+    public interface IAchievementLibraryService
     {
         void RegisterAchievementAssembly(Assembly assembly);
     }

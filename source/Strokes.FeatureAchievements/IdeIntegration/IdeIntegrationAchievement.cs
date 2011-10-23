@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using Microsoft.VisualStudio.Shell;
 using Strokes.Core;
 
@@ -6,21 +7,25 @@ namespace Strokes.FeatureAchievements.IdeIntegration
 {
     public abstract class IdeIntegrationAchievement : AchievementBase, IDisposable
     {
-        protected Package Shell { get; private set; }
+        protected IServiceContainer ServiceContainer { get; private set; }
         public event EventHandler<EventArgs> AchievementUnlocked;
 
-        protected IdeIntegrationAchievement(Package shell)
+        protected IdeIntegrationAchievement(IServiceContainer serviceContainer)
         {
-            Shell = shell;
+            ServiceContainer = serviceContainer;
         }
 
         protected void OnAchievementUnlocked()
         {
-            Dispose();
             if(AchievementUnlocked != null)
             {
                 AchievementUnlocked(this, new EventArgs());
             }
+        }
+
+        protected void Unlock()
+        {
+            OnAchievementUnlocked();
         }
 
         public void Dispose()
@@ -30,5 +35,10 @@ namespace Strokes.FeatureAchievements.IdeIntegration
         }
 
         public abstract void DisposeAchievement();
+
+        protected T GetService<T>()
+        {
+            return (T)ServiceContainer.GetService(typeof(T));
+        }
     }
 }

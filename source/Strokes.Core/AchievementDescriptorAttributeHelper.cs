@@ -7,9 +7,9 @@ namespace Strokes.Core
 {
     public static class AchievementDescriptorAttributeHelper
     {
-        public static AchievementDescriptorAttribute GetDescriptionAttribute(this AchievementBase achievement)
+        public static AchievementDescriptorAttribute GetDescriptionAttribute(this Type achievementType)
         {
-            var descriptionAttributes = achievement.GetType().GetCustomAttributes(typeof(AchievementDescriptorAttribute), true);
+            var descriptionAttributes = achievementType.GetCustomAttributes(typeof(AchievementDescriptorAttribute), true);
 
             if (descriptionAttributes.Length == 1)
             {
@@ -24,10 +24,10 @@ namespace Strokes.Core
             throw new ArgumentException("Achievement class does not define an AchievementDescriptionAttribute", "achievement");
         }
 
-        public static Achievement GetAchievementDto(this AchievementBase achievement)
+        public static Achievement GetAchievementDto(this Type achievementType)
         {
-            var descriptionAttribute = GetDescriptionAttribute(achievement);
-            var assembly = achievement.GetType().Assembly;
+            var descriptionAttribute = GetDescriptionAttribute(achievementType);
+            var assembly = achievementType.Assembly;
 
             var AchievementResourcesType = assembly.GetType("Strokes.Resources.AchievementResources");
             var categoryResourcesType = assembly.GetType("Strokes.Resources.AchievementCategoryResources");
@@ -53,7 +53,7 @@ namespace Strokes.Core
             var descriptor = new Achievement
             {
                 Guid = descriptionAttribute.Guid,
-                AchievementType = achievement.GetType(),
+                AchievementType = achievementType,
                 Category = category,
                 Description = description,
                 Name = title,

@@ -116,9 +116,21 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IdeIntegration\BuildEventListener.cs" />
+    <Compile Include="Properties\AchievementResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AchievementResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Achievements\CircularReferenceAchievement.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="IdeIntegrationAchievementObserver.cs" />
-    <Compile Include="IdeIntegration\IdeIntegrationAchievements.cs" />
+    <Compile Include="IdeIntegration\IdeIntegrationAchievement.cs" />
+    <Compile Include="Properties\AchievementCategoryResources.Designer.cs">
+      <DependentUpon>AchievementCategoryResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,6 +141,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\AchievementResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\AchievementCategoryResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementCategoryResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -156,9 +178,7 @@
       <Name>Strokes.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Achievements\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>

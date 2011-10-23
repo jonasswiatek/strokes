@@ -31,9 +31,10 @@ namespace Strokes.VSX
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideAutoLoad("{adfc4e64-0397-11d1-9f4e-00a0c911004f}")]
     [ProvideToolWindow(typeof(AchievementStatisticsToolWindow), Style = VsDockStyle.MDI)]
-    [ProvideService(typeof(IAchevementLibraryService))]
+    [ProvideService(typeof(IAchievementLibraryService))]
+    [ProvideService(typeof(IAchievementService))]
     [Guid(GuidList.guidCSharpAchiever_Achiever_VSIXPkgString)]
-    public sealed class StrokesVsxPackage : PackageEx, IAchevementLibraryService
+    public sealed class StrokesVsxPackage : PackageEx, IAchievementLibraryService
     {
         /// <summary>
         /// Cookie that allows the package to stop listening for build events.
@@ -137,7 +138,8 @@ namespace Strokes.VSX
                 SolutionBuildManager.AdviseUpdateSolutionEvents(buildTracker, out updateSolutionEventsCookie);
             }
 
-            AddService<IAchevementLibraryService>(this, true);
+            AddService<IAchievementLibraryService>(this, true);
+            AddService<IAchievementService>(_achievementService, true);
 
             RegisterAchievementAssembly(typeof(NRefactoryAchievement).Assembly);
 

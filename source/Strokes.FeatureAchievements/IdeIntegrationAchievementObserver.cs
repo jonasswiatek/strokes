@@ -1,35 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using Microsoft.VisualStudio.Shell;
 using Strokes.Core.Service;
 using Strokes.FeatureAchievements.IdeIntegration;
+using StructureMap;
 
 namespace Strokes.FeatureAchievements
 {
     public class IdeIntegrationAchievementObserver
     {
+        private readonly IAchievementService _achievementService;
         protected List<IdeIntegrationAchievement> IdeIntegrationAchievements;
-        protected IAchievementService AchievementService;
-        public IdeIntegrationAchievementObserver(Package shell)
+
+        public IdeIntegrationAchievementObserver(IServiceContainer serviceContainer, IAchievementService achievementService)
         {
-            IdeIntegrationAchievements = AchievementService.GetAllAchievements().Where(a => typeof (IdeIntegrationAchievement)
-                                                                                .IsAssignableFrom(a.AchievementType))
-                                                                                .Select(a => (IdeIntegrationAchievement) Activator.CreateInstance(a.AchievementType, shell))
+            _achievementService = achievementService;
+
+            IdeIntegrationAchievements = _achievementService.GetAllAchievements().Where(a => typeof(IdeIntegrationAchievement).IsAssignableFrom(a.AchievementType))
+                                                                                .Select(a => (IdeIntegrationAchievement)Activator.CreateInstance(a.AchievementType, serviceContainer))
                                                                                 .ToList();
 
             //Wire events.
             foreach(var integrationAchievement in IdeIntegrationAchievements)
             {
-                integrationAchievement.AchievementUnlocked += (sender, args) =>
-                                                                  {
-                                                                      var ideIntegrationAchievement = sender as IdeIntegrationAchievement;
-                                                                      if (ideIntegrationAchievement != null)
-                                                                      {
-                                                                          IdeIntegrationAchievements.Remove(ideIntegrationAchievement);
-                                                                          AchievementService.UnlockAchievement(ideIntegrationAchievement);
-                                                                      }
-                                                                  };
+                integrationAchievement.AchievementUnlocked += IntegrationAchievementUnlocked;
+            }
+        }
+
+        private void IntegrationAchievementUnlocked(object sender, EventArgs e)
+        {
+            var ideIntegrationAchievement = sender as IdeIntegrationAchievement;
+            if (ideIntegrationAchievement != null)
+            {
+                ideIntegrationAchievement.Dispose();
+                IdeIntegrationAchievements.Remove(ideIntegrationAchievement);
+                _achievementService.UnlockAchievement(ideIntegrationAchievement);
             }
         }
     }

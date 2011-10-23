@@ -60,7 +60,7 @@
     <Compile Include="AchievementDescriptorAttributeHelper.cs" />
     <Compile Include="Service\Model\StaticAnalysisManifest.cs" />
     <Compile Include="Service\StatisAnalysisSession.cs" />
-    <Compile Include="Integration\IAchevementLibraryService.cs" />
+    <Compile Include="Integration\IAchievementLibraryService.cs" />
     <Compile Include="Service\Model\Achievement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

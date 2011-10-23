@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Windows.Threading;
 using Strokes.Core;
 using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
@@ -53,7 +54,10 @@ namespace Strokes.GUI
                 Debug.WriteLine(string.Format("Achievements unlocked: {0}",
                     string.Join(", ", args.UnlockedAchievements.Select(a => "[" + a.Name + "]"))));
 
-                AchievementNotificationBox.ShowAchievements(args.UnlockedAchievements);
+                Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
+                {
+                    AchievementNotificationBox.ShowAchievements(args.UnlockedAchievements);
+                }));
             }
         }
     }
