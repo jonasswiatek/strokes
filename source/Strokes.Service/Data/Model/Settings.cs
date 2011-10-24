@@ -17,7 +17,7 @@
         public Settings()
         {
             EnableInAllProjects = false;
-            PreferredLocale = "en"; // Default locale is English.
+            PreferredLocale = ""; // Default locale is English.
         }
     }
 }

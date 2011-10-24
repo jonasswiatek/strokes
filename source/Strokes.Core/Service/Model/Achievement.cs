@@ -89,6 +89,8 @@ namespace Strokes.Core.Service.Model
             set;
         }
 
+        public string CodeSnippet { get; set; }
+
         public bool IsCompleted
         {
             get;

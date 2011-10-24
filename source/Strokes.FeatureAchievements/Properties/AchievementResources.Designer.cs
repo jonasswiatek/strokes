@@ -61,20 +61,20 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Circular Reference.
+        ///   Looks up a localized string similar to Demo Feature Achievement.
         /// </summary>
-        public static string CircularAchievementName {
+        public static string DemoFeatureAchievementName {
             get {
-                return ResourceManager.GetString("CircularAchievementName", resourceCulture);
+                return ResourceManager.GetString("DemoFeatureAchievementName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a Circular Reference.
+        ///   Looks up a localized string similar to This is just a test!.
         /// </summary>
-        public static string CircularAchievementNameDescription {
+        public static string DemoFeatureAchievementNameDescription {
             get {
-                return ResourceManager.GetString("CircularAchievementNameDescription", resourceCulture);
+                return ResourceManager.GetString("DemoFeatureAchievementNameDescription", resourceCulture);
             }
         }
     }

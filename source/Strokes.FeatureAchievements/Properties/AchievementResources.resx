@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CircularAchievementName" xml:space="preserve">
-    <value>Circular Reference</value>
+  <data name="DemoFeatureAchievementName" xml:space="preserve">
+    <value>Demo Feature Achievement</value>
   </data>
-  <data name="CircularAchievementNameDescription" xml:space="preserve">
-    <value>Create a Circular Reference</value>
+  <data name="DemoFeatureAchievementNameDescription" xml:space="preserve">
+    <value>This is just a test!</value>
   </data>
 </root>

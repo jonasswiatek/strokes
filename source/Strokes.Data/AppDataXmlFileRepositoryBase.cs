@@ -40,7 +40,7 @@ namespace Strokes.Data
                 if (file.Length <= 0)
                     return default(T);
 
-                var serializer = new XmlSerializer(typeof(List<CompletedAchievement>));
+                var serializer = new XmlSerializer(typeof(T));
                 var data = (T)serializer.Deserialize(file);
 
                 return data;

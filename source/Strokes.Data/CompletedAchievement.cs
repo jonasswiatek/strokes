@@ -15,6 +15,8 @@ namespace Strokes.Data
             Guid = achievementDescriptor.Guid;
         }
 
+        public string CodeSnippet { get; set; }
+
         public string Guid
         {
             get;

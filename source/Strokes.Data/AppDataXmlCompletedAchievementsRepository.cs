@@ -44,16 +44,22 @@ namespace Strokes.Data
             return _achievements.Where(a => !a.IsCompleted && a.DependsOn.All(b => unlockedGuids.Contains(b.Guid)));
         }
 
-        public void MarkAchievementAsCompleted(Achievement achievementDescriptor)
+        public void MarkAchievementAsCompleted(Achievement achievement)
         {
-            achievementDescriptor.DateCompleted = DateTime.Now;
-            achievementDescriptor.IsCompleted = true;
+            achievement.DateCompleted = DateTime.Now;
+            achievement.IsCompleted = true;
 
-            var completedAchievement = new CompletedAchievement(achievementDescriptor)
+            var completedAchievement = new CompletedAchievement(achievement)
             {
                 DateCompleted = DateTime.Now,
                 IsCompleted = true
             };
+
+            if(achievement.CodeOrigin != null)
+            {
+                completedAchievement.CodeSnippet = achievement.CodeOrigin.GetCodeSnippet();
+                achievement.CodeSnippet = completedAchievement.CodeSnippet;
+            }
 
             if (!_completedAchievements.Contains(completedAchievement))
             {
@@ -76,10 +82,12 @@ namespace Strokes.Data
                 var currentAchievement = achievement;
                 var completedAchievement = _completedAchievements.FirstOrDefault(a => a.Guid == currentAchievement.Guid);
 
+                //Bind information from the persisted storage about this achievement (this is because it's been completed at an earlier time)
                 if (completedAchievement != null)
                 {
                     currentAchievement.DateCompleted = completedAchievement.DateCompleted;
                     currentAchievement.IsCompleted = completedAchievement.IsCompleted;
+                    currentAchievement.CodeSnippet = completedAchievement.CodeSnippet;
                 }
 
                 var dependsOnGuids = achievementDescriptors

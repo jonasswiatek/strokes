@@ -12,14 +12,14 @@ using Strokes.FeatureAchievements.IdeIntegration;
 
 namespace Strokes.FeatureAchievements.Achievements
 {
-    [AchievementDescriptor("{60263C58-5C3B-45A0-9702-ED1F272AC3F7}", "@CircularAchievementName",
-    AchievementDescription = "@CircularAchievementNameDescription",
+    [AchievementDescriptor("{60263C58-5C3B-45A0-9702-ED1F272AC3F7}", "@DemoFeatureAchievementName",
+    AchievementDescription = "@DemoFeatureAchievementNameDescription",
     AchievementCategory = "@IDE")]
-    public class CircularReferenceAchievement : IdeIntegrationAchievement
+    public class DemoFeatureAchievementAchievement : IdeIntegrationAchievement
     {
         protected readonly DTE Dte;
         private Timer timer;
-        public CircularReferenceAchievement(IServiceContainer shell) : base(shell)
+        public DemoFeatureAchievementAchievement(IServiceContainer shell) : base(shell)
         {
             // TODO: Your turn Jonas.
             timer = new Timer(obj =>

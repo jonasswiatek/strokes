@@ -15,7 +15,9 @@ namespace Strokes.BasicAchievements.Test.TestCases.Expressions
         {
             var items = new List<int>() { 1, 2, 3, 4 };
             
-            var result = from i in items where i > 2 select i;
+            var result = from i in items
+                         where i > 2
+                         select i;
         }
     }
 }

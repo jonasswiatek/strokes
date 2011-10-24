@@ -15,7 +15,8 @@ namespace Strokes.Data
 
         public Settings GetSettings()
         {
-            return Load();
+            var settings = Load();
+            return settings ?? new Settings();
         }
 
         public void SaveSettings(Settings settings)

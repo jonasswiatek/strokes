@@ -2,8 +2,10 @@
 using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using CSharpAchiever.VSX;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
@@ -15,6 +17,7 @@ using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
 using Strokes.Data;
 using Strokes.GUI;
+using Strokes.GUI.ViewModels;
 using Strokes.Service;
 using Strokes.Service.Data;
 using Strokes.VSX.Trackers;
@@ -42,6 +45,7 @@ namespace Strokes.VSX
         private uint updateSolutionEventsCookie = 0;
 
         private readonly IAchievementService _achievementService;
+        private readonly ISettingsRepository _settingsRepository;
         /// <summary>
         /// Initializes a new instance of the <see cref="StrokesVsxPackage"/> class.
         /// </summary>
@@ -55,6 +59,7 @@ namespace Strokes.VSX
             });
 
             _achievementService = ObjectFactory.GetInstance<IAchievementService>();
+            _settingsRepository = ObjectFactory.GetInstance<ISettingsRepository>();
         }
 
         /// <summary>
@@ -117,8 +122,16 @@ namespace Strokes.VSX
         {
             base.Initialize();
 
-            //Set a uiculture
-            //System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru-RU");
+            var preferredLocale = _settingsRepository.GetSettings().PreferredLocale;
+            try
+            {
+                var cInfo = preferredLocale == string.Empty ? CultureInfo.InvariantCulture : CultureInfo.GetCultureInfo(preferredLocale);
+                System.Threading.Thread.CurrentThread.CurrentUICulture = cInfo;
+            }
+            catch
+            {
+                //Ignored. This will throw if the culture in the settings repo isn't a valid culture.
+            }
 
             if (MenuService != null)
             {
@@ -139,7 +152,7 @@ namespace Strokes.VSX
             }
 
             AddService<IAchievementLibraryService>(this, true);
-            AddService<IAchievementService>(_achievementService, true);
+            AddService(_achievementService, true);
 
             RegisterAchievementAssembly(typeof(NRefactoryAchievement).Assembly);
 
