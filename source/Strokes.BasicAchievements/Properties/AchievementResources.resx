@@ -1150,4 +1150,10 @@
   <data name="ThrowExceptionLongMessageAchievementName" xml:space="preserve">
     <value>Very explicit error</value>
   </data>
+  <data name="TwitterChallengeDescription" xml:space="preserve">
+    <value>Check if message don't exceed 140 characters and create a method to compose Retweets.</value>
+  </data>
+  <data name="TwitterChallengeName" xml:space="preserve">
+    <value>Twitter </value>
+  </data>
 </root>

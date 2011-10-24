@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="CaesarChallenge.cs" />
+    <None Include="TwitterChallenge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +66,9 @@
     <VSTemplate Include="CaesarChallenge.vstemplate">
       <OutputSubPath>Achievements (Strokes)</OutputSubPath>
     </VSTemplate>
+  </ItemGroup>
+  <ItemGroup>
+    <VSTemplate Include="TwitterChallenge.vstemplate" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.targets" />

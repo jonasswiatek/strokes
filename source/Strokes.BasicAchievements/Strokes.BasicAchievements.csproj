@@ -197,6 +197,7 @@
     <Compile Include="Challenges\CalculatorChallenge.cs" />
     <Compile Include="Challenges\Challenge.cs" />
     <Compile Include="Challenges\CaesarChallenge.cs" />
+    <Compile Include="Challenges\TwitterChallenge.cs" />
     <Compile Include="NRefactory\CodeBaseAnalysis\CodebaseAnalysisVisitor.cs" />
     <Compile Include="NRefactory\NRefactoryAchievement.cs" />
     <Compile Include="NRefactory\NRefactoryContext.cs" />
