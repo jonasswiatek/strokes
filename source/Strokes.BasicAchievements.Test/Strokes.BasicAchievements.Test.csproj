@@ -48,7 +48,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AchievementLocaizationTest.cs" />
+    <Compile Include="AchievementLocaizationTest.cs" />
     <Compile Include="TestCases\Arrays\ArrayTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -196,7 +196,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="AchievementGuidTest.cs" />
+    <Compile Include="AchievementGuidTest.cs" />
     <Compile Include="TestCases\Expressions\QueryExpressionTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -426,6 +426,10 @@
     <ProjectReference Include="..\Strokes.Data\Strokes.Data.csproj">
       <Project>{798B2FC9-2538-4F93-9AF4-D7EA102C1CE7}</Project>
       <Name>Strokes.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Strokes.FeatureAchievements\Strokes.FeatureAchievements.csproj">
+      <Project>{F5176207-E4E3-4271-B121-71AF1A116515}</Project>
+      <Name>Strokes.FeatureAchievements</Name>
     </ProjectReference>
     <ProjectReference Include="..\Strokes.Service\Strokes.Service.csproj">
       <Project>{6AC1A6EF-D271-46D2-803D-E9B149DE3816}</Project>

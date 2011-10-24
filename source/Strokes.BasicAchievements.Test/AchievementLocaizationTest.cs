@@ -15,6 +15,7 @@ using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 using Strokes.Core.Service;
 using Strokes.Data;
+using Strokes.FeatureAchievements.IdeIntegration;
 using Strokes.Service;
 using Strokes.Service.Data;
 using StructureMap;
@@ -40,6 +41,20 @@ namespace Strokes.BasicAchievements.Test
             achievementService.LoadAchievementsFrom(typeof(ArrayLengthPropertyAchievement).Assembly);
         }
 
+        public static IEnumerable<Type> GetAchievementTypes()
+        {
+            var achievementAssemblies = new[] { typeof(NRefactoryAchievement).Assembly, typeof(IdeIntegrationAchievement).Assembly };
+            var achievementTypes = new List<Type>();
+
+            foreach (var assembly in achievementAssemblies)
+            {
+                var assemblyAchievementTypes = assembly.GetTypes().Where(a => typeof(AchievementBase).IsAssignableFrom(a) && !a.IsAbstract).ToList();
+                achievementTypes.AddRange(assemblyAchievementTypes);
+            }
+
+            return achievementTypes;
+        }
+
         [TestMethod]
         public void TestDefaultCulture()
         {
@@ -54,31 +69,29 @@ namespace Strokes.BasicAchievements.Test
 
         private static void TestLocalizations(CultureInfo cultureInfo)
         {
-            var achievementService = ObjectFactory.GetInstance<IAchievementService>();
-
-            var assembly = typeof (ArrayLengthPropertyAchievement).Assembly;
-            var achievementResourcesType = assembly.GetType("Strokes.Resources.AchievementResources");
-            var categoryResourcesType = assembly.GetType("Strokes.Resources.AchievementCategoryResources");
-
-            var achievementResources = (ResourceManager)achievementResourcesType.GetProperty("ResourceManager", BindingFlags.Static | BindingFlags.Public).GetValue(null, null);
-            var categoryResources = (ResourceManager)categoryResourcesType.GetProperty("ResourceManager", BindingFlags.Static | BindingFlags.Public).GetValue(null, null);
-
-            //Lock to a specific localisation set
-            var achievementResourceSet = achievementResources.GetResourceSet(cultureInfo, true, true);
-            var categoryResourceSet = categoryResources.GetResourceSet(cultureInfo, true, true);
-
-            var achievements = achievementService.GetAllAchievements();
-            var achievementDescriptors = achievements.Select(a => (StaticAnalysisAchievementBase) Activator.CreateInstance(a.AchievementType)).Select(a => new
-                                                                                                                                                 {
-                                                                                                                                                     Descriptor = a.GetDescriptionAttribute(),
-                                                                                                                                                     AchievementType = a.GetType()
-                                                                                                                                                 }).ToList();
+            var achievementDescriptors = GetAchievementTypes().Select(a => new
+                                                                            {
+                                                                                Descriptor = a.GetDescriptionAttribute(),
+                                                                                AchievementType = a
+                                                                            }).ToList();
 
 
             var missingLocalizations = new Dictionary<string, List<string>>();
 
             foreach (var achievementDescriptor in achievementDescriptors)
             {
+                var assembly = achievementDescriptor.AchievementType.Assembly;
+                var achievementResourcesType = assembly.GetType("Strokes.Resources.AchievementResources");
+                var categoryResourcesType = assembly.GetType("Strokes.Resources.AchievementCategoryResources");
+
+                var achievementResources = (ResourceManager)achievementResourcesType.GetProperty("ResourceManager", BindingFlags.Static | BindingFlags.Public).GetValue(null, null);
+                var categoryResources = (ResourceManager)categoryResourcesType.GetProperty("ResourceManager", BindingFlags.Static | BindingFlags.Public).GetValue(null, null);
+
+                //Lock to a specific localisation set
+                var achievementResourceSet = achievementResources.GetResourceSet(cultureInfo, true, true);
+                var categoryResourceSet = categoryResources.GetResourceSet(cultureInfo, true, true);
+
+
                 var descriptor = achievementDescriptor.Descriptor;
                 var achievementClassName = achievementDescriptor.AchievementType.FullName;
                 
@@ -109,6 +122,15 @@ namespace Strokes.BasicAchievements.Test
                 {
                     missingLocalizations.Add(achievementClassName, missingKeys);
                 }
+
+                foreach (System.Collections.DictionaryEntry entry in achievementResourceSet)
+                {
+                    var key = entry.Key;
+                    var isAchievementTitle = achievementDescriptors.Any(a => a.Descriptor.AchievementTitle == "@" + key);
+                    var isAchievementDescription = achievementDescriptors.Any(a => a.Descriptor.AchievementDescription == "@" + key);
+
+                    Assert.IsTrue(isAchievementTitle || isAchievementDescription, "Resource file defines unused key: [" + key + "]");
+                }
             }
 
             if(missingLocalizations.Count > 0)
@@ -119,15 +141,6 @@ namespace Strokes.BasicAchievements.Test
                     logString += missingLocalization.Key + ":\r\n\t" + string.Join("\r\n\t", missingLocalization.Value) + "\r\n\r\n";
                 }
                 Assert.Fail("The following keys are not defined in the RESX file(s) for \"" + cultureInfo.Name + "\":\r\n\r\n" + logString);
-            }
-
-            foreach(System.Collections.DictionaryEntry entry in achievementResourceSet)
-            {
-                var key = entry.Key;
-                var isAchievementTitle = achievementDescriptors.Any(a => a.Descriptor.AchievementTitle == "@" + key);
-                var isAchievementDescription = achievementDescriptors.Any(a => a.Descriptor.AchievementDescription == "@" + key);
-
-                Assert.IsTrue(isAchievementTitle || isAchievementDescription, "Resource file defines unused key: [" + key + "]");
             }
         }
     }
