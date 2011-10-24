@@ -11,7 +11,7 @@ namespace Strokes.BasicAchievements.Challenges
         AchievementCategory = "@Challenges")]
     public class TwitterChallenge : Challenge
     {
-        public TwitterChallenge() : base("Strokes.Challenges.CaesarChallenge.TwitterTest") 
+        public TwitterChallenge() : base("Strokes.Challenges.TwitterChallenge.TwitterTest") 
         {
         }
     }

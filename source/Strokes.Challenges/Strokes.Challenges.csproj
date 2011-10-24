@@ -47,7 +47,7 @@
     <Compile Include="CaesarChallenge\ICaesar.cs" />
     <Compile Include="CalculatorChallenge\CalculatorTest.cs" />
     <Compile Include="CalculatorChallenge\ICalculator.cs" />
-    <Compile Include="TwitterChallenge\ITwitterTest.cs" />
+    <Compile Include="TwitterChallenge\TwitterTest.cs" />
     <Compile Include="TwitterChallenge\ITwitter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
