@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
+using Strokes.FeatureAchievements.IdeIntegration;
 
 namespace Strokes.BasicAchievements.Test
 {
@@ -14,13 +15,20 @@ namespace Strokes.BasicAchievements.Test
         [TestMethod]
         public void TestGuids()
         {
-            var achievementAssembly = typeof(NRefactoryAchievement).Assembly;
-            var achievementImplementations = achievementAssembly.GetTypes().Where(a => typeof(StaticAnalysisAchievementBase).IsAssignableFrom(a) && !a.IsAbstract).Select(b => (StaticAnalysisAchievementBase)Activator.CreateInstance(b));
-            var achievementDescriptors = achievementImplementations.Select(a => new
-                                                                                    {
-                                                                                        Descriptor = a.GetDescriptionAttribute(),
-                                                                                        AchievementType = a.GetType()
-                                                                                    });
+            var achievementAssemblies = new[] {typeof (NRefactoryAchievement).Assembly, typeof (IdeIntegrationAchievement).Assembly};
+            var achievementTypes = new List<Type>();
+
+            foreach(var assembly in achievementAssemblies)
+            {
+                var assemblyAchievementTypes = assembly.GetTypes().Where(a => typeof(AchievementBase).IsAssignableFrom(a) && !a.IsAbstract).ToList();
+                achievementTypes.AddRange(assemblyAchievementTypes);
+            }
+
+            var achievementDescriptors = achievementTypes.Select(a => new
+                                                                        {
+                                                                            Descriptor = a.GetDescriptionAttribute(),
+                                                                            AchievementType = a
+                                                                        }).ToList();
 
             var usedGuids = new List<Guid>();
             foreach (var achievementDescriptor in achievementDescriptors)
@@ -52,7 +60,7 @@ namespace Strokes.BasicAchievements.Test
                 }
             }
 
-            Assert.IsTrue(usedGuids.Count > 0 && usedGuids.Count == achievementImplementations.Count(), 
+            Assert.IsTrue(usedGuids.Count > 0 && usedGuids.Count == achievementTypes.Count(), 
                 "Number of achievements implemented does not match number of guids tested");
         }
     }
