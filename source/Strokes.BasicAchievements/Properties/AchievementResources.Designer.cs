@@ -2095,6 +2095,24 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Write a loop inside another loop.
+        /// </summary>
+        public static string NestedWhileStatementAchievementDescription {
+            get {
+                return ResourceManager.GetString("NestedWhileStatementAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nested loops.
+        /// </summary>
+        public static string NestedWhileStatementAchievementName {
+            get {
+                return ResourceManager.GetString("NestedWhileStatementAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use a not operator to invert an expression.
         /// </summary>
         public static string NotOperatorAchievementDescription {

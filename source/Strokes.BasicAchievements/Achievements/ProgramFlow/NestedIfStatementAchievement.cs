@@ -10,7 +10,11 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{A050D53A-F434-48EB-8A22-3F44F6D5F1DF}", "@NestedIfStatementAchievementName",
         AchievementDescription = "@NestedIfStatementAchievementDescription",
-        AchievementCategory = "@ProgramFlow")]
+        AchievementCategory = "@ProgramFlow",
+        DependsOn = new[]
+        {
+            "{299F7258-CFB2-4FAE-B5A2-949E1B8AB53B}"
+        })]
     public class NestedIfStatementAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)

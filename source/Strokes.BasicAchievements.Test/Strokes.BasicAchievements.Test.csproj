@@ -371,6 +371,9 @@
     <Compile Include="TestCases\PrimitiveTypeUsage\DeclarePrimitiveTypeAsFieldTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="TestCases\ProgramFlow\NestedWhileLoopTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="TestCases\ProgramFlow\IfShorthandTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>

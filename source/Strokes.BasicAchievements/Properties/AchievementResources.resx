@@ -1156,4 +1156,10 @@
   <data name="TwitterChallengeName" xml:space="preserve">
     <value>Twitter </value>
   </data>
+  <data name="NestedWhileStatementAchievementDescription" xml:space="preserve">
+    <value>Write a loop inside another loop</value>
+  </data>
+  <data name="NestedWhileStatementAchievementName" xml:space="preserve">
+    <value>Nested loops</value>
+  </data>
 </root>

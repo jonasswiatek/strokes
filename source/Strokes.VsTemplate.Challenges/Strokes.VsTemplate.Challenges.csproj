@@ -70,6 +70,7 @@
   <ItemGroup>
     <VSTemplate Include="TwitterChallenge.vstemplate">
       <OutputSubPath>Achievements (Strokes)</OutputSubPath>
+      <SubType>Designer</SubType>
     </VSTemplate>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -20,14 +20,6 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
-            /* By Jonas: While Loop shouldn't unlock on dowhile should it?
-            public override object VisitDoWhileStatement(DoWhileStatement doWhileStatement, object data)
-            {
-                UnlockWith(doWhileStatement);
-
-                return base.VisitDoWhileStatement(doWhileStatement, data);
-            }*/
-
             public override object VisitWhileStatement(WhileStatement whileStatement, object data)
             {
                 UnlockWith(whileStatement);
