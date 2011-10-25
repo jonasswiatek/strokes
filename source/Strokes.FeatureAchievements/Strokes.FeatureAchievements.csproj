@@ -122,7 +122,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AchievementResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Achievements\DemoFeatureAchievementAchievement.cs" />
+    <Compile Include="Achievements\DemoFeatureAchievement.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="IdeIntegrationAchievementObserver.cs" />
     <Compile Include="IdeIntegration\IdeIntegrationAchievement.cs" />

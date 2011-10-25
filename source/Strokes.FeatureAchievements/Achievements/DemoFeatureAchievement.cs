@@ -15,11 +15,11 @@ namespace Strokes.FeatureAchievements.Achievements
     [AchievementDescriptor("{60263C58-5C3B-45A0-9702-ED1F272AC3F7}", "@DemoFeatureAchievementName",
     AchievementDescription = "@DemoFeatureAchievementNameDescription",
     AchievementCategory = "@IDE")]
-    public class DemoFeatureAchievementAchievement : IdeIntegrationAchievement
+    public class DemoFeatureAchievement : IdeIntegrationAchievement
     {
         protected readonly DTE Dte;
         private Timer timer;
-        public DemoFeatureAchievementAchievement(IServiceContainer shell) : base(shell)
+        public DemoFeatureAchievement(IServiceContainer shell) : base(shell)
         {
             // TODO: Your turn Jonas.
             timer = new Timer(obj =>
