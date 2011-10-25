@@ -68,7 +68,9 @@
     </VSTemplate>
   </ItemGroup>
   <ItemGroup>
-    <VSTemplate Include="TwitterChallenge.vstemplate" />
+    <VSTemplate Include="TwitterChallenge.vstemplate">
+      <OutputSubPath>Achievements (Strokes)</OutputSubPath>
+    </VSTemplate>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.targets" />

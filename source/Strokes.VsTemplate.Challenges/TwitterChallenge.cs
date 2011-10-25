@@ -6,16 +6,16 @@ $endif$using System.Text;
 
 namespace $rootnamespace$
 {
-	class $safeitemrootname$ : ITwitter
+	public class $safeitemrootname$ : ITwitter
 	{
         //Checks if message is less than 140 characters
-        bool CheckMessageLength(string message)
+        public bool CheckMessageLength(string message)
 	    {
 	        throw new NotImplementedException();
 	    }
 
         //Should return string "additionalMessage RT @[originalSender] [originalMessage]" 
-        string ComposeRetweetMessage(string  originalmessage, string originalSender, string additionalMessage)
+        public string ComposeRetweetMessage(string  originalmessage, string originalSender, string additionalMessage)
 	    {
 	        throw new NotImplementedException();
 	    }
