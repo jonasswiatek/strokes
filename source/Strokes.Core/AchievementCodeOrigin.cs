@@ -29,10 +29,9 @@ namespace Strokes.Core
                 if (firstLine == null)
                     return string.Empty;
 
-                var indentationSpaces = Regex.Match(firstLine, @"^\s+");
-                var indentationLevel = indentationSpaces.Length;
+                var indentationLevel = Regex.Match(firstLine, @"^\s+").Length;
 
-                return string.Join("\r\n", actualLines.Select(a => a.Length > indentationLevel ? a.Substring(indentationLevel) : a));
+                return string.Join("\r\n", actualLines.Select(a => Regex.Replace(a, @"^\s{0," + indentationLevel + "}", "")));
             }
             return string.Empty;
         }

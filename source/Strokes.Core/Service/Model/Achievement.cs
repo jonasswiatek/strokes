@@ -77,6 +77,8 @@ namespace Strokes.Core.Service.Model
             set;
         }
 
+        public Uri HintUri { get; set; }
+
         public Type AchievementType
         {
             get;
