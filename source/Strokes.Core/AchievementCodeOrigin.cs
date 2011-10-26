@@ -15,7 +15,7 @@ namespace Strokes.Core
             To = new CodeAnchor();            
         }
         
-        public string GetCodeSnippet()
+        public string GetCodeSnapshot()
         {
             if(File.Exists(FileName))
             {
