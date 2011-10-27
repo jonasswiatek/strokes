@@ -105,7 +105,13 @@
     <Compile Include="TestCases\Classes\AsKeywordTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="TestCases\Classes\SealedClassAchievementTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="TestCases\Classes\OverrideMethodTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TestCases\Classes\SealedMethodAchievementTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="TestCases\Classes\VirtualMethodTest.cs">
