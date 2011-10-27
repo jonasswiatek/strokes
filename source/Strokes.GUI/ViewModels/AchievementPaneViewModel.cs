@@ -96,6 +96,13 @@ namespace Strokes.GUI
             }
         }
 
+        private void OnSelectedCultureChanged()
+        {
+            var settings = settingsRepository.GetSettings();
+            settings.PreferredLocale = SelectedCulture.CultureKey;
+            settingsRepository.SaveSettings(settings);
+        }
+
         private void LoadCultures()
         {
             AvailableCultures.Add(new CultureItem()

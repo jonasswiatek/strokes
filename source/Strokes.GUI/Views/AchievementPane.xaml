@@ -8,9 +8,9 @@
              d:DesignHeight="800"
              d:DesignWidth="1024"
              mc:Ignorable="d">
-    <!--<UserControl.DataContext>
+    <UserControl.DataContext>
         <viewmodels:AchievementPaneViewModel />
-    </UserControl.DataContext>-->
+    </UserControl.DataContext>
     <UserControl.Resources>
         <ResourceDictionary>
             <properties:AppResources x:Key="AppResources" />
@@ -131,7 +131,7 @@
                 <Grid>
                     <Button Width="211.417"
                             Height="34"
-                            Margin="17,21,0,0"
+                            Margin="17,30,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Background="{x:Null}"
@@ -153,28 +153,30 @@
                             Style="{DynamicResource AchievementButtonStyle}" />
                     <ComboBox Width="211.417"
                               Height="34"
-                              Margin="17,130.04,0,0"
+                              Margin="17,151.54,0,0"
                               HorizontalAlignment="Left"
                               VerticalAlignment="Top"
                               Background="{StaticResource ButtonBackgroundBrush}"
                               BorderBrush="{DynamicResource AchievementBorder}"
                               Foreground="{DynamicResource AchievementForeground}"
+                              ItemsSource="{Binding AvailableCultures}"
+                              DisplayMemberPath="DisplayName"
                               SelectedItem="{Binding SelectedCulture}"
-                              Style="{DynamicResource ComboBoxDarkStyle}">
-                    	<ComboBoxItem Content="ENGLISH"/>
-                    	<ComboBoxItem Content="DANISH"/>
-                    	<ComboBoxItem Content="RUSSIAN" IsSelected="True"/>
-                    	<ComboBoxItem Content="DUTCH"/>
-                    </ComboBox>
-                    <!--
-                        <TextBlock Width="109"
-                        Height="18"
-                        Margin="29.917,138.04,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Text="SELECT LANGUAGE"
-                        TextWrapping="Wrap" />
-                    -->
+                              Style="{DynamicResource ComboBoxDarkStyle}" />
+                    <TextBlock Width="109"
+                               Height="18"
+                               Margin="17,125.04,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               Text="LANGUAGE"
+                               TextWrapping="Wrap" />
+                    <TextBlock Width="109"
+                               Height="18"
+                               Margin="17,8,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               Text="SETTINGS"
+                               TextWrapping="Wrap" />
                 </Grid>
             </TabItem>
         </TabControl>
