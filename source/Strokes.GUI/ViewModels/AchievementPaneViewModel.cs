@@ -28,6 +28,10 @@ namespace Strokes.GUI
         private const string TotalAchievementsFieldName = "TotalAchievements";
         private const string TotalCompletedFieldName = "TotalCompleted";
         private const string PercentageCompletedFieldName = "PercentageCompleted";
+
+        const string EnableText = "ENABLE STROKES FOR ALL PROJECTS";
+        const string DisableText = "DISABLE STROKES FOR ALL PROJECTS";
+
         private readonly IAchievementService achievementService;
         private readonly ISettingsRepository settingsRepository;
         private readonly AchievementNotificationBox notificationBox; 
@@ -36,7 +40,9 @@ namespace Strokes.GUI
         {
             AchievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
             AvailableCultures = new ObservableCollection<CultureItem>();
+            
             ResetCommand = new RelayCommand(ResetExecute);
+            ToggleCommand = new RelayCommand(ToggleExecute);
 
             achievementService = ObjectFactory.GetInstance<IAchievementService>();
             settingsRepository = ObjectFactory.GetInstance<ISettingsRepository>();
@@ -61,6 +67,12 @@ namespace Strokes.GUI
         }
 
         public ICommand ResetCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand ToggleCommand
         {
             get;
             private set;
@@ -94,6 +106,12 @@ namespace Strokes.GUI
             {
                 return TotalAchievements != 0 ? (int)(((double)TotalCompleted / (double)TotalAchievements) * 100) : 0;
             }
+        }
+
+        public string Toggled
+        {
+            get;
+            set;
         }
 
         private void OnSelectedCultureChanged()
@@ -136,6 +154,8 @@ namespace Strokes.GUI
             var settings = settingsRepository.GetSettings();
             SelectedCulture = AvailableCultures.FirstOrDefault(
                 x => x.CultureKey == settings.PreferredLocale);
+
+            Toggled = settings.EnableInAllProjects ? DisableText : EnableText;
         }
 
         private void ResetExecute()
@@ -146,6 +166,15 @@ namespace Strokes.GUI
                 ReloadViewModel();
                 Messenger.Default.Send(new ResetAchievementsMessage());
             }   
+        }
+
+        private void ToggleExecute()
+        {
+            var settings = settingsRepository.GetSettings();
+            settings.EnableInAllProjects = !settings.EnableInAllProjects;
+            settingsRepository.SaveSettings(settings);
+
+            Toggled = settings.EnableInAllProjects ? DisableText : EnableText;
         }
 
         private void ReloadViewModel()

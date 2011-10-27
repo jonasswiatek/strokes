@@ -129,7 +129,7 @@
                                       Mode=OneWay}"
                      Style="{DynamicResource AchievementTabItemStyle}">
                 <Grid>
-                    <Button Width="211.417"
+                    <Button Width="235"
                             Height="34"
                             Margin="17,30,0,0"
                             HorizontalAlignment="Left"
@@ -148,10 +148,11 @@
                             VerticalAlignment="Top"
                             Background="{x:Null}"
                             BorderBrush="{x:Null}"
-                            Content="ENABLE STROKES IN ALL PROJECTS"
+                            Content="{Binding Toggled}"
+                            Command="{Binding ToggleCommand}"
                             Foreground="{DynamicResource AchievementForeground}"
-                            Style="{DynamicResource AchievementButtonStyle}" />
-                    <ComboBox Width="211.417"
+                            Style="{DynamicResource AchievementButtonStyle}" Width="235" />
+                    <ComboBox Width="235"
                               Height="34"
                               Margin="17,151.54,0,0"
                               HorizontalAlignment="Left"
