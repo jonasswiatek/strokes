@@ -1,0 +1,15 @@
+﻿<core:Achievement xmlns:core="clr-namespace:Strokes.Core.Service.Model;assembly=Strokes.Core"
+                  Name="Achievement Name"
+                  Category="Basic Achievements"
+                  DateCompleted="07/12/2011 11:12:58"
+                  Description="Achievement description here."
+                  Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                  HintUri="http://msdn.microsoft.com/en-us/library/sz6zd40f(v=VS.100).aspx"
+                  IsCompleted="True">
+    <core:Achievement.Unlocks>
+        <core:Achievement Name="Lambda" />
+        <core:Achievement Name="Hello World" />
+        <core:Achievement Name="Testbug" />
+    </core:Achievement.Unlocks>
+</core:Achievement>
+                  

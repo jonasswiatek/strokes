@@ -4,23 +4,44 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:properties="clr-namespace:Strokes.GUI.Properties"
+             d:DataContext="{d:DesignData Source=/SampleData/TemplateBareSampleData.xaml}"
              d:DesignHeight="100"
              d:DesignWidth="400"
              mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <properties:AppResources x:Key="AppResources" />
+            <Storyboard x:Key="FadeInStoryboard">
+                <DoubleAnimation Duration="0:0:0.5"
+                                 From="0.0"
+                                 Storyboard.TargetName="ExtraInfo"
+                                 Storyboard.TargetProperty="Height"
+                                 To="20.0" />
+            </Storyboard>
+            <Storyboard x:Key="FadeOutStoryboard">
+                <DoubleAnimation Duration="0:0:0.5"
+                                 From="20.0"
+                                 Storyboard.TargetName="ExtraInfo"
+                                 Storyboard.TargetProperty="Height"
+                                 To="0.0" />
+            </Storyboard>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Strokes.GUI;component/Resources/Styles/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
+    <Grid x:Name="LayoutRoot"
+          MouseDown="Achievement_Clicked">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Border Grid.Column="0"
+        <Border Grid.Row="0"
+                Grid.Column="0"
                 Margin="0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
@@ -33,7 +54,8 @@
                    Source="{Binding Image,
                                     Converter={StaticResource StringToImageSourceConverter}}" />
         </Border>
-        <Grid Grid.Column="1">
+        <Grid Grid.Row="0"
+              Grid.Column="1">
             <StackPanel Margin="10,5,5,17"
                         Orientation="Vertical">
                 <TextBlock FontFamily="Segoe UI Semibold"
@@ -67,6 +89,25 @@
                                           Mode=OneWay}"
                            TextWrapping="Wrap" />
             </StackPanel>
+        </Grid>
+        <Grid x:Name="ExtraInfo"
+              Grid.Row="1"
+              Grid.Column="1"
+              Height="0">
+            <Grid Margin="30,2,6,0"
+                  VerticalAlignment="Bottom">
+                <TextBlock Foreground="{DynamicResource AchievementSubtleFontColor}"
+                           Text="Read more at " />
+                <TextBlock Margin="75,0,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Cursor="Hand"
+                           Foreground="{DynamicResource AchievementSubtleFontColor}"
+                           MouseLeftButtonDown="HintUri_Clicked"
+                           Text="{Binding HintUri,
+                                          Mode=OneWay}"
+                           TextDecorations="Underline" />
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>
