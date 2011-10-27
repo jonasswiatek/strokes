@@ -70,7 +70,12 @@ namespace Strokes.BasicAchievements.Achievements
                     {
                         targetSystemType = "System." + targetSystemType;
                     }
-                    if (targetSystemType == _systemType)
+
+                    var memberReference = invocationExpression.Target as MemberReferenceExpression;
+                    var systemType = Type.GetType(_systemType);
+
+                    if (targetSystemType == _systemType ||
+                        (memberReference != null && (memberReference.Target.IsCallToType(_systemType) || memberReference.Target.ToString() == systemType.GetShorthandOfType()) && memberReference.MemberName == _methodName))
                     {
                         if(!_requrements.Any())
                         {
