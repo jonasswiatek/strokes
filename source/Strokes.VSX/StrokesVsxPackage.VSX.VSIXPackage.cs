@@ -1,8 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Design;
-using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -11,13 +9,10 @@ using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Strokes.BasicAchievements.NRefactory;
-using Strokes.Core;
 using Strokes.Core.Integration;
 using Strokes.Core.Service;
-using Strokes.Core.Service.Model;
 using Strokes.Data;
 using Strokes.GUI;
-using Strokes.GUI.ViewModels;
 using Strokes.Service;
 using Strokes.Service.Data;
 using Strokes.VSX.Trackers;
@@ -39,13 +34,14 @@ namespace Strokes.VSX
     [Guid(GuidList.guidCSharpAchiever_Achiever_VSIXPkgString)]
     public sealed class StrokesVsxPackage : PackageEx, IAchievementLibraryService
     {
+        private readonly IAchievementService achievementService;
+        private readonly ISettingsRepository settingsRepository;
+
         /// <summary>
         /// Cookie that allows the package to stop listening for build events.
         /// </summary>
         private uint updateSolutionEventsCookie = 0;
 
-        private readonly IAchievementService _achievementService;
-        private readonly ISettingsRepository _settingsRepository;
         /// <summary>
         /// Initializes a new instance of the <see cref="StrokesVsxPackage"/> class.
         /// </summary>
@@ -53,13 +49,25 @@ namespace Strokes.VSX
         {
             ObjectFactory.Configure(a =>
             {
-                a.For<IAchievementRepository>().Singleton().Use<AppDataXmlCompletedAchievementsRepository>().Ctor<string>("storageFile").Is("AchievementStorage.xml");
-                a.For<ISettingsRepository>().Singleton().Use<AppDataXmlSettingsRepository>().Ctor<string>("storageFile").Is("SettingsStorage.xml");
-                a.For<IAchievementService>().Singleton().Use<ParallelStrokesAchievementService>();
+                a.For<IAchievementRepository>()
+                 .Singleton()
+                 .Use<AppDataXmlCompletedAchievementsRepository>()
+                 .Ctor<string>("storageFile")
+                 .Is("AchievementStorage.xml");
+
+                a.For<ISettingsRepository>()
+                 .Singleton()
+                 .Use<AppDataXmlSettingsRepository>()
+                 .Ctor<string>("storageFile")
+                 .Is("SettingsStorage.xml");
+
+                a.For<IAchievementService>()
+                 .Singleton()
+                 .Use<ParallelStrokesAchievementService>();
             });
 
-            _achievementService = ObjectFactory.GetInstance<IAchievementService>();
-            _settingsRepository = ObjectFactory.GetInstance<ISettingsRepository>();
+            achievementService = ObjectFactory.GetInstance<IAchievementService>();
+            settingsRepository = ObjectFactory.GetInstance<ISettingsRepository>();
         }
 
         /// <summary>
@@ -68,7 +76,7 @@ namespace Strokes.VSX
         /// <param name="assembly">The assembly to register.</param>
         public void RegisterAchievementAssembly(Assembly assembly)
         {
-            _achievementService.LoadAchievementsFrom(assembly);
+            achievementService.LoadAchievementsFrom(assembly);
         }
 
         /// <summary>
@@ -122,11 +130,14 @@ namespace Strokes.VSX
         {
             base.Initialize();
 
-            var preferredLocale = _settingsRepository.GetSettings().PreferredLocale;
+            var preferredLocale = settingsRepository.GetSettings().PreferredLocale;
             try
             {
-                var cInfo = preferredLocale == string.Empty ? CultureInfo.InvariantCulture : CultureInfo.GetCultureInfo(preferredLocale);
-                System.Threading.Thread.CurrentThread.CurrentUICulture = cInfo;
+                var cultureInfo = preferredLocale == string.Empty
+                                ? CultureInfo.InvariantCulture
+                                : CultureInfo.GetCultureInfo(preferredLocale);
+
+                System.Threading.Thread.CurrentThread.CurrentUICulture = cultureInfo;
             }
             catch
             {
@@ -146,18 +157,18 @@ namespace Strokes.VSX
 
             if (SolutionBuildManager != null)
             {
-                var buildTracker = new BuildTracker(DTE, _achievementService);
+                var buildTracker = new BuildTracker(DTE, achievementService);
 
                 SolutionBuildManager.AdviseUpdateSolutionEvents(buildTracker, out updateSolutionEventsCookie);
             }
 
             AddService<IAchievementLibraryService>(this, true);
-            AddService(_achievementService, true);
+            AddService(achievementService, true);
 
             RegisterAchievementAssembly(typeof(NRefactoryAchievement).Assembly);
 
             AchievementUIContext.AchievementClicked += AchievementContext_AchievementClicked;
-            _achievementService.StaticAnalysisCompleted += DetectionDispatcher_DetectionCompleted;
+            achievementService.StaticAnalysisCompleted += DetectionDispatcher_DetectionCompleted;
         }
 
         /// <summary>

@@ -121,7 +121,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ViewModels\AchievementNotificationViewModel.cs" />
-    <Compile Include="ViewModels\LocalizationViewModel.cs" />
     <Compile Include="Views\AchievementNotificationBox.xaml.cs">
       <DependentUpon>AchievementNotificationBox.xaml</DependentUpon>
     </Compile>
@@ -133,7 +132,7 @@
     <Compile Include="Views\AchievementViewportControl.xaml.cs">
       <DependentUpon>AchievementViewportControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\AllAchievementsViewModel.cs" />
+    <Compile Include="ViewModels\AchievementPaneViewModel.cs" />
     <Compile Include="VsAdornments\AchievementAdornments.cs" />
     <Compile Include="VsAdornments\AchievementAdornmentsFactory.cs" />
     <Page Include="Views\AchievementNotificationBox.xaml">
@@ -231,12 +230,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\default.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <DesignData Include="SampleData\NotificationViewModelSampleData.xaml">
-      <SubType>Designer</SubType>
-    </DesignData>
-    <DesignData Include="SampleData\AllAchievementsViewModelSampleData.xaml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,13 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:properties="clr-namespace:Strokes.GUI.Properties"
              xmlns:viewmodels="clr-namespace:Strokes.GUI"
-             d:DataContext="{d:DesignData Source=/SampleData/AllAchievementsViewModelSampleData.xaml}"
              d:DesignHeight="800"
              d:DesignWidth="1024"
              mc:Ignorable="d">
-    <UserControl.DataContext>
-        <viewmodels:AllAchievementsViewModel />
-    </UserControl.DataContext>
+    <!--<UserControl.DataContext>
+        <viewmodels:AchievementPaneViewModel />
+    </UserControl.DataContext>-->
     <UserControl.Resources>
         <ResourceDictionary>
             <properties:AppResources x:Key="AppResources" />
@@ -148,22 +147,34 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Background="{x:Null}"
-                            BorderBrush="{DynamicResource AchievementBorder}"
+                            BorderBrush="{x:Null}"
                             Content="ENABLE STROKES IN ALL PROJECTS"
                             Foreground="{DynamicResource AchievementForeground}"
                             Style="{DynamicResource AchievementButtonStyle}" />
-                    <ComboBox   Width="211.417"
-                                ItemsSource="{Binding}"
-                                Height="34"
-                                Margin="17,132.686,0,0"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Top"
-                                Background="{x:Null}"
-                                BorderBrush="{DynamicResource AchievementBorder}"
-                                Foreground="{DynamicResource AchievementForeground}"
-                                DisplayMemberPath="DisplayName"
-                                SelectedValuePath="CultureKey"
-                                Name="LanguageSelector" />
+                    <ComboBox Width="211.417"
+                              Height="34"
+                              Margin="17,130.04,0,0"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top"
+                              Background="{StaticResource ButtonBackgroundBrush}"
+                              BorderBrush="{DynamicResource AchievementBorder}"
+                              Foreground="{DynamicResource AchievementForeground}"
+                              SelectedItem="{Binding SelectedCulture}"
+                              Style="{DynamicResource ComboBoxDarkStyle}">
+                    	<ComboBoxItem Content="ENGLISH"/>
+                    	<ComboBoxItem Content="DANISH"/>
+                    	<ComboBoxItem Content="RUSSIAN" IsSelected="True"/>
+                    	<ComboBoxItem Content="DUTCH"/>
+                    </ComboBox>
+                    <!--
+                        <TextBlock Width="109"
+                        Height="18"
+                        Margin="29.917,138.04,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Text="SELECT LANGUAGE"
+                        TextWrapping="Wrap" />
+                    -->
                 </Grid>
             </TabItem>
         </TabControl>

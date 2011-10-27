@@ -1,11 +1,11 @@
-<Strokes_GUI:AllAchievementsViewModel xmlns:Model="clr-namespace:Strokes.Core.Data.Model;assembly=Strokes.Core"
+﻿<Strokes_GUI:AchievementPaneViewModel xmlns:Model="clr-namespace:Strokes.Core.Data.Model;assembly=Strokes.Core"
                                       xmlns:Strokes_Core="clr-namespace:Strokes.Core;assembly=Strokes.Core"
                                       xmlns:Strokes_GUI="clr-namespace:Strokes.GUI"
                                       xmlns:Model1="clr-namespace:Strokes.Core.Service.Model;assembly=Strokes.Core"
                                       PercentageCompleted="58"
                                       TotalAchievements="72"
                                       TotalCompleted="42">
-    <Strokes_GUI:AllAchievementsViewModel.AchievementsOrdered>
+    <Strokes_GUI:AchievementPaneViewModel.AchievementsOrdered>
         <Strokes_GUI:AchievementsPerCategory CategoryName="Basic Achievements"
                                              PercentageCompleted="0"
                                              TotalCompleted="0">
@@ -126,5 +126,5 @@
                                Image="/Strokes.GUI;component/Resources/Icons/default.png"
                                IsCompleted="True" />
         </Strokes_GUI:AchievementsPerCategory>
-    </Strokes_GUI:AllAchievementsViewModel.AchievementsOrdered>
-</Strokes_GUI:AllAchievementsViewModel>
+    </Strokes_GUI:AchievementPaneViewModel.AchievementsOrdered>
+</Strokes_GUI:AchievementPaneViewModel>

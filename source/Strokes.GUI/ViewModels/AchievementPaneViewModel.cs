@@ -16,33 +16,45 @@ using StructureMap;
 using GalaSoft.MvvmLight.Messaging;
 using Strokes.GUI.Views;
 using System.Windows;
+using System.IO;
+using System.Globalization;
+using Strokes.Service.Data;
 
 namespace Strokes.GUI
 {
-    public class AllAchievementsViewModel : ViewModelBase
+    public class AchievementPaneViewModel : ViewModelBase
     {
         private const string OrderedAchievementsFieldName = "AchievementsOrdered";
         private const string TotalAchievementsFieldName = "TotalAchievements";
         private const string TotalCompletedFieldName = "TotalCompleted";
         private const string PercentageCompletedFieldName = "PercentageCompleted";
         private readonly IAchievementService achievementService;
+        private readonly ISettingsRepository settingsRepository;
         private readonly AchievementNotificationBox notificationBox; 
 
-        public AllAchievementsViewModel()
+        public AchievementPaneViewModel()
         {
             AchievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
+            AvailableCultures = new ObservableCollection<CultureItem>();
             ResetCommand = new RelayCommand(ResetExecute);
 
             achievementService = ObjectFactory.GetInstance<IAchievementService>();
+            settingsRepository = ObjectFactory.GetInstance<ISettingsRepository>();
 
             notificationBox = new AchievementNotificationBox(achievementService);
-
             achievementService.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
 
             ReloadViewModel();
+            LoadCultures();
         }
 
         public ObservableCollection<AchievementsPerCategory> AchievementsOrdered
+        {
+            get;
+            private set;
+        }
+
+        public ObservableCollection<CultureItem> AvailableCultures
         {
             get;
             private set;
@@ -52,6 +64,12 @@ namespace Strokes.GUI
         {
             get;
             private set;
+        }
+
+        public CultureItem SelectedCulture
+        {
+            get;
+            set;
         }
 
         public int TotalAchievements
@@ -76,6 +94,41 @@ namespace Strokes.GUI
             {
                 return TotalAchievements != 0 ? (int)(((double)TotalCompleted / (double)TotalAchievements) * 100) : 0;
             }
+        }
+
+        private void LoadCultures()
+        {
+            AvailableCultures.Add(new CultureItem()
+            {
+                CultureKey = "en",
+                DisplayName = "ENGLISH"
+            });
+
+            var assembly = GetType().Assembly;
+            var assemblyPath = Path.GetDirectoryName(assembly.Location);
+
+            foreach (var dir in Directory.GetDirectories(assemblyPath))
+            {
+                try
+                {
+                    var directoryInfo = new DirectoryInfo(dir);
+                    var culture = CultureInfo.GetCultureInfo(directoryInfo.Name);
+
+                    AvailableCultures.Add(new CultureItem
+                    {
+                        DisplayName = culture.DisplayName.ToUpper(),
+                        CultureKey = culture.Name
+                    });
+                }
+                catch
+                {
+                    // Intentionally ignored.
+                }
+            }
+
+            var settings = settingsRepository.GetSettings();
+            SelectedCulture = AvailableCultures.FirstOrDefault(
+                x => x.CultureKey == settings.PreferredLocale);
         }
 
         private void ResetExecute()
@@ -140,6 +193,29 @@ namespace Strokes.GUI
             RaisePropertyChanged(OrderedAchievementsFieldName);
             RaisePropertyChanged(TotalCompletedFieldName);
             RaisePropertyChanged(PercentageCompletedFieldName);
+        }
+    }
+
+    public class CultureItem : IEquatable<CultureItem>
+    {
+        public string DisplayName
+        {
+            get;
+            set;
+        }
+
+        public string CultureKey
+        {
+            get;
+            set;
+        }
+
+        public bool Equals(CultureItem other)
+        {
+            if (other == null)
+                return false;
+
+            return this.CultureKey == other.CultureKey;
         }
     }
 

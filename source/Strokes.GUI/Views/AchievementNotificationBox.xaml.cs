@@ -31,7 +31,6 @@ namespace Strokes.GUI.Views
                 UnlockedAchievementsList.LayoutUpdated += UnlockedAchievementsList_LayoutUpdated;
             }
 
-            //Hides the notificationbox when the user has finished a successful compile.
             achievementService.StaticAnalysisStarted += (sender, args) => DismissNotifications();
         }
 
@@ -43,16 +42,10 @@ namespace Strokes.GUI.Views
             }
         }
 
-        /// <summary>
-        /// Locates the magnifying glass inside the templates, and binds an event to it.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void UnlockedAchievementsList_LayoutUpdated(object sender, EventArgs e)
         {
             CorrectPlacement();
 
-            //REFACTORING: The below code seems to be pretty cra. The .IsEnabled = false does not even seem to hide the magnifier. And attaching the events like this - surely there is a better way.
             if (isEventsBound)
                 return;
 
@@ -124,7 +117,7 @@ namespace Strokes.GUI.Views
             const int bottomMargin = 5;
 
             Owner = Application.Current.MainWindow != this ? Application.Current.MainWindow : Owner;
-                
+
             if (Owner != null)
             {
                 System.Drawing.Rectangle windowRectangle;
@@ -157,7 +150,7 @@ namespace Strokes.GUI.Views
 
             isEventsBound = false;
             AddAchievements(achievementDescriptors);
-            
+
             if (Application.Current != null)
             {
                 Show();

@@ -1,4 +1,4 @@
-<Strokes_GUI:AchievementNotificationViewModel xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+﻿<Strokes_GUI:AchievementNotificationViewModel xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                               xmlns:Model="clr-namespace:Strokes.Core.Data.Model;assembly=Strokes.Core"
                                               xmlns:Strokes_Core="clr-namespace:Strokes.Core;assembly=Strokes.Core"
                                               xmlns:Strokes_GUI="clr-namespace:Strokes.GUI"
