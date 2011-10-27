@@ -16,32 +16,26 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
-            return new Visitor(NRefactoryContext.CodebaseDeclarations);
+            return new Visitor(NRefactoryContext);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private readonly IEnumerable<DeclarationInfo> _codebaseDeclarations;
+            private readonly NRefactoryContext _nRefactoryContext;
 
-            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarations)
+            public Visitor(NRefactoryContext nRefactoryContext)
             {
-                _codebaseDeclarations = codebaseDeclarations;
+                _nRefactoryContext = nRefactoryContext;
             }
 
-            public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
+            public override void OnParsingCompleted()
             {
-                const string typeToUse = "System.Threading.Thread";
-                const string methodToFind = "Start";
-
-                var target = invocationExpression.Target as MemberReferenceExpression;
-                if (target != null && target.MemberName == methodToFind)
+                var threadStartExpression = _nRefactoryContext.InvokedSystemTypes.FirstOrDefault(a => a.SystemType == typeof (System.Threading.Thread) && a.MethodName == "Start");
+                if (threadStartExpression != null)
                 {
-                    if (_codebaseDeclarations.Any(a => a.Name == target.Target.GetIdentifier() && a.IsType(typeToUse)) || target.IsReferenceOfTypeFromScope(typeToUse))
-                    {
-                        UnlockWith(invocationExpression);
-                    }
+                    UnlockWith(threadStartExpression.OriginalExpression);
                 }
-                return base.VisitInvocationExpression(invocationExpression, data);
+                base.OnParsingCompleted();
             }
         }
     }
@@ -53,32 +47,26 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
-            return new Visitor(NRefactoryContext.CodebaseDeclarations);
+            return new Visitor(NRefactoryContext);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private readonly IEnumerable<DeclarationInfo> _codebaseDeclarations;
+            private readonly NRefactoryContext _nRefactoryContext;
 
-            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarations)
+            public Visitor(NRefactoryContext nRefactoryContext)
             {
-                _codebaseDeclarations = codebaseDeclarations;
+                _nRefactoryContext = nRefactoryContext;
             }
 
-            public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
+            public override void OnParsingCompleted()
             {
-                const string typeToUse = "System.Threading.Thread";
-                const string methodToFind = "Join";
-
-                var target = invocationExpression.Target as MemberReferenceExpression;
-                if (target != null && target.MemberName == methodToFind)
+                var threadStartExpression = _nRefactoryContext.InvokedSystemTypes.FirstOrDefault(a => a.SystemType == typeof(System.Threading.Thread) && a.MethodName == "Join");
+                if (threadStartExpression != null)
                 {
-                    if (_codebaseDeclarations.Any(a => a.Name == target.Target.GetIdentifier() && a.IsType(typeToUse)) || target.IsReferenceOfTypeFromScope(typeToUse))
-                    {
-                        UnlockWith(invocationExpression);
-                    }
+                    UnlockWith(threadStartExpression.OriginalExpression);
                 }
-                return base.VisitInvocationExpression(invocationExpression, data);
+                base.OnParsingCompleted();
             }
         }
     }
@@ -91,32 +79,26 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
-            return new Visitor(NRefactoryContext.CodebaseDeclarations);
+            return new Visitor(NRefactoryContext);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private readonly IEnumerable<DeclarationInfo> _codebaseDeclarations;
+            private readonly NRefactoryContext _nRefactoryContext;
 
-            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarations)
+            public Visitor(NRefactoryContext nRefactoryContext)
             {
-                _codebaseDeclarations = codebaseDeclarations;
+                _nRefactoryContext = nRefactoryContext;
             }
 
-            public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
+            public override void OnParsingCompleted()
             {
-                const string typeToUse = "System.Threading.Thread";
-                const string methodToFind = "Abort";
-
-                var target = invocationExpression.Target as MemberReferenceExpression;
-                if (target != null && target.MemberName == methodToFind)
+                var threadStartExpression = _nRefactoryContext.InvokedSystemTypes.FirstOrDefault(a => a.SystemType == typeof(System.Threading.Thread) && a.MethodName == "Abort");
+                if (threadStartExpression != null)
                 {
-                    if (_codebaseDeclarations.Any(a => a.Name == target.Target.GetIdentifier() && a.IsType(typeToUse)) || target.IsReferenceOfTypeFromScope(typeToUse))
-                    {
-                        UnlockWith(invocationExpression);
-                    }
+                    UnlockWith(threadStartExpression.OriginalExpression);
                 }
-                return base.VisitInvocationExpression(invocationExpression, data);
+                base.OnParsingCompleted();
             }
         }
     }
@@ -128,32 +110,26 @@ namespace Strokes.BasicAchievements.Achievements
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
-            return new Visitor(NRefactoryContext.CodebaseDeclarations);
+            return new Visitor(NRefactoryContext);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private readonly IEnumerable<DeclarationInfo> _codebaseDeclarations;
+            private readonly NRefactoryContext _nRefactoryContext;
 
-            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarations)
+            public Visitor(NRefactoryContext nRefactoryContext)
             {
-                _codebaseDeclarations = codebaseDeclarations;
+                _nRefactoryContext = nRefactoryContext;
             }
 
-            public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
+            public override void OnParsingCompleted()
             {
-                const string typeToUse = "System.Threading.Thread";
-                const string methodToFind = "Sleep";
-
-                var target = invocationExpression.Target as MemberReferenceExpression;
-                if (target != null && target.MemberName == methodToFind)
+                var threadStartExpression = _nRefactoryContext.InvokedSystemTypes.FirstOrDefault(a => a.SystemType == typeof(System.Threading.Thread) && a.MethodName == "Sleep");
+                if (threadStartExpression != null)
                 {
-                    if (target.Target.ToString() == typeToUse || (_codebaseDeclarations.Any(a => a.Name == target.Target.GetIdentifier() && a.IsType(typeToUse))) || target.IsReferenceOfTypeFromScope(typeToUse))
-                    {
-                        UnlockWith(invocationExpression);
-                    }
+                    UnlockWith(threadStartExpression.OriginalExpression);
                 }
-                return base.VisitInvocationExpression(invocationExpression, data);
+                base.OnParsingCompleted();
             }
         }
     }

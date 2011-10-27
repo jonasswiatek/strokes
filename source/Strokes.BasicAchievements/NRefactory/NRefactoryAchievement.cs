@@ -30,7 +30,8 @@ namespace Strokes.BasicAchievements.NRefactory
             var nrefactorySession = statisAnalysisSession.GetSessionObjectOfType<NRefactorySession>();
             NRefactoryContext = new NRefactoryContext()
                                     {
-                                        CodebaseDeclarations = nrefactorySession.GetCodebaseDeclarations(statisAnalysisSession.StaticAnalysisManifest)
+                                        CodebaseDeclarations = nrefactorySession.GetCodebaseDeclarations(statisAnalysisSession.StaticAnalysisManifest),
+                                        InvokedSystemTypes = nrefactorySession.GetSystemInvocations(statisAnalysisSession.StaticAnalysisManifest)
                                     };
 
             // Have the concrete implementation create it's visitor

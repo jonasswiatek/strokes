@@ -110,7 +110,7 @@ namespace Strokes.BasicAchievements.NRefactory
                 var usings = current.Descendants.OfType<UsingDeclaration>();
                 if(usings.Any())
                 {
-                    result.AddRange(usings.Select(a => a.Namespace));
+                    result.AddRange(usings.Select(a => a.Namespace).Except(result));
                 }
 
                 current = current.Parent;

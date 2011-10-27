@@ -15,8 +15,10 @@ namespace Strokes.BasicAchievements.NRefactory
     {
         private readonly object parserAccessPadLock = new object();
         private readonly object codebaseTypeDefinitionPadLock = new object();
+        private readonly object systemInvocationsTypeDefinitionPadLock = new object();
         private readonly IDictionary<string, CompilationUnit> parsers = new Dictionary<string, CompilationUnit>();
         private List<DeclarationInfo> codebaseDeclarations;
+        private List<SystemTypeInvocaton> systemTypeInvocations;
 
         /// <summary>
         /// Creates a parser for the specified file. This parser is cached for this (one) detection session.
@@ -66,6 +68,28 @@ namespace Strokes.BasicAchievements.NRefactory
                 }
 
                 return codebaseDeclarations;
+            }
+        }
+
+        public List<SystemTypeInvocaton> GetSystemInvocations(StaticAnalysisManifest staticAnalysisManifest)
+        {
+            lock (systemInvocationsTypeDefinitionPadLock)
+            {
+                if (systemTypeInvocations == null)
+                {
+                    systemTypeInvocations = new List<SystemTypeInvocaton>();
+
+                    foreach (var filename in staticAnalysisManifest.CodeFiles)
+                    {
+                        var compilationUnit = GetCompilationUnit(filename);
+                        var systemTypesInvocationVisitor = new SystemTypeInvocationVisitor();
+                        compilationUnit.AcceptVisitor(systemTypesInvocationVisitor, null);
+
+                        systemTypeInvocations.AddRange(systemTypesInvocationVisitor.InvokedSystemTypes);
+                    }
+                }
+
+                return systemTypeInvocations;
             }
         }
 
