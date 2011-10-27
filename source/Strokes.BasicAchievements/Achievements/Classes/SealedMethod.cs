@@ -8,15 +8,16 @@ using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescriptor("{CD562B17-558E-4D7B-AF04-31C47BAE91FB}", "@OverrideEqualsAchievementName",
-        AchievementDescription = "@OverrideEqualsAchievementDescription",
-        HintUrl = "http://msdn.microsoft.com/en-us/library/bsc2ak47.aspx",
+    [AchievementDescriptor("{895ea2c7-75aa-4dee-8944-4bb1d749509b}", "@SealedMethodAchievementName",
+        AchievementDescription = "@SealedMethodAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/ms173150.aspx",
         AchievementCategory = "@Class",
         DependsOn = new[]
                 {
-                    "{0ec683c7-8005-4da1-abf9-7d027ec1256f}"
+                    "{0ec683c7-8005-4da1-abf9-7d027ec1256f}","{14DEE0A5-8D80-461D-AE99-B09627B27CE6}"
                 })]
-    public class OverrideEqualsAchievement : NRefactoryAchievement
+
+    public class SealedMethodAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
@@ -25,16 +26,11 @@ namespace Strokes.BasicAchievements.Achievements
 
         private class Visitor : AbstractAchievementVisitor
         {
+
             public override object VisitMethodDeclaration(MethodDeclaration methodDeclaration, object data)
             {
-                if(methodDeclaration.Name == "Equals" && methodDeclaration.Modifiers.HasFlag(Modifiers.Override))
-                {
-                    var returnType = methodDeclaration.ReturnType as PrimitiveType;
-                    if(returnType != null && returnType.Keyword == "bool")
-                    {
-                        UnlockWith(methodDeclaration);
-                    }
-                }
+                if (methodDeclaration.Modifiers.HasFlag(Modifiers.Sealed))
+                    UnlockWith(methodDeclaration);
 
                 return base.VisitMethodDeclaration(methodDeclaration, data);
             }

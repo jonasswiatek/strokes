@@ -12,6 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
     [AchievementDescriptor("{59AD4199-D634-485A-8007-18B3317EFF83}", "@AnonymousObjectAchievementName",
         AchievementDescription = "@AnonymousObjectAchievementDescription",
         AchievementCategory = "@Class",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/bb397696.aspx",
         Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/AnonObject.png")]
     public class AnonymousObjectAchievement : NRefactoryAchievement
     {

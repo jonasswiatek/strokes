@@ -16,6 +16,7 @@ namespace Strokes.BasicAchievements.Achievements
     [AchievementDescriptor("{ADEDE81C-9350-40AB-882F-30856B2C6E5C}", "@BlockCommentAchievementName",
         AchievementDescription = "@BlockCommentAchievementDescription",
         AchievementCategory = "@Fundamentals",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/ff926074.aspx",
         Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/BlockComment.png")]
 
     public class BlockCommentAchievement : NRefactoryAchievement

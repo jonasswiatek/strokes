@@ -8,15 +8,15 @@ using Strokes.Core.Service.Model;
 
 namespace Strokes.BasicAchievements.Achievements
 {
-    [AchievementDescriptor("{0ec683c7-8005-4da1-abf9-7d027ec1256f}", "@InheritClassAchievementName",
-        AchievementDescription = "@InheritClassAchievementDescription",
-        HintUrl = "http://msdn.microsoft.com/en-us/library/ms173149.aspx",
+    [AchievementDescriptor("{207c8c40-56a5-44b8-9d06-5f4c20bc3428}", "@SealedClassAchievementName",
+        AchievementDescription = "@SealedClassAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/ms173150.aspx",
         AchievementCategory = "@Class",
         DependsOn = new[]
                 {
-                    "{106AA91A-C351-41F7-9F19-1EC599320306}"
+                    "{0ec683c7-8005-4da1-abf9-7d027ec1256f}"
                 })]
-    public class InheritClassAchievement : NRefactoryAchievement
+    public class SealedClassAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
@@ -27,15 +27,9 @@ namespace Strokes.BasicAchievements.Achievements
         {
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                if (typeDeclaration.ClassType == ClassType.Class)
-                {
-                    var interfaceMarker = typeDeclaration.BaseTypes.OfType<MemberType>().FirstOrDefault();
-                    if (interfaceMarker != null)
-                    {
-                        UnlockWith(interfaceMarker);
-                    }
-                }
-                
+                if (typeDeclaration.ClassType == ClassType.Class && typeDeclaration.Modifiers.HasFlag(Modifiers.Sealed))
+                    UnlockWith(typeDeclaration);
+
                 return base.VisitTypeDeclaration(typeDeclaration, data);
             }
         }

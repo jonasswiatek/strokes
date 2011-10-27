@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{520A7282-CF0E-40C7-9E3B-C02E37675AEB}", "@AbstractClassAchievementName",
         AchievementDescription = "@AbstractClassAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/ms173150.aspx",
         AchievementCategory = "@Class",
         DependsOn = new[]
                 {

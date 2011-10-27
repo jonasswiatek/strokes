@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{07D39703-8F4A-4340-959E-A7E6CE5D70F0}", "@ConstKeywordAchievementName",
         AchievementDescription = "@ConstKeywordAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/e6w8fe1b(v=vs.71).aspx",
         AchievementCategory = "@Fundamentals")]
     public class ConstKeywordAchievement : NRefactoryAchievement
     {

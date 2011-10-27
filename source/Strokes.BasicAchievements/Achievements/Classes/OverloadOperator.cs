@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{893F52B1-0CC1-49E4-AF44-A856334BA63E}", "@OverloadOperatorAchievementName",
         AchievementDescription = "@OverloadOperatorAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/aa288467(v=vs.71).aspx",
         AchievementCategory = "@Class",
         DependsOn = new[]
                 {

@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{E883467B-9B20-429F-B091-9B31F37B7D0F}", "@PrivateSetterAchievementName",
         AchievementDescription = "@PrivateSetterAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/w86s7x04(v=vs.80).aspx",
         AchievementCategory = "@Class")]
     public class PrivateSetterAchievement : NRefactoryAchievement
     {

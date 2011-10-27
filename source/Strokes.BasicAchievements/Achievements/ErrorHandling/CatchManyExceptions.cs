@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{504D9E72-098E-4E81-A87A-BA198C714EDA}", "@CatchManyExceptionsAchievementName",
         AchievementDescription = "@CatchManyExceptionsAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/0yd65esw(v=VS.100).aspx",
         AchievementCategory = "@ErrorHandling")]
     public class CatchManyExceptionsAchievement : NRefactoryAchievement
     {

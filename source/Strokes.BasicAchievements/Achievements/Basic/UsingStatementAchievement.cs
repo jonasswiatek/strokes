@@ -11,7 +11,8 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{92A3A4FC-DDDF-4C85-A015-F1592C9B658F}", "@UsingStatementAchievementName",
         AchievementDescription = "@UsingStatementAchievementDescription",
-        AchievementCategory = "@Fundamentals")]
+        HintUrl = "http://msdn.microsoft.com/en-us/library/yh598w02(v=VS.100).aspx",
+        AchievementCategory = "@Fundamentals")] //Tim: perhaps move this one to a more advanced category??
     public class UsingStatementAchievement : NRefactoryAchievement
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)

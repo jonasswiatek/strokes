@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{861D2E3B-4319-4EBA-A8D8-267243CED190}", "@CreateDefaultConstructorAchievementName",
         AchievementDescription = "@CreateDefaultConstructorAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/ms173115.aspx",
         AchievementCategory = "@Class")]
     public class CreateDefaultConstructorAchievement : NRefactoryAchievement
     {

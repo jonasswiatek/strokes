@@ -9,6 +9,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{B012CA29-340C-47D0-8D39-E2F83FB59D1A}", "@DeclareArrayAchievementName",
         AchievementDescription = "@DeclareArrayAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/0a7fscd0.aspx",
         AchievementCategory = "@Arrays")]
     public class DeclareArrayAchievement : NRefactoryAchievement
     {

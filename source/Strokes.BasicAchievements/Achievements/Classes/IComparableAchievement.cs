@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{193657CA-35AC-44C3-89CB-E376C97F0B2C}", "@IComparableAchievementName",
         AchievementDescription = "@IComparableAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.icomparable.aspx",
         AchievementCategory = "@Class",
         DependsOn = new[]
                 {
