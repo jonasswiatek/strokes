@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
+using Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis;
 using Strokes.Core;
 using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
@@ -12,17 +13,16 @@ namespace Strokes.BasicAchievements.Achievements
 {
     public abstract class AbstractMethodCall : NRefactoryAchievement
     {
-        private readonly string methodName;
+        private readonly string _fullMethodName;
 
         protected AbstractMethodCall()
         {
-            this.RequiredOverloads = new List<TypeAndValueRequirementSet>();
+            RequiredOverloads = new List<TypeAndValueRequirementSet>();
         }
 
-        protected AbstractMethodCall(string methodName)
-            : this()
+        protected AbstractMethodCall(string fullMethodName) : this()
         {
-            this.methodName = methodName;
+            _fullMethodName = fullMethodName;
         }
 
         protected List<TypeAndValueRequirementSet> RequiredOverloads
@@ -33,92 +33,100 @@ namespace Strokes.BasicAchievements.Achievements
 
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
-            return new Visitor()
-            {
-                MethodToFind = methodName,
-                Requirements = RequiredOverloads
-            };
+            var seperator = _fullMethodName.LastIndexOf(".");
+            var typeToUse = _fullMethodName.Substring(0, seperator);
+            var methodName = _fullMethodName.Substring(seperator + 1);
+
+            return new Visitor(NRefactoryContext.CodebaseDeclarations, typeToUse, methodName, RequiredOverloads);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            public string MethodToFind
-            {
-                get;
-                set;
-            }
+            private readonly IEnumerable<DeclarationInfo> _codebaseDeclarations;
+            private readonly string _systemType;
+            private readonly string _methodName;
+            private readonly List<TypeAndValueRequirementSet> _requrements;
 
-            public List<TypeAndValueRequirementSet> Requirements
+            public Visitor(IEnumerable<DeclarationInfo> codebaseDeclarations, string systemType, string methodName, List<TypeAndValueRequirementSet> requrements)
             {
-                get;
-                set;
+                _codebaseDeclarations = codebaseDeclarations;
+                _systemType = systemType;
+                _methodName = methodName;
+                _requrements = requrements;
             }
 
             public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
             {
-                var seperator = MethodToFind.LastIndexOf(".");
-                var typeToUse = MethodToFind.Substring(0, seperator);
-                var methodName = MethodToFind.Substring(seperator + 1);
-
-                var systemType = Type.GetType(typeToUse);
-
-                var memberReference = invocationExpression.Target as MemberReferenceExpression;
-                if (memberReference != null && (memberReference.Target.IsCallToType(typeToUse) || memberReference.Target.ToString() == systemType.GetShorthandOfType()) && memberReference.MemberName == methodName)
+                var target = invocationExpression.Target as MemberReferenceExpression;
+                if (target != null && target.MemberName == _methodName)
                 {
-                    if(Requirements.Count > 0)
+                    var targetSystemType = target.Target.ToString();
+                    if(targetSystemType == "string")
                     {
-                        foreach (var reqSet in Requirements)
+                        targetSystemType = "String"; //Special case. Just elevate a call to string. to String.
+                    }
+
+                    if (!targetSystemType.StartsWith("System."))
+                    {
+                        targetSystemType = "System." + targetSystemType;
+                    }
+                    if (targetSystemType == _systemType)
+                    {
+                        if(!_requrements.Any())
                         {
-                            if (!reqSet.Repeating && invocationExpression.Arguments.Count != reqSet.Requirements.Count)
+                            UnlockWith(invocationExpression);
+                        }
+                        else
+                        {
+                            foreach (var reqSet in _requrements)
                             {
-                                continue;
-                            }
-
-                            int i = 0;
-                            foreach (var requirement in reqSet.Requirements)
-                            {
-                                if (invocationExpression.Arguments.Count - 1 < i)
+                                if (!reqSet.Repeating && invocationExpression.Arguments.Count != reqSet.Requirements.Count)
                                 {
-                                    break;
+                                    continue;
                                 }
 
-                                var primitiveArgumentExpression = invocationExpression.Arguments.ElementAt(i) as PrimitiveExpression;
-                                if (primitiveArgumentExpression == null)
+                                int i = 0;
+                                foreach (var requirement in reqSet.Requirements)
                                 {
-                                    break;
-                                }
-
-                                var valueType = primitiveArgumentExpression.Value.GetType();
-                                if (valueType == requirement.Type || valueType.IsSubclassOf(requirement.Type))
-                                {
-                                    if (requirement.Type == typeof(string) && requirement.Regex != null)
+                                    if (invocationExpression.Arguments.Count - 1 < i)
                                     {
-                                        var regex = new Regex(requirement.Regex, requirement.RegexOptions);
-                                        var match = regex.IsMatch(primitiveArgumentExpression.Value.ToString());
-                                        if (match == false)
+                                        break;
+                                    }
+
+                                    var primitiveArgumentExpression = invocationExpression.Arguments.ElementAt(i) as PrimitiveExpression;
+                                    if (primitiveArgumentExpression == null)
+                                    {
+                                        break;
+                                    }
+
+                                    var valueType = primitiveArgumentExpression.Value.GetType();
+                                    if (requirement.Type != null)
+                                        if (valueType == requirement.Type || valueType.IsSubclassOf(requirement.Type))
+                                        {
+                                            if (requirement.Type == typeof(string) && requirement.Regex != null)
+                                            {
+                                                var regex = new Regex(requirement.Regex, requirement.RegexOptions);
+                                                var match = regex.IsMatch(primitiveArgumentExpression.Value.ToString());
+                                                if (match == false)
+                                                {
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        else
                                         {
                                             break;
                                         }
-                                    }
-                                }
-                                else
-                                {
-                                    break;
-                                }
 
-                                if (i++ == reqSet.Requirements.Count - 1)
-                                {
-                                    UnlockWith(invocationExpression);
+                                    if (i++ == reqSet.Requirements.Count - 1)
+                                    {
+                                        UnlockWith(invocationExpression);
+                                    }
                                 }
                             }
                         }
                     }
-                    else
-                    {
-                        UnlockWith(invocationExpression);
-                    }
                 }
-
                 return base.VisitInvocationExpression(invocationExpression, data);
             }
         }

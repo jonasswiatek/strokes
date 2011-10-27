@@ -2,27 +2,19 @@
 #pragma warning disable
 
 using System;
-using System.Threading;
-using System.Windows;
-using Strokes.Core;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
-namespace Strokes.Testing
+namespace test1pokemon2
 {
-    public class StringCompareAchievementTest
+    class Program
     {
-        public void Main()
+        [STAThread]
+        static void main(string[] args)
         {
-            while (true)
-            {
-                System.Console.Write("ok");
-                while (true)
-                {
-                    System.Console.Write("ok");
-                }
-            }
+            System.Console.WriteLine("Some value: {0:D}", 1);
         }
     }
 }
-
 #pragma warning restore

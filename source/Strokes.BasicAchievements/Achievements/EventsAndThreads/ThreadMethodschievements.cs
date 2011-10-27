@@ -28,20 +28,20 @@ namespace Strokes.BasicAchievements.Achievements
                 _codebaseDeclarations = codebaseDeclarations;
             }
 
-            public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
+            public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
             {
                 const string typeToUse = "System.Threading.Thread";
                 const string methodToFind = "Start";
 
-                if(_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfTypeFromScope(typeToUse))
+                var target = invocationExpression.Target as MemberReferenceExpression;
+                if (target != null && target.MemberName == methodToFind)
                 {
-                    if (memberReferenceExpression.MemberName == methodToFind)
+                    if (_codebaseDeclarations.Any(a => a.Name == target.Target.GetIdentifier() && a.IsType(typeToUse)) || target.IsReferenceOfTypeFromScope(typeToUse))
                     {
-                        UnlockWith(memberReferenceExpression);
+                        UnlockWith(invocationExpression);
                     }
                 }
-
-                return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
+                return base.VisitInvocationExpression(invocationExpression, data);
             }
         }
     }
@@ -65,20 +65,20 @@ namespace Strokes.BasicAchievements.Achievements
                 _codebaseDeclarations = codebaseDeclarations;
             }
 
-            public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
+            public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
             {
                 const string typeToUse = "System.Threading.Thread";
                 const string methodToFind = "Join";
 
-                if (_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfTypeFromScope(typeToUse))
+                var target = invocationExpression.Target as MemberReferenceExpression;
+                if (target != null && target.MemberName == methodToFind)
                 {
-                    if (memberReferenceExpression.MemberName == methodToFind)
+                    if (_codebaseDeclarations.Any(a => a.Name == target.Target.GetIdentifier() && a.IsType(typeToUse)) || target.IsReferenceOfTypeFromScope(typeToUse))
                     {
-                        UnlockWith(memberReferenceExpression);
+                        UnlockWith(invocationExpression);
                     }
                 }
-
-                return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
+                return base.VisitInvocationExpression(invocationExpression, data);
             }
         }
     }
@@ -103,20 +103,20 @@ namespace Strokes.BasicAchievements.Achievements
                 _codebaseDeclarations = codebaseDeclarations;
             }
 
-            public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
+            public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
             {
                 const string typeToUse = "System.Threading.Thread";
                 const string methodToFind = "Abort";
 
-                if (_codebaseDeclarations.Any(a => a.Name == memberReferenceExpression.Target.GetIdentifier() && a.IsType(typeToUse)) || memberReferenceExpression.IsReferenceOfTypeFromScope(typeToUse))
+                var target = invocationExpression.Target as MemberReferenceExpression;
+                if (target != null && target.MemberName == methodToFind)
                 {
-                    if (memberReferenceExpression.MemberName == methodToFind)
+                    if (_codebaseDeclarations.Any(a => a.Name == target.Target.GetIdentifier() && a.IsType(typeToUse)) || target.IsReferenceOfTypeFromScope(typeToUse))
                     {
-                        UnlockWith(memberReferenceExpression);
+                        UnlockWith(invocationExpression);
                     }
                 }
-
-                return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
+                return base.VisitInvocationExpression(invocationExpression, data);
             }
         }
     }
@@ -139,18 +139,21 @@ namespace Strokes.BasicAchievements.Achievements
             {
                 _codebaseDeclarations = codebaseDeclarations;
             }
-            public override object VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression, object data)
+
+            public override object VisitInvocationExpression(InvocationExpression invocationExpression, object data)
             {
                 const string typeToUse = "System.Threading.Thread";
                 const string methodToFind = "Sleep";
 
-                if(memberReferenceExpression.Target.IsCallToType(typeToUse) && memberReferenceExpression.MemberName == methodToFind)
+                var target = invocationExpression.Target as MemberReferenceExpression;
+                if (target != null && target.MemberName == methodToFind)
                 {
-                    UnlockWith(memberReferenceExpression);
+                    if (target.Target.ToString() == typeToUse || (_codebaseDeclarations.Any(a => a.Name == target.Target.GetIdentifier() && a.IsType(typeToUse))) || target.IsReferenceOfTypeFromScope(typeToUse))
+                    {
+                        UnlockWith(invocationExpression);
+                    }
                 }
-
-
-                return base.VisitMemberReferenceExpression(memberReferenceExpression, data);
+                return base.VisitInvocationExpression(invocationExpression, data);
             }
         }
     }

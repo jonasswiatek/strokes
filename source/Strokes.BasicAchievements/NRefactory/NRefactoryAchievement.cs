@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using ICSharpCode.NRefactory.CSharp;
@@ -78,6 +79,17 @@ namespace Strokes.BasicAchievements.NRefactory
             {
                 get;
                 set;
+            }
+
+            protected override object VisitChildren(AstNode node, object data)
+            {
+                //This little trick should make nrefactory stop visiting as soon as an achievement is unlocked and save consideral performance in large files
+                if(!IsAchievementUnlocked)
+                {
+                    return base.VisitChildren(node, data);
+                }
+                
+                return default(object);
             }
 
             protected void UnlockWith(AstNode location)
