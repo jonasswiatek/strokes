@@ -9,7 +9,7 @@
         AllowsTransparency="True"
         Background="{x:Null}"
         BorderThickness="3"
-        d:DataContext="{d:DesignData Source=/SampleData/NotificationViewModelSampleData.xaml}"
+        d:DataContext="{d:DesignData Source=/SampleData/NotificationBoxSampleData.xaml}"
         d:DesignHeight="400"
         d:DesignWidth="500"
         ResizeMode="NoResize"

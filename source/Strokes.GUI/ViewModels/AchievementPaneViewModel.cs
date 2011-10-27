@@ -44,26 +44,30 @@ namespace Strokes.GUI
             ResetCommand = new RelayCommand(ResetExecute);
             ToggleCommand = new RelayCommand(ToggleExecute);
 
-            achievementService = ObjectFactory.GetInstance<IAchievementService>();
-            settingsRepository = ObjectFactory.GetInstance<ISettingsRepository>();
+            achievementService = ObjectFactory.TryGetInstance<IAchievementService>();
+            settingsRepository = ObjectFactory.TryGetInstance<ISettingsRepository>();
 
-            notificationBox = new AchievementNotificationBox(achievementService);
-            achievementService.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
+            // Solves a design-time issue with StructureMap. 
+            if (achievementService != null && settingsRepository != null)
+            {
+                notificationBox = new AchievementNotificationBox(achievementService);
+                achievementService.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
 
-            ReloadViewModel();
-            LoadCultures();
+                ReloadViewModel();
+                LoadCultures();
+            }
         }
 
         public ObservableCollection<AchievementsPerCategory> AchievementsOrdered
         {
             get;
-            private set;
+            set;
         }
 
         public ObservableCollection<CultureItem> AvailableCultures
         {
             get;
-            private set;
+            set;
         }
 
         public ICommand ResetCommand

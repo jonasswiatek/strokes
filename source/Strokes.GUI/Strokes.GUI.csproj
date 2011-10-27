@@ -135,6 +135,14 @@
     <Compile Include="ViewModels\AchievementPaneViewModel.cs" />
     <Compile Include="VsAdornments\AchievementAdornments.cs" />
     <Compile Include="VsAdornments\AchievementAdornmentsFactory.cs" />
+    <Page Include="SampleData\AchievementPaneSampleData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SampleData\NotificationBoxSampleData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\AchievementNotificationBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
