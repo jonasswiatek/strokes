@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{EAEDD6AB-B8DE-4D90-BD62-DD3C00FDA6C1}", "@VirtualMethodAchievementName",
         AchievementDescription = "@VirtualMethodAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/9fkccyh4(v=VS.100).aspx",
         AchievementCategory = "@Class",
         DependsOn = new[]
                 {

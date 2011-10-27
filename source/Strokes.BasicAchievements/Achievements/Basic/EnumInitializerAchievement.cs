@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}", "@EnumInitializerAchievementName",
         AchievementDescription = "@EnumInitializerAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/sbbt4032(v=VS.100).aspx",
         AchievementCategory = "@Fundamentals")]
     public class EnumInitializerAchievement : NRefactoryAchievement
     {

@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{9656305D-D26E-4B7D-AB51-8585A8FCA3CF}", "@CreatePropertyAchievementName",
         AchievementDescription = "@CreatePropertyAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/x9fsa0sw.aspx",
         AchievementCategory = "@Class")]
     public class CreatePropertyAchievement : NRefactoryAchievement
     {

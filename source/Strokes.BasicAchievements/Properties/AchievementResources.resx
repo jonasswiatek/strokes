@@ -1162,4 +1162,16 @@
   <data name="NestedWhileStatementAchievementName" xml:space="preserve">
     <value>Nested loops</value>
   </data>
+  <data name="SealedClassAchievementDescription" xml:space="preserve">
+    <value>Create a sealed class</value>
+  </data>
+  <data name="SealedClassAchievementName" xml:space="preserve">
+    <value>Love's divine</value>
+  </data>
+  <data name="SealedMethodAchievementDescription" xml:space="preserve">
+    <value>Create a sealed method</value>
+  </data>
+  <data name="SealedMethodAchievementName" xml:space="preserve">
+    <value>Locked!</value>
+  </data>
 </root>

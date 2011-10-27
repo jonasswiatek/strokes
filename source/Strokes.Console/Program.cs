@@ -55,6 +55,7 @@ namespace Strokes.Console
 
             achievementService.StaticAnalysisCompleted += DetectionDispatcher_DetectionCompleted;
             var file = System.IO.Path.GetFullPath("TestFile.cs");
+
             achievementService.PerformStaticAnalysis(new StaticAnalysisManifest()
             {
                 ActiveFile = file,

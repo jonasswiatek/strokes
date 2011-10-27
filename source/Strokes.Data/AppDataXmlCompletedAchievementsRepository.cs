@@ -57,8 +57,8 @@ namespace Strokes.Data
 
             if(achievement.CodeOrigin != null)
             {
-                completedAchievement.CodeSnippet = achievement.CodeOrigin.GetCodeSnippet();
-                achievement.CodeSnippet = completedAchievement.CodeSnippet;
+                completedAchievement.CodeSnapshot = achievement.CodeOrigin.GetCodeSnapshot();
+                achievement.CodeSnapshot = completedAchievement.CodeSnapshot;
             }
 
             if (!_completedAchievements.Contains(completedAchievement))
@@ -87,7 +87,7 @@ namespace Strokes.Data
                 {
                     currentAchievement.DateCompleted = completedAchievement.DateCompleted;
                     currentAchievement.IsCompleted = completedAchievement.IsCompleted;
-                    currentAchievement.CodeSnippet = completedAchievement.CodeSnippet;
+                    currentAchievement.CodeSnapshot = completedAchievement.CodeSnapshot;
                 }
 
                 var dependsOnGuids = achievementDescriptors

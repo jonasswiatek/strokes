@@ -50,6 +50,12 @@ namespace Strokes.Core
             if (description.StartsWith("@") && description.Length > 1)
                 description = AchievementResources.GetString(description.Substring(1));
 
+            Uri hintUri;
+            if(!Uri.TryCreate(descriptionAttribute.HintUrl, UriKind.Absolute, out hintUri))
+            {
+                hintUri = null;
+            }
+
             var descriptor = new Achievement
             {
                 Guid = descriptionAttribute.Guid,
@@ -57,7 +63,8 @@ namespace Strokes.Core
                 Category = category,
                 Description = description,
                 Name = title,
-                Image = descriptionAttribute.Image
+                Image = descriptionAttribute.Image,
+                HintUri = hintUri
             };
 
             return descriptor;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
@@ -11,6 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
     [AchievementDescriptor("{e5170595-efe0-41ab-a0cb-d3b6b0e74e83}", "@CreateGenericClassAchievementName",
         AchievementDescription = "@CreateGenericClassAchievementDescription",
         AchievementCategory = "@Generics",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/sz6zd40f(v=VS.100).aspx",
         DependsOn = new[]
         {
             "{0ec683c7-8005-4da1-abf9-7d027ec1256f}"

@@ -15,6 +15,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{B3049AD8-51B0-40D9-A01F-DA7DDBF868BF}", "@InlineCommentAchievementName",
         AchievementDescription = "@InlineCommentAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/ff926074.aspx",
         AchievementCategory = "@Fundamentals")]
 
     public class InlineCommentAchievement : NRefactoryAchievement

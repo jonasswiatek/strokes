@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{58E7FA3B-E4D3-4F34-8205-F3F9FAF00E90}", "@OverrideGetHashCodeAchievementName",
         AchievementDescription = "@OverrideGetHashCodeAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.object.gethashcode.aspx",
         AchievementCategory = "@Class",
         DependsOn = new[]
                 {

@@ -156,6 +156,9 @@
     <Compile Include="TestCases\ErrorHandling\ThrownExceptionTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="TestCases\EventsAndThreads\ThreadBorderCaseOneTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="TestCases\EventsAndThreads\CreateDelegateAchievementTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>

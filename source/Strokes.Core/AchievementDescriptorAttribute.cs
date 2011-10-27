@@ -88,5 +88,7 @@ namespace Strokes.Core
             get;
             set;
         }
+
+        public string HintUrl { get; set; }
     }
 }

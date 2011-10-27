@@ -2581,6 +2581,42 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a sealed class.
+        /// </summary>
+        public static string SealedClassAchievementDescription {
+            get {
+                return ResourceManager.GetString("SealedClassAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Love&apos;s divine.
+        /// </summary>
+        public static string SealedClassAchievementName {
+            get {
+                return ResourceManager.GetString("SealedClassAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a sealed method.
+        /// </summary>
+        public static string SealedMethodAchievementDescription {
+            get {
+                return ResourceManager.GetString("SealedMethodAchievementDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locked!.
+        /// </summary>
+        public static string SealedMethodAchievementName {
+            get {
+                return ResourceManager.GetString("SealedMethodAchievementName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Suspends a thread for a specified time..
         /// </summary>
         public static string SleepThreadAchievementDescription {

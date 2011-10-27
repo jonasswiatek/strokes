@@ -11,6 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
     [AchievementDescriptor("{B557EE57-2514-4224-9DD3-555555AA778B}", "@CastAchievementName",
         AchievementDescription = "@CastAchievementDescription",
         AchievementCategory = "@Fundamentals",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/ms173105.aspx",
         Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/Cast.png")]
     public class CastAchievement : NRefactoryAchievement
     {

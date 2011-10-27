@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{90406D2E-575C-4A57-AF4F-028361C575D0}", "@CreateInterfaceAchievementName",
         AchievementDescription = "@CreateInterfaceAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/ms173156.aspx",
         AchievementCategory = "@Class",
         DependsOn = new[]
                 {

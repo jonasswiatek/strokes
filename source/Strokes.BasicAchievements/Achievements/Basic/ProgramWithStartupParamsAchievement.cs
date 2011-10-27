@@ -11,6 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{01C68FE8-2A7C-4E40-842A-E407B91D2C4C}", "@ProgramWithStartupParamsAchievementName",
         AchievementDescription = "@ProgramWithStartupParamsAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/acy3edy3.aspx",
         AchievementCategory = "@Fundamentals")]
     public class ProgramWithStartupParamsAchievement : NRefactoryAchievement
     {

@@ -11,6 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
     [AchievementDescriptor("{2EF5C718-C944-40A0-AFDD-8142B6E15A42}", "@DeclareInitArrayAchievementName",
         AchievementDescription = "@DeclareInitArrayAchievementDescription",
         AchievementCategory = "@Arrays",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/0a7fscd0.aspx",
         DependsOn = new[]
                         {
                             "{B012CA29-340C-47D0-8D39-E2F83FB59D1A}"

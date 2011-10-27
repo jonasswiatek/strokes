@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{DC239C85-97E5-45FB-8F87-B95E667C0F4F}", "@InstantiateObjectWithInitAchievementName",
         AchievementDescription = "@InstantiateObjectWithInitAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/bb384062.aspx",
         AchievementCategory = "@Class")]
     public class InstantiateObjectWithInitAchievement : NRefactoryAchievement
     {
