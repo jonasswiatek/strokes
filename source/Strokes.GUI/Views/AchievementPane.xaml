@@ -5,7 +5,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:properties="clr-namespace:Strokes.GUI.Properties"
              xmlns:viewmodels="clr-namespace:Strokes.GUI"
-             d:DataContext="{d:DesignData Source=/SampleData/AchievementPaneSampleData.xaml}"
              d:DesignHeight="800"
              d:DesignWidth="1024"
              mc:Ignorable="d">
