@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{54B78C8F-270F-49EB-B205-ABB66E7A6FB9}", "@TryFinallyStatementAchievementName",
         AchievementDescription = "@TryFinallyStatementAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/zwc8s4fz.aspx",
         AchievementCategory = "@ErrorHandling")]
     public class TryFinallyStatementAchievement : NRefactoryAchievement
     {

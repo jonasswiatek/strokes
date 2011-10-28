@@ -12,6 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@OperatorAndAchievementDescription",
         AchievementCategory = "@Expressions",
         Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/AndOperator.png",
+        HintUrl = "http://msdn.microsoft.com/en-US/library/f2kd6eb2(v=VS.100).aspx",
         DependsOn = new[]
         {
             "{299F7258-CFB2-4FAE-B5A2-949E1B8AB53B}"

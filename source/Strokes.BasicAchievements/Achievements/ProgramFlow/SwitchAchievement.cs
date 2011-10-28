@@ -8,6 +8,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{779C753E-CBD6-4386-A22A-9A722BB39AA1}", "@SwitchAchievementName",
         AchievementDescription = "@SwitchAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/06tc147t(v=VS.100).aspx",
         AchievementCategory = "@ProgramFlow")]
     public class SwitchAchievement : NRefactoryAchievement
     {

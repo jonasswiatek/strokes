@@ -741,12 +741,6 @@
   <data name="ProceduralProgrammerAchievementDescription" xml:space="preserve">
     <value>Created a method with more than 10 out parameters</value>
   </data>
-  <data name="TooManyModifiersMethodDeclarationAchievementName" xml:space="preserve">
-    <value>Modifier addict</value>
-  </data>
-  <data name="TooManyModifiersMethodDeclarationAchievementDescription" xml:space="preserve">
-    <value>Declare a method with lots of modifiers</value>
-  </data>
   <data name="InstantiateObjectAchievementName" xml:space="preserve">
     <value>Objectify!</value>
   </data>

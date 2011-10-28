@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{600e9b5d-ef04-46d9-90db-3b0395c7c9a0}", "@CreateThreadAchievementName",
         AchievementDescription = "@CreateThreadAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.threading.thread.aspx",
         AchievementCategory = "@EventsThreads")]
     public class CreateThreadAchievement : NRefactoryAchievement
     {

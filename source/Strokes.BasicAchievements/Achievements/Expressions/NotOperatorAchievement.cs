@@ -11,6 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
     [AchievementDescriptor("{A4A094CB-57AC-41FF-8562-29A5ACCC9076}", "@NotOperatorAchievementName",
         AchievementDescription = "@NotOperatorAchievementDescription",
         Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/NotOperator.png",
+        HintUrl = "http://msdn.microsoft.com/en-US/library/f2kd6eb2(v=VS.100).aspx",
         AchievementCategory = "@Expressions",
         DependsOn = new[]
         {

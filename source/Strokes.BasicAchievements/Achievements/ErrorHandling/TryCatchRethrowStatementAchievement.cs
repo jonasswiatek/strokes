@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{319C800D-EA11-4381-BD61-3F9B1A246C6F}", "@TryCatchRethrowStatementAchievementName",
         AchievementDescription = "@TryCatchRethrowStatementAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/0yd65esw.aspx",
         AchievementCategory = "@ErrorHandling")]
     public class TryCatchRethrowStatementAchievement : NRefactoryAchievement
     {

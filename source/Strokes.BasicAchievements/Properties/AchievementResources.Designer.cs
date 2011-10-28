@@ -2887,24 +2887,6 @@ namespace Strokes.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Declare a method with lots of modifiers.
-        /// </summary>
-        public static string TooManyModifiersMethodDeclarationAchievementDescription {
-            get {
-                return ResourceManager.GetString("TooManyModifiersMethodDeclarationAchievementDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Modifier addict.
-        /// </summary>
-        public static string TooManyModifiersMethodDeclarationAchievementName {
-            get {
-                return ResourceManager.GetString("TooManyModifiersMethodDeclarationAchievementName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Use a try-catch-finally statement.
         /// </summary>
         public static string TryCatchFinallyStatementAchievementDescription {

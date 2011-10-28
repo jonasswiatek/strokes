@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{fc2721c2-8bc8-4638-b696-66b4688df064}", "@ThrownNotImplementedAchievementName",
         AchievementDescription = "@ThrownNotImplementedAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.notimplementedexception.aspx",
         AchievementCategory = "@ErrorHandling")]
     public class ThrownNotImplementedAchievement : NRefactoryAchievement
     {

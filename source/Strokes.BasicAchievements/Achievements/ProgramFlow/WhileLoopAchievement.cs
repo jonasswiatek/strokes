@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{E61CFC56-7F74-48B9-A19A-FB414D35CA6B}", "@WhileLoopAchievementName",
         AchievementDescription = "@WhileLoopAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/2aeyhxcd.aspx",
         AchievementCategory = "@ProgramFlow")]
     public class WhileLoopAchievement : NRefactoryAchievement
     {

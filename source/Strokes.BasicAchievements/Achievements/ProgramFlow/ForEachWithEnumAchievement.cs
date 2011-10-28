@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{CC0BA7AC-444E-4888-8631-864DF7D404B8}", "@ForEachWithEnumAchievementName",
         AchievementDescription = "@ForEachWithEnumAchievementDescription",
+        HintUrl = "http://stackoverflow.com/questions/105372/c-how-to-enumerate-an-enum",
         AchievementCategory = "@ProgramFlow",
         DependsOn = new[]{
             "{1B9C1201-E2A9-4FE6-A8A6-44ABE06517FD}",

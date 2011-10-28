@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{299F7258-CFB2-4FAE-B5A2-949E1B8AB53B}", "@IfStatementAchievementName",
         AchievementDescription = "@IfStatementAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/5011f09h(v=VS.100).aspx",
         AchievementCategory = "@ProgramFlow")]
     public class IfStatementAchievement : NRefactoryAchievement
     {

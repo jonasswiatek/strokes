@@ -11,6 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{284CC74E-F51C-4B33-8A10-5583AE8FE232}", "@CurseAlotAchievementName",
         AchievementDescription = "@CurseAlotAchievementDescription",
+        HintUrl = "http://en.wikipedia.org/wiki/Tourette",
         AchievementCategory = "@Funny")]
     public class CurseAlotAchievement : NRefactoryAchievement
     {

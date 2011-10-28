@@ -11,6 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{cf9be271-1adb-4d4a-beaa-a5a83c6c9393}", "@StartThreadAchievementName",
         AchievementDescription = "@StartThreadAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.threading.thread.aspx",
         AchievementCategory = "@EventsThreads")]
     public class StartThreadAchievement : NRefactoryAchievement
     {

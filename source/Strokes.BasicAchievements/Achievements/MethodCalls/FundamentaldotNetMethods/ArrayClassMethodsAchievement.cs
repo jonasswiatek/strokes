@@ -8,6 +8,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
     [AchievementDescriptor("{FAB140C9-B951-4600-BCCB-CE0AD93419D8}", "@ArrayClearMethodAchievementName",
         AchievementDescription = "@ArrayClearMethodAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.array.aspx",
         AchievementCategory = "@Arrays")]
     public class ArrayClearMethodAchievement : AbstractMethodCall
     {

@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{5DFEED98-ED56-433C-8E06-D71AC7ED2E1E}", "@QueryExpressionAchievementName",
         AchievementDescription = "@QueryExpressionAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/bb397676.aspx",
         AchievementCategory = "@Expressions")]
     public class QueryExpressionAchievement : NRefactoryAchievement
     {

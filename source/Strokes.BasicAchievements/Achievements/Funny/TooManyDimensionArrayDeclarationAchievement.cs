@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{1D2171F4-9D57-4EA7-8B61-C493FC1F8DFC}", "@TooManyDimensionArrayDeclarationAchievementName",
         AchievementDescription = "@TooManyDimensionArrayDeclarationAchievementDescription",
+        HintUrl = "http://en.wikipedia.org/wiki/String_theory",
         AchievementCategory = "@Funny",
         DependsOn = new[]
         {

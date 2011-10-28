@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{463CA967-E431-4479-AE4C-2F318C00DD09}", "@DangerousEqualityCheckAchievementName",
         AchievementDescription = "@DangerousEqualityCheckAchievementDescription",
+        HintUrl= "http://www.cygnus-software.com/papers/comparingfloats/Comparing%20floating%20point%20numbers.htm",
         AchievementCategory = "@ProgramFlow")]
     public class DangerousEqualityCheckAchievement : NRefactoryAchievement
     {

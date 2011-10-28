@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{8f7e75c9-d965-44f9-a579-fe7f6c829ed3}", "@EmptyMainAchievementName",
         AchievementDescription = "@EmptyMainAchievementDescription",
+        HintUrl = "http://blanksite.com/",
         AchievementCategory = "@Funny",
         DependsOn = new[]
         {
@@ -38,6 +39,7 @@ namespace Strokes.BasicAchievements.Achievements
 
     [AchievementDescriptor("{00dcc080-76e8-4953-a036-f35ea2b3c77d}", "@EmptyMethodAchievementName",
         AchievementDescription = "@EmptyMethodAchievementDescription",
+        HintUrl = "http://blanksite.com/",
         AchievementCategory = "@Funny",
         DependsOn = new[]
         {
@@ -69,6 +71,7 @@ namespace Strokes.BasicAchievements.Achievements
 
     [AchievementDescriptor("{b752b0bd-9942-4602-ae02-8c78ad2b76bb}", "@EmptyVoidMethodAchievementName",
         AchievementDescription = "@EmptyVoidMethodAchievementDescription",
+        HintUrl = "http://blanksite.com/",
         AchievementCategory = "@Funny",
         DependsOn = new[]
         {

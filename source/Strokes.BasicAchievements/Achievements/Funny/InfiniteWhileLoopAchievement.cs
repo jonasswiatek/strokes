@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{19F147D7-63B7-40B2-8863-A8CEF0E162F8}", "@InfiniteWhileLoopAchievementName",
         AchievementDescription = "@InfiniteWhileLoopAchievementDescription",
+        HintUrl = "http://mimir.net/mapinfinity/mobius.html",
         AchievementCategory = "@Funny",
         DependsOn = new[]
         {

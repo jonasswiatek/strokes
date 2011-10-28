@@ -9,6 +9,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
     [AchievementDescriptor("{7050FB47-A763-46EF-B241-8E9521E19B1A}", "@FormatSpecifierAchievementName",
         AchievementDescription = "@FormatSpecifierAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/s8s7t687(v=vs.71).aspx",
         AchievementCategory = "@Console")]
     public class FormatSpecifierAchievement : AbstractMethodCall
     {

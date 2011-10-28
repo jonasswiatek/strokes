@@ -8,6 +8,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
     [AchievementDescriptor("{76417EFA-1E80-45B5-A0A4-C065DD1E1649}", "@StringCompareAchievementName",
         AchievementDescription = "@StringCompareAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.string.compare.aspx",
         AchievementCategory = "@Strings")]
     public class StringCompareAchievement : AbstractMethodCall
     {
@@ -18,6 +19,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
 
     [AchievementDescriptor("{FE01CF1A-6E39-4624-8FCD-9F104ACD40D8}", "@StringConcatAchievementName",
         AchievementDescription = "@StringConcatAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.string.concat.aspx",
         AchievementCategory = "@Strings")]
     public class StringConcatAchievement : AbstractMethodCall
     {
@@ -28,6 +30,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
 
     [AchievementDescriptor("{106C10A9-8F87-49CC-8D61-7F233856CD49}", "@StringCopyAchievementName",
         AchievementDescription = "@StringCopyAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.string.copy.aspx",
         AchievementCategory = "@Strings")]
     public class StringCopyAchievement : AbstractMethodCall
     {
@@ -38,6 +41,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
 
     [AchievementDescriptor("{AC08974F-9E7A-4B41-B778-D091789078F2}", "@StringEqualsAchievementName",
         AchievementDescription = "@StringEqualsAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.string.equals.aspx",
         AchievementCategory = "@Strings")]
     public class StringEqualsAchievement : AbstractMethodCall
     {

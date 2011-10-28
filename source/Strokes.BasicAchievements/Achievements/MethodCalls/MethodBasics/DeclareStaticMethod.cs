@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{0414EFDB-0865-4E3C-9809-B779EA1F6CCF}", "@CreateStaticMethodAchievementName",
         AchievementDescription = "@CreateStaticMethodAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/79b3xss3(v=VS.100).aspx",
         AchievementCategory = "@Method")]
     public class CreateStaticMethodAchievement : NRefactoryAchievement
     {

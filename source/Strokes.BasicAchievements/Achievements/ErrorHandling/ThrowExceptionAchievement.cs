@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{2b8768da-1ffc-49a3-a3d6-50a69995cf2c}", "@ThrowExceptionAchievementName",
         AchievementDescription = "@ThrowExceptionAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/0yd65esw(v=VS.100).aspx",
         AchievementCategory = "@ErrorHandling")]
     public class ThrownExceptionAchievement : NRefactoryAchievement
     {

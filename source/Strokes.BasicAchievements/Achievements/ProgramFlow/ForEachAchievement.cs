@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{F328611E-562D-4D8B-B1AE-48830DB00C7E}", "@ForEachAchievementName",
         AchievementDescription = "@ForEachAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/ttw7t8t6.aspx",
         AchievementCategory = "@ProgramFlow")]
     public class ForEachAchievement : NRefactoryAchievement
     {

@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{b9ab2754-2ff6-4892-887b-1501ae9a5289}", "@NestedWhileStatementAchievementName",
         AchievementDescription = "@NestedWhileStatementAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/2aeyhxcd.aspx",
         AchievementCategory = "@ProgramFlow",
         DependsOn = new[]
         {

@@ -11,6 +11,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{cc7889a1-3669-4def-a004-14af540faa98}", "@UnSubscribeToEventAchievementName",
         AchievementDescription = "@UnSubscribeToEventAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/ms366768.aspx",
         AchievementCategory = "@EventsThreads")]
     public class UnSubscribeToEventAchievement : NRefactoryAchievement
     {

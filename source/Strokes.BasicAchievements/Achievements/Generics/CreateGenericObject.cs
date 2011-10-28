@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{bf48a1f8-30f4-4374-aa94-bdc56692f234}", "@CreateGenericObjectAchievementName",
         AchievementDescription = "@CreateGenericObjectAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/512aeb7t(v=vs.80).aspx",
         AchievementCategory = "@Generics",
         DependsOn = new[]
         {

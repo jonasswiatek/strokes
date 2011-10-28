@@ -13,6 +13,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{5EA1926B-0EF7-4B7A-AAA3-729702F44F97}", "@DeclareEscapeCharAchievementName",
         AchievementDescription = "@DeclareEscapeCharAchievementDescription",
+
         AchievementCategory = "@PrimitiveType")]
     public class DeclareEscapeCharAchievement : NRefactoryAchievement
     {

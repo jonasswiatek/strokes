@@ -8,6 +8,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{585FA5E2-2218-4E31-8AF8-DBAF6E3A3943}", "@UpperBoundaryValueCharName",
         AchievementDescription = "@UpperBoundaryValueCharDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.char.maxvalue(v=VS.100).aspx",
         AchievementCategory = "@PrimitiveType")]
     public class UpperBoundaryValueChar : AssignUpperBoundaryValue<char>
     {
@@ -15,6 +16,7 @@ namespace Strokes.BasicAchievements.Achievements
 
     [AchievementDescriptor("{93CF3F6D-EB76-4872-B26E-ED5855E865E9}", "@LowerBoundaryValueCharName",
         AchievementDescription = "@LowerBoundaryValueCharDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/system.char.minvalue(v=VS.100).aspx",
         AchievementCategory = "@PrimitiveType")]
     public class LowerBoundaryValueChar : AssignLowerBoundaryValue<char>
     {

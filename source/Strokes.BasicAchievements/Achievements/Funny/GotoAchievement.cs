@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{9E33F0A9-BEEC-4EA5-AD20-CFB14F970A46}", "@GotoAchievementName",
         AchievementDescription = "@GotoAchievementDescription",
+        HintUrl = "http://stackoverflow.com/questions/6545720/does-anyone-still-use-goto-in-c-sharp-and-if-so-why",
         AchievementCategory = "@Funny")]
     public class GotoAchievement : NRefactoryAchievement
     {

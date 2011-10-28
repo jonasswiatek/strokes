@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{8A5F199C-B171-42D4-A12E-69BFB8A9F547}", "@OutParameterAchievementName",
         AchievementDescription = "@OutParameterAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/t3c3bfhx(v=vs.80).aspx",
         AchievementCategory = "@Method",
         DependsOn = new[]
                 {

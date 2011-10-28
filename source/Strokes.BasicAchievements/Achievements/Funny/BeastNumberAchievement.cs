@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{04021209-8B79-4E45-A2FE-8A0D0E02CB3B}", "@BeastNumberAchievementName",
         AchievementDescription = "@BeastNumberAchievementDescription",
+        HintUrl = "http://en.wikipedia.org/wiki/Number_of_the_Beast",
         AchievementCategory = "@Funny",
         DependsOn = new[]
         {

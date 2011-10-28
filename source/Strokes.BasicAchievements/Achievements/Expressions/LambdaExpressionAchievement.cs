@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{53FAAC04-576E-4029-8138-E645D3B704C8}", "@LambdaExpressionAchievementName",
         AchievementDescription = "@LambdaExpressionAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/bb397687.aspx",
         AchievementCategory = "@Expressions",
         Image = "/Strokes.BasicAchievements;component/Achievements/Icons/Basic/LambdaExpr.png")]
     public class LambdaExpressionAchievement : NRefactoryAchievement

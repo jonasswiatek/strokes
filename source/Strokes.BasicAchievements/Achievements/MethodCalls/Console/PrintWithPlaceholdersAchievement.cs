@@ -9,6 +9,7 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
 {
     [AchievementDescriptor("{295A339C-1ED6-41CF-951E-7E13632B01BD}", "@PrintWithPlaceholdersAchievementName",
         AchievementDescription = "@PrintWithPlaceholdersAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/txafckwd(v=VS.110).aspx",
         AchievementCategory = "@Console")]
     public class PrintWithPlaceholdersAchievement : AbstractMethodCall
     {

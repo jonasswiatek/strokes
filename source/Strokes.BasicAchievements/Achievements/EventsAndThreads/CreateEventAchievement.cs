@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{85023aba-17a3-42dc-8a8d-4423a53dbe83}", "@CreateEventAchievementName",
         AchievementDescription = "@CreateEventAchievementDescription",
+        HintUrl = "http://msdn.microsoft.com/en-us/library/8627sbea(v=VS.100).aspx",
         AchievementCategory = "@EventsThreads")]
     public class CreateEventAchievement : NRefactoryAchievement
     {

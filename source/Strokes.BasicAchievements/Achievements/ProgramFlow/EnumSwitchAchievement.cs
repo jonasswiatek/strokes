@@ -12,6 +12,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{5FAA2B73-5963-48D2-B382-2B46690EC4BF}", "@EnumSwitchAchievementName",
         AchievementDescription = "@EnumSwitchAchievementDescription",
+        HintUrl = "http://www.dotnetperls.com/switch-enum",
         AchievementCategory = "@ProgramFlow",
         DependsOn = new[]
         {

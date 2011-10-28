@@ -741,12 +741,6 @@
   <data name="ProceduralProgrammerAchievementDescription" xml:space="preserve">
     <value>Создайте метод с более чем 10 out-параметрами</value>
   </data>
-  <data name="TooManyModifiersMethodDeclarationAchievementName" xml:space="preserve">
-    <value>Любитель модификаторов</value>
-  </data>
-  <data name="TooManyModifiersMethodDeclarationAchievementDescription" xml:space="preserve">
-    <value>Объявите метод с большим количеством модификаторов</value>
-  </data>
   <data name="InstantiateObjectAchievementName" xml:space="preserve">
     <value>Воплотись!</value>
   </data>

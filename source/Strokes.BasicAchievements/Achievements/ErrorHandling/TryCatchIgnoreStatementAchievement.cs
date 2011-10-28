@@ -10,6 +10,7 @@ namespace Strokes.BasicAchievements.Achievements
 {
     [AchievementDescriptor("{09FA8C6F-26DC-4361-8AFD-EB979BEB50D8}", "@TryCatchIgnoreStatementAchievementName",
         AchievementDescription = "@TryCatchIgnoreStatementAchievementDescription",
+        HintUrl = "http://colinmackay.co.uk/blog/2009/03/05/the-trycatchignore-antipattern-again/",
         AchievementCategory = "@ErrorHandling")]
     public class TryCatchIgnoreStatementAchievement : NRefactoryAchievement
     {

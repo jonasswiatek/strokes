@@ -112,7 +112,6 @@
     <Compile Include="Achievements\Funny\SpeechlessAchievement.cs" />
     <Compile Include="Achievements\Funny\CurseALotAchievement.cs" />
     <Compile Include="Achievements\Funny\ThrowExceptionLongMessageAchievement.cs" />
-    <Compile Include="Achievements\Funny\TooManyModifiersDeclarationAchievement.cs" />
     <Compile Include="Achievements\Funny\SomeFunnyAchievement.cs" />
     <Compile Include="Achievements\Funny\TooManyDimensionArrayDeclarationAchievement.cs" />
     <Compile Include="Achievements\Generics\CreateGenericObject.cs" />
