@@ -16,42 +16,76 @@ using StructureMap;
 using GalaSoft.MvvmLight.Messaging;
 using Strokes.GUI.Views;
 using System.Windows;
+using System.IO;
+using System.Globalization;
+using Strokes.Service.Data;
 
 namespace Strokes.GUI
 {
-    public class AllAchievementsViewModel : ViewModelBase
+    public class AchievementPaneViewModel : ViewModelBase
     {
         private const string OrderedAchievementsFieldName = "AchievementsOrdered";
         private const string TotalAchievementsFieldName = "TotalAchievements";
         private const string TotalCompletedFieldName = "TotalCompleted";
         private const string PercentageCompletedFieldName = "PercentageCompleted";
+
+        const string EnableText = "ENABLE STROKES FOR ALL PROJECTS";
+        const string DisableText = "DISABLE STROKES FOR ALL PROJECTS";
+
         private readonly IAchievementService achievementService;
+        private readonly ISettingsRepository settingsRepository;
         private readonly AchievementNotificationBox notificationBox; 
 
-        public AllAchievementsViewModel()
+        public AchievementPaneViewModel()
         {
             AchievementsOrdered = new ObservableCollection<AchievementsPerCategory>();
+            AvailableCultures = new ObservableCollection<CultureItem>();
+            
             ResetCommand = new RelayCommand(ResetExecute);
+            ToggleCommand = new RelayCommand(ToggleExecute);
 
-            achievementService = ObjectFactory.GetInstance<IAchievementService>();
+            achievementService = ObjectFactory.TryGetInstance<IAchievementService>();
+            settingsRepository = ObjectFactory.TryGetInstance<ISettingsRepository>();
 
-            notificationBox = new AchievementNotificationBox(achievementService);
+            // Solves a design-time issue with StructureMap. 
+            if (achievementService != null && settingsRepository != null)
+            {
+                notificationBox = new AchievementNotificationBox(achievementService);
+                achievementService.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
 
-            achievementService.AchievementsUnlocked += AchievementContext_AchievementsUnlocked;
-
-            ReloadViewModel();
+                ReloadViewModel();
+                LoadCultures();
+            }
         }
 
         public ObservableCollection<AchievementsPerCategory> AchievementsOrdered
         {
             get;
-            private set;
+            set;
+        }
+
+        public ObservableCollection<CultureItem> AvailableCultures
+        {
+            get;
+            set;
         }
 
         public ICommand ResetCommand
         {
             get;
             private set;
+        }
+
+        public ICommand ToggleCommand
+        {
+            get;
+            private set;
+        }
+
+        public CultureItem SelectedCulture
+        {
+            get;
+            set;
         }
 
         public int TotalAchievements
@@ -78,6 +112,56 @@ namespace Strokes.GUI
             }
         }
 
+        public string Toggled
+        {
+            get;
+            set;
+        }
+
+        private void OnSelectedCultureChanged()
+        {
+            var settings = settingsRepository.GetSettings();
+            settings.PreferredLocale = SelectedCulture.CultureKey;
+            settingsRepository.SaveSettings(settings);
+        }
+
+        private void LoadCultures()
+        {
+            AvailableCultures.Add(new CultureItem()
+            {
+                CultureKey = "en",
+                DisplayName = "ENGLISH"
+            });
+
+            var assembly = GetType().Assembly;
+            var assemblyPath = Path.GetDirectoryName(assembly.Location);
+
+            foreach (var dir in Directory.GetDirectories(assemblyPath))
+            {
+                try
+                {
+                    var directoryInfo = new DirectoryInfo(dir);
+                    var culture = CultureInfo.GetCultureInfo(directoryInfo.Name);
+
+                    AvailableCultures.Add(new CultureItem
+                    {
+                        DisplayName = culture.DisplayName.ToUpper(),
+                        CultureKey = culture.Name
+                    });
+                }
+                catch
+                {
+                    // Intentionally ignored.
+                }
+            }
+
+            var settings = settingsRepository.GetSettings();
+            SelectedCulture = AvailableCultures.FirstOrDefault(
+                x => x.CultureKey == settings.PreferredLocale);
+
+            Toggled = settings.EnableInAllProjects ? DisableText : EnableText;
+        }
+
         private void ResetExecute()
         {
             if (achievementService != null)
@@ -86,6 +170,15 @@ namespace Strokes.GUI
                 ReloadViewModel();
                 Messenger.Default.Send(new ResetAchievementsMessage());
             }   
+        }
+
+        private void ToggleExecute()
+        {
+            var settings = settingsRepository.GetSettings();
+            settings.EnableInAllProjects = !settings.EnableInAllProjects;
+            settingsRepository.SaveSettings(settings);
+
+            Toggled = settings.EnableInAllProjects ? DisableText : EnableText;
         }
 
         private void ReloadViewModel()
@@ -140,6 +233,29 @@ namespace Strokes.GUI
             RaisePropertyChanged(OrderedAchievementsFieldName);
             RaisePropertyChanged(TotalCompletedFieldName);
             RaisePropertyChanged(PercentageCompletedFieldName);
+        }
+    }
+
+    public class CultureItem : IEquatable<CultureItem>
+    {
+        public string DisplayName
+        {
+            get;
+            set;
+        }
+
+        public string CultureKey
+        {
+            get;
+            set;
+        }
+
+        public bool Equals(CultureItem other)
+        {
+            if (other == null)
+                return false;
+
+            return this.CultureKey == other.CultureKey;
         }
     }
 

@@ -3,6 +3,7 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:local="clr-namespace:Strokes.GUI"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     mc:Ignorable="d">
 
     <!--  Converters  -->
@@ -12,7 +13,7 @@
     <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
     <local:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
     <local:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
-    
+
     <!--  Brushes  -->
     <SolidColorBrush x:Key="AchievementDarkBackground"
                      Color="#FF262626" />
@@ -163,13 +164,13 @@
                                                HorizontalAlignment="Left" />
                 <Grid x:Name="PART_MagnifierGlassPath"
                       Grid.Column="1"
-                      Cursor="Hand"
                       Width="Auto"
                       Height="21.312"
                       Margin="0,15,15,0"
                       HorizontalAlignment="Stretch"
                       VerticalAlignment="Top"
                       Background="{StaticResource AchievementDarkBackground}"
+                      Cursor="Hand"
                       IsHitTestVisible="True"
                       Visibility="{Binding CodeLocation,
                                            Converter={StaticResource NullToVisibilityConverter}}">
@@ -192,18 +193,21 @@
         <Border Margin="0,0,0,4"
                 BorderBrush="{StaticResource AchievementBorder}"
                 BorderThickness="1">
-            <Grid Background="{StaticResource AchievementDarkBackground}" Opacity="{Binding IsCompleted, Converter={StaticResource BoolToOpacityConverter}}" >
+            <Grid Background="{StaticResource AchievementDarkBackground}"
+                  Opacity="{Binding IsCompleted,
+                                    Converter={StaticResource BoolToOpacityConverter}}">
                 <local:AchievementTemplateBare Grid.Column="0"
                                                Margin="5,5,40,5"
                                                Foreground="{DynamicResource AchievementForeground}" />
                 <StackPanel Grid.Column="1"
-                            Margin="300,10,10,10" HorizontalAlignment="Right" VerticalAlignment="Top">
+                            Margin="300,10,10,10"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top">
                     <TextBlock HorizontalAlignment="Left"
                                VerticalAlignment="Top"
                                Foreground="{StaticResource AchievementSubtleFontColor}"
                                Visibility="{Binding IsCompleted,
-                                                    Converter={StaticResource BoolToVisibilityConverter}}">
-                        <Run Text="Unlocked:" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text="{Binding DateCompleted, FallbackValue=''}" />
+                                                    Converter={StaticResource BoolToVisibilityConverter}}"><Run Text="Unlocked:" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text="{Binding DateCompleted, FallbackValue=''}" />
                     </TextBlock>
                 </StackPanel>
                 <Path Width="23"
@@ -215,9 +219,10 @@
                       Fill="Lime"
                       Stretch="Fill"
                       Visibility="{Binding IsCompleted,
-                                           Converter={StaticResource BoolToVisibilityConverter},
-                                           ConverterParameter=True}" />
+                                           ConverterParameter=True,
+                                           Converter={StaticResource BoolToVisibilityConverter}}" />
                 <Path Width="20"
+                      Height="20"
                       Margin="0,34.364,10,21.197"
                       HorizontalAlignment="Right"
                       VerticalAlignment="Stretch"
@@ -225,8 +230,8 @@
                       Fill="Red"
                       Stretch="Fill"
                       Visibility="{Binding IsCompleted,
-                                           Converter={StaticResource BoolToVisibilityConverter},
-                                           ConverterParameter=False}" Height="20" />
+                                           ConverterParameter=False,
+                                           Converter={StaticResource BoolToVisibilityConverter}}" />
             </Grid>
         </Border>
     </DataTemplate>
@@ -250,16 +255,15 @@
                                Margin="10,0,0,0"
                                FontSize="12"
                                Foreground="White"
-                               TextAlignment="Right">
-                        <Run Text="(" /><Run Text=" " /><Run Text="{Binding TotalCompleted, Mode=OneWay}" /><Run Text=" " /><Run Text="/" /><Run Text=" " /><Run Text="{Binding Count, Mode=OneWay}" /><Run Text=" " /><Run Text=")" />
+                               TextAlignment="Right"><Run Text="(" /><Run Text=" " /><Run Text="{Binding TotalCompleted, Mode=OneWay}" /><Run Text=" " /><Run Text="/" /><Run Text=" " /><Run Text="{Binding Count, Mode=OneWay}" /><Run Text=" " /><Run Text=")" />
                     </TextBlock>
                 </Grid>
             </Border>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=IsSelected,
-                                           RelativeSource={RelativeSource Mode=FindAncestor,
-                                                                          AncestorType={x:Type ListBoxItem}}}"
+            <DataTrigger Binding="{Binding IsSelected,
+                                           RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem},
+                                                                          Mode=FindAncestor}}"
                          Value="True">
                 <Setter TargetName="PART_Background" Property="Background" Value="{StaticResource ListBoxItemSelectedColor}" />
             </DataTrigger>
@@ -472,9 +476,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="PART_Border" 
-                                    Property="Background" 
-                                    Value="{StaticResource AchievementTabItemSelectedBackground}" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource AchievementTabItemSelectedBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -727,6 +729,133 @@
                 </Setter>
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ComboBoxToggleButton"
+           TargetType="{x:Type ToggleButton}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="ClickMode" Value="Press" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border HorizontalAlignment="Stretch"
+                            Background="Transparent"
+                            SnapsToDevicePixels="true">
+                        <Grid Width="17"
+                              HorizontalAlignment="Right">
+                            <Path Margin="0,1,0,0"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 3.5 4 L 7 0 Z"
+                                  Fill="White" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ComboBoxDarkStyle"
+           TargetType="{x:Type ComboBox}">
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="Padding" Value="4,3" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Border HorizontalAlignment="Stretch"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{StaticResource ButtonBorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="1">
+                        <Grid x:Name="MainGrid"
+                              SnapsToDevicePixels="true">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="0"
+                                                  MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
+                            </Grid.ColumnDefinitions>
+                            <Popup x:Name="PART_Popup"
+                                   Grid.ColumnSpan="2"
+                                   Margin="1"
+                                   AllowsTransparency="true"
+                                   IsOpen="{Binding IsDropDownOpen,
+                                                    RelativeSource={RelativeSource TemplatedParent}}"
+                                   Placement="Bottom"
+                                   PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
+                                <Border x:Name="DropDownBorder"
+                                        Width="{Binding ActualWidth,
+                                                        ElementName=MainGrid}"
+                                        HorizontalAlignment="Stretch"
+                                        BorderBrush="{StaticResource ButtonBorderBrush}"
+                                        BorderThickness="1">
+                                    <ScrollViewer x:Name="DropDownScrollViewer">
+                                        <Grid RenderOptions.ClearTypeHint="Enabled">
+                                            <Canvas Width="0"
+                                                    Height="0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top">
+                                                <Rectangle x:Name="OpaqueRect"
+                                                           Width="{Binding ActualWidth,
+                                                                           ElementName=DropDownBorder}"
+                                                           Height="{Binding ActualHeight,
+                                                                            ElementName=DropDownBorder}"
+                                                           Fill="{Binding Background,
+                                                                          ElementName=DropDownBorder}" />
+                                            </Canvas>
+                                            <ItemsPresenter x:Name="ItemsPresenter"
+                                                            KeyboardNavigation.DirectionalNavigation="Contained"
+                                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                        </Grid>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                            <ToggleButton Grid.ColumnSpan="2"
+                                          HorizontalAlignment="Stretch"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          IsChecked="{Binding IsDropDownOpen,
+                                                              Mode=TwoWay,
+                                                              RelativeSource={RelativeSource TemplatedParent}}"
+                                          Style="{StaticResource ComboBoxToggleButton}" />
+                            <ContentPresenter Margin="13,3,4,3"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              IsHitTestVisible="false"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBoxItem">
+                    <Border x:Name="PART_Border"
+                            Background="{StaticResource AchievementDarkBackground}"
+                            Padding="12,6,0,6">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted" Value="true">
+                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource AchievementTabItemSelectedBackground}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 </ResourceDictionary>

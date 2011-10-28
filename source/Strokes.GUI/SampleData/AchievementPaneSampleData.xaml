@@ -1,0 +1,127 @@
+﻿<Strokes_GUI:AchievementPaneViewModel xmlns:core="clr-namespace:Strokes.Core.Service.Model;assembly=Strokes.Core"
+                                      xmlns:Strokes_Core="clr-namespace:Strokes.Core;assembly=Strokes.Core"
+                                      xmlns:Strokes_GUI="clr-namespace:Strokes.GUI"
+                                      Toggled="ENABLE STROKES FOR ALL PROJECTS">
+    <Strokes_GUI:AchievementPaneViewModel.AvailableCultures>
+        <Strokes_GUI:CultureItem CultureKey="en" DisplayName="ENGLISH" />
+        <Strokes_GUI:CultureItem CultureKey="da-DK" DisplayName="DANISH (DENMARK)" />
+        <Strokes_GUI:CultureItem CultureKey="nl" DisplayName="DUTCH" />
+        <Strokes_GUI:CultureItem CultureKey="ru-RU" DisplayName="RUSSIAN (RUSSIA)" />
+    </Strokes_GUI:AchievementPaneViewModel.AvailableCultures>
+    <Strokes_GUI:AchievementPaneViewModel.AchievementsOrdered>
+        <Strokes_GUI:AchievementsPerCategory CategoryName="Basic Achievements">
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="True" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="True" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="True" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+            <core:Achievement Name="Achievement Name"
+                              Category="Basic Achievements"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Achievement description here."
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+        </Strokes_GUI:AchievementsPerCategory>
+        <Strokes_GUI:AchievementsPerCategory CategoryName="Challenges">
+            <core:Achievement Name="Amet adipiscing"
+                              Category="Natoque sociosqu ipsum"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Rutrum non"
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="True" />
+            <core:Achievement Name="Eget porttitor justo"
+                              Category="Ante posuere arcu"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Parturient potenti per"
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+            <core:Achievement Name="Eros tincidunt"
+                              Category="Pretium sapien elit lacus enim"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Lorem rhoncus semper erat"
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="True" />
+        </Strokes_GUI:AchievementsPerCategory>
+        <Strokes_GUI:AchievementsPerCategory CategoryName="Funny Achievements">
+            <core:Achievement Name="Neque sed vestibulum phasellus"
+                              Category="Vulputate odio aliquam aliquet orci"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Nam massa metus morbi"
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="False" />
+            <core:Achievement Name="Convallis porta dignissim"
+                              Category="Netus nulla dis"
+                              DateCompleted="07/12/2011 11:12:58"
+                              Description="Pede consequat volutpat aenean"
+                              Image="/Strokes.GUI;component/Resources/Icons/default.png"
+                              IsCompleted="True" />
+        </Strokes_GUI:AchievementsPerCategory>
+    </Strokes_GUI:AchievementPaneViewModel.AchievementsOrdered>
+</Strokes_GUI:AchievementPaneViewModel>

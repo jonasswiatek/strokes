@@ -13,5 +13,11 @@ namespace Strokes.BasicAchievements.NRefactory
             get;
             set;
         }
+
+        public IList<SystemTypeInvocaton> InvokedSystemTypes { get; set; }
+
+        public NRefactoryContext()
+        {
+        }
     }
 }
