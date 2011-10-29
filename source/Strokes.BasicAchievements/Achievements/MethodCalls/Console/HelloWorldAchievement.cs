@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
@@ -11,23 +12,21 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@HelloWorldAchievementDescription",
         HintUrl = "http://en.wikipedia.org/wiki/Hello_world_program",
         AchievementCategory = "@Console")]
-    public class HelloWorldAchievement : AbstractMethodCall
+    public class HelloWorldAchievement : AbstractSystemTypeUsage
     {
-        public HelloWorldAchievement() : base("System.Console.WriteLine")
+        public HelloWorldAchievement() : base(typeof(System.Console), "WriteLine")
         {
-            RequiredOverloads.Add(new TypeAndValueRequirementSet
+        }
+
+        protected override bool VerifyArgumentUsage(InvocationExpression invocationExpression)
+        {
+            var firstParam = invocationExpression.Arguments.First() as PrimitiveExpression;
+            if(firstParam != null)
             {
-                Repeating = true,
-                Requirements = new List<TypeAndValueRequirement>
-                {
-                    new TypeAndValueRequirement
-                    {
-                        Type = typeof (string),
-                        Regex = @"hello world",
-                        RegexOptions = RegexOptions.IgnoreCase
-                    },
-                }
-            });
+                return firstParam.Value.ToString().ToLower() == "hello world";
+            }
+
+            return false;
         }
     }
 }

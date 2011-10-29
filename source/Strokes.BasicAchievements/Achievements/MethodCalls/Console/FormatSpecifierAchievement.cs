@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
@@ -11,27 +12,25 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@FormatSpecifierAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/s8s7t687(v=vs.71).aspx",
         AchievementCategory = "@Console")]
-    public class FormatSpecifierAchievement : AbstractMethodCall
+    public class FormatSpecifierAchievement : AbstractSystemTypeUsage
     {
-        public FormatSpecifierAchievement() : base("System.Console.WriteLine")
+        public FormatSpecifierAchievement() : base(typeof(System.Console), "WriteLine")
         {
-            RequiredOverloads.Add(new TypeAndValueRequirementSet
+        }
+
+        protected override bool VerifyArgumentUsage(InvocationExpression invocationExpression)
+        {
+            if (invocationExpression.Arguments.Count >= 2 && invocationExpression.Arguments.First() is PrimitiveExpression)
             {
-                Repeating = true,
-                Requirements = new List<TypeAndValueRequirement>
-                {
-                    new TypeAndValueRequirement
-                    {
-                        Type = typeof (string),
-                        RegexOptions = RegexOptions.IgnorePatternWhitespace,
-                        Regex = @"\{ *\d *\: *[C,c,D,d,E,e,F,f,G,g,N,n,X,x]\d*\}"  
-                    },
-                    new TypeAndValueRequirement
-                    {
-                        Type = typeof (object)
-                    }
-                }
-            });
+                var firstParam = invocationExpression.Arguments.First() as PrimitiveExpression;
+
+                const RegexOptions regexOpts = RegexOptions.IgnorePatternWhitespace;
+                const string regex = @"\{ *\d *\: *[C,c,D,d,E,e,F,f,G,g,N,n,X,x]\d*\}";
+
+                return Regex.IsMatch(firstParam.Value.ToString(), regex, regexOpts);
+            }
+
+            return false;
         }
     }
 }

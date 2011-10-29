@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +10,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@PrintToConsoleAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/system.console.writeline(v=VS.110).aspx",
         AchievementCategory = "@Console")]
-    public class PrintToConsoleAchievement : AbstractMethodCall
+    public class PrintToConsoleAchievement : AbstractSystemTypeUsage
     {
-        public PrintToConsoleAchievement() : base("System.Console.WriteLine")
+        public PrintToConsoleAchievement() : base(typeof(System.Console), "WriteLine")
         {
         }
     }

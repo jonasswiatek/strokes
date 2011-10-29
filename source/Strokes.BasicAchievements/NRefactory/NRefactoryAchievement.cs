@@ -67,48 +67,5 @@ namespace Strokes.BasicAchievements.NRefactory
         }
 
         protected abstract AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession);
-
-        protected abstract class AbstractAchievementVisitor : DepthFirstAstVisitor<object, object> 
-        {
-            public AchievementCodeOrigin CodeOrigin
-            {
-                get;
-                set;
-            }
-
-            public bool IsAchievementUnlocked
-            {
-                get;
-                set;
-            }
-
-            protected override object VisitChildren(AstNode node, object data)
-            {
-                //This little trick should make nrefactory stop visiting as soon as an achievement is unlocked and save consideral performance in large files
-                if(!IsAchievementUnlocked)
-                {
-                    return base.VisitChildren(node, data);
-                }
-                
-                return default(object);
-            }
-
-            protected void UnlockWith(AstNode location)
-            {
-                CodeOrigin = new AchievementCodeOrigin();
-
-                CodeOrigin.From.Line = location.StartLocation.Line;
-                CodeOrigin.From.Column = location.StartLocation.Column;
-
-                CodeOrigin.To.Line = location.EndLocation.Line;
-                CodeOrigin.To.Column = location.EndLocation.Column;
-
-                IsAchievementUnlocked = true;
-            }
-
-            public virtual void OnParsingCompleted()
-            {
-            }
-        }
     }
 }

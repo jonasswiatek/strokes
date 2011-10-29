@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.Core;
 using System.Text.RegularExpressions;
 
@@ -11,23 +12,24 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@PrintWithPlaceholdersAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/txafckwd(v=VS.110).aspx",
         AchievementCategory = "@Console")]
-    public class PrintWithPlaceholdersAchievement : AbstractMethodCall
+    public class PrintWithPlaceholdersAchievement : AbstractSystemTypeUsage
     {
-        public PrintWithPlaceholdersAchievement() : base("System.Console.WriteLine")
+        public PrintWithPlaceholdersAchievement() : base(typeof(System.Console), "WriteLine")
         {
-            RequiredOverloads.Add(new TypeAndValueRequirementSet
+        }
+
+        protected override bool VerifyArgumentUsage(InvocationExpression invocationExpression)
+        {
+            var firstParam = invocationExpression.Arguments.First() as PrimitiveExpression;
+            if (firstParam != null)
             {
-                Repeating = true,
-                Requirements = new List<TypeAndValueRequirement>
-                {
-                    new TypeAndValueRequirement
-                    {
-                        Type = typeof (string),
-                        RegexOptions = RegexOptions.IgnorePatternWhitespace,
-                        Regex = @"\{ *\d *\}"
-                    },
-                }
-            });
+                const RegexOptions regexOpts = RegexOptions.IgnorePatternWhitespace;
+                const string regex = @"\{ *\d *\}";
+
+                return Regex.IsMatch(firstParam.Value.ToString(), regex, regexOpts);
+            }
+
+            return false;
         }
     }
 }

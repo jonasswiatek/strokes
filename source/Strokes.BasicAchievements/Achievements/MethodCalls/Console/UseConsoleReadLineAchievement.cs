@@ -10,9 +10,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@UseConsoleReadlineAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/system.console.readline.aspx",
         AchievementCategory = "@Console")]
-    public class UseConsoleReadlineAchievement : AbstractMethodCall
+    public class UseConsoleReadlineAchievement : AbstractSystemTypeUsage
     {
-        public UseConsoleReadlineAchievement() : base("System.Console.ReadLine")
+        public UseConsoleReadlineAchievement() : base(typeof(System.Console), "ReadLine")
         {
         }
     }

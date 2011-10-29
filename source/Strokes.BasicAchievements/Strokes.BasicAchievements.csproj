@@ -120,6 +120,7 @@
     <Compile Include="Achievements\MethodCalls\Console\PrintWithEscapeCharactersAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\FormatSpecifierAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\PrintWithPlaceholdersFieldSizeAchievement.cs" />
+    <Compile Include="Achievements\MethodCalls\AbstractSystemTypeUsage.cs" />
     <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\ArrayClassMethodsAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\ConvertToAchievements.cs" />
     <Compile Include="Achievements\MethodCalls\FundamentaldotNetMethods\StringMethodsAchievement.cs" />
@@ -163,7 +164,6 @@
     <Compile Include="Achievements\ProgramFlow\IfElseStatementAchievement.cs" />
     <Compile Include="Achievements\ProgramFlow\IfStatementAchievement.cs" />
     <Compile Include="Achievements\Funny\InfiniteWhileLoopAchievement.cs" />
-    <Compile Include="Achievements\MethodCalls\AbstractMethodCall.cs" />
     <Compile Include="Achievements\MethodCalls\Console\PrintWithPlaceholdersAchievement.cs" />
     <Compile Include="Achievements\MethodCalls\Console\UseConsoleReadLineAchievement.cs" />
     <Compile Include="Achievements\PrimitiveTypeUsage\AssignValueToPrimitiveType.cs" />
@@ -200,6 +200,7 @@
     <Compile Include="Challenges\Challenge.cs" />
     <Compile Include="Challenges\CaesarChallenge.cs" />
     <Compile Include="Challenges\TwitterChallenge.cs" />
+    <Compile Include="NRefactory\AbstractAchievementVisitor.cs" />
     <Compile Include="NRefactory\CodeBaseAnalysis\CodebaseAnalysisVisitor.cs" />
     <Compile Include="NRefactory\CodeBaseAnalysis\SystemTypeInvocationVisitor.cs" />
     <Compile Include="NRefactory\CodeBaseAnalysis\SystemTypeInvocaton.cs" />

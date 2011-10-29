@@ -10,9 +10,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@StringCompareAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/system.string.compare.aspx",
         AchievementCategory = "@Strings")]
-    public class StringCompareAchievement : AbstractMethodCall
+    public class StringCompareAchievement : AbstractSystemTypeUsage
     {
-        public StringCompareAchievement() : base("System.String.Compare")
+        public StringCompareAchievement() : base(typeof(System.String), "Compare")
         {
         }
     }
@@ -21,9 +21,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@StringConcatAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/system.string.concat.aspx",
         AchievementCategory = "@Strings")]
-    public class StringConcatAchievement : AbstractMethodCall
+    public class StringConcatAchievement : AbstractSystemTypeUsage
     {
-        public StringConcatAchievement() : base("System.String.Concat")
+        public StringConcatAchievement() : base(typeof(System.String), "Concat")
         {
         }
     }
@@ -32,9 +32,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@StringCopyAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/system.string.copy.aspx",
         AchievementCategory = "@Strings")]
-    public class StringCopyAchievement : AbstractMethodCall
+    public class StringCopyAchievement : AbstractSystemTypeUsage
     {
-        public StringCopyAchievement() : base("System.String.Copy")
+        public StringCopyAchievement() : base(typeof(System.String), "Copy")
         {
         }
     }
@@ -43,9 +43,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@StringEqualsAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/system.string.equals.aspx",
         AchievementCategory = "@Strings")]
-    public class StringEqualsAchievement : AbstractMethodCall
+    public class StringEqualsAchievement : AbstractSystemTypeUsage
     {
-        public StringEqualsAchievement() : base("System.String.Equals")
+        public StringEqualsAchievement() : base(typeof(System.String), "Equals")
         {
         }
     }
@@ -53,9 +53,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
     [AchievementDescriptor("{8C873AF8-BDEE-4793-ABC2-57449B109A7E}", "@StringJoinAchievementName",
         AchievementDescription = "@StringJoinAchievementDescription",
         AchievementCategory = "@Strings")]
-    public class StringJoinAchievement : AbstractMethodCall
+    public class StringJoinAchievement : AbstractSystemTypeUsage
     {
-        public StringJoinAchievement() : base("System.String.Join")
+        public StringJoinAchievement() : base(typeof(System.String), "Join")
         {
         }
     }

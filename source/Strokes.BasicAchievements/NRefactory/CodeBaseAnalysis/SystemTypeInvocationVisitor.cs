@@ -29,6 +29,43 @@ namespace Strokes.BasicAchievements.NRefactory.CodeBaseAnalysis
                 return base.VisitInvocationExpression(invocationExpression, data);
 
             var targetMemberName = targetMember.Target.ToString();
+
+            //Special cases
+            if (targetMember.Target is TypeReferenceExpression)
+            {
+                Type t;
+                switch(targetMemberName)
+                {
+                    case "string":
+                        t = typeof (string);
+                        break;
+                    case "int":
+                        t = typeof (int);
+                        break;
+                    case "long":
+                        t = typeof(long);
+                        break;
+                    case "double":
+                        t = typeof(double);
+                        break;
+                    default:
+                        t = null;
+                        break;
+                }
+
+                if(t != null)
+                {
+                    InvokedSystemTypes.Add(new SystemTypeInvocaton()
+                    {
+                        MethodName = targetMember.MemberName,
+                        OriginalExpression = invocationExpression,
+                        SystemType = typeof(string)
+                    });
+
+                    return base.VisitInvocationExpression(invocationExpression, data);
+                }
+            }
+
             Type systemType;
 
             //1st strategy - just try directly. This will work if the type is fully named (like System.Console or System.Threading.Thread)

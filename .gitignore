@@ -26,6 +26,7 @@
 *.sdf
 *.docstates
 *.opensdf
+*.vsp
 ipch/
 obj/
 [Bb]in

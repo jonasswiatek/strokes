@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
@@ -13,62 +14,20 @@ namespace Strokes.BasicAchievements.Achievements
         AchievementDescription = "@StartThreadAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/system.threading.thread.aspx",
         AchievementCategory = "@EventsThreads")]
-    public class StartThreadAchievement : NRefactoryAchievement
+    public class StartThreadAchievement : AbstractSystemTypeUsage
     {
-        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
+        public StartThreadAchievement() : base(typeof(System.Threading.Thread), "Start")
         {
-            return new Visitor(NRefactoryContext);
-        }
-
-        private class Visitor : AbstractAchievementVisitor
-        {
-            private readonly NRefactoryContext _nRefactoryContext;
-
-            public Visitor(NRefactoryContext nRefactoryContext)
-            {
-                _nRefactoryContext = nRefactoryContext;
-            }
-
-            public override void OnParsingCompleted()
-            {
-                var threadStartExpression = _nRefactoryContext.InvokedSystemTypes.FirstOrDefault(a => a.SystemType == typeof (System.Threading.Thread) && a.MethodName == "Start");
-                if (threadStartExpression != null)
-                {
-                    UnlockWith(threadStartExpression.OriginalExpression);
-                }
-                base.OnParsingCompleted();
-            }
         }
     }
 
     [AchievementDescriptor("{5dc86ab1-b723-4504-bd97-3473ab3ec149}", "@JoinThreadAchievementName",
         AchievementDescription = "@JoinThreadAchievementDescription",
         AchievementCategory = "@EventsThreads")]
-    public class JoinThreadAchievement : NRefactoryAchievement
+    public class JoinThreadAchievement : AbstractSystemTypeUsage
     {
-        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
+        public JoinThreadAchievement() : base(typeof(System.Threading.Thread), "Join")
         {
-            return new Visitor(NRefactoryContext);
-        }
-
-        private class Visitor : AbstractAchievementVisitor
-        {
-            private readonly NRefactoryContext _nRefactoryContext;
-
-            public Visitor(NRefactoryContext nRefactoryContext)
-            {
-                _nRefactoryContext = nRefactoryContext;
-            }
-
-            public override void OnParsingCompleted()
-            {
-                var threadStartExpression = _nRefactoryContext.InvokedSystemTypes.FirstOrDefault(a => a.SystemType == typeof(System.Threading.Thread) && a.MethodName == "Join");
-                if (threadStartExpression != null)
-                {
-                    UnlockWith(threadStartExpression.OriginalExpression);
-                }
-                base.OnParsingCompleted();
-            }
         }
     }
 
@@ -76,62 +35,20 @@ namespace Strokes.BasicAchievements.Achievements
     [AchievementDescriptor("{4c5a6472-0a60-46d9-979b-c72746b76b7e}", "@AbortThreadAchievementName",
         AchievementDescription = "@AbortThreadAchievementDescription",
         AchievementCategory = "@EventsThreads")]
-    public class AbortThreadAchievement : NRefactoryAchievement
+    public class AbortThreadAchievement : AbstractSystemTypeUsage
     {
-        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
+        public AbortThreadAchievement() : base(typeof(System.Threading.Thread), "Abort")
         {
-            return new Visitor(NRefactoryContext);
-        }
-
-        private class Visitor : AbstractAchievementVisitor
-        {
-            private readonly NRefactoryContext _nRefactoryContext;
-
-            public Visitor(NRefactoryContext nRefactoryContext)
-            {
-                _nRefactoryContext = nRefactoryContext;
-            }
-
-            public override void OnParsingCompleted()
-            {
-                var threadStartExpression = _nRefactoryContext.InvokedSystemTypes.FirstOrDefault(a => a.SystemType == typeof(System.Threading.Thread) && a.MethodName == "Abort");
-                if (threadStartExpression != null)
-                {
-                    UnlockWith(threadStartExpression.OriginalExpression);
-                }
-                base.OnParsingCompleted();
-            }
         }
     }
 
     [AchievementDescriptor("{B45780D7-0112-403D-9076-3DFB1E462D3C}", "@SleepThreadAchievementName",
         AchievementDescription = "@SleepThreadAchievementDescription",
         AchievementCategory = "@EventsThreads")]
-    public class SleepThreadAchievement : NRefactoryAchievement
+    public class SleepThreadAchievement : AbstractSystemTypeUsage
     {
-        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
+        public SleepThreadAchievement() : base(typeof(System.Threading.Thread), "Sleep")
         {
-            return new Visitor(NRefactoryContext);
-        }
-
-        private class Visitor : AbstractAchievementVisitor
-        {
-            private readonly NRefactoryContext _nRefactoryContext;
-
-            public Visitor(NRefactoryContext nRefactoryContext)
-            {
-                _nRefactoryContext = nRefactoryContext;
-            }
-
-            public override void OnParsingCompleted()
-            {
-                var threadStartExpression = _nRefactoryContext.InvokedSystemTypes.FirstOrDefault(a => a.SystemType == typeof(System.Threading.Thread) && a.MethodName == "Sleep");
-                if (threadStartExpression != null)
-                {
-                    UnlockWith(threadStartExpression.OriginalExpression);
-                }
-                base.OnParsingCompleted();
-            }
         }
     }
 }

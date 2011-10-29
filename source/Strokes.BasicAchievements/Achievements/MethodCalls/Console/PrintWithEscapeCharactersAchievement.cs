@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ICSharpCode.NRefactory.CSharp;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Achievements.MethodCalls
@@ -10,22 +11,15 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@PrintNewLineAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/h21280bw.aspx",
         AchievementCategory = "@Console")]
-    public class PrintNewLineAchievement : AbstractMethodCall
+    public class PrintNewLineAchievement : AbstractSystemTypeUsage
     {
-        public PrintNewLineAchievement() : base("System.Console.WriteLine")
+        public PrintNewLineAchievement() : base(typeof(System.Console), "WriteLine")
         {
-            RequiredOverloads.Add(new TypeAndValueRequirementSet
-            {
-                Repeating = true,
-                Requirements = new List<TypeAndValueRequirement>
-                {
-                    new TypeAndValueRequirement
-                    {
-                        Type = typeof (string),
-                        Regex = @"\n"
-                    }
-                }
-            });
+        }
+
+        protected override bool VerifyArgumentUsage(InvocationExpression invocationExpression)
+        {
+            return invocationExpression.Arguments.OfType<PrimitiveExpression>().Any(a => a.LiteralValue.Contains(@"\n"));
         }
     }
 
@@ -33,22 +27,15 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@PrintHorizontalTabAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/h21280bw.aspx",
         AchievementCategory = "@Console")]
-    public class PrintHorizontalTabAchievement : AbstractMethodCall
+    public class PrintHorizontalTabAchievement : AbstractSystemTypeUsage
     {
-        public PrintHorizontalTabAchievement() : base("System.Console.WriteLine")
+        public PrintHorizontalTabAchievement() : base(typeof(System.Console), "WriteLine")
         {
-            RequiredOverloads.Add(new TypeAndValueRequirementSet
-            {
-                Repeating = true,
-                Requirements = new List<TypeAndValueRequirement>
-                {
-                    new TypeAndValueRequirement
-                    {
-                        Type = typeof (string),
-                        Regex = @"\t"
-                    }
-                }
-            });
+        }
+
+        protected override bool VerifyArgumentUsage(InvocationExpression invocationExpression)
+        {
+            return invocationExpression.Arguments.OfType<PrimitiveExpression>().Any(a => a.LiteralValue.Contains(@"\t"));
         }
     }
 
@@ -56,22 +43,15 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@PrintQuoteCharAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/h21280bw.aspx",
         AchievementCategory = "@Console")]
-    public class PrintQuoteCharAchievement : AbstractMethodCall
+    public class PrintQuoteCharAchievement : AbstractSystemTypeUsage
     {
-        public PrintQuoteCharAchievement() : base("System.Console.WriteLine")
+        public PrintQuoteCharAchievement() : base(typeof(System.Console), "WriteLine")
         {
-            RequiredOverloads.Add(new TypeAndValueRequirementSet
-            {
-                Repeating = true,
-                Requirements = new List<TypeAndValueRequirement>
-                {
-                    new TypeAndValueRequirement
-                    {
-                        Type = typeof (string),
-                        Regex = "\\\""
-                    }
-                }
-            });
+        }
+
+        protected override bool VerifyArgumentUsage(InvocationExpression invocationExpression)
+        {
+            return invocationExpression.Arguments.OfType<PrimitiveExpression>().Any(a => a.Value.ToString().Contains("\""));
         }
     }
 
@@ -79,22 +59,15 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@PrintSingleQuoteCharAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/h21280bw.aspx",
         AchievementCategory = "@Console")]
-    public class PrintSingleQuoteCharAchievement : AbstractMethodCall
+    public class PrintSingleQuoteCharAchievement : AbstractSystemTypeUsage
     {
-        public PrintSingleQuoteCharAchievement() : base("System.Console.WriteLine")
+        public PrintSingleQuoteCharAchievement() : base(typeof(System.Console), "WriteLine")
         {
-            RequiredOverloads.Add(new TypeAndValueRequirementSet
-            {
-                Repeating = true,
-                Requirements = new List<TypeAndValueRequirement>
-                {
-                    new TypeAndValueRequirement
-                    {
-                        Type = typeof (string),
-                        Regex = "\\\'"
-                    }
-                }
-            });
+        }
+
+        protected override bool VerifyArgumentUsage(InvocationExpression invocationExpression)
+        {
+            return invocationExpression.Arguments.OfType<PrimitiveExpression>().Any(a => a.Value.ToString().Contains("\'"));
         }
     }
 
@@ -102,22 +75,15 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@PrintBackSlashCharAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/h21280bw.aspx",
         AchievementCategory = "@Console")]
-    public class PrintBackSlashCharAchievement : AbstractMethodCall
+    public class PrintBackSlashCharAchievement : AbstractSystemTypeUsage
     {
-        public PrintBackSlashCharAchievement() : base("System.Console.WriteLine")
+        public PrintBackSlashCharAchievement() : base(typeof(System.Console), "WriteLine")
         {
-            RequiredOverloads.Add(new TypeAndValueRequirementSet
-            {
-                Repeating = true,
-                Requirements = new List<TypeAndValueRequirement>
-                {
-                    new TypeAndValueRequirement
-                    {
-                        Type = typeof (string),
-                        Regex = "\\\\"
-                    }
-                }
-            });
+        }
+
+        protected override bool VerifyArgumentUsage(InvocationExpression invocationExpression)
+        {
+            return invocationExpression.Arguments.OfType<PrimitiveExpression>().Any(a => a.Value.ToString().Contains("\\"));
         }
     }
 }

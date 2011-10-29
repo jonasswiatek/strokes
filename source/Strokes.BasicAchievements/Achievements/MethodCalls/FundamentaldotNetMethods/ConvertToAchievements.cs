@@ -10,9 +10,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@ConvertToCharAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/system.convert(v=VS.110).aspx",
         AchievementCategory = "@Converting")]
-    public class ConvertToCharAchievement : AbstractMethodCall
+    public class ConvertToCharAchievement : AbstractSystemTypeUsage
     {
-        public ConvertToCharAchievement() : base("System.Convert.ToChar")
+        public ConvertToCharAchievement() : base(typeof(System.Convert), "ToChar")
         {
         }
     }
@@ -21,9 +21,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@ConvertToDecimalAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/system.convert(v=VS.110).aspx",
         AchievementCategory = "@Converting")]
-    public class ConvertToDecimalAchievement : AbstractMethodCall
+    public class ConvertToDecimalAchievement : AbstractSystemTypeUsage
     {
-        public ConvertToDecimalAchievement() : base("System.Convert.ToDecimal")
+        public ConvertToDecimalAchievement() : base(typeof(System.Convert), "ToDecimal")
         {
         }
     }
@@ -32,9 +32,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@ConvertToDoubleAchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/system.convert(v=VS.110).aspx",
         AchievementCategory = "@Converting")]
-    public class ConvertToDoubleAchievement : AbstractMethodCall
+    public class ConvertToDoubleAchievement : AbstractSystemTypeUsage
     {
-        public ConvertToDoubleAchievement() : base("System.Convert.ToDouble")
+        public ConvertToDoubleAchievement() : base(typeof(System.Convert), "ToDouble")
         {
         }
     }
@@ -43,9 +43,9 @@ namespace Strokes.BasicAchievements.Achievements.MethodCalls
         AchievementDescription = "@ConvertToInt32AchievementDescription",
         HintUrl = "http://msdn.microsoft.com/en-us/library/system.convert(v=VS.110).aspx",
         AchievementCategory = "@Converting")]
-    public class ConvertToInt32Achievement : AbstractMethodCall
+    public class ConvertToInt32Achievement : AbstractSystemTypeUsage
     {
-        public ConvertToInt32Achievement() : base("System.Convert.ToInt32")
+        public ConvertToInt32Achievement() : base(typeof(System.Convert), "ToInt32")
         {
         }
     }
