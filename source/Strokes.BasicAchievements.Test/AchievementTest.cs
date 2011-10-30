@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Strokes.BasicAchievements.Achievements;
 using Strokes.BasicAchievements.Challenges;
+using Strokes.BasicAchievements.Challenges.Common;
 using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core;
 using Strokes.Core.Service;
@@ -82,7 +83,7 @@ namespace Strokes.BasicAchievements.Test
         public void TestCoverage()
         {
             var achievementService = ObjectFactory.GetInstance<IAchievementService>();
-            var achievementImplementations = achievementService.GetAllAchievements().Select(a => a.AchievementType).Where(a => !typeof(Challenge).IsAssignableFrom(a)); //Ignore Challenges in this context - those are not unit testable from this project
+            var achievementImplementations = achievementService.GetAllAchievements().Select(a => a.AchievementType).Where(a => !typeof(ChallengeBase).IsAssignableFrom(a)); //Ignore Challenges in this context - those are not unit testable from this project
 
             var achievementTests = GetType().Assembly.GetTypes().Where(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Length > 0);
             var testedAchievementImplementations = achievementTests.SelectMany(a => a.GetCustomAttributes(typeof (ExpectUnlockAttribute), true).Select(b => (ExpectUnlockAttribute)b).Select(c => c.ExpectedAchievementType)).Distinct();

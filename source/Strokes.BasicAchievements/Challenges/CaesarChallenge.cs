@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Strokes.BasicAchievements.Challenges.Common;
+using Strokes.BasicAchievements.NRefactory;
+using Strokes.Challenges.CaesarChallenge;
 using Strokes.Core;
+using Strokes.Core.Service;
 
 namespace Strokes.BasicAchievements.Challenges
 {
@@ -10,10 +14,7 @@ namespace Strokes.BasicAchievements.Challenges
         AchievementDescription = "@CaesarChallengeDescription", 
         HintUrl = "http://en.wikipedia.org/wiki/Caesar_cipher",
         AchievementCategory = "@Challenges")]
-    public class CaesarChallenge : Challenge
+    public class CaesarChallenge : TestableChallenge<ICaesar, CaesarTest>
     {
-        public CaesarChallenge() : base("Strokes.Challenges.CaesarChallenge.CaesarTest") 
-        {
-        }
     }
 }

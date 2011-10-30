@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Strokes.BasicAchievements.Challenges.Common;
+using Strokes.Challenges.TwitterChallenge;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Challenges
@@ -10,10 +12,7 @@ namespace Strokes.BasicAchievements.Challenges
         AchievementDescription = "@TwitterChallengeDescription", 
         HintUrl = "http://www.blogoneanother.com/2009/04/twitter-characters-d-rt.html",
         AchievementCategory = "@Challenges")]
-    public class TwitterChallenge : Challenge
+    public class TwitterChallenge : TestableChallenge<ITwitter, TwitterTest>
     {
-        public TwitterChallenge() : base("Strokes.Challenges.TwitterChallenge.TwitterTest") 
-        {
-        }
     }
 }
