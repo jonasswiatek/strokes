@@ -4,8 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Xml.Serialization;
 using ICSharpCode.NRefactory.CSharp;
 using Strokes.BasicAchievements.NRefactory;
+using Strokes.Challenges;
 using Strokes.Core.Service;
 
 namespace Strokes.BasicAchievements.Challenges.Common
@@ -17,11 +19,11 @@ namespace Strokes.BasicAchievements.Challenges.Common
             return new Visitor(() => TestChallenge(statisAnalysisSession));
         }
 
-        protected virtual bool TestChallenge(StatisAnalysisSession statisAnalysisSession)
+        protected virtual TestableChallengeResult TestChallenge(StatisAnalysisSession statisAnalysisSession)
         {
             if (string.IsNullOrEmpty(statisAnalysisSession.StaticAnalysisManifest.ActiveProjectOutputDirectory))
             {
-                return false;
+                return null;
             }
 
             var dlls = new List<string>();
@@ -30,10 +32,11 @@ namespace Strokes.BasicAchievements.Challenges.Common
             dlls.AddRange(GetOutputFiles(statisAnalysisSession, "*.dll"));
             dlls.AddRange(GetOutputFiles(statisAnalysisSession, "*.exe"));
 
-            // If the Strokes.Challenges.Student-dll isn't in the build output, 
-            // this project can with certainty be said to not be a challenge-solve attempt.
-            if (!dlls.Any(dll => dll.Contains("Strokes.Challenges.dll")))
-                return false;
+            // If the Strokes.Challenges.Student-dll isn't in the build output, this project can with certainty be said to not be a challenge-solve attempt.
+            /*if (!dlls.Any(dll => dll.Contains("Strokes.Challenges.dll")))
+            {
+                return null;
+            }*/
 
             var challengeRunner = typeof (TRunner).FullName;
 
@@ -47,11 +50,18 @@ namespace Strokes.BasicAchievements.Challenges.Common
             processStartInfo.Arguments = string.Join(" ", statisAnalysisSession.StaticAnalysisManifest.ActiveProjectOutputDirectory.Replace(" ", "*"), challengeRunner);
 
             var process = Process.Start(processStartInfo);
-
-            var output = process.StandardOutput.ReadToEnd();
             var error = process.StandardError.ReadToEnd();
-
-            return output == "OK";
+            
+            var serializer = new XmlSerializer(typeof (TestableChallengeResult));
+            try
+            {
+                var result = (TestableChallengeResult) serializer.Deserialize(process.StandardOutput);
+                return result;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         private static IEnumerable<string> GetOutputFiles(StatisAnalysisSession statisAnalysisSession, string searchPattern)
@@ -64,9 +74,9 @@ namespace Strokes.BasicAchievements.Challenges.Common
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private readonly Func<bool> _test;
+            private readonly Func<TestableChallengeResult> _test;
 
-            public Visitor(Func<bool> test)
+            public Visitor(Func<TestableChallengeResult> test)
             {
                 _test = test;
             }
@@ -76,9 +86,19 @@ namespace Strokes.BasicAchievements.Challenges.Common
                 var tName = typeof (TInterface).Name;
                 if (typeDeclaration.ClassType == ClassType.Class && typeDeclaration.BaseTypes.OfType<SimpleType>().Any(a => a.Identifier == tName))
                 {
-                    if(_test())
+                    var result = _test();
+                    if (result == null) //Test did not yield any meaningful result. This is only really likely to occur during debugging with Strokes.Console of if something has broken.
+                    {
+                        return base.VisitTypeDeclaration(typeDeclaration, data);
+                    }
+
+                    if(result.IsPassed)
                     {
                         IsAchievementUnlocked = true;
+                    }
+                    else
+                    {
+                        //Partially passed achievement
                     }
                 }
                 

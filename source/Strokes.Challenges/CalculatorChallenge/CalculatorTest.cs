@@ -4,8 +4,9 @@ namespace Strokes.Challenges.CalculatorChallenge
 {
     public class CalculatorTest : AbstractChallengeTester<ICalculator>
     {
-        public override bool TestImplementation(ICalculator implementation)
+        public override TestableChallengeResult TestImplementation(ICalculator implementation)
         {
+            var testResult = new TestableChallengeResult();
             //A calculator was implemented in the external project - test it's methods.
             var random = new Random();
 
@@ -16,29 +17,61 @@ namespace Strokes.Challenges.CalculatorChallenge
             try
             {
                 //Test ADD method
-                if (a + b != implementation.Add(a, b))
-                    return false;
+                var addResult = implementation.Add(a, b);
+                var addPassed = false;
+                if (a + b == addResult)
+                {
+                    addPassed = true;
+                }
+                else
+                {
+                    testResult.AddMessage("Add method failed", string.Format("Tested with a = {0} and b = {1}, and yielded result: {2}", a, b, addResult));
+                }
 
                 //Test the SUBTRACT method
-                if (a - b != implementation.Subtract(a, b))
-                    return false;
+                var subtractResult = implementation.Subtract(a, b);
+                var subtractPassed = false;
+                if (a - b == subtractResult)
+                {
+                    subtractPassed = true;
+                }
+                else
+                {
+                    testResult.AddMessage("Subtract method failed", string.Format("Tested with a = {0} and b = {1}, and yielded result: {2}", a, b, subtractResult));
+                }
 
                 //Test the MULTIPLY method
-                if (a * b != implementation.Multiply(a, b))
-                    return false;
+                var multiplyResult = implementation.Multiply(a, b);
+                var multiplyPassed = false;
+                if (a * b == multiplyResult)
+                {
+                    multiplyPassed = true;
+                }
+                else
+                {
+                    testResult.AddMessage("Multiply method failed", string.Format("Tested with a = {0} and b = {1}, and yielded result: {2}", a, b, multiplyResult));
+                }
 
                 //Test the DIVIDE method
-                var result = (a * 1f) / (b * 1f);
-                if (result != implementation.Divide(a, b))
-                    return false;
+                var divideResult = implementation.Divide(a, b);
+                var dividePassed = false;
+                if ((a * 1f) / (b * 1f) == divideResult)
+                {
+                    dividePassed = true;
+                }
+                else
+                {
+                    testResult.AddMessage("Divide method failed", string.Format("Tested with a = {0} and b = {1}, and yielded result: {2}", a, b, divideResult));
+                }
+
+                testResult.IsPassed = addPassed && subtractPassed && multiplyPassed && dividePassed;
             }
             catch
             {
-                return false;
+                testResult.AddMessage("Challenge testing failed", "One of more methods threw an exception");
             }
 
-            //All methods passed, so yay!
-            return true;
+            return testResult;
         }
     }
 }

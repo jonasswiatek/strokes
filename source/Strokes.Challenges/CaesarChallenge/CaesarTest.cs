@@ -2,7 +2,7 @@
 {
     public class CaesarTest : AbstractChallengeTester<ICaesar>
     {
-        public override bool TestImplementation(ICaesar implementation)
+        public override TestableChallengeResult TestImplementation(ICaesar implementation)
         {
             //A Caesarmodule was implemented in the external project - test it's methods.
 
@@ -14,18 +14,18 @@
                 {
                     
                     if (!CompareArray(implementation.Encrypt(testarray, key),CaesarEncrypt(testarray, key)))
-                        return false;
+                        return new TestableChallengeResult();
                     if (!CompareArray(implementation.Decrypt(testarray, key),CaesarDecrypt(testarray, key)))
-                        return false;
+                        return new TestableChallengeResult();
                 }
             }
             catch
             {
-                return false;
+                return new TestableChallengeResult();
             }
 
             //All methods passed, so yay!
-            return true;
+            return new TestableChallengeResult() {IsPassed = true};
         }
 
         private bool CompareArray(char[] p, char[] p_2)

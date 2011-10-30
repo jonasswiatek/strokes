@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Xml.Serialization;
+using Strokes.Challenges;
 
 namespace Strokes.ChallengeRunner
 {
@@ -11,18 +14,18 @@ namespace Strokes.ChallengeRunner
     {
         static void Main(string[] args)
         {
-            if(args.Length != 2)
-            {
-                Console.Write("FAILED: " + string.Join(", ", args));
-                return;
-            }
+            var testResult = new TestableChallengeResult();
 
-            var targetDirectory = args[0].Replace("*", " ");
-            var targetChallenge = args[1];
-
-            var result = "NOT_OK";
             try
             {
+                if (args.Length != 2)
+                {
+                    throw new ArgumentException("Two arguments were not supplied");
+                }
+
+                var targetDirectory = args[0].Replace("*", " ");
+                var targetChallenge = args[1];
+
                 //Load all assemblies in targetDirectory
                 var assemblies = new List<string>();
 
@@ -45,20 +48,42 @@ namespace Strokes.ChallengeRunner
 
                 var methodInfo = targetType.GetMethod("TestChallenge");
                 if (methodInfo == null)
-                    return;
+                {
+                    throw new Exception("The TestChallenge method was not found in the target type: " + targetType.FullName);
+                }
 
                 var instance = Activator.CreateInstance(targetType);
 
-                var testResult = (bool)methodInfo.Invoke(instance, new[] { targetDirectory });
-                if (testResult)
-                    result = "OK";
+                var invokeResult = methodInfo.Invoke(instance, new[] { targetDirectory });
+                testResult = DeepClone<TestableChallengeResult>(invokeResult);
+                //Copy fields from the type in the foreign assembly into the type from this context
+                /*var fields = typeof (TestableChallengeResult).GetFields();
+                foreach(var field in fields)
+                {
+                    var foreignField = invokeResult.GetType().GetField(field.Name);
+                    var value = foreignField.GetValue(invokeResult);
+                    field.SetValue(testResult, value);
+                }*/
             }
             catch(Exception e)
             {
-                result = e.Message + e.StackTrace;
+                testResult.Error = e.Message + "\r\n" + e.StackTrace;
             }
 
-            Console.Write(result);
+            var serializer = new XmlSerializer(typeof(TestableChallengeResult));
+            serializer.Serialize(Console.Out, testResult);
+        }
+
+        public static T DeepClone<T>(object obj)
+        {
+            using (var ms = new MemoryStream())
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(ms, obj);
+                ms.Position = 0;
+
+                return (T)formatter.Deserialize(ms);
+            }
         }
     }
 }

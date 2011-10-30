@@ -8,7 +8,7 @@ namespace Strokes.Challenges
 {
     public abstract class AbstractChallengeTester<T> where T : class
     {
-        public bool TestChallenge(string targetDirectory)
+        public TestableChallengeResult TestChallenge(string targetDirectory)
         {
             var assemblies = new List<string>();
 
@@ -33,10 +33,11 @@ namespace Strokes.Challenges
 
             //No calculator implementation was found, so return false.
             if (externalImplementation == null)
-                return false;
+                return new TestableChallengeResult();
 
             return TestImplementation(externalImplementation);
         }
-        public abstract bool TestImplementation(T implementation);
+
+        public abstract TestableChallengeResult TestImplementation(T implementation);
     }
 }

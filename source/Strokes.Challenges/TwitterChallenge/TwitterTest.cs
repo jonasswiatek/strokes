@@ -2,9 +2,8 @@
 {
     public class TwitterTest : AbstractChallengeTester<ITwitter>
     {
-        public override bool TestImplementation(ITwitter implementation)
+        public override TestableChallengeResult TestImplementation(ITwitter implementation)
         {
-           
             try
             {
                 string testtoolongstring =
@@ -17,31 +16,24 @@
 
                 //CheckmessageTest
                 if (implementation.CheckMessageLength(testtoolongstring))
-                    return false;
+                    return new TestableChallengeResult();
                 if (!implementation.CheckMessageLength(okstring))
-                    return false;
+                    return new TestableChallengeResult();
                 if(!implementation.CheckMessageLength(maxokstring))
-                    return false;
+                    return new TestableChallengeResult();
                 
 
                 //Compose RT
                 string rtresult = @"Nice one RT @tdams That's funny";
                 if(!implementation.ComposeRetweetMessage("That's funny", "tdams","Nice one").Equals(rtresult))
-                    return false;
+                    return new TestableChallengeResult();
 
-                return true;
-                
-            
+                return new TestableChallengeResult() {IsPassed = true};
             }
             catch
             {
-                return false;
+                return new TestableChallengeResult();
             }
-
-            //All methods passed, so yay!
-            return true;
         }
-
-
     }
 }
