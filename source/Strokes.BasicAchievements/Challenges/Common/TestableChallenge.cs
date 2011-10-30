@@ -4,38 +4,20 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Strokes.Core;
+using ICSharpCode.NRefactory.CSharp;
+using Strokes.BasicAchievements.NRefactory;
 using Strokes.Core.Service;
-using Strokes.Core.Service.Model;
 
-namespace Strokes.BasicAchievements.Challenges
+namespace Strokes.BasicAchievements.Challenges.Common
 {
-    public abstract class Challenge : StaticAnalysisAchievementBase
+    public abstract class TestableChallenge<TInterface, TRunner> : ChallengeBase where TInterface : class where TRunner : class
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Challenge"/> class.
-        /// </summary>
-        /// <param name="challengeRunner">The path to the Challenge Runner.</param>
-        public Challenge(string challengeRunner)
+        protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
-            ChallengeRunner = challengeRunner;
+            return new Visitor<TInterface>(() => TestChallenge(statisAnalysisSession));
         }
 
-        /// <summary>
-        /// Gets or sets the path to the Challenge Runner.
-        /// </summary>
-        protected string ChallengeRunner
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Detects the achievement.
-        /// </summary>
-        /// <param name="statisAnalysisSession">The detection session.</param>
-        /// <returns><c>true</c> if the ChallengeRunner returned 'OK'; otherwise <c>false</c>.</returns>
-        public override bool IsAchievementUnlocked(StatisAnalysisSession statisAnalysisSession)
+        protected virtual bool TestChallenge(StatisAnalysisSession statisAnalysisSession)
         {
             if (string.IsNullOrEmpty(statisAnalysisSession.StaticAnalysisManifest.ActiveProjectOutputDirectory))
             {
@@ -53,6 +35,8 @@ namespace Strokes.BasicAchievements.Challenges
             if (!dlls.Any(dll => dll.Contains("Strokes.Challenges.dll")))
                 return false;
 
+            var challengeRunner = typeof (TRunner).FullName;
+
             var processStartInfo = new ProcessStartInfo();
             processStartInfo.UseShellExecute = false;
             processStartInfo.WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -60,8 +44,7 @@ namespace Strokes.BasicAchievements.Challenges
             processStartInfo.CreateNoWindow = true;
             processStartInfo.RedirectStandardOutput = true;
             processStartInfo.RedirectStandardError = true;
-            processStartInfo.Arguments = string.Join(" ",
-                statisAnalysisSession.StaticAnalysisManifest.ActiveProjectOutputDirectory.Replace(" ", "*"), ChallengeRunner);
+            processStartInfo.Arguments = string.Join(" ", statisAnalysisSession.StaticAnalysisManifest.ActiveProjectOutputDirectory.Replace(" ", "*"), challengeRunner);
 
             var process = Process.Start(processStartInfo);
 
@@ -71,18 +54,36 @@ namespace Strokes.BasicAchievements.Challenges
             return output == "OK";
         }
 
-        /// <summary>
-        /// Gets the output files for a given session, filtered by the given search pattern.
-        /// </summary>
-        /// <param name="statisAnalysisSession">The detection session.</param>
-        /// <param name="searchPattern">The search pattern.</param>
-        /// <returns>A list of file paths.</returns>
         private static IEnumerable<string> GetOutputFiles(StatisAnalysisSession statisAnalysisSession, string searchPattern)
         {
             var directory = statisAnalysisSession.StaticAnalysisManifest.ActiveProjectOutputDirectory;
 
             return Directory.GetFiles(directory, searchPattern, SearchOption.AllDirectories)
                             .Where(file => file.IndexOf("vshost") < 0);
+        }
+
+        private class Visitor<TInterface> : AbstractAchievementVisitor where TInterface : class
+        {
+            private readonly Func<bool> _test;
+
+            public Visitor(Func<bool> test)
+            {
+                _test = test;
+            }
+
+            public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
+            {
+                var tName = typeof (TInterface).Name;
+                if (typeDeclaration.ClassType == ClassType.Class && typeDeclaration.BaseTypes.OfType<SimpleType>().Any(a => a.Identifier == tName))
+                {
+                    if(_test())
+                    {
+                        IsAchievementUnlocked = true;
+                    }
+                }
+                
+                return base.VisitTypeDeclaration(typeDeclaration, data);
+            }
         }
     }
 }

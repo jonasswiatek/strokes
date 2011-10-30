@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Strokes.BasicAchievements.Challenges.Common;
+using Strokes.Challenges.CalculatorChallenge;
 using Strokes.Core;
 
 namespace Strokes.BasicAchievements.Challenges
@@ -10,10 +12,7 @@ namespace Strokes.BasicAchievements.Challenges
         AchievementDescription = "@CalculatorChallengeDescription", 
         HintUrl = "http://en.wikipedia.org/wiki/Calculator",
         AchievementCategory = "@Challenges")]
-    public class CalculatorChallenge : Challenge
+    public class CalculatorChallenge : TestableChallenge<ICalculator, CalculatorTest>
     {
-        public CalculatorChallenge() : base("Strokes.Challenges.CalculatorChallenge.CalculatorTest") 
-        {
-        }
     }
 }

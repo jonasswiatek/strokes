@@ -62,12 +62,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestFile.cs">
+    <Compile Include="__TestFile.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_TestFile.cs">
+    <Compile Include="TestFile.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
@@ -75,6 +75,10 @@
     <ProjectReference Include="..\Strokes.BasicAchievements\Strokes.BasicAchievements.csproj">
       <Project>{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}</Project>
       <Name>Strokes.BasicAchievements</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Strokes.Challenges\Strokes.Challenges.csproj">
+      <Project>{281244B6-DD45-45C1-850C-031EEEE50F0F}</Project>
+      <Name>Strokes.Challenges</Name>
     </ProjectReference>
     <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
       <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>
