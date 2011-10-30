@@ -14,7 +14,7 @@ namespace Strokes.BasicAchievements.Challenges.Common
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
-            return new Visitor<TInterface>(() => TestChallenge(statisAnalysisSession));
+            return new Visitor(() => TestChallenge(statisAnalysisSession));
         }
 
         protected virtual bool TestChallenge(StatisAnalysisSession statisAnalysisSession)
@@ -62,7 +62,7 @@ namespace Strokes.BasicAchievements.Challenges.Common
                             .Where(file => file.IndexOf("vshost") < 0);
         }
 
-        private class Visitor<TInterface> : AbstractAchievementVisitor where TInterface : class
+        private class Visitor : AbstractAchievementVisitor
         {
             private readonly Func<bool> _test;
 
