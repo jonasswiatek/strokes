@@ -55,21 +55,20 @@ namespace Strokes.ChallengeRunner
                 var instance = Activator.CreateInstance(targetType);
 
                 var invokeResult = methodInfo.Invoke(instance, new[] { targetDirectory });
+
+                /* Deep Clone the result into a TestableChallengeResult.
+                 * We need to do it like this (instead of just casting it to TestableChallengeResult),
+                 * because the TestableChallengeResult type of the invoked result is from another assembly. This is not allowed in .NET Framework.
+                 * It will however serialize into a TestableChallengeResult just fine, because they (by the way the solution is structured), can be
+                 * guaranteed to be identical */
                 testResult = DeepClone<TestableChallengeResult>(invokeResult);
-                //Copy fields from the type in the foreign assembly into the type from this context
-                /*var fields = typeof (TestableChallengeResult).GetFields();
-                foreach(var field in fields)
-                {
-                    var foreignField = invokeResult.GetType().GetField(field.Name);
-                    var value = foreignField.GetValue(invokeResult);
-                    field.SetValue(testResult, value);
-                }*/
             }
             catch(Exception e)
             {
                 testResult.Error = e.Message + "\r\n" + e.StackTrace;
             }
 
+            /* XmlSerialize the challenge result, so it can be transported to the strokes extension via standard output */
             var serializer = new XmlSerializer(typeof(TestableChallengeResult));
             serializer.Serialize(Console.Out, testResult);
         }

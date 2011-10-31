@@ -32,12 +32,6 @@ namespace Strokes.BasicAchievements.Challenges.Common
             dlls.AddRange(GetOutputFiles(statisAnalysisSession, "*.dll"));
             dlls.AddRange(GetOutputFiles(statisAnalysisSession, "*.exe"));
 
-            // If the Strokes.Challenges.Student-dll isn't in the build output, this project can with certainty be said to not be a challenge-solve attempt.
-            /*if (!dlls.Any(dll => dll.Contains("Strokes.Challenges.dll")))
-            {
-                return null;
-            }*/
-
             var challengeRunner = typeof (TRunner).FullName;
 
             var processStartInfo = new ProcessStartInfo();
@@ -52,6 +46,7 @@ namespace Strokes.BasicAchievements.Challenges.Common
             var process = Process.Start(processStartInfo);
             var error = process.StandardError.ReadToEnd();
             
+            /* Create an XML Serializer so we can read a testable challenge result from the process' standard output */
             var serializer = new XmlSerializer(typeof (TestableChallengeResult));
             try
             {
@@ -96,7 +91,7 @@ namespace Strokes.BasicAchievements.Challenges.Common
                     {
                         IsAchievementUnlocked = true;
                     }
-                    else
+                    else if(string.IsNullOrEmpty(result.Error))
                     {
                         //Partially passed achievement
                     }
