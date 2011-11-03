@@ -93,7 +93,7 @@ namespace Strokes.BasicAchievements.Challenges.Common
                     }
                     else if(string.IsNullOrEmpty(result.Error))
                     {
-                        //Partially passed achievement
+                        //Partially passed achievement. Bla bla
                     }
                 }
                 
