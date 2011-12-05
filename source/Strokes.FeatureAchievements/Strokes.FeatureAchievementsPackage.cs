@@ -11,29 +11,34 @@ namespace Strokes.FeatureAchievements
     [Guid(GuidList.guidStrokes_FeatureAchievementsPkgString)]
     public sealed class FeatureAchievementsPackage : Package
     {
-        public IdeIntegrationAchievementObserver AchievementObserver;
-        public IAchievementService AchievementService;
-        #region Package Members
-        protected override void Initialize()
+        public IdeIntegrationAchievementObserver AchievementObserver
         {
-            base.Initialize();
-
-            var als = GetService<IAchievementLibraryService>();
-            als.RegisterAchievementAssembly(GetType().Assembly);
-
-            /* This is not resolved using StructureMap, but rather Visual Studios internal thingy for this.
-             * The reason is that because this is a VSX package, it will be initialized in it's own context and it's own thread.
-             */
-            AchievementService = GetService<IAchievementService>();
-            AchievementObserver = new IdeIntegrationAchievementObserver(this, AchievementService);
+            get;
+            private set;
         }
-        #endregion
 
-        #region Tool methods
+        public IAchievementService AchievementService
+        {
+            get;
+            private set;
+        }
+
         public T GetService<T>()
         {
             return (T)GetService(typeof(T));
         }
-        #endregion
+
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            var libraryService = GetService<IAchievementLibraryService>();
+            libraryService.RegisterAchievementAssembly(GetType().Assembly);
+
+            // This is not resolved using StructureMap, but rather Visual Studios internal thingy for this.
+            // The reason is that because this is a VSX package, it will be initialized in it's own context and it's own thread.
+            AchievementService = GetService<IAchievementService>();
+            AchievementObserver = new IdeIntegrationAchievementObserver(this, AchievementService);
+        }
     }
 }

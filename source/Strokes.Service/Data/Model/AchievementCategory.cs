@@ -23,17 +23,17 @@ namespace Strokes.Service.Data.Model
     {
         public static IEnumerable<AchievementCategory> AsCategories(this IEnumerable<Achievement> achievementDescriptors)
         {
-            var categories = achievementDescriptors
-                    .Select(a => a.Category)
-                    .Distinct()
-                    .OrderBy(a => a)
-                    .Select(b => new AchievementCategory()
-                    {
-                        CategoryName = b,
-                        Achievements = achievementDescriptors.Where(a => a.Category == b).OrderBy(c => c.Name)
-                    });
+            var categories = achievementDescriptors.Select(a => a.Category).Distinct().ToList();
 
-            return categories;
+            return achievementDescriptors
+                        .Select(a => a.Category)
+                        .Distinct()
+                        .OrderBy(a => a)
+                        .Select(b => new AchievementCategory()
+                        {
+                            CategoryName = b,
+                            Achievements = achievementDescriptors.Where(a => a.Category == b).OrderBy(c => c.Name)
+                        });
         }
     }
 }

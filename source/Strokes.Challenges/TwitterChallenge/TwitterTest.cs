@@ -1,4 +1,6 @@
-﻿namespace Strokes.Challenges.TwitterChallenge
+﻿using System;
+
+namespace Strokes.Challenges.TwitterChallenge
 {
     public class TwitterTest : AbstractChallengeTester<ITwitter>
     {
@@ -17,18 +19,22 @@
                 //CheckmessageTest
                 if (implementation.CheckMessageLength(testtoolongstring))
                     return new TestableChallengeResult();
+
                 if (!implementation.CheckMessageLength(okstring))
                     return new TestableChallengeResult();
-                if(!implementation.CheckMessageLength(maxokstring))
+
+                if (!implementation.CheckMessageLength(maxokstring))
                     return new TestableChallengeResult();
-                
 
                 //Compose RT
                 string rtresult = @"Nice one RT @tdams That's funny";
-                if(!implementation.ComposeRetweetMessage("That's funny", "tdams","Nice one").Equals(rtresult))
+                if (!implementation.ComposeRetweetMessage("That's funny", "tdams", "Nice one").Equals(rtresult))
                     return new TestableChallengeResult();
 
-                return new TestableChallengeResult() {IsPassed = true};
+                return new TestableChallengeResult()
+                {
+                    IsPassed = true
+                };
             }
             catch
             {

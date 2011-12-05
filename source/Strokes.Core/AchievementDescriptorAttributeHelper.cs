@@ -2,6 +2,7 @@
 using System.Resources;
 using System.Reflection;
 using Strokes.Core.Service.Model;
+using System.Globalization;
 
 namespace Strokes.Core
 {
@@ -24,7 +25,7 @@ namespace Strokes.Core
             throw new ArgumentException("Achievement class does not define an AchievementDescriptionAttribute", "achievement");
         }
 
-        public static Achievement GetAchievementDto(this Type achievementType)
+        public static Achievement GetAchievementDto(this Type achievementType, CultureInfo culture)
         {
             var descriptionAttribute = GetDescriptionAttribute(achievementType);
             var assembly = achievementType.Assembly;
@@ -40,15 +41,15 @@ namespace Strokes.Core
 
             var category = descriptionAttribute.AchievementCategory;
             if (category.StartsWith("@") && category.Length > 1)
-                category = categoryResources.GetString(category.Substring(1));
+                category = categoryResources.GetString(category.Substring(1), culture);
 
             var title = descriptionAttribute.AchievementTitle;
             if (title.StartsWith("@") && title.Length > 1)
-                title = AchievementResources.GetString(title.Substring(1));
+                title = AchievementResources.GetString(title.Substring(1), culture);
 
             var description = descriptionAttribute.AchievementDescription;
             if (description.StartsWith("@") && description.Length > 1)
-                description = AchievementResources.GetString(description.Substring(1));
+                description = AchievementResources.GetString(description.Substring(1), culture);
 
             Uri hintUri;
             if(!Uri.TryCreate(descriptionAttribute.HintUrl, UriKind.Absolute, out hintUri))

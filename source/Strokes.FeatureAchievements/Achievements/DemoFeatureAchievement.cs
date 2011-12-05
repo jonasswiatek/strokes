@@ -12,14 +12,18 @@ using Strokes.FeatureAchievements.IdeIntegration;
 
 namespace Strokes.FeatureAchievements.Achievements
 {
-    [AchievementDescriptor("{60263C58-5C3B-45A0-9702-ED1F272AC3F7}", "@DemoFeatureAchievementName",
-    AchievementDescription = "@DemoFeatureAchievementNameDescription",
-    AchievementCategory = "@IDE")]
+    [AchievementDescriptor(
+        "{60263C58-5C3B-45A0-9702-ED1F272AC3F7}", "@DemoFeatureAchievementName",
+        AchievementDescription = "@DemoFeatureAchievementNameDescription",
+        AchievementCategory = "@IDE"
+    )]
     public class DemoFeatureAchievement : IdeIntegrationAchievement
     {
         protected readonly DTE Dte;
         private Timer timer;
-        public DemoFeatureAchievement(IServiceContainer shell) : base(shell)
+
+        public DemoFeatureAchievement(IServiceContainer shell)
+            : base(shell)
         {
             // TODO: Your turn Jonas.
             timer = new Timer(obj =>
@@ -30,7 +34,7 @@ namespace Strokes.FeatureAchievements.Achievements
 
         public override void DisposeAchievement()
         {
-            if(timer != null)
+            if (timer != null)
             {
                 timer.Change(Timeout.Infinite, Timeout.Infinite);
                 timer = null;

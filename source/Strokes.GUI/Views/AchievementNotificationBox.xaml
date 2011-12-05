@@ -24,7 +24,6 @@
     </Window.DataContext>
     <Window.Resources>
         <ResourceDictionary>
-            <properties:AppResources x:Key="AppResources" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Strokes.GUI;component/Resources/Styles/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -65,9 +64,7 @@
                                FontFamily="Segoe UI Semibold"
                                FontSize="16"
                                Foreground="{DynamicResource AchievementForeground}"
-                               Text="{Binding Resources.AchievementsUnlocked,
-                                              Source={StaticResource AppResources},
-                                              Mode=OneWay}" />
+                               Text="{Binding Mode=OneWay, Source={x:Static properties:AppResources.Instance}, Path=Resources.AchievementsUnlocked}" />
                     <ScrollViewer Grid.Row="1"
                                   Grid.Column="0"
                                   Grid.ColumnSpan="2"

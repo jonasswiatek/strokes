@@ -7,7 +7,8 @@ using System.Xml.Serialization;
 
 namespace Strokes.Data
 {
-    public abstract class AppDataXmlFileRepositoryBase<T> where T : class
+    public abstract class AppDataXmlFileRepositoryBase<T> 
+        where T : class
     {
         protected string StorageDirectory = "Strokes for Visual Studio";
         protected string StorageFile;

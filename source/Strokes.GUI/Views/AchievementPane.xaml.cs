@@ -10,16 +10,12 @@ namespace Strokes.GUI
         public AchievementPane()
         {
             InitializeComponent();
-            
-            Messenger.Default.Register<ResetAchievementsMessage>(this, 
+
+            Messenger.Default.Register<ResetAchievementsMessage>(this,
                 msg =>
                 {
-                    AchievementsCategoryListBox.SelectedIndex = 0;
+                    this.AchievementsCategoryListBox.SelectedIndex = 0;
                 });
         }
-    }
-
-    public class ResetAchievementsMessage : MessageBase
-    {
     }
 }

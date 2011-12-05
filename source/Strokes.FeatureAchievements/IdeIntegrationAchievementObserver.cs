@@ -11,19 +11,20 @@ namespace Strokes.FeatureAchievements
 {
     public class IdeIntegrationAchievementObserver
     {
-        private readonly IAchievementService _achievementService;
+        private readonly IAchievementService achievementService;
         protected List<IdeIntegrationAchievement> IdeIntegrationAchievements;
 
         public IdeIntegrationAchievementObserver(IServiceContainer serviceContainer, IAchievementService achievementService)
         {
-            _achievementService = achievementService;
+            this.achievementService = achievementService;
 
-            IdeIntegrationAchievements = _achievementService.GetUnlockableAchievements().Where(a => typeof(IdeIntegrationAchievement).IsAssignableFrom(a.AchievementType))
-                                                                                .Select(a => (IdeIntegrationAchievement)Activator.CreateInstance(a.AchievementType, serviceContainer))
-                                                                                .ToList();
+            this.IdeIntegrationAchievements = achievementService.GetUnlockableAchievements()
+                    .Where(a => typeof(IdeIntegrationAchievement).IsAssignableFrom(a.AchievementType))
+                    .Select(a => (IdeIntegrationAchievement)Activator.CreateInstance(a.AchievementType, serviceContainer))
+                    .ToList();
 
-            //Wire events.
-            foreach(var integrationAchievement in IdeIntegrationAchievements)
+            // Wire-up events.
+            foreach (var integrationAchievement in IdeIntegrationAchievements)
             {
                 integrationAchievement.AchievementUnlocked += IntegrationAchievementUnlocked;
             }
@@ -36,7 +37,7 @@ namespace Strokes.FeatureAchievements
             {
                 ideIntegrationAchievement.Dispose();
                 IdeIntegrationAchievements.Remove(ideIntegrationAchievement);
-                _achievementService.UnlockAchievement(ideIntegrationAchievement);
+                achievementService.UnlockAchievement(ideIntegrationAchievement);
             }
         }
     }

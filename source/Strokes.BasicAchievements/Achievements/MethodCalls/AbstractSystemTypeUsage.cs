@@ -13,13 +13,13 @@ namespace Strokes.BasicAchievements.Achievements
 {
     public abstract class AbstractSystemTypeUsage : NRefactoryAchievement
     {
-        private readonly Type _systemType;
-        private readonly string _methodName;
+        private readonly Type systemType;
+        private readonly string methodName;
 
         protected AbstractSystemTypeUsage(Type systemType, string methodName)
         {
-            _systemType = systemType;
-            _methodName = methodName;
+            this.systemType = systemType;
+            this.methodName = methodName;
         }
 
         protected virtual bool VerifyArgumentUsage(InvocationExpression invocationExpression)
@@ -29,43 +29,43 @@ namespace Strokes.BasicAchievements.Achievements
 
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
-            return new Visitor(NRefactoryContext, VerifyArgumentUsage, _systemType, _methodName);
+            return new Visitor(NRefactoryContext, VerifyArgumentUsage, systemType, methodName);
         }
 
         private class Visitor : AbstractAchievementVisitor
         {
-            private readonly NRefactoryContext _nrefactoryContext;
-            private readonly Func<InvocationExpression, bool> _verifier;
-            private readonly Type _systemType;
-            private readonly string _methodName;
+            private readonly NRefactoryContext nrefactoryContext;
+            private readonly Func<InvocationExpression, bool> verifier;
+            private readonly Type systemType;
+            private readonly string methodName;
 
             public Visitor(NRefactoryContext nrefactoryContext, Func<InvocationExpression, bool> verifier, Type systemType, string methodName)
             {
-                _nrefactoryContext = nrefactoryContext;
-                _verifier = verifier;
-                _systemType = systemType;
-                _methodName = methodName;
+                this.nrefactoryContext = nrefactoryContext;
+                this.verifier = verifier;
+                this.systemType = systemType;
+                this.methodName = methodName;
             }
 
             public override void OnParsingCompleted()
             {
-                if (_systemType == typeof(string))
-                {
-                    var kk = "";
-                }
-                var invocation = _nrefactoryContext.InvokedSystemTypes.SingleOrDefault(a => a.SystemType == _systemType && a.MethodName == _methodName);
-                if(invocation == null)
-                    return;
+                var invocation = nrefactoryContext.InvokedSystemTypes.SingleOrDefault
+                (
+                    a => a.SystemType == systemType && a.MethodName == methodName
+                );
 
-                var invocationExpressions = new List<InvocationExpression>() {invocation.OriginalExpression};
-                invocationExpressions.AddRange(invocation.Variations);
-
-                foreach(var invocationVariation in invocationExpressions)
+                if (invocation != null)
                 {
-                    if(_verifier(invocationVariation))
+                    var invocationExpressions = new List<InvocationExpression>() { invocation.OriginalExpression };
+                    invocationExpressions.AddRange(invocation.Variations);
+
+                    foreach (var invocationVariation in invocationExpressions)
                     {
-                        UnlockWith(invocationVariation);
-                        return;
+                        if (verifier(invocationVariation))
+                        {
+                            UnlockWith(invocationVariation);
+                            return;
+                        }
                     }
                 }
             }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
 using Strokes.Core.Service.Model;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Strokes.GUI
 {

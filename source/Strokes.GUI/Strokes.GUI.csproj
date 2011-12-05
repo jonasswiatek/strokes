@@ -109,14 +109,25 @@
     <Compile Include="Assets\EmptyToVisibilityConverter.cs" />
     <Compile Include="Assets\NullToVisibilityConverter.cs" />
     <Compile Include="Assets\StringToImageSourceConverter.cs" />
+    <Compile Include="Messages\ResetAchievementsMessage.cs" />
     <Compile Include="Properties\AppResources.cs" />
-    <Compile Include="Properties\Resources.da-DK.Designer.cs">
-      <DependentUpon>Resources.da-DK.resx</DependentUpon>
+    <Compile Include="Properties\Resources.en.Designer.cs">
+      <DependentUpon>Resources.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Properties\Resources.ru-RU.Designer.cs">
-      <DependentUpon>Resources.ru-RU.resx</DependentUpon>
+    <Compile Include="Properties\Resources.nl.Designer.cs">
+      <DependentUpon>Resources.nl.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.da.Designer.cs">
+      <DependentUpon>Resources.da.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.ru.Designer.cs">
+      <DependentUpon>Resources.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -124,8 +135,8 @@
     <Compile Include="Views\AchievementNotificationBox.xaml.cs">
       <DependentUpon>AchievementNotificationBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AchievementTemplateBare.xaml.cs">
-      <DependentUpon>AchievementTemplateBare.xaml</DependentUpon>
+    <Compile Include="Views\AchievementTemplateControl.xaml.cs">
+      <DependentUpon>AchievementTemplateControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Assets\BoolToImageUriConverter.cs" />
     <Compile Include="Assets\BoolToVisibilityConverter.cs" />
@@ -168,7 +179,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AchievementTemplateBare.xaml">
+    <Page Include="Views\AchievementTemplateControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,13 +201,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.da-DK.resx">
+    <EmbeddedResource Include="Properties\Resources.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.da-DK.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.ru-RU.resx">
+    <EmbeddedResource Include="Properties\Resources.nl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.nl.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.da.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.da.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

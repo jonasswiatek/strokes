@@ -13,7 +13,6 @@
     </UserControl.DataContext>
     <UserControl.Resources>
         <ResourceDictionary>
-            <properties:AppResources x:Key="AppResources" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Strokes.GUI;component/Resources/Styles/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -34,9 +33,9 @@
                         <TextBlock Margin="15"
                                    Foreground="{DynamicResource AchievementForeground}">
                             <TextBlock.Inlines>
-                                <Run Text="{Binding Resources.TotalAchievementsEarned, Source={StaticResource AppResources}, Mode=OneWay}" />
+                                <Run Text="{Binding Mode=OneWay, Source={x:Static properties:AppResources.Instance}, Path=Resources.TotalAchievementsEarned}" />
                                 <Run Text="{Binding TotalCompleted, Mode=OneWay}" />
-                                <Run Text="{Binding Resources.Of, Source={StaticResource AppResources}, Mode=OneWay}" />
+                                <Run Text="{Binding Mode=OneWay, Source={x:Static properties:AppResources.Instance}, Path=Resources.Of}" />
                                 <Run Text="{Binding TotalAchievements, Mode=OneWay}" />
                                 <Run Text="(" />
                                 <Run Text="{Binding PercentageCompleted, Mode=OneWay}" />
@@ -63,8 +62,8 @@
                     BorderThickness="2"
                     Padding="0"
                     Style="{DynamicResource AchievementTabControlStyle}">
-            <TabItem Header="{Binding Resources.MyAchievementsHeader,
-                                      Source={StaticResource AppResources},
+            <TabItem Header="{Binding Source={x:Static properties:AppResources.Instance},
+                                      Path=Resources.MyAchievementsHeader,
                                       Mode=OneWay}"
                      Style="{DynamicResource AchievementTabItemStyle}">
                 <TabItem.Background>
@@ -111,21 +110,20 @@
                     </Grid>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="{Binding Resources.LeaderboardHeader,
-                                      Source={StaticResource AppResources},
+            <TabItem Header="{Binding Source={x:Static properties:AppResources.Instance},
+                                      Path=Resources.LeaderboardHeader,
                                       Mode=OneWay}"
                      Style="{DynamicResource AchievementTabItemStyle}"
                      Visibility="Collapsed">
                 <Grid>
                     <StackPanel Margin="10,10,10,10">
-                        <TextBlock Text="{Binding Resources.LeaderboardHelpText,
-                                                  Source={StaticResource AppResources}}"
+                        <TextBlock Text="{Binding Mode=OneWay, Source={x:Static properties:AppResources.Instance}, Path=Resources.LeaderboardHelpText}"
                                    TextWrapping="Wrap" />
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="{Binding Resources.SettingsHeader,
-                                      Source={StaticResource AppResources},
+            <TabItem Header="{Binding Source={x:Static properties:AppResources.Instance},
+                                      Path=Resources.SettingsHeader,
                                       Mode=OneWay}"
                      Style="{DynamicResource AchievementTabItemStyle}">
                 <Grid>
@@ -137,21 +135,20 @@
                             Background="{x:Null}"
                             BorderBrush="{DynamicResource AchievementBorder}"
                             Command="{Binding ResetCommand}"
-                            Content="{Binding Resources.ResetAchievements,
-                                              Mode=OneWay,
-                                              Source={StaticResource AppResources}}"
+                            Content="{Binding Mode=OneWay, Source={x:Static properties:AppResources.Instance}, Path=Resources.ResetAchievements}"
                             Foreground="{DynamicResource AchievementForeground}"
                             Style="{DynamicResource AchievementButtonStyle}" />
-                    <Button Height="34"
+                    <Button Width="235"
+                            Height="34"
                             Margin="17,77.686,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Background="{x:Null}"
                             BorderBrush="{x:Null}"
-                            Content="{Binding Toggled}"
                             Command="{Binding ToggleCommand}"
+                            Content="{Binding Toggled}"
                             Foreground="{DynamicResource AchievementForeground}"
-                            Style="{DynamicResource AchievementButtonStyle}" Width="235" />
+                            Style="{DynamicResource AchievementButtonStyle}" />
                     <ComboBox Width="235"
                               Height="34"
                               Margin="17,151.54,0,0"
@@ -159,9 +156,9 @@
                               VerticalAlignment="Top"
                               Background="{StaticResource ButtonBackgroundBrush}"
                               BorderBrush="{DynamicResource AchievementBorder}"
+                              DisplayMemberPath="DisplayName"
                               Foreground="{DynamicResource AchievementForeground}"
                               ItemsSource="{Binding AvailableCultures}"
-                              DisplayMemberPath="DisplayName"
                               SelectedItem="{Binding SelectedCulture}"
                               Style="{DynamicResource ComboBoxDarkStyle}" />
                     <TextBlock Width="109"

@@ -19,6 +19,7 @@ using System.Windows;
 using System.IO;
 using System.Globalization;
 using Strokes.Service.Data;
+using Strokes.GUI.Properties;
 
 namespace Strokes.GUI
 {
@@ -123,41 +124,43 @@ namespace Strokes.GUI
             var settings = settingsRepository.GetSettings();
             settings.PreferredLocale = SelectedCulture.CultureKey;
             settingsRepository.SaveSettings(settings);
+
+            var test = CultureInfo.GetCultures(CultureTypes.UserCustomCulture);
+            var test2 = CultureInfo.GetCultures(CultureTypes.ReplacementCultures);
+
+            if (SelectedCulture.CultureKey == "en")
+                Resources.Culture = CultureInfo.InvariantCulture;
+            else                
+                Resources.Culture = CultureInfo.GetCultureInfo(SelectedCulture.CultureKey);
+
+            AppResources.Instance.Resources = new Resources();
+
+            foreach (var achievement in AchievementsOrdered.SelectMany(x => x))
+                achievementService.UpdateLocalization(achievement, Resources.Culture);
+
+            ReloadViewModel();
         }
 
         private void LoadCultures()
         {
-            AvailableCultures.Add(new CultureItem()
+            var supportedCultures = new string[] { "en", "nl", "da", "ru" };
+            
+            foreach (var culture in supportedCultures)
             {
-                CultureKey = "en",
-                DisplayName = "ENGLISH"
-            });
+                var cultureInfo = CultureInfo.GetCultureInfo(culture);
 
-            var assembly = GetType().Assembly;
-            var assemblyPath = Path.GetDirectoryName(assembly.Location);
-
-            foreach (var dir in Directory.GetDirectories(assemblyPath))
-            {
-                try
+                AvailableCultures.Add(new CultureItem
                 {
-                    var directoryInfo = new DirectoryInfo(dir);
-                    var culture = CultureInfo.GetCultureInfo(directoryInfo.Name);
-
-                    AvailableCultures.Add(new CultureItem
-                    {
-                        DisplayName = culture.DisplayName.ToUpper(),
-                        CultureKey = culture.Name
-                    });
-                }
-                catch
-                {
-                    // Intentionally ignored.
-                }
+                    DisplayName = cultureInfo.DisplayName.ToUpper(),
+                    CultureKey = cultureInfo.Name
+                });
             }
 
             var settings = settingsRepository.GetSettings();
-            SelectedCulture = AvailableCultures.FirstOrDefault(
-                x => x.CultureKey == settings.PreferredLocale);
+            SelectedCulture = AvailableCultures.FirstOrDefault
+            (
+                x => x.CultureKey == settings.PreferredLocale
+            );
 
             Toggled = settings.EnableInAllProjects ? DisableText : EnableText;
         }
@@ -197,15 +200,20 @@ namespace Strokes.GUI
                         .ThenByDescending(a => a.DateCompleted)
                         .ThenBy(a => a.Name);
 
-                AchievementsOrdered.Add(new AchievementsPerCategory(sortedAchievements)
+                if (sortedAchievements.Any())
                 {
-                    CategoryName = category.CategoryName,
-                });
+                    AchievementsOrdered.Add(new AchievementsPerCategory(sortedAchievements)
+                    {
+                        CategoryName = category.CategoryName,
+                    });
+                }
             }
 
             RaisePropertyChanged(OrderedAchievementsFieldName);
             RaisePropertyChanged(TotalCompletedFieldName);
             RaisePropertyChanged(PercentageCompletedFieldName);
+
+            Messenger.Default.Send(new ResetAchievementsMessage());
         }
 
         private bool IsUnlocked(IEnumerable<Achievement> achievements, Achievement achievement)

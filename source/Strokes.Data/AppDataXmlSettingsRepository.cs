@@ -7,7 +7,8 @@ using Strokes.Service.Data.Model;
 
 namespace Strokes.Data
 {
-    public class AppDataXmlSettingsRepository : AppDataXmlFileRepositoryBase<Settings>, ISettingsRepository
+    public class AppDataXmlSettingsRepository 
+        : AppDataXmlFileRepositoryBase<Settings>, ISettingsRepository
     {
         public AppDataXmlSettingsRepository(string storageFile) : base(storageFile)
         {

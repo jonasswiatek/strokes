@@ -210,8 +210,8 @@
     <Compile Include="NRefactory\NRefactorySession.cs" />
     <Compile Include="NRefactory\NRefactoryHelpers.cs" />
     <Compile Include="NRefactory\CodeBaseAnalysis\DeclarationInfo.cs" />
-    <Compile Include="Properties\AchievementCategoryResources.da-DK.Designer.cs">
-      <DependentUpon>AchievementCategoryResources.da-DK.resx</DependentUpon>
+    <Compile Include="Properties\AchievementCategoryResources.da.Designer.cs">
+      <DependentUpon>AchievementCategoryResources.da.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -220,13 +220,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Properties\AchievementCategoryResources.ru-RU.Designer.cs">
-      <DependentUpon>AchievementCategoryResources.ru-RU.resx</DependentUpon>
+    <Compile Include="Properties\AchievementCategoryResources.ru.Designer.cs">
+      <DependentUpon>AchievementCategoryResources.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Properties\AchievementResources.da-DK.Designer.cs">
-      <DependentUpon>AchievementResources.da-DK.resx</DependentUpon>
+    <Compile Include="Properties\AchievementResources.da.Designer.cs">
+      <DependentUpon>AchievementResources.da.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -235,8 +235,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Properties\AchievementResources.ru-RU.Designer.cs">
-      <DependentUpon>AchievementResources.ru-RU.resx</DependentUpon>
+    <Compile Include="Properties\AchievementResources.ru.Designer.cs">
+      <DependentUpon>AchievementResources.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -253,9 +253,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\AchievementCategoryResources.da-DK.resx">
+    <EmbeddedResource Include="Properties\AchievementCategoryResources.da.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AchievementCategoryResources.da-DK.Designer.cs</LastGenOutput>
+      <LastGenOutput>AchievementCategoryResources.da.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
       <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
     </EmbeddedResource>
@@ -265,15 +265,15 @@
       <SubType>Designer</SubType>
       <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\AchievementCategoryResources.ru-RU.resx">
+    <EmbeddedResource Include="Properties\AchievementCategoryResources.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AchievementCategoryResources.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>AchievementCategoryResources.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
       <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\AchievementResources.da-DK.resx">
+    <EmbeddedResource Include="Properties\AchievementResources.da.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AchievementResources.da-DK.Designer.cs</LastGenOutput>
+      <LastGenOutput>AchievementResources.da.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
       <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
     </EmbeddedResource>
@@ -283,9 +283,9 @@
       <SubType>Designer</SubType>
       <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\AchievementResources.ru-RU.resx">
+    <EmbeddedResource Include="Properties\AchievementResources.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AchievementResources.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>AchievementResources.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
       <CustomToolNamespace>Strokes.Resources</CustomToolNamespace>
     </EmbeddedResource>

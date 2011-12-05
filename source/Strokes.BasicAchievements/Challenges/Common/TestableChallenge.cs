@@ -12,7 +12,9 @@ using Strokes.Core.Service;
 
 namespace Strokes.BasicAchievements.Challenges.Common
 {
-    public abstract class TestableChallenge<TInterface, TRunner> : ChallengeBase where TInterface : class where TRunner : class
+    public abstract class TestableChallenge<TInterface, TRunner> : ChallengeBase
+        where TInterface : class
+        where TRunner : class
     {
         protected override AbstractAchievementVisitor CreateVisitor(StatisAnalysisSession statisAnalysisSession)
         {
@@ -32,7 +34,7 @@ namespace Strokes.BasicAchievements.Challenges.Common
             dlls.AddRange(GetOutputFiles(statisAnalysisSession, "*.dll"));
             dlls.AddRange(GetOutputFiles(statisAnalysisSession, "*.exe"));
 
-            var challengeRunner = typeof (TRunner).FullName;
+            var challengeRunner = typeof(TRunner).FullName;
 
             var processStartInfo = new ProcessStartInfo();
             processStartInfo.UseShellExecute = false;
@@ -41,19 +43,20 @@ namespace Strokes.BasicAchievements.Challenges.Common
             processStartInfo.CreateNoWindow = true;
             processStartInfo.RedirectStandardOutput = true;
             processStartInfo.RedirectStandardError = true;
-            processStartInfo.Arguments = string.Join(" ", statisAnalysisSession.StaticAnalysisManifest.ActiveProjectOutputDirectory.Replace(" ", "*"), challengeRunner);
+            processStartInfo.Arguments = string.Join(" ", 
+                statisAnalysisSession.StaticAnalysisManifest.ActiveProjectOutputDirectory.Replace(" ", "*"), challengeRunner
+            );
 
             var process = Process.Start(processStartInfo);
             var error = process.StandardError.ReadToEnd();
-            
-            /* Create an XML Serializer so we can read a testable challenge result from the process' standard output */
-            var serializer = new XmlSerializer(typeof (TestableChallengeResult));
+
+            // Create an XML Serializer so we can read a testable challenge result from the process' standard output.
+            var serializer = new XmlSerializer(typeof(TestableChallengeResult));
             try
             {
-                var result = (TestableChallengeResult) serializer.Deserialize(process.StandardOutput);
-                return result;
+                return (TestableChallengeResult)serializer.Deserialize(process.StandardOutput);
             }
-            catch(Exception e)
+            catch
             {
                 return null;
             }
@@ -78,25 +81,29 @@ namespace Strokes.BasicAchievements.Challenges.Common
 
             public override object VisitTypeDeclaration(TypeDeclaration typeDeclaration, object data)
             {
-                var tName = typeof (TInterface).Name;
+                var tName = typeof(TInterface).Name;
                 if (typeDeclaration.ClassType == ClassType.Class && typeDeclaration.BaseTypes.OfType<SimpleType>().Any(a => a.Identifier == tName))
                 {
                     var result = _test();
-                    if (result == null) //Test did not yield any meaningful result. This is only really likely to occur during debugging with Strokes.Console of if something has broken.
+
+                    // Test did not yield any meaningful result. This is only really likely to occur 
+                    // during debugging with Strokes.Console of if something has broken.
+
+                    if (result == null)
                     {
                         return base.VisitTypeDeclaration(typeDeclaration, data);
                     }
 
-                    if(result.IsPassed)
+                    if (result.IsPassed)
                     {
                         IsAchievementUnlocked = true;
                     }
-                    else if(string.IsNullOrEmpty(result.Error))
+                    else if (string.IsNullOrEmpty(result.Error))
                     {
-                        //Partially passed achievement. Bla bla
+                        // Partially passed achievement.
                     }
                 }
-                
+
                 return base.VisitTypeDeclaration(typeDeclaration, data);
             }
         }

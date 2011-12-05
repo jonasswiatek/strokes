@@ -26,17 +26,19 @@ namespace Strokes.ChallengeRunner
                 var targetDirectory = args[0].Replace("*", " ");
                 var targetChallenge = args[1];
 
-                //Load all assemblies in targetDirectory
+                // Load all assemblies in targetDirectory
                 var assemblies = new List<string>();
 
-                //Some directory listing hackery
-                assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.dll", SearchOption.AllDirectories).Where(file => file.IndexOf("vshost") < 0));
-                assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.exe", SearchOption.AllDirectories).Where(file => file.IndexOf("vshost") < 0));
+                // Some directory listing hackery
+                assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.dll", SearchOption.AllDirectories)
+                                             .Where(file => file.IndexOf("vshost") < 0));
+                assemblies.AddRange(Directory.GetFiles(targetDirectory, "*.exe", SearchOption.AllDirectories)
+                                             .Where(file => file.IndexOf("vshost") < 0));
 
                 Type targetType = null;
 
-                //Find targetChallenge-type in the found assemblies
-                foreach(var file in assemblies)
+                // Find targetChallenge-type in the found assemblies
+                foreach (var file in assemblies)
                 {
                     var assembly = Assembly.LoadFrom(file);
                     var types = assembly.GetTypes();
@@ -56,19 +58,20 @@ namespace Strokes.ChallengeRunner
 
                 var invokeResult = methodInfo.Invoke(instance, new[] { targetDirectory });
 
-                /* Deep Clone the result into a TestableChallengeResult.
-                 * We need to do it like this (instead of just casting it to TestableChallengeResult),
-                 * because the TestableChallengeResult type of the invoked result is from another assembly. This is not allowed in .NET Framework.
-                 * It will however serialize into a TestableChallengeResult just fine, because they (by the way the solution is structured), can be
-                 * guaranteed to be identical */
+                // Deep Clone the result into a TestableChallengeResult.
+                // We need to do it like this (instead of just casting it to TestableChallengeResult),
+                // because the TestableChallengeResult type of the invoked result is from another assembly. 
+                // This is not allowed in .NET Framework.
+                // It will however serialize into a TestableChallengeResult just fine, because they 
+                // (by the way the solution is structured), can be guaranteed to be identical.
                 testResult = DeepClone<TestableChallengeResult>(invokeResult);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 testResult.Error = e.Message + "\r\n" + e.StackTrace;
             }
 
-            /* XmlSerialize the challenge result, so it can be transported to the strokes extension via standard output */
+            // XmlSerialize the challenge result, so it can be transported to the strokes extension via standard output.
             var serializer = new XmlSerializer(typeof(TestableChallengeResult));
             serializer.Serialize(Console.Out, testResult);
         }

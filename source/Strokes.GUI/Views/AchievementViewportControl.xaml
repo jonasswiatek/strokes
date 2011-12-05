@@ -9,7 +9,6 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
-            <properties:AppResources x:Key="AppResources" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Strokes.GUI;component/Resources/Styles/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -49,10 +48,8 @@
                        FontFamily="Segoe UI Semibold"
                        FontSize="16"
                        Foreground="{DynamicResource AchievementSubtleFontColor}"
-                       Text="{Binding Resources.AchievementUnlocked,
-                                      Source={StaticResource AppResources},
-                                      Mode=OneWay}" />
-            <template:AchievementTemplateBare Grid.Row="1" Margin="15,0,25,0" />
+                       Text="{Binding Mode=OneWay, Source={x:Static properties:AppResources.Instance}, Path=Resources.AchievementUnlocked}" />
+            <template:AchievementTemplateControl Grid.Row="1" Margin="15,0,25,0" />
         </Grid>
     </Border>
 </UserControl>

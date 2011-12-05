@@ -117,49 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Arrays" xml:space="preserve">
-    <value>Arrays</value>
+  <data name="AchievementsUnlocked" xml:space="preserve">
+    <value>Achievement(s) Unlocked!</value>
   </data>
-  <data name="Challenges" xml:space="preserve">
-    <value>Uitdagingen</value>
+  <data name="AchievementUnlocked" xml:space="preserve">
+    <value>Achievement Unlocked!</value>
   </data>
-  <data name="Class" xml:space="preserve">
-    <value>Klassen</value>
+  <data name="LeaderboardHeader" xml:space="preserve">
+    <value>LEADERBOARD</value>
   </data>
-  <data name="Console" xml:space="preserve">
-    <value>Console</value>
+  <data name="LeaderboardHelpText" xml:space="preserve">
+    <value>Information about what achievements other people you know have been completing.</value>
   </data>
-  <data name="Converting" xml:space="preserve">
-    <value>Omzetten</value>
+  <data name="MyAchievementsHeader" xml:space="preserve">
+    <value>MINE ACHIEVEMENTS</value>
   </data>
-  <data name="ErrorHandling" xml:space="preserve">
-    <value>Foutafhandeling</value>
+  <data name="Of" xml:space="preserve">
+    <value>af</value>
   </data>
-  <data name="EventsThreads" xml:space="preserve">
-    <value>Evenements en Draads</value>
+  <data name="ResetAchievements" xml:space="preserve">
+    <value>RESET ACHIEVEMENT PROGRESS</value>
   </data>
-  <data name="Expressions" xml:space="preserve">
-    <value>Expressies</value>
+  <data name="SettingsHeader" xml:space="preserve">
+    <value>INDSTILLINGER</value>
   </data>
-  <data name="Fundamentals" xml:space="preserve">
-    <value>Basisprincipes</value>
+  <data name="TotalAchievementsEarned" xml:space="preserve">
+    <value>Antal gennemførte achievements:</value>
   </data>
-  <data name="Funny" xml:space="preserve">
-    <value>Grappig</value>
-  </data>
-  <data name="Generics" xml:space="preserve">
-    <value>Generics</value>
-  </data>
-  <data name="Method" xml:space="preserve">
-    <value>Methoden</value>
-  </data>
-  <data name="PrimitiveType" xml:space="preserve">
-    <value>Primitieve types</value>
-  </data>
-  <data name="ProgramFlow" xml:space="preserve">
-    <value>Programma flow</value>
-  </data>
-  <data name="Strings" xml:space="preserve">
-    <value>Strings</value>
+  <data name="Unlocked" xml:space="preserve">
+    <value>Unlocked:</value>
   </data>
 </root>

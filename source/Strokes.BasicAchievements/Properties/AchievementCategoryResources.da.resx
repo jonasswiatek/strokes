@@ -121,43 +121,43 @@
     <value>Arrays</value>
   </data>
   <data name="Challenges" xml:space="preserve">
-    <value>Uitdagingen</value>
+    <value>Udfordringer</value>
   </data>
   <data name="Class" xml:space="preserve">
-    <value>Klassen</value>
+    <value>Klasser</value>
   </data>
   <data name="Console" xml:space="preserve">
-    <value>Console</value>
+    <value>Kommandolinje</value>
   </data>
   <data name="Converting" xml:space="preserve">
-    <value>Omzetten</value>
+    <value>Konvertering</value>
   </data>
   <data name="ErrorHandling" xml:space="preserve">
-    <value>Foutafhandeling</value>
+    <value>Fejlhåndtering</value>
   </data>
   <data name="EventsThreads" xml:space="preserve">
-    <value>Evenements en Draads</value>
+    <value>Events og Tråde</value>
   </data>
   <data name="Expressions" xml:space="preserve">
-    <value>Expressies</value>
+    <value>Expressions</value>
   </data>
   <data name="Fundamentals" xml:space="preserve">
-    <value>Basisprincipes</value>
+    <value>Fundamentalt</value>
   </data>
   <data name="Funny" xml:space="preserve">
-    <value>Grappig</value>
+    <value>Morsomt</value>
   </data>
   <data name="Generics" xml:space="preserve">
     <value>Generics</value>
   </data>
   <data name="Method" xml:space="preserve">
-    <value>Methoden</value>
+    <value>Metoder</value>
   </data>
   <data name="PrimitiveType" xml:space="preserve">
-    <value>Primitieve types</value>
+    <value>Primitive typer</value>
   </data>
   <data name="ProgramFlow" xml:space="preserve">
-    <value>Programma flow</value>
+    <value>Program flow</value>
   </data>
   <data name="Strings" xml:space="preserve">
     <value>Strings</value>

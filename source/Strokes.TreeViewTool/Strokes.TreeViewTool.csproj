@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4F3E7FA2-B34E-49C5-8CDD-0FEC0649924E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Strokes.TreeViewTool</RootNamespace>
+    <AssemblyName>Strokes.TreeViewTool</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.NRefactory, Version=5.0.0.1, Culture=neutral, PublicKeyToken=d4bfe873e7598c49, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalReferences\NRefactory5\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory.CSharp, Version=5.0.0.1, Culture=neutral, PublicKeyToken=d4bfe873e7598c49, processorArchitecture=MSIL">
+      <HintPath>..\ExternalReferences\NRefactory5\ICSharpCode.NRefactory.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\ExternalReferences\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Strokes.BasicAchievements\Strokes.BasicAchievements.csproj">
+      <Project>{5FFF3977-BDE0-4DC7-9B0F-D66ECD0C5AF8}</Project>
+      <Name>Strokes.BasicAchievements</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Strokes.Core\Strokes.Core.csproj">
+      <Project>{89159588-EFA4-431C-9128-3A564B53D1A4}</Project>
+      <Name>Strokes.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Strokes.Data\Strokes.Data.csproj">
+      <Project>{798B2FC9-2538-4F93-9AF4-D7EA102C1CE7}</Project>
+      <Name>Strokes.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Strokes.GUI\Strokes.GUI.csproj">
+      <Project>{CCA3165B-3D87-45AB-AD18-168CF04A1417}</Project>
+      <Name>Strokes.GUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Strokes.Service\Strokes.Service.csproj">
+      <Project>{6AC1A6EF-D271-46D2-803D-E9B149DE3816}</Project>
+      <Name>Strokes.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Strokes.VSX\Strokes.VSX.csproj">
+      <Project>{4AE216B7-8FCC-446A-8A58-8705C1DB844E}</Project>
+      <Name>Strokes.VSX</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

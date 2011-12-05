@@ -7,6 +7,7 @@ using Strokes.Core;
 using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
 using Strokes.Service.Data;
+using System.Globalization;
 
 namespace Strokes.Service
 {
@@ -24,27 +25,37 @@ namespace Strokes.Service
 
         public IEnumerable<Achievement> PerformStaticAnalysis(StaticAnalysisManifest staticAnalysisManifest, bool onlyUnlockable)
         {
-            IEnumerable<Achievement> unlockedAchievements;
+            IEnumerable<Achievement> unlockedAchievements = Enumerable.Empty<Achievement>();
+
             using (var statisAnalysisSession = new StatisAnalysisSession(staticAnalysisManifest))
             {
                 OnStaticAnalysisStarted(this, new EventArgs());
                 var stopwatch = new Stopwatch();
                 stopwatch.Start();
 
-                var allAchievements = onlyUnlockable ? AchievementRepository.GetUnlockableAchievements() : AchievementRepository.GetAchievements();
-                var availableStaticAnalysisAchievements = allAchievements.Where(a => typeof(StaticAnalysisAchievementBase).IsAssignableFrom(a.AchievementType)).ToList();
-                
-                unlockedAchievements = GetUnlockedAchievements(statisAnalysisSession, availableStaticAnalysisAchievements).ToList();
+                var allAchievements = onlyUnlockable
+                                    ? AchievementRepository.GetUnlockableAchievements()
+                                    : AchievementRepository.GetAchievements();
+
+                var availableStaticAnalysisAchievements = allAchievements.Where
+                (
+                    a => typeof(StaticAnalysisAchievementBase).IsAssignableFrom(a.AchievementType)
+                ).ToList();
+
+                unlockedAchievements = GetUnlockedAchievements
+                (
+                    statisAnalysisSession, availableStaticAnalysisAchievements
+                ).ToList();
 
                 stopwatch.Stop();
                 OnStaticAnalysisCompleted(this, new StaticAnalysisEventArgs
                 {
-                    AchievementsTested = availableStaticAnalysisAchievements.Count(),
+                    AchievementsTested = availableStaticAnalysisAchievements.Count,
                     ElapsedMilliseconds = (int)stopwatch.ElapsedMilliseconds
                 });
             }
 
-            if(unlockedAchievements.Any())
+            if (unlockedAchievements.Any())
             {
                 foreach (var completedAchievement in unlockedAchievements)
                 {
@@ -52,10 +63,11 @@ namespace Strokes.Service
                 }
 
                 OnAchievementsUnlocked(this, new AchievementEventArgs
-                                                 {
-                                                     UnlockedAchievements = unlockedAchievements
-                                                 });
+                {
+                    UnlockedAchievements = unlockedAchievements
+                });
             }
+
             return unlockedAchievements;
         }
 
@@ -65,7 +77,7 @@ namespace Strokes.Service
             achievementDto.IsCompleted = true;
 
             var staticAnalysisAchievement = achievement as StaticAnalysisAchievementBase;
-            if(staticAnalysisAchievement != null)
+            if (staticAnalysisAchievement != null)
             {
                 achievementDto.CodeOrigin = staticAnalysisAchievement.AchievementCodeOrigin;
             }
@@ -74,11 +86,15 @@ namespace Strokes.Service
 
             OnAchievementsUnlocked(this, new AchievementEventArgs
             {
-                UnlockedAchievements = new []{achievementDto}
+                UnlockedAchievements = new[] { achievementDto }
             });
         }
 
-        protected abstract IEnumerable<Achievement> GetUnlockedAchievements(StatisAnalysisSession statisAnalysisSession, IEnumerable<Achievement> availableAchievements);
+        protected abstract IEnumerable<Achievement> GetUnlockedAchievements
+        (
+            StatisAnalysisSession statisAnalysisSession,
+            IEnumerable<Achievement> availableAchievements
+        );
 
         public void ResetAchievementProgress()
         {
@@ -100,10 +116,14 @@ namespace Strokes.Service
             return AchievementRepository.GetUnlockableAchievements();
         }
 
-        #region Event Dispatchers
+        public void UpdateLocalization(Achievement achievement, CultureInfo culture)
+        {
+            AchievementRepository.UpdateLocalization(achievement, culture);
+        }
+
         private void OnAchievementsUnlocked(object sender, AchievementEventArgs e)
         {
-            if(AchievementsUnlocked != null)
+            if (AchievementsUnlocked != null)
             {
                 AchievementsUnlocked(sender, e);
             }
@@ -111,7 +131,7 @@ namespace Strokes.Service
 
         private void OnStaticAnalysisStarted(object sender, EventArgs e)
         {
-            if(StaticAnalysisStarted != null)
+            if (StaticAnalysisStarted != null)
             {
                 StaticAnalysisStarted(sender, e);
             }
@@ -119,11 +139,10 @@ namespace Strokes.Service
 
         private void OnStaticAnalysisCompleted(object sender, StaticAnalysisEventArgs e)
         {
-            if(StaticAnalysisCompleted != null)
+            if (StaticAnalysisCompleted != null)
             {
                 StaticAnalysisCompleted(sender, e);
             }
         }
-        #endregion
     }
 }

@@ -7,7 +7,6 @@ namespace Strokes.FeatureAchievements.IdeIntegration
 {
     public abstract class IdeIntegrationAchievement : AchievementBase, IDisposable
     {
-        protected IServiceContainer ServiceContainer { get; private set; }
         public event EventHandler<EventArgs> AchievementUnlocked;
 
         protected IdeIntegrationAchievement(IServiceContainer serviceContainer)
@@ -15,9 +14,15 @@ namespace Strokes.FeatureAchievements.IdeIntegration
             ServiceContainer = serviceContainer;
         }
 
+        protected IServiceContainer ServiceContainer
+        {
+            get;
+            private set;
+        }
+
         protected void OnAchievementUnlocked()
         {
-            if(AchievementUnlocked != null)
+            if (AchievementUnlocked != null)
             {
                 AchievementUnlocked(this, new EventArgs());
             }

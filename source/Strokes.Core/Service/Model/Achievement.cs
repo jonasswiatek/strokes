@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Strokes.Core.Service.Model
 {
-    public class Achievement : INotifyPropertyChanged
+    public class Achievement : IEquatable<Achievement>, INotifyPropertyChanged
     {
         public Achievement()
         {
@@ -47,7 +47,7 @@ namespace Strokes.Core.Service.Model
             get
             {
                 if (Unlocks.Any())
-                    return string.Join(" ", Unlocks.Select(a => "[" + a.Name + "]"));  
+                    return string.Join(" ", Unlocks.Select(a => "[" + a.Name + "]"));
                 else
                     return string.Empty;
             }
@@ -77,7 +77,11 @@ namespace Strokes.Core.Service.Model
             set;
         }
 
-        public Uri HintUri { get; set; }
+        public Uri HintUri
+        {
+            get;
+            set;
+        }
 
         public Type AchievementType
         {
@@ -91,7 +95,11 @@ namespace Strokes.Core.Service.Model
             set;
         }
 
-        public string CodeSnapshot { get; set; }
+        public string CodeSnapshot
+        {
+            get;
+            set;
+        }
 
         public bool IsCompleted
         {
@@ -105,8 +113,16 @@ namespace Strokes.Core.Service.Model
             set;
         }
 
-        #pragma warning disable 67
+#pragma warning disable 67
         public event PropertyChangedEventHandler PropertyChanged;
-        #pragma warning restore 67
+#pragma warning restore 67
+
+        public bool Equals(Achievement other)
+        {
+            if (other == null)
+                return false;
+
+            return this.Guid == other.Guid;
+        }
     }
 }

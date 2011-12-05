@@ -20,7 +20,7 @@ namespace Strokes.GUI.VsAdornments
         private readonly Brush brush;
         private readonly Pen pen;
 
-        private AchievementCodeOrigin _codeOrigin;
+        private AchievementCodeOrigin codeOrigin;
         private UIElement achievementUiElement;
         private bool adornmentVisible = false;
 
@@ -44,19 +44,19 @@ namespace Strokes.GUI.VsAdornments
             this.brush = brush;
             this.pen = pen;
 
-            AchievementUIContext.AchievementClicked += (sender, args) =>
-                                                         {
-                                                             Reset();
+            AchievementUIContext.AchievementClicked += (sender, e) =>
+            {
+                Reset();
 
-                                                             var filePath = GetFilePath(view);
-                                                             if (args.AchievementDescriptor.CodeOrigin.FileName != filePath)
-                                                                 return;
+                var filePath = GetFilePath(view);
+                if (e.AchievementDescriptor.CodeOrigin.FileName != filePath)
+                    return;
 
-                                                             _codeOrigin = args.AchievementDescriptor.CodeOrigin;
-                                                             achievementUiElement = (UIElement)args.UIElement;
+                codeOrigin = e.AchievementDescriptor.CodeOrigin;
+                achievementUiElement = (UIElement)e.UIElement;
 
-                                                             CreateAdornment();
-                                                         };
+                CreateAdornment();
+            };
         }
 
         public static string GetFilePath(IWpfTextView wpfTextView)
@@ -75,7 +75,7 @@ namespace Strokes.GUI.VsAdornments
 
         private void Reset()
         {
-            _codeOrigin = null;
+            codeOrigin = null;
             achievementUiElement = null;
             adornmentVisible = false;            
             layer.RemoveAllAdornments();
@@ -86,17 +86,17 @@ namespace Strokes.GUI.VsAdornments
         {
             var lines = view.VisualSnapshot.Lines;
 
-            if (_codeOrigin == null)
+            if (codeOrigin == null)
                 return;
 
-            var startLine = lines.FirstOrDefault(a => a.LineNumber == _codeOrigin.From.Line - 1);
-            var endLine = lines.FirstOrDefault(a => a.LineNumber == _codeOrigin.To.Line - 1);
+            var startLine = lines.FirstOrDefault(a => a.LineNumber == codeOrigin.From.Line - 1);
+            var endLine = lines.FirstOrDefault(a => a.LineNumber == codeOrigin.To.Line - 1);
 
             if (startLine == null || endLine == null)
                 return;
 
-            var startPosition = startLine.Start + _codeOrigin.From.Column - 1;
-            var endPosition = endLine.Start + _codeOrigin.To.Column - 1;
+            var startPosition = startLine.Start + codeOrigin.From.Column - 1;
+            var endPosition = endLine.Start + codeOrigin.To.Column - 1;
 
             var span = new SnapshotSpan(view.TextSnapshot, Span.FromBounds(startPosition, endPosition));
 
@@ -156,7 +156,7 @@ namespace Strokes.GUI.VsAdornments
         private void OnLayoutChanged(object sender, TextViewLayoutChangedEventArgs e)
         {
             // Save some time - if there isn't an active CodeOrigin, then just bail.
-            if (_codeOrigin == null)
+            if (codeOrigin == null)
                 return;
 
             if (e.OldSnapshot != e.NewSnapshot)

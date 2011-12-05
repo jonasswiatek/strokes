@@ -68,7 +68,6 @@ namespace Strokes.BasicAchievements.Achievements
         }
     }
 
-
     [AchievementDescriptor("{b752b0bd-9942-4602-ae02-8c78ad2b76bb}", "@EmptyVoidMethodAchievementName",
         AchievementDescription = "@EmptyVoidMethodAchievementDescription",
         HintUrl = "http://blanksite.com/",

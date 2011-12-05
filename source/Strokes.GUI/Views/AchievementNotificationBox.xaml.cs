@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Strokes.Core;
-using System.ComponentModel;
 using System.Windows.Shapes;
+using GalaSoft.MvvmLight.Messaging;
+using Strokes.Core;
 using Strokes.Core.Service;
 using Strokes.Core.Service.Model;
 using StructureMap;

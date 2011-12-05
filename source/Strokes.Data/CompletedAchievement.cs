@@ -15,7 +15,11 @@ namespace Strokes.Data
             Guid = achievementDescriptor.Guid;
         }
 
-        public string CodeSnapshot { get; set; }
+        public string CodeSnapshot
+        {
+            get;
+            set;
+        }
 
         public string Guid
         {
@@ -39,10 +43,10 @@ namespace Strokes.Data
         {
             if (ReferenceEquals(null, obj))
                 return false;
-            
+
             if (ReferenceEquals(this, obj))
                 return true;
-            
+
             if (obj.GetType() != typeof(CompletedAchievement))
                 return false;
 
@@ -53,7 +57,7 @@ namespace Strokes.Data
         {
             if (ReferenceEquals(null, other))
                 return false;
-            
+
             if (ReferenceEquals(this, other))
                 return true;
 
@@ -65,7 +69,7 @@ namespace Strokes.Data
             unchecked
             {
                 int result = (Guid != null ? Guid.GetHashCode() : 0);
-                
+
                 return result;
             }
         }

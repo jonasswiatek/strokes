@@ -8,9 +8,9 @@ using Strokes.Core.Service.Model;
 
 namespace Strokes.GUI
 {
-    public partial class AchievementTemplateBare
+    public partial class AchievementTemplateControl
     {
-        public AchievementTemplateBare()
+        public AchievementTemplateControl()
         {
             InitializeComponent();
         }

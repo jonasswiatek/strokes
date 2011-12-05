@@ -19,7 +19,7 @@ namespace Strokes.VSX.Trackers
     {
         private static Dictionary<string, ProjectTypeDef> projectTypeDefCache = new Dictionary<string, ProjectTypeDef>();
         private DTE dte;
-        private readonly IAchievementService _achievementService;
+        private readonly IAchievementService achievementService;
         private DateTime lastAchievementCheck = DateTime.Now;
         private bool isAchievementDetectionRunning;
 
@@ -31,7 +31,7 @@ namespace Strokes.VSX.Trackers
         public BuildTracker(DTE dte, IAchievementService achievementService)
         {
             this.dte = dte;
-            _achievementService = achievementService;
+            this.achievementService = achievementService;
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Strokes.VSX.Trackers
 
                     // Lock builds while detection is occuring - this prevents parallel detection
                     isAchievementDetectionRunning = true;
-                    _achievementService.PerformStaticAnalysis(buildInformation, true);
+                    achievementService.PerformStaticAnalysis(buildInformation, true);
                 }
                 finally
                 {

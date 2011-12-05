@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Strokes.GUI.AchievementTemplateBare"
+﻿<UserControl x:Class="Strokes.GUI.AchievementTemplateControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,7 +10,6 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
-            <properties:AppResources x:Key="AppResources" />
             <Storyboard x:Key="FadeInStoryboard">
                 <DoubleAnimation Duration="0:0:0.5"
                                  From="0.0"

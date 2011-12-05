@@ -117,40 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Arrays" xml:space="preserve">
-    <value>Arrays</value>
-  </data>
-  <data name="Challenges" xml:space="preserve">
-    <value>Udfordringer</value>
-  </data>
-  <data name="Class" xml:space="preserve">
-    <value>Klasser</value>
-  </data>
-  <data name="Console" xml:space="preserve">
-    <value>Kommandolinje</value>
-  </data>
-  <data name="Converting" xml:space="preserve">
-    <value>Konvertering</value>
-  </data>
-  <data name="ErrorHandling" xml:space="preserve">
-    <value>Fejlhåndtering</value>
-  </data>
-  <data name="Expressions" xml:space="preserve">
-    <value>Expressions</value>
-  </data>
-  <data name="Fundamentals" xml:space="preserve">
-    <value>Fundamentalt</value>
-  </data>
-  <data name="Funny" xml:space="preserve">
-    <value>Morsomt</value>
-  </data>
-  <data name="Method" xml:space="preserve">
-    <value>Metoder</value>
-  </data>
-  <data name="PrimitiveType" xml:space="preserve">
-    <value>Primitive typer</value>
-  </data>
-  <data name="ProgramFlow" xml:space="preserve">
-    <value>Program flow</value>
-  </data>
 </root>
