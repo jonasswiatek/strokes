@@ -12,21 +12,21 @@ This Visual Studio Extension strives to provide a tool for teaching C# to beginn
 This project is currently in a beta stage, and you can download a copy from the downloads section here on github. This extension is a proper Visual Studio 2010 extension, so it is easily removed with visual studios extension management features. The only data this extension writes to your hard drive (except for it's assemblies deployed by the VSIX installer), is a small XML file in your AppData Directory that contains which achievements you've unlocked.
 
 **Create a new Strokes Achievement Project**
-![New Project](/jonasswiatek/strokes/raw/master/docs/project_template.png)
+![New Project](/jonasswiatek/strokes/blob/master/docs/project_template.png)
 
 You can now start writing achievements. If you want to try our challenges, then follow these steps:
 
 **Add a new item**
-![New Project](/jonasswiatek/strokes/raw/master/docs/project_add_challenge.png)
+![New Project](/jonasswiatek/strokes/blob/master/docs/project_add_challenge.png)
 
 **Choose your challenge!**
-![New Project](/jonasswiatek/strokes/raw/master/docs/template_challenges.png)
+![New Project](/jonasswiatek/strokes/blob/master/docs/template_challenges.png)
 
 **Highlighting of which code completed a specific achievement**
-![Achievement Highlighting](/jonasswiatek/strokes/raw/master/docs/achievement_viewport.png)
+![Achievement Highlighting](/jonasswiatek/strokes/blob/master/docs/achievement_viewport.png)
 
 **Notifications of which achievements were completed when you compile**
-![Achievement Notification](/jonasswiatek/strokes/raw/master/docs/achievements_notification.png)
+![Achievement Notification](/jonasswiatek/strokes/blob/master/docs/achievements_notification.png)
 
 **The Achievement Statistics Page**
-![Achievement Statistics](/jonasswiatek/strokes/raw/master/docs/achievement_statistics.png)
+![Achievement Statistics](/jonasswiatek/strokes/blob/master/docs/achievement_statistics.png)
